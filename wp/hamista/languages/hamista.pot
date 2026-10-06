@@ -1,0 +1,411 @@
+# Copyright (C) 2026 Hamista
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hamista 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-06T19:13:35+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: hamista\n"
+
+#. Theme Name of the theme
+#. Author of the theme
+#: style.css
+msgid "Hamista"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://hamista.com"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A fast, Persian-first (RTL) multipurpose theme built for Elementor. Swappable style kits, light and dark modes, a dependency-free motion engine, WooCommerce styling and one-click demos. Pair with the bundled Hamista Core plugin for Elementor widgets, settings, mobile OTP login and demo import."
+msgstr ""
+
+#: 404.php:15
+msgid "This page wandered off"
+msgstr ""
+
+#: 404.php:16
+msgid "The address may be mistyped, or the page has moved. Try a search or head back home."
+msgstr ""
+
+#: 404.php:18
+msgid "Back to home"
+msgstr ""
+
+#. translators: %s: number of comments
+#: comments.php:20
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:24
+msgid "Back to top"
+msgstr ""
+
+#: header.php:21
+msgid "Skip to content"
+msgstr ""
+
+#: inc/assets.php:36
+msgid "Spark — editorial"
+msgstr ""
+
+#: inc/assets.php:37
+msgid "Industrial — tactile"
+msgstr ""
+
+#: inc/assets.php:38
+msgid "Pulse — bold agency"
+msgstr ""
+
+#: inc/assets.php:39
+msgid "Honey — warm and natural"
+msgstr ""
+
+#: inc/assets.php:40
+msgid "Nomad — handwoven, earthy"
+msgstr ""
+
+#: inc/assets.php:78
+msgid "Toggle submenu"
+msgstr ""
+
+#: inc/page-options.php:21
+msgid "Header"
+msgstr ""
+
+#: inc/page-options.php:23
+#: inc/page-options.php:32
+#: inc/page-options.php:40
+msgid "Default"
+msgstr ""
+
+#: inc/page-options.php:24
+msgid "Transparent over content"
+msgstr ""
+
+#: inc/page-options.php:25
+msgid "Transparent, light text (dark hero)"
+msgstr ""
+
+#: inc/page-options.php:26
+#: inc/page-options.php:41
+msgid "Hidden"
+msgstr ""
+
+#: inc/page-options.php:30
+msgid "Page title"
+msgstr ""
+
+#: inc/page-options.php:33
+msgid "Show"
+msgstr ""
+
+#: inc/page-options.php:34
+msgid "Hide"
+msgstr ""
+
+#: inc/page-options.php:38
+msgid "Footer"
+msgstr ""
+
+#: inc/page-options.php:45
+msgid "Force colour scheme"
+msgstr ""
+
+#: inc/page-options.php:47
+msgid "Visitor choice"
+msgstr ""
+
+#: inc/page-options.php:48
+msgid "Always light"
+msgstr ""
+
+#: inc/page-options.php:49
+msgid "Always dark"
+msgstr ""
+
+#: inc/page-options.php:107
+msgid "Hamista layout"
+msgstr ""
+
+#: inc/plugin-installer.php:36
+msgid "Finish setting up Hamista"
+msgstr ""
+
+#: inc/plugin-installer.php:37
+msgid "Hamista Core adds the Elementor widgets, motion engine, settings panel, mobile OTP login and one-click demo import."
+msgstr ""
+
+#: inc/plugin-installer.php:40
+msgid "Activate Hamista Core"
+msgstr ""
+
+#: inc/plugin-installer.php:40
+msgid "Install Hamista Core"
+msgstr ""
+
+#: inc/plugin-installer.php:53
+msgid "You are not allowed to install plugins."
+msgstr ""
+
+#: inc/plugin-installer.php:59
+msgid "The bundled plugin file is missing. Upload hamista-core.zip from the download package in Plugins → Add New."
+msgstr ""
+
+#: inc/plugin-installer.php:65
+msgid "Installation failed."
+msgstr ""
+
+#: inc/plugin-installer.php:78
+msgid "You are not allowed to activate plugins."
+msgstr ""
+
+#: inc/setup.php:38
+msgid "Primary menu"
+msgstr ""
+
+#: inc/setup.php:39
+msgid "Mobile menu (falls back to primary)"
+msgstr ""
+
+#: inc/setup.php:40
+msgid "Footer bottom menu"
+msgstr ""
+
+#: inc/setup.php:68
+msgid "Blog sidebar"
+msgstr ""
+
+#: inc/setup.php:77
+msgid "Shop sidebar"
+msgstr ""
+
+#. translators: %d: footer column number
+#: inc/setup.php:89
+#, php-format
+msgid "Footer column %d"
+msgstr ""
+
+#. translators: %s: number of minutes
+#: inc/template-tags.php:100
+#, php-format
+msgid "%s min read"
+msgid_plural "%s min read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:124
+#: inc/template-tags.php:159
+#: inc/woocommerce.php:98
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/template-tags.php:132
+msgid "Home"
+msgstr ""
+
+#. translators: %s: search query
+#: inc/template-tags.php:150
+#: index.php:15
+#: searchform.php:15
+#: template-parts/header/site-header.php:55
+#: template-parts/header/site-header.php:132
+msgid "Search"
+msgstr ""
+
+#: inc/template-tags.php:152
+msgid "Not found"
+msgstr ""
+
+#: inc/template-tags.php:178
+msgid "Previous page"
+msgstr ""
+
+#: inc/template-tags.php:179
+msgid "Next page"
+msgstr ""
+
+#: inc/template-tags.php:183
+msgid "Posts pagination"
+msgstr ""
+
+#. translators: %s: network name
+#: inc/template-tags.php:250
+#, php-format
+msgid "Share on %s"
+msgstr ""
+
+#: inc/template-tags.php:257
+msgid "Copy link"
+msgstr ""
+
+#: inc/template-tags.php:258
+msgid "Link copied"
+msgstr ""
+
+#: inc/template-tags.php:307
+msgid "All"
+msgstr ""
+
+#: inc/template-tags.php:333
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/woocommerce.php:102
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""
+
+#: inc/woocommerce.php:125
+msgid "All products"
+msgstr ""
+
+#. translators: %s: discount percent
+#: inc/woocommerce.php:239
+#, php-format
+msgid "%s%% off"
+msgstr ""
+
+#. translators: %s: discount percent
+#: inc/woocommerce.php:239
+msgid "Sale"
+msgstr ""
+
+#. translators: %s: search query
+#: index.php:15
+#, php-format
+msgid "Results for “%s”"
+msgstr ""
+
+#: index.php:19
+msgid "Journal"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Hamista — Full width"
+msgstr ""
+
+#: searchform.php:13
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:14
+msgid "Search…"
+msgstr ""
+
+#: sidebar.php:15
+msgid "Sidebar"
+msgstr ""
+
+#: single.php:70
+msgid "Share"
+msgstr ""
+
+#: single.php:102
+msgid "More posts"
+msgstr ""
+
+#: single.php:104
+msgid "Previous post"
+msgstr ""
+
+#: single.php:109
+msgid "Next post"
+msgstr ""
+
+#: template-parts/content/none.php:11
+msgid "Nothing here yet"
+msgstr ""
+
+#: template-parts/content/none.php:15
+msgid "No results matched your search. Try different keywords."
+msgstr ""
+
+#: template-parts/content/none.php:17
+msgid "There is no content to show here yet."
+msgstr ""
+
+#: template-parts/footer/mobile-bar.php:24
+msgid "Quick actions"
+msgstr ""
+
+#: template-parts/footer/mobile-bar.php:26
+msgid "Call us"
+msgstr ""
+
+#: template-parts/footer/mobile-bar.php:29
+msgid "Chat on WhatsApp"
+msgstr ""
+
+#. translators: 1: year, 2: site name
+#: template-parts/footer/site-footer.php:15
+#, php-format
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: template-parts/header/site-header.php:38
+msgid "Primary"
+msgstr ""
+
+#: template-parts/header/site-header.php:59
+msgid "Toggle dark mode"
+msgstr ""
+
+#: template-parts/header/site-header.php:68
+#: template-parts/header/site-header.php:121
+msgid "My account"
+msgstr ""
+
+#: template-parts/header/site-header.php:68
+msgid "Log in"
+msgstr ""
+
+#: template-parts/header/site-header.php:78
+msgid "Cart"
+msgstr ""
+
+#: template-parts/header/site-header.php:90
+msgid "Open menu"
+msgstr ""
+
+#: template-parts/header/site-header.php:97
+msgid "Menu"
+msgstr ""
+
+#: template-parts/header/site-header.php:100
+msgid "Close menu"
+msgstr ""
+
+#: template-parts/header/site-header.php:121
+msgid "Log in / Sign up"
+msgstr ""
+
+#: template-parts/header/site-header.php:134
+msgid "Press Esc to close"
+msgstr ""
+
+#: template-parts/post/related.php:27
+msgid "Keep reading"
+msgstr ""
+
+#: template-parts/post/related.php:32
+msgid "All posts"
+msgstr ""

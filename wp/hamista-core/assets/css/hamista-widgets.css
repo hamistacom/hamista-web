@@ -83,6 +83,20 @@
 .hm-space-md { padding-block: var(--hm-space-section); }
 .hm-space-lg { padding-block: calc(var(--hm-space-section) * 1.35); }
 .hm-inner--full { width: 100%; }
+/* Layout helpers for Elementor containers (Advanced → CSS classes). They drive
+   Elementor's own padding variables, so the editor's spacing controls still win. */
+.e-con.hm-space-none { --padding-top: 0px; --padding-bottom: 0px; }
+.e-con.hm-space-sm { --padding-top: calc(var(--hm-space-section) * .5); --padding-bottom: calc(var(--hm-space-section) * .5); }
+.e-con.hm-space-md { --padding-top: var(--hm-space-section); --padding-bottom: var(--hm-space-section); }
+.e-con.hm-space-lg { --padding-top: calc(var(--hm-space-section) * 1.35); --padding-bottom: calc(var(--hm-space-section) * 1.35); }
+.e-con.hm-space-top-0 { --padding-top: 0px; }
+.e-con.hm-space-bottom-0 { --padding-bottom: 0px; }
+.e-con.hm-gutter { --padding-left: var(--hm-gutter); --padding-right: var(--hm-gutter); }
+.e-con.hm-bleed { --padding-top: 0px; --padding-bottom: 0px; --padding-left: 0px; --padding-right: 0px; }
+.e-con.hm-rounded { --border-radius: var(--hm-radius-xl); overflow: hidden; }
+.e-con.hm-card-box { background: var(--hm-card-bg, var(--hm-surface)); border: var(--hm-card-border, 1px solid var(--hm-border)); border-radius: var(--hm-radius-xl); box-shadow: var(--hm-card-shadow, none); --padding-top: clamp(22px, 3vw, 44px); --padding-bottom: clamp(22px, 3vw, 44px); --padding-left: clamp(22px, 3vw, 44px); --padding-right: clamp(22px, 3vw, 44px); }
+.e-con.hm-sticky-col { position: sticky; top: calc(var(--hm-header-h) + 24px); align-self: flex-start; }
+@media (max-width: 1024px) { .e-con.hm-sticky-col { position: relative; top: auto; } }
 .hm-scheme-surface { background-color: var(--hm-surface-2); }
 .hm-scheme-inverse, .hm-stack__card--inverse {
 	background-color: var(--hm-inv-bg); color: var(--hm-inv-fg);
@@ -749,8 +763,123 @@
 .hm-form__status { margin: 0; font-size: .92rem; font-weight: 600; }
 .hm-form__status.is-ok { color: #16a34a; }
 .hm-form__status.is-error { color: #dc2626; }
-.hm-form.is-busy button[type="submit"] { opacity: .65; pointer-events: none; }
-.hm-form.is-busy button[type="submit"]::after { content: ""; width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-top-color: transparent; animation: hm-spin .8s linear infinite; }
+.hm-form.is-busy button[type="submit"] { pointer-events: none; }
+
+/* ==========================================================================
+   Button states (shared by every Hamista form)
+   loading → three-dot pulse, label kept for width; success → check draws in;
+   error → red flash + shake (JS); disabled → flat and muted.
+   ========================================================================== */
+.hm-btn[disabled], .hm-btn.is-disabled { opacity: .45; filter: saturate(.3); cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+.hm-btn.is-loading { pointer-events: none; color: transparent !important; }
+.hm-btn.is-loading > svg { opacity: 0; }
+.hm-btn.is-loading::after {
+	content: ""; position: absolute; inset: 0; margin: auto; width: 34px; height: 8px;
+	background: radial-gradient(circle closest-side, var(--hm-accent-fg) 92%, transparent) 0 50% / 8px 8px no-repeat,
+		radial-gradient(circle closest-side, var(--hm-accent-fg) 92%, transparent) 50% 50% / 8px 8px no-repeat,
+		radial-gradient(circle closest-side, var(--hm-accent-fg) 92%, transparent) 100% 50% / 8px 8px no-repeat;
+	animation: hm-dots .9s infinite linear;
+}
+.hm-btn--ghost.is-loading::after, .hm-btn--secondary.is-loading::after { --hm-accent-fg: var(--hm-fg); }
+@keyframes hm-dots {
+	0% { background-size: 8px 8px, 5px 5px, 5px 5px; }
+	33% { background-size: 5px 5px, 8px 8px, 5px 5px; }
+	66% { background-size: 5px 5px, 5px 5px, 8px 8px; }
+}
+.hm-btn .hm-i-done { display: none; }
+.hm-btn.is-success { background: var(--hm-success, #16a34a); border-color: transparent; color: #fff; animation: hm-pop .42s var(--hm-ease-spring, cubic-bezier(.175, .885, .32, 1.275)); }
+.hm-btn.is-success > span, .hm-btn.is-success > .hm-i-arrow { display: none; }
+.hm-btn.is-success .hm-i-done { display: block; width: 1.4em; height: 1.4em; stroke-width: 2.4; stroke-dasharray: 24; stroke-dashoffset: 24; animation: hm-draw .35s .08s var(--hm-ease) forwards; }
+.hm-btn.is-error { background: var(--hm-danger, #dc2626); border-color: transparent; color: #fff; }
+@keyframes hm-pop { 0% { transform: scale(.94); } 60% { transform: scale(1.04); } 100% { transform: scale(1); } }
+@keyframes hm-draw { to { stroke-dashoffset: 0; } }
+
+/* ==========================================================================
+   Multi-step lead form
+   ========================================================================== */
+.hm-lead { --cols: 2; position: relative; display: grid; gap: 22px; }
+.hm-lead--boxed { padding: clamp(22px, 3.4vw, 48px); border: var(--hm-card-border, 1px solid var(--hm-border)); border-radius: var(--hm-radius-xl); background: var(--hm-card-bg, var(--hm-surface)); box-shadow: var(--hm-card-shadow, none); }
+.hm-lead__nav { display: flex; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.hm-lead__nav li { display: flex; align-items: center; gap: 8px; color: var(--hm-fg-muted); font-size: .85rem; font-weight: 600; transition: color .3s; }
+.hm-lead__nav li + li::before { content: ""; width: clamp(16px, 4vw, 44px); height: 1px; background: var(--hm-border-strong); }
+.hm-lead__dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--hm-border-strong); font-family: var(--hm-font-num); font-size: .8rem; transition: background-color .3s, color .3s, border-color .3s; }
+.hm-lead__nav .is-current { color: var(--hm-fg); }
+.hm-lead__nav .is-current .hm-lead__dot { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-lead__nav .is-done .hm-lead__dot { background: var(--hm-accent); border-color: var(--hm-accent); color: var(--hm-accent-fg); }
+.hm-lead__bar { height: 3px; border-radius: 3px; background: var(--hm-border); overflow: hidden; }
+.hm-lead__bar span { display: block; height: 100%; background: var(--hm-accent); transform: scaleX(0); transform-origin: var(--hm-origin, right); transition: transform .6s var(--hm-ease); }
+[dir="ltr"] .hm-lead__bar span { --hm-origin: left; }
+.hm-lead__form { display: grid; gap: 22px; }
+.hm-lead__step { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 16px; }
+.hm-lead__step.is-active { animation: hm-step-in .5s var(--hm-ease) both; }
+.hm-lead__step.is-active.is-back { animation-name: hm-step-back; }
+@keyframes hm-step-in { from { opacity: 0; transform: translate3d(calc(var(--hm-dir, -1) * 28px), 0, 0); } }
+@keyframes hm-step-back { from { opacity: 0; transform: translate3d(calc(var(--hm-dir, -1) * -28px), 0, 0); } }
+[dir="ltr"] .hm-lead__step { --hm-dir: 1; }
+.hm-lead__q { display: grid; gap: 4px; padding: 0; font-family: var(--hm-font-heading); font-size: clamp(1.3rem, 1.1rem + .9vw, 1.85rem); font-weight: var(--hm-fw-heading, 800); line-height: 1.35; outline: 0; }
+.hm-lead__count { font-family: var(--hm-font-num); font-size: .78rem; font-weight: 600; color: var(--hm-fg-muted); letter-spacing: .02em; }
+.hm-lead__hint, .hm-lead__sub { margin: -6px 0 0; color: var(--hm-fg-muted); font-size: .95rem; }
+.hm-lead__sub { margin: 8px 0 -4px; color: var(--hm-fg); font-weight: 700; }
+.hm-lead__choices { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 12px; border-radius: var(--hm-radius-lg); }
+.hm-choice, .hm-pill { position: relative; margin: 0; cursor: pointer; }
+.hm-choice input, .hm-pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.hm-choice__box {
+	display: flex; align-items: center; gap: 14px; min-height: 64px; height: 100%; padding: 14px 16px;
+	border: 1px solid var(--hm-border-strong); border-radius: var(--hm-radius-lg); background: var(--hm-input-bg, var(--hm-surface));
+	transition: border-color .18s, background-color .18s, box-shadow .18s, transform .18s var(--hm-ease);
+}
+.hm-choice:hover .hm-choice__box { border-color: var(--hm-fg); transform: translateY(-2px); }
+.hm-choice:active .hm-choice__box { transform: scale(.98); }
+.hm-choice__icon { width: 26px; height: 26px; flex: none; color: var(--hm-accent-ink); }
+.hm-choice__text { display: grid; gap: 2px; flex: 1; line-height: 1.5; }
+.hm-choice__text b { font-weight: 700; }
+.hm-choice__text small { color: var(--hm-fg-muted); font-size: .82rem; }
+.hm-choice__mark { display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 8px; border: 1px solid var(--hm-border-strong); color: transparent; transition: background-color .18s, border-color .18s, color .18s, transform .3s var(--hm-ease-spring, ease); }
+.hm-choice input[type="radio"] + .hm-choice__box .hm-choice__mark { border-radius: 50%; }
+.hm-choice input:checked + .hm-choice__box { border-color: var(--hm-accent); background: var(--hm-accent-soft); box-shadow: 0 0 0 1px var(--hm-accent) inset; }
+.hm-choice input:checked + .hm-choice__box .hm-choice__mark { background: var(--hm-accent); border-color: var(--hm-accent); color: var(--hm-accent-fg); transform: scale(1.08); }
+.hm-choice input:focus-visible + .hm-choice__box, .hm-pill input:focus-visible + span { outline: 2px solid var(--hm-accent); outline-offset: 2px; }
+.hm-lead__pills { display: flex; flex-wrap: wrap; gap: 10px; border-radius: var(--hm-radius-lg); }
+.hm-pill span { display: inline-flex; align-items: center; min-height: 46px; padding: 8px 18px; border: 1px solid var(--hm-border-strong); border-radius: var(--hm-radius-pill, 999px); background: var(--hm-input-bg, var(--hm-surface)); font-weight: 600; font-size: .93rem; transition: border-color .18s, background-color .18s, color .18s, transform .18s var(--hm-ease); }
+.hm-pill:hover span { border-color: var(--hm-fg); }
+.hm-pill:active span { transform: scale(.97); }
+.hm-pill input:checked + span { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-lead__choices.is-invalid, .hm-lead__pills.is-invalid { box-shadow: 0 0 0 2px var(--hm-danger, #dc2626); outline-offset: 4px; }
+.hm-lead__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+.hm-lead__fields .hm-field--message, .hm-lead__fields .hm-field--consent { grid-column: 1 / -1; }
+.hm-lead__fields .hm-field { margin: 0; }
+.hm-lead__fields label small { font-weight: 400; color: var(--hm-fg-muted); }
+.hm-lead__fields .hm-field--consent { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; }
+.hm-lead .is-invalid:is(input, textarea) { border-color: var(--hm-danger, #dc2626); box-shadow: 0 0 0 4px rgba(220, 38, 38, .12); }
+.hm-lead__msg { margin: 0; min-height: 1.5em; color: var(--hm-danger, #dc2626); font-size: .9rem; font-weight: 600; }
+.hm-lead__msg:empty { min-height: 0; }
+.hm-lead__actions { display: flex; align-items: center; gap: 12px; }
+.hm-lead__actions [data-next], .hm-lead__actions [data-submit] { margin-inline-start: auto; min-width: 150px; }
+.hm-lead__actions .hm-i-back { transform: scaleX(-1); }
+[dir="ltr"] .hm-lead__actions .hm-i-back { transform: none; }
+.hm-lead__resume { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: var(--hm-radius-md); background: var(--hm-accent-soft); }
+.hm-lead__resume p { margin: 0; font-weight: 600; }
+.hm-lead__resume div { display: flex; gap: 8px; }
+.hm-lead__done { display: grid; justify-items: center; gap: 10px; padding: clamp(20px, 4vw, 40px) 0; text-align: center; outline: 0; animation: hm-step-in .6s var(--hm-ease) both; }
+.hm-lead__done[hidden] { display: none; }
+.hm-lead__done h3 { margin: 6px 0 0; font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem); }
+.hm-lead__done p { max-width: 46ch; margin: 0 0 8px; color: var(--hm-fg-muted); }
+.hm-lead__tick svg { width: 72px; height: 72px; fill: none; stroke: var(--hm-success, #16a34a); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.hm-lead__tick circle { stroke-dasharray: 151; stroke-dashoffset: 151; animation: hm-draw .7s var(--hm-ease) forwards; }
+.hm-lead__tick path { stroke-dasharray: 36; stroke-dashoffset: 36; animation: hm-draw .45s .55s var(--hm-ease) forwards; }
+.hm-lead [hidden] { display: none !important; }
+@media (max-width: 767px) {
+	.hm-lead { --cols: 1 !important; }
+	.hm-lead__name { display: none; }
+	.hm-lead__nav .is-current .hm-lead__name { display: inline; }
+	.hm-lead__fields { grid-template-columns: 1fr; }
+	.hm-lead__actions { position: sticky; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 2; padding: 10px; margin: 0 -10px; border-radius: var(--hm-radius-lg); background: color-mix(in srgb, var(--hm-card-bg, var(--hm-surface)) 88%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+	.hm-lead__actions [data-next], .hm-lead__actions [data-submit] { flex: 1; min-height: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.hm-lead__step.is-active, .hm-lead__done, .hm-btn.is-success { animation: none; }
+	.hm-lead__tick circle, .hm-lead__tick path, .hm-btn.is-success .hm-i-done { animation: none; stroke-dashoffset: 0; }
+}
 
 /* Contact info */
 .hm-cinfo { display: grid; gap: 18px; }

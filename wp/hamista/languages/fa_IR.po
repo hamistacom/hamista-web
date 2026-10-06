@@ -1,0 +1,412 @@
+# Persian (fa_IR) translation of Hamista.
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hamista 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
+"POT-Creation-Date: 2026-10-06T19:13:35+00:00\n"
+"PO-Revision-Date: 2026-10-06 19:18+0000\n"
+"Last-Translator: Hamista\n"
+"Language-Team: Persian\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: hamista\n"
+
+#. Theme Name of the theme
+#. Author of the theme
+#: style.css
+msgid "Hamista"
+msgstr "هامیستا"
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://hamista.com"
+msgstr "https://hamista.com"
+
+#. Description of the theme
+#: style.css
+msgid "A fast, Persian-first (RTL) multipurpose theme built for Elementor. Swappable style kits, light and dark modes, a dependency-free motion engine, WooCommerce styling and one-click demos. Pair with the bundled Hamista Core plugin for Elementor widgets, settings, mobile OTP login and demo import."
+msgstr "قالبی سریع و چندمنظوره برای المنتور که از پایه برای فارسی و راست‌چین ساخته شده است. سبک‌های طراحی قابل‌تعویض، حالت روشن و تاریک، موتور انیمیشن بدون وابستگی، ظاهر اختصاصی ووکامرس و دموهای یک‌کلیکی. برای ویجت‌های المنتور، تنظیمات، ورود با موبایل و نصب دمو، افزونه‌ی همراه «هسته‌ی هامیستا» را هم نصب کنید."
+
+#: 404.php:15
+msgid "This page wandered off"
+msgstr "این برگه راهش را گم کرده"
+
+#: 404.php:16
+msgid "The address may be mistyped, or the page has moved. Try a search or head back home."
+msgstr "شاید نشانی را اشتباه وارد کرده‌اید یا برگه جابه‌جا شده است. جست‌وجو کنید یا به خانه برگردید."
+
+#: 404.php:18
+msgid "Back to home"
+msgstr "بازگشت به خانه"
+
+#. translators: %s: number of comments
+#: comments.php:20
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s دیدگاه"
+msgstr[1] "%s دیدگاه"
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr "امکان ارسال دیدگاه بسته شده است."
+
+#: footer.php:24
+msgid "Back to top"
+msgstr "بازگشت به بالا"
+
+#: header.php:21
+msgid "Skip to content"
+msgstr "پرش به محتوا"
+
+#: inc/assets.php:36
+msgid "Spark — editorial"
+msgstr "جرقه — مجله‌ای"
+
+#: inc/assets.php:37
+msgid "Industrial — tactile"
+msgstr "صنعتی — لمسی"
+
+#: inc/assets.php:38
+msgid "Pulse — bold agency"
+msgstr "تپش — جسور و آژانسی"
+
+#: inc/assets.php:39
+msgid "Honey — warm and natural"
+msgstr "عسل — گرم و طبیعی"
+
+#: inc/assets.php:40
+msgid "Nomad — handwoven, earthy"
+msgstr "ایلیاتی — دست‌بافت و خاکی"
+
+#: inc/assets.php:78
+msgid "Toggle submenu"
+msgstr "باز و بسته کردن زیرمنو"
+
+#: inc/page-options.php:21
+msgid "Header"
+msgstr "سربرگ"
+
+#: inc/page-options.php:23
+#: inc/page-options.php:32
+#: inc/page-options.php:40
+msgid "Default"
+msgstr "پیش‌فرض"
+
+#: inc/page-options.php:24
+msgid "Transparent over content"
+msgstr "شفاف روی محتوا"
+
+#: inc/page-options.php:25
+msgid "Transparent, light text (dark hero)"
+msgstr "شفاف با متن روشن (برای هیروی تیره)"
+
+#: inc/page-options.php:26
+#: inc/page-options.php:41
+msgid "Hidden"
+msgstr "پنهان"
+
+#: inc/page-options.php:30
+msgid "Page title"
+msgstr "عنوان برگه"
+
+#: inc/page-options.php:33
+msgid "Show"
+msgstr "نمایش"
+
+#: inc/page-options.php:34
+msgid "Hide"
+msgstr "پنهان"
+
+#: inc/page-options.php:38
+msgid "Footer"
+msgstr "پابرگ"
+
+#: inc/page-options.php:45
+msgid "Force colour scheme"
+msgstr "حالت روشن/تاریک"
+
+#: inc/page-options.php:47
+msgid "Visitor choice"
+msgstr "انتخاب بازدیدکننده"
+
+#: inc/page-options.php:48
+msgid "Always light"
+msgstr "همیشه روشن"
+
+#: inc/page-options.php:49
+msgid "Always dark"
+msgstr "همیشه تاریک"
+
+#: inc/page-options.php:107
+msgid "Hamista layout"
+msgstr "چیدمان هامیستا"
+
+#: inc/plugin-installer.php:36
+msgid "Finish setting up Hamista"
+msgstr "راه‌اندازی هامیستا را کامل کنید"
+
+#: inc/plugin-installer.php:37
+msgid "Hamista Core adds the Elementor widgets, motion engine, settings panel, mobile OTP login and one-click demo import."
+msgstr "افزونه‌ی هسته‌ی هامیستا ویجت‌های المنتور، موتور انیمیشن، پنل تنظیمات، ورود با موبایل و نصب دموی یک‌کلیکی را به سایت اضافه می‌کند."
+
+#: inc/plugin-installer.php:40
+msgid "Activate Hamista Core"
+msgstr "فعال‌سازی هسته‌ی هامیستا"
+
+#: inc/plugin-installer.php:40
+msgid "Install Hamista Core"
+msgstr "نصب هسته‌ی هامیستا"
+
+#: inc/plugin-installer.php:53
+msgid "You are not allowed to install plugins."
+msgstr "اجازه‌ی نصب افزونه را ندارید."
+
+#: inc/plugin-installer.php:59
+msgid "The bundled plugin file is missing. Upload hamista-core.zip from the download package in Plugins → Add New."
+msgstr "فایل افزونه‌ی همراه قالب پیدا نشد. فایل hamista-core.zip را از بسته‌ی دانلودی، در افزونه‌ها ← افزودن افزونه بارگذاری کنید."
+
+#: inc/plugin-installer.php:65
+msgid "Installation failed."
+msgstr "نصب انجام نشد."
+
+#: inc/plugin-installer.php:78
+msgid "You are not allowed to activate plugins."
+msgstr "اجازه‌ی فعال‌سازی افزونه را ندارید."
+
+#: inc/setup.php:38
+msgid "Primary menu"
+msgstr "منوی اصلی"
+
+#: inc/setup.php:39
+msgid "Mobile menu (falls back to primary)"
+msgstr "منوی موبایل (پیش‌فرض: منوی اصلی)"
+
+#: inc/setup.php:40
+msgid "Footer bottom menu"
+msgstr "منوی پایین پابرگ"
+
+#: inc/setup.php:68
+msgid "Blog sidebar"
+msgstr "ستون کناری وبلاگ"
+
+#: inc/setup.php:77
+msgid "Shop sidebar"
+msgstr "ستون کناری فروشگاه"
+
+#. translators: %d: footer column number
+#: inc/setup.php:89
+#, php-format
+msgid "Footer column %d"
+msgstr "ستون پابرگ %d"
+
+#. translators: %s: number of minutes
+#: inc/template-tags.php:100
+#, php-format
+msgid "%s min read"
+msgid_plural "%s min read"
+msgstr[0] "%s دقیقه مطالعه"
+msgstr[1] "%s دقیقه مطالعه"
+
+#: inc/template-tags.php:124
+#: inc/template-tags.php:159
+#: inc/woocommerce.php:98
+msgid "Breadcrumb"
+msgstr "مسیر راهنما"
+
+#: inc/template-tags.php:132
+msgid "Home"
+msgstr "خانه"
+
+#. translators: %s: search query
+#: inc/template-tags.php:150
+#: index.php:15
+#: searchform.php:15
+#: template-parts/header/site-header.php:55
+#: template-parts/header/site-header.php:132
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: inc/template-tags.php:152
+msgid "Not found"
+msgstr "پیدا نشد"
+
+#: inc/template-tags.php:178
+msgid "Previous page"
+msgstr "برگه‌ی قبل"
+
+#: inc/template-tags.php:179
+msgid "Next page"
+msgstr "برگه‌ی بعد"
+
+#: inc/template-tags.php:183
+msgid "Posts pagination"
+msgstr "صفحه‌بندی نوشته‌ها"
+
+#. translators: %s: network name
+#: inc/template-tags.php:250
+#, php-format
+msgid "Share on %s"
+msgstr "اشتراک‌گذاری در %s"
+
+#: inc/template-tags.php:257
+msgid "Copy link"
+msgstr "کپی لینک"
+
+#: inc/template-tags.php:258
+msgid "Link copied"
+msgstr "لینک کپی شد"
+
+#: inc/template-tags.php:307
+msgid "All"
+msgstr "همه"
+
+#: inc/template-tags.php:333
+msgid "Your comment is awaiting moderation."
+msgstr "دیدگاه شما پس از بررسی منتشر می‌شود."
+
+#: inc/woocommerce.php:102
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr "خانه"
+
+#: inc/woocommerce.php:125
+msgid "All products"
+msgstr "همه‌ی محصولات"
+
+#. translators: %s: discount percent
+#: inc/woocommerce.php:239
+#, php-format
+msgid "%s%% off"
+msgstr "%s%% تخفیف"
+
+#. translators: %s: discount percent
+#: inc/woocommerce.php:239
+msgid "Sale"
+msgstr "حراج"
+
+#. translators: %s: search query
+#: index.php:15
+#, php-format
+msgid "Results for “%s”"
+msgstr "نتایج جست‌وجو برای «%s»"
+
+#: index.php:19
+msgid "Journal"
+msgstr "مجله"
+
+#. Template Name of the theme
+msgid "Hamista — Full width"
+msgstr "هامیستا — تمام‌عرض"
+
+#: searchform.php:13
+msgid "Search for:"
+msgstr "جست‌وجو برای:"
+
+#: searchform.php:14
+msgid "Search…"
+msgstr "جست‌وجو…"
+
+#: sidebar.php:15
+msgid "Sidebar"
+msgstr "ستون کناری"
+
+#: single.php:70
+msgid "Share"
+msgstr "اشتراک‌گذاری"
+
+#: single.php:102
+msgid "More posts"
+msgstr "نوشته‌های بیشتر"
+
+#: single.php:104
+msgid "Previous post"
+msgstr "نوشته‌ی قبلی"
+
+#: single.php:109
+msgid "Next post"
+msgstr "نوشته‌ی بعدی"
+
+#: template-parts/content/none.php:11
+msgid "Nothing here yet"
+msgstr "هنوز چیزی اینجا نیست"
+
+#: template-parts/content/none.php:15
+msgid "No results matched your search. Try different keywords."
+msgstr "نتیجه‌ای پیدا نشد. کلیدواژه‌های دیگری را امتحان کنید."
+
+#: template-parts/content/none.php:17
+msgid "There is no content to show here yet."
+msgstr "هنوز محتوایی برای نمایش وجود ندارد."
+
+#: template-parts/footer/mobile-bar.php:24
+msgid "Quick actions"
+msgstr "دسترسی سریع"
+
+#: template-parts/footer/mobile-bar.php:26
+msgid "Call us"
+msgstr "تماس با ما"
+
+#: template-parts/footer/mobile-bar.php:29
+msgid "Chat on WhatsApp"
+msgstr "گفت‌وگو در واتس‌اپ"
+
+#. translators: 1: year, 2: site name
+#: template-parts/footer/site-footer.php:15
+#, php-format
+msgid "© %1$s %2$s. All rights reserved."
+msgstr "© %1$s %2$s. همه‌ی حقوق محفوظ است."
+
+#: template-parts/header/site-header.php:38
+msgid "Primary"
+msgstr "منوی اصلی"
+
+#: template-parts/header/site-header.php:59
+msgid "Toggle dark mode"
+msgstr "تغییر حالت تاریک"
+
+#: template-parts/header/site-header.php:68
+#: template-parts/header/site-header.php:121
+msgid "My account"
+msgstr "حساب کاربری من"
+
+#: template-parts/header/site-header.php:68
+msgid "Log in"
+msgstr "ورود"
+
+#: template-parts/header/site-header.php:78
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: template-parts/header/site-header.php:90
+msgid "Open menu"
+msgstr "باز کردن منو"
+
+#: template-parts/header/site-header.php:97
+msgid "Menu"
+msgstr "منو"
+
+#: template-parts/header/site-header.php:100
+msgid "Close menu"
+msgstr "بستن منو"
+
+#: template-parts/header/site-header.php:121
+msgid "Log in / Sign up"
+msgstr "ورود / ثبت‌نام"
+
+#: template-parts/header/site-header.php:134
+msgid "Press Esc to close"
+msgstr "برای بستن، Esc را بزنید"
+
+#: template-parts/post/related.php:27
+msgid "Keep reading"
+msgstr "بیشتر بخوانید"
+
+#: template-parts/post/related.php:32
+msgid "All posts"
+msgstr "همه‌ی نوشته‌ها"

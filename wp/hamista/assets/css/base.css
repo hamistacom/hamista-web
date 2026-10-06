@@ -600,6 +600,24 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 /* ==========================================================================
    15. Back to top, utilities
    ========================================================================== */
+.hm-mobile-bar { display: none; }
+@media (max-width: 767px) {
+	.hm-has-mobile-bar { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+	.hm-has-mobile-bar .hm-to-top { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+	.hm-mobile-bar {
+		position: fixed; z-index: 90; inset-inline: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+		display: flex; align-items: center; gap: 8px; padding: 8px;
+		border: 1px solid var(--hm-border); border-radius: calc(var(--hm-radius-btn) + 8px);
+		background: color-mix(in srgb, var(--hm-surface) 86%, transparent); box-shadow: var(--hm-shadow-lg);
+		backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px);
+		transition: transform .4s var(--hm-ease), opacity .3s;
+	}
+	.hm-mobile-bar__icon { display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: var(--hm-radius-btn); background: var(--hm-surface-2); color: var(--hm-fg); }
+	.hm-mobile-bar__icon svg { width: 22px; height: 22px; }
+	.hm-mobile-bar__cta { flex: 1; --hm-btn-h: 48px; }
+	.hm-mobile-bar.is-hidden { transform: translateY(140%); opacity: 0; }
+}
+
 .hm-to-top {
 	position: fixed; inset-inline-end: 20px; bottom: 20px; z-index: 80; width: 48px; height: 48px;
 	display: grid; place-items: center; border: 1px solid var(--hm-border); border-radius: 50%; background: var(--hm-surface); color: var(--hm-fg);

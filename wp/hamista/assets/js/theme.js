@@ -96,6 +96,14 @@
 		li.insertBefore(btn, li.querySelector('.sub-menu'));
 	});
 
+	/* ---------- Mobile action bar: step aside while the on-screen keyboard is up ---------- */
+	var mobileBar = $('.hm-mobile-bar');
+	if (mobileBar) {
+		var typing = function (el) { return el && el.matches && el.matches('input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, select'); };
+		document.addEventListener('focusin', function (e) { if (typing(e.target)) { mobileBar.classList.add('is-hidden'); } });
+		document.addEventListener('focusout', function (e) { if (typing(e.target)) { mobileBar.classList.remove('is-hidden'); } });
+	}
+
 	/* ---------- Scroll-driven header, progress, back to top ---------- */
 	var header = $('.hm-header');
 	var hideOnScroll = header && header.getAttribute('data-hide-on-scroll') === '1';

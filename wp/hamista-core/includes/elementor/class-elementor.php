@@ -43,6 +43,7 @@ class Elementor {
 			'Device',
 			'Cta',
 			'Contact_Form',
+			'Lead_Form',
 			'Contact_Info',
 			'Posts',
 		);

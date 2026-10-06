@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Hamista demo logos</title>
+<style>
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-arabic.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0600-06FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F; }
+html, body { margin: 0; background: transparent; }
+#logo { display: inline-flex; align-items: center; gap: 22px; padding: 12px 8px; font-family: "Vazirmatn", sans-serif; color: var(--ink); }
+.word { font-size: 92px; font-weight: 900; line-height: 1; letter-spacing: 0; }
+.sub { display: block; text-align: right; margin-top: 10px; font: 700 22px/1 ui-monospace, Menlo, monospace; letter-spacing: .32em; direction: ltr; opacity: .6; }
+svg { flex: none; display: block; }
+</style>
+</head>
+<body>
+<div id="logo"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const id = q.get('id'), dark = q.get('dark') === '1';
+const ink = dark ? '#f4f2ee' : '#14121a';
+document.documentElement.style.setProperty('--ink', ink);
+const L = {
+	spark: () => `<svg width="74" height="74" viewBox="0 0 74 74"><path d="M37 2c3 20 15 32 35 35-20 3-32 15-35 35-3-20-15-32-35-35 20-3 32-15 35-35Z" fill="#0052ff"/></svg><span class="word">هامیستا</span>`,
+	agency: () => `<svg width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="28" fill="${dark ? '#9084ff' : '#5821df'}"/><path d="M14 52h16l8-20 12 36 10-26 6 10h16" fill="none" stroke="#c6f135" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="word">تپش</span>`,
+	industrial: () => `<svg width="86" height="86" viewBox="0 0 86 86"><circle cx="43" cy="43" r="40" fill="${dark ? '#2c3139' : '#e0e5ec'}" stroke="${dark ? '#3a414b' : '#b8c1ce'}" stroke-width="3"/><circle cx="43" cy="43" r="26" fill="none" stroke="${ink}" stroke-width="6" stroke-dasharray="120 44" transform="rotate(-210 43 43)"/><circle cx="43" cy="43" r="9" fill="#ff4757"/><circle cx="43" cy="43" r="16" fill="#ff4757" opacity=".18"/></svg><span><span class="word">هامون</span><span class="sub">HAMOON IND.</span></span>`,
+	honey: () => `<svg width="86" height="96" viewBox="0 0 86 96"><path d="M43 2 82 24.5v47L43 94 4 71.5v-47Z" fill="#f0b429"/><path d="M43 26c7 9 13 17 13 25a13 13 0 0 1-26 0c0-8 6-16 13-25Z" fill="${dark ? '#140d06' : '#2a1a0b'}"/></svg><span class="word">شهدینه</span>`,
+	nomad: () => `<svg width="88" height="88" viewBox="0 0 88 88"><path d="M44 2 86 44 44 86 2 44Z" fill="#b5532f"/><path d="M44 18 70 44 44 70 18 44Z" fill="${dark ? '#e3a72f' : '#2e3a5c'}"/><path d="M44 32 56 44 44 56 32 44Z" fill="${dark ? '#17130f' : '#f3ede2'}"/></svg><span class="word">کوچ</span>`,
+};
+document.getElementById('logo').innerHTML = L[id]();
+document.fonts.ready.then(() => document.body.setAttribute('data-ready', '1'));
+</script>
+</body>
+</html>

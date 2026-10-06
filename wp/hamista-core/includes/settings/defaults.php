@@ -46,6 +46,11 @@ return array(
 	'header_cta_text'       => '',
 	'header_cta_url'        => '',
 	'header_template'       => 0,
+	'mobile_bar'            => false,
+	'mobile_bar_text'       => '',
+	'mobile_bar_url'        => '',
+	'mobile_bar_phone'      => '',
+	'mobile_bar_whatsapp'   => '',
 
 	// Footer.
 	'footer_about'          => '',

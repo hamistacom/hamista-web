@@ -23,14 +23,26 @@ for (let v = 1; v <= 6; v++) {
 add('spark', 'workspace', 'workspace', 1600, 1200);
 add('spark', 'community', 'community', 1600, 1200);
 
-// Industrial — hardware lab.
+// Industrial — HAMOON (industrial automation & process equipment).
 for (let v = 1; v <= 6; v++) {
-	add('industrial', `device-${v}`, 'product', 1200, 1200, { v });
-	add('industrial', `device-${v}-dark`, 'product', 1200, 1200, { v, dark: 1 });
+	add('industrial', `product-${v}`, 'ind-product', 1200, 1200, { v });
+	add('industrial', `product-${v}-b`, 'ind-product', 1200, 1200, { v, dark: 1 });
 }
-add('industrial', 'hero', 'ind-hero', 2000, 1125);
-for (let v = 1; v <= 4; v++) add('industrial', `drawing-${v}`, 'blueprint', 1600, 1000, { v });
+add('industrial', 'hero', 'ind-hero2', 2000, 1125);
+add('industrial', 'plant', 'ind-plant', 1600, 1200);
+for (let v = 1; v <= 6; v++) add('industrial', `drawing-${v}`, 'blueprint', 1600, 1000, { v });
 add('industrial', 'workbench', 'workbench', 1600, 1200);
+
+// Honey — SHAHDINEH natural mountain honey shop.
+for (let v = 1; v <= 6; v++) {
+	add('honey', `product-${v}`, 'honey-product', 1000, 1000, { v });
+	add('honey', `product-${v}-b`, 'honey-product', 1000, 1000, { v, alt: 1 });
+}
+add('honey', 'hero', 'honey-hero', 2000, 1125, { q: 74 });
+add('honey', 'comb', 'honey-comb', 2000, 1125, { q: 74 });
+add('honey', 'apiary', 'honey-apiary', 1600, 1200, { q: 76 });
+for (let v = 1; v <= 6; v++) add('honey', `journal-${v}`, 'honey-journal', 1600, 1000, { v, q: 76 });
+for (let v = 1; v <= 3; v++) add('honey', `process-${v}`, 'honey-process', 1200, 1500, { v, q: 76 });
 
 // Shared.
 for (let v = 1; v <= 6; v++) add('shared', `person-${v}`, 'portrait', 800, 1000, { v });
@@ -48,13 +60,13 @@ for (let v = 1; v <= 6; v++) add('shared', `person-${v}`, 'portrait', 800, 1000,
 		if (it.alt) qs.set('alt', '1');
 		await page.setViewportSize({ width: it.w, height: it.h });
 		await page.goto('file://' + path.join(__dirname, 'scenes.html') + '?' + qs);
-		await page.waitForSelector('body[data-ready="1"]');
+		await page.waitForSelector('body[data-ready="1"]', { timeout: 30000 });
 		await page.waitForTimeout(60);
 		const png = path.join(TMP, id.replace('/', '__') + '.png');
 		await (await page.$('#stage')).screenshot({ path: png });
 		const out = path.join(ROOT, it.dir, 'images', it.name + '.webp');
 		fs.mkdirSync(path.dirname(out), { recursive: true });
-		jobs.push([png, out]);
+		jobs.push([png, out, it.q || 80]);
 		process.stdout.write('.');
 	}
 	await browser.close();
@@ -62,8 +74,8 @@ for (let v = 1; v <= 6; v++) add('shared', `person-${v}`, 'portrait', 800, 1000,
 	execFileSync('python3', ['-c', `
 import json, sys
 from PIL import Image
-for src, dst in json.load(open(sys.argv[1])):
-    Image.open(src).convert('RGB').save(dst, 'WEBP', quality=80, method=6)
+for src, dst, q in json.load(open(sys.argv[1])):
+    Image.open(src).convert('RGB').save(dst, 'WEBP', quality=q, method=6)
 `, path.join(TMP, 'jobs.json')], { stdio: 'inherit' });
 	console.log(`\n${jobs.length} images`);
 })();

@@ -165,7 +165,7 @@ class Cta extends Widget_Base {
 			echo '<input type="text" name="hm_hp" value="" tabindex="-1" autocomplete="off" class="hm-hp" aria-hidden="true">';
 			echo '<label class="screen-reader-text" for="hm-cta-email-' . esc_attr( $this->get_id() ) . '">' . esc_html( $s['email_placeholder'] ) . '</label>';
 			echo '<input class="hm-cta__input" id="hm-cta-email-' . esc_attr( $this->get_id() ) . '" type="email" name="email" required placeholder="' . esc_attr( $s['email_placeholder'] ) . '">';
-			echo '<button class="hm-btn hm-btn--lg" type="submit"><span>' . esc_html( $s['email_button'] ) . '</span>' . hamista_core_icon( 'arrow', array( 'class' => 'hm-i-arrow' ) ) . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<button class="hm-btn hm-btn--lg" type="submit"><span>' . esc_html( $s['email_button'] ) . '</span>' . hamista_core_icon( 'arrow', array( 'class' => 'hm-i-arrow' ) ) . hamista_core_icon( 'check', array( 'class' => 'hm-i-done' ) ) . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<p class="hm-form__status" role="status" aria-live="polite"></p></form>';
 		} else {
 			$buttons = $this->render_button( $s, 'btn1', array( 'size' => 'lg' ) ) . $this->render_button( $s, 'btn2', array( 'size' => 'lg' ) );

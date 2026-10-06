@@ -61,6 +61,31 @@ class Frontend {
 		);
 		wp_add_inline_script( 'hamista-motion', 'window.hamistaMotion=' . wp_json_encode( self::motion_config() ) . ';', 'before' );
 
+		wp_register_script(
+			'hamista-lead-form',
+			self::asset( 'js/lead-form.js' ),
+			array( 'hamista-motion' ),
+			HAMISTA_CORE_VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+		wp_add_inline_script(
+			'hamista-lead-form',
+			'window.hamistaLeadForm=' . wp_json_encode(
+				array(
+					'pick'    => __( 'Choose at least one option.', 'hamista-core' ),
+					'pickOne' => __( 'Choose an option.', 'hamista-core' ),
+					'field'   => __( 'This field is required.', 'hamista-core' ),
+					'mobile'  => __( 'Enter a valid mobile number, e.g. 0912 345 6789.', 'hamista-core' ),
+					'email'   => __( 'Enter a valid email address.', 'hamista-core' ),
+					'consent' => __( 'Please accept to continue.', 'hamista-core' ),
+				)
+			) . ';',
+			'before'
+		);
+
 		wp_register_style( 'hamista-widgets', self::asset( 'css/hamista-widgets.css' ), array(), HAMISTA_CORE_VERSION );
 
 		$custom_css = trim( (string) hamista_core_option( 'custom_css' ) );

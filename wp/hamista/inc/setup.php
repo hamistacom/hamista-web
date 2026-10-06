@@ -102,6 +102,9 @@ add_action( 'widgets_init', 'hamista_widgets_init' );
  */
 function hamista_body_classes( $classes ) {
 	$classes[] = 'hm-kit-' . sanitize_html_class( hamista_option( 'kit', 'spark' ) );
+	if ( hamista_option( 'mobile_bar' ) ) {
+		$classes[] = 'hm-has-mobile-bar';
+	}
 
 	if ( ! is_singular() ) {
 		$classes[] = 'hm-archive';

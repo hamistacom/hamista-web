@@ -52,6 +52,11 @@ function hamista_option_defaults() {
 				'header_cart'           => true,
 				'header_cta_text'       => '',
 				'header_cta_url'        => '',
+				'mobile_bar'            => false,
+				'mobile_bar_text'       => '',
+				'mobile_bar_url'        => '',
+				'mobile_bar_phone'      => '',
+				'mobile_bar_whatsapp'   => '',
 
 				// Footer.
 				'footer_about'          => '',

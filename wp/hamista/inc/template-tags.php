@@ -22,6 +22,22 @@ function hamista_digits( $value ) {
 }
 
 /**
+ * Persian and Arabic-Indic digits to Latin (for phone numbers typed in settings).
+ *
+ * @param string $value Value.
+ * @return string
+ */
+function hamista_latin_digits( $value ) {
+	return strtr(
+		(string) $value,
+		array(
+			'۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
+			'٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9',
+		)
+	);
+}
+
+/**
  * Site logo with optional dark-mode variant; falls back to the site name.
  */
 function hamista_site_logo() {

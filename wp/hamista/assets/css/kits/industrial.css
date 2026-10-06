@@ -93,6 +93,7 @@
 }
 .hm-kit-industrial .hm-btn:hover { transform: none; filter: brightness(1.08); box-shadow: 6px 6px 12px var(--hm-lo), -6px -6px 12px var(--hm-hi), inset 0 1px 0 rgba(255, 255, 255, .3); }
 .hm-kit-industrial .hm-btn:active { transform: translateY(2px); box-shadow: inset 4px 4px 8px rgba(120, 20, 32, .45), inset -2px -2px 6px rgba(255, 140, 150, .35); }
+.hm-kit-industrial .hm-btn:focus-visible { box-shadow: 6px 6px 12px var(--hm-lo), -6px -6px 12px var(--hm-hi), 0 0 0 3px var(--hm-accent); }
 .hm-kit-industrial .hm-btn--secondary, .hm-kit-industrial .hm-btn--ghost { background: var(--hm-bg); color: var(--hm-fg); border-color: transparent; }
 .hm-kit-industrial .hm-btn--secondary:hover { color: var(--hm-accent-ink); filter: none; }
 .hm-kit-industrial .hm-btn--ghost { box-shadow: none; }

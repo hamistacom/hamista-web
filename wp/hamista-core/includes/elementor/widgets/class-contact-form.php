@@ -161,7 +161,7 @@ class Contact_Form extends Widget_Base {
 		if ( $s['consent'] ) {
 			echo '<label class="hm-form__consent"><input type="checkbox" name="consent" value="1" required> <span>' . esc_html( $s['consent'] ) . '</span></label>';
 		}
-		echo '<div class="hm-form__foot"><button class="hm-btn hm-btn--lg" type="submit"><span>' . esc_html( $s['button'] ) . '</span>' . hamista_core_icon( 'arrow', array( 'class' => 'hm-i-arrow' ) ) . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<div class="hm-form__foot"><button class="hm-btn hm-btn--lg" type="submit"><span>' . esc_html( $s['button'] ) . '</span>' . hamista_core_icon( 'arrow', array( 'class' => 'hm-i-arrow' ) ) . hamista_core_icon( 'check', array( 'class' => 'hm-i-done' ) ) . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<p class="hm-form__status" role="status" aria-live="polite"></p></div>';
 		echo '</form>';
 	}

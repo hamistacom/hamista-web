@@ -35,6 +35,9 @@ function hamista_kits() {
 		array(
 			'spark'      => __( 'Spark — editorial', 'hamista' ),
 			'industrial' => __( 'Industrial — tactile', 'hamista' ),
+			'pulse'      => __( 'Pulse — bold agency', 'hamista' ),
+			'honey'      => __( 'Honey — warm and natural', 'hamista' ),
+			'nomad'      => __( 'Nomad — handwoven, earthy', 'hamista' ),
 		)
 	);
 }
@@ -204,7 +207,13 @@ add_action( 'enqueue_block_editor_assets', 'hamista_block_editor_assets' );
  * Theme-color meta for mobile browser chrome.
  */
 function hamista_theme_color_meta() {
-	$color = 'industrial' === hamista_option( 'kit' ) ? '#e0e5ec' : '#f6f6f3';
+	$colors = array(
+		'industrial' => '#e0e5ec',
+		'pulse'      => '#fafafd',
+		'honey'      => '#fbf6ec',
+		'nomad'      => '#f3ede2',
+	);
+	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );
 }
 add_action( 'wp_head', 'hamista_theme_color_meta', 2 );

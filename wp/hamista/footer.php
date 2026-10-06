@@ -27,6 +27,12 @@ if ( 'hidden' !== hamista_page_option( '_hm_footer' ) && ! hamista_elementor_loc
 	</a>
 <?php endif; ?>
 
+<?php
+if ( hamista_option( 'mobile_bar' ) ) {
+	get_template_part( 'template-parts/footer/mobile-bar' );
+}
+?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -340,14 +340,32 @@
 	/* ------------------------------------------------------------------ */
 	/* Reveal on scroll                                                   */
 	/* ------------------------------------------------------------------ */
+	// Observed node → elements it reveals. A clip reveal starts fully clipped, and
+	// Chromium never reports a fully clipped element as intersecting, so those
+	// elements are watched through their parent instead.
+	var revealTargets = new Map();
 	var revealObserver = 'IntersectionObserver' in win ? new IntersectionObserver(function (entries) {
 		entries.forEach(function (e) {
 			if (!e.isIntersecting) { return; }
 			revealObserver.unobserve(e.target);
-			e.target.classList.add('hm-in');
-			H.emit('reveal', e.target);
+			(revealTargets.get(e.target) || [e.target]).forEach(function (el) {
+				el.classList.add('hm-in');
+				H.emit('reveal', el);
+			});
+			revealTargets.delete(e.target);
 		});
 	}, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }) : null;
+
+	function observeReveal(el) {
+		var node = /^clip/.test(el.getAttribute('data-hm-reveal')) && el.parentElement ? el.parentElement : el;
+		var list = revealTargets.get(node);
+		if (!list) {
+			list = [];
+			revealTargets.set(node, list);
+			revealObserver.observe(node);
+		}
+		list.push(el);
+	}
 
 	function setupReveal(el) {
 		if (el.__hmReveal) { return; }
@@ -359,7 +377,7 @@
 		var t = el.getAttribute('data-hm-duration');
 		if (t) { el.style.setProperty('--hm-rd', t + 's'); }
 		if (!animate || !revealObserver || !cfg.reveal) { el.classList.add('hm-in'); return; }
-		revealObserver.observe(el);
+		observeReveal(el);
 	}
 
 	// Stagger children: [data-hm-stagger] gives each [data-hm-reveal] child an index.
@@ -548,7 +566,20 @@
 	/* Widget registry + init                                             */
 	/* ------------------------------------------------------------------ */
 	var modules = {};
-	H.register = function (name, fn) { modules[name] = fn; };
+	function initWidget(el) {
+		var name = el.getAttribute('data-hm-widget');
+		el.__hmInit = el.__hmInit || {};
+		if (modules[name] && !el.__hmInit[name]) {
+			el.__hmInit[name] = true;
+			try { modules[name](el); } catch (err) { if (win.console) { console.error('[Hamista]', name, err); } }
+		}
+	}
+
+	// Modules shipped in separate files (loaded only where used) may register after boot.
+	H.register = function (name, fn) {
+		modules[name] = fn;
+		if (H.ready) { $$('[data-hm-widget="' + name + '"]').forEach(initWidget); }
+	};
 
 	H.init = function (scope) {
 		scope = scope || doc;
@@ -565,14 +596,7 @@
 		all('[data-hm-tilt]').forEach(setupTilt);
 		all('[data-hm-magnetic]').forEach(setupMagnetic);
 		if (cfg.magnetic) { all('.hm-btn--magnetic').forEach(setupMagnetic); }
-		all('[data-hm-widget]').forEach(function (el) {
-			var name = el.getAttribute('data-hm-widget');
-			el.__hmInit = el.__hmInit || {};
-			if (modules[name] && !el.__hmInit[name]) {
-				el.__hmInit[name] = true;
-				try { modules[name](el); } catch (err) { if (win.console) { console.error('[Hamista]', name, err); } }
-			}
-		});
+		all('[data-hm-widget]').forEach(initWidget);
 	};
 
 	/* ================================================================== */
@@ -892,7 +916,9 @@
 			e.preventDefault();
 			if (form.classList.contains('is-busy')) { return; }
 			$$('.is-invalid', form).forEach(function (f) { f.classList.remove('is-invalid'); });
+			var btn = form.querySelector('button[type="submit"]');
 			form.classList.add('is-busy');
+			if (btn) { btn.classList.add('is-loading'); btn.setAttribute('aria-busy', 'true'); }
 			status.textContent = '';
 			status.className = 'hm-form__status';
 			var data = new FormData(form);
@@ -900,6 +926,12 @@
 				.then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
 				.then(function (res) {
 					form.classList.remove('is-busy');
+					if (btn) {
+						btn.classList.remove('is-loading');
+						btn.removeAttribute('aria-busy');
+						btn.classList.add(res.ok ? 'is-success' : 'is-error');
+						win.setTimeout(function () { btn.classList.remove('is-success', 'is-error'); }, res.ok ? 2400 : 1600);
+					}
 					status.textContent = res.body.message || '';
 					status.classList.add(res.ok ? 'is-ok' : 'is-error');
 					if (res.ok) { form.reset(); form.classList.add('is-sent'); }
@@ -912,6 +944,7 @@
 				})
 				.catch(function () {
 					form.classList.remove('is-busy');
+					if (btn) { btn.classList.remove('is-loading'); btn.removeAttribute('aria-busy'); }
 					status.textContent = (cfg.i18n && cfg.i18n.network) || 'Network error';
 					status.classList.add('is-error');
 				});
