@@ -1,0 +1,18 @@
+/*
+Theme Name: Hamista
+Theme URI: https://hamista.com
+Author: Hamista
+Author URI: https://hamista.com
+Description: A fast, Persian-first (RTL) multipurpose theme built for Elementor. Swappable style kits, light and dark modes, a dependency-free motion engine, WooCommerce styling and one-click demos. Pair with the bundled Hamista Core plugin for Elementor widgets, settings, mobile OTP login and demo import.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 7.1
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hamista
+Domain Path: /languages
+Tags: rtl-language-support, translation-ready, custom-logo, custom-menu, featured-images, full-width-template, threaded-comments, e-commerce, blog, one-column, two-columns, right-sidebar
+*/
+
+/* Styles live in assets/css/. This file only carries the theme header. */

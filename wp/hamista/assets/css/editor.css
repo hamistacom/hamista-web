@@ -1,0 +1,13 @@
+/* Block editor canvas: match front-end reading typography. */
+.editor-styles-wrapper {
+	font-family: var(--hm-font-body, "Yekan Bakh", "Vazirmatn", Tahoma, sans-serif);
+	font-size: 17px;
+	line-height: 2;
+	color: #0d0e12;
+}
+.editor-styles-wrapper :where(h1, h2, h3, h4, h5, h6) { font-family: var(--hm-font-heading, inherit); font-weight: 800; line-height: 1.3; }
+.editor-styles-wrapper .wp-block { max-width: 760px; }
+.editor-styles-wrapper .wp-block[data-align="wide"] { max-width: 1100px; }
+.editor-styles-wrapper .wp-block[data-align="full"] { max-width: none; }
+.editor-styles-wrapper a { color: #0047e0; }
+.editor-styles-wrapper blockquote { border-inline-start: 3px solid #0052ff; padding: .4em 1.4em; margin-inline: 0; }

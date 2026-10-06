@@ -1,0 +1,16 @@
+/*
+Theme Name: Hamista Child
+Template: hamista
+Description: Child theme for Hamista. Put your custom CSS here and your PHP in functions.php — updates to Hamista will never overwrite them. Font files dropped into assets/fonts/yekan-bakh/ or assets/fonts/digits/ are picked up automatically.
+Version: 1.0.0
+Text Domain: hamista-child
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* Your custom CSS goes below. Design tokens you can override:
+:root {
+	--hm-accent: #0052ff;
+	--hm-container: 1320px;
+}
+*/

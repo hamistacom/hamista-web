@@ -1,0 +1,5 @@
+/* Elementor editor: give Hamista widgets a quiet accent in the panel. */
+.elementor-panel .elementor-element .icon .eicon-banner,
+#elementor-panel-category-hamista .elementor-element .icon { color: #0052ff; }
+#elementor-panel-category-hamista .elementor-element:hover .icon { color: #0047e0; }
+#elementor-panel-category-hamista .elementor-panel-category-title { font-weight: 700; }

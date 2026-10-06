@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Hamista demo scenes</title>
+<style>
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-arabic.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0600-06FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: "Vazirmatn", sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: relative; overflow: hidden; }
+.mono { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; direction: ltr; letter-spacing: .08em; }
+.abs { position: absolute; }
+/* grain for physical surfaces */
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---------- Device frames ---------- */
+.phone { position: absolute; width: 380px; height: 790px; border-radius: 58px; background: #0d0f12; padding: 13px; box-shadow: 0 50px 90px -30px rgba(10, 20, 40, .45), inset 0 0 0 2px #2a2f35; }
+.phone .scr { position: relative; width: 100%; height: 100%; border-radius: 46px; overflow: hidden; background: #fff; }
+.phone .island { position: absolute; top: 14px; left: 50%; width: 110px; height: 32px; margin-left: -55px; border-radius: 20px; background: #0d0f12; z-index: 5; }
+.win { position: absolute; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 50px 100px -40px rgba(10, 20, 40, .5), 0 0 0 1px rgba(10, 20, 40, .06); }
+.win .bar { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #f3f4f6; direction: ltr; border-bottom: 1px solid #e5e7eb; }
+.win .bar i { width: 11px; height: 11px; border-radius: 50%; background: #d1d5db; }
+.win > .zc { zoom: 1.45; height: calc((100% - 42px) / 1.45) !important; }
+.win .bar span { margin: 0 auto; padding: 4px 70px; border-radius: 7px; background: #fff; font: 12px ui-monospace, monospace; color: #9ca3af; }
+
+/* ---------- App UI primitives ---------- */
+.app { position: absolute; inset: 0; padding: 62px 22px 22px; display: flex; flex-direction: column; gap: 16px; color: #111827; font-size: 15px; }
+.app h4 { font-size: 26px; font-weight: 800; line-height: 1.3; }
+.app small { color: #6b7280; font-size: 13px; }
+.row { display: flex; align-items: center; gap: 12px; }
+.between { justify-content: space-between; }
+.av { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 16px; }
+.chip { display: inline-flex; padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 600; background: #f3f4f6; }
+.card { border-radius: 20px; padding: 16px; background: #fff; box-shadow: 0 1px 0 rgba(0, 0, 0, .04), 0 8px 24px -12px rgba(15, 23, 42, .18); }
+.nav { margin-top: auto; display: flex; justify-content: space-around; padding: 14px 8px; border-radius: 24px; background: #f3f4f6; }
+.nav i { width: 26px; height: 26px; border-radius: 8px; background: #d1d5db; }
+.nav i.on { background: var(--a); }
+.bar-h { height: 10px; border-radius: 6px; background: #eef0f3; overflow: hidden; }
+.bar-h b { display: block; height: 100%; border-radius: inherit; background: var(--a); }
+.sk { height: 10px; border-radius: 6px; background: #e8eaee; }
+
+/* ---------- Posters ---------- */
+.poster { position: absolute; inset: 0; overflow: hidden; }
+.pw { font-weight: 900; line-height: .95; letter-spacing: 0; }
+
+/* ---------- Industrial renders ---------- */
+.studio { position: absolute; inset: 0; background: radial-gradient(120% 90% at 20% 10%, #f4f6f9, #e0e5ec 45%, #cfd6e0 100%); }
+.studio.dark { background: radial-gradient(120% 90% at 20% 10%, #3a414b, #262a31 50%, #1c1f24 100%); }
+.floor { position: absolute; left: 50%; bottom: 14%; width: 70%; height: 60px; margin-left: -35%; border-radius: 50%; background: radial-gradient(closest-side, rgba(40, 50, 70, .35), transparent); filter: blur(10px); }
+.dark .floor { background: radial-gradient(closest-side, rgba(0, 0, 0, .6), transparent); }
+.dev { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); }
+.neu { background: #e0e5ec; box-shadow: 18px 18px 36px #b4bccb, -18px -18px 36px #ffffff, inset 1px 1px 0 rgba(255, 255, 255, .7); }
+.dark .neu { background: #2c3139; box-shadow: 18px 18px 36px #16181c, -18px -18px 36px #3a414b, inset 1px 1px 0 rgba(255, 255, 255, .06); }
+.key { border-radius: 10px; background: #e0e5ec; box-shadow: 5px 5px 10px #b4bccb, -5px -5px 10px #fff; }
+.dark .key { background: #31363f; box-shadow: 5px 5px 10px #16181c, -5px -5px 10px #3e4550; }
+.key.red { background: #ff4757; box-shadow: 5px 5px 10px rgba(166, 50, 60, .45), 0 0 18px rgba(255, 71, 87, .45), inset 0 1px 0 rgba(255, 255, 255, .35); }
+.knob { border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fbfcfd, #cdd5df 70%); box-shadow: 10px 10px 20px #b4bccb, -10px -10px 20px #fff; position: relative; }
+.dark .knob { background: radial-gradient(circle at 35% 30%, #4b535e, #2c3139 70%); box-shadow: 10px 10px 20px #16181c, -10px -10px 20px #3e4550; }
+.knob::after { content: ""; position: absolute; top: 9%; left: 50%; width: 6px; height: 22%; margin-left: -3px; border-radius: 3px; background: var(--k, #ff4757); box-shadow: 0 0 8px var(--k, #ff4757); transform-origin: 50% 230%; transform: rotate(var(--r, 0deg)); }
+.lcd { background: #121518; border-radius: 10px; box-shadow: inset 3px 3px 10px rgba(0, 0, 0, .8), 0 0 0 4px #1d2125; color: #ff8a94; text-shadow: 0 0 12px rgba(255, 71, 87, .7); font-family: ui-monospace, monospace; direction: ltr; overflow: hidden; position: relative; }
+.lcd::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, .25) 50%); background-size: 100% 4px; }
+.screw { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle, #9aa3b2 0 2px, #c9d0da 2.5px 5px, #eef1f5 5.5px 7px); box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .25); }
+.screw::after { content: ""; position: absolute; top: 6px; left: 2px; width: 10px; height: 2px; background: #8b94a3; transform: rotate(35deg); }
+.dark .screw { background: radial-gradient(circle, #15181b 0 2px, #2a2f36 2.5px 5px, #3a414b 5.5px 7px); }
+.led { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 12px 3px rgba(34, 197, 94, .6); }
+.engr { font-family: ui-monospace, monospace; direction: ltr; font-weight: 700; letter-spacing: .18em; color: #8a94a6; text-shadow: 0 1px 0 #fff; }
+.dark .engr { color: #7c8594; text-shadow: 0 -1px 0 rgba(0, 0, 0, .5); }
+.grill { border-radius: 50%; background: radial-gradient(circle, #9aa3b2 1.6px, transparent 2px) 0 0 / 11px 11px, #dfe4eb; box-shadow: inset 6px 6px 14px #b4bccb, inset -6px -6px 14px #fff; }
+.dark .grill { background: radial-gradient(circle, #121417 1.6px, transparent 2px) 0 0 / 11px 11px, #2a2f36; box-shadow: inset 6px 6px 14px #16181c, inset -6px -6px 14px #3a414b; }
+
+/* blueprint */
+.bp { position: absolute; inset: 0; background: #0f2a4a; color: #cfe3ff; }
+.bp::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(170, 205, 255, .12) 1px, transparent 1px), linear-gradient(90deg, rgba(170, 205, 255, .12) 1px, transparent 1px), linear-gradient(rgba(170, 205, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(170, 205, 255, .05) 1px, transparent 1px); background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; }
+.bp .ln { position: absolute; border: 2px solid #cfe3ff; }
+.bp .dim { position: absolute; font: 600 16px ui-monospace, monospace; letter-spacing: .14em; color: #9cc3ff; direction: ltr; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get('w') || 1200, Hh = +q.get('h') || 1500, V = +q.get('v') || 1, S = q.get('s') || 'ui-booking';
+const stage = document.getElementById('stage');
+stage.style.width = W + 'px'; stage.style.height = Hh + 'px';
+stage.style.setProperty('--ps', Math.min(W / 800, Hh / 1000).toFixed(3));
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const pick = (arr, i) => arr[(i - 1 + arr.length) % arr.length];
+
+/* Palettes for UI shots */
+const PAL = [
+	{ bg: '#e9eefb', a: '#2b59ff', b: '#0d1b3e' },
+	{ bg: '#f6ece3', a: '#ef6c35', b: '#2a1408' },
+	{ bg: '#e5f3ee', a: '#0f9f6e', b: '#062a1d' },
+	{ bg: '#efe9fb', a: '#7a4dff', b: '#1d1140' },
+	{ bg: '#f8f1d9', a: '#e09b00', b: '#2b1e00' },
+	{ bg: '#e7f0f6', a: '#0b84c6', b: '#062033' },
+	{ bg: '#121418', a: '#3d72ff', b: '#e8eaf0' },
+	{ bg: '#f3e8ea', a: '#d23a5a', b: '#2d0a12' },
+];
+
+const scenes = {};
+
+/* ---------------- UI: booking app (phone) ---------------- */
+scenes['ui-booking'] = p => {
+	const days = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'].map((d, i) => `<div style="display:grid;gap:6px;justify-items:center;padding:10px 0;width:46px;border-radius:16px;${i === 2 ? `background:${p.a};color:#fff` : 'background:#f3f4f6'}"><small style="color:inherit;opacity:.75">${d}</small><b>${fa(10 + i)}</b></div>`).join('');
+	const appts = [['۰۹:۳۰', 'سارا احمدی', 'مشاوره طراحی', '#6366f1'], ['۱۱:۰۰', 'رضا کریمی', 'جلسه منتورینگ', '#0ea5e9'], ['۱۴:۱۵', 'نازنین راد', 'بازبینی پروژه', '#f59e0b'], ['۱۶:۴۵', 'علی مرادی', 'کلاس زنده', '#10b981']]
+		.map(a => `<div class="card row" style="gap:14px"><div class="av" style="background:${a[3]}">${a[1][0]}</div><div style="flex:1"><b style="display:block">${a[1]}</b><small>${a[2]}</small></div><b class="mono" style="font-size:14px;color:${p.b};letter-spacing:0">${a[0]}</b></div>`).join('');
+	return `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="abs" style="width:620px;height:620px;border-radius:50%;background:${p.a};opacity:.12;right:-180px;top:-160px"></div>
+	<div class="phone" style="left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--ps,1)) rotate(-4deg)"><div class="island"></div><div class="scr"><div class="app">
+		<div class="row between"><div><small>سه‌شنبه، ۱۲ مهر</small><h4>نوبت‌های امروز</h4></div><div class="av" style="background:${p.b}">ن</div></div>
+		<div class="row" style="justify-content:space-between">${days}</div>
+		<div class="row between" style="margin-top:6px"><b>۴ نوبت</b><span class="chip" style="background:${p.a}1a;color:${p.a}">مشاهده همه</span></div>
+		${appts}
+		<div class="nav"><i class="on"></i><i></i><i></i><i></i></div>
+	</div></div></div>
+	<div class="card abs" style="width:300px;right:5%;bottom:7%;transform:scale(1.5) rotate(3deg);transform-origin:100% 100%;display:flex;gap:12px;align-items:center;padding:18px 20px"><div class="av" style="background:#10b981;border-radius:14px">✓</div><div><b style="display:block">نوبت تأیید شد</b><small>پیامک برای مشتری ارسال شد</small></div></div>`;
+};
+
+/* ---------------- UI: dashboard (browser) ---------------- */
+scenes['ui-dashboard'] = p => {
+	const pts = [60, 72, 64, 90, 84, 112, 104, 138, 128, 162, 150, 186];
+	const path = pts.map((y, i) => `${i ? 'L' : 'M'}${i * 58},${220 - y}`).join(' ');
+	const kpi = [['فروش امروز', '۴۸٬۲۰۰٬۰۰۰', '+۱۲٪'], ['سفارش‌ها', '۳۱۸', '+۸٪'], ['نرخ تبدیل', '۳٫۴٪', '+۰٫۶']].map(k => `<div class="card" style="flex:1"><small>${k[0]}</small><div class="row between" style="margin-top:8px"><b style="font-size:24px">${k[1]}</b><span class="chip" style="background:${p.a}1a;color:${p.a}">${k[2]}</span></div></div>`).join('');
+	const rows = [['#۴۸۲۱', 'سارا احمدی', '۲٬۴۰۰٬۰۰۰', 'ارسال شد'], ['#۴۸۲۰', 'رضا کریمی', '۸۹۰٬۰۰۰', 'در حال آماده‌سازی'], ['#۴۸۱۹', 'نازنین راد', '۱٬۲۵۰٬۰۰۰', 'تحویل شد']].map(r => `<div class="row between" style="padding:12px 4px;border-top:1px solid #eef0f3"><b class="mono" style="letter-spacing:0;color:#6b7280">${r[0]}</b><span style="flex:1;margin-inline:18px">${r[1]}</span><b>${r[2]}</b><span class="chip" style="margin-inline-start:18px">${r[3]}</span></div>`).join('');
+	return `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="win" style="left:7%;right:-10%;top:12%;bottom:12%"><div class="bar"><i></i><i></i><i></i><span>shop.hamista.ir/admin</span></div>
+	<div class="zc" style="display:grid;grid-template-columns:1fr 210px;height:calc(100% - 42px)">
+		<div style="padding:26px;display:grid;gap:18px;align-content:start;background:#fafbfc">
+			<div class="row between"><h4 style="font-size:24px;font-weight:800">داشبورد فروشگاه</h4><span class="chip" style="background:${p.a};color:#fff">۳۰ روز اخیر</span></div>
+			<div class="row" style="gap:14px">${kpi}</div>
+			<div class="card"><div class="row between"><b>درآمد ماهانه</b><small>تومان</small></div><svg viewBox="0 0 640 230" style="width:100%;height:230px;margin-top:10px" preserveAspectRatio="none"><path d="${path} L638,230 L0,230Z" fill="${p.a}" opacity=".12"/><path d="${path}" fill="none" stroke="${p.a}" stroke-width="4" stroke-linejoin="round"/></svg></div>
+			<div class="card">${rows}</div>
+		</div>
+		<div style="background:${p.b};padding:26px 20px;display:grid;gap:14px;align-content:start;color:#fff">
+			<b style="font-size:20px">فروشگاه</b>${['داشبورد', 'سفارش‌ها', 'محصولات', 'مشتری‌ها', 'گزارش‌ها', 'تنظیمات'].map((t, i) => `<div style="padding:10px 14px;border-radius:12px;${i === 0 ? 'background:rgba(255,255,255,.14)' : 'opacity:.7'}">${t}</div>`).join('')}
+		</div>
+	</div></div>`;
+};
+
+/* ---------------- UI: AI writing assistant ---------------- */
+scenes['ui-chat'] = p => {
+	const msg = (me, t) => `<div style="max-width:78%;align-self:${me ? 'flex-start' : 'flex-end'};padding:14px 18px;border-radius:20px;${me ? `background:#f3f4f6;border-start-start-radius:6px` : `background:${p.a};color:#fff;border-start-end-radius:6px`};line-height:1.9">${t}</div>`;
+	return `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="win" style="left:10%;right:10%;top:9%;bottom:9%"><div class="bar"><i></i><i></i><i></i><span>neshan.app</span></div>
+	<div class="zc" style="display:flex;flex-direction:column;gap:14px;padding:26px;height:calc(100% - 42px)">
+		<div class="row between"><div class="row"><div class="av" style="background:${p.b};border-radius:14px">ن</div><div><b>نشان</b><br><small>دستیار نوشتن</small></div></div><span class="chip">پیش‌نویس جدید</span></div>
+		<div style="display:flex;flex-direction:column;gap:12px;flex:1;padding-top:10px">
+			${msg(1, 'یک کپشن کوتاه و صمیمی برای معرفی کافه‌ام بنویس.')}
+			${msg(0, '«جایی برای قهوه‌ی خوب و حرف‌های خوب‌تر. از ساعت ۸ صبح منتظرتان هستیم.»')}
+			${msg(1, 'عالیه! یک نسخه‌ی رسمی‌تر هم برای سایت بده.')}
+			${msg(0, 'کافه‌ی ما با دانه‌های تازه‌برشته و فضایی آرام، همه‌روزه از ساعت ۸ پذیرای شماست.')}
+		</div>
+		<div class="row" style="padding:10px;border-radius:18px;background:#f3f4f6"><div class="sk" style="flex:1;height:14px;background:#e2e5ea"></div><div class="av" style="width:42px;height:42px;border-radius:13px;background:${p.a}">↑</div></div>
+	</div></div>`;
+};
+
+/* ---------------- UI: habit tracker (phone) ---------------- */
+scenes['ui-habit'] = p => {
+	const ring = (pct, c, r) => `<circle cx="120" cy="120" r="${r}" fill="none" stroke="${c}22" stroke-width="18"/><circle cx="120" cy="120" r="${r}" fill="none" stroke="${c}" stroke-width="18" stroke-linecap="round" stroke-dasharray="${2 * Math.PI * r}" stroke-dashoffset="${2 * Math.PI * r * (1 - pct)}" transform="rotate(-90 120 120)"/>`;
+	const grid = Array.from({ length: 28 }, (_, i) => `<i style="aspect-ratio:1;border-radius:7px;background:${[3, 7, 12, 19, 25].includes(i) ? '#eef0f3' : p.a};opacity:${0.35 + ((i * 37) % 60) / 100}"></i>`).join('');
+	return `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="phone" style="left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--ps,1)) rotate(3deg)"><div class="island"></div><div class="scr"><div class="app">
+		<div class="row between"><div><small>امروز</small><h4>گام</h4></div><span class="chip" style="background:${p.a};color:#fff">۱۸ روز پیوسته</span></div>
+		<svg viewBox="0 0 240 240" style="width:240px;margin:0 auto">${ring(.82, p.a, 100)}${ring(.6, '#f59e0b', 74)}${ring(.4, '#10b981', 48)}</svg>
+		<div class="row between"><div><b>۸٬۲۰۰</b><br><small>قدم</small></div><div><b>۶ از ۸</b><br><small>لیوان آب</small></div><div><b>۲۵ دقیقه</b><br><small>مطالعه</small></div></div>
+		<div class="card"><b>این ماه</b><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:12px">${grid}</div></div>
+		<div class="nav"><i></i><i class="on"></i><i></i><i></i></div>
+	</div></div></div>`;
+};
+
+/* ---------------- UI: finance (phone) ---------------- */
+scenes['ui-finance'] = p => {
+	const tx = [['اسنپ', '۱۲۰٬۰۰۰−', '#111827'], ['حقوق مهر', '۴۵٬۰۰۰٬۰۰۰+', '#10b981'], ['کافه', '۸۵٬۰۰۰−', '#111827'], ['دیجی‌کالا', '۱٬۲۴۰٬۰۰۰−', '#111827']].map(t => `<div class="row between" style="padding:12px 2px;border-top:1px solid #eef0f3"><div class="row"><div class="av" style="width:38px;height:38px;border-radius:12px;background:#f3f4f6;color:${p.a}">${t[0][0]}</div><b>${t[0]}</b></div><b style="color:${t[2]}">${t[1]}</b></div>`).join('');
+	return `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="abs" style="width:700px;height:700px;border-radius:50%;border:2px solid ${p.a}33;left:-260px;bottom:-280px"></div>
+	<div class="phone" style="left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--ps,1)) rotate(-3deg)"><div class="island"></div><div class="scr"><div class="app">
+		<div class="row between"><div><small>سلام، مریم</small><h4>پیمانه</h4></div><div class="av" style="background:${p.a}">م</div></div>
+		<div style="border-radius:24px;padding:22px;background:${p.b};color:#fff"><small style="color:#fff;opacity:.7">موجودی این ماه</small><div style="font-size:30px;font-weight:800;margin-top:6px">۱۸٬۴۶۰٬۰۰۰ <small style="color:#fff;opacity:.6">تومان</small></div><div class="bar-h" style="margin-top:16px;background:rgba(255,255,255,.15)"><b style="width:62%;background:${p.a}"></b></div><div class="row between" style="margin-top:8px;font-size:12px;opacity:.75"><span>خرج شده ۶۲٪</span><span>بودجه ۳۰ میلیون</span></div></div>
+		<div class="row between"><b>تراکنش‌ها</b><small>همه</small></div>
+		<div>${tx}</div>
+		<div class="nav"><i class="on"></i><i></i><i></i><i></i></div>
+	</div></div></div>`;
+};
+
+/* ---------------- UI: landing page (browser) ---------------- */
+scenes['ui-landing'] = p => `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="win" style="left:-6%;right:8%;top:14%;bottom:-6%;transform:rotate(-2deg)"><div class="bar"><i></i><i></i><i></i><span>sakoo.ir</span></div>
+	<div class="zc" style="padding:34px 44px;display:grid;gap:34px;background:#fff;height:100%">
+		<div class="row between"><b style="font-size:22px">سکو</b><div class="row" style="gap:26px;color:#6b7280">${['ویژگی‌ها', 'قیمت', 'مشتریان', 'وبلاگ'].map(t => `<span>${t}</span>`).join('')}</div><span class="chip" style="background:${p.a};color:#fff;padding:10px 20px">شروع رایگان</span></div>
+		<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center">
+			<div style="display:grid;gap:18px"><span class="chip" style="width:fit-content;background:${p.a}14;color:${p.a}">نسخه‌ی ۲ منتشر شد</span><div style="font-size:52px;font-weight:900;line-height:1.15;color:${p.b}">نوبت‌دهی آنلاین،<br>بدون <span style="color:${p.a}">تماس تلفنی</span>.</div><div style="color:#6b7280;line-height:2;font-size:17px">مشتری‌ها خودشان وقت خالی را پیدا می‌کنند و رزرو می‌کنند؛ شما فقط کارتان را انجام می‌دهید.</div><div class="row"><span class="chip" style="background:${p.b};color:#fff;padding:12px 22px">رزرو دمو</span><span class="chip" style="padding:12px 22px">ویدیوی معرفی</span></div></div>
+			<div style="aspect-ratio:1;border-radius:28px;background:linear-gradient(160deg,${p.a},${p.b});position:relative;overflow:hidden"><div style="position:absolute;inset:16% 14%;border-radius:22px;background:#fff;opacity:.95;padding:18px;display:grid;gap:10px;align-content:start"><div class="sk" style="width:60%;height:14px"></div>${[1, 2, 3, 4].map(() => `<div class="row" style="gap:10px"><div class="av" style="width:30px;height:30px;background:${p.a}"></div><div class="sk" style="flex:1"></div></div>`).join('')}</div></div>
+		</div>
+	</div></div>`;
+
+/* ---------------- UI: design system board ---------------- */
+scenes['ui-system'] = p => {
+	const sw = [p.a, p.b, '#f59e0b', '#10b981', '#ef4444', '#e5e7eb'].map((c, i) => `<div style="display:grid;gap:8px"><div style="height:96px;border-radius:18px;background:${c}"></div><small class="mono" style="letter-spacing:0">${['PRIMARY', 'INK', 'AMBER', 'SUCCESS', 'DANGER', 'LINE'][i]}</small></div>`).join('');
+	return `<div class="abs grain" style="inset:0;background:${p.bg}"></div>
+	<div class="abs" style="inset:6% 5%;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-content:center;zoom:1.3">
+		<div class="card" style="grid-column:1/-1;padding:28px"><div class="row between"><b style="font-size:26px">دیزاین سیستم سکو</b><span class="mono" style="color:#6b7280">v2.4</span></div><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:20px">${sw}</div></div>
+		<div class="card" style="padding:28px;display:grid;gap:12px"><small class="mono">TYPE SCALE</small><div style="font-size:56px;font-weight:900;line-height:1.1">تیتر اصلی</div><div style="font-size:32px;font-weight:800">تیتر بخش</div><div style="font-size:20px;font-weight:700">عنوان کارت</div><div style="color:#6b7280;line-height:2">متن بدنه با فاصله‌ی خطوط مناسب برای خواندن راحت.</div></div>
+		<div class="card" style="padding:28px;display:grid;gap:16px;align-content:start"><small class="mono">COMPONENTS</small><div class="row" style="flex-wrap:wrap"><span class="chip" style="background:${p.a};color:#fff;padding:12px 22px">دکمه‌ی اصلی</span><span class="chip" style="padding:12px 22px;border:1px solid #d1d5db;background:#fff">ثانویه</span></div><div style="height:52px;border-radius:14px;border:1px solid #d1d5db;display:flex;align-items:center;padding:0 16px;color:#9ca3af">ایمیل</div><div class="row"><div style="width:50px;height:28px;border-radius:99px;background:${p.a};position:relative"><i style="position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff"></i></div><span>اعلان‌ها</span></div><div class="bar-h"><b style="width:68%"></b></div></div>
+	</div>`;
+};
+
+/* ---------------- UI: music player (dark phone) ---------------- */
+scenes['ui-music'] = p => `<div class="abs" style="inset:0;background:${p.bg}"></div>
+	<div class="phone" style="left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--ps,1)) rotate(-3deg)"><div class="island"></div><div class="scr" style="background:#0b0d10"><div class="app" style="color:#f3f4f6">
+		<div class="row between"><small style="color:#9ca3af">در حال پخش</small><small style="color:#9ca3af">•••</small></div>
+		<div style="aspect-ratio:1;border-radius:26px;background:conic-gradient(from 210deg at 60% 40%,${p.a},#f59e0b,#ef4444,${p.a});position:relative;overflow:hidden"><div style="position:absolute;inset:22%;border-radius:50%;background:#0b0d10;box-shadow:0 0 0 18px rgba(0,0,0,.25)"></div></div>
+		<div><div style="font-size:24px;font-weight:800">شب‌های تهران</div><small style="color:#9ca3af">گروه موج</small></div>
+		<div class="bar-h" style="background:#1f2329"><b style="width:38%"></b></div>
+		<div class="row between mono" style="color:#9ca3af;letter-spacing:0"><span>1:24</span><span>3:52</span></div>
+		<div class="row" style="justify-content:center;gap:34px;font-size:28px"><span>⏮</span><span style="width:74px;height:74px;border-radius:50%;background:#fff;color:#0b0d10;display:grid;place-items:center">▶</span><span>⏭</span></div>
+	</div></div></div>`;
+
+/* ---------------- Studio collage (wide) ---------------- */
+scenes['studio'] = () => {
+	const tile = (x, y, w, h, r, inner) => `<div class="abs" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%;transform:rotate(${r}deg);border-radius:26px;overflow:hidden;box-shadow:0 60px 120px -40px rgba(0,0,0,.8)">${inner}</div>`;
+	const ui = (bg, a, t) => `<div style="position:absolute;inset:0;background:${bg};padding:30px;display:grid;gap:16px;align-content:start"><b style="font-size:30px;color:${a}">${t}</b><div class="sk" style="width:70%;height:14px;background:rgba(127,127,127,.2)"></div><div class="sk" style="width:50%;height:14px;background:rgba(127,127,127,.2)"></div><div style="height:140px;border-radius:18px;background:${a};opacity:.85"></div><div class="sk" style="width:80%;background:rgba(127,127,127,.18)"></div><div class="sk" style="width:64%;background:rgba(127,127,127,.18)"></div></div>`;
+	return `<div class="abs" style="inset:0;background:radial-gradient(120% 90% at 50% 0%,#20242c,#0b0c0f 70%)"></div>
+	${tile(6, 14, 24, 62, -6, ui('#f6f6f3', '#2b59ff', 'نوبت‌یار'))}
+	${tile(33, 6, 34, 46, 2, ui('#ffffff', '#0f9f6e', 'داشبورد فروش'))}
+	${tile(33, 56, 34, 40, -2, ui('#121418', '#3d72ff', 'نشان'))}
+	${tile(70, 12, 24, 64, 5, ui('#f8f1d9', '#e09b00', 'گام'))}
+	<div class="abs" style="inset:0;background:radial-gradient(70% 60% at 50% 50%,transparent,rgba(0,0,0,.55))"></div>`;
+};
+
+/* ---------------- Editorial posters (blog covers) ---------------- */
+const POSTER = [
+	{ bg: '#f1efe8', fg: '#111111', a: '#2b59ff', w: 'ایده' },
+	{ bg: '#111111', fg: '#f1efe8', a: '#f5a000', w: 'ساختن' },
+	{ bg: '#2b59ff', fg: '#ffffff', a: '#111111', w: 'کاربر' },
+	{ bg: '#e9e2d4', fg: '#2a1a0f', a: '#d2491f', w: 'رشد' },
+	{ bg: '#0f2a2a', fg: '#e8f4ef', a: '#3ddc97', w: 'تمرکز' },
+	{ bg: '#efe9fb', fg: '#1d1140', a: '#7a4dff', w: 'طراحی' },
+	{ bg: '#fff5e6', fg: '#1a1408', a: '#ef6c35', w: 'کد' },
+	{ bg: '#1a1d24', fg: '#eef1f6', a: '#ff4757', w: 'سرعت' },
+];
+scenes['poster'] = (_, v) => {
+	const c = pick(POSTER, v);
+	const motif = [
+		`<div class="abs" style="width:58%;aspect-ratio:1;border-radius:50%;background:${c.a};left:-8%;top:16%"></div>`,
+		`<div class="abs" style="left:7%;top:12%;display:grid;grid-template-columns:repeat(4,90px);gap:14px">${Array.from({ length: 16 }, (_, i) => `<i style="height:90px;border-radius:12px;background:${i === 6 ? c.a : c.fg};opacity:${i === 6 ? 1 : .1}"></i>`).join('')}</div>`,
+		`<div class="abs" style="left:6%;top:10%;bottom:10%;width:40%;display:flex;align-items:flex-end;gap:16px">${[30, 52, 41, 74, 63, 96].map(h => `<i style="flex:1;height:${h}%;border-radius:10px 10px 0 0;background:${c.a}"></i>`).join('')}</div>`,
+		`<svg class="abs" viewBox="0 0 400 400" style="left:2%;top:8%;width:46%">${[60, 100, 140, 180].map(r => `<circle cx="200" cy="200" r="${r}" fill="none" stroke="${c.a}" stroke-width="16" stroke-dasharray="${r * 3} ${r * 4}" transform="rotate(${r} 200 200)"/>`).join('')}</svg>`,
+		`<div class="abs" style="left:0;top:0;bottom:0;width:44%;background:${c.a}"></div><div class="abs" style="left:28%;top:30%;width:30%;aspect-ratio:1;border-radius:50%;background:${c.bg}"></div>`,
+		`<div class="abs" style="left:6%;top:14%;width:38%;aspect-ratio:1;border:16px solid ${c.a};border-radius:40px;transform:rotate(-12deg)"></div><div class="abs" style="left:18%;top:28%;width:22%;aspect-ratio:1;background:${c.fg};border-radius:24px;transform:rotate(14deg)"></div>`,
+		`<div class="abs mono" style="left:6%;top:12%;font-size:120px;font-weight:800;color:${c.a};line-height:1.1;letter-spacing:0">&lt;/&gt;<br><span style="opacity:.25;color:${c.fg}">{ }</span></div>`,
+		`<svg class="abs" viewBox="0 0 400 200" style="left:3%;top:30%;width:52%"><path d="M0 160 C80 160 100 40 180 40 S300 150 400 20" fill="none" stroke="${c.a}" stroke-width="18" stroke-linecap="round"/></svg>`,
+	][(v - 1) % 8];
+	return `<div class="poster grain" style="background:${c.bg};color:${c.fg}">${motif}
+		<div class="abs pw" style="right:6%;bottom:9%;font-size:${Hh * 0.34}px;color:${c.fg}">${c.w}</div>
+		<div class="abs mono" style="right:6.5%;top:9%;font-size:18px;color:${c.fg};opacity:.7">HAMISTA JOURNAL — N°${String(v).padStart(2, '0')}</div></div>`;
+};
+
+/* ---------------- Course covers (shop) ---------------- */
+const COURSE = [
+	{ t: 'طراحی محصول', lv: 'از صفر', wk: '۱۰', a: '#2b59ff', bg: '#e9eefb', n: '01' },
+	{ t: 'توسعه‌ی وب', lv: 'مقدماتی تا پیشرفته', wk: '۱۴', a: '#0f9f6e', bg: '#e5f3ee', n: '02' },
+	{ t: 'هوش مصنوعی کاربردی', lv: 'متوسط', wk: '۸', a: '#7a4dff', bg: '#efe9fb', n: '03' },
+	{ t: 'کسب‌وکار دیجیتال', lv: 'از صفر', wk: '۶', a: '#e09b00', bg: '#f8f1d9', n: '04' },
+	{ t: 'دیزاین سیستم', lv: 'پیشرفته', wk: '۶', a: '#d23a5a', bg: '#f3e8ea', n: '05' },
+	{ t: 'تحلیل داده', lv: 'متوسط', wk: '۸', a: '#0b84c6', bg: '#e7f0f6', n: '06' },
+];
+scenes['course'] = (_, v) => {
+	const c = pick(COURSE, v), alt = q.get('alt') === '1';
+	if (alt) {
+		return `<div class="poster" style="background:${c.a};color:#fff">
+			<div class="abs mono" style="left:7%;top:7%;font-size:20px;opacity:.75">SYLLABUS / ${c.n}</div>
+			<div class="abs" style="right:7%;left:7%;top:20%;display:grid;gap:18px">${['شناخت مسئله و کاربر', 'طراحی و نمونه‌سازی', 'ساخت و تست با کاربر واقعی', 'انتشار و ارائه‌ی پروژه'].map((t, i) => `<div style="display:flex;align-items:center;gap:20px;padding:22px 26px;border-radius:22px;background:rgba(255,255,255,${i === 1 ? .22 : .1});font-size:30px;font-weight:700"><span class="mono" style="opacity:.7;font-size:22px">0${i + 1}</span>${t}</div>`).join('')}</div>
+			<div class="abs" style="right:7%;bottom:7%;font-size:26px;font-weight:700;opacity:.85">${c.wk} هفته · ${c.lv}</div></div>`;
+	}
+	return `<div class="poster grain" style="background:${c.bg};color:#111">
+		<div class="abs" style="left:-10%;bottom:-14%;width:76%;aspect-ratio:1;border-radius:50%;background:${c.a}"></div>
+		<div class="abs" style="left:14%;bottom:12%;width:40%;aspect-ratio:1;border-radius:36px;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.35);transform:rotate(-8deg);display:grid;place-items:center"><span class="mono" style="font-size:120px;font-weight:800;color:${c.a};letter-spacing:0">${c.n}</span></div>
+		<div class="abs mono" style="right:7%;top:7%;font-size:20px;opacity:.6">HAMISTA SCHOOL</div>
+		<div class="abs" style="right:7%;top:15%;width:58%;font-size:${W * 0.075}px;font-weight:900;line-height:1.18">${c.t}</div>
+		<div class="abs" style="right:7%;top:${15 + (c.t.length > 12 ? 24 : 14)}%;display:flex;gap:12px"><span class="chip" style="background:#fff;font-size:20px;padding:10px 22px">${c.wk} هفته</span><span class="chip" style="background:#fff;font-size:20px;padding:10px 22px">${c.lv}</span></div></div>`;
+};
+
+/* ---------------- About: workspace / community ---------------- */
+scenes['workspace'] = () => {
+	const desk = Array.from({ length: 6 }, (_, i) => {
+		const p = PAL[i];
+		return `<div style="border-radius:24px;background:${p.bg};padding:26px;display:grid;gap:12px;align-content:start;box-shadow:0 30px 60px -30px rgba(0,0,0,.25)"><div class="row between"><div class="av" style="background:${p.a}">${'سرنعمک'[i]}</div><small class="mono" style="letter-spacing:0">W${String(i + 3).padStart(2, '0')}</small></div><div class="sk" style="width:80%;height:14px;background:${p.a}33"></div><div class="sk" style="width:55%;height:14px;background:${p.a}22"></div><div style="height:${80 + (i % 3) * 40}px;border-radius:16px;background:${p.a};opacity:.85"></div></div>`;
+	}).join('');
+	return `<div class="abs grain" style="inset:0;background:#e8e4da"></div><div class="abs" style="inset:6%;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;transform:rotate(-3deg)">${desk}</div>`;
+};
+scenes['community'] = () => {
+	const people = Array.from({ length: 24 }, (_, i) => `<div style="aspect-ratio:1;border-radius:${i % 3 ? '50%' : '28%'};background:${pick(PAL, i + 1).a};opacity:${0.55 + (i % 5) * .1};display:grid;place-items:center;color:#fff;font-weight:800;font-size:40px">${'سرنعمکپلتزجهب'[i % 13]}</div>`).join('');
+	return `<div class="abs" style="inset:0;background:#111318"></div><div class="abs" style="inset:8%;display:grid;grid-template-columns:repeat(6,1fr);gap:22px;align-content:center">${people}</div>`;
+};
+
+
+/* ---------------- Team portraits (editorial, faceless) ---------------- */
+const PEOPLE = [
+	{ bg: '#dfe6fb', bg2: '#c9d5f8', skin: '#e2b48f', cloth: '#1f2a44', hair: 'short', hc: '#1d1714' },
+	{ bg: '#efe4d3', bg2: '#e3d3bb', skin: '#d9a47e', cloth: '#5b6b4a', hair: 'scarf', hc: '#b5532f' },
+	{ bg: '#dcefe6', bg2: '#c4e3d4', skin: '#c58a62', cloth: '#f4f1ea', hair: 'curly', hc: '#2a1d16' },
+	{ bg: '#e8e1f7', bg2: '#d7cdf2', skin: '#f0c9a6', cloth: '#16161a', hair: 'bun', hc: '#4a2d1f' },
+	{ bg: '#f6e3d6', bg2: '#efd0bb', skin: '#b97b56', cloth: '#2f4f6f', hair: 'beard', hc: '#1b1411' },
+	{ bg: '#e3e9ee', bg2: '#cfd9e1', skin: '#e6bc98', cloth: '#a8452c', hair: 'long', hc: '#3a2618' },
+];
+scenes['portrait'] = (_, v) => {
+	const c = pick(PEOPLE, v), dark = q.get('dark') === '1';
+	const bg = dark ? '#2a2e35' : c.bg, bg2 = dark ? '#1f2227' : c.bg2;
+	const back = {
+		long: `<path d="M228 430 C220 300 300 250 400 250 C500 250 580 300 572 430 L600 820 L200 820 Z" fill="${c.hc}"/>`,
+		scarf: `<path d="M206 470 C200 300 290 240 400 240 C510 240 600 300 594 470 C592 600 640 700 690 790 L110 790 C160 700 208 600 206 470 Z" fill="${c.hc}"/>`,
+	}[c.hair] || '';
+	const front = {
+		short: `<path d="M248 430 C236 330 300 270 400 268 C500 270 566 330 552 430 C540 380 500 350 470 352 C420 330 330 340 300 372 C276 392 258 410 248 430 Z" fill="${c.hc}"/>`,
+		curly: `<g fill="${c.hc}">${[[300, 330, 62], [360, 290, 64], [430, 286, 66], [495, 320, 62], [540, 380, 50], [262, 386, 50], [400, 300, 60]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`,
+		bun: `<circle cx="400" cy="232" r="64" fill="${c.hc}"/><path d="M250 440 C240 330 310 276 400 276 C490 276 560 330 550 440 C530 370 470 336 400 336 C330 336 270 370 250 440 Z" fill="${c.hc}"/>`,
+		beard: `<path d="M258 420 C252 340 310 286 400 284 C490 286 548 340 542 420 C520 370 470 352 400 352 C330 352 280 370 258 420 Z" fill="${c.hc}" opacity=".9"/><path d="M262 500 C270 610 330 666 400 668 C470 666 530 610 538 500 C520 560 470 590 400 590 C330 590 280 560 262 500 Z" fill="${c.hc}"/>`,
+		long: `<path d="M244 450 C236 330 300 266 400 266 C500 266 564 330 556 450 C520 380 470 350 420 346 C380 372 320 400 244 450 Z" fill="${c.hc}"/>`,
+		scarf: `<path d="M236 470 C232 330 300 268 400 268 C500 268 568 330 564 470 C548 400 500 372 400 370 C300 372 252 400 236 470 Z" fill="${c.hc}"/><path d="M236 470 C250 600 300 660 400 690 C500 660 550 600 564 470 C560 560 520 640 400 720 C280 640 240 560 236 470 Z" fill="${c.hc}" opacity=".85"/>`,
+	}[c.hair] || '';
+	const collar = c.hair === 'bun' ? `<path d="M330 742 C350 700 450 700 470 742 L470 780 L330 780 Z" fill="${c.cloth}"/>` : `<path d="M352 742 L400 812 L448 742" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="6" stroke-linejoin="round"/>`;
+	return `<div class="abs grain" style="inset:0;background:radial-gradient(90% 70% at 50% 35%,${bg},${bg2})"></div>
+	<svg class="abs" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMax slice" style="inset:0;width:100%;height:100%">
+		<defs><linearGradient id="sh" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".14"/></linearGradient></defs>
+		<ellipse cx="400" cy="1010" rx="420" ry="60" fill="rgba(0,0,0,.08)"/>
+		${back}
+		<path d="M70 1000 C80 840 190 760 330 742 L470 742 C610 760 720 840 730 1000 Z" fill="${c.cloth}"/>
+		<path d="M70 1000 C80 840 190 760 330 742 L470 742 C610 760 720 840 730 1000 Z" fill="url(#sh)"/>
+		<rect x="346" y="590" width="108" height="170" rx="48" fill="${c.skin}"/>
+		<rect x="346" y="590" width="108" height="120" rx="48" fill="rgba(0,0,0,.12)"/>
+		${collar}
+		<ellipse cx="252" cy="490" rx="22" ry="38" fill="${c.skin}"/><ellipse cx="548" cy="490" rx="22" ry="38" fill="${c.skin}"/>
+		<ellipse cx="400" cy="470" rx="150" ry="182" fill="${c.skin}"/>
+		<ellipse cx="400" cy="470" rx="150" ry="182" fill="url(#sh)"/>
+		${front}
+	</svg>`;
+};
+
+/* ================= Industrial ================= */
+const PRODUCT_LABELS = ['HM-1', 'R-8', 'TOWER', 'DIAL K2', 'WAVE', 'PADS 16'];
+scenes['product'] = (_, v) => {
+	const dark = q.get('dark') === '1';
+	let dev = '';
+	switch ((v - 1) % 6) {
+		case 0: // synth
+			dev = `<div class="dev neu" style="width:820px;height:440px;border-radius:34px;padding:34px">
+				<div style="display:grid;grid-template-columns:1.25fr 1fr;gap:30px;height:150px">
+					<div class="lcd" style="padding:18px 22px;display:grid;align-content:space-between"><span style="font-size:15px;opacity:.7">PATCH 07 · LEAD</span><b style="font-size:48px;font-weight:600">120.0 BPM</b></div>
+					<div style="display:grid;grid-template-columns:repeat(4,1fr);align-items:center;justify-items:center">${['#3b82f6', '#22c55e', '#f5f5f5', '#ff4757'].map((k, i) => `<div class="knob" style="width:68px;height:68px;--k:${k};--r:${[-40, 20, 60, -10][i]}deg"></div>`).join('')}</div>
+				</div>
+				<div style="display:grid;grid-template-columns:repeat(15,1fr);gap:8px;margin-top:40px">${Array.from({ length: 15 }, (_, i) => `<div class="key" style="height:150px;border-radius:12px;${[1, 3, 6, 8, 10, 13].includes(i) ? 'background:#2d3436;box-shadow:5px 5px 10px #b4bccb' : ''}"></div>`).join('')}</div>
+				<span class="engr abs" style="right:36px;top:200px;font-size:14px">HAMISTA HM-1</span><div class="led abs" style="left:36px;top:204px"></div>
+				${['top:14px;left:14px', 'top:14px;right:14px', 'bottom:14px;left:14px', 'bottom:14px;right:14px'].map(s => `<i class="screw" style="${s}"></i>`).join('')}</div>`;
+			break;
+		case 1: // rack
+			dev = `<div class="dev neu" style="width:880px;height:300px;border-radius:24px;padding:34px 60px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;align-items:center">
+				<div class="lcd" style="height:150px;padding:18px 22px;display:grid;align-content:space-between"><span style="font-size:14px;opacity:.7">IN 1 — 4 / OUT L·R</span><div style="display:flex;align-items:flex-end;gap:6px;height:70px">${[40, 70, 55, 90, 65, 80, 45, 95, 60, 75].map(h => `<i style="flex:1;height:${h}%;background:linear-gradient(#ff4757,#5c1b22)"></i>`).join('')}</div></div>
+				<div style="display:grid;grid-template-columns:1fr 1fr;justify-items:center;gap:20px"><div class="knob" style="width:110px;height:110px;--r:-30deg"></div><div class="knob" style="width:80px;height:80px;--r:50deg;--k:#22c55e"></div></div>
+				<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">${[0, 1, 2, 3].map(i => `<div class="key ${i === 1 ? 'red' : ''}" style="height:56px"></div>`).join('')}</div>
+				<span class="engr abs" style="left:60px;top:22px;font-size:13px">R-8 · 8 CH PROCESSOR</span><div class="led abs" style="right:60px;top:24px"></div>
+				${['top:50%;left:18px', 'top:50%;right:18px'].map(s => `<i class="screw" style="${s};margin-top:-7px"></i>`).join('')}</div>`;
+			break;
+		case 2: // speaker
+			dev = `<div class="dev neu" style="width:440px;height:680px;border-radius:44px;padding:44px;display:grid;justify-items:center;gap:34px">
+				<div class="grill" style="width:150px;height:150px"></div><div class="grill" style="width:310px;height:310px;position:relative"><i style="position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#5a6270,#1f2328)"></i></div>
+				<div style="display:flex;align-items:center;gap:16px"><div class="led"></div><span class="engr" style="font-size:14px">TOWER S</span></div></div>`;
+			break;
+		case 3: // dial controller
+			dev = `<div class="dev neu" style="width:520px;height:520px;border-radius:120px;display:grid;place-items:center">
+				<div style="position:absolute;inset:60px;border-radius:50%;background:conic-gradient(#ff4757 0 64%,transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));filter:drop-shadow(0 0 10px rgba(255,71,87,.6))"></div>
+				<div class="knob" style="width:270px;height:270px;--r:150deg"></div>
+				<span class="engr abs" style="bottom:46px;left:50%;transform:translateX(-50%);font-size:14px">DIAL K2</span>
+				${['top:40px;left:40px', 'top:40px;right:40px', 'bottom:40px;left:40px', 'bottom:40px;right:40px'].map(s => `<i class="screw" style="${s}"></i>`).join('')}</div>`;
+			break;
+		case 4: // radio
+			dev = `<div class="dev neu" style="width:760px;height:430px;border-radius:60px;padding:46px 54px;display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:center">
+				<div class="grill" style="width:280px;height:280px"></div>
+				<div style="display:grid;gap:26px"><div class="lcd" style="height:110px;padding:16px 22px;display:grid;align-content:center"><b style="font-size:46px;font-weight:600">FM 98.4</b></div>
+				<div style="height:16px;border-radius:99px;background:#d1d9e6;box-shadow:inset 3px 3px 6px #b4bccb,inset -3px -3px 6px #fff;position:relative"><i style="position:absolute;left:58%;top:-12px;width:14px;height:40px;border-radius:7px;background:#ff4757;box-shadow:0 0 12px rgba(255,71,87,.6)"></i></div>
+				<div style="display:flex;gap:18px;align-items:center"><div class="knob" style="width:84px;height:84px;--r:40deg"></div><div class="knob" style="width:64px;height:64px;--r:-60deg;--k:#22c55e"></div><span class="engr" style="font-size:13px;margin-inline-start:auto">WAVE R1</span></div></div></div>`;
+			break;
+		default: // pads
+			dev = `<div class="dev neu" style="width:600px;height:640px;border-radius:40px;padding:44px;display:grid;gap:30px">
+				<div style="display:flex;justify-content:space-between;align-items:center"><span class="engr" style="font-size:14px">PADS 16</span><div class="led"></div></div>
+				<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">${Array.from({ length: 16 }, (_, i) => `<div class="key ${[2, 5, 9, 15].includes(i) ? 'red' : ''}" style="aspect-ratio:1;border-radius:16px"></div>`).join('')}</div></div>`;
+	}
+	return `<div class="studio grain ${dark ? 'dark' : ''}"></div><div class="${dark ? 'dark' : ''}" style="position:absolute;inset:0"><div class="floor"></div>${dev}</div>`;
+};
+
+scenes['ind-hero'] = () => `<div class="studio grain"></div><div class="abs" style="inset:0;background-image:linear-gradient(rgba(99,110,114,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(99,110,114,.12) 1px,transparent 1px);background-size:60px 60px;-webkit-mask:radial-gradient(70% 70% at 50% 60%,#000,transparent)"></div>
+	<div style="position:absolute;inset:0;transform:scale(1.45)">${scenes.product({}, 1).replace('<div class="studio grain "></div>', '')}</div>
+	<div class="abs mono" style="left:4%;top:7%;font-size:22px;color:#4a5568">HAMISTA LABS — FIG. 01</div>
+	<div class="abs mono" style="right:4%;bottom:7%;font-size:22px;color:#4a5568">SYSTEM OPERATIONAL <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px #22c55e;margin-left:10px"></span></div>`;
+
+scenes['blueprint'] = (_, v) => {
+	const shapes = [
+		`<div class="ln" style="left:22%;top:26%;width:56%;height:40%;border-radius:30px"></div><div class="ln" style="left:27%;top:33%;width:20%;height:12%;border-radius:8px"></div>${[0, 1, 2, 3].map(i => `<div class="ln" style="left:${54 + i * 5.5}%;top:34%;width:44px;height:44px;border-radius:50%"></div>`).join('')}<div class="ln" style="left:27%;top:51%;width:46%;height:10%;border-style:dashed"></div>`,
+		`<div class="ln" style="left:36%;top:18%;width:28%;height:64%;border-radius:40px"></div><div class="ln" style="left:44%;top:26%;width:12%;aspect-ratio:1;border-radius:50%"></div><div class="ln" style="left:40%;top:46%;width:20%;aspect-ratio:1;border-radius:50%"></div>`,
+		`<div class="ln" style="left:30%;top:22%;width:40%;aspect-ratio:1;border-radius:50%"></div><div class="ln" style="left:40%;top:36%;width:20%;aspect-ratio:1;border-radius:50%;border-style:dashed"></div><div class="ln" style="left:49.5%;top:22%;width:0;height:56%;border-width:0 0 0 2px"></div>`,
+		`<div class="ln" style="left:18%;top:30%;width:64%;height:28%;border-radius:20px"></div>${[0, 1, 2, 3, 4, 5, 6, 7].map(i => `<div class="ln" style="left:${22 + i * 7}%;top:36%;width:3%;height:16%"></div>`).join('')}`,
+	][(v - 1) % 4];
+	return `<div class="bp">${shapes}
+		<div class="dim" style="left:22%;top:20%">← 420 MM →</div><div class="dim" style="left:6%;top:46%;transform:rotate(-90deg)">160 MM</div>
+		<div class="dim" style="left:5%;top:7%;font-size:20px;color:#cfe3ff">HAMISTA LABS / DWG-${String(v).padStart(3, '0')}</div>
+		<div class="dim" style="right:5%;bottom:7%">FIG. ${String(v).padStart(2, '0')} — SCALE 1:4</div>
+		<div class="abs" style="right:5%;top:7%;width:180px;border:2px solid #cfe3ff;font:600 14px ui-monospace,monospace;letter-spacing:.12em;direction:ltr">${['REV  C', 'DATE 1405', 'DRAWN HM'].map(t => `<div style="padding:8px 12px;border-bottom:1px solid rgba(207,227,255,.4)">${t}</div>`).join('')}</div></div>`;
+};
+
+scenes['workbench'] = () => `<div class="studio dark grain"></div><div class="dark" style="position:absolute;inset:0">
+	<div class="abs neu" style="left:6%;top:14%;width:40%;height:46%;border-radius:30px"></div>
+	<div class="abs" style="left:10%;top:20%;width:32%;height:20%" ><div class="lcd" style="height:100%;padding:20px;display:grid;align-content:center"><b style="font-size:42px;font-weight:600">TEST 128 / PASS</b></div></div>
+	<div class="abs" style="left:10%;top:44%;display:flex;gap:26px">${[0, 1, 2, 3].map(i => `<div class="knob" style="width:70px;height:70px;--r:${i * 40 - 60}deg"></div>`).join('')}</div>
+	<div class="abs neu" style="right:6%;top:10%;width:42%;height:72%;border-radius:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:30px">${Array.from({ length: 12 }, (_, i) => `<div class="key ${i === 4 || i === 9 ? 'red' : ''}" style="border-radius:16px"></div>`).join('')}</div>
+	<div class="abs neu" style="left:6%;bottom:8%;width:40%;height:24%;border-radius:30px;display:flex;align-items:center;gap:30px;padding:0 34px"><div class="led"></div><span class="engr" style="font-size:18px">ASSEMBLY LINE 03</span></div></div>`;
+
+const fn = scenes[S];
+stage.innerHTML = fn ? fn(pick(PAL, V), V) : '<h1>unknown scene</h1>';
+document.fonts.ready.then(() => { document.body.setAttribute('data-ready', '1'); });
+</script>
+</body>
+</html>

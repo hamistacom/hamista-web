@@ -1,0 +1,40 @@
+/*!
+ * Hamista style kit — Spark
+ * Editorial and typographic: warm paper, ink, one electric accent used sparingly,
+ * hairline rules and big confident type. Works in light and dark.
+ */
+.hm-kit-spark {
+	--hm-radius-sm: 8px;
+	--hm-radius-md: 12px;
+	--hm-radius-lg: 20px;
+	--hm-radius-xl: 28px;
+	--hm-radius-btn: 999px;
+	--hm-fw-heading: 800;
+}
+
+/* Hairline-rule section labels: "01 — Title" */
+.hm-kit-spark .hm-eyebrow { color: var(--hm-fg); font-weight: 700; }
+.hm-kit-spark .hm-eyebrow::before { width: 2.2em; background: var(--hm-accent); opacity: 1; height: 2px; }
+
+/* Header: quiet until scrolled, nav as soft pills */
+.hm-kit-spark .hm-menu > li > a { border-radius: 999px; }
+.hm-kit-spark .hm-menu > li > a:hover { background: var(--hm-surface-2); }
+.hm-kit-spark .hm-header.is-light:not(.is-scrolled) .hm-menu > li > a:hover { background: rgba(255, 255, 255, .1); }
+.hm-kit-spark .hm-icon-btn { border-radius: 999px; }
+
+/* Cards */
+.hm-kit-spark .hm-card { --hm-card-shadow: none; }
+.hm-kit-spark .hm-card:hover { border-color: var(--hm-border-strong); }
+
+/* Footer is an ink slab with a giant outlined wordmark */
+.hm-kit-spark .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .22); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); }
+.hm-kit-spark .hm-footer__wordmark { color: #fff; opacity: .045; }
+[data-hm-theme="dark"] .hm-kit-spark .hm-footer, [data-hm-theme="dark"].hm-kit-spark .hm-footer { background: #050608; }
+
+/* Single post: drop cap-free, generous measure, accent rule above title */
+.hm-kit-spark .hm-single-hero__cats .hm-chip { background: transparent; }
+.hm-kit-spark .hm-related { background: transparent; border-top: 1px solid var(--hm-border); }
+.hm-kit-spark .hm-author-box { background: transparent; border: 1px solid var(--hm-border); }
+
+/* Pagination as pills */
+.hm-kit-spark .hm-pagination .page-numbers { border-radius: 999px; }
