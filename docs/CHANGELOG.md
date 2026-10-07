@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+**Hamista Core**
+- Booking module for any business that works by appointment. A business type (general, clinic, beauty salon, law firm, consulting, or your own wording) sets every label and URL. Includes a weekly schedule with morning and evening shifts, free time slots, double-booking protection, rate limits, email to the reception, confirm/done/cancel in the dashboard with a pending count, "My appointments" with online cancellation, and the `[hamista_booking]` and `[hamista_appointments]` shortcodes.
+- New widgets: Experts & team, Appointment booking, Before & after.
+- Settings: optional left-to-right text fields and group descriptions.
+
+**Theme**
+- Profile, team archive and service templates for the booking module.
+- Redesigned WooCommerce account area: full-width layout, icon menu with Persian labels even without WooCommerce's language pack, dashboard with summary cards and latest orders, monogram instead of Gravatar.
+
 ## 1.0.0
 
 First public release.

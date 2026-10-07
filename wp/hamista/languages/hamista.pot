@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T07:13:46+00:00\n"
+"POT-Creation-Date: 2026-10-07T14:18:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -43,17 +43,26 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
+#: archive-hm_expert.php:18
+msgid "Our team"
+msgstr ""
+
+#: archive-hm_expert.php:31
+msgid "Categories"
+msgstr ""
+
+#: archive-hm_expert.php:32
+#: archive-hm_portfolio.php:31
+#: inc/template-tags.php:328
+msgid "All"
+msgstr ""
+
 #: archive-hm_portfolio.php:17
 msgid "Selected work"
 msgstr ""
 
 #: archive-hm_portfolio.php:30
 msgid "Project categories"
-msgstr ""
-
-#: archive-hm_portfolio.php:31
-#: inc/template-tags.php:328
-msgid "All"
 msgstr ""
 
 #. translators: %s: number of comments
@@ -302,6 +311,40 @@ msgstr ""
 msgid "Sale"
 msgstr ""
 
+#: inc/woocommerce.php:330
+msgid "Dashboard"
+msgstr ""
+
+#: inc/woocommerce.php:331
+#: inc/woocommerce.php:357
+msgid "Orders"
+msgstr ""
+
+#: inc/woocommerce.php:332
+#: inc/woocommerce.php:372
+msgid "Downloads"
+msgstr ""
+
+#: inc/woocommerce.php:333
+msgid "Addresses"
+msgstr ""
+
+#: inc/woocommerce.php:334
+msgid "Payment methods"
+msgstr ""
+
+#: inc/woocommerce.php:335
+msgid "Account details"
+msgstr ""
+
+#: inc/woocommerce.php:336
+msgid "Log out"
+msgstr ""
+
+#: inc/woocommerce.php:363
+msgid "Total purchases"
+msgstr ""
+
 #. translators: %s: search query
 #: index.php:15
 #, php-format
@@ -334,6 +377,42 @@ msgstr ""
 
 #: sidebar.php:15
 msgid "Sidebar"
+msgstr ""
+
+#. translators: %s: number of years
+#: single-hm_expert.php:25
+#, php-format
+msgid "%s years"
+msgstr ""
+
+#: single-hm_expert.php:27
+msgid "Experience"
+msgstr ""
+
+#: single-hm_expert.php:30
+msgid "Where"
+msgstr ""
+
+#: single-hm_expert.php:84
+msgid "About"
+msgstr ""
+
+#: single-hm_expert.php:90
+msgid "Weekly hours"
+msgstr ""
+
+#: single-hm_expert.php:98
+msgid "Book an appointment"
+msgstr ""
+
+#: single-hm_expert.php:99
+msgid "The whole team"
+msgstr ""
+
+#. translators: %s: person's name
+#: single-hm_expert.php:110
+#, php-format
+msgid "Book an appointment with %s"
 msgstr ""
 
 #: single-hm_portfolio.php:67
@@ -445,4 +524,40 @@ msgstr ""
 
 #: template-parts/post/related.php:32
 msgid "All posts"
+msgstr ""
+
+#. translators: %s: first name
+#: woocommerce/myaccount/dashboard.php:32
+#, php-format
+msgid "Hello, %s"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:35
+msgid "Your orders, appointments and account details, all in one place."
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:52
+msgid "Latest orders"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:54
+msgid "All orders"
+msgstr ""
+
+#. translators: %s: order number
+#: woocommerce/myaccount/dashboard.php:65
+#, php-format
+msgid "Order %s"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:77
+msgid "No orders yet."
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:78
+msgid "Visit the shop"
+msgstr ""
+
+#: woocommerce/myaccount/navigation.php:23
+msgid "Account pages"
 msgstr ""

@@ -35,6 +35,13 @@
 	<!-- WordPress template hierarchy needs the post type name, underscores included. -->
 	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
 		<exclude-pattern>*/wp/hamista/*-hm_portfolio*.php</exclude-pattern>
+		<exclude-pattern>*/wp/hamista/*-hm_expert.php</exclude-pattern>
+		<exclude-pattern>*/wp/hamista/*-hm_service.php</exclude-pattern>
+	</rule>
+
+	<!-- WooCommerce template overrides must fire WooCommerce's own hooks. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound">
+		<exclude-pattern>*/wp/hamista/woocommerce/*</exclude-pattern>
 	</rule>
 
 	<!-- Hooks are namespaced with a slash, e.g. hamista_core/settings_saved, like Elementor and WooCommerce do. -->

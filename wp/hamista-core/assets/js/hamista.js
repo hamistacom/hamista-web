@@ -1415,7 +1415,7 @@
 	/* Portfolio filters: show projects of one category without reloading. */
 	H.register('pfilter', function (el) {
 		var chips = $$('[data-filter]', el);
-		var cards = $$('.hm-pfcard', el);
+		var cards = $$('[data-terms]', el);
 		chips.forEach(function (chip) {
 			chip.addEventListener('click', function () {
 				var f = chip.getAttribute('data-filter');
@@ -1432,6 +1432,21 @@
 				}
 			});
 		});
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* Before / after: a native range input moves the divider            */
+	/* ------------------------------------------------------------------ */
+	H.register('compare', function (el) {
+		var range = el.querySelector('.hm-ba__range');
+		if (!range) { return; }
+		var set = function () { el.style.setProperty('--hm-ba', range.value + '%'); };
+		range.addEventListener('input', set);
+		range.addEventListener('pointerdown', function () { el.classList.add('is-dragging'); });
+		['pointerup', 'pointercancel', 'blur'].forEach(function (type) {
+			range.addEventListener(type, function () { el.classList.remove('is-dragging'); });
+		});
+		set();
 	});
 
 	/* ------------------------------------------------------------------ */

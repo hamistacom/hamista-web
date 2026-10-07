@@ -46,6 +46,7 @@ final class Plugin {
 			'Layouts\\Layouts',
 			'Forms\\Forms',
 			'Portfolio\\Portfolio',
+			'Booking\\Booking',
 			'Auth\\Auth',
 			'Jalali\\Jalali',
 			'Performance\\Performance',
@@ -102,6 +103,9 @@ final class Plugin {
 			if ( class_exists( $class ) ) {
 				$class::register_post_type();
 			}
+		}
+		if ( class_exists( __NAMESPACE__ . '\\Booking\\Booking' ) && Booking\Booking::enabled() ) {
+			Booking\Booking::register_post_types();
 		}
 		flush_rewrite_rules();
 		if ( ! get_option( 'hamista_core_activated' ) ) {

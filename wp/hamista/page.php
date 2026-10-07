@@ -28,9 +28,13 @@ if ( ! hamista_elementor_location( 'single' ) ) :
 				hamista_page_head( get_the_title(), has_excerpt() ? get_the_excerpt() : '' );
 			}
 			?>
-			<main id="main" class="hm-main hm-section" style="padding-top:<?php echo hamista_show_page_title() ? '0' : 'var(--hm-space-section)'; ?>">
-				<div class="hm-container--narrow">
-					<div class="hm-prose entry-content">
+			<?php
+			// The account area needs the full width and none of the article typography.
+			$hamista_account = function_exists( 'is_account_page' ) && is_account_page() && is_user_logged_in();
+			?>
+			<main id="main" class="hm-main hm-section<?php echo $hamista_account ? ' hm-account-page' : ''; ?>" style="padding-top:<?php echo hamista_show_page_title() ? '0' : 'var(--hm-space-section)'; ?>">
+				<div class="<?php echo $hamista_account ? 'hm-container' : 'hm-container--narrow'; ?>">
+					<div class="<?php echo $hamista_account ? 'entry-content' : 'hm-prose entry-content'; ?>">
 						<?php
 						the_content();
 						wp_link_pages();

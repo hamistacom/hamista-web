@@ -53,9 +53,13 @@ class Elementor {
 			'Site_Logo',
 			'Nav_Menu',
 			'Header_Actions',
+			'Before_After',
 		);
 		if ( post_type_exists( 'hm_portfolio' ) || hamista_core_option( 'portfolio_enabled', true ) ) {
 			$widgets[] = 'Portfolio';
+		}
+		if ( class_exists( '\Hamista\Core\Booking\Booking' ) && \Hamista\Core\Booking\Booking::enabled() ) {
+			array_push( $widgets, 'Experts', 'Booking_Form' );
 		}
 		if ( class_exists( 'WooCommerce' ) ) {
 			array_push( $widgets, 'Products', 'Product_Carousel', 'Product_Tabs', 'Product_Deal', 'Product_Categories' );

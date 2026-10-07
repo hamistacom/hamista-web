@@ -4,7 +4,8 @@
  *
  * Field keys: type, label, desc, choices, min, max, step, unit, placeholder,
  * fields (repeater), show_if (key => value|values), group (sub-heading), width (half),
- * requires (plugin slug), mode (code language), action (button id).
+ * requires (plugin slug), mode (code language), action (button id), ltr (left-to-right text input),
+ * group_desc (a line under the group heading).
  * Defaults come from defaults.php.
  *
  * @package Hamista\Core
@@ -499,6 +500,130 @@ return ( static function () {
 				),
 				'shop_hover_image' => $on_off + array(
 					'label' => __( 'Show second image on hover', 'hamista-core' ),
+				),
+			),
+		),
+		'booking'     => array(
+			'title'  => __( 'Booking & appointments', 'hamista-core' ),
+			'icon'   => 'calendar',
+			'desc'   => __( 'For any business that works by appointment: a team with services and weekly hours, online booking of free times, and a "My appointments" tab for customers.', 'hamista-core' ),
+			'fields' => array(
+				'booking_enabled'          => $on_off + array(
+					'label' => __( 'Enable online booking', 'hamista-core' ),
+					'desc'  => __( 'Adds a "Booking" menu to the dashboard for your team and appointments, plus the "Experts & team" and "Appointment booking" widgets.', 'hamista-core' ),
+				),
+				'booking_type'             => array(
+					'type'    => 'cards',
+					'label'   => __( 'Business type', 'hamista-core' ),
+					'desc'    => __( 'Sets the wording across the site and the dashboard, e.g. doctor and specialty, or lawyer and practice area.', 'hamista-core' ),
+					'choices' => array(
+						'general'    => array(
+							'label' => __( 'General services', 'hamista-core' ),
+							'icon'  => 'calendar',
+						),
+						'clinic'     => array(
+							'label' => __( 'Clinic and medical', 'hamista-core' ),
+							'icon'  => 'stethoscope',
+						),
+						'beauty'     => array(
+							'label' => __( 'Beauty salon', 'hamista-core' ),
+							'icon'  => 'scissors',
+						),
+						'legal'      => array(
+							'label' => __( 'Law firm', 'hamista-core' ),
+							'icon'  => 'scale',
+						),
+						'consulting' => array(
+							'label' => __( 'Consulting and coaching', 'hamista-core' ),
+							'icon'  => 'chat',
+						),
+					),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_label_one'        => array(
+					'type'        => 'text',
+					'label'       => __( 'Name for one person', 'hamista-core' ),
+					'placeholder' => __( 'e.g. Instructor', 'hamista-core' ),
+					'group'       => __( 'Your own wording (optional)', 'hamista-core' ),
+					'group_desc'  => __( 'Leave empty to use the wording of the business type.', 'hamista-core' ),
+					'width'       => 'half',
+					'show_if'     => array( 'booking_enabled' => true ),
+				),
+				'booking_label_many'       => array(
+					'type'        => 'text',
+					'label'       => __( 'Name for the team', 'hamista-core' ),
+					'placeholder' => __( 'e.g. Instructors', 'hamista-core' ),
+					'width'       => 'half',
+					'show_if'     => array( 'booking_enabled' => true ),
+				),
+				'booking_label_group_one'  => array(
+					'type'        => 'text',
+					'label'       => __( 'Name for one service', 'hamista-core' ),
+					'placeholder' => __( 'e.g. Course', 'hamista-core' ),
+					'width'       => 'half',
+					'show_if'     => array( 'booking_enabled' => true ),
+				),
+				'booking_label_group_many' => array(
+					'type'        => 'text',
+					'label'       => __( 'Name for services', 'hamista-core' ),
+					'placeholder' => __( 'e.g. Courses', 'hamista-core' ),
+					'width'       => 'half',
+					'show_if'     => array( 'booking_enabled' => true ),
+				),
+				'booking_page'             => array(
+					'type'    => 'select',
+					'label'   => __( 'Booking page', 'hamista-core' ),
+					'desc'    => __( 'A page with the "Appointment booking" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each person\'s own profile page.', 'hamista-core' ),
+					'choices' => $pages,
+					'group'   => __( 'Booking rules', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_days'             => array(
+					'type'    => 'range',
+					'label'   => __( 'How far ahead people can book', 'hamista-core' ),
+					'min'     => 1,
+					'max'     => 60,
+					'unit'    => __( 'days', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_notice'           => array(
+					'type'    => 'range',
+					'label'   => __( 'Minimum notice before an appointment', 'hamista-core' ),
+					'min'     => 0,
+					'max'     => 48,
+					'unit'    => __( 'hours', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_cancel_hours'     => array(
+					'type'    => 'range',
+					'label'   => __( 'Online cancellation allowed until', 'hamista-core' ),
+					'desc'    => __( 'Hours before the appointment. After that, people are asked to call.', 'hamista-core' ),
+					'min'     => 0,
+					'max'     => 72,
+					'unit'    => __( 'hours', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_login'            => $on_off + array(
+					'label'   => __( 'Only logged-in visitors can book', 'hamista-core' ),
+					'desc'    => __( 'Recommended with mobile login (OTP): the number is verified and people can see and cancel their appointments.', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_auto_confirm'     => $on_off + array(
+					'label'   => __( 'Confirm new appointments automatically', 'hamista-core' ),
+					'desc'    => __( 'When off, new appointments wait for the reception to confirm them.', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_email'            => array(
+					'type'        => 'text',
+					'label'       => __( 'Send new appointments to', 'hamista-core' ),
+					'desc'        => __( 'Email of the reception. Empty uses the site admin email.', 'hamista-core' ),
+					'placeholder' => 'reception@example.com',
+					'ltr'         => true,
+					'group'       => __( 'Notifications', 'hamista-core' ),
+					'show_if'     => array( 'booking_enabled' => true ),
 				),
 			),
 		),

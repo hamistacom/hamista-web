@@ -76,4 +76,12 @@ if ( '' === $hamista_logo ) {
 			</div>
 		</form>
 	<?php endif; ?>
+	<?php
+	/**
+	 * After the account panel's own content (e.g. "My appointments").
+	 *
+	 * @param array $args Template arguments.
+	 */
+	do_action( 'hamista_core/account_panel_end', $args );
+	?>
 </div>

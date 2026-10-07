@@ -369,6 +369,8 @@ html.hm-modal-open { overflow: hidden; }
 	font-size: 14px;
 	border-bottom: 1px solid var(--hm-a-line);
 }
+.hm-admin .hm-card__title--group:has(+ .hm-card__group-desc) { padding-bottom: 4px; border-bottom: 0; }
+.hm-admin .hm-card__group-desc { margin: 0; padding: 0 24px 14px; border-bottom: 1px solid var(--hm-a-line); color: var(--hm-a-muted, #646970); font-size: 13px; }
 
 .hm-admin .hm-fields {
 	display: grid;

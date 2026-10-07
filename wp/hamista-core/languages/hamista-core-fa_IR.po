@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T07:13:46+00:00\n"
-"PO-Revision-Date: 2026-10-07 07:14+0000\n"
+"POT-Creation-Date: 2026-10-07T14:18:13+00:00\n"
+"PO-Revision-Date: 2026-10-07 14:18+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -36,7 +36,7 @@ msgstr "ویجت‌های المنتور، موتور انیمیشن بدون و
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:445
-#: includes/elementor/class-elementor.php:92
+#: includes/elementor/class-elementor.php:96
 msgid "Hamista"
 msgstr "هامیستا"
 
@@ -295,6 +295,8 @@ msgid "Close"
 msgstr "بستن"
 
 #: includes/admin/class-admin.php:490
+#: includes/booking/class-admin.php:580
+#: includes/booking/class-admin.php:630
 msgid "Confirm"
 msgstr "تأیید"
 
@@ -549,6 +551,8 @@ msgstr "آخرین کد آزمایشی: %s"
 
 #: includes/admin/class-admin.php:562
 #: includes/auth/class-account.php:114
+#: includes/booking/class-rest.php:264
+#: includes/booking/class-view.php:77
 msgid "Something went wrong. Please try again."
 msgstr "مشکلی پیش آمد. لطفاً دوباره تلاش کنید."
 
@@ -848,7 +852,7 @@ msgid "Remove demo content"
 msgstr "حذف محتوای دمو"
 
 #: includes/admin/class-admin.php:648
-#: includes/settings/schema.php:918
+#: includes/settings/schema.php:1042
 msgid "Tools"
 msgstr "ابزارها"
 
@@ -1035,6 +1039,7 @@ msgid "Mobile login is turned off. Enable it in Hamista → Login & SMS."
 msgstr "ورود با موبایل خاموش است. آن را از هامیستا ← ورود و پیامک فعال کنید."
 
 #: includes/auth/class-account.php:213
+#: includes/booking/class-view.php:322
 #: includes/elementor/widgets/class-login.php:69
 msgid "Log in or sign up"
 msgstr "ورود یا ثبت‌نام"
@@ -1160,6 +1165,7 @@ msgid "%1$s accepted the message. A test code is on its way to %2$s."
 msgstr "%1$s پیام را پذیرفت. کد آزمایشی به‌زودی به %2$s می‌رسد."
 
 #: includes/auth/class-rest.php:401
+#: includes/booking/class-rest.php:261
 msgid "Your session expired. Please try again."
 msgstr "نشست شما منقضی شد. دوباره تلاش کنید."
 
@@ -1178,8 +1184,9 @@ msgid "We couldn’t sign you in with this number. Please contact us."
 msgstr "ورود با این شماره ممکن نشد. لطفاً با ما تماس بگیرید."
 
 #: includes/auth/class-woocommerce.php:91
+#: includes/booking/class-view.php:332
 #: includes/elementor/widgets/class-lead-form.php:58
-#: includes/settings/schema.php:785
+#: includes/settings/schema.php:909
 #: templates/auth/account.php:66
 #: templates/auth/form.php:60
 msgid "Mobile number"
@@ -1288,7 +1295,7 @@ msgid "The provider had an internal error. Try again shortly."
 msgstr "سامانه‌ی پیامک با خطای داخلی روبه‌رو شد. کمی بعد دوباره تلاش کنید."
 
 #: includes/auth/gateways/class-ghasedak.php:27
-#: includes/settings/schema.php:614
+#: includes/settings/schema.php:738
 msgid "Ghasedak"
 msgstr "قاصدک"
 
@@ -1310,7 +1317,7 @@ msgid "IPPanel"
 msgstr "آی‌پی‌پنل"
 
 #: includes/auth/gateways/class-kavenegar.php:26
-#: includes/settings/schema.php:610
+#: includes/settings/schema.php:734
 msgid "Kavenegar"
 msgstr "کاوه‌نگار"
 
@@ -1347,7 +1354,7 @@ msgid "The template tag name is invalid."
 msgstr "نام تگ پترن نامعتبر است."
 
 #: includes/auth/gateways/class-melipayamak.php:27
-#: includes/settings/schema.php:611
+#: includes/settings/schema.php:735
 msgid "Melipayamak"
 msgstr "ملی‌پیامک"
 
@@ -1397,7 +1404,7 @@ msgid "The number is on the telecom blacklist."
 msgstr "این شماره در فهرست سیاه مخابرات قرار دارد."
 
 #: includes/auth/gateways/class-smsir.php:27
-#: includes/settings/schema.php:612
+#: includes/settings/schema.php:736
 msgid "SMS.ir"
 msgstr "SMS.ir"
 
@@ -1413,9 +1420,723 @@ msgstr "نام پارامتر با پترن مطابقت ندارد."
 msgid "Test mode"
 msgstr "حالت آزمایشی"
 
+#: includes/booking/class-account-tab.php:50
+#: includes/booking/class-view.php:357
+msgid "My appointments"
+msgstr "نوبت‌های من"
+
+#: includes/booking/class-account-tab.php:121
+msgid "Next appointment"
+msgstr "نوبت بعدی"
+
+#: includes/booking/class-account-tab.php:122
+msgid "None booked"
+msgstr "نوبتی ندارید"
+
+#: includes/booking/class-account-tab.php:147
+msgid "Log in to see your appointments."
+msgstr "برای دیدن نوبت‌هایتان وارد شوید."
+
+#: includes/booking/class-admin.php:84
+msgid "Profile"
+msgstr "مشخصات"
+
+#: includes/booking/class-admin.php:85
+msgid "Weekly hours"
+msgstr "ساعت‌های کاری هفته"
+
+#: includes/booking/class-admin.php:96
+msgid "e.g. Orthodontist, board certified"
+msgstr "مثلاً: متخصص ارتودنسی، دارای بورد تخصصی"
+
+#: includes/booking/class-admin.php:97
+msgid "e.g. 123456"
+msgstr "مثلاً: ۱۲۳۴۵۶"
+
+#: includes/booking/class-admin.php:98
+msgid "e.g. 12"
+msgstr "مثلاً: ۱۲"
+
+#: includes/booking/class-admin.php:99
+msgid "e.g. 450,000 Toman"
+msgstr "مثلاً: ۴۵۰٬۰۰۰ تومان"
+
+#: includes/booking/class-admin.php:100
+msgid "e.g. Second floor, room 4"
+msgstr "مثلاً: طبقه‌ی دوم، اتاق ۴"
+
+#. translators: %s: e.g. "specialties", "services"
+#: includes/booking/class-admin.php:117
+#, php-format
+msgid "The photo comes from the featured image and the biography from the main editor. Add %s in the box on the side."
+msgstr "عکس از «تصویر شاخص» و بیوگرافی از ویرایشگر اصلی خوانده می‌شود. %s را از کادر کناری اضافه کنید."
+
+#: includes/booking/class-admin.php:130
+#: includes/booking/class-view.php:301
+#: includes/booking/class-view.php:315
+msgid "Day"
+msgstr "روز"
+
+#: includes/booking/class-admin.php:130
+msgid "Morning shift"
+msgstr "شیفت صبح"
+
+#: includes/booking/class-admin.php:130
+msgid "Evening shift (optional)"
+msgstr "شیفت عصر (اختیاری)"
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:146
+#, php-format
+msgid "%s, start"
+msgstr "%s، شروع"
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:148
+#, php-format
+msgid "%s, end"
+msgstr "%s، پایان"
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:150
+#, php-format
+msgid "%s, evening start"
+msgstr "%s، شروع شیفت عصر"
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:153
+#, php-format
+msgid "%s, evening end"
+msgstr "%s، پایان شیفت عصر"
+
+#: includes/booking/class-admin.php:157
+msgid "Length of each appointment"
+msgstr "مدت هر نوبت"
+
+#. translators: %s: number of minutes
+#: includes/booking/class-admin.php:160
+#, php-format
+msgid "%s minutes"
+msgstr "%s دقیقه"
+
+#: includes/booking/class-admin.php:163
+msgid "Visitors can book any free slot inside these hours. Leave the evening shift empty for mornings only."
+msgstr "مراجعه‌کنندگان می‌توانند هر زمان خالی در این بازه‌ها را رزرو کنند. اگر فقط صبح‌ها کار می‌کنید، شیفت عصر را خالی بگذارید."
+
+#: includes/booking/class-admin.php:217
+#: includes/elementor/widgets/class-team.php:53
+#: includes/elementor/widgets/class-testimonials.php:78
+msgid "Photo"
+msgstr "عکس"
+
+#: includes/booking/class-admin.php:221
+msgid "Working days"
+msgstr "روزهای کاری"
+
+#: includes/booking/class-admin.php:255
+#: includes/booking/class-booking.php:256
+msgid "Appointment details"
+msgstr "جزئیات نوبت"
+
+#: includes/booking/class-admin.php:278
+#: includes/booking/class-admin.php:368
+msgid "Status"
+msgstr "وضعیت"
+
+#: includes/booking/class-admin.php:290
+#: includes/booking/class-rest.php:368
+msgid "Date"
+msgstr "تاریخ"
+
+#: includes/booking/class-admin.php:294
+#: includes/booking/class-rest.php:369
+#: includes/booking/class-view.php:316
+msgid "Time"
+msgstr "ساعت"
+
+#: includes/booking/class-admin.php:295
+#: includes/booking/class-admin.php:364
+#: includes/booking/class-rest.php:370
+#: includes/elementor/widgets/class-team.php:60
+#: includes/elementor/widgets/class-testimonials.php:62
+#: includes/forms/class-forms.php:305
+msgid "Name"
+msgstr "نام"
+
+#: includes/booking/class-admin.php:296
+#: includes/booking/class-admin.php:367
+#: includes/booking/class-rest.php:371
+#: includes/elementor/widgets/class-contact-form.php:51
+#: includes/forms/class-forms.php:307
+#: includes/settings/schema.php:332
+msgid "Mobile"
+msgstr "موبایل"
+
+#: includes/booking/class-admin.php:298
+#: includes/booking/class-rest.php:372
+msgid "Notes"
+msgstr "توضیحات"
+
+#. translators: %s: user display name with a link
+#: includes/booking/class-admin.php:302
+#, php-format
+msgid "Booked by the account of %s."
+msgstr "با حساب کاربری %s رزرو شده است."
+
+#: includes/booking/class-admin.php:365
+msgid "Appointment time"
+msgstr "زمان نوبت"
+
+#: includes/booking/class-admin.php:369
+msgid "Booked on"
+msgstr "تاریخ ثبت"
+
+#: includes/booking/class-admin.php:432
+msgid "Today"
+msgstr "امروز"
+
+#: includes/booking/class-admin.php:433
+#: includes/booking/class-view.php:519
+msgid "Upcoming"
+msgstr "پیش‌رو"
+
+#: includes/booking/class-admin.php:434
+#: includes/booking/class-booking.php:78
+msgid "Awaiting confirmation"
+msgstr "در انتظار تأیید"
+
+#. translators: %s: e.g. "Doctors"
+#. translators: %s: e.g. "Doctors", "Lawyers"
+#. translators: %s: e.g. "Specialties", "Services"
+#: includes/booking/class-admin.php:467
+#: includes/booking/class-booking.php:214
+#: includes/booking/class-booking.php:239
+#, php-format
+msgid "All %s"
+msgstr "همه‌ی %s"
+
+#: includes/booking/class-admin.php:478
+msgid "Filter by status"
+msgstr "فیلتر بر اساس وضعیت"
+
+#: includes/booking/class-admin.php:478
+msgid "All statuses"
+msgstr "همه‌ی وضعیت‌ها"
+
+#: includes/booking/class-admin.php:581
+#: includes/booking/class-admin.php:631
+msgid "Mark as done"
+msgstr "ثبت به‌عنوان انجام‌شده"
+
+#: includes/booking/class-admin.php:582
+#: includes/booking/class-admin.php:632
+#: includes/booking/class-view.php:491
+msgctxt "appointment"
+msgid "Cancel"
+msgstr "لغو"
+
+#: includes/booking/class-admin.php:613
+msgid "You are not allowed to change this appointment."
+msgstr "اجازه‌ی تغییر این نوبت را ندارید."
+
+#. translators: %s: number of appointments
+#: includes/booking/class-admin.php:669
+#, php-format
+msgid "%s appointment updated."
+msgid_plural "%s appointments updated."
+msgstr[0] "%s نوبت به‌روز شد."
+msgstr[1] "%s نوبت به‌روز شد."
+
+#: includes/booking/class-booking.php:61
+msgid "Saturday"
+msgstr "شنبه"
+
+#: includes/booking/class-booking.php:62
+msgid "Sunday"
+msgstr "یکشنبه"
+
+#: includes/booking/class-booking.php:63
+msgid "Monday"
+msgstr "دوشنبه"
+
+#: includes/booking/class-booking.php:64
+msgid "Tuesday"
+msgstr "سه‌شنبه"
+
+#: includes/booking/class-booking.php:65
+msgid "Wednesday"
+msgstr "چهارشنبه"
+
+#: includes/booking/class-booking.php:66
+msgid "Thursday"
+msgstr "پنجشنبه"
+
+#: includes/booking/class-booking.php:67
+msgid "Friday"
+msgstr "جمعه"
+
+#: includes/booking/class-booking.php:79
+msgid "Confirmed"
+msgstr "تأییدشده"
+
+#: includes/booking/class-booking.php:80
+msgctxt "appointment status"
+msgid "Done"
+msgstr "انجام‌شده"
+
+#: includes/booking/class-booking.php:81
+#: includes/booking/class-view.php:87
+msgid "Cancelled"
+msgstr "لغوشده"
+
+#: includes/booking/class-booking.php:93
+#: includes/settings/schema.php:520
+msgid "General services"
+msgstr "خدمات عمومی"
+
+#: includes/booking/class-booking.php:94
+msgid "Expert"
+msgstr "متخصص"
+
+#: includes/booking/class-booking.php:95
+msgid "Experts"
+msgstr "متخصصان"
+
+#: includes/booking/class-booking.php:96
+#: includes/booking/class-booking.php:118
+msgid "Service"
+msgstr "خدمت"
+
+#: includes/booking/class-booking.php:97
+#: includes/booking/class-booking.php:119
+#: includes/elementor/widgets/class-lead-form.php:107
+#: includes/portfolio/class-portfolio.php:32
+msgid "Services"
+msgstr "خدمات"
+
+#: includes/booking/class-booking.php:98
+msgid "Fee"
+msgstr "هزینه"
+
+#: includes/booking/class-booking.php:99
+#: includes/booking/class-booking.php:121
+#: includes/booking/class-booking.php:143
+msgid "Licence number"
+msgstr "شماره‌ی پروانه"
+
+#: includes/booking/class-booking.php:104
+#: includes/settings/schema.php:524
+msgid "Clinic and medical"
+msgstr "کلینیک و پزشکی"
+
+#: includes/booking/class-booking.php:105
+msgid "Doctor"
+msgstr "پزشک"
+
+#: includes/booking/class-booking.php:106
+msgid "Doctors"
+msgstr "پزشکان"
+
+#: includes/booking/class-booking.php:107
+msgid "Specialty"
+msgstr "تخصص"
+
+#: includes/booking/class-booking.php:108
+msgid "Specialties"
+msgstr "تخصص‌ها"
+
+#: includes/booking/class-booking.php:109
+msgid "Visit fee"
+msgstr "هزینه‌ی ویزیت"
+
+#: includes/booking/class-booking.php:110
+msgid "Medical council number"
+msgstr "شماره‌ی نظام پزشکی"
+
+#: includes/booking/class-booking.php:115
+#: includes/settings/schema.php:528
+msgid "Beauty salon"
+msgstr "سالن زیبایی"
+
+#: includes/booking/class-booking.php:116
+msgid "Stylist"
+msgstr "آرایشگر"
+
+#: includes/booking/class-booking.php:117
+msgid "Stylists"
+msgstr "آرایشگران"
+
+#: includes/booking/class-booking.php:120
+#: includes/elementor/widgets/class-pricing.php:65
+msgid "Price"
+msgstr "قیمت"
+
+#: includes/booking/class-booking.php:126
+#: includes/settings/schema.php:532
+msgid "Law firm"
+msgstr "دفتر حقوقی"
+
+#: includes/booking/class-booking.php:127
+msgid "Lawyer"
+msgstr "وکیل"
+
+#: includes/booking/class-booking.php:128
+msgid "Lawyers"
+msgstr "وکلا"
+
+#: includes/booking/class-booking.php:129
+msgid "Practice area"
+msgstr "حوزه‌ی تخصصی"
+
+#: includes/booking/class-booking.php:130
+msgid "Practice areas"
+msgstr "حوزه‌های تخصصی"
+
+#: includes/booking/class-booking.php:131
+msgid "Consultation fee"
+msgstr "هزینه‌ی مشاوره"
+
+#: includes/booking/class-booking.php:132
+msgid "Bar licence number"
+msgstr "شماره‌ی پروانه‌ی وکالت"
+
+#: includes/booking/class-booking.php:137
+#: includes/settings/schema.php:536
+msgid "Consulting and coaching"
+msgstr "مشاوره و کوچینگ"
+
+#: includes/booking/class-booking.php:138
+msgid "Consultant"
+msgstr "مشاور"
+
+#: includes/booking/class-booking.php:139
+msgid "Consultants"
+msgstr "مشاوران"
+
+#: includes/booking/class-booking.php:140
+msgctxt "area of work"
+msgid "Field"
+msgstr "حوزه"
+
+#: includes/booking/class-booking.php:141
+msgctxt "areas of work"
+msgid "Fields"
+msgstr "حوزه‌ها"
+
+#: includes/booking/class-booking.php:142
+msgid "Session fee"
+msgstr "هزینه‌ی جلسه"
+
+#. translators: %s: e.g. "Doctor", "Lawyer"
+#. translators: %s: e.g. "Specialty", "Service"
+#: includes/booking/class-booking.php:203
+#: includes/booking/class-booking.php:205
+#: includes/booking/class-booking.php:237
+#, php-format
+msgid "Add %s"
+msgstr "افزودن %s"
+
+#. translators: %s: e.g. "Doctor", "Lawyer"
+#: includes/booking/class-booking.php:207
+#, php-format
+msgid "Edit %s"
+msgstr "ویرایش %s"
+
+#: includes/booking/class-booking.php:208
+msgid "View profile"
+msgstr "دیدن پروفایل"
+
+#. translators: %s: e.g. "Doctors", "Lawyers"
+#: includes/booking/class-booking.php:210
+#, php-format
+msgid "Search %s"
+msgstr "جستجوی %s"
+
+#: includes/booking/class-booking.php:211
+msgid "Nothing found."
+msgstr "موردی پیدا نشد."
+
+#: includes/booking/class-booking.php:212
+msgid "Nothing in the trash."
+msgstr "زباله‌دان خالی است."
+
+#: includes/booking/class-booking.php:215
+#: includes/elementor/widgets/class-booking-form.php:88
+msgid "Booking"
+msgstr "نوبت‌دهی"
+
+#: includes/booking/class-booking.php:254
+#: includes/booking/class-booking.php:259
+msgid "Appointments"
+msgstr "نوبت‌ها"
+
+#: includes/booking/class-booking.php:255
+msgid "Appointment"
+msgstr "نوبت"
+
+#: includes/booking/class-booking.php:257
+msgid "Search appointments"
+msgstr "جستجوی نوبت‌ها"
+
+#: includes/booking/class-booking.php:258
+msgid "No appointments yet."
+msgstr "هنوز نوبتی ثبت نشده است."
+
+#: includes/booking/class-booking.php:340
+msgid "Title shown under the name"
+msgstr "عنوان زیر نام"
+
+#: includes/booking/class-booking.php:342
+msgid "Years of experience"
+msgstr "سابقه‌ی کار (سال)"
+
+#: includes/booking/class-booking.php:344
+msgid "Address or room"
+msgstr "نشانی یا شماره‌ی اتاق"
+
+#. translators: %s: years of experience
+#: includes/booking/class-booking.php:503
+#, php-format
+msgid "%s years of experience"
+msgstr "%s سال سابقه"
+
+#: includes/booking/class-booking.php:507
+#: includes/booking/class-view.php:515
+msgid "Book an appointment"
+msgstr "رزرو نوبت"
+
+#: includes/booking/class-rest.php:81
+#: includes/booking/class-rest.php:270
+#: includes/booking/class-view.php:88
+msgid "Please log in first; it takes a few seconds with your mobile number."
+msgstr "لطفاً اول وارد شوید؛ با شماره‌ی موبایل فقط چند ثانیه طول می‌کشد."
+
+#: includes/booking/class-rest.php:225
+#: includes/booking/class-rest.php:281
+msgid "Booking is not available for this person right now."
+msgstr "فعلاً امکان رزرو نوبت برای این فرد وجود ندارد."
+
+#: includes/booking/class-rest.php:267
+msgid "Too many requests. Please try again in a few minutes."
+msgstr "درخواست‌ها بیش از حد مجاز است. چند دقیقه‌ی دیگر دوباره تلاش کنید."
+
+#: includes/booking/class-rest.php:284
+msgid "Choose a day and a time."
+msgstr "روز و ساعت را انتخاب کنید."
+
+#: includes/booking/class-rest.php:287
+#: includes/booking/class-view.php:79
+msgid "Please enter your full name."
+msgstr "لطفاً نام و نام خانوادگی را وارد کنید."
+
+#: includes/booking/class-rest.php:290
+#: includes/booking/class-view.php:80
+msgid "Please enter a valid mobile number, like 09121234567."
+msgstr "لطفاً شماره‌ی موبایل معتبر وارد کنید؛ مثل ۰۹۱۲۱۲۳۴۵۶۷."
+
+#: includes/booking/class-rest.php:297
+msgid "Someone just booked this time. Please choose another one."
+msgstr "همین الان کس دیگری این ساعت را رزرو کرد. لطفاً ساعت دیگری انتخاب کنید."
+
+#: includes/booking/class-rest.php:303
+msgid "This time is no longer free. Please choose another one."
+msgstr "این ساعت دیگر خالی نیست. لطفاً ساعت دیگری انتخاب کنید."
+
+#: includes/booking/class-rest.php:327
+msgid "Your appointment could not be saved. Please try again."
+msgstr "نوبت شما ثبت نشد. لطفاً دوباره تلاش کنید."
+
+#. translators: 1: expert name, 2: date, 3: time
+#: includes/booking/class-rest.php:345
+#, php-format
+msgid "Your appointment with %1$s on %2$s at %3$s is booked. We will confirm it by phone or SMS."
+msgstr "نوبت شما با %1$s برای %2$s ساعت %3$s ثبت شد. تأیید نهایی با تماس یا پیامک اطلاع داده می‌شود."
+
+#. translators: %s: site name
+#: includes/booking/class-rest.php:377
+#, php-format
+msgid "[%s] New appointment"
+msgstr "[%s] نوبت جدید"
+
+#: includes/booking/class-rest.php:415
+msgid "You can only cancel your own appointments."
+msgstr "فقط نوبت‌های خودتان را می‌توانید لغو کنید."
+
+#: includes/booking/class-rest.php:418
+msgid "This appointment can no longer be cancelled online. Please call us."
+msgstr "این نوبت دیگر به‌صورت آنلاین لغو نمی‌شود. لطفاً با ما تماس بگیرید."
+
+#: includes/booking/class-rest.php:425
+msgid "Your appointment was cancelled."
+msgstr "نوبت شما لغو شد."
+
+#: includes/booking/class-view.php:70
+msgid "Loading free times…"
+msgstr "در حال دریافت زمان‌های خالی…"
+
+#: includes/booking/class-view.php:71
+msgid "No free time on this day. Try another day."
+msgstr "این روز وقت خالی ندارد. روز دیگری را امتحان کنید."
+
+#: includes/booking/class-view.php:72
+msgid "There is no free time in the coming days. Please call us."
+msgstr "در روزهای پیش‌رو وقت خالی نیست. لطفاً با ما تماس بگیرید."
+
+#: includes/booking/class-view.php:73
+msgid "Full"
+msgstr "تکمیل"
+
+#: includes/booking/class-view.php:74
+#: includes/booking/class-view.php:387
+msgid "Closed"
+msgstr "تعطیل"
+
+#. translators: %s: number of free slots
+#: includes/booking/class-view.php:76
+#, php-format
+msgid "%s free"
+msgstr "%s وقت خالی"
+
+#: includes/booking/class-view.php:78
+msgid "No connection. Check your internet and try again."
+msgstr "اتصال برقرار نیست. اینترنت را بررسی کنید و دوباره تلاش کنید."
+
+#. translators: %s: e.g. "doctor", "lawyer"
+#: includes/booking/class-view.php:82
+#, php-format
+msgid "Choose the %s first."
+msgstr "اول %s را انتخاب کنید."
+
+#: includes/booking/class-view.php:83
+msgid "Choose a time to continue."
+msgstr "برای ادامه، یک ساعت انتخاب کنید."
+
+#: includes/booking/class-view.php:84
+msgid "Booking…"
+msgstr "در حال ثبت نوبت…"
+
+#: includes/booking/class-view.php:85
+msgid "Cancel this appointment? The time will be offered to others."
+msgstr "این نوبت لغو شود؟ این ساعت در اختیار دیگران قرار می‌گیرد."
+
+#: includes/booking/class-view.php:86
+msgid "Cancelling…"
+msgstr "در حال لغو…"
+
+#: includes/booking/class-view.php:89
+msgid "Morning"
+msgstr "صبح"
+
+#: includes/booking/class-view.php:90
+msgid "Afternoon & evening"
+msgstr "بعدازظهر و عصر"
+
+#: includes/booking/class-view.php:157
+#: includes/elementor/widgets/class-portfolio.php:213
+msgid "All"
+msgstr "همه"
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/booking/class-view.php:196
+#, php-format
+msgid "Add %s under Booking in the dashboard and set their weekly hours to start taking appointments."
+msgstr "برای شروع نوبت‌دهی، از منوی «نوبت‌دهی» در پیشخوان %s را اضافه و ساعت‌های کاری‌شان را تعیین کنید."
+
+#: includes/booking/class-view.php:237
+msgid "Day & time"
+msgstr "روز و ساعت"
+
+#: includes/booking/class-view.php:238
+#: includes/booking/class-view.php:310
+msgid "Your details"
+msgstr "مشخصات شما"
+
+#. translators: %s: e.g. "doctor", "lawyer"
+#: includes/booking/class-view.php:246
+#, php-format
+msgid "Choose the %s"
+msgstr "%s را انتخاب کنید"
+
+#: includes/booking/class-view.php:289
+msgid "See free times"
+msgstr "دیدن زمان‌های خالی"
+
+#: includes/booking/class-view.php:296
+msgid "Pick a day and time"
+msgstr "روز و ساعت را انتخاب کنید"
+
+#: includes/booking/class-view.php:304
+#: includes/elementor/widgets/class-lead-form.php:476
+msgid "Continue"
+msgstr "ادامه"
+
+#: includes/booking/class-view.php:311
+msgid "Change time"
+msgstr "تغییر ساعت"
+
+#: includes/booking/class-view.php:321
+msgid "Log in with your mobile number to book. It takes a few seconds and you can manage your appointments later."
+msgstr "برای رزرو با شماره‌ی موبایل وارد شوید. چند ثانیه بیشتر طول نمی‌کشد و بعداً هم می‌توانید نوبت‌هایتان را مدیریت کنید."
+
+#: includes/booking/class-view.php:328
+#: includes/elementor/widgets/class-lead-form.php:57
+#: includes/elementor/widgets/class-team.php:62
+#: includes/elementor/widgets/class-team.php:94
+#: includes/elementor/widgets/class-team.php:95
+#: includes/elementor/widgets/class-team.php:96
+#: includes/elementor/widgets/class-team.php:97
+#: templates/auth/form.php:91
+msgid "Full name"
+msgstr "نام و نام خانوادگی"
+
+#: includes/booking/class-view.php:338
+msgid "Notes (optional)"
+msgstr "توضیحات (اختیاری)"
+
+#: includes/booking/class-view.php:342
+#: templates/auth/form.php:35
+msgid "Leave this field empty"
+msgstr "این فیلد را خالی بگذارید"
+
+#: includes/booking/class-view.php:345
+msgid "Book appointment"
+msgstr "ثبت نوبت"
+
+#: includes/booking/class-view.php:353
+msgid "Your appointment is booked"
+msgstr "نوبت شما ثبت شد"
+
+#: includes/booking/class-view.php:359
+msgid "Book another"
+msgstr "رزرو نوبت دیگر"
+
+#. translators: 1: start time, 2: end time
+#: includes/booking/class-view.php:385
+#, php-format
+msgid "%1$s to %2$s"
+msgstr "%1$s تا %2$s"
+
+#: includes/booking/class-view.php:513
+msgid "You have no appointments yet."
+msgstr "هنوز نوبتی ندارید."
+
+#: includes/booking/class-view.php:521
+msgid "New appointment"
+msgstr "نوبت جدید"
+
+#: includes/booking/class-view.php:528
+msgid "No upcoming appointments."
+msgstr "نوبت پیش‌رویی ندارید."
+
+#: includes/booking/class-view.php:531
+msgid "Past and cancelled"
+msgstr "گذشته و لغوشده"
+
 #: includes/elementor/class-carousel.php:41
 #: includes/elementor/class-carousel.php:45
 #: includes/elementor/widgets/class-depth.php:109
+#: includes/elementor/widgets/class-experts.php:143
+#: includes/elementor/widgets/class-experts.php:147
 #: includes/elementor/widgets/class-features.php:135
 #: includes/elementor/widgets/class-features.php:139
 #: includes/elementor/widgets/class-hero.php:50
@@ -1433,6 +2154,7 @@ msgid "Layout"
 msgstr "چیدمان"
 
 #: includes/elementor/class-carousel.php:51
+#: includes/elementor/widgets/class-experts.php:152
 #: includes/elementor/widgets/class-portfolio.php:134
 #: includes/elementor/widgets/class-posts.php:124
 #: includes/elementor/widgets/class-team.php:109
@@ -1441,6 +2163,7 @@ msgid "Carousel"
 msgstr "اسلایدر"
 
 #: includes/elementor/class-carousel.php:55
+#: includes/elementor/widgets/class-experts.php:151
 #: includes/elementor/widgets/class-features.php:143
 #: includes/elementor/widgets/class-portfolio.php:132
 #: includes/elementor/widgets/class-posts.php:123
@@ -1452,6 +2175,7 @@ msgstr "شبکه‌ای"
 
 #: includes/elementor/class-carousel.php:64
 #: includes/elementor/widgets/class-counters.php:128
+#: includes/elementor/widgets/class-experts.php:159
 #: includes/elementor/widgets/class-features.php:164
 #: includes/elementor/widgets/class-portfolio.php:141
 #: includes/elementor/widgets/class-posts.php:134
@@ -1740,6 +2464,7 @@ msgstr "همیشه تاریک"
 
 #: includes/elementor/class-widget-base.php:101
 #: includes/elementor/class-widget-base.php:217
+#: includes/elementor/widgets/class-experts.php:62
 #: includes/elementor/widgets/class-flow.php:47
 #: includes/elementor/widgets/class-heading.php:26
 #: includes/elementor/widgets/class-portfolio.php:54
@@ -1757,6 +2482,7 @@ msgid "Eyebrow"
 msgstr "روتیتر"
 
 #: includes/elementor/class-widget-base.php:118
+#: includes/elementor/widgets/class-booking-form.php:92
 #: includes/elementor/widgets/class-depth.php:66
 #: includes/elementor/widgets/class-features.php:67
 #: includes/elementor/widgets/class-hscroll.php:80
@@ -1883,6 +2609,7 @@ msgid "Space below heading"
 msgstr "فاصله‌ی زیر تیتر"
 
 #: includes/elementor/class-widget-base.php:350
+#: includes/elementor/widgets/class-booking-form.php:101
 #: includes/elementor/widgets/class-depth.php:76
 #: includes/elementor/widgets/class-features.php:75
 #: includes/elementor/widgets/class-hscroll.php:88
@@ -2065,6 +2792,115 @@ msgstr "کارت‌ها"
 msgid "Lines"
 msgstr "ساده با خط جداکننده"
 
+#: includes/elementor/widgets/class-before-after.php:30
+msgid "Before & after"
+msgstr "قبل و بعد"
+
+#: includes/elementor/widgets/class-before-after.php:47
+msgid "Photos"
+msgstr "تصاویر"
+
+#: includes/elementor/widgets/class-before-after.php:51
+#: includes/elementor/widgets/class-before-after.php:78
+#: includes/elementor/widgets/class-before-after.php:208
+msgctxt "photo comparison"
+msgid "Before"
+msgstr "قبل"
+
+#: includes/elementor/widgets/class-before-after.php:60
+#: includes/elementor/widgets/class-before-after.php:87
+#: includes/elementor/widgets/class-before-after.php:209
+msgctxt "photo comparison"
+msgid "After"
+msgstr "بعد"
+
+#: includes/elementor/widgets/class-before-after.php:76
+msgid "\"Before\" label"
+msgstr "برچسب «قبل»"
+
+#: includes/elementor/widgets/class-before-after.php:85
+msgid "\"After\" label"
+msgstr "برچسب «بعد»"
+
+#: includes/elementor/widgets/class-before-after.php:93
+#: includes/elementor/widgets/class-image-reveal.php:124
+#: includes/elementor/widgets/class-stories.php:83
+msgid "Caption"
+msgstr "زیرنویس"
+
+#: includes/elementor/widgets/class-before-after.php:96
+msgid "e.g. Composite veneers, two sessions"
+msgstr "مثلاً: لمینت کامپوزیت، دو جلسه"
+
+#: includes/elementor/widgets/class-before-after.php:102
+msgid "Divider start position"
+msgstr "جای اولیه‌ی خط جداکننده"
+
+#: includes/elementor/widgets/class-before-after.php:119
+msgid "Aspect ratio"
+msgstr "نسبت ابعاد"
+
+#: includes/elementor/widgets/class-before-after.php:135
+#: includes/elementor/widgets/class-image-reveal.php:138
+msgid "Corner radius"
+msgstr "گردی گوشه‌ها"
+
+#. translators: 1: before label, 2: after label
+#: includes/elementor/widgets/class-before-after.php:207
+#, php-format
+msgid "Drag to compare %1$s and %2$s"
+msgstr "برای مقایسه‌ی %1$s و %2$s بکشید"
+
+#: includes/elementor/widgets/class-booking-form.php:30
+msgid "Appointment booking"
+msgstr "نوبت‌دهی آنلاین"
+
+#: includes/elementor/widgets/class-booking-form.php:64
+msgid "Let the visitor choose"
+msgstr "انتخاب با بازدیدکننده"
+
+#: includes/elementor/widgets/class-booking-form.php:94
+msgid "Book an appointment online"
+msgstr "رزرو آنلاین نوبت"
+
+#: includes/elementor/widgets/class-booking-form.php:104
+msgid "Pick a free time; we will confirm it by SMS."
+msgstr "یک زمان خالی انتخاب کنید؛ تأیید نوبت با پیامک ارسال می‌شود."
+
+#: includes/elementor/widgets/class-booking-form.php:111
+msgid "Choose one to skip the first step, e.g. on a personal profile page."
+msgstr "با انتخاب یک نفر، مرحله‌ی اول حذف می‌شود؛ مثلاً برای صفحه‌ی پروفایل هر فرد."
+
+#. translators: %s: e.g. "specialties", "services"
+#: includes/elementor/widgets/class-booking-form.php:122
+#, php-format
+msgid "Only these %s"
+msgstr "فقط این %s"
+
+#: includes/elementor/widgets/class-booking-form.php:133
+msgid "Notes field"
+msgstr "فیلد توضیحات"
+
+#: includes/elementor/widgets/class-booking-form.php:142
+msgid "Appearance"
+msgstr "ظاهر"
+
+#: includes/elementor/widgets/class-booking-form.php:146
+msgid "In a card"
+msgstr "داخل کارت"
+
+#: includes/elementor/widgets/class-booking-form.php:147
+msgid "Without a frame"
+msgstr "بدون قاب"
+
+#: includes/elementor/widgets/class-booking-form.php:154
+msgid "Maximum width"
+msgstr "حداکثر عرض"
+
+#: includes/elementor/widgets/class-booking-form.php:177
+msgid "Turn on Booking in Hamista settings to take appointments here."
+msgstr "برای نوبت‌دهی، «نوبت‌دهی» را در تنظیمات هامیستا روشن کنید."
+
 #: includes/elementor/widgets/class-button.php:27
 #: includes/elementor/widgets/class-button.php:39
 #: includes/elementor/widgets/class-cta.php:62
@@ -2104,12 +2940,6 @@ msgstr "نام شما"
 #: includes/forms/class-forms.php:306
 msgid "Email"
 msgstr "ایمیل"
-
-#: includes/elementor/widgets/class-contact-form.php:51
-#: includes/forms/class-forms.php:307
-#: includes/settings/schema.php:332
-msgid "Mobile"
-msgstr "موبایل"
 
 #: includes/elementor/widgets/class-contact-form.php:52
 #: includes/forms/class-forms.php:308
@@ -2528,6 +3358,65 @@ msgstr "واحد مقدار"
 msgid "Float gently"
 msgstr "شناوری ملایم"
 
+#: includes/elementor/widgets/class-experts.php:34
+msgid "Experts & team"
+msgstr "تیم و متخصصان"
+
+#: includes/elementor/widgets/class-experts.php:65
+msgid "Our team"
+msgstr "تیم ما"
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/elementor/widgets/class-experts.php:67
+#, php-format
+msgid "Meet our *%s*"
+msgstr "با *%s* ما آشنا شوید"
+
+#: includes/elementor/widgets/class-experts.php:91
+msgid "How many"
+msgstr "تعداد"
+
+#: includes/elementor/widgets/class-experts.php:102
+msgid "Empty shows everyone."
+msgstr "اگر خالی بماند، همه نمایش داده می‌شوند."
+
+#: includes/elementor/widgets/class-experts.php:112
+msgid "Filter chips"
+msgstr "دکمه‌های فیلتر"
+
+#: includes/elementor/widgets/class-experts.php:122
+#: includes/elementor/widgets/class-hscroll.php:134
+#: includes/elementor/widgets/class-portfolio.php:112
+#: includes/shop/class-product-card.php:48
+msgid "Card style"
+msgstr "سبک کارت"
+
+#: includes/elementor/widgets/class-experts.php:126
+msgid "Photo on top"
+msgstr "عکس در بالا"
+
+#: includes/elementor/widgets/class-experts.php:127
+msgid "Round photo, centred"
+msgstr "عکس گرد، وسط‌چین"
+
+#: includes/elementor/widgets/class-experts.php:128
+msgid "Compact row"
+msgstr "ردیفی و فشرده"
+
+#: includes/elementor/widgets/class-experts.php:135
+msgid "Booking button"
+msgstr "دکمه‌ی رزرو"
+
+#: includes/elementor/widgets/class-experts.php:188
+msgid "Turn on Booking in Hamista settings to show your team here."
+msgstr "برای نمایش تیم، «نوبت‌دهی» را در تنظیمات هامیستا روشن کنید."
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/elementor/widgets/class-experts.php:200
+#, php-format
+msgid "Add %s under Booking in the dashboard to show them here."
+msgstr "%s را از منوی «نوبت‌دهی» در پیشخوان اضافه کنید تا اینجا نمایش داده شوند."
+
 #: includes/elementor/widgets/class-features.php:28
 #: includes/elementor/widgets/class-features.php:45
 msgid "Features"
@@ -2690,7 +3579,7 @@ msgstr "عناصر"
 
 #: includes/elementor/widgets/class-flow.php:146
 #: includes/elementor/widgets/class-flow.php:150
-#: includes/settings/schema.php:506
+#: includes/settings/schema.php:630
 msgid "Motion"
 msgstr "انیمیشن"
 
@@ -2782,7 +3671,7 @@ msgid "Icon with total"
 msgstr "آیکون با جمع مبلغ"
 
 #: includes/elementor/widgets/class-header-actions.php:147
-#: includes/settings/schema.php:562
+#: includes/settings/schema.php:686
 msgid "Interface sounds"
 msgstr "صداهای رابط کاربری"
 
@@ -3008,12 +3897,6 @@ msgstr "اندازه‌ی کارت"
 msgid "Screen-wide"
 msgstr "هم‌عرض صفحه"
 
-#: includes/elementor/widgets/class-hscroll.php:134
-#: includes/elementor/widgets/class-portfolio.php:112
-#: includes/shop/class-product-card.php:48
-msgid "Card style"
-msgstr "سبک کارت"
-
 #: includes/elementor/widgets/class-hscroll.php:138
 msgid "Image with caption below"
 msgstr "تصویر با زیرنویس"
@@ -3083,28 +3966,9 @@ msgstr "قاب دستگاه"
 msgid "Paper mat"
 msgstr "پاسپارتوی کاغذی"
 
-#: includes/elementor/widgets/class-image-reveal.php:124
-#: includes/elementor/widgets/class-stories.php:83
-msgid "Caption"
-msgstr "زیرنویس"
-
-#: includes/elementor/widgets/class-image-reveal.php:138
-msgid "Corner radius"
-msgstr "گردی گوشه‌ها"
-
 #: includes/elementor/widgets/class-lead-form.php:32
 msgid "Multi-step Form"
 msgstr "فرم چندمرحله‌ای"
-
-#: includes/elementor/widgets/class-lead-form.php:57
-#: includes/elementor/widgets/class-team.php:62
-#: includes/elementor/widgets/class-team.php:94
-#: includes/elementor/widgets/class-team.php:95
-#: includes/elementor/widgets/class-team.php:96
-#: includes/elementor/widgets/class-team.php:97
-#: templates/auth/form.php:91
-msgid "Full name"
-msgstr "نام و نام خانوادگی"
 
 #: includes/elementor/widgets/class-lead-form.php:60
 msgid "Business or website"
@@ -3123,11 +3987,6 @@ msgstr "مرحله‌ی ۱ — نیازها"
 #: includes/elementor/widgets/class-lead-form.php:273
 msgid "Step name"
 msgstr "نام مرحله"
-
-#: includes/elementor/widgets/class-lead-form.php:107
-#: includes/portfolio/class-portfolio.php:32
-msgid "Services"
-msgstr "خدمات"
 
 #: includes/elementor/widgets/class-lead-form.php:116
 msgid "What can we help you with?"
@@ -3335,10 +4194,6 @@ msgstr "ستون‌های گزینه‌ها"
 #: includes/elementor/widgets/class-lead-form.php:476
 msgid "You started a request earlier. Continue where you left off?"
 msgstr "قبلاً درخواستی را شروع کرده بودید. از همان‌جا ادامه می‌دهید؟"
-
-#: includes/elementor/widgets/class-lead-form.php:476
-msgid "Continue"
-msgstr "ادامه"
 
 #: includes/elementor/widgets/class-lead-form.php:476
 msgid "Start over"
@@ -3565,10 +4420,6 @@ msgstr "برای نمایش در اینجا، از بخش «نمونه‌کار�
 msgid "Filter projects"
 msgstr "فیلتر پروژه‌ها"
 
-#: includes/elementor/widgets/class-portfolio.php:213
-msgid "All"
-msgstr "همه"
-
 #: includes/elementor/widgets/class-posts.php:31
 #: includes/elementor/widgets/class-posts.php:218
 msgid "Posts"
@@ -3649,10 +4500,6 @@ msgstr "پایه"
 #: includes/shop/class-product-card.php:83
 msgid "Short description"
 msgstr "توضیح کوتاه"
-
-#: includes/elementor/widgets/class-pricing.php:65
-msgid "Price"
-msgstr "قیمت"
 
 #: includes/elementor/widgets/class-pricing.php:73
 msgid "Price with switch on"
@@ -4329,17 +5176,6 @@ msgstr "قبل از زبانه‌ها"
 #: includes/elementor/widgets/class-team.php:48
 msgid "People"
 msgstr "اعضا"
-
-#: includes/elementor/widgets/class-team.php:53
-#: includes/elementor/widgets/class-testimonials.php:78
-msgid "Photo"
-msgstr "عکس"
-
-#: includes/elementor/widgets/class-team.php:60
-#: includes/elementor/widgets/class-testimonials.php:62
-#: includes/forms/class-forms.php:305
-msgid "Name"
-msgstr "نام"
 
 #: includes/elementor/widgets/class-team.php:68
 #: includes/elementor/widgets/class-testimonials.php:70
@@ -5147,380 +5983,509 @@ msgstr "فیلترها را از نمایش ← ابزارک‌ها ← ستون
 msgid "Show second image on hover"
 msgstr "نمایش تصویر دوم با رفتن ماوس روی محصول"
 
+#: includes/settings/schema.php:506
+msgid "Booking & appointments"
+msgstr "نوبت‌دهی و رزرو"
+
 #: includes/settings/schema.php:508
+msgid "For any business that works by appointment: a team with services and weekly hours, online booking of free times, and a \"My appointments\" tab for customers."
+msgstr "برای هر کسب‌وکاری که با نوبت کار می‌کند: معرفی تیم با خدمات و ساعت کاری، رزرو آنلاین زمان‌های خالی، و بخش «نوبت‌های من» برای مشتریان."
+
+#: includes/settings/schema.php:511
+msgid "Enable online booking"
+msgstr "فعال‌سازی نوبت‌دهی آنلاین"
+
+#: includes/settings/schema.php:512
+msgid "Adds a \"Booking\" menu to the dashboard for your team and appointments, plus the \"Experts & team\" and \"Appointment booking\" widgets."
+msgstr "منوی «نوبت‌دهی» برای مدیریت تیم و نوبت‌ها به پیشخوان اضافه می‌شود؛ همراه با ابزارک‌های «تیم و متخصصان» و «نوبت‌دهی آنلاین»."
+
+#: includes/settings/schema.php:516
+msgid "Business type"
+msgstr "نوع کسب‌وکار"
+
+#: includes/settings/schema.php:517
+msgid "Sets the wording across the site and the dashboard, e.g. doctor and specialty, or lawyer and practice area."
+msgstr "عنوان‌ها را در سایت و پیشخوان تعیین می‌کند؛ مثلاً «پزشک» و «تخصص»، یا «وکیل» و «حوزه‌ی تخصصی»."
+
+#: includes/settings/schema.php:544
+msgid "Name for one person"
+msgstr "عنوان برای یک نفر"
+
+#: includes/settings/schema.php:545
+msgid "e.g. Instructor"
+msgstr "مثلاً: مربی"
+
+#: includes/settings/schema.php:546
+msgid "Your own wording (optional)"
+msgstr "عنوان‌های دلخواه (اختیاری)"
+
+#: includes/settings/schema.php:547
+msgid "Leave empty to use the wording of the business type."
+msgstr "اگر خالی بماند، عنوان‌های نوع کسب‌وکار استفاده می‌شود."
+
+#: includes/settings/schema.php:553
+msgid "Name for the team"
+msgstr "عنوان برای جمع"
+
+#: includes/settings/schema.php:554
+msgid "e.g. Instructors"
+msgstr "مثلاً: مربیان"
+
+#: includes/settings/schema.php:560
+msgid "Name for one service"
+msgstr "عنوان برای یک خدمت"
+
+#: includes/settings/schema.php:561
+msgid "e.g. Course"
+msgstr "مثلاً: دوره"
+
+#: includes/settings/schema.php:567
+msgid "Name for services"
+msgstr "عنوان برای خدمات"
+
+#: includes/settings/schema.php:568
+msgid "e.g. Courses"
+msgstr "مثلاً: دوره‌ها"
+
+#: includes/settings/schema.php:574
+msgid "Booking page"
+msgstr "صفحه‌ی نوبت‌دهی"
+
+#: includes/settings/schema.php:575
+msgid "A page with the \"Appointment booking\" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each person's own profile page."
+msgstr "صفحه‌ای که ابزارک «نوبت‌دهی آنلاین» یا کد کوتاه [hamista_booking] در آن است. دکمه‌های رزرو به این صفحه می‌روند؛ در حالت خودکار، صفحه‌ی پروفایل هر فرد استفاده می‌شود."
+
+#: includes/settings/schema.php:577
+msgid "Booking rules"
+msgstr "قواعد رزرو"
+
+#: includes/settings/schema.php:582
+msgid "How far ahead people can book"
+msgstr "رزرو تا چند روز آینده"
+
+#: includes/settings/schema.php:585
+msgid "days"
+msgstr "روز"
+
+#: includes/settings/schema.php:591
+msgid "Minimum notice before an appointment"
+msgstr "حداقل فاصله تا زمان نوبت"
+
+#: includes/settings/schema.php:594
+#: includes/settings/schema.php:604
+msgid "hours"
+msgstr "ساعت"
+
+#: includes/settings/schema.php:600
+msgid "Online cancellation allowed until"
+msgstr "مهلت لغو آنلاین"
+
+#: includes/settings/schema.php:601
+msgid "Hours before the appointment. After that, people are asked to call."
+msgstr "چند ساعت پیش از نوبت. بعد از آن، از مراجعه‌کننده خواسته می‌شود تماس بگیرد."
+
+#: includes/settings/schema.php:609
+msgid "Only logged-in visitors can book"
+msgstr "رزرو فقط برای کاربران واردشده"
+
+#: includes/settings/schema.php:610
+msgid "Recommended with mobile login (OTP): the number is verified and people can see and cancel their appointments."
+msgstr "همراه با ورود با موبایل (رمز یک‌بار مصرف) پیشنهاد می‌شود: شماره تأیید شده است و هر کس می‌تواند نوبت‌هایش را ببیند و لغو کند."
+
+#: includes/settings/schema.php:614
+msgid "Confirm new appointments automatically"
+msgstr "تأیید خودکار نوبت‌های جدید"
+
+#: includes/settings/schema.php:615
+msgid "When off, new appointments wait for the reception to confirm them."
+msgstr "اگر خاموش باشد، نوبت‌های جدید منتظر تأیید پذیرش می‌مانند."
+
+#: includes/settings/schema.php:620
+msgid "Send new appointments to"
+msgstr "ارسال نوبت‌های جدید به"
+
+#: includes/settings/schema.php:621
+msgid "Email of the reception. Empty uses the site admin email."
+msgstr "ایمیل پذیرش. اگر خالی بماند، ایمیل مدیر سایت استفاده می‌شود."
+
+#: includes/settings/schema.php:624
+msgid "Notifications"
+msgstr "اطلاع‌رسانی"
+
+#: includes/settings/schema.php:632
 msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
 msgstr "موتور انیمیشن هامیستا به هیچ کتابخانه‌ای وابسته نیست و همیشه به تنظیم «کاهش حرکت» در دستگاه بازدیدکننده احترام می‌گذارد."
 
-#: includes/settings/schema.php:511
+#: includes/settings/schema.php:635
 msgid "Smooth scrolling"
 msgstr "اسکرول نرم"
 
-#: includes/settings/schema.php:512
+#: includes/settings/schema.php:636
 msgid "Inertia scrolling for mouse wheels. Off by default: the browser's own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively."
 msgstr "اسکرول روان و پیوسته برای چرخ ماوس. به‌طور پیش‌فرض خاموش است، چون اسکرول خود مرورگر روی برگه‌های بلند المنتوری سریع‌ترین حالت است. دستگاه‌های لمسی همیشه اسکرول معمول خودشان را دارند."
 
-#: includes/settings/schema.php:516
+#: includes/settings/schema.php:640
 msgid "Scroll smoothness"
 msgstr "نرمی اسکرول"
 
-#: includes/settings/schema.php:517
+#: includes/settings/schema.php:641
 msgid "Lower is silkier, higher is snappier."
 msgstr "عدد کمتر نرم‌تر است و عدد بیشتر چابک‌تر."
 
-#: includes/settings/schema.php:524
+#: includes/settings/schema.php:648
 msgid "Entrance animations"
 msgstr "انیمیشن‌های ورود"
 
-#: includes/settings/schema.php:525
+#: includes/settings/schema.php:649
 msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
 msgstr "المان‌ها هنگام اسکرول با نرمی وارد صفحه می‌شوند. برای هر المان از المنتور ← پیشرفته ← انیمیشن هامیستا تنظیمش کنید."
 
-#: includes/settings/schema.php:528
+#: includes/settings/schema.php:652
 msgid "Animations on phones"
 msgstr "انیمیشن در موبایل"
 
-#: includes/settings/schema.php:531
+#: includes/settings/schema.php:655
 msgid "Magnetic buttons"
 msgstr "دکمه‌های مغناطیسی"
 
-#: includes/settings/schema.php:532
+#: includes/settings/schema.php:656
 msgid "Buttons lean slightly toward the cursor."
 msgstr "دکمه‌ها کمی به سمت نشانگر ماوس کشیده می‌شوند."
 
-#: includes/settings/schema.php:536
+#: includes/settings/schema.php:660
 msgid "Cursor style"
 msgstr "سبک نشانگر ماوس"
 
-#: includes/settings/schema.php:537
+#: includes/settings/schema.php:661
 msgid "Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor=\"…\"."
 msgstr "فقط در دسکتاپ. هر عنصری می‌تواند با ویژگی data-hm-cursor=\"…\" کلمه‌ای را داخل نشانگر نمایش دهد."
 
-#: includes/settings/schema.php:540
+#: includes/settings/schema.php:664
 msgid "System cursor"
 msgstr "نشانگر سیستم"
 
-#: includes/settings/schema.php:544
+#: includes/settings/schema.php:668
 msgid "Dot"
 msgstr "نقطه"
 
-#: includes/settings/schema.php:548
+#: includes/settings/schema.php:672
 msgid "Dot and ring"
 msgstr "نقطه و حلقه"
 
-#: includes/settings/schema.php:552
+#: includes/settings/schema.php:676
 msgid "Inverting lens"
 msgstr "لنز معکوس‌کننده"
 
-#: includes/settings/schema.php:556
+#: includes/settings/schema.php:680
 msgid "Soft glow"
 msgstr "هاله‌ی نور"
 
-#: includes/settings/schema.php:563
+#: includes/settings/schema.php:687
 msgid "Sound"
 msgstr "صدا"
 
-#: includes/settings/schema.php:564
+#: includes/settings/schema.php:688
 msgid "Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off."
 msgstr "صدای کلیک و تیک آرام برای دکمه‌ها، لینک‌ها و کلیدها که در خود مرورگر ساخته می‌شود و به هیچ فایل صوتی نیاز ندارد. بازدیدکننده با دکمه‌ی بلندگو در سربرگ می‌تواند صدا را روشن یا خاموش کند."
 
-#: includes/settings/schema.php:567
+#: includes/settings/schema.php:691
 msgid "On for first-time visitors"
 msgstr "روشن برای بازدیدکنندگان تازه"
 
-#: includes/settings/schema.php:568
+#: includes/settings/schema.php:692
 msgid "Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts."
 msgstr "مرورگرها فقط پس از اولین کلیک یا فشردن کلید اجازه‌ی پخش صدا می‌دهند؛ پس پیش از تعامل بازدیدکننده صدایی پخش نمی‌شود."
 
-#: includes/settings/schema.php:573
+#: includes/settings/schema.php:697
 msgid "Sound character"
 msgstr "حال‌وهوای صدا"
 
-#: includes/settings/schema.php:575
+#: includes/settings/schema.php:699
 msgid "Soft — rounded and quiet"
 msgstr "نرم؛ گرد و آرام"
 
-#: includes/settings/schema.php:576
+#: includes/settings/schema.php:700
 msgid "Glass — bright and airy"
 msgstr "شیشه‌ای؛ روشن و سبک"
 
-#: includes/settings/schema.php:577
+#: includes/settings/schema.php:701
 msgid "Mechanical — crisp switch clicks"
 msgstr "مکانیکی؛ کلیک واضح کلید"
 
-#: includes/settings/schema.php:578
+#: includes/settings/schema.php:702
 msgid "Digital — short synth blips"
 msgstr "دیجیتال؛ بیپ کوتاه سینتی‌سایزر"
 
-#: includes/settings/schema.php:584
+#: includes/settings/schema.php:708
 msgid "Volume"
 msgstr "بلندی صدا"
 
-#: includes/settings/schema.php:592
+#: includes/settings/schema.php:716
 msgid "Tick on hover"
 msgstr "تیک هنگام رفتن ماوس"
 
-#: includes/settings/schema.php:593
+#: includes/settings/schema.php:717
 msgid "A very quiet tick when the pointer reaches a button or card."
 msgstr "وقتی نشانگر روی دکمه یا کارت می‌رود، یک تیک بسیار آرام پخش می‌شود."
 
-#: includes/settings/schema.php:599
+#: includes/settings/schema.php:723
 msgid "Login & SMS"
 msgstr "ورود و پیامک"
 
-#: includes/settings/schema.php:601
+#: includes/settings/schema.php:725
 msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
 msgstr "ورود و ثبت‌نام با کد یک‌بار مصرفی که پیامک می‌شود. با حساب‌های ووکامرس و کاربران وردپرس کار می‌کند."
 
-#: includes/settings/schema.php:603
+#: includes/settings/schema.php:727
 msgid "Enable mobile login (OTP)"
 msgstr "فعال‌سازی ورود با موبایل (کد یک‌بار مصرف)"
 
-#: includes/settings/schema.php:606
-#: includes/settings/schema.php:607
+#: includes/settings/schema.php:730
+#: includes/settings/schema.php:731
 msgid "SMS provider"
 msgstr "سامانه‌ی پیامک"
 
-#: includes/settings/schema.php:609
+#: includes/settings/schema.php:733
 msgid "Test mode (no SMS, code shown to admins)"
 msgstr "حالت آزمایشی (بدون ارسال پیامک)"
 
-#: includes/settings/schema.php:613
+#: includes/settings/schema.php:737
 msgid "IPPanel / Farazsms"
 msgstr "آی‌پی‌پنل / فراز اس‌ام‌اس"
 
-#: includes/settings/schema.php:615
+#: includes/settings/schema.php:739
 msgid "Custom HTTP API"
 msgstr "API سفارشی (HTTP)"
 
-#: includes/settings/schema.php:621
-#: includes/settings/schema.php:665
-#: includes/settings/schema.php:691
-#: includes/settings/schema.php:726
+#: includes/settings/schema.php:745
+#: includes/settings/schema.php:789
+#: includes/settings/schema.php:815
+#: includes/settings/schema.php:850
 msgid "API key"
 msgstr "کلید API"
 
-#: includes/settings/schema.php:629
+#: includes/settings/schema.php:753
 msgid "Verify template name"
 msgstr "نام پترن تأیید"
 
-#: includes/settings/schema.php:630
+#: includes/settings/schema.php:754
 msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
 msgstr "در کاوه‌نگار یک پترن اعتبارسنجی (Verify Lookup) با توکن %token% بسازید."
 
-#: includes/settings/schema.php:638
+#: includes/settings/schema.php:762
 msgid "Username"
 msgstr "نام کاربری"
 
-#: includes/settings/schema.php:647
+#: includes/settings/schema.php:771
 msgid "Password / API key"
 msgstr "رمز عبور / کلید API"
 
-#: includes/settings/schema.php:656
+#: includes/settings/schema.php:780
 msgid "Pattern (bodyId)"
 msgstr "کد پترن (bodyId)"
 
-#: includes/settings/schema.php:657
+#: includes/settings/schema.php:781
 msgid "Shared-line pattern ID with one variable for the code."
 msgstr "کد پترن خط خدماتی اشتراکی، با یک متغیر برای کد تأیید."
 
-#: includes/settings/schema.php:673
+#: includes/settings/schema.php:797
 msgid "Template ID"
 msgstr "کد پترن"
 
-#: includes/settings/schema.php:682
+#: includes/settings/schema.php:806
 msgid "Parameter name"
 msgstr "نام پارامتر"
 
-#: includes/settings/schema.php:699
+#: includes/settings/schema.php:823
 msgid "Pattern code"
 msgstr "کد پترن"
 
-#: includes/settings/schema.php:708
+#: includes/settings/schema.php:832
 msgid "Sender number"
 msgstr "شماره‌ی فرستنده"
 
-#: includes/settings/schema.php:718
+#: includes/settings/schema.php:842
 msgid "Variable name"
 msgstr "نام متغیر"
 
-#: includes/settings/schema.php:734
+#: includes/settings/schema.php:858
 msgid "Template name"
 msgstr "نام پترن"
 
-#: includes/settings/schema.php:742
+#: includes/settings/schema.php:866
 msgid "Endpoint URL"
 msgstr "نشانی وب‌سرویس (Endpoint)"
 
-#: includes/settings/schema.php:743
+#: includes/settings/schema.php:867
 msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
 msgstr "متغیرهای {mobile} و {code} را می‌توانید در نشانی، هدرها و بدنه‌ی درخواست به کار ببرید."
 
-#: includes/settings/schema.php:751
+#: includes/settings/schema.php:875
 msgid "Method"
 msgstr "متد"
 
-#: includes/settings/schema.php:763
+#: includes/settings/schema.php:887
 msgid "Headers (one per line)"
 msgstr "هدرها (هر کدام در یک خط)"
 
-#: includes/settings/schema.php:772
+#: includes/settings/schema.php:896
 msgid "Request body"
 msgstr "بدنه‌ی درخواست"
 
-#: includes/settings/schema.php:781
+#: includes/settings/schema.php:905
 msgid "Send a test code"
 msgstr "ارسال کد آزمایشی"
 
-#: includes/settings/schema.php:782
+#: includes/settings/schema.php:906
 msgid "Save first, then send a code to your own number to check the provider settings."
 msgstr "اول تنظیمات را ذخیره کنید، بعد برای بررسی تنظیمات سامانه یک کد به شماره‌ی خودتان بفرستید."
 
-#: includes/settings/schema.php:784
+#: includes/settings/schema.php:908
 msgid "Send test SMS"
 msgstr "ارسال پیامک آزمایشی"
 
-#: includes/settings/schema.php:790
+#: includes/settings/schema.php:914
 msgid "Code length"
 msgstr "تعداد ارقام کد"
 
-#: includes/settings/schema.php:791
+#: includes/settings/schema.php:915
 msgid "Behaviour"
 msgstr "رفتار"
 
-#: includes/settings/schema.php:802
+#: includes/settings/schema.php:926
 msgid "Code lifetime"
 msgstr "مدت اعتبار کد"
 
-#: includes/settings/schema.php:806
-#: includes/settings/schema.php:816
+#: includes/settings/schema.php:930
+#: includes/settings/schema.php:940
 msgid "sec"
 msgstr "ثانیه"
 
-#: includes/settings/schema.php:812
+#: includes/settings/schema.php:936
 msgid "Wait before resending"
 msgstr "فاصله تا ارسال دوباره"
 
-#: includes/settings/schema.php:820
+#: includes/settings/schema.php:944
 msgid "Create accounts for new numbers"
 msgstr "ساخت حساب برای شماره‌های جدید"
 
-#: includes/settings/schema.php:824
+#: includes/settings/schema.php:948
 msgid "Ask new users for their name"
 msgstr "پرسیدن نام کاربران جدید"
 
-#: includes/settings/schema.php:831
+#: includes/settings/schema.php:955
 msgid "Also allow password login"
 msgstr "ورود با رمز عبور هم مجاز باشد"
 
-#: includes/settings/schema.php:836
+#: includes/settings/schema.php:960
 msgid "Login page"
 msgstr "برگه‌ی ورود"
 
-#: includes/settings/schema.php:837
+#: includes/settings/schema.php:961
 msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
 msgstr "برگه‌ای که کد کوتاه [hamista_login] یا ویجت فرم ورود در آن قرار دارد. در حالت خودکار، اگر ووکامرس فعال باشد از برگه‌ی حساب کاربری آن استفاده می‌شود."
 
-#: includes/settings/schema.php:839
+#: includes/settings/schema.php:963
 msgid "Pages & redirects"
 msgstr "برگه‌ها و تغییر مسیر"
 
-#: includes/settings/schema.php:844
+#: includes/settings/schema.php:968
 msgid "After login, go to"
 msgstr "مقصد پس از ورود"
 
-#: includes/settings/schema.php:845
+#: includes/settings/schema.php:969
 msgid "Leave empty to return to the previous page"
 msgstr "خالی بگذارید تا به برگه‌ی قبلی برگردد"
 
-#: includes/settings/schema.php:849
+#: includes/settings/schema.php:973
 msgid "Use mobile login on WooCommerce account & checkout"
 msgstr "ورود با موبایل در حساب کاربری و تسویه حساب ووکامرس"
 
-#: includes/settings/schema.php:854
+#: includes/settings/schema.php:978
 msgid "Add mobile login to wp-login.php"
 msgstr "افزودن ورود با موبایل به wp-login.php"
 
-#: includes/settings/schema.php:860
+#: includes/settings/schema.php:984
 msgid "Performance"
 msgstr "سرعت و بهینه‌سازی"
 
-#: includes/settings/schema.php:862
+#: includes/settings/schema.php:986
 msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
 msgstr "کلیدهایی بی‌خطر برای حذف قابلیت‌هایی از وردپرس که بیشتر سایت‌ها هرگز به کارشان نمی‌برند. هر کدام چند درخواست یا چند کیلوبایت از بار صفحه کم می‌کند."
 
-#: includes/settings/schema.php:865
+#: includes/settings/schema.php:989
 msgid "Block Google Fonts"
 msgstr "مسدود کردن گوگل فونت"
 
-#: includes/settings/schema.php:866
+#: includes/settings/schema.php:990
 msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
 msgstr "جلوی بارگذاری فونت از گوگل را در المنتور و قالب می‌گیرد (که در ایران اغلب کند یا مسدود است). فونت‌های هامیستا روی سایت خودتان میزبانی می‌شوند."
 
-#: includes/settings/schema.php:868
+#: includes/settings/schema.php:992
 msgid "Remove emoji script"
 msgstr "حذف اسکریپت ایموجی"
 
-#: includes/settings/schema.php:869
+#: includes/settings/schema.php:993
 msgid "Remove oEmbed discovery script"
 msgstr "حذف اسکریپت شناسایی oEmbed"
 
-#: includes/settings/schema.php:870
+#: includes/settings/schema.php:994
 msgid "Skip Dashicons for visitors"
 msgstr "عدم بارگذاری Dashicons برای بازدیدکنندگان"
 
-#: includes/settings/schema.php:872
+#: includes/settings/schema.php:996
 msgid "Skip block-editor CSS on Elementor pages"
 msgstr "عدم بارگذاری CSS ویرایشگر بلوک در برگه‌های المنتوری"
 
-#: includes/settings/schema.php:875
+#: includes/settings/schema.php:999
 msgid "Load WooCommerce cart scripts only where needed"
 msgstr "بارگذاری اسکریپت‌های سبد خرید ووکامرس فقط در جای لازم"
 
-#: includes/settings/schema.php:879
+#: includes/settings/schema.php:1003
 msgid "Prioritise the hero image"
 msgstr "بارگذاری فوری تصویر هیرو"
 
-#: includes/settings/schema.php:880
+#: includes/settings/schema.php:1004
 msgid "Loads the first large image of each page eagerly with high priority."
 msgstr "نخستین تصویر بزرگ هر برگه بدون تأخیر و با اولویت بالا بارگذاری می‌شود."
 
-#: includes/settings/schema.php:883
+#: includes/settings/schema.php:1007
 msgid "Remove jQuery Migrate"
 msgstr "حذف jQuery Migrate"
 
-#: includes/settings/schema.php:884
+#: includes/settings/schema.php:1008
 msgid "Only if your plugins are up to date."
 msgstr "فقط اگر افزونه‌هایتان به‌روز هستند."
 
-#: includes/settings/schema.php:887
+#: includes/settings/schema.php:1011
 msgid "Slow down the Heartbeat API"
 msgstr "کاهش تناوب Heartbeat API"
 
-#: includes/settings/schema.php:890
+#: includes/settings/schema.php:1014
 msgid "Disable XML-RPC"
 msgstr "غیرفعال کردن XML-RPC"
 
-#: includes/settings/schema.php:891
+#: includes/settings/schema.php:1015
 msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
 msgstr "امنیت را بیشتر می‌کند. اگر از جت‌پک یا اپلیکیشن موبایل وردپرس استفاده می‌کنید، این گزینه را خاموش نگه دارید."
 
-#: includes/settings/schema.php:896
+#: includes/settings/schema.php:1020
 msgid "Custom code"
 msgstr "کد سفارشی"
 
-#: includes/settings/schema.php:902
+#: includes/settings/schema.php:1026
 msgid "Custom CSS"
 msgstr "CSS سفارشی"
 
-#: includes/settings/schema.php:907
+#: includes/settings/schema.php:1031
 msgid "Code in <head>"
 msgstr "کد در <head>"
 
-#: includes/settings/schema.php:908
+#: includes/settings/schema.php:1032
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr "کدهای آمار و تگ‌های تأیید مالکیت. به مجوز unfiltered_html نیاز دارد."
 
-#: includes/settings/schema.php:913
+#: includes/settings/schema.php:1037
 msgid "Code before </body>"
 msgstr "کد پیش از </body>"
 
@@ -5667,10 +6632,6 @@ msgstr "نام خانوادگی"
 #: templates/auth/account.php:70
 msgid "Email (optional)"
 msgstr "ایمیل (اختیاری)"
-
-#: templates/auth/form.php:35
-msgid "Leave this field empty"
-msgstr "این فیلد را خالی بگذارید"
 
 #: templates/auth/form.php:51
 msgid "Sign-in method"

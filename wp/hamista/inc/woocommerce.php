@@ -289,3 +289,96 @@ function hamista_woocommerce_styles( $styles ) {
 	return $styles;
 }
 add_filter( 'woocommerce_enqueue_styles', 'hamista_woocommerce_styles' );
+
+/* -------------------------------------------------------------------------
+ * My account
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Icon per account endpoint (unknown endpoints get a neutral one).
+ *
+ * @param string $endpoint Endpoint key.
+ * @return string Icon name.
+ */
+function hamista_account_icon( $endpoint ) {
+	$icons = array(
+		'dashboard'       => 'grid',
+		'orders'          => 'receipt',
+		'appointments'    => 'calendar',
+		'downloads'       => 'download',
+		'edit-address'    => 'pin',
+		'payment-methods' => 'card',
+		'edit-account'    => 'user',
+		'customer-logout' => 'logout',
+		'wishlist'        => 'heart',
+	);
+	return (string) apply_filters( 'hamista/account_icon', $icons[ $endpoint ] ?? 'folder', $endpoint );
+}
+
+/**
+ * Persian labels for the standard account menu when WooCommerce's own
+ * translation is missing (labels already in Persian are left alone).
+ *
+ * @param array $items Endpoint => label.
+ * @return array
+ */
+function hamista_account_menu_labels( $items ) {
+	if ( 0 !== strpos( determine_locale(), 'fa' ) && ! hamista_option( 'ui_persian', true ) ) {
+		return $items;
+	}
+	$labels = array(
+		'dashboard'       => __( 'Dashboard', 'hamista' ),
+		'orders'          => __( 'Orders', 'hamista' ),
+		'downloads'       => __( 'Downloads', 'hamista' ),
+		'edit-address'    => __( 'Addresses', 'hamista' ),
+		'payment-methods' => __( 'Payment methods', 'hamista' ),
+		'edit-account'    => __( 'Account details', 'hamista' ),
+		'customer-logout' => __( 'Log out', 'hamista' ),
+	);
+	foreach ( $items as $key => $label ) {
+		if ( isset( $labels[ $key ] ) && ! preg_match( '/\p{Arabic}/u', (string) $label ) ) {
+			$items[ $key ] = $labels[ $key ];
+		}
+	}
+	return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'hamista_account_menu_labels', 99 );
+
+/**
+ * Summary cards on the account dashboard.
+ *
+ * @param int $user_id User.
+ * @return array[] { icon, label, value (HTML allowed: price), url }
+ */
+function hamista_account_cards( $user_id ) {
+	$cards     = array(
+		'orders' => array(
+			'icon'  => 'receipt',
+			'label' => __( 'Orders', 'hamista' ),
+			'value' => hamista_digits( number_format_i18n( wc_get_customer_order_count( $user_id ) ) ),
+			'url'   => wc_get_account_endpoint_url( 'orders' ),
+		),
+		'spent'  => array(
+			'icon'  => 'bag',
+			'label' => __( 'Total purchases', 'hamista' ),
+			'value' => wc_price( wc_get_customer_total_spent( $user_id ) ),
+			'url'   => wc_get_account_endpoint_url( 'orders' ),
+		),
+	);
+	$downloads = wc_get_customer_available_downloads( $user_id );
+	if ( $downloads ) {
+		$cards['downloads'] = array(
+			'icon'  => 'download',
+			'label' => __( 'Downloads', 'hamista' ),
+			'value' => hamista_digits( number_format_i18n( count( $downloads ) ) ),
+			'url'   => wc_get_account_endpoint_url( 'downloads' ),
+		);
+	}
+	/**
+	 * Account dashboard cards; add-ons (e.g. booking) can add their own.
+	 *
+	 * @param array $cards   Cards.
+	 * @param int   $user_id User.
+	 */
+	return (array) apply_filters( 'hamista/account_cards', $cards, $user_id );
+}

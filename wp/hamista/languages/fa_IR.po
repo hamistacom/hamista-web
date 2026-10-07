@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T07:13:46+00:00\n"
-"PO-Revision-Date: 2026-10-07 07:14+0000\n"
+"POT-Creation-Date: 2026-10-07T14:18:14+00:00\n"
+"PO-Revision-Date: 2026-10-07 14:18+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -44,6 +44,20 @@ msgstr "شاید نشانی را اشتباه وارد کرده‌اید یا ب
 msgid "Back to home"
 msgstr "بازگشت به خانه"
 
+#: archive-hm_expert.php:18
+msgid "Our team"
+msgstr "تیم ما"
+
+#: archive-hm_expert.php:31
+msgid "Categories"
+msgstr "دسته‌بندی‌ها"
+
+#: archive-hm_expert.php:32
+#: archive-hm_portfolio.php:31
+#: inc/template-tags.php:328
+msgid "All"
+msgstr "همه"
+
 #: archive-hm_portfolio.php:17
 msgid "Selected work"
 msgstr "نمونه‌کارهای منتخب"
@@ -51,11 +65,6 @@ msgstr "نمونه‌کارهای منتخب"
 #: archive-hm_portfolio.php:30
 msgid "Project categories"
 msgstr "دسته‌بندی پروژه‌ها"
-
-#: archive-hm_portfolio.php:31
-#: inc/template-tags.php:328
-msgid "All"
-msgstr "همه"
 
 #. translators: %s: number of comments
 #: comments.php:20
@@ -303,6 +312,40 @@ msgstr "%s%% تخفیف"
 msgid "Sale"
 msgstr "حراج"
 
+#: inc/woocommerce.php:330
+msgid "Dashboard"
+msgstr "پیشخوان"
+
+#: inc/woocommerce.php:331
+#: inc/woocommerce.php:357
+msgid "Orders"
+msgstr "سفارش‌ها"
+
+#: inc/woocommerce.php:332
+#: inc/woocommerce.php:372
+msgid "Downloads"
+msgstr "دانلودها"
+
+#: inc/woocommerce.php:333
+msgid "Addresses"
+msgstr "نشانی‌ها"
+
+#: inc/woocommerce.php:334
+msgid "Payment methods"
+msgstr "روش‌های پرداخت"
+
+#: inc/woocommerce.php:335
+msgid "Account details"
+msgstr "جزئیات حساب"
+
+#: inc/woocommerce.php:336
+msgid "Log out"
+msgstr "خروج"
+
+#: inc/woocommerce.php:363
+msgid "Total purchases"
+msgstr "مجموع خرید"
+
 #. translators: %s: search query
 #: index.php:15
 #, php-format
@@ -336,6 +379,42 @@ msgstr "جست‌وجو…"
 #: sidebar.php:15
 msgid "Sidebar"
 msgstr "ستون کناری"
+
+#. translators: %s: number of years
+#: single-hm_expert.php:25
+#, php-format
+msgid "%s years"
+msgstr "%s سال"
+
+#: single-hm_expert.php:27
+msgid "Experience"
+msgstr "سابقه"
+
+#: single-hm_expert.php:30
+msgid "Where"
+msgstr "محل"
+
+#: single-hm_expert.php:84
+msgid "About"
+msgstr "درباره"
+
+#: single-hm_expert.php:90
+msgid "Weekly hours"
+msgstr "ساعت‌های کاری هفته"
+
+#: single-hm_expert.php:98
+msgid "Book an appointment"
+msgstr "رزرو نوبت"
+
+#: single-hm_expert.php:99
+msgid "The whole team"
+msgstr "همه‌ی اعضای تیم"
+
+#. translators: %s: person's name
+#: single-hm_expert.php:110
+#, php-format
+msgid "Book an appointment with %s"
+msgstr "رزرو نوبت با %s"
 
 #: single-hm_portfolio.php:67
 msgid "More projects"
@@ -447,3 +526,39 @@ msgstr "بیشتر بخوانید"
 #: template-parts/post/related.php:32
 msgid "All posts"
 msgstr "همه‌ی نوشته‌ها"
+
+#. translators: %s: first name
+#: woocommerce/myaccount/dashboard.php:32
+#, php-format
+msgid "Hello, %s"
+msgstr "سلام، %s"
+
+#: woocommerce/myaccount/dashboard.php:35
+msgid "Your orders, appointments and account details, all in one place."
+msgstr "سفارش‌ها، نوبت‌ها و اطلاعات حسابتان، همه یک‌جا."
+
+#: woocommerce/myaccount/dashboard.php:52
+msgid "Latest orders"
+msgstr "آخرین سفارش‌ها"
+
+#: woocommerce/myaccount/dashboard.php:54
+msgid "All orders"
+msgstr "همه‌ی سفارش‌ها"
+
+#. translators: %s: order number
+#: woocommerce/myaccount/dashboard.php:65
+#, php-format
+msgid "Order %s"
+msgstr "سفارش %s"
+
+#: woocommerce/myaccount/dashboard.php:77
+msgid "No orders yet."
+msgstr "هنوز سفارشی ثبت نکرده‌اید."
+
+#: woocommerce/myaccount/dashboard.php:78
+msgid "Visit the shop"
+msgstr "رفتن به فروشگاه"
+
+#: woocommerce/myaccount/navigation.php:23
+msgid "Account pages"
+msgstr "بخش‌های حساب کاربری"

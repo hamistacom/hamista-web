@@ -1452,3 +1452,25 @@
 .elementor-widget-hm-header-actions .hm-header__actions { display: flex; align-items: center; gap: 8px; }
 .hm-header-cart--total { display: inline-flex; flex-direction: row; align-items: center; width: auto; padding-inline: 12px 14px; gap: 8px; border-radius: 999px; }
 .hm-header-cart__total { font-size: .85rem; font-weight: 700; font-family: var(--hm-font-num); }
+
+/* ==========================================================================
+   Before / after
+   ========================================================================== */
+.hm-ba { --hm-ba: 50%; margin: 0; }
+.hm-ba__frame { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--hm-radius-xl); background: var(--hm-surface-2); isolation: isolate; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.hm-ba .hm-ba__img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; pointer-events: none; }
+.hm-ba__before { position: absolute; inset: 0; z-index: 1; clip-path: inset(0 calc(100% - var(--hm-ba)) 0 0); }
+[dir="rtl"] .hm-ba__before { clip-path: inset(0 0 0 var(--hm-ba)); }
+.hm-ba__line { position: absolute; top: 0; bottom: 0; left: var(--hm-ba); z-index: 2; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 .5px rgba(0, 0, 0, .12), 0 0 18px rgba(0, 0, 0, .18); pointer-events: none; }
+.hm-ba__knob { position: absolute; top: 50%; left: 50%; display: flex; align-items: center; justify-content: center; gap: 2px; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #18181b; box-shadow: 0 6px 22px rgba(0, 0, 0, .22); transform: translate(-50%, -50%); transition: transform .3s var(--hm-ease); }
+.hm-ba.is-dragging .hm-ba__knob { transform: translate(-50%, -50%) scale(.92); }
+.hm-ba__range { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none; background: transparent; }
+.hm-ba__range::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 100vh; cursor: ew-resize; }
+.hm-ba__range::-moz-range-thumb { width: 44px; height: 100vh; border: 0; cursor: ew-resize; }
+.hm-ba__range:focus-visible ~ .hm-ba__line .hm-ba__knob, .hm-ba__frame:has(.hm-ba__range:focus-visible) .hm-ba__knob { outline: 3px solid var(--hm-accent); outline-offset: 3px; }
+.hm-ba__tag { position: absolute; top: 14px; z-index: 2; padding: 4px 12px; border-radius: 99px; background: rgba(15, 15, 18, .55); color: #fff; font-size: .78rem; font-weight: 600; letter-spacing: .01em; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: none; transition: opacity .3s; }
+.hm-ba__tag--before { left: 14px; }
+.hm-ba__tag--after { right: 14px; }
+[dir="rtl"] .hm-ba__tag--before { left: auto; right: 14px; }
+[dir="rtl"] .hm-ba__tag--after { right: auto; left: 14px; }
+.hm-ba__caption { margin-top: 12px; color: var(--hm-fg-muted); font-size: .9rem; text-align: center; }

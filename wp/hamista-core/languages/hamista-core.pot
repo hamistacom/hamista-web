@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T07:13:46+00:00\n"
+"POT-Creation-Date: 2026-10-07T14:18:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:445
-#: includes/elementor/class-elementor.php:92
+#: includes/elementor/class-elementor.php:96
 msgid "Hamista"
 msgstr ""
 
@@ -294,6 +294,8 @@ msgid "Close"
 msgstr ""
 
 #: includes/admin/class-admin.php:490
+#: includes/booking/class-admin.php:580
+#: includes/booking/class-admin.php:630
 msgid "Confirm"
 msgstr ""
 
@@ -548,6 +550,8 @@ msgstr ""
 
 #: includes/admin/class-admin.php:562
 #: includes/auth/class-account.php:114
+#: includes/booking/class-rest.php:264
+#: includes/booking/class-view.php:77
 msgid "Something went wrong. Please try again."
 msgstr ""
 
@@ -847,7 +851,7 @@ msgid "Remove demo content"
 msgstr ""
 
 #: includes/admin/class-admin.php:648
-#: includes/settings/schema.php:918
+#: includes/settings/schema.php:1042
 msgid "Tools"
 msgstr ""
 
@@ -1034,6 +1038,7 @@ msgid "Mobile login is turned off. Enable it in Hamista → Login & SMS."
 msgstr ""
 
 #: includes/auth/class-account.php:213
+#: includes/booking/class-view.php:322
 #: includes/elementor/widgets/class-login.php:69
 msgid "Log in or sign up"
 msgstr ""
@@ -1159,6 +1164,7 @@ msgid "%1$s accepted the message. A test code is on its way to %2$s."
 msgstr ""
 
 #: includes/auth/class-rest.php:401
+#: includes/booking/class-rest.php:261
 msgid "Your session expired. Please try again."
 msgstr ""
 
@@ -1177,8 +1183,9 @@ msgid "We couldn’t sign you in with this number. Please contact us."
 msgstr ""
 
 #: includes/auth/class-woocommerce.php:91
+#: includes/booking/class-view.php:332
 #: includes/elementor/widgets/class-lead-form.php:58
-#: includes/settings/schema.php:785
+#: includes/settings/schema.php:909
 #: templates/auth/account.php:66
 #: templates/auth/form.php:60
 msgid "Mobile number"
@@ -1287,7 +1294,7 @@ msgid "The provider had an internal error. Try again shortly."
 msgstr ""
 
 #: includes/auth/gateways/class-ghasedak.php:27
-#: includes/settings/schema.php:614
+#: includes/settings/schema.php:738
 msgid "Ghasedak"
 msgstr ""
 
@@ -1309,7 +1316,7 @@ msgid "IPPanel"
 msgstr ""
 
 #: includes/auth/gateways/class-kavenegar.php:26
-#: includes/settings/schema.php:610
+#: includes/settings/schema.php:734
 msgid "Kavenegar"
 msgstr ""
 
@@ -1346,7 +1353,7 @@ msgid "The template tag name is invalid."
 msgstr ""
 
 #: includes/auth/gateways/class-melipayamak.php:27
-#: includes/settings/schema.php:611
+#: includes/settings/schema.php:735
 msgid "Melipayamak"
 msgstr ""
 
@@ -1396,7 +1403,7 @@ msgid "The number is on the telecom blacklist."
 msgstr ""
 
 #: includes/auth/gateways/class-smsir.php:27
-#: includes/settings/schema.php:612
+#: includes/settings/schema.php:736
 msgid "SMS.ir"
 msgstr ""
 
@@ -1412,9 +1419,723 @@ msgstr ""
 msgid "Test mode"
 msgstr ""
 
+#: includes/booking/class-account-tab.php:50
+#: includes/booking/class-view.php:357
+msgid "My appointments"
+msgstr ""
+
+#: includes/booking/class-account-tab.php:121
+msgid "Next appointment"
+msgstr ""
+
+#: includes/booking/class-account-tab.php:122
+msgid "None booked"
+msgstr ""
+
+#: includes/booking/class-account-tab.php:147
+msgid "Log in to see your appointments."
+msgstr ""
+
+#: includes/booking/class-admin.php:84
+msgid "Profile"
+msgstr ""
+
+#: includes/booking/class-admin.php:85
+msgid "Weekly hours"
+msgstr ""
+
+#: includes/booking/class-admin.php:96
+msgid "e.g. Orthodontist, board certified"
+msgstr ""
+
+#: includes/booking/class-admin.php:97
+msgid "e.g. 123456"
+msgstr ""
+
+#: includes/booking/class-admin.php:98
+msgid "e.g. 12"
+msgstr ""
+
+#: includes/booking/class-admin.php:99
+msgid "e.g. 450,000 Toman"
+msgstr ""
+
+#: includes/booking/class-admin.php:100
+msgid "e.g. Second floor, room 4"
+msgstr ""
+
+#. translators: %s: e.g. "specialties", "services"
+#: includes/booking/class-admin.php:117
+#, php-format
+msgid "The photo comes from the featured image and the biography from the main editor. Add %s in the box on the side."
+msgstr ""
+
+#: includes/booking/class-admin.php:130
+#: includes/booking/class-view.php:301
+#: includes/booking/class-view.php:315
+msgid "Day"
+msgstr ""
+
+#: includes/booking/class-admin.php:130
+msgid "Morning shift"
+msgstr ""
+
+#: includes/booking/class-admin.php:130
+msgid "Evening shift (optional)"
+msgstr ""
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:146
+#, php-format
+msgid "%s, start"
+msgstr ""
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:148
+#, php-format
+msgid "%s, end"
+msgstr ""
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:150
+#, php-format
+msgid "%s, evening start"
+msgstr ""
+
+#. translators: %s: weekday
+#: includes/booking/class-admin.php:153
+#, php-format
+msgid "%s, evening end"
+msgstr ""
+
+#: includes/booking/class-admin.php:157
+msgid "Length of each appointment"
+msgstr ""
+
+#. translators: %s: number of minutes
+#: includes/booking/class-admin.php:160
+#, php-format
+msgid "%s minutes"
+msgstr ""
+
+#: includes/booking/class-admin.php:163
+msgid "Visitors can book any free slot inside these hours. Leave the evening shift empty for mornings only."
+msgstr ""
+
+#: includes/booking/class-admin.php:217
+#: includes/elementor/widgets/class-team.php:53
+#: includes/elementor/widgets/class-testimonials.php:78
+msgid "Photo"
+msgstr ""
+
+#: includes/booking/class-admin.php:221
+msgid "Working days"
+msgstr ""
+
+#: includes/booking/class-admin.php:255
+#: includes/booking/class-booking.php:256
+msgid "Appointment details"
+msgstr ""
+
+#: includes/booking/class-admin.php:278
+#: includes/booking/class-admin.php:368
+msgid "Status"
+msgstr ""
+
+#: includes/booking/class-admin.php:290
+#: includes/booking/class-rest.php:368
+msgid "Date"
+msgstr ""
+
+#: includes/booking/class-admin.php:294
+#: includes/booking/class-rest.php:369
+#: includes/booking/class-view.php:316
+msgid "Time"
+msgstr ""
+
+#: includes/booking/class-admin.php:295
+#: includes/booking/class-admin.php:364
+#: includes/booking/class-rest.php:370
+#: includes/elementor/widgets/class-team.php:60
+#: includes/elementor/widgets/class-testimonials.php:62
+#: includes/forms/class-forms.php:305
+msgid "Name"
+msgstr ""
+
+#: includes/booking/class-admin.php:296
+#: includes/booking/class-admin.php:367
+#: includes/booking/class-rest.php:371
+#: includes/elementor/widgets/class-contact-form.php:51
+#: includes/forms/class-forms.php:307
+#: includes/settings/schema.php:332
+msgid "Mobile"
+msgstr ""
+
+#: includes/booking/class-admin.php:298
+#: includes/booking/class-rest.php:372
+msgid "Notes"
+msgstr ""
+
+#. translators: %s: user display name with a link
+#: includes/booking/class-admin.php:302
+#, php-format
+msgid "Booked by the account of %s."
+msgstr ""
+
+#: includes/booking/class-admin.php:365
+msgid "Appointment time"
+msgstr ""
+
+#: includes/booking/class-admin.php:369
+msgid "Booked on"
+msgstr ""
+
+#: includes/booking/class-admin.php:432
+msgid "Today"
+msgstr ""
+
+#: includes/booking/class-admin.php:433
+#: includes/booking/class-view.php:519
+msgid "Upcoming"
+msgstr ""
+
+#: includes/booking/class-admin.php:434
+#: includes/booking/class-booking.php:78
+msgid "Awaiting confirmation"
+msgstr ""
+
+#. translators: %s: e.g. "Doctors"
+#. translators: %s: e.g. "Doctors", "Lawyers"
+#. translators: %s: e.g. "Specialties", "Services"
+#: includes/booking/class-admin.php:467
+#: includes/booking/class-booking.php:214
+#: includes/booking/class-booking.php:239
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: includes/booking/class-admin.php:478
+msgid "Filter by status"
+msgstr ""
+
+#: includes/booking/class-admin.php:478
+msgid "All statuses"
+msgstr ""
+
+#: includes/booking/class-admin.php:581
+#: includes/booking/class-admin.php:631
+msgid "Mark as done"
+msgstr ""
+
+#: includes/booking/class-admin.php:582
+#: includes/booking/class-admin.php:632
+#: includes/booking/class-view.php:491
+msgctxt "appointment"
+msgid "Cancel"
+msgstr ""
+
+#: includes/booking/class-admin.php:613
+msgid "You are not allowed to change this appointment."
+msgstr ""
+
+#. translators: %s: number of appointments
+#: includes/booking/class-admin.php:669
+#, php-format
+msgid "%s appointment updated."
+msgid_plural "%s appointments updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/booking/class-booking.php:61
+msgid "Saturday"
+msgstr ""
+
+#: includes/booking/class-booking.php:62
+msgid "Sunday"
+msgstr ""
+
+#: includes/booking/class-booking.php:63
+msgid "Monday"
+msgstr ""
+
+#: includes/booking/class-booking.php:64
+msgid "Tuesday"
+msgstr ""
+
+#: includes/booking/class-booking.php:65
+msgid "Wednesday"
+msgstr ""
+
+#: includes/booking/class-booking.php:66
+msgid "Thursday"
+msgstr ""
+
+#: includes/booking/class-booking.php:67
+msgid "Friday"
+msgstr ""
+
+#: includes/booking/class-booking.php:79
+msgid "Confirmed"
+msgstr ""
+
+#: includes/booking/class-booking.php:80
+msgctxt "appointment status"
+msgid "Done"
+msgstr ""
+
+#: includes/booking/class-booking.php:81
+#: includes/booking/class-view.php:87
+msgid "Cancelled"
+msgstr ""
+
+#: includes/booking/class-booking.php:93
+#: includes/settings/schema.php:520
+msgid "General services"
+msgstr ""
+
+#: includes/booking/class-booking.php:94
+msgid "Expert"
+msgstr ""
+
+#: includes/booking/class-booking.php:95
+msgid "Experts"
+msgstr ""
+
+#: includes/booking/class-booking.php:96
+#: includes/booking/class-booking.php:118
+msgid "Service"
+msgstr ""
+
+#: includes/booking/class-booking.php:97
+#: includes/booking/class-booking.php:119
+#: includes/elementor/widgets/class-lead-form.php:107
+#: includes/portfolio/class-portfolio.php:32
+msgid "Services"
+msgstr ""
+
+#: includes/booking/class-booking.php:98
+msgid "Fee"
+msgstr ""
+
+#: includes/booking/class-booking.php:99
+#: includes/booking/class-booking.php:121
+#: includes/booking/class-booking.php:143
+msgid "Licence number"
+msgstr ""
+
+#: includes/booking/class-booking.php:104
+#: includes/settings/schema.php:524
+msgid "Clinic and medical"
+msgstr ""
+
+#: includes/booking/class-booking.php:105
+msgid "Doctor"
+msgstr ""
+
+#: includes/booking/class-booking.php:106
+msgid "Doctors"
+msgstr ""
+
+#: includes/booking/class-booking.php:107
+msgid "Specialty"
+msgstr ""
+
+#: includes/booking/class-booking.php:108
+msgid "Specialties"
+msgstr ""
+
+#: includes/booking/class-booking.php:109
+msgid "Visit fee"
+msgstr ""
+
+#: includes/booking/class-booking.php:110
+msgid "Medical council number"
+msgstr ""
+
+#: includes/booking/class-booking.php:115
+#: includes/settings/schema.php:528
+msgid "Beauty salon"
+msgstr ""
+
+#: includes/booking/class-booking.php:116
+msgid "Stylist"
+msgstr ""
+
+#: includes/booking/class-booking.php:117
+msgid "Stylists"
+msgstr ""
+
+#: includes/booking/class-booking.php:120
+#: includes/elementor/widgets/class-pricing.php:65
+msgid "Price"
+msgstr ""
+
+#: includes/booking/class-booking.php:126
+#: includes/settings/schema.php:532
+msgid "Law firm"
+msgstr ""
+
+#: includes/booking/class-booking.php:127
+msgid "Lawyer"
+msgstr ""
+
+#: includes/booking/class-booking.php:128
+msgid "Lawyers"
+msgstr ""
+
+#: includes/booking/class-booking.php:129
+msgid "Practice area"
+msgstr ""
+
+#: includes/booking/class-booking.php:130
+msgid "Practice areas"
+msgstr ""
+
+#: includes/booking/class-booking.php:131
+msgid "Consultation fee"
+msgstr ""
+
+#: includes/booking/class-booking.php:132
+msgid "Bar licence number"
+msgstr ""
+
+#: includes/booking/class-booking.php:137
+#: includes/settings/schema.php:536
+msgid "Consulting and coaching"
+msgstr ""
+
+#: includes/booking/class-booking.php:138
+msgid "Consultant"
+msgstr ""
+
+#: includes/booking/class-booking.php:139
+msgid "Consultants"
+msgstr ""
+
+#: includes/booking/class-booking.php:140
+msgctxt "area of work"
+msgid "Field"
+msgstr ""
+
+#: includes/booking/class-booking.php:141
+msgctxt "areas of work"
+msgid "Fields"
+msgstr ""
+
+#: includes/booking/class-booking.php:142
+msgid "Session fee"
+msgstr ""
+
+#. translators: %s: e.g. "Doctor", "Lawyer"
+#. translators: %s: e.g. "Specialty", "Service"
+#: includes/booking/class-booking.php:203
+#: includes/booking/class-booking.php:205
+#: includes/booking/class-booking.php:237
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#. translators: %s: e.g. "Doctor", "Lawyer"
+#: includes/booking/class-booking.php:207
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: includes/booking/class-booking.php:208
+msgid "View profile"
+msgstr ""
+
+#. translators: %s: e.g. "Doctors", "Lawyers"
+#: includes/booking/class-booking.php:210
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: includes/booking/class-booking.php:211
+msgid "Nothing found."
+msgstr ""
+
+#: includes/booking/class-booking.php:212
+msgid "Nothing in the trash."
+msgstr ""
+
+#: includes/booking/class-booking.php:215
+#: includes/elementor/widgets/class-booking-form.php:88
+msgid "Booking"
+msgstr ""
+
+#: includes/booking/class-booking.php:254
+#: includes/booking/class-booking.php:259
+msgid "Appointments"
+msgstr ""
+
+#: includes/booking/class-booking.php:255
+msgid "Appointment"
+msgstr ""
+
+#: includes/booking/class-booking.php:257
+msgid "Search appointments"
+msgstr ""
+
+#: includes/booking/class-booking.php:258
+msgid "No appointments yet."
+msgstr ""
+
+#: includes/booking/class-booking.php:340
+msgid "Title shown under the name"
+msgstr ""
+
+#: includes/booking/class-booking.php:342
+msgid "Years of experience"
+msgstr ""
+
+#: includes/booking/class-booking.php:344
+msgid "Address or room"
+msgstr ""
+
+#. translators: %s: years of experience
+#: includes/booking/class-booking.php:503
+#, php-format
+msgid "%s years of experience"
+msgstr ""
+
+#: includes/booking/class-booking.php:507
+#: includes/booking/class-view.php:515
+msgid "Book an appointment"
+msgstr ""
+
+#: includes/booking/class-rest.php:81
+#: includes/booking/class-rest.php:270
+#: includes/booking/class-view.php:88
+msgid "Please log in first; it takes a few seconds with your mobile number."
+msgstr ""
+
+#: includes/booking/class-rest.php:225
+#: includes/booking/class-rest.php:281
+msgid "Booking is not available for this person right now."
+msgstr ""
+
+#: includes/booking/class-rest.php:267
+msgid "Too many requests. Please try again in a few minutes."
+msgstr ""
+
+#: includes/booking/class-rest.php:284
+msgid "Choose a day and a time."
+msgstr ""
+
+#: includes/booking/class-rest.php:287
+#: includes/booking/class-view.php:79
+msgid "Please enter your full name."
+msgstr ""
+
+#: includes/booking/class-rest.php:290
+#: includes/booking/class-view.php:80
+msgid "Please enter a valid mobile number, like 09121234567."
+msgstr ""
+
+#: includes/booking/class-rest.php:297
+msgid "Someone just booked this time. Please choose another one."
+msgstr ""
+
+#: includes/booking/class-rest.php:303
+msgid "This time is no longer free. Please choose another one."
+msgstr ""
+
+#: includes/booking/class-rest.php:327
+msgid "Your appointment could not be saved. Please try again."
+msgstr ""
+
+#. translators: 1: expert name, 2: date, 3: time
+#: includes/booking/class-rest.php:345
+#, php-format
+msgid "Your appointment with %1$s on %2$s at %3$s is booked. We will confirm it by phone or SMS."
+msgstr ""
+
+#. translators: %s: site name
+#: includes/booking/class-rest.php:377
+#, php-format
+msgid "[%s] New appointment"
+msgstr ""
+
+#: includes/booking/class-rest.php:415
+msgid "You can only cancel your own appointments."
+msgstr ""
+
+#: includes/booking/class-rest.php:418
+msgid "This appointment can no longer be cancelled online. Please call us."
+msgstr ""
+
+#: includes/booking/class-rest.php:425
+msgid "Your appointment was cancelled."
+msgstr ""
+
+#: includes/booking/class-view.php:70
+msgid "Loading free times…"
+msgstr ""
+
+#: includes/booking/class-view.php:71
+msgid "No free time on this day. Try another day."
+msgstr ""
+
+#: includes/booking/class-view.php:72
+msgid "There is no free time in the coming days. Please call us."
+msgstr ""
+
+#: includes/booking/class-view.php:73
+msgid "Full"
+msgstr ""
+
+#: includes/booking/class-view.php:74
+#: includes/booking/class-view.php:387
+msgid "Closed"
+msgstr ""
+
+#. translators: %s: number of free slots
+#: includes/booking/class-view.php:76
+#, php-format
+msgid "%s free"
+msgstr ""
+
+#: includes/booking/class-view.php:78
+msgid "No connection. Check your internet and try again."
+msgstr ""
+
+#. translators: %s: e.g. "doctor", "lawyer"
+#: includes/booking/class-view.php:82
+#, php-format
+msgid "Choose the %s first."
+msgstr ""
+
+#: includes/booking/class-view.php:83
+msgid "Choose a time to continue."
+msgstr ""
+
+#: includes/booking/class-view.php:84
+msgid "Booking…"
+msgstr ""
+
+#: includes/booking/class-view.php:85
+msgid "Cancel this appointment? The time will be offered to others."
+msgstr ""
+
+#: includes/booking/class-view.php:86
+msgid "Cancelling…"
+msgstr ""
+
+#: includes/booking/class-view.php:89
+msgid "Morning"
+msgstr ""
+
+#: includes/booking/class-view.php:90
+msgid "Afternoon & evening"
+msgstr ""
+
+#: includes/booking/class-view.php:157
+#: includes/elementor/widgets/class-portfolio.php:213
+msgid "All"
+msgstr ""
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/booking/class-view.php:196
+#, php-format
+msgid "Add %s under Booking in the dashboard and set their weekly hours to start taking appointments."
+msgstr ""
+
+#: includes/booking/class-view.php:237
+msgid "Day & time"
+msgstr ""
+
+#: includes/booking/class-view.php:238
+#: includes/booking/class-view.php:310
+msgid "Your details"
+msgstr ""
+
+#. translators: %s: e.g. "doctor", "lawyer"
+#: includes/booking/class-view.php:246
+#, php-format
+msgid "Choose the %s"
+msgstr ""
+
+#: includes/booking/class-view.php:289
+msgid "See free times"
+msgstr ""
+
+#: includes/booking/class-view.php:296
+msgid "Pick a day and time"
+msgstr ""
+
+#: includes/booking/class-view.php:304
+#: includes/elementor/widgets/class-lead-form.php:476
+msgid "Continue"
+msgstr ""
+
+#: includes/booking/class-view.php:311
+msgid "Change time"
+msgstr ""
+
+#: includes/booking/class-view.php:321
+msgid "Log in with your mobile number to book. It takes a few seconds and you can manage your appointments later."
+msgstr ""
+
+#: includes/booking/class-view.php:328
+#: includes/elementor/widgets/class-lead-form.php:57
+#: includes/elementor/widgets/class-team.php:62
+#: includes/elementor/widgets/class-team.php:94
+#: includes/elementor/widgets/class-team.php:95
+#: includes/elementor/widgets/class-team.php:96
+#: includes/elementor/widgets/class-team.php:97
+#: templates/auth/form.php:91
+msgid "Full name"
+msgstr ""
+
+#: includes/booking/class-view.php:338
+msgid "Notes (optional)"
+msgstr ""
+
+#: includes/booking/class-view.php:342
+#: templates/auth/form.php:35
+msgid "Leave this field empty"
+msgstr ""
+
+#: includes/booking/class-view.php:345
+msgid "Book appointment"
+msgstr ""
+
+#: includes/booking/class-view.php:353
+msgid "Your appointment is booked"
+msgstr ""
+
+#: includes/booking/class-view.php:359
+msgid "Book another"
+msgstr ""
+
+#. translators: 1: start time, 2: end time
+#: includes/booking/class-view.php:385
+#, php-format
+msgid "%1$s to %2$s"
+msgstr ""
+
+#: includes/booking/class-view.php:513
+msgid "You have no appointments yet."
+msgstr ""
+
+#: includes/booking/class-view.php:521
+msgid "New appointment"
+msgstr ""
+
+#: includes/booking/class-view.php:528
+msgid "No upcoming appointments."
+msgstr ""
+
+#: includes/booking/class-view.php:531
+msgid "Past and cancelled"
+msgstr ""
+
 #: includes/elementor/class-carousel.php:41
 #: includes/elementor/class-carousel.php:45
 #: includes/elementor/widgets/class-depth.php:109
+#: includes/elementor/widgets/class-experts.php:143
+#: includes/elementor/widgets/class-experts.php:147
 #: includes/elementor/widgets/class-features.php:135
 #: includes/elementor/widgets/class-features.php:139
 #: includes/elementor/widgets/class-hero.php:50
@@ -1432,6 +2153,7 @@ msgid "Layout"
 msgstr ""
 
 #: includes/elementor/class-carousel.php:51
+#: includes/elementor/widgets/class-experts.php:152
 #: includes/elementor/widgets/class-portfolio.php:134
 #: includes/elementor/widgets/class-posts.php:124
 #: includes/elementor/widgets/class-team.php:109
@@ -1440,6 +2162,7 @@ msgid "Carousel"
 msgstr ""
 
 #: includes/elementor/class-carousel.php:55
+#: includes/elementor/widgets/class-experts.php:151
 #: includes/elementor/widgets/class-features.php:143
 #: includes/elementor/widgets/class-portfolio.php:132
 #: includes/elementor/widgets/class-posts.php:123
@@ -1451,6 +2174,7 @@ msgstr ""
 
 #: includes/elementor/class-carousel.php:64
 #: includes/elementor/widgets/class-counters.php:128
+#: includes/elementor/widgets/class-experts.php:159
 #: includes/elementor/widgets/class-features.php:164
 #: includes/elementor/widgets/class-portfolio.php:141
 #: includes/elementor/widgets/class-posts.php:134
@@ -1739,6 +2463,7 @@ msgstr ""
 
 #: includes/elementor/class-widget-base.php:101
 #: includes/elementor/class-widget-base.php:217
+#: includes/elementor/widgets/class-experts.php:62
 #: includes/elementor/widgets/class-flow.php:47
 #: includes/elementor/widgets/class-heading.php:26
 #: includes/elementor/widgets/class-portfolio.php:54
@@ -1756,6 +2481,7 @@ msgid "Eyebrow"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:118
+#: includes/elementor/widgets/class-booking-form.php:92
 #: includes/elementor/widgets/class-depth.php:66
 #: includes/elementor/widgets/class-features.php:67
 #: includes/elementor/widgets/class-hscroll.php:80
@@ -1882,6 +2608,7 @@ msgid "Space below heading"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:350
+#: includes/elementor/widgets/class-booking-form.php:101
 #: includes/elementor/widgets/class-depth.php:76
 #: includes/elementor/widgets/class-features.php:75
 #: includes/elementor/widgets/class-hscroll.php:88
@@ -2064,6 +2791,115 @@ msgstr ""
 msgid "Lines"
 msgstr ""
 
+#: includes/elementor/widgets/class-before-after.php:30
+msgid "Before & after"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:47
+msgid "Photos"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:51
+#: includes/elementor/widgets/class-before-after.php:78
+#: includes/elementor/widgets/class-before-after.php:208
+msgctxt "photo comparison"
+msgid "Before"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:60
+#: includes/elementor/widgets/class-before-after.php:87
+#: includes/elementor/widgets/class-before-after.php:209
+msgctxt "photo comparison"
+msgid "After"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:76
+msgid "\"Before\" label"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:85
+msgid "\"After\" label"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:93
+#: includes/elementor/widgets/class-image-reveal.php:124
+#: includes/elementor/widgets/class-stories.php:83
+msgid "Caption"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:96
+msgid "e.g. Composite veneers, two sessions"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:102
+msgid "Divider start position"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:119
+msgid "Aspect ratio"
+msgstr ""
+
+#: includes/elementor/widgets/class-before-after.php:135
+#: includes/elementor/widgets/class-image-reveal.php:138
+msgid "Corner radius"
+msgstr ""
+
+#. translators: 1: before label, 2: after label
+#: includes/elementor/widgets/class-before-after.php:207
+#, php-format
+msgid "Drag to compare %1$s and %2$s"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:30
+msgid "Appointment booking"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:64
+msgid "Let the visitor choose"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:94
+msgid "Book an appointment online"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:104
+msgid "Pick a free time; we will confirm it by SMS."
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:111
+msgid "Choose one to skip the first step, e.g. on a personal profile page."
+msgstr ""
+
+#. translators: %s: e.g. "specialties", "services"
+#: includes/elementor/widgets/class-booking-form.php:122
+#, php-format
+msgid "Only these %s"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:133
+msgid "Notes field"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:142
+msgid "Appearance"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:146
+msgid "In a card"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:147
+msgid "Without a frame"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:154
+msgid "Maximum width"
+msgstr ""
+
+#: includes/elementor/widgets/class-booking-form.php:177
+msgid "Turn on Booking in Hamista settings to take appointments here."
+msgstr ""
+
 #: includes/elementor/widgets/class-button.php:27
 #: includes/elementor/widgets/class-button.php:39
 #: includes/elementor/widgets/class-cta.php:62
@@ -2102,12 +2938,6 @@ msgstr ""
 #: includes/elementor/widgets/class-lead-form.php:59
 #: includes/forms/class-forms.php:306
 msgid "Email"
-msgstr ""
-
-#: includes/elementor/widgets/class-contact-form.php:51
-#: includes/forms/class-forms.php:307
-#: includes/settings/schema.php:332
-msgid "Mobile"
 msgstr ""
 
 #: includes/elementor/widgets/class-contact-form.php:52
@@ -2525,6 +3355,65 @@ msgstr ""
 msgid "Float gently"
 msgstr ""
 
+#: includes/elementor/widgets/class-experts.php:34
+msgid "Experts & team"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:65
+msgid "Our team"
+msgstr ""
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/elementor/widgets/class-experts.php:67
+#, php-format
+msgid "Meet our *%s*"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:91
+msgid "How many"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:102
+msgid "Empty shows everyone."
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:112
+msgid "Filter chips"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:122
+#: includes/elementor/widgets/class-hscroll.php:134
+#: includes/elementor/widgets/class-portfolio.php:112
+#: includes/shop/class-product-card.php:48
+msgid "Card style"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:126
+msgid "Photo on top"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:127
+msgid "Round photo, centred"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:128
+msgid "Compact row"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:135
+msgid "Booking button"
+msgstr ""
+
+#: includes/elementor/widgets/class-experts.php:188
+msgid "Turn on Booking in Hamista settings to show your team here."
+msgstr ""
+
+#. translators: %s: e.g. "doctors", "lawyers"
+#: includes/elementor/widgets/class-experts.php:200
+#, php-format
+msgid "Add %s under Booking in the dashboard to show them here."
+msgstr ""
+
 #: includes/elementor/widgets/class-features.php:28
 #: includes/elementor/widgets/class-features.php:45
 msgid "Features"
@@ -2687,7 +3576,7 @@ msgstr ""
 
 #: includes/elementor/widgets/class-flow.php:146
 #: includes/elementor/widgets/class-flow.php:150
-#: includes/settings/schema.php:506
+#: includes/settings/schema.php:630
 msgid "Motion"
 msgstr ""
 
@@ -2779,7 +3668,7 @@ msgid "Icon with total"
 msgstr ""
 
 #: includes/elementor/widgets/class-header-actions.php:147
-#: includes/settings/schema.php:562
+#: includes/settings/schema.php:686
 msgid "Interface sounds"
 msgstr ""
 
@@ -3001,12 +3890,6 @@ msgstr ""
 msgid "Screen-wide"
 msgstr ""
 
-#: includes/elementor/widgets/class-hscroll.php:134
-#: includes/elementor/widgets/class-portfolio.php:112
-#: includes/shop/class-product-card.php:48
-msgid "Card style"
-msgstr ""
-
 #: includes/elementor/widgets/class-hscroll.php:138
 msgid "Image with caption below"
 msgstr ""
@@ -3076,27 +3959,8 @@ msgstr ""
 msgid "Paper mat"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:124
-#: includes/elementor/widgets/class-stories.php:83
-msgid "Caption"
-msgstr ""
-
-#: includes/elementor/widgets/class-image-reveal.php:138
-msgid "Corner radius"
-msgstr ""
-
 #: includes/elementor/widgets/class-lead-form.php:32
 msgid "Multi-step Form"
-msgstr ""
-
-#: includes/elementor/widgets/class-lead-form.php:57
-#: includes/elementor/widgets/class-team.php:62
-#: includes/elementor/widgets/class-team.php:94
-#: includes/elementor/widgets/class-team.php:95
-#: includes/elementor/widgets/class-team.php:96
-#: includes/elementor/widgets/class-team.php:97
-#: templates/auth/form.php:91
-msgid "Full name"
 msgstr ""
 
 #: includes/elementor/widgets/class-lead-form.php:60
@@ -3115,11 +3979,6 @@ msgstr ""
 #: includes/elementor/widgets/class-lead-form.php:203
 #: includes/elementor/widgets/class-lead-form.php:273
 msgid "Step name"
-msgstr ""
-
-#: includes/elementor/widgets/class-lead-form.php:107
-#: includes/portfolio/class-portfolio.php:32
-msgid "Services"
 msgstr ""
 
 #: includes/elementor/widgets/class-lead-form.php:116
@@ -3327,10 +4186,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-lead-form.php:476
 msgid "You started a request earlier. Continue where you left off?"
-msgstr ""
-
-#: includes/elementor/widgets/class-lead-form.php:476
-msgid "Continue"
 msgstr ""
 
 #: includes/elementor/widgets/class-lead-form.php:476
@@ -3558,10 +4413,6 @@ msgstr ""
 msgid "Filter projects"
 msgstr ""
 
-#: includes/elementor/widgets/class-portfolio.php:213
-msgid "All"
-msgstr ""
-
 #: includes/elementor/widgets/class-posts.php:31
 #: includes/elementor/widgets/class-posts.php:218
 msgid "Posts"
@@ -3641,10 +4492,6 @@ msgstr ""
 #: includes/elementor/widgets/class-pricing.php:58
 #: includes/shop/class-product-card.php:83
 msgid "Short description"
-msgstr ""
-
-#: includes/elementor/widgets/class-pricing.php:65
-msgid "Price"
 msgstr ""
 
 #: includes/elementor/widgets/class-pricing.php:73
@@ -4316,17 +5163,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-team.php:48
 msgid "People"
-msgstr ""
-
-#: includes/elementor/widgets/class-team.php:53
-#: includes/elementor/widgets/class-testimonials.php:78
-msgid "Photo"
-msgstr ""
-
-#: includes/elementor/widgets/class-team.php:60
-#: includes/elementor/widgets/class-testimonials.php:62
-#: includes/forms/class-forms.php:305
-msgid "Name"
 msgstr ""
 
 #: includes/elementor/widgets/class-team.php:68
@@ -5135,380 +5971,509 @@ msgstr ""
 msgid "Show second image on hover"
 msgstr ""
 
+#: includes/settings/schema.php:506
+msgid "Booking & appointments"
+msgstr ""
+
 #: includes/settings/schema.php:508
-msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
+msgid "For any business that works by appointment: a team with services and weekly hours, online booking of free times, and a \"My appointments\" tab for customers."
 msgstr ""
 
 #: includes/settings/schema.php:511
-msgid "Smooth scrolling"
+msgid "Enable online booking"
 msgstr ""
 
 #: includes/settings/schema.php:512
-msgid "Inertia scrolling for mouse wheels. Off by default: the browser's own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively."
+msgid "Adds a \"Booking\" menu to the dashboard for your team and appointments, plus the \"Experts & team\" and \"Appointment booking\" widgets."
 msgstr ""
 
 #: includes/settings/schema.php:516
-msgid "Scroll smoothness"
+msgid "Business type"
 msgstr ""
 
 #: includes/settings/schema.php:517
-msgid "Lower is silkier, higher is snappier."
-msgstr ""
-
-#: includes/settings/schema.php:524
-msgid "Entrance animations"
-msgstr ""
-
-#: includes/settings/schema.php:525
-msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
-msgstr ""
-
-#: includes/settings/schema.php:528
-msgid "Animations on phones"
-msgstr ""
-
-#: includes/settings/schema.php:531
-msgid "Magnetic buttons"
-msgstr ""
-
-#: includes/settings/schema.php:532
-msgid "Buttons lean slightly toward the cursor."
-msgstr ""
-
-#: includes/settings/schema.php:536
-msgid "Cursor style"
-msgstr ""
-
-#: includes/settings/schema.php:537
-msgid "Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor=\"…\"."
-msgstr ""
-
-#: includes/settings/schema.php:540
-msgid "System cursor"
+msgid "Sets the wording across the site and the dashboard, e.g. doctor and specialty, or lawyer and practice area."
 msgstr ""
 
 #: includes/settings/schema.php:544
-msgid "Dot"
+msgid "Name for one person"
 msgstr ""
 
-#: includes/settings/schema.php:548
-msgid "Dot and ring"
+#: includes/settings/schema.php:545
+msgid "e.g. Instructor"
 msgstr ""
 
-#: includes/settings/schema.php:552
-msgid "Inverting lens"
+#: includes/settings/schema.php:546
+msgid "Your own wording (optional)"
 msgstr ""
 
-#: includes/settings/schema.php:556
-msgid "Soft glow"
+#: includes/settings/schema.php:547
+msgid "Leave empty to use the wording of the business type."
 msgstr ""
 
-#: includes/settings/schema.php:563
-msgid "Sound"
+#: includes/settings/schema.php:553
+msgid "Name for the team"
 msgstr ""
 
-#: includes/settings/schema.php:564
-msgid "Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off."
+#: includes/settings/schema.php:554
+msgid "e.g. Instructors"
+msgstr ""
+
+#: includes/settings/schema.php:560
+msgid "Name for one service"
+msgstr ""
+
+#: includes/settings/schema.php:561
+msgid "e.g. Course"
 msgstr ""
 
 #: includes/settings/schema.php:567
-msgid "On for first-time visitors"
+msgid "Name for services"
 msgstr ""
 
 #: includes/settings/schema.php:568
-msgid "Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts."
+msgid "e.g. Courses"
 msgstr ""
 
-#: includes/settings/schema.php:573
-msgid "Sound character"
+#: includes/settings/schema.php:574
+msgid "Booking page"
 msgstr ""
 
 #: includes/settings/schema.php:575
-msgid "Soft — rounded and quiet"
-msgstr ""
-
-#: includes/settings/schema.php:576
-msgid "Glass — bright and airy"
+msgid "A page with the \"Appointment booking\" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each person's own profile page."
 msgstr ""
 
 #: includes/settings/schema.php:577
-msgid "Mechanical — crisp switch clicks"
+msgid "Booking rules"
 msgstr ""
 
-#: includes/settings/schema.php:578
-msgid "Digital — short synth blips"
+#: includes/settings/schema.php:582
+msgid "How far ahead people can book"
 msgstr ""
 
-#: includes/settings/schema.php:584
-msgid "Volume"
+#: includes/settings/schema.php:585
+msgid "days"
 msgstr ""
 
-#: includes/settings/schema.php:592
-msgid "Tick on hover"
+#: includes/settings/schema.php:591
+msgid "Minimum notice before an appointment"
 msgstr ""
 
-#: includes/settings/schema.php:593
-msgid "A very quiet tick when the pointer reaches a button or card."
+#: includes/settings/schema.php:594
+#: includes/settings/schema.php:604
+msgid "hours"
 msgstr ""
 
-#: includes/settings/schema.php:599
-msgid "Login & SMS"
+#: includes/settings/schema.php:600
+msgid "Online cancellation allowed until"
 msgstr ""
 
 #: includes/settings/schema.php:601
-msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
-msgstr ""
-
-#: includes/settings/schema.php:603
-msgid "Enable mobile login (OTP)"
-msgstr ""
-
-#: includes/settings/schema.php:606
-#: includes/settings/schema.php:607
-msgid "SMS provider"
+msgid "Hours before the appointment. After that, people are asked to call."
 msgstr ""
 
 #: includes/settings/schema.php:609
-msgid "Test mode (no SMS, code shown to admins)"
+msgid "Only logged-in visitors can book"
 msgstr ""
 
-#: includes/settings/schema.php:613
-msgid "IPPanel / Farazsms"
+#: includes/settings/schema.php:610
+msgid "Recommended with mobile login (OTP): the number is verified and people can see and cancel their appointments."
+msgstr ""
+
+#: includes/settings/schema.php:614
+msgid "Confirm new appointments automatically"
 msgstr ""
 
 #: includes/settings/schema.php:615
-msgid "Custom HTTP API"
+msgid "When off, new appointments wait for the reception to confirm them."
+msgstr ""
+
+#: includes/settings/schema.php:620
+msgid "Send new appointments to"
 msgstr ""
 
 #: includes/settings/schema.php:621
-#: includes/settings/schema.php:665
-#: includes/settings/schema.php:691
-#: includes/settings/schema.php:726
-msgid "API key"
+msgid "Email of the reception. Empty uses the site admin email."
 msgstr ""
 
-#: includes/settings/schema.php:629
-msgid "Verify template name"
+#: includes/settings/schema.php:624
+msgid "Notifications"
 msgstr ""
 
-#: includes/settings/schema.php:630
-msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
+#: includes/settings/schema.php:632
+msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
 msgstr ""
 
-#: includes/settings/schema.php:638
-msgid "Username"
+#: includes/settings/schema.php:635
+msgid "Smooth scrolling"
 msgstr ""
 
-#: includes/settings/schema.php:647
-msgid "Password / API key"
+#: includes/settings/schema.php:636
+msgid "Inertia scrolling for mouse wheels. Off by default: the browser's own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively."
+msgstr ""
+
+#: includes/settings/schema.php:640
+msgid "Scroll smoothness"
+msgstr ""
+
+#: includes/settings/schema.php:641
+msgid "Lower is silkier, higher is snappier."
+msgstr ""
+
+#: includes/settings/schema.php:648
+msgid "Entrance animations"
+msgstr ""
+
+#: includes/settings/schema.php:649
+msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
+msgstr ""
+
+#: includes/settings/schema.php:652
+msgid "Animations on phones"
+msgstr ""
+
+#: includes/settings/schema.php:655
+msgid "Magnetic buttons"
 msgstr ""
 
 #: includes/settings/schema.php:656
-msgid "Pattern (bodyId)"
+msgid "Buttons lean slightly toward the cursor."
 msgstr ""
 
-#: includes/settings/schema.php:657
-msgid "Shared-line pattern ID with one variable for the code."
+#: includes/settings/schema.php:660
+msgid "Cursor style"
 msgstr ""
 
-#: includes/settings/schema.php:673
-msgid "Template ID"
+#: includes/settings/schema.php:661
+msgid "Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor=\"…\"."
 msgstr ""
 
-#: includes/settings/schema.php:682
-msgid "Parameter name"
+#: includes/settings/schema.php:664
+msgid "System cursor"
+msgstr ""
+
+#: includes/settings/schema.php:668
+msgid "Dot"
+msgstr ""
+
+#: includes/settings/schema.php:672
+msgid "Dot and ring"
+msgstr ""
+
+#: includes/settings/schema.php:676
+msgid "Inverting lens"
+msgstr ""
+
+#: includes/settings/schema.php:680
+msgid "Soft glow"
+msgstr ""
+
+#: includes/settings/schema.php:687
+msgid "Sound"
+msgstr ""
+
+#: includes/settings/schema.php:688
+msgid "Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off."
+msgstr ""
+
+#: includes/settings/schema.php:691
+msgid "On for first-time visitors"
+msgstr ""
+
+#: includes/settings/schema.php:692
+msgid "Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts."
+msgstr ""
+
+#: includes/settings/schema.php:697
+msgid "Sound character"
 msgstr ""
 
 #: includes/settings/schema.php:699
-msgid "Pattern code"
+msgid "Soft — rounded and quiet"
+msgstr ""
+
+#: includes/settings/schema.php:700
+msgid "Glass — bright and airy"
+msgstr ""
+
+#: includes/settings/schema.php:701
+msgid "Mechanical — crisp switch clicks"
+msgstr ""
+
+#: includes/settings/schema.php:702
+msgid "Digital — short synth blips"
 msgstr ""
 
 #: includes/settings/schema.php:708
-msgid "Sender number"
+msgid "Volume"
 msgstr ""
 
-#: includes/settings/schema.php:718
-msgid "Variable name"
+#: includes/settings/schema.php:716
+msgid "Tick on hover"
 msgstr ""
 
-#: includes/settings/schema.php:734
-msgid "Template name"
+#: includes/settings/schema.php:717
+msgid "A very quiet tick when the pointer reaches a button or card."
 msgstr ""
 
-#: includes/settings/schema.php:742
-msgid "Endpoint URL"
+#: includes/settings/schema.php:723
+msgid "Login & SMS"
 msgstr ""
 
-#: includes/settings/schema.php:743
-msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
+#: includes/settings/schema.php:725
+msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
 msgstr ""
 
-#: includes/settings/schema.php:751
-msgid "Method"
+#: includes/settings/schema.php:727
+msgid "Enable mobile login (OTP)"
 msgstr ""
 
-#: includes/settings/schema.php:763
-msgid "Headers (one per line)"
+#: includes/settings/schema.php:730
+#: includes/settings/schema.php:731
+msgid "SMS provider"
 msgstr ""
 
-#: includes/settings/schema.php:772
-msgid "Request body"
+#: includes/settings/schema.php:733
+msgid "Test mode (no SMS, code shown to admins)"
+msgstr ""
+
+#: includes/settings/schema.php:737
+msgid "IPPanel / Farazsms"
+msgstr ""
+
+#: includes/settings/schema.php:739
+msgid "Custom HTTP API"
+msgstr ""
+
+#: includes/settings/schema.php:745
+#: includes/settings/schema.php:789
+#: includes/settings/schema.php:815
+#: includes/settings/schema.php:850
+msgid "API key"
+msgstr ""
+
+#: includes/settings/schema.php:753
+msgid "Verify template name"
+msgstr ""
+
+#: includes/settings/schema.php:754
+msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
+msgstr ""
+
+#: includes/settings/schema.php:762
+msgid "Username"
+msgstr ""
+
+#: includes/settings/schema.php:771
+msgid "Password / API key"
+msgstr ""
+
+#: includes/settings/schema.php:780
+msgid "Pattern (bodyId)"
 msgstr ""
 
 #: includes/settings/schema.php:781
-msgid "Send a test code"
+msgid "Shared-line pattern ID with one variable for the code."
 msgstr ""
 
-#: includes/settings/schema.php:782
-msgid "Save first, then send a code to your own number to check the provider settings."
-msgstr ""
-
-#: includes/settings/schema.php:784
-msgid "Send test SMS"
-msgstr ""
-
-#: includes/settings/schema.php:790
-msgid "Code length"
-msgstr ""
-
-#: includes/settings/schema.php:791
-msgid "Behaviour"
-msgstr ""
-
-#: includes/settings/schema.php:802
-msgid "Code lifetime"
+#: includes/settings/schema.php:797
+msgid "Template ID"
 msgstr ""
 
 #: includes/settings/schema.php:806
-#: includes/settings/schema.php:816
-msgid "sec"
+msgid "Parameter name"
 msgstr ""
 
-#: includes/settings/schema.php:812
-msgid "Wait before resending"
+#: includes/settings/schema.php:823
+msgid "Pattern code"
 msgstr ""
 
-#: includes/settings/schema.php:820
-msgid "Create accounts for new numbers"
+#: includes/settings/schema.php:832
+msgid "Sender number"
 msgstr ""
 
-#: includes/settings/schema.php:824
-msgid "Ask new users for their name"
+#: includes/settings/schema.php:842
+msgid "Variable name"
 msgstr ""
 
-#: includes/settings/schema.php:831
-msgid "Also allow password login"
-msgstr ""
-
-#: includes/settings/schema.php:836
-msgid "Login page"
-msgstr ""
-
-#: includes/settings/schema.php:837
-msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
-msgstr ""
-
-#: includes/settings/schema.php:839
-msgid "Pages & redirects"
-msgstr ""
-
-#: includes/settings/schema.php:844
-msgid "After login, go to"
-msgstr ""
-
-#: includes/settings/schema.php:845
-msgid "Leave empty to return to the previous page"
-msgstr ""
-
-#: includes/settings/schema.php:849
-msgid "Use mobile login on WooCommerce account & checkout"
-msgstr ""
-
-#: includes/settings/schema.php:854
-msgid "Add mobile login to wp-login.php"
-msgstr ""
-
-#: includes/settings/schema.php:860
-msgid "Performance"
-msgstr ""
-
-#: includes/settings/schema.php:862
-msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
-msgstr ""
-
-#: includes/settings/schema.php:865
-msgid "Block Google Fonts"
+#: includes/settings/schema.php:858
+msgid "Template name"
 msgstr ""
 
 #: includes/settings/schema.php:866
-msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
+msgid "Endpoint URL"
 msgstr ""
 
-#: includes/settings/schema.php:868
-msgid "Remove emoji script"
-msgstr ""
-
-#: includes/settings/schema.php:869
-msgid "Remove oEmbed discovery script"
-msgstr ""
-
-#: includes/settings/schema.php:870
-msgid "Skip Dashicons for visitors"
-msgstr ""
-
-#: includes/settings/schema.php:872
-msgid "Skip block-editor CSS on Elementor pages"
+#: includes/settings/schema.php:867
+msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
 msgstr ""
 
 #: includes/settings/schema.php:875
-msgid "Load WooCommerce cart scripts only where needed"
-msgstr ""
-
-#: includes/settings/schema.php:879
-msgid "Prioritise the hero image"
-msgstr ""
-
-#: includes/settings/schema.php:880
-msgid "Loads the first large image of each page eagerly with high priority."
-msgstr ""
-
-#: includes/settings/schema.php:883
-msgid "Remove jQuery Migrate"
-msgstr ""
-
-#: includes/settings/schema.php:884
-msgid "Only if your plugins are up to date."
+msgid "Method"
 msgstr ""
 
 #: includes/settings/schema.php:887
-msgid "Slow down the Heartbeat API"
-msgstr ""
-
-#: includes/settings/schema.php:890
-msgid "Disable XML-RPC"
-msgstr ""
-
-#: includes/settings/schema.php:891
-msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
+msgid "Headers (one per line)"
 msgstr ""
 
 #: includes/settings/schema.php:896
-msgid "Custom code"
+msgid "Request body"
 msgstr ""
 
-#: includes/settings/schema.php:902
-msgid "Custom CSS"
+#: includes/settings/schema.php:905
+msgid "Send a test code"
 msgstr ""
 
-#: includes/settings/schema.php:907
-msgid "Code in <head>"
+#: includes/settings/schema.php:906
+msgid "Save first, then send a code to your own number to check the provider settings."
 msgstr ""
 
 #: includes/settings/schema.php:908
+msgid "Send test SMS"
+msgstr ""
+
+#: includes/settings/schema.php:914
+msgid "Code length"
+msgstr ""
+
+#: includes/settings/schema.php:915
+msgid "Behaviour"
+msgstr ""
+
+#: includes/settings/schema.php:926
+msgid "Code lifetime"
+msgstr ""
+
+#: includes/settings/schema.php:930
+#: includes/settings/schema.php:940
+msgid "sec"
+msgstr ""
+
+#: includes/settings/schema.php:936
+msgid "Wait before resending"
+msgstr ""
+
+#: includes/settings/schema.php:944
+msgid "Create accounts for new numbers"
+msgstr ""
+
+#: includes/settings/schema.php:948
+msgid "Ask new users for their name"
+msgstr ""
+
+#: includes/settings/schema.php:955
+msgid "Also allow password login"
+msgstr ""
+
+#: includes/settings/schema.php:960
+msgid "Login page"
+msgstr ""
+
+#: includes/settings/schema.php:961
+msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
+msgstr ""
+
+#: includes/settings/schema.php:963
+msgid "Pages & redirects"
+msgstr ""
+
+#: includes/settings/schema.php:968
+msgid "After login, go to"
+msgstr ""
+
+#: includes/settings/schema.php:969
+msgid "Leave empty to return to the previous page"
+msgstr ""
+
+#: includes/settings/schema.php:973
+msgid "Use mobile login on WooCommerce account & checkout"
+msgstr ""
+
+#: includes/settings/schema.php:978
+msgid "Add mobile login to wp-login.php"
+msgstr ""
+
+#: includes/settings/schema.php:984
+msgid "Performance"
+msgstr ""
+
+#: includes/settings/schema.php:986
+msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
+msgstr ""
+
+#: includes/settings/schema.php:989
+msgid "Block Google Fonts"
+msgstr ""
+
+#: includes/settings/schema.php:990
+msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
+msgstr ""
+
+#: includes/settings/schema.php:992
+msgid "Remove emoji script"
+msgstr ""
+
+#: includes/settings/schema.php:993
+msgid "Remove oEmbed discovery script"
+msgstr ""
+
+#: includes/settings/schema.php:994
+msgid "Skip Dashicons for visitors"
+msgstr ""
+
+#: includes/settings/schema.php:996
+msgid "Skip block-editor CSS on Elementor pages"
+msgstr ""
+
+#: includes/settings/schema.php:999
+msgid "Load WooCommerce cart scripts only where needed"
+msgstr ""
+
+#: includes/settings/schema.php:1003
+msgid "Prioritise the hero image"
+msgstr ""
+
+#: includes/settings/schema.php:1004
+msgid "Loads the first large image of each page eagerly with high priority."
+msgstr ""
+
+#: includes/settings/schema.php:1007
+msgid "Remove jQuery Migrate"
+msgstr ""
+
+#: includes/settings/schema.php:1008
+msgid "Only if your plugins are up to date."
+msgstr ""
+
+#: includes/settings/schema.php:1011
+msgid "Slow down the Heartbeat API"
+msgstr ""
+
+#: includes/settings/schema.php:1014
+msgid "Disable XML-RPC"
+msgstr ""
+
+#: includes/settings/schema.php:1015
+msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
+msgstr ""
+
+#: includes/settings/schema.php:1020
+msgid "Custom code"
+msgstr ""
+
+#: includes/settings/schema.php:1026
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/settings/schema.php:1031
+msgid "Code in <head>"
+msgstr ""
+
+#: includes/settings/schema.php:1032
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr ""
 
-#: includes/settings/schema.php:913
+#: includes/settings/schema.php:1037
 msgid "Code before </body>"
 msgstr ""
 
@@ -5654,10 +6619,6 @@ msgstr ""
 
 #: templates/auth/account.php:70
 msgid "Email (optional)"
-msgstr ""
-
-#: templates/auth/form.php:35
-msgid "Leave this field empty"
 msgstr ""
 
 #: templates/auth/form.php:51

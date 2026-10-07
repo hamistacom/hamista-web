@@ -241,6 +241,11 @@
 		dot: '<circle cx="12" cy="12" r="3.2" fill="currentColor"/>',
 		ring: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2" fill="currentColor"/>',
 		contrast: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/>',
+		calendar: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+		stethoscope: '<path d="M6 3H5a1 1 0 0 0-1 1v5a5 5 0 0 0 10 0V4a1 1 0 0 0-1-1h-1"/><path d="M9 14v1a5 5 0 0 0 10 0v-3"/><circle cx="19" cy="10" r="2"/>',
+		scissors: '<circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M8.3 15.7 18 4M15.7 15.7 6 4"/>',
+		scale: '<path d="M12 4v16M8 20h8M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0L5 7ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6Z"/>',
+		chat: '<path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-4 3v-3H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M8 9.5h8M8 12.5h5"/>',
 		speaker: '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
 		gauge: '<path d="M4.5 18a9 9 0 1 1 15 0"/><path d="m12 13 4-4"/><circle cx="12" cy="13" r="1.4"/>',
 		code: '<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/>',
@@ -573,7 +578,7 @@
 	}
 
 	function textInput( ctx, type ) {
-		const ltr = 'url' === type || 'password' === type || 'number' === type;
+		const ltr = 'url' === type || 'password' === type || 'number' === type || !! ctx.def.ltr;
 		return h( 'input', {
 			type,
 			id: ctx.id,
@@ -1432,6 +1437,7 @@
 				grid = h( 'div', { class: 'hm-fields' } );
 				wrap.appendChild( h( 'section', { class: 'hm-card', 'data-fields': '' }, [
 					f.def.group && ! flat ? h( 'h2', { class: 'hm-card__title hm-card__title--group', text: f.def.group } ) : null,
+					f.def.group && f.def.group_desc && ! flat ? h( 'p', { class: 'hm-card__group-desc', text: f.def.group_desc } ) : null,
 					grid,
 				] ) );
 			}
@@ -1470,7 +1476,7 @@
 				if ( ! fieldAvailable( d ) ) {
 					return false;
 				}
-				const hay = norm( [ d.label, d.desc, d.group, d.button ].join( ' ' ) );
+				const hay = norm( [ d.label, d.desc, d.group, d.group_desc, d.button ].join( ' ' ) );
 				return words.every( function ( w ) {
 					return -1 !== hay.indexOf( w );
 				} );
