@@ -424,40 +424,7 @@ body.hm-auth-wplogin-screen:not(.hm-auth-js) .hm-auth-wplogin__switch { display:
 .hm-kit-spark .hm-auth .hm-auth__digit { border-radius: var(--hm-a-r-md); }
 .hm-kit-spark .hm-auth-modal__dialog { box-shadow: 0 30px 80px -30px rgba(13, 14, 18, .35); }
 
-/* Industrial — neumorphic chassis: recessed wells, raised keys, red LED accent. */
-.hm-kit-industrial .hm-auth { border: 0; }
-.hm-kit-industrial .hm-auth__mark { background: var(--hm-bg); color: var(--hm-a-accent); box-shadow: var(--hm-shadow-sm); }
-.hm-kit-industrial .hm-auth__mark svg { filter: drop-shadow(0 0 6px rgba(255, 71, 87, .45)); }
-.hm-kit-industrial .hm-auth__tabs { background: var(--hm-bg); box-shadow: var(--hm-shadow-inset); }
-.hm-kit-industrial .hm-auth .hm-auth__tab.is-active { background: var(--hm-bg); color: var(--hm-accent-ink); box-shadow: var(--hm-shadow-sm); }
-.hm-kit-industrial .hm-auth .hm-auth__input { border: 0; background: var(--hm-bg); box-shadow: var(--hm-shadow-inset); }
-.hm-kit-industrial .hm-auth .hm-auth__input:focus { box-shadow: var(--hm-shadow-inset), 0 0 0 2px var(--hm-a-accent); }
-.hm-kit-industrial .hm-auth .hm-auth__input[readonly] { background: var(--hm-sunken); }
-/* Code boxes as recessed keycap wells */
-.hm-kit-industrial .hm-auth .hm-auth__digit {
-	border: 0; border-radius: var(--hm-a-r-md); background: var(--hm-bg);
-	box-shadow: inset 5px 5px 10px var(--hm-lo), inset -5px -5px 10px var(--hm-hi);
-	text-shadow: 0 1px 0 var(--hm-hi);
-}
-.hm-kit-industrial .hm-auth .hm-auth__digit:focus { box-shadow: inset 5px 5px 10px var(--hm-lo), inset -5px -5px 10px var(--hm-hi), 0 0 0 2px var(--hm-a-accent); }
-.hm-kit-industrial .hm-auth .hm-auth__digit.is-filled { color: var(--hm-a-fg); box-shadow: inset 3px 3px 6px var(--hm-lo), inset -3px -3px 6px var(--hm-hi); }
-.hm-kit-industrial .hm-auth__code.is-error .hm-auth__digit { box-shadow: inset 4px 4px 8px var(--hm-lo), inset -4px -4px 8px var(--hm-hi), 0 0 0 2px var(--hm-a-danger); }
-.hm-kit-industrial .hm-auth .hm-auth__msg { background: var(--hm-bg); box-shadow: var(--hm-shadow-inset); }
-.hm-kit-industrial .hm-auth .hm-auth__test { border: 0; background: var(--hm-bg); box-shadow: var(--hm-shadow-inset); }
-.hm-kit-industrial .hm-auth .hm-auth__link:hover { background: var(--hm-bg); box-shadow: var(--hm-shadow-inset); }
-.hm-kit-industrial .hm-auth__check { background: var(--hm-bg); box-shadow: var(--hm-shadow-sm); }
-.hm-kit-industrial .hm-auth__check svg { filter: drop-shadow(0 0 6px rgba(34, 197, 94, .55)); }
-.hm-kit-industrial .hm-auth .hm-auth__avatar { box-shadow: var(--hm-shadow-sm); }
-.hm-kit-industrial .hm-auth__profile { border-bottom: 0; box-shadow: 0 1px 0 var(--hm-hi), inset 0 -1px 0 var(--hm-lo); }
-.hm-kit-industrial .hm-auth-modal__dialog { border: 0; background: var(--hm-bg); box-shadow: 0 34px 70px -24px rgba(0, 0, 0, .55), inset 1px 1px 0 rgba(255, 255, 255, .45); }
-[data-hm-theme="dark"] .hm-kit-industrial .hm-auth-modal__dialog { box-shadow: 0 34px 70px -24px rgba(0, 0, 0, .8), inset 1px 1px 0 rgba(255, 255, 255, .05); }
-.hm-kit-industrial .hm-auth-modal .hm-auth-modal__close { top: 22px; inset-inline-end: 22px; border: 0; background: var(--hm-bg); box-shadow: var(--hm-shadow-sm); }
-[data-hm-theme="dark"] .hm-kit-industrial .hm-auth.hm-bolted::after,
-[data-hm-theme="dark"] .hm-kit-industrial .hm-auth-modal__dialog.hm-bolted::after {
-	--s: radial-gradient(circle, rgba(0, 0, 0, .7) 0 1.6px, rgba(0, 0, 0, .3) 2px 3px, rgba(255, 255, 255, .08) 3.4px 4px, transparent 4.4px);
-}
 @media (max-width: 560px) { .hm-auth-modal__dialog.hm-bolted::after { display: none; } }
-.hm-kit-industrial .hm-auth-modal .hm-auth-modal__close:active { box-shadow: var(--hm-shadow-press); }
 
 /* ==========================================================================
    Motion preferences

@@ -25,7 +25,7 @@ T = {
 
     # Style kits.
     "Spark — editorial": "جرقه — مجله~ای",
-    "Industrial — tactile": "صنعتی — لمسی",
+    "Industrial — steel and graphite": "صنعتی — فولادی و گرافیتی",
     "Pulse — bold agency": "تپش — جسور و آژانسی",
     "Honey — warm and natural": "عسل — گرم و طبیعی",
     "Nomad — handwoven, earthy": "ایلیاتی — دست~بافت و خاکی",

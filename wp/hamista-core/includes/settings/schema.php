@@ -89,7 +89,7 @@ return ( static function () {
 						),
 						'industrial' => array(
 							'label' => __( 'Industrial', 'hamista-core' ),
-							'desc'  => __( 'Tactile, skeuomorphic, safety red', 'hamista-core' ),
+							'desc'  => __( 'Brushed steel, graphite and a signal red', 'hamista-core' ),
 							'image' => $img . 'kit-industrial.svg',
 						),
 						'pulse'      => array(
@@ -104,7 +104,7 @@ return ( static function () {
 						),
 						'honey'      => array(
 							'label' => __( 'Honey', 'hamista-core' ),
-							'desc'  => __( 'Warm cream, amber and soft hexagons', 'hamista-core' ),
+							'desc'  => __( 'Cream paper, comb brown and deep honey amber', 'hamista-core' ),
 							'image' => $img . 'kit-honey.svg',
 						),
 						'nomad'      => array(

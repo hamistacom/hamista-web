@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T21:35:47+00:00\n"
-"PO-Revision-Date: 2026-10-07 21:35+0000\n"
+"POT-Creation-Date: 2026-10-07T21:52:23+00:00\n"
+"PO-Revision-Date: 2026-10-07 21:52+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -7317,8 +7317,8 @@ msgid "Industrial"
 msgstr "صنعتی"
 
 #: includes/settings/schema.php:92
-msgid "Tactile, skeuomorphic, safety red"
-msgstr "لمسی، اسکیومورفیک، قرمز هشدار"
+msgid "Brushed steel, graphite and a signal red"
+msgstr "فولاد براشه، گرافیتی و قرمز هشدار"
 
 #: includes/settings/schema.php:96
 msgid "Pulse"
@@ -7341,8 +7341,8 @@ msgid "Honey"
 msgstr "عسل"
 
 #: includes/settings/schema.php:107
-msgid "Warm cream, amber and soft hexagons"
-msgstr "کرم گرم، کهربایی و شش‌ضلعی‌های نرم"
+msgid "Cream paper, comb brown and deep honey amber"
+msgstr "کاغذ کرم، قهوه‌ای موم و کهربایی عسلی"
 
 #: includes/settings/schema.php:111
 msgid "Nomad"

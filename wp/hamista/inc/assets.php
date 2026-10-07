@@ -34,7 +34,7 @@ function hamista_kits() {
 		'hamista/kits',
 		array(
 			'spark'      => __( 'Spark — editorial', 'hamista' ),
-			'industrial' => __( 'Industrial — tactile', 'hamista' ),
+			'industrial' => __( 'Industrial — steel and graphite', 'hamista' ),
 			'pulse'      => __( 'Pulse — bold agency', 'hamista' ),
 			'flux'       => __( 'Flux — graphite, ivory and ember', 'hamista' ),
 			'honey'      => __( 'Honey — warm and natural', 'hamista' ),
@@ -245,10 +245,10 @@ add_action( 'enqueue_block_editor_assets', 'hamista_block_editor_assets' );
  */
 function hamista_theme_color_meta() {
 	$colors = array(
-		'industrial' => '#e0e5ec',
+		'industrial' => '#eceef0',
 		'pulse'      => '#fafafd',
 		'flux'       => '#f5f1ea',
-		'honey'      => '#fbf6ec',
+		'honey'      => '#f6f0e4',
 		'nomad'      => '#f2ece2',
 		'voyage'     => '#f4f2ee',
 		'azure'      => '#f5f7fb',

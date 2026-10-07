@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T20:20:19+00:00\n"
-"PO-Revision-Date: 2026-10-07 21:35+0000\n"
+"POT-Creation-Date: 2026-10-07T21:52:25+00:00\n"
+"PO-Revision-Date: 2026-10-07 21:52+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -95,8 +95,8 @@ msgid "Spark — editorial"
 msgstr "جرقه — مجله‌ای"
 
 #: inc/assets.php:37
-msgid "Industrial — tactile"
-msgstr "صنعتی — لمسی"
+msgid "Industrial — steel and graphite"
+msgstr "صنعتی — فولادی و گرافیتی"
 
 #: inc/assets.php:38
 msgid "Pulse — bold agency"

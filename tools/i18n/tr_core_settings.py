@@ -75,11 +75,11 @@ T = {
     "Spark": "جرقه",
     "Editorial, typographic, electric accent": "مجله~ای، تایپوگرافیک، آبی برقی",
     "Industrial": "صنعتی",
-    "Tactile, skeuomorphic, safety red": "لمسی، اسکیومورفیک، قرمز هشدار",
+    "Brushed steel, graphite and a signal red": "فولاد براشه، گرافیتی و قرمز هشدار",
     "Pulse": "تپش",
     "Bold and kinetic, violet with acid lime": "جسور و پرتحرک، بنفش با سبز لیمویی",
     "Honey": "عسل",
-    "Warm cream, amber and soft hexagons": "کرم گرم، کهربایی و شش~ضلعی~های نرم",
+    "Cream paper, comb brown and deep honey amber": "کاغذ کرم، قهوه~ای موم و کهربایی عسلی",
     "Nomad": "ایلیاتی",
     "Undyed wool, madder and indigo, with a thin kilim seam": "پشم خام، روناسی و نیلی، با نوار باریک گلیم",
     "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync.":
