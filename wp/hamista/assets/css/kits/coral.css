@@ -1,7 +1,7 @@
 /*!
  * Hamista style kit — Coral
- * Warm white, deep teal and coral, with soft tinted panels for bento
- * layouts. Rounded but restrained; one dark band for figures.
+ * Warm white, deep teal and a little coral, with faintly tinted panels for
+ * bento layouts. Small corners, hairlines and one dark band for figures.
  */
 .hm-kit-coral {
 	--hm-bg: #f6f4ef;
@@ -20,16 +20,16 @@
 	--hm-inv-bg: #10292a;
 	--hm-inv-fg: #eef4f2;
 	--hm-inv-muted: #9fb3b0;
-	--hm-tone-soft: #dcece7;
-	--hm-tone-warm: #f9e0d6;
-	--hm-tone-sand: #efe7d6;
+	--hm-tone-soft: #e6eeea;
+	--hm-tone-warm: #f1e6df;
+	--hm-tone-sand: #eee9df;
 
-	--hm-radius-sm: 6px;
-	--hm-radius-md: 10px;
-	--hm-radius-lg: 14px;
-	--hm-radius-xl: 20px;
-	--hm-radius-btn: 12px;
-	--hm-fw-heading: 700;
+	--hm-radius-sm: 3px;
+	--hm-radius-md: 6px;
+	--hm-radius-lg: 8px;
+	--hm-radius-xl: 12px;
+	--hm-radius-btn: 4px;
+	--hm-fw-heading: 600;
 
 	--hm-shadow-sm: none;
 	--hm-shadow-md: 0 8px 24px -14px rgba(19, 40, 42, .2);
@@ -63,13 +63,15 @@
 	color-scheme: dark;
 }
 
-/* Two-tone emphasis: highlighted words in coral. */
-.hm-kit-coral .hm-hl { color: var(--hm-accent-2); }
-.hm-kit-coral .hm-eyebrow { color: var(--hm-accent-ink); font-weight: 700; }
-.hm-kit-coral .hm-eyebrow::before { width: 8px; height: 8px; border-radius: 3px; background: var(--hm-accent-2); opacity: 1; }
+/* Emphasis in deep teal; coral only for the small rule on labels. */
+.hm-kit-coral .hm-hl { color: var(--hm-accent-ink); }
+.hm-kit-coral .hm-eyebrow { color: var(--hm-fg-muted); font-weight: 600; }
+.hm-kit-coral .hm-eyebrow::before { width: 16px; height: 1px; border-radius: 0; background: var(--hm-accent-2); opacity: 1; }
 
-/* Panels: soft tints, a gentle lift on hover. */
-.hm-kit-coral .hm-feature--card:hover { transform: translateY(-3px); }
+/* Panels: faint tints; hairlines darken on hover, no lift. */
+.hm-kit-coral .hm-feature--card:hover { transform: none; border-color: var(--hm-border-strong); box-shadow: none; }
+.hm-kit-coral .hm-btn--primary, .hm-kit-coral .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-coral .hm-btn--primary:hover { background: var(--hm-accent); border-color: var(--hm-accent); color: #fff; box-shadow: none; }
 .hm-kit-coral .hm-feature__figure { color: var(--hm-accent-ink); }
 .hm-kit-coral .hm-feature.is-tone-warm .hm-feature__figure { color: #c4553d; }
 .hm-kit-coral .hm-feature.is-tone-dark .hm-feature__figure, [data-hm-theme="dark"] .hm-kit-coral .hm-feature.is-tone-warm .hm-feature__figure { color: var(--hm-accent-2); }

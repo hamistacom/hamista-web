@@ -5,6 +5,7 @@
 
 const L = require('../lib');
 const { img, link, px, section, cols, heading, button } = L;
+const fx = L.fx;
 
 const images = {
 	logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp',
@@ -50,6 +51,8 @@ const FAQ = [
 	['استرداد بلیت چطور انجام می‌شود؟', 'از بخش «سفرهای من» درخواست بدهید. مبلغ طبق قوانین هر ایرلاین محاسبه و حداکثر ظرف هفت روز کاری به حسابتان برمی‌گردد.'],
 	['قیمت‌ها با خود ایرلاین فرقی دارند؟', 'نه. قیمت هر بلیت همان نرخ رسمی ایرلاین یا آژانس همکار است و هیچ هزینه‌ی پنهانی به آن اضافه نمی‌شود.'],
 	['اگر پرواز تأخیر داشته باشد یا لغو شود چه؟', 'تغییرات پرواز را لحظه‌ای پیامک می‌کنیم. در صورت لغو، پشتیبانی برای جابه‌جایی یا استرداد کامل با شما تماس می‌گیرد.'],
+	['بار مجاز پروازهای داخلی چقدر است؟', 'معمولاً بیست کیلوگرم برای بلیت اقتصادی؛ مقدار دقیق روی بلیت شما نوشته شده است.'],
+	['کارت پرواز را کجا بگیرم؟', 'برای بیشتر پروازها پذیرش اینترنتی از ۲۴ ساعت قبل باز است؛ پیوند آن را پیامک می‌کنیم.'],
 ];
 
 /* ---------------- Home ---------------- */
@@ -236,6 +239,40 @@ const posts = [
 	},
 ];
 
+const guide = [
+	L.pageHead('راهنمای سفر', 'پیش از *پرواز*', 'از خرید بلیت تا سوار شدن؛ آنچه باید بدانید، در یک صفحه.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 6 }, [
+		L.imageReveal('sky', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'روز پرواز', title: 'چهار گام *آرام*', header_align: 'center' }),
+		L.steps([
+			{ marker: '۰۱', icon: 'mobile', title: 'پذیرش اینترنتی', text: 'از ۲۴ ساعت قبل؛ پیوندش را پیامک می‌کنیم.' },
+			{ marker: '۰۲', icon: 'luggage', title: 'بار', text: 'وزن مجاز روی بلیت؛ وسایل مایع در کیف دستی کمتر از صد میلی‌لیتر.' },
+			{ marker: '۰۳', icon: 'clock', title: 'رسیدن به فرودگاه', text: 'دو ساعت پیش از پرواز داخلی، سه ساعت برای خارجی.' },
+			{ marker: '۰۴', icon: 'plane', title: 'سوار شدن', text: 'درِ سوار شدن نیم ساعت پیش از پرواز بسته می‌شود.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'refresh', title: 'استرداد', text: 'جریمه‌ی استرداد طبق قوانین هر ایرلاین؛ پیش از خرید نشانتان می‌دهیم.' },
+			{ icon: 'users', title: 'کودک و نوزاد', text: 'بلیت نوزاد زیر دو سال ده درصد قیمت بزرگسال است.' },
+			{ icon: 'shield', title: 'پرداخت امن', text: 'درگاه بانکی شاپرک و بلیت فوری پس از پرداخت.' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { cards: 'flip' }),
+	L.cta({ eyebrow: 'پشتیبانی', title: 'سؤالی\n*دارید*؟', desc: 'پشتیبانی پروازیار هر روز از ۷ صبح تا ۱۲ شب پاسخ می‌دهد.', btn1_text: 'پشتیبانی', btn1_link: link('{{page:contact}}'), look: 'image', image: img('night'), decor: '', note: '' }),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر جوابتان این‌جا نیست، با ما تماس بگیرید.'),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'آنچه *می‌پرسند*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+];
+
 module.exports = {
 	manifest: {
 		id: 'parvazyar',
@@ -247,15 +284,17 @@ module.exports = {
 		required: ['elementor'],
 		recommended: [],
 		tags: ['گردشگری', 'بلیت هواپیما', 'شرکتی'],
-		pages: ['خانه', 'پیشنهادها', 'درباره‌ی ما', 'پشتیبانی', 'مجله'],
+		pages: ['خانه', 'پیشنهادها', 'درباره‌ی ما', 'پشتیبانی', 'مجله', 'راهنمای سفر', 'پرسش‌های متداول'],
 	},
 	content: {
 		site: { title: 'پروازیار', tagline: 'بلیت هواپیما، آسوده' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#2459ff', hm_page_light_b: '#9fb4ff' } }) },
 			{ key: 'deals', title: 'پیشنهادها', slug: 'deals', elementor: deals, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
+			{ key: 'guide', title: 'راهنمای سفر', slug: 'travel-guide', elementor: guide, settings: L.pageSettings() },
+			{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 			{ key: 'contact', title: 'پشتیبانی', slug: 'support', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },
 		],
@@ -269,6 +308,7 @@ module.exports = {
 			{
 				name: 'پروازیار — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
+					{ title: 'راهنمای سفر', page: 'guide' },
 					{ title: 'پیشنهادها', page: 'deals' },
 					{ title: 'مجله', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -277,6 +317,8 @@ module.exports = {
 			},
 			{
 				name: 'پروازیار — پابرگ', location: 'footer', items: [
+					{ title: 'راهنمای سفر', page: 'guide' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
 					{ title: 'پیشنهادها', page: 'deals' },
 					{ title: 'مجله', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -299,6 +341,12 @@ module.exports = {
 			mobile_bar_text: 'جست‌وجوی پرواز',
 			mobile_bar_url: '{{page:deals}}',
 			mobile_bar_phone: '02143900000',
+			cursor: 'dot',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'digital',
+			sound_volume: 18,
+			sound_hover: false,
 		},
 		front_page: 'home',
 		posts_page: 'blog',

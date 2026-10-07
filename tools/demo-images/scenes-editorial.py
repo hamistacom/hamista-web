@@ -3,7 +3,7 @@ Editorial photographs for the Spark academy, the Tapesh agency and the Sayal
 motion studio: printed covers, cards, letterheads, posters, storyboards,
 easing-curve sheets, contact sheets and style frames laid on a desk.
 
-    python3 tools/demo-images/scenes-editorial.py <spark|agency|flux|clinic> <out-dir> [name ...]
+    python3 tools/demo-images/scenes-editorial.py <spark|agency|flux|clinic|roshd> <out-dir> [name ...]
 
 Prints are typeset in editorial.html with the theme's licensed Persian fonts
 (editorial-render.js), then laid on linen, oak, plaster or concrete: each
@@ -530,14 +530,64 @@ def clinic_plan(P):
     return plan
 
 
+# --------------------------------------------------------------------------
+# Roshd: management consulting
+# --------------------------------------------------------------------------
+
+ROSHD_INK = '#13282a'
+ROSHD_ACCENT = '#1d7a6c'
+ROSHD_WORDS = [('journal-1', 'نقدینگی'), ('journal-2', 'قیمت'), ('journal-3', 'تیم'), ('journal-4', 'فرایند')]
+ROSHD_CASES = [
+    ('case-1', 'پوشاک طاها', 'گزارش سه‌ماهه · سود ناخالص', [22, 23, 21, 25, 27, 29, 31, 34], [['۳۴٪', 'حاشیه‌ی سود'], ['−۴۸٪', 'کالای راکد'], ['۱۲', 'هفته']]),
+    ('case-2', 'کارگاه چوب اسدی', 'گزارش سه‌ماهه · زمان تحویل', [30, 29, 27, 24, 22, 19, 17, 15], [['۱۵ روز', 'زمان تحویل'], ['۲×', 'سفارش ماهانه'], ['۹۶٪', 'تحویل سر وقت']]),
+    ('case-3', 'فروشگاه‌های نیلا', 'گزارش سه‌ماهه · جریان نقدی', [12, 15, 14, 19, 22, 21, 26, 30], [['۳ شعبه', 'با یک داشبورد'], ['+۴۱٪', 'نقدینگی'], ['۹۰ روز', 'برنامه']]),
+]
+
+
+def roshd_spec():
+    base = {'ink': ROSHD_INK, 'accent': ROSHD_ACCENT, 'bg': '#f6f4ef', 'line': 'rgba(19,40,42,.12)'}
+    spec = [{'name': 'p-report', 'w': 1240, 'h': 1754, 'p': dict(base, t='report', kicker='داشبورد ماهانه · مهر ۱۴۰۵', title='جریان نقدی\nبه حالت پایدار رسید',
+                                                                 figs=[['+۳۸٪', 'فروش نسبت به پارسال'], ['۴۲ روز', 'دوره‌ی وصول'], ['۱۸٪', 'سود خالص']],
+                                                                 values=[18, 21, 20, 26, 29, 31, 35, 38, 41, 44], note='از ماه چهارم، تخفیف‌های پایان فصل حذف و مهلت پرداخت مشتریان عمده کوتاه شد.')}]
+    spec.append({'name': 'p-plan', 'w': 1000, 'h': 1400, 'p': {'t': 'cover', 'bg': '#ece9e1', 'ink': ROSHD_INK, 'accent': ROSHD_ACCENT, 'kicker': 'رشد · مشاوره‌ی مدیریت', 'edition': 'نسخه‌ی مشتری',
+                                                               'num': '۹۰', 'title': 'برنامه‌ی رشد\nنودروزه', 'sub': 'سه هدف، دوازده هفته، یک جلسه‌ی هفتگی', 'footA': 'محرمانه', 'footB': 'رشد', 'motif': None, 'font': 'peyda'}})
+    spec.append({'name': 'p-letter', 'w': 1240, 'h': 1754, 'p': dict(base, t='letter', mark='square', font='peyda', brand='رشد', subject='پیشنهاد همکاری: برنامه‌ی نودروزه',
+                                                                     paras=['با سلام؛ پس از دو جلسه‌ی شناخت، سه هدف زیر را برای نود روز آینده پیشنهاد می‌کنیم. هر هدف یک عدد روشن و یک مسئول مشخص دارد.',
+                                                                            'نخست، کوتاه کردن دوره‌ی وصول مطالبات به کمتر از پنجاه روز. دوم، بازبینی قیمت پانزده محصول پرفروش. سوم، تعریف شرح شغل برای تیم فروش.',
+                                                                            'جلسه‌های هفتگی سه‌شنبه‌ها برگزار می‌شود و داشبورد مالی از هفته‌ی دوم در دسترس شما خواهد بود.'],
+                                                                     sign='رشد · مشاوره‌ی مدیریت', address='تهران، خیابان ملاصدرا، شیخ‌بهایی شمالی، پلاک ۲۲', web='roshd.co')})
+    spec.append({'name': 'p-sketch', 'w': 1000, 'h': 1400, 'p': {'t': 'sketch', 'kind': 'flow', 'bg': '#f2efe8', 'dot': 'rgba(19,40,42,.16)', 'pencil': '#2c3a3a', 'seed': 21, 'note': 'از سفارش تا تحویل — نسخه‌ی دوم'}})
+    for key, brand, kicker, vals, figs in ROSHD_CASES:
+        spec.append({'name': 'p-' + key, 'w': 1240, 'h': 1754, 'p': dict(base, t='report', kicker=kicker, title=brand, figs=figs, values=vals, note='اعداد از گزارش‌های مالی خود شرکت و با اجازه‌ی آن منتشر شده است.')})
+    for key, word in ROSHD_WORDS:
+        spec.append({'name': 'p-' + key, 'w': 1200, 'h': 1600, 'p': {'t': 'poster', 'bg': '#ebe8e1', 'ink': ROSHD_INK, 'accent': ROSHD_ACCENT, 'kicker': 'یادداشت‌های رشد', 'word': word, 'font': 'peyda', 'weight': 700,
+                                                                     'caption': 'یادداشت‌هایی کوتاه درباره‌ی اداره‌ی شرکت‌های کوچک و متوسط.', 'motif': None}})
+    return spec
+
+
+def roshd_plan(P):
+    plan = {
+        'hero': lambda: scene((2000, 1200), 'oak', 401, [(P('p-report'), 0.26, 0.3, 0.5, -3, 1), (P('p-plan'), 0.2, 0.56, 0.46, 4, 1.2), (P('p-letter'), 0.24, 0.8, 0.52, -2, 1.3)],
+                              [('pen', 0.46, 0.9, 0.22, -0.25), ('cup', 0.08, 0.16, 0.1, 'white')]),
+        'report': lambda: scene((1600, 1000), 'walnut', 402, [(P('p-report'), 0.36, 0.42, 0.5, -3, 1.1)], [('pen', 0.66, 0.86, 0.26, -0.3), ('cup', 0.84, 0.3, 0.12, 'oat')]),
+        'plan': lambda: scene((1200, 1200), 'linen', 403, [(P('p-plan'), 0.54, 0.48, 0.5, -3, 1.2)], [('pencil', 0.14, 0.9, 0.42, -0.08)], bgc=(212, 214, 206)),
+        'process': lambda: scene((1600, 1000), 'concrete', 404, [(P('p-sketch'), 0.3, 0.34, 0.5, 3, 1), (P('p-letter'), 0.3, 0.66, 0.5, -3, 1.2)], [('pencil', 0.1, 0.9, 0.3, -0.06)], bgc=(176, 174, 170)),
+    }
+    for i, (key, *_r) in enumerate(ROSHD_CASES):
+        plan[key] = (lambda k=key, s=i: scene((1200, 1200), ['oak', 'marble', 'linen'][s], 410 + s, [(P('p-' + k), 0.52, 0.48, 0.5, [-2, 3, -3][s], 1.2)], [('pen', 0.78, 0.9, 0.24, -0.3)]))
+    for i, (key, _w) in enumerate(ROSHD_WORDS):
+        plan[key] = (lambda k=key, s=i: wall((1200, 800), 420 + s, P('p-' + k), wf=0.36, bgc=(214, 214, 208)))
+    return plan
+
+
 if __name__ == '__main__':
     which, out_dir = sys.argv[1], sys.argv[2]
     only = set(sys.argv[3:])
     os.makedirs(out_dir, exist_ok=True)
     work = os.path.join(tempfile.gettempdir(), 'hm-editorial-' + which)
     os.makedirs(work, exist_ok=True)
-    specs = {'spark': spark_spec, 'agency': agency_spec, 'flux': lambda: flux_spec(work), 'clinic': clinic_spec}
-    plans = {'spark': spark_plan, 'agency': agency_plan, 'flux': flux_plan, 'clinic': clinic_plan}
+    specs = {'spark': spark_spec, 'agency': agency_spec, 'flux': lambda: flux_spec(work), 'clinic': clinic_spec, 'roshd': roshd_spec}
+    plans = {'spark': spark_plan, 'agency': agency_plan, 'flux': flux_plan, 'clinic': clinic_plan, 'roshd': roshd_plan}
     spec = specs[which]()
     if not os.environ.get('HM_SKIP_PRINTS'):
         render_prints(spec, work)

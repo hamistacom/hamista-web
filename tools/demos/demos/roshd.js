@@ -1,12 +1,22 @@
 /**
- * Demo: Roshd — management and growth consulting for small and medium firms (Coral kit).
+ * Demo: Roshd — management and growth consulting for small and medium firms
+ * (Coral kit), built as a complete site: home, services, plans, case studies,
+ * about, FAQ, contact and notes. Pictures are the firm's own paperwork:
+ * monthly dashboards, the ninety-day plan, proposals and process sketches.
  */
 'use strict';
 
 const L = require('../lib');
-const { link, section, cols, heading, button } = L;
+const { img, link, px, section, cols, heading, button, fx } = L;
 
 const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp' };
+['hero', 'report', 'plan', 'process', 'case-1', 'case-2', 'case-3', 'journal-1', 'journal-2', 'journal-3', 'journal-4'].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
+const alts = {
+	hero: 'داشبورد ماهانه، کتابچه‌ی برنامه‌ی نودروزه و نامه‌ی پیشنهاد روی میز',
+	report: 'گزارش ماهانه‌ی جریان نقدی با نمودار رو به رشد',
+	plan: 'کتابچه‌ی برنامه‌ی رشد نودروزه',
+	process: 'طرح مدادی فرایند سفارش تا تحویل کنار نامه‌ی پیشنهاد',
+};
 const anchor = (id, el) => { el.settings._element_id = id; return el; };
 
 const BENTO = [
@@ -37,17 +47,23 @@ const PLANS = [
 	{ name: 'همراه کامل', desc: 'برای گروه‌ها و شرکت‌های چندشعبه', price: 'توافقی', price_alt: 'توافقی', unit: '', period: '', features: 'تیم مشاوره‌ی اختصاصی\nحضور در جلسه‌های هیئت‌مدیره\nطراحی ساختار سازمانی\nآموزش مدیران میانی', btn_text: 'هماهنگی جلسه', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
 ];
 
+const CASES = [
+	{ eyebrow: 'پوشاک طاها · قیمت‌گذاری', title: 'حاشیه‌ی سود از ۲۲ به ۳۴ درصد', text: 'نیمی از محصولات کم‌فروش کنار رفت و قیمت پانزده محصول پرفروش بازبینی شد؛ فروش کمتر، سود بیشتر.', points: 'تحلیل سود هر محصول\nحذف ۴۸٪ کالای راکد\nداشبورد هفتگی فروش', image: img('case-1'), btn_text: 'خواندن یادداشت', btn_link: link('{{post:pricing-note}}'), tone: '' },
+	{ eyebrow: 'کارگاه چوب اسدی · فرایند', title: 'زمان تحویل از ۳۰ به ۱۵ روز', text: 'فرایند سفارش تا تحویل روی کاغذ کشیده شد و سه گلوگاه با تغییرهای کوچک برداشته شد.', points: 'نقشه‌ی فرایند\nبرنامه‌ی هفتگی تولید\nتحویل سر وقت ۹۶٪', image: img('case-2'), btn_text: 'خواندن یادداشت', btn_link: link('{{post:process-note}}'), tone: 'inverse' },
+	{ eyebrow: 'فروشگاه‌های نیلا · مالی', title: 'نقدینگی ۴۱ درصد بیشتر', text: 'سه شعبه با یک داشبورد؛ مهلت پرداخت عمده‌فروشان کوتاه شد و خرید فصلی برنامه‌ریزی شد.', points: 'داشبورد مالی زنده\nدوره‌ی وصول ۴۲ روز\nبودجه‌ی خرید فصلی', image: img('case-3'), btn_text: 'خواندن یادداشت', btn_link: link('{{post:cash-note}}'), tone: '' },
+];
+
 /* ---------------- Home ---------------- */
 
 const home = [
 	L.bleed(L.w('hm-hero', {
-		layout: 'center', title_tag: 'h1', title_size: 'xl', header_align: 'center', title_reveal: 'words',
+		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
 		eyebrow: 'رشد · مشاوره‌ی مدیریت',
 		title: 'کسب‌وکارتان را\n*با آرامش* بزرگ کنید',
 		desc: 'برنامه‌ی رشد، داشبورد مالی و همراهی هفتگی مشاوران باتجربه؛ برای شرکت‌های کوچک و متوسطی که می‌خواهند بی‌آشفتگی بزرگ شوند.',
 		btn1_text: 'جلسه‌ی آشنایی رایگان', btn1_link: link('{{page:contact}}'), btn1_style: 'primary',
-		btn2_text: 'برنامه‌ها و هزینه‌ها', btn2_link: link('#plans'), btn2_style: 'secondary',
-		media_type: 'none', height: 'auto', decor: '', hint: '',
+		btn2_text: 'برنامه‌ها و هزینه‌ها', btn2_link: link('{{page:plans}}'), btn2_style: 'secondary',
+		media_type: 'image', image: img('hero'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
 	})),
 	section({ space: 'md', top0: true, gap: 32 }, [
 		L.features(BENTO, { layout: 'bento', style: 'cards', columns: '4', icon_style: 'soft' }),
@@ -62,7 +78,10 @@ const home = [
 			], { style: 'plain', columns: '4' }),
 		], true),
 	]),
-	section({ space: 'md', gap: 40 }, [
+	section({ space: 'none', gap: 0, zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('report', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [
 		heading({ eyebrow: 'شیوه‌ی کار', title: 'چهار قدم، *دوازده هفته*', header_align: 'center' }),
 		L.steps([
 			{ marker: '', icon: 'search', title: 'شناخت', text: 'دو جلسه برای دیدن اعداد، فرایندها و تیم؛ بدون قضاوت.' },
@@ -71,14 +90,18 @@ const home = [
 			{ marker: '', icon: 'chart', title: 'سنجش', text: 'گزارش پایان دوره و برنامه‌ی سه ماه بعد.' },
 		], { layout: 'h', cards: 'yes' }),
 	]),
-	section({ space: 'md', scheme: 'surface', gap: 40 }, [
+	section({ space: 'md', gap: 32 }, [
+		heading({ eyebrow: 'نمونه‌ها', title: 'سه شرکت،\n*سه عدد*' }),
+		L.stack(CASES),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'از زبان مدیران', title: 'اعداد، *نه وعده‌ها*' }),
 		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
-	]),
-	anchor('plans', section({ space: 'md', gap: 40 }, [
+	]), { tone: 'surface' }),
+	fx(section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'برنامه‌ها', title: 'هزینه‌ی *روشن*، بی‌قرارداد بلندمدت', header_align: 'center', desc: 'همه‌ی برنامه‌ها با یک جلسه‌ی آشنایی رایگان شروع می‌شوند.' }),
 		L.pricing(PLANS, { switch_off: 'پرداخت ماهانه', switch_on: 'پرداخت سه‌ماهه', switch_note: '۱۰٪ تخفیف' }),
-	])),
+	]), { cards: 'cascade' }),
 	section({ space: 'md', scheme: 'surface' }, [
 		cols({ widths: [36, 64], gap: 64 }, [
 			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *شروع*' }), button('گفت‌وگو با ما', '{{page:contact}}', 'secondary')],
@@ -95,13 +118,20 @@ const home = [
 	}),
 ];
 
+const ctaMeet = () => L.cta({
+	eyebrow: 'جلسه‌ی آشنایی',
+	title: 'اولین جلسه\n*رایگان* است',
+	desc: 'چهل‌وپنج دقیقه گفت‌وگو درباره‌ی کسب‌وکار شما؛ بدون تعهد و بدون فروش.',
+	btn1_text: 'رزرو جلسه', btn1_link: link('{{page:contact}}'),
+	btn2_text: '۰۲۱-۹۱۰۰۴۴۰۰', btn2_link: link('tel:+982191004400'),
+	look: 'inverse', decor: '', note: '',
+});
+
 /* ---------------- Services ---------------- */
 
 const services = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'خدمات', title: 'آنچه *با هم* می‌سازیم', title_tag: 'h1', title_size: 'xl', desc: 'هر همکاری با یک برنامه‌ی نودروزه شروع می‌شود؛ خدمات زیر بسته به اهداف آن برنامه به کار می‌آیند.' }),
-	]),
-	section({ space: 'md' }, [
+	L.pageHead('خدمات', 'آنچه *با هم* می‌سازیم', 'هر همکاری با یک برنامه‌ی نودروزه شروع می‌شود؛ خدمات زیر بسته به اهداف آن برنامه به کار می‌آیند.'),
+	fx(section({ space: 'md' }, [
 		L.features([
 			{ icon: 'chart', tone: 'soft', title: 'مدیریت مالی', text: 'بودجه‌بندی، جریان نقدی، قیمت‌گذاری و داشبورد مالی زنده.' },
 			{ icon: 'target', tone: 'warm', title: 'استراتژی فروش', text: 'بازارهای هدف، کانال‌های فروش و ساختار تیم فروش.' },
@@ -110,36 +140,107 @@ const services = [
 			{ icon: 'book', tone: '', title: 'آموزش مدیران', text: 'کارگاه‌های کوتاه برای مدیران میانی؛ تصمیم‌گیری، جلسه و بازخورد.' },
 			{ icon: 'shield', tone: 'dark', title: 'مدیریت ریسک', text: 'شناسایی ریسک‌های مالی و عملیاتی پیش از آنکه دردسر شوند.' },
 		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'soft' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'md', gap: 48 }, [
+		cols({ widths: [50, 50], gap: 64, align: 'center' }, [
+			[fx(L.imageReveal('process', { ratio: '4-3', reveal: 'none', parallax: px(0) }), { zoom: 'in', zoomAmount: 0.08, zoomInner: true })],
+			[heading({ eyebrow: 'روی کاغذ', title: 'اول *نقشه*،\nبعد تغییر', desc: 'هر فرایند پیش از هر تغییری روی کاغذ کشیده می‌شود؛ گلوگاه‌ها معمولاً همان‌جا پیدا می‌شوند.' })],
+		]),
 	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'شیوه‌ی کار', title: 'چهار قدم، *دوازده هفته*', header_align: 'center' }),
+		L.steps([
+			{ marker: '۰۱', icon: 'search', title: 'شناخت', text: 'دو جلسه برای دیدن اعداد، فرایندها و تیم.' },
+			{ marker: '۰۲', icon: 'target', title: 'برنامه', text: 'سه هدف قابل اندازه‌گیری برای نود روز.' },
+			{ marker: '۰۳', icon: 'bolt', title: 'اجرا', text: 'جلسه‌ی هفتگی و پیگیری دقیق.' },
+			{ marker: '۰۴', icon: 'chart', title: 'سنجش', text: 'گزارش پایان دوره و برنامه‌ی بعدی.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface' }),
+	ctaMeet(),
+];
+
+/* ---------------- Plans ---------------- */
+
+const plans = [
+	L.pageHead('برنامه‌ها', 'هزینه‌ی *روشن*،\nبی‌قرارداد بلندمدت', 'همه‌ی برنامه‌ها با یک جلسه‌ی آشنایی رایگان شروع می‌شوند و پس از سه ماه، ماه‌به‌ماه ادامه پیدا می‌کنند.'),
+	fx(section({ space: 'md', gap: 40 }, [L.pricing(PLANS, { switch_off: 'پرداخت ماهانه', switch_on: 'پرداخت سه‌ماهه', switch_note: '۱۰٪ تخفیف' })]), { cards: 'cascade' }),
+	section({ space: 'md', gap: 48 }, [
+		cols({ widths: [50, 50], gap: 64, align: 'center' }, [
+			[heading({ eyebrow: 'در هر برنامه', title: 'یک کتابچه،\n*سه هدف*', desc: 'برنامه‌ی نودروزه روی چند صفحه نوشته می‌شود: سه هدف با عدد، مسئول هر کار و تاریخ هر جلسه. همان کتابچه پایان دوره سنجیده می‌شود.' })],
+			[fx(L.imageReveal('plan', { ratio: '1-1', reveal: 'none', parallax: px(0) }), { zoom: 'in', zoomAmount: 0.08, zoomInner: true })],
+		]),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'درباره‌ی\n*هزینه*' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]), { tone: 'surface' }),
+	ctaMeet(),
+];
+
+/* ---------------- Cases ---------------- */
+
+const cases = [
+	L.pageHead('نمونه‌ها', 'سه شرکت،\n*سه عدد*', 'اعداد از گزارش‌های مالی خود شرکت‌ها و با اجازه‌ی آن‌ها منتشر شده است.'),
+	section({ space: 'md', gap: 32 }, [L.stack(CASES)]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان مدیران', title: 'اعداد، *نه وعده‌ها*', header_align: 'center' }),
+		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
+	]), { tone: 'inverse' }),
+	ctaMeet(),
 ];
 
 /* ---------------- About ---------------- */
 
 const about = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'درباره‌ی رشد', title: 'مشاورانی که\n*کار کرده‌اند*', title_tag: 'h1', title_size: 'xl' }),
+	L.pageHead('درباره‌ی رشد', 'مشاورانی که\n*کار کرده‌اند*', 'رشد را در سال ۱۳۹۲ چند مدیر باتجربه راه انداختند که خودشان کسب‌وکار داشتند.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('hero', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	section({ space: 'md' }, [
-		L.textScrub('رشد را در سال ۱۳۹۲ چند مدیر باتجربه راه انداختند که خودشان کسب‌وکار داشتند و از مشاوره‌های پرهزینه و بی‌نتیجه خسته بودند. قرارمان از روز اول یکی بود: *فقط* چیزی را پیشنهاد کنیم که *خودمان اجرا کرده‌ایم*.', { size: 'md' }),
+	section({ space: 'md', width: 1000 }, [
+		L.textScrub('قرارمان از روز اول یکی بود: *فقط* چیزی را پیشنهاد کنیم که *خودمان اجرا کرده‌ایم*؛ و هر کار را با عددی بسنجیم که مدیر شرکت هر صبح نگاه می‌کند.', { size: 'md' }),
 	]),
-	section({ space: 'sm', gap: 0 }, [
-		L.con({ content_width: 'full', css_classes: 'hm-scheme-inverse hm-rounded', padding: L.pad(40, 48) }, [
-			L.counters([
-				{ value: 12, label: 'سال' },
-				{ value: 18, label: 'مشاور' },
-				{ value: 240, label: 'شرکت همراه' },
-				{ value: 9, label: 'استان' },
-			], { style: 'plain', columns: '4' }),
-		], true),
+	fx(section({ space: 'sm' }, [
+		L.counters([
+			{ value: 12, label: 'سال' },
+			{ value: 18, label: 'مشاور' },
+			{ value: 240, label: 'شرکت همراه' },
+			{ value: 9, label: 'استان' },
+		], { style: 'plain', columns: '4' }),
+	]), { tone: 'inverse' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'تیم', title: 'مشاوران *رشد*' })],
+			[L.features([
+				{ icon: '', title: 'کامران صدیقی', text: 'هم‌بنیان‌گذار؛ مدیریت مالی' },
+				{ icon: '', title: 'لاله امیری', text: 'هم‌بنیان‌گذار؛ فروش و بازار' },
+				{ icon: '', title: 'رضا کاظمی', text: 'فرایند و عملیات' },
+				{ icon: '', title: 'نگار فاضلی', text: 'منابع انسانی و آموزش' },
+			], { layout: 'grid', style: 'plain', columns: '2', icon_style: 'plain' })],
+		]),
+	]), { cards: 'cascade' }),
+	ctaMeet(),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر سؤالتان این‌جا نیست، در جلسه‌ی آشنایی بپرسید.'),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'همکاری', title: 'قرارداد و *نتیجه*', title_size: 'md' })],
+			[L.faq(FAQ.concat([
+				['جلسه‌ها حضوری است؟', 'جلسه‌ی شناخت حضوری در دفتر شماست؛ جلسه‌های هفتگی حضوری یا تصویری، به انتخاب شما.'],
+				['خارج از تهران هم کار می‌کنید؟', 'بله؛ در نُه استان شرکت همراه داریم. هزینه‌ی سفر جلسه‌های حضوری جداگانه است.'],
+			]), { style: 'lines' })],
+		]),
 	]),
+	ctaMeet(),
 ];
 
 /* ---------------- Contact ---------------- */
 
 const contact = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'تماس', title: 'گفت‌وگو را *شروع* کنیم', title_tag: 'h1', title_size: 'xl', desc: 'فرم را پر کنید؛ ظرف یک روز کاری برای هماهنگی جلسه‌ی آشنایی تماس می‌گیریم.' }),
-	]),
+	L.pageHead('تماس', 'گفت‌وگو را *شروع* کنیم', 'فرم را پر کنید؛ ظرف یک روز کاری برای هماهنگی جلسه‌ی آشنایی تماس می‌گیریم.'),
 	section({ space: 'md' }, [
 		cols({ widths: [40, 60], gap: 56 }, [
 			[L.contactInfo([
@@ -153,48 +254,108 @@ const contact = [
 	]),
 ];
 
+/* ---------------- Notes ---------------- */
+
+const terms = [
+	{ key: 'cat-finance', taxonomy: 'category', name: 'مالی', slug: 'finance' },
+	{ key: 'cat-ops', taxonomy: 'category', name: 'عملیات', slug: 'operations' },
+	{ key: 'cat-team', taxonomy: 'category', name: 'تیم', slug: 'team' },
+];
+
+const posts = [
+	{
+		key: 'cash-note', title: 'نقدینگی، پیش از سود', slug: 'cash-before-profit', image: 'journal-1', terms: ['cat-finance'], days_ago: 4,
+		excerpt: 'شرکت‌های سودده هم ممکن است به خاطر کمبود نقدینگی زمین بخورند.',
+		content: L.article([
+			'سود روی کاغذ است و نقدینگی در حساب بانکی. بسیاری از شرکت‌های کوچک سودده‌اند اما هر ماه برای پرداخت حقوق نگران‌اند؛ چون پولشان در انبار و نزد مشتریان عمده مانده است.',
+			['h', 'سه کار برای این ماه'],
+			['ol', ['دوره‌ی وصول مطالبات را حساب کنید: چند روز طول می‌کشد تا پول فروش به حساب برسد؟', 'کالای راکد بیش از نود روز را فهرست کنید.', 'یک پیش‌بینی ساده‌ی نقدینگی سه‌ماهه بنویسید؛ حتی در یک برگه.']],
+			['img', 'case-3', 'گزارش سه‌ماهه‌ی جریان نقدی فروشگاه‌های نیلا'],
+		]),
+	},
+	{
+		key: 'pricing-note', title: 'قیمت را از کجا شروع کنیم', slug: 'where-pricing-starts', image: 'journal-2', terms: ['cat-finance'], days_ago: 12,
+		excerpt: 'قیمت‌گذاری بر اساس «رقیب چند می‌فروشد» کافی نیست.',
+		content: L.article([
+			'بیشتر شرکت‌های کوچک قیمت را از روی رقیب یا با یک درصد ثابت روی بهای تمام‌شده تعیین می‌کنند. نتیجه این است که برخی محصولات در عمل زیان می‌دهند و کسی متوجه نمی‌شود.',
+			['ul', ['سود هر محصول را جداگانه حساب کنید، با هزینه‌های غیرمستقیم.', 'پانزده محصول پرفروش را اول بازبینی کنید.', 'تخفیف‌های همیشگی را حذف کنید؛ تخفیف باید دلیل و تاریخ پایان داشته باشد.']],
+		]),
+	},
+	{
+		key: 'team-note', title: 'شرح شغل، کوتاه و روشن', slug: 'short-job-descriptions', image: 'journal-3', terms: ['cat-team'], days_ago: 21,
+		excerpt: 'یک صفحه کافی است؛ به شرط آنکه بگوید موفقیت در این نقش چه شکلی است.',
+		content: L.article([
+			'شرح شغل‌های طولانی کمتر خوانده می‌شوند. یک صفحه با سه بخش کافی است: مسئولیت‌ها، عددهایی که با آن سنجیده می‌شوید، و تصمیم‌هایی که خودتان می‌گیرید.',
+			['q', 'اگر کسی نداند با چه عددی سنجیده می‌شود، با حدس کار می‌کند.'],
+		]),
+	},
+	{
+		key: 'process-note', title: 'فرایند را روی کاغذ بکشید', slug: 'draw-the-process', image: 'journal-4', terms: ['cat-ops'], days_ago: 30,
+		excerpt: 'گلوگاه‌ها معمولاً روی کاغذ پیدا می‌شوند، نه در جلسه.',
+		content: L.article([
+			'یک برگه بردارید و مسیر یک سفارش را از تماس مشتری تا تحویل بکشید: هر مرحله، هر نفر و هر انتظار. بیشتر وقت‌ها کار در صف‌ها گم می‌شود، نه در خود مراحل.',
+			['img', 'process', 'طرح مدادی فرایند سفارش تا تحویل'],
+			'در کارگاه چوب اسدی، همین نقشه نشان داد سفارش‌ها به‌طور میانگین شش روز منتظر تأیید نقشه‌ی اجرایی می‌مانند. با یک جلسه‌ی ثابت هفتگی برای تأیید، زمان تحویل نصف شد.',
+		]),
+	},
+];
+
+/* ---------------- Package ---------------- */
+
+const LIGHT = { light: 'start', extra: { hm_page_light_a: '#1d7a6c', hm_page_light_b: '#e46f55' } };
+
+const pages = [
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
+	{ key: 'plans', title: 'برنامه‌ها', slug: 'plans', elementor: plans, settings: L.pageSettings() },
+	{ key: 'cases', title: 'نمونه‌ها', slug: 'case-studies', elementor: cases, settings: L.pageSettings(LIGHT) },
+	{ key: 'about', title: 'درباره‌ی رشد', slug: 'about', elementor: about, settings: L.pageSettings() },
+	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
+	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
+	{ key: 'blog', title: 'یادداشت‌ها', slug: 'notes', content: '' },
+];
+
 module.exports = {
 	manifest: {
 		id: 'roshd',
 		order: 11,
 		title: 'رشد',
-		desc: 'مشاوره‌ی مدیریت و رشد کسب‌وکار؛ پنل‌های بنتو با رنگ‌های نرم، نوار آمار و جدول قیمت.',
+		desc: 'مشاوره‌ی مدیریت و رشد کسب‌وکار؛ سایت کامل با خدمات، برنامه‌ها و هزینه‌ها، سه نمونه‌کار با عدد، درباره، پرسش‌ها و یادداشت‌ها. عکس‌ها از کاغذهای خود شرکت: داشبورد ماهانه، کتابچه‌ی برنامه و طرح فرایند.',
 		kit: 'coral',
 		thumb: 'thumb.webp',
 		required: ['elementor'],
 		recommended: [],
 		tags: ['شرکتی', 'مشاوره', 'کسب‌وکار'],
-		pages: ['خانه', 'خدمات', 'درباره‌ی رشد', 'تماس'],
+		pages: pages.filter((p) => p.elementor).map((p) => p.title).concat(['یادداشت‌ها']),
 	},
 	content: {
 		site: { title: 'رشد', tagline: 'مشاوره‌ی مدیریت و رشد کسب‌وکار' },
-		images, alts: {}, terms: [], posts: [],
-		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: '' }) },
-			{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
-			{ key: 'about', title: 'درباره‌ی رشد', slug: 'about', elementor: about, settings: L.pageSettings() },
-			{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
-		],
+		images, alts, terms, posts, pages,
 		templates: [
 			{ key: 'tpl-home', type: 'page', page: 'home', title: 'رشد — صفحه‌ی اصلی' },
 			{ key: 'tpl-bento', type: 'section', page: 'home', index: 1, title: 'رشد — پنل‌های بنتو' },
 			{ key: 'tpl-stats', type: 'section', page: 'home', index: 2, title: 'رشد — نوار آمار' },
-			{ key: 'tpl-plans', type: 'section', page: 'home', index: 5, title: 'رشد — جدول قیمت' },
+			{ key: 'tpl-plans', type: 'page', page: 'plans', title: 'رشد — برنامه‌ها' },
+			{ key: 'tpl-cases', type: 'section', page: 'home', index: 5, title: 'رشد — نمونه‌ها با کارت‌های پشته‌ای' },
 		],
 		menus: [
 			{
 				name: 'رشد — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
 					{ title: 'خدمات', page: 'services' },
-					{ title: 'برنامه‌ها', url: '#plans' },
-					{ title: 'درباره‌ی رشد', page: 'about' },
+					{ title: 'برنامه‌ها', page: 'plans' },
+					{ title: 'نمونه‌ها', page: 'cases' },
+					{ title: 'یادداشت‌ها', page: 'blog' },
+					{ title: 'درباره', page: 'about', children: [{ title: 'درباره‌ی رشد', page: 'about' }, { title: 'پرسش‌های متداول', page: 'faq' }] },
 					{ title: 'تماس', page: 'contact' },
 				],
 			},
 			{
 				name: 'رشد — پابرگ', location: 'footer', items: [
 					{ title: 'خدمات', page: 'services' },
-					{ title: 'درباره‌ی رشد', page: 'about' },
+					{ title: 'برنامه‌ها', page: 'plans' },
+					{ title: 'نمونه‌ها', page: 'cases' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
 					{ title: 'تماس', page: 'contact' },
 				],
 			},
@@ -217,7 +378,14 @@ module.exports = {
 			mobile_bar_text: 'جلسه‌ی رایگان',
 			mobile_bar_url: '{{page:contact}}',
 			mobile_bar_phone: '02191004400',
+			cursor: 'dot',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'soft',
+			sound_volume: 18,
+			sound_hover: false,
 		},
 		front_page: 'home',
+		posts_page: 'blog',
 	},
 };

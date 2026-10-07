@@ -5,6 +5,7 @@
 
 const L = require('../lib');
 const { img, link, px, section, cols, heading, button } = L;
+const fx = L.fx;
 
 const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp' };
 ['silk-hero', 'silk-wide', 'silk-tall', 'silk-card-1', 'silk-card-2', 'silk-card-3'].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
@@ -28,6 +29,13 @@ const QUOTES = [
 ].map((q) => Object.assign({ rating: '0' }, q));
 
 /* ---------------- Home ---------------- */
+
+const FAQ = [
+	['چقدر زودتر باید پرواز را درخواست کنم؟', 'برای پروازهای داخلی بیست‌وچهار ساعت و برای پروازهای خارجی معمولاً چهل‌وهشت ساعت کافی است.'],
+	['قیمت چطور تعیین می‌شود؟', 'بر اساس هواپیما، مسیر، ساعت‌های پرواز و توقف خدمه؛ پیش از تأیید، قیمت نهایی و مکتوب را می‌گیرید.'],
+	['حیوان خانگی همراهم بیاید؟', 'بله؛ در بیشتر هواپیماهای ناوگان، حیوان خانگی در کابین همراه شما سفر می‌کند.'],
+	['پرواز یک‌طرفه‌ی خالی چیست؟', 'وقتی هواپیما برای بازگشت خالی است، آن مسیر را با تخفیف قابل توجه پیشنهاد می‌کنیم.'],
+];
 
 const home = [
 	L.bleed(L.w('hm-hero', {
@@ -186,6 +194,38 @@ const posts = [
 	},
 ];
 
+const services = [
+	L.pageHead('خدمات', 'هر سفر،\n*بی‌واسطه*', 'پرواز اختصاصی، پرواز یک‌طرفه‌ی خالی و خدمات زمینی؛ با یک مدیر سفر که از درخواست تا فرود همراه شماست.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('silk-wide', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'plane', title: 'پرواز اختصاصی', text: 'هر مقصد، هر ساعت؛ از جت سبک تا هواپیمای کابین بزرگ.' },
+			{ icon: 'refresh', title: 'پرواز یک‌طرفه‌ی خالی', text: 'مسیرهای بازگشت با تخفیف تا نصف قیمت.' },
+			{ icon: 'star', title: 'خدمات زمینی', text: 'ترمینال اختصاصی، خودروی فرودگاه و پذیرایی دلخواه.' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { cards: 'cascade' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از درخواست تا فرود', title: 'سه گام', header_align: 'center' }),
+		L.steps([
+			{ marker: '۰۱', icon: 'phone', title: 'درخواست', text: 'مسیر، تاریخ و تعداد مسافران را بگویید.' },
+			{ marker: '۰۲', icon: 'check', title: 'پیشنهاد', text: 'دو گزینه‌ی هواپیما با قیمت نهایی، ظرف دو ساعت.' },
+			{ marker: '۰۳', icon: 'plane', title: 'پرواز', text: 'پانزده دقیقه پیش از پرواز در ترمینال باشید.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface' }),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر جوابتان این‌جا نیست، با ما تماس بگیرید.'),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'آنچه *می‌پرسند*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+];
+
 module.exports = {
 	manifest: {
 		id: 'zarrinbal',
@@ -197,15 +237,17 @@ module.exports = {
 		required: ['elementor'],
 		recommended: [],
 		tags: ['لوکس', 'هوانوردی', 'شرکتی'],
-		pages: ['خانه', 'ناوگان', 'درباره‌ی ما', 'درخواست پرواز', 'یادداشت‌ها'],
+		pages: ['خانه', 'ناوگان', 'درباره‌ی ما', 'درخواست پرواز', 'یادداشت‌ها', 'خدمات', 'پرسش‌های متداول'],
 	},
 	content: {
 		site: { title: 'زرین‌بال', tagline: 'هواپیمایی خصوصی' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#d8b46c', hm_page_light_b: '#f3dfa8' } }) },
 			{ key: 'fleet', title: 'ناوگان', slug: 'fleet', elementor: fleet, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
+			{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
+			{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 			{ key: 'contact', title: 'درخواست پرواز', slug: 'request', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'یادداشت‌ها', slug: 'notes', content: '' },
 		],
@@ -218,6 +260,7 @@ module.exports = {
 			{
 				name: 'زرین‌بال — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
+					{ title: 'خدمات', page: 'services' },
 					{ title: 'ناوگان', page: 'fleet' },
 					{ title: 'یادداشت‌ها', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -225,6 +268,8 @@ module.exports = {
 			},
 			{
 				name: 'زرین‌بال — پابرگ', location: 'footer', items: [
+					{ title: 'خدمات', page: 'services' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
 					{ title: 'ناوگان', page: 'fleet' },
 					{ title: 'یادداشت‌ها', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -253,6 +298,12 @@ module.exports = {
 			mobile_bar_text: 'درخواست پرواز',
 			mobile_bar_url: '{{page:contact}}',
 			mobile_bar_phone: '02188000900',
+			cursor: 'ring',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'glass',
+			sound_volume: 18,
+			sound_hover: false,
 		},
 		front_page: 'home',
 		posts_page: 'blog',

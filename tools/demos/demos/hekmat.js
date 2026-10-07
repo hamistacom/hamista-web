@@ -5,6 +5,7 @@
 
 const L = require('../lib');
 const { img, link, px, section, cols, heading, button } = L;
+const fx = L.fx;
 
 const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp', astrolabe: 'images/astrolabe.webp' };
 for (let i = 1; i <= 6; i++) { images['thinker-' + i] = 'images/thinker-' + i + '.webp'; }
@@ -40,6 +41,13 @@ const THINKERS = [
 ];
 
 /* ---------------- Home ---------------- */
+
+const FAQ = [
+	['برای شرکت در حلقه‌ها پیش‌زمینه‌ی فلسفه لازم است؟', 'نه. متن هر جلسه یک هفته پیش‌تر فرستاده می‌شود و گفت‌وگو از همان متن شروع می‌شود.'],
+	['حلقه‌ها حضوری است یا آنلاین؟', 'حلقه‌های پنجشنبه حضوری در خانه‌ی حکمت است و حلقه‌های یکشنبه آنلاین برگزار می‌شود.'],
+	['اگر جلسه‌ای را از دست بدهم؟', 'خلاصه‌ی هر جلسه و فهرست خواندنی‌هایش برای اعضا فرستاده می‌شود.'],
+	['عضویت را می‌شود لغو کرد؟', 'بله؛ عضویت فصلی است و پیش از شروع فصل بعد می‌توانید تمدید نکنید.'],
+];
 
 const home = [
 	L.bleed(L.w('hm-hero', {
@@ -208,6 +216,37 @@ const posts = [
 	},
 ];
 
+const program = [
+	L.pageHead('برنامه‌ی فصل', 'پاییز ۱۴۰۵،\n*دوازده نشست*', 'هر حلقه یک متن، یک پرسش و دو ساعت گفت‌وگو؛ پنجشنبه‌ها حضوری و یکشنبه‌ها آنلاین.'),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.steps([
+			{ marker: 'مهر', icon: 'book', title: 'رواقیان', text: 'اپیکتتوس و مارکوس آورلیوس؛ آنچه در اختیار ماست.' },
+			{ marker: 'آبان', icon: 'book', title: 'خیام و سعدی', text: 'زمان، شادی و اندازه نگه داشتن.' },
+			{ marker: 'آذر', icon: 'book', title: 'سهروردی', text: 'نور، دانستن و دیدن.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('essay-2', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'عضویت', title: 'یک فصل،\n*یک حلقه*', header_align: 'center' }),
+		L.pricing([
+			{ name: 'آنلاین', desc: 'یکشنبه‌ها، ساعت ۲۰', price: '۱٫۸', price_alt: '', unit: 'میلیون تومان', period: 'فصلی', features: 'دوازده نشست\nمتن‌ها و خلاصه‌ها\nدسترسی به بایگانی', btn_text: 'ثبت‌نام', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
+			{ name: 'حضوری', desc: 'پنجشنبه‌ها، ساعت ۱۸', price: '۳٫۲', price_alt: '', unit: 'میلیون تومان', period: 'فصلی', features: 'دوازده نشست در خانه\nمتن‌های چاپی\nچای و گفت‌وگوی پس از جلسه', btn_text: 'ثبت‌نام', btn_link: link('{{page:contact}}'), featured: 'yes', badge: 'ظرفیت محدود' },
+		], { switch_off: '', switch_on: '' }),
+	]), { tone: 'surface' }),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر جوابتان این‌جا نیست، با ما تماس بگیرید.'),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'آنچه *می‌پرسند*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+];
+
 module.exports = {
 	manifest: {
 		id: 'hekmat',
@@ -219,15 +258,17 @@ module.exports = {
 		required: ['elementor'],
 		recommended: [],
 		tags: ['فرهنگی', 'آموزشی', 'ادبیات'],
-		pages: ['خانه', 'حلقه‌ها', 'درباره‌ی خانه', 'نشانی', 'جستارها'],
+		pages: ['خانه', 'حلقه‌ها', 'درباره‌ی خانه', 'نشانی', 'جستارها', 'برنامه‌ی فصل', 'پرسش‌های متداول'],
 	},
 	content: {
 		site: { title: 'خانه‌ی حکمت', tagline: 'حلقه‌های خوانش ادبیات و حکمت ایرانی' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent', light: 'start', extra: { hm_page_light_a: '#d8b46c', hm_page_light_b: '#8a6a2f' } }) },
 			{ key: 'circles', title: 'حلقه‌ها', slug: 'circles', elementor: circles, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی خانه', slug: 'about', elementor: about, settings: L.pageSettings() },
+			{ key: 'program', title: 'برنامه‌ی فصل', slug: 'season', elementor: program, settings: L.pageSettings() },
+			{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 			{ key: 'contact', title: 'نشانی', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'جستارها', slug: 'essays', content: '' },
 		],
@@ -241,6 +282,7 @@ module.exports = {
 			{
 				name: 'خانه‌ی حکمت — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
+					{ title: 'برنامه‌ی فصل', page: 'program' },
 					{ title: 'حلقه‌ها', page: 'circles' },
 					{ title: 'جستارها', page: 'blog' },
 					{ title: 'درباره‌ی خانه', page: 'about' },
@@ -249,6 +291,8 @@ module.exports = {
 			},
 			{
 				name: 'خانه‌ی حکمت — پابرگ', location: 'footer', items: [
+					{ title: 'برنامه‌ی فصل', page: 'program' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
 					{ title: 'حلقه‌ها', page: 'circles' },
 					{ title: 'جستارها', page: 'blog' },
 					{ title: 'درباره‌ی خانه', page: 'about' },
@@ -274,6 +318,12 @@ module.exports = {
 			mobile_bar: true,
 			mobile_bar_text: 'ثبت‌نام در حلقه‌ها',
 			mobile_bar_url: '{{page:circles}}',
+			cursor: 'ring',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'glass',
+			sound_volume: 18,
+			sound_hover: false,
 		},
 		front_page: 'home',
 		posts_page: 'blog',

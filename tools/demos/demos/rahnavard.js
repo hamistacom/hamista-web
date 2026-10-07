@@ -5,6 +5,7 @@
 
 const L = require('../lib');
 const { img, link, px, section, cols, heading, button } = L;
+const fx = L.fx;
 
 const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp', film: 'images/film.mp4' };
 for (let i = 1; i <= 4; i++) { images['slide-' + i] = 'images/slide-' + i + '.webp'; images['tour-' + i] = 'images/tour-' + i + '.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; }
@@ -55,6 +56,8 @@ const FAQ = [
 	['قیمت تور شامل چه چیزهایی است؟', 'اقامت، همه‌ی جابه‌جایی‌های داخل مسیر، صبحانه و شام، بلیت بازدیدها و راهنمای بومی. بلیت رفت‌وبرگشت تا مبدأ تور جداگانه حساب می‌شود.'],
 	['برای سفر به آمادگی بدنی خاصی نیاز است؟', 'بیشتر مسیرهای ما پیاده‌روی‌های سبک دارند. سطح سختی هر تور را در برنامه‌اش نوشته‌ایم و پیش از ثبت‌نام با شما هماهنگ می‌کنیم.'],
 	['اگر نتوانم بیایم، هزینه برمی‌گردد؟', 'تا سی روز پیش از حرکت، کل مبلغ و تا ده روز پیش از حرکت، نیمی از آن برگردانده می‌شود. می‌توانید جایتان را به دوستتان هم بدهید.'],
+	['برای سفر اختصاصی چقدر زودتر خبر بدهیم؟', 'دست‌کم شش هفته پیش از سفر؛ برای فصل‌های شلوغ مثل نوروز، سه ماه.'],
+	['بیمه‌ی مسافرتی در قیمت هست؟', 'بله؛ بیمه‌ی پایه‌ی مسافرتی در همه‌ی تورها هست و بیمه‌ی تکمیلی را هم می‌توانید اضافه کنید.'],
 ];
 
 /* ---------------- Home ---------------- */
@@ -296,6 +299,40 @@ const posts = [
 	},
 ];
 
+const custom = [
+	L.pageHead('سفر اختصاصی', 'سفری که\n*فقط مال شماست*', 'برای خانواده‌ها، زوج‌ها و گروه‌های کوچک؛ مسیر، سرعت و جاهای ماندن را با هم می‌چینیم.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('wide-1', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'چطور', title: 'چهار گام تا\n*روز حرکت*', header_align: 'center' }),
+		L.steps([
+			{ marker: '۰۱', icon: 'compass', title: 'گفت‌وگو', text: 'سلیقه، سرعت سفر و بودجه را می‌شنویم.' },
+			{ marker: '۰۲', icon: 'pin', title: 'پیش‌نویس مسیر', text: 'یک مسیر روزبه‌روز با دو گزینه‌ی اقامت.' },
+			{ marker: '۰۳', icon: 'calendar', title: 'رزرو', text: 'بلیت، اقامت، راهنما و ماشین؛ همه با ما.' },
+			{ marker: '۰۴', icon: 'phone', title: 'همراهی', text: 'یک شماره که در تمام سفر جواب می‌دهد.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'users', title: 'گروه‌های کوچک', text: 'از دو تا دوازده نفر؛ بدون غریبه‌ها.' },
+			{ icon: 'clock', title: 'سرعت دلخواه', text: 'روزهای آرام یا پرمشغله؛ انتخاب با شماست.' },
+			{ icon: 'home', title: 'اقامت گزیده', text: 'خانه‌های بومی، هتل‌های کوچک و کمپ‌های آرام.' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { cards: 'flip' }),
+	L.cta({ eyebrow: 'سفر اختصاصی', title: 'مسیرتان را\n*بگویید*', desc: 'پیش‌نویس مسیر ظرف سه روز کاری؛ رایگان و بدون تعهد.', btn1_text: 'درخواست سفر', btn1_link: link('{{page:contact}}'), look: 'image', image: img('wide-2'), decor: '', note: '' }),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر جوابتان این‌جا نیست، با ما تماس بگیرید.'),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'آنچه *می‌پرسند*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+];
+
 module.exports = {
 	manifest: {
 		id: 'rahnavard',
@@ -307,15 +344,17 @@ module.exports = {
 		required: ['elementor'],
 		recommended: [],
 		tags: ['گردشگری', 'آژانس سفر', 'سینمایی'],
-		pages: ['خانه', 'تورها', 'درباره‌ی ما', 'تماس', 'سفرنامه'],
+		pages: ['خانه', 'تورها', 'درباره‌ی ما', 'تماس', 'سفرنامه', 'سفر اختصاصی', 'پرسش‌های متداول'],
 	},
 	content: {
 		site: { title: 'ره‌نورد', tagline: 'سفرهای آهسته در ایران' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#2bb3c4', hm_page_light_b: '#d9a066' } }) },
 			{ key: 'tours', title: 'تورها', slug: 'tours', elementor: tours, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
+			{ key: 'custom', title: 'سفر اختصاصی', slug: 'private-journeys', elementor: custom, settings: L.pageSettings() },
+			{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 			{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'سفرنامه', slug: 'journal', content: '' },
 		],
@@ -330,6 +369,7 @@ module.exports = {
 			{
 				name: 'ره‌نورد — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
+					{ title: 'سفر اختصاصی', page: 'custom' },
 					{ title: 'تورها', page: 'tours' },
 					{ title: 'سفرنامه', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -338,6 +378,8 @@ module.exports = {
 			},
 			{
 				name: 'ره‌نورد — پابرگ', location: 'footer', items: [
+					{ title: 'سفر اختصاصی', page: 'custom' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
 					{ title: 'تورها', page: 'tours' },
 					{ title: 'سفرنامه', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -360,6 +402,12 @@ module.exports = {
 			mobile_bar_text: 'مشاوره‌ی سفر',
 			mobile_bar_url: '{{page:contact}}',
 			mobile_bar_whatsapp: '09124402610',
+			cursor: 'dot',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'soft',
+			sound_volume: 18,
+			sound_hover: false,
 		},
 		front_page: 'home',
 		posts_page: 'blog',
