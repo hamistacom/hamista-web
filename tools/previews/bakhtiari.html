@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ایل — پیش‌نمایش شخصیت بختیاری</title>
+<link rel="stylesheet" href="common.css">
+<style>
+:root{
+	--bg:#f4ead9; --bg2:#ead9bf; --ink:#2a1f19; --muted:#6f5e50; --accent:#b4532a; --accent-ink:#fff8ef;
+	--card:rgba(255,250,242,.72); --sun1:#fff3dc; --sun2:#ffe2b0; --line:rgba(42,31,25,.12);
+	--sky1:#f7e3c4; --sky2:#efc79b; --m1:#c99a72; --m2:#a8775a; --m3:#7f5a47; --ground:#6f6a3a;
+}
+html[data-theme="dark"]{
+	--bg:#16110f; --bg2:#201916; --ink:#f3e9dc; --muted:#b3a291; --accent:#e07a45; --accent-ink:#1a0d06;
+	--card:rgba(40,30,25,.66); --sun1:#4a4060; --sun2:#e9dcc0; --line:rgba(255,240,225,.1);
+	--sky1:#2a2236; --sky2:#5b3a3a; --m1:#3c2e33; --m2:#2c2226; --m3:#1e181a; --ground:#2a2a1c;
+}
+body{background:var(--bg);color:var(--ink)}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.02em}
+.brand i{width:30px;height:30px;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:var(--accent-ink);font-style:normal;font-size:15px}
+.nav{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav a:first-child{color:var(--ink)}
+.tools{display:flex;gap:10px;align-items:center}
+.ib{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center}
+.btn{height:44px;padding:0 20px;border-radius:12px;display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:14.5px;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+.hero{position:relative;height:540px;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,var(--sky1),var(--sky2));isolation:isolate}
+.scene{position:absolute;inset:0;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(270deg,var(--sky1) 0%,color-mix(in srgb,var(--sky1) 85%,transparent) 34%,transparent 58%)}
+.copy{position:absolute;inset-block:0;inset-inline-start:56px;width:470px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.eyebrow{align-self:flex-start;display:inline-flex;gap:8px;align-items:center;height:32px;padding:0 14px;border-radius:99px;background:var(--card);backdrop-filter:blur(10px);font-size:13px;font-weight:700;border:1px solid var(--line)}
+.eyebrow b{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-size:50px;line-height:1.18;font-weight:900;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:16px;line-height:1.95;color:var(--muted);max-width:430px}
+.ctas{display:flex;gap:12px;margin-top:4px}
+.stats{display:flex;gap:28px;margin-top:10px}
+.stats b{display:block;font-size:22px;font-weight:900}
+.stats span{font-size:12.5px;color:var(--muted)}
+
+.figure{position:absolute;inset-inline-end:40px;bottom:0;width:560px;height:520px}
+.figure svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tag{position:absolute;padding:10px 14px;border-radius:16px;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);font-size:12.5px;line-height:1.6;box-shadow:0 20px 40px -24px rgba(40,20,10,.45)}
+.tag b{display:block;font-size:14px}
+.tag.t1{inset-inline-end:430px;top:120px}
+.tag.t2{inset-inline-end:10px;top:70px}
+.breath{animation:breath 4.8s ease-in-out infinite;transform-origin:300px 700px}
+@keyframes breath{50%{transform:translateY(-3px) scaleY(1.006)}}
+.blink{animation:blink 5.2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blink{0%,95%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.lblink{animation:blink 6.4s infinite 1.3s;transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.breath,.blink,.lblink{animation:none}}
+.note{margin-top:14px;font-size:13px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<header class="top">
+		<div class="brand"><i>ایل</i>ایل‌بازار</div>
+		<nav class="nav"><a href="#">خانه</a><a href="#">فروشگاه</a><a href="#">داستان ایل</a><a href="#">دفترچه</a><a href="#">تماس</a></nav>
+		<div class="tools">
+			<span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+			<span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+			<a class="btn" href="#">سبد خرید <span style="background:var(--accent-ink);color:var(--accent);border-radius:99px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12px">۲</span></a>
+		</div>
+	</header>
+
+	<section class="hero">
+		<svg class="scene" viewBox="0 0 1150 540" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+			<circle cx="300" cy="250" r="120" fill="var(--sun1)" opacity=".55"/>
+			<circle cx="300" cy="250" r="70" fill="var(--sun2)" opacity=".9"/>
+			<path d="M0 360 L120 250 L210 310 L330 200 L440 300 L560 230 L700 320 L820 240 L960 330 L1150 250 L1150 540 L0 540Z" fill="var(--m1)" opacity=".75"/>
+			<path d="M0 410 L160 320 L280 380 L420 300 L560 380 L690 320 L860 400 L1000 330 L1150 380 L1150 540 L0 540Z" fill="var(--m2)" opacity=".85"/>
+			<path d="M0 470 C200 430 360 450 560 440 C760 430 960 470 1150 450 L1150 540 L0 540Z" fill="var(--m3)"/>
+			<!-- black tent (siah-chador) -->
+			<g transform="translate(440 404)" opacity=".92">
+				<path d="M0 46 L18 6 L60 0 L102 6 L120 46Z" fill="#1d1715"/>
+				<path d="M18 6 L18 46 M60 0 L60 46 M102 6 L102 46" stroke="#3a2f2a" stroke-width="2"/>
+				<path d="M52 46 L56 22 L64 22 L68 46Z" fill="#c4692f" opacity=".85"/>
+			</g>
+		</svg>
+
+		<div class="copy">
+			<span class="eyebrow"><b></b>محصولات اصیل عشایر بختیاری</span>
+			<h1>از دامنه‌های زاگرس<br>تا <em>سفره‌ی شما</em></h1>
+			<p class="lead">کشک، روغن حیوانی، عسل کوهی و گلیم دست‌باف؛ بی‌واسطه از سیاه‌چادرهای ایل و با ارسال سریع به سراسر ایران.</p>
+			<div class="ctas"><a class="btn" href="#">خرید از ایل ←</a><a class="btn ghost" href="#">داستان کوچ</a></div>
+			<div class="stats"><div><b>۴۸</b><span>خانوار تولیدکننده</span></div><div><b>۱۲۰+</b><span>محصول دست‌ساز</span></div><div><b>۴٫۹</b><span>رضایت خریداران</span></div></div>
+		</div>
+
+		<div class="figure" id="bk">
+			<div class="tag t1"><b>ییلاق ۱۴۰۴</b>چهارمحال و بختیاری</div>
+			<div class="tag t2"><b>دوغ و کشک تازه</b>ارسال از فردا</div>
+			<svg viewBox="-150 0 770 700" preserveAspectRatio="xMidYMax meet" role="img" aria-label="پسر بختیاری و بره">
+				<defs>
+					<pattern id="stripes" width="26" height="10" patternUnits="userSpaceOnUse"><rect width="26" height="10" fill="#efe5d1"/><rect x="11" width="6" height="10" fill="#3b302a"/></pattern>
+					<linearGradient id="shade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".26"/></linearGradient>
+					<radialGradient id="skin" cx=".42" cy=".38" r=".75"><stop offset="0" stop-color="#ecbc91"/><stop offset=".7" stop-color="#d79f72"/><stop offset="1" stop-color="#c68a5f"/></radialGradient>
+					<linearGradient id="hat" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3a3230"/><stop offset=".45" stop-color="#1c1716"/><stop offset="1" stop-color="#0c0a09"/></linearGradient>
+					<radialGradient id="wool" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#e3d9c8"/></radialGradient>
+					<filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+				</defs>
+
+				<ellipse cx="300" cy="700" rx="230" ry="22" fill="#000" opacity=".18" filter="url(#soft)"/>
+
+				<g class="breath">
+					<!-- body: chogha -->
+					<g id="bkBody">
+						<path d="M112 700 C116 600 146 520 212 486 C246 469 272 461 300 461 C328 461 354 469 388 486 C454 520 484 600 488 700Z" fill="url(#stripes)"/>
+						<path d="M112 700 C116 600 146 520 212 486 C246 469 272 461 300 461 C328 461 354 469 388 486 C454 520 484 600 488 700Z" fill="url(#shade)"/>
+						<path d="M258 464 L300 586 L342 464 C326 458 274 458 258 464Z" fill="#221b18"/>
+						<path d="M258 464 L300 586 L342 464" fill="none" stroke="#f7efdf" stroke-width="7" stroke-linejoin="round"/>
+						<path d="M150 590 C220 610 300 650 340 700 L300 700 C270 664 210 630 140 618Z" fill="#9c3b22" opacity=".9"/><path d="M226 700 C228 640 236 600 250 570" stroke="#000" stroke-opacity=".12" stroke-width="6" fill="none"/>
+						<path d="M374 700 C372 640 364 600 350 570" stroke="#000" stroke-opacity=".12" stroke-width="6" fill="none"/>
+					</g>
+					<!-- neck -->
+					<path d="M270 396 L270 468 C286 480 314 480 330 468 L330 396Z" fill="#c98b5f"/>
+					<path d="M270 410 C290 432 310 432 330 410 L330 430 C310 448 290 448 270 430Z" fill="#a86d47" opacity=".55"/>
+
+					<!-- head -->
+					<g id="bkHead" style="transform-origin:300px 440px">
+						<g id="bkEars">
+							<ellipse cx="194" cy="300" rx="18" ry="28" fill="#d39a6c"/>
+							<ellipse cx="406" cy="300" rx="18" ry="28" fill="#d39a6c"/>
+							<path d="M190 288 C184 300 188 314 196 318" stroke="#b47a50" stroke-width="4" fill="none" stroke-linecap="round"/>
+							<path d="M410 288 C416 300 412 314 404 318" stroke="#b47a50" stroke-width="4" fill="none" stroke-linecap="round"/>
+						</g>
+						<path d="M300 172 C362 172 408 218 408 288 C408 356 362 412 300 414 C238 412 192 356 192 288 C192 218 238 172 300 172Z" fill="url(#skin)"/>
+						<path d="M232 386 C256 408 278 414 300 414 C322 414 344 408 368 386 C346 402 324 408 300 408 C276 408 254 402 232 386Z" fill="#b97b52" opacity=".35"/>
+						<g id="bkHair">
+							<path d="M195 232 C190 262 194 286 204 300 L214 296 C210 274 212 250 220 230Z" fill="#191312"/>
+							<path d="M405 232 C410 262 406 286 396 300 L386 296 C390 274 388 250 380 230Z" fill="#191312"/>
+						</g>
+						<g id="bkFace">
+							<ellipse cx="236" cy="346" rx="19" ry="10" fill="#e3765e" opacity=".32"/>
+							<ellipse cx="364" cy="346" rx="19" ry="10" fill="#e3765e" opacity=".32"/>
+							<path d="M230 262 C246 248 268 248 284 258" stroke="#1d1513" stroke-width="10" fill="none" stroke-linecap="round"/>
+							<path d="M316 258 C332 248 354 248 370 262" stroke="#1d1513" stroke-width="10" fill="none" stroke-linecap="round"/>
+							<g class="blink">
+								<ellipse cx="257" cy="298" rx="21" ry="23" fill="#fffaf2"/>
+								<ellipse cx="343" cy="298" rx="21" ry="23" fill="#fffaf2"/>
+								<path d="M236 290 C244 276 270 274 280 290" stroke="#1d1513" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M320 290 C330 274 356 276 364 290" stroke="#1d1513" stroke-width="4" fill="none" stroke-linecap="round"/><g id="bkPupils">
+									<circle cx="257" cy="300" r="13.5" fill="#5a3420"/><circle cx="257" cy="300" r="13.5" fill="none" stroke="#2c170c" stroke-width="2"/><circle cx="257" cy="300" r="7.5" fill="#140c08"/><circle cx="262" cy="294" r="4.5" fill="#fff"/><circle cx="253" cy="305" r="2" fill="#fff" opacity=".8"/>
+									<circle cx="343" cy="300" r="13.5" fill="#5a3420"/><circle cx="343" cy="300" r="13.5" fill="none" stroke="#2c170c" stroke-width="2"/><circle cx="343" cy="300" r="7.5" fill="#140c08"/><circle cx="348" cy="294" r="4.5" fill="#fff"/><circle cx="339" cy="305" r="2" fill="#fff" opacity=".8"/>
+								</g>
+							</g>
+							<path d="M236 278 C246 274 262 274 274 280" stroke="#a56a43" stroke-width="2.5" fill="none" opacity=".5"/>
+							<path d="M326 280 C338 274 354 274 364 278" stroke="#a56a43" stroke-width="2.5" fill="none" opacity=".5"/>
+							<path d="M302 310 C298 324 292 334 296 341 C300 346 308 345 312 340" stroke="#a96c45" stroke-width="5" fill="none" stroke-linecap="round"/>
+							<path d="M266 364 C282 388 318 388 334 364 C318 372 282 372 266 364Z" fill="#7b3122"/>
+							<path d="M276 367 C290 374 310 374 324 367 L321 372 C307 378 293 378 279 372Z" fill="#fffaf2"/>
+							<path d="M286 380 C294 384 306 384 314 380 C308 386 292 386 286 380Z" fill="#d8624e"/>
+						</g>
+						<path d="M200 228 C250 246 350 246 400 228 L398 246 C350 262 250 262 202 246Z" fill="#7a4a2c" opacity=".28"/><g id="bkHat">
+							<path d="M188 230 C184 190 190 150 204 128 C228 94 372 94 396 128 C410 150 416 190 412 230 C362 246 238 246 188 230Z" fill="url(#hat)"/>
+							<path d="M206 136 C200 160 198 196 200 226" stroke="#fff" stroke-opacity=".12" stroke-width="8" fill="none" stroke-linecap="round"/>
+							<path d="M190 226 C240 240 360 240 410 226" stroke="#4a403c" stroke-width="3" fill="none"/>
+						</g>
+					</g>
+				</g>
+
+				<!-- lamb -->
+				<g id="lamb" transform="translate(-120 556)">
+					<ellipse cx="80" cy="138" rx="96" ry="12" fill="#000" opacity=".16" filter="url(#soft)"/>
+					<g fill="url(#wool)">
+						<circle cx="40" cy="80" r="34"/><circle cx="84" cy="70" r="38"/><circle cx="128" cy="84" r="32"/><circle cx="62" cy="104" r="32"/><circle cx="110" cy="108" r="30"/><circle cx="150" cy="104" r="24"/>
+					</g>
+					<rect x="58" y="118" width="12" height="20" rx="5" fill="#3b2f2a"/><rect x="112" y="118" width="12" height="20" rx="5" fill="#3b2f2a"/>
+					<g id="lambHead" style="transform-origin:30px 92px">
+						<ellipse cx="2" cy="70" rx="20" ry="9" fill="#3b2f2a" transform="rotate(-18 2 70)"/>
+						<ellipse cx="58" cy="70" rx="20" ry="9" fill="#3b2f2a" transform="rotate(18 58 70)"/>
+						<ellipse cx="30" cy="84" rx="26" ry="31" fill="#433630"/>
+						<g fill="url(#wool)"><circle cx="18" cy="56" r="11"/><circle cx="31" cy="51" r="12"/><circle cx="44" cy="57" r="11"/></g>
+						<g id="lambFace">
+							<g class="lblink">
+								<ellipse cx="20" cy="82" rx="6.5" ry="7.5" fill="#fffaf2"/><ellipse cx="40" cy="82" rx="6.5" ry="7.5" fill="#fffaf2"/>
+								<g id="lambPupils"><circle cx="20" cy="83" r="3.6" fill="#120b08"/><circle cx="40" cy="83" r="3.6" fill="#120b08"/><circle cx="21.5" cy="81.5" r="1.3" fill="#fff"/><circle cx="41.5" cy="81.5" r="1.3" fill="#fff"/></g>
+							</g>
+							<ellipse cx="30" cy="102" rx="9" ry="6" fill="#2a201c"/>
+							<path d="M26 108 C28 111 32 111 34 108" stroke="#d9a39a" stroke-width="2" fill="none" stroke-linecap="round"/>
+						</g>
+					</g>
+				</g>
+			</svg>
+		</div>
+	</section>
+	<p class="note">ماوس را روی صفحه حرکت دهید؛ سر و نگاه پسر و بره آن را دنبال می‌کند.</p>
+</div>
+
+<script>
+(function () {
+	'use strict';
+	var stage = document.getElementById('bk');
+	if (!stage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+	var $ = function (id) { return document.getElementById(id); };
+	// Each layer moves by its own amount: closer parts move more, which reads as a head turn.
+	var layers = [
+		[$('bkHead'),   function (x, y) { return 'translate(' + x * 9 + 'px,' + y * 6 + 'px) rotate(' + x * 3.2 + 'deg)'; }],
+		[$('bkFace'),   function (x, y) { return 'translate(' + x * 13 + 'px,' + y * 9 + 'px)'; }],
+		[$('bkPupils'), function (x, y) { return 'translate(' + x * 6 + 'px,' + y * 5 + 'px)'; }],
+		[$('bkHat'),    function (x, y) { return 'translate(' + x * 3 + 'px,' + y * 1.5 + 'px)'; }],
+		[$('bkEars'),   function (x, y) { return 'translate(' + x * -7 + 'px,' + y * 2 + 'px)'; }],
+		[$('bkHair'),   function (x, y) { return 'translate(' + x * -4 + 'px,0)'; }],
+		[$('bkBody'),   function (x) { return 'translate(' + x * 2 + 'px,0)'; }],
+		[$('lambHead'), function (x, y) { return 'translate(' + x * 7 + 'px,' + y * 5 + 'px) rotate(' + x * 6 + 'deg)'; }],
+		[$('lambFace'), function (x, y) { return 'translate(' + x * 4 + 'px,' + y * 3 + 'px)'; }],
+		[$('lambPupils'), function (x, y) { return 'translate(' + x * 2.4 + 'px,' + y * 2.4 + 'px)'; }]
+	];
+	var tx = 0, ty = 0, x = 0, y = 0, frame = 0;
+	var clamp = function (v) { return v < -1 ? -1 : v > 1 ? 1 : v; };
+	function tick() {
+		x += (tx - x) * 0.085;
+		y += (ty - y) * 0.085;
+		for (var i = 0; i < layers.length; i++) { layers[i][0].style.transform = layers[i][1](x, y); }
+		frame = Math.abs(tx - x) + Math.abs(ty - y) > 0.0006 ? requestAnimationFrame(tick) : 0;
+	}
+	window.addEventListener('pointermove', function (e) {
+		var r = stage.getBoundingClientRect();
+		tx = clamp((e.clientX - (r.left + r.width * 0.5)) / (window.innerWidth * 0.45));
+		ty = clamp((e.clientY - (r.top + r.height * 0.42)) / (window.innerHeight * 0.55));
+		if (!frame) { frame = requestAnimationFrame(tick); }
+	}, { passive: true });
+	document.addEventListener('pointerleave', function () { tx = 0; ty = 0; if (!frame) { frame = requestAnimationFrame(tick); } });
+}());
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>فروشگاه — بنتو</title>
+<link rel="stylesheet" href="common.css">
+<style>
+:root{--bg:#f1f1ef;--ink:#141414;--muted:#6b6b6b;--accent:#ff9500;--card:#fff;--line:rgba(0,0,0,.07);--dark:#17181b}
+html[data-theme="dark"]{--bg:#0e0e10;--ink:#f3f3f1;--muted:#a0a0a6;--card:#18181c;--line:rgba(255,255,255,.08);--dark:#202127}
+body{background:var(--bg);color:var(--ink);padding-block:50px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
+h2{font-size:32px;font-weight:900}
+.top p{color:var(--muted);font-size:14.5px;margin-top:6px}
+.tabs{display:flex;gap:6px;background:var(--card);padding:5px;border-radius:14px;border:1px solid var(--line)}
+.tabs span{height:36px;padding:0 16px;border-radius:10px;display:grid;place-items:center;font-size:13.5px;font-weight:700;color:var(--muted)}
+.tabs span.on{background:var(--ink);color:var(--bg)}
+.grid{height:440px;display:grid;grid-template-columns:270px 1fr 270px;grid-template-rows:1fr 1fr;gap:14px}
+.c{background:var(--card);border-radius:28px;border:1px solid var(--line);position:relative;overflow:hidden;padding:18px}
+.feat{grid-row:1/3;grid-column:2;background:radial-gradient(420px 300px at 30% 40%,#2c2e35,transparent 70%),var(--dark);color:#fff;padding:34px;display:flex;flex-direction:column;justify-content:flex-end}
+.feat svg{position:absolute;left:28px;top:50%;transform:translateY(-50%);width:250px;height:250px}
+.feat .lab{position:absolute;top:26px;left:26px;height:30px;padding:0 12px;border-radius:99px;background:var(--accent);color:#1a0f00;font-size:12.5px;font-weight:800;display:grid;place-items:center}
+.feat>*:not(svg):not(.lab):not(.stats){max-width:270px;position:relative;z-index:1}.feat h3{font-size:30px;font-weight:900;letter-spacing:-.01em}
+.feat p{color:#b7b7bd;font-size:14px;line-height:1.9;max-width:290px;margin-top:6px}
+.feat .buy{display:flex;align-items:center;gap:16px;margin-top:16px;flex-direction:row}
+.price b{font-size:22px}.price s{color:#8b8b92;font-size:13px;display:block}
+.btn{height:46px;padding:0 20px;border-radius:14px;background:var(--accent);color:#1a0f00;display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14px}
+.stats{position:absolute;top:26px;right:26px;display:flex;gap:14px;padding:10px 16px;border-radius:99px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);font-size:12.5px;color:#d6d6da}
+.p{display:flex;flex-direction:column}
+.p .img{flex:1;border-radius:20px;background:var(--bg);display:grid;place-items:center;position:relative}
+.p .img svg{width:120px;height:120px}
+.p .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.p b{font-size:14.5px;display:block}.p small{color:var(--muted);font-size:12.5px}
+.add{width:38px;height:38px;border-radius:12px;background:var(--accent);display:grid;place-items:center;font-weight:900;color:#1a0f00}
+.heart{position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;border-radius:10px;background:var(--card);display:grid;place-items:center;font-size:14px}
+.cats{background:var(--accent);color:#1a0f00;display:flex;flex-direction:column;justify-content:space-between}
+.cats h4{font-size:19px;font-weight:900}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{height:32px;padding:0 12px;border-radius:99px;border:1.5px solid rgba(26,15,0,.35);font-size:12.5px;font-weight:700;display:grid;place-items:center}
+.chips span.on{background:#1a0f00;color:var(--accent);border-color:#1a0f00}
+.deal{display:flex;flex-direction:column;justify-content:space-between}
+.deal h4{font-size:17px;font-weight:900}
+.timer{display:flex;gap:6px}
+.timer span{flex:1;height:58px;border-radius:14px;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:20px;font-weight:900}
+.timer small{font-size:11px;color:var(--muted);font-weight:600}
+.dots{display:flex;gap:5px}.dots i{width:18px;height:5px;border-radius:9px;background:var(--line)}.dots i:first-child{background:var(--accent);width:28px}
+</style></head><body>
+<div class="wrap">
+	<div class="top"><div><h2>پیشنهادهای این هفته</h2><p>منتخب کارشناسان؛ ارسال رایگان برای خریدهای بالای ۲ میلیون تومان</p></div><div class="tabs"><span class="on">همه</span><span>صوتی</span><span>پوشیدنی</span><span>دوربین</span></div></div>
+	<div class="grid">
+		<div class="c p"><div class="img"><span class="heart">♡</span><svg viewBox="0 0 120 120"><rect x="34" y="14" width="52" height="92" rx="26" fill="#2b2c31"/><rect x="34" y="14" width="52" height="92" rx="26" fill="url(#g1)"/><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><circle cx="60" cy="40" r="6" fill="#ff9500"/></svg></div><div class="meta"><div><b>اسپیکر مینی پاد</b><small>۴٬۲۰۰٬۰۰۰ تومان</small></div><span class="add">+</span></div></div>
+		<div class="c feat"><span class="lab">۲۰٪ تخفیف</span>
+			<svg viewBox="0 0 300 300"><defs><radialGradient id="sp" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#3c3e46"/><stop offset="1" stop-color="#101114"/></radialGradient></defs><circle cx="150" cy="150" r="128" fill="url(#sp)"/><circle cx="150" cy="150" r="128" fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="2"/><circle cx="150" cy="150" r="70" fill="#0b0b0d"/><g fill="#d9d9de" opacity=".7"><circle cx="150" cy="102" r="3"/><circle cx="198" cy="150" r="3"/><circle cx="150" cy="198" r="3"/><circle cx="102" cy="150" r="3"/></g><path d="M140 150 L160 150 M150 140 L150 160" stroke="#fff" stroke-width="3"/><circle cx="150" cy="150" r="96" fill="none" stroke="#ff9500" stroke-width="3" stroke-dasharray="2 9" opacity=".7"/></svg>
+			<h3>آریسن ساند</h3><p>صدای فراگیر ۳۶۰ درجه با ۲۰ ساعت پخش؛ برای خانه، سفر و کار.</p>
+			<div class="buy"><a class="btn">افزودن به سبد</a><div class="price"><s>۱۲٬۵۰۰٬۰۰۰</s><b>۹٬۹۹۰٬۰۰۰</b> تومان</div></div>
+			<div class="stats"><span>♡ ۱۴ هزار</span><span>★ ۴٫۸</span><span>۲ هزار نظر</span></div>
+		</div>
+		<div class="c cats"><h4>دسته‌بندی‌ها</h4><div class="chips"><span class="on">صوتی</span><span>گیمینگ</span><span>دوربین</span><span>ساعت</span><span>لوازم خانه</span><span>کامپیوتر</span></div><div class="dots"><i></i><i></i><i></i></div></div>
+		<div class="c p"><div class="img"><span class="heart">♡</span><svg viewBox="0 0 120 120"><rect x="16" y="34" width="88" height="58" rx="12" fill="#e9e9ec"/><rect x="24" y="26" width="26" height="12" rx="4" fill="#cfcfd4"/><circle cx="64" cy="63" r="22" fill="#1d1e22"/><circle cx="64" cy="63" r="13" fill="#3a3c44"/><circle cx="60" cy="59" r="4" fill="#fff" opacity=".5"/><circle cx="92" cy="44" r="4" fill="#ff9500"/></svg></div><div class="meta"><div><b>دوربین زد ۵۰</b><small>۳۸٬۵۰۰٬۰۰۰ تومان</small></div><span class="add">+</span></div></div>
+		<div class="c deal"><h4>پیشنهاد شگفت‌انگیز تا پایان امروز</h4><div class="timer"><span>۰۸<small>ساعت</small></span><span>۲۴<small>دقیقه</small></span><span>۵۱<small>ثانیه</small></span></div><a class="btn" style="justify-content:center">مشاهده‌ی همه ←</a></div>
+	</div>
+</div></body></html>

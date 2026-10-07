@@ -1,0 +1,6 @@
+@font-face{font-family:Vazirmatn;src:url(vazirmatn-arabic.woff2) format("woff2");font-weight:100 900;unicode-range:U+0600-06FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:Vazirmatn;src:url(vazirmatn-latin.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:Vazirmatn,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{width:min(1150px,100% - 48px);margin-inline:auto}
+a{color:inherit;text-decoration:none}

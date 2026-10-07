@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>نظرات — آکاردئونی</title>
+<link rel="stylesheet" href="common.css">
+<style>
+:root{--bg:#0d0f14;--ink:#f2f0ea;--muted:#9a9aa3;--accent:#ff8a3d;--panel:#171a22;--line:rgba(255,255,255,.08)}
+html[data-theme="light"]{--bg:#f6f4ef;--ink:#16161b;--muted:#6a6a73;--panel:#fff;--line:rgba(0,0,0,.08)}
+body{background:var(--bg);color:var(--ink);padding-block:60px}
+.sec{height:500px;display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:stretch}
+.head{display:flex;flex-direction:column;justify-content:space-between;padding-block:8px}
+.eyebrow{font-size:13px;font-weight:700;color:var(--accent);display:flex;gap:8px;align-items:center}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent)}
+h2{font-size:36px;line-height:1.3;font-weight:900;margin-top:12px}
+.lead{color:var(--muted);font-size:15px;line-height:1.9;margin-top:12px}
+.score{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}
+.score .t{display:flex;align-items:flex-end;gap:12px}
+.score .t b{font-size:44px;font-weight:900;line-height:1}
+.score .stars{color:#f5a524;font-size:15px;letter-spacing:2px}
+.score small{color:var(--muted);font-size:12.5px}
+.bars{margin-top:14px;display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:18px 1fr 34px;gap:10px;align-items:center;font-size:12px;color:var(--muted)}
+.bar i{height:6px;border-radius:9px;background:var(--line);position:relative;overflow:hidden}
+.bar i::after{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:var(--w);background:var(--accent);border-radius:9px}
+.nav{display:flex;gap:8px}.nav span{width:44px;height:44px;border-radius:14px;border:1px solid var(--line);display:grid;place-items:center}
+.acc{display:flex;gap:12px;height:100%}
+.it{position:relative;flex:1 1 0;min-width:0;border-radius:26px;overflow:hidden;background:var(--panel);border:1px solid var(--line);transition:flex-grow .7s cubic-bezier(.16,1,.3,1);cursor:pointer}
+.it.open{flex-grow:4.6}
+.it .bg{position:absolute;inset:0;background:var(--g);opacity:.95}
+.it .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(8,9,12,.82))}
+.it .face{position:absolute;inset-inline:0;margin-inline:auto;top:24px;width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.35);transition:.6s cubic-bezier(.16,1,.3,1)}
+.it.open .face{inset-inline:auto 30px;top:30px;width:120px;height:120px}
+.it .vname{position:absolute;bottom:28px;inset-inline:0;display:flex;justify-content:center;writing-mode:vertical-rl;margin-inline:auto;width:24px;font-weight:800;font-size:15px;color:#fff;white-space:nowrap}
+.it.open .vname{display:none}
+.it .q{position:absolute;inset-inline:30px;bottom:28px;color:#fff;opacity:0;transform:translateY(12px);transition:.5s .2s}
+.it.open .q{opacity:1;transform:none}
+.q .mark{font-size:60px;line-height:.5;color:var(--accent);font-weight:900}
+.q p{font-size:17px;line-height:1.95;font-weight:600;max-width:440px;margin-top:10px}
+.q .who{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:13px;color:rgba(255,255,255,.75)}
+.q .who b{color:#fff;font-size:15px;display:block}
+.q .tagp{margin-inline-start:auto;height:30px;padding:0 12px;border-radius:99px;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;font-size:12.5px;backdrop-filter:blur(8px)}
+.badge{position:absolute;top:20px;inset-inline-start:20px;height:30px;padding:0 12px;border-radius:99px;background:rgba(0,0,0,.35);color:#fff;font-size:12.5px;display:none;align-items:center;gap:6px;backdrop-filter:blur(8px)}
+.it.open .badge{display:inline-flex}
+</style></head><body>
+<div class="wrap">
+<section class="sec">
+	<div class="head">
+		<div>
+			<div class="eyebrow">تجربه‌ی بیماران</div>
+			<h2>بیماران ما<br>چه می‌گویند؟</h2>
+			<p class="lead">بیش از ۱٬۲۰۰ نظر ثبت‌شده؛ روی هر کارت بروید تا داستان کامل را بخوانید.</p>
+		</div>
+		<div class="score">
+			<div class="t"><b>۴٫۹</b><div><div class="stars">★★★★★</div><small>میانگین از ۱٬۲۸۰ نظر</small></div></div>
+			<div class="bars">
+				<div class="bar"><span>۵</span><i style="--w:88%"></i><span>۸۸٪</span></div>
+				<div class="bar"><span>۴</span><i style="--w:9%"></i><span>۹٪</span></div>
+				<div class="bar"><span>۳</span><i style="--w:2%"></i><span>۲٪</span></div>
+			</div>
+		</div>
+		<div class="nav"><span>→</span><span>←</span></div>
+	</div>
+	<div class="acc" id="acc">
+		<div class="it" style="--g:linear-gradient(160deg,#3a4a7a,#1c2238)"><div class="bg"></div><div class="shade"></div><svg class="face" viewBox="0 6 120 120"><circle cx="60" cy="50" r="34" fill="#e7b48f"/><path d="M24 54 C20 14 100 10 96 54 C90 30 70 24 60 24 C46 24 30 32 24 54Z" fill="#2a1d18"/><path d="M14 150 C16 112 36 96 60 96 C84 96 104 112 106 150Z" fill="#c9d3f0"/></svg><div class="vname">مهسا رضایی</div></div>
+		<div class="it open" style="--g:linear-gradient(160deg,#ff9a5a,#a8432a)"><div class="bg"></div><div class="shade"></div>
+			<svg class="face" viewBox="0 6 120 120"><circle cx="60" cy="52" r="34" fill="#f0c3a0"/><path d="M22 70 C10 10 110 6 98 70 C94 40 80 26 60 26 C40 26 26 40 22 70Z" fill="#3a2a22"/><path d="M14 150 C16 112 36 98 60 98 C84 98 104 112 106 150Z" fill="#fff3ea"/></svg>
+			<span class="badge">✓ بیمار تأییدشده</span>
+			<div class="q"><div class="mark">”</div><p>از اولین تماس تا آخرین جلسه‌ی ارتودنسی همه‌چیز دقیق و به‌موقع بود. نوبت آنلاین واقعاً کار می‌کند و هیچ‌وقت منتظر نماندم.</p><div class="who"><div><b>نگار احمدی</b>ارتودنسی · ۸ ماه درمان</div><span class="tagp">★ ۵ از ۵</span></div></div>
+		</div>
+		<div class="it" style="--g:linear-gradient(160deg,#2f6b62,#16302c)"><div class="bg"></div><div class="shade"></div><svg class="face" viewBox="0 6 120 120"><circle cx="60" cy="50" r="34" fill="#d9a07a"/><path d="M28 44 C30 16 92 14 94 44 C84 32 72 28 60 28 C46 28 36 32 28 44Z" fill="#1d1513"/><path d="M14 150 C16 112 36 96 60 96 C84 96 104 112 106 150Z" fill="#cfe8e2"/></svg><div class="vname">علی کاظمی</div></div>
+		<div class="it" style="--g:linear-gradient(160deg,#6a4a8a,#2a1d3a)"><div class="bg"></div><div class="shade"></div><svg class="face" viewBox="0 6 120 120"><circle cx="60" cy="50" r="34" fill="#efc09c"/><path d="M24 60 C14 12 106 12 96 60 C92 34 78 24 60 24 C42 24 28 34 24 60Z" fill="#7a4a2a"/><path d="M14 150 C16 112 36 96 60 96 C84 96 104 112 106 150Z" fill="#e5dcf2"/></svg><div class="vname">سارا محمدی</div></div>
+	</div>
+</section>
+</div>
+<script>document.querySelectorAll('#acc .it').forEach(function(el){el.addEventListener('pointerenter',function(){document.querySelectorAll('#acc .it').forEach(function(o){o.classList.toggle('open',o===el);});});});</script>
+</body></html>

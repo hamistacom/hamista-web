@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>کلینیک — هیرو</title>
+<link rel="stylesheet" href="common.css">
+<style>
+:root{--bg:#f6f8f8;--ink:#0f2a33;--muted:#5b6f76;--accent:#0e8f8a;--accent2:#ff7a59;--soft:#e4f2f1;--card:rgba(255,255,255,.78);--line:rgba(15,42,51,.09)}
+html[data-theme="dark"]{--bg:#0b1417;--ink:#e8f1f2;--muted:#93a8ae;--accent:#2cc5bd;--accent2:#ff8f72;--soft:#12252a;--card:rgba(20,36,41,.75);--line:rgba(232,241,242,.09)}
+body{background:var(--bg);color:var(--ink)}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:10px;align-items:center;font-weight:900;font-size:21px}
+.brand svg{color:var(--accent)}
+.nav{display:flex;gap:26px;font-size:14.5px;font-weight:600;color:var(--muted)}.nav a:first-child{color:var(--ink)}
+.tools{display:flex;gap:12px;align-items:center;font-size:13.5px;font-weight:700}
+.btn{height:44px;padding:0 20px;border-radius:14px;display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14.5px;background:var(--accent);color:#fff;box-shadow:0 12px 24px -12px var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.hero{position:relative;height:500px;border-radius:30px;background:radial-gradient(600px 400px at 18% 40%,#d3ecea,transparent 70%),linear-gradient(180deg,var(--soft),var(--bg));overflow:visible;border:1px solid var(--line)}
+html[data-theme="dark"] .hero{background:radial-gradient(600px 400px at 18% 40%,#123b3c,transparent 70%),linear-gradient(180deg,var(--soft),var(--bg))}
+.copy{position:absolute;inset-inline-start:56px;top:56px;width:480px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{align-self:flex-start;height:32px;padding:0 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+h1{font-size:48px;line-height:1.22;font-weight:900}
+h1 em{font-style:normal;color:var(--accent);position:relative}
+h1 em::after{content:"";position:absolute;inset-inline:0;bottom:4px;height:10px;border-radius:6px;background:var(--accent);opacity:.16}
+.lead{font-size:15.5px;line-height:1.95;color:var(--muted);max-width:440px}
+.ctas{display:flex;gap:10px}
+.trust{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.avs{display:flex}.avs span{width:34px;height:34px;border-radius:50%;border:3px solid var(--bg);margin-inline-start:-10px;background:linear-gradient(135deg,#f3c4a2,#c98d6b)}
+.avs span:nth-child(2){background:linear-gradient(135deg,#9fd3cf,#5aa6a1)}.avs span:nth-child(3){background:linear-gradient(135deg,#ffd0bf,#ff9a7a)}.avs span:first-child{margin:0}
+.trust b{color:var(--ink);font-size:15px}
+.art{position:absolute;inset-inline-end:70px;bottom:42px;width:380px;height:420px;border-radius:0 0 24px 24px}
+.arch{position:absolute;inset:30px 30px 0;border-radius:190px 190px 0 0;background:linear-gradient(180deg,#bfe4e1,#8fcdc8)}
+html[data-theme="dark"] .arch{background:linear-gradient(180deg,#1d4a4b,#163a3b)}
+.art svg{position:absolute;inset:0;width:100%;height:100%}
+.float{position:absolute;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 48px -28px rgba(15,42,51,.45);font-size:12.5px;color:var(--muted)}
+.f1{inset-inline-end:-70px;top:96px;padding:14px 16px;width:220px}
+.f1 .row{display:flex;gap:10px;align-items:center}
+.f1 .av{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#ffd0bf,#ff9a7a)}
+.f1 b{display:block;color:var(--ink);font-size:13.5px}
+.f1 .slot{margin-top:12px;display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:12px;background:var(--soft);color:var(--ink);font-weight:700}
+.f1 .slot span{color:var(--accent)}
+.f2{inset-inline-start:-40px;top:200px;padding:12px 14px;display:flex;gap:10px;align-items:center}
+.f2 .big{font-size:26px;font-weight:900;color:var(--ink)}
+.f2 .stars{color:#f5a524;letter-spacing:1px}
+.f3{inset-inline-start:-10px;top:60px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink)}
+.f3 i{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.search{position:absolute;inset-inline:56px;bottom:-34px;height:76px;border-radius:22px;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(15,42,51,.5);display:grid;grid-template-columns:1fr 1fr 1fr auto;align-items:center;padding:0 10px 0 10px;gap:0}
+html[data-theme="dark"] .search{background:rgba(16,30,34,.92)}
+.field{padding:0 20px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.field:first-child{border:0}
+.field small{font-size:12px;color:var(--muted)}
+.field b{font-size:14.5px;display:flex;justify-content:space-between;align-items:center}
+.field b::after{content:"⌄";color:var(--muted);font-weight:400}
+.search .btn{height:56px;padding:0 26px;border-radius:16px}
+.below{height:80px}
+</style></head><body>
+<div class="wrap">
+<header class="top">
+	<div class="brand"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/><rect x="2.5" y="2.5" width="19" height="19" rx="6"/></svg>کلینیک آوا</div>
+	<nav class="nav"><a>خانه</a><a>خدمات</a><a>پزشکان</a><a>تعرفه‌ها</a><a>مجله‌ی سلامت</a><a>تماس</a></nav>
+	<div class="tools"><span>۰۲۱-۹۱۰۰۲۰۰۰</span><a class="btn">نوبت آنلاین</a></div>
+</header>
+<section class="hero">
+	<div class="copy">
+		<span class="eyebrow"><i></i>پذیرش امروز تا ساعت ۲۱</span>
+		<h1>لبخند سالم،<br><em>با خیال راحت</em></h1>
+		<p class="lead">کلینیک تخصصی دندان‌پزشکی و زیبایی با ۱۴ پزشک متخصص؛ از معاینه‌ی اولیه تا ایمپلنت و لمینت، همه در یک‌جا و با نوبت‌دهی آنلاین.</p>
+		<div class="ctas"><a class="btn">رزرو نوبت ←</a><a class="btn ghost">مشاوره‌ی رایگان</a></div>
+		<div class="trust"><div class="avs"><span></span><span></span><span></span></div><div><b>+۲۳۰۰</b> بیمار راضی در سال گذشته</div></div>
+	</div>
+	<div class="art">
+		<div class="arch"></div>
+		<svg viewBox="0 0 380 440" aria-hidden="true">
+			<defs><linearGradient id="coat" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3eeee"/></linearGradient><linearGradient id="sk" x1="0" x2="1"><stop offset="0" stop-color="#f0c3a0"/><stop offset="1" stop-color="#d9a17c"/></linearGradient></defs>
+			<path d="M70 440 C74 360 110 316 160 300 L220 300 C270 316 306 360 310 440Z" fill="url(#coat)"/>
+			<path d="M164 300 L190 380 L216 300Z" fill="#0e8f8a"/>
+			<path d="M160 300 L190 392 L176 440 L150 440 C150 380 152 330 160 300Z" fill="#f4f8f8"/><path d="M220 300 L190 392 L204 440 L230 440 C230 380 228 330 220 300Z" fill="#e8f0f0"/>
+			<rect x="172" y="250" width="36" height="56" rx="14" fill="url(#sk)"/>
+			<path d="M144 156 C144 110 236 110 236 156 L236 204 C236 246 214 268 190 268 C166 268 144 246 144 204Z" fill="url(#sk)"/><path d="M168 196 C172 190 180 190 184 196 M198 196 C202 190 210 190 214 196" stroke="#3a2620" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M178 230 C186 238 196 238 204 230" stroke="#b5543f" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="166" cy="216" rx="9" ry="5" fill="#ef8f78" opacity=".35"/><ellipse cx="216" cy="216" rx="9" ry="5" fill="#ef8f78" opacity=".35"/>
+			<path d="M138 200 C126 120 168 88 204 94 C246 102 252 150 242 200 C236 160 222 138 196 132 C176 130 160 144 156 170 C150 176 144 186 138 200Z" fill="#2b1d17"/>
+			<circle cx="196" cy="88" r="20" fill="#2b1d17"/>
+			<path d="M130 340 C120 380 140 410 170 410 C186 410 192 396 190 384" stroke="#55707a" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="190" cy="380" r="9" fill="#9fb3b9"/>
+			<path d="M246 340 C254 366 250 392 240 404" stroke="#55707a" stroke-width="5" fill="none" stroke-linecap="round"/>
+			<rect x="236" y="352" width="44" height="14" rx="4" fill="#0e8f8a" opacity=".85"/>
+		</svg>
+		<div class="float f3"><i></i>۸ پزشک آنلاین</div>
+		<div class="float f1"><div class="row"><span class="av"></span><div><b>دکتر سارا امینی</b>متخصص ارتودنسی</div></div><div class="slot">امروز<span>۱۶:۳۰ · خالی</span></div></div>
+		<div class="float f2"><div class="big">۴٫۹</div><div><div class="stars">★★★★★</div>از ۱٬۲۸۰ نظر</div></div>
+	</div>
+	<div class="search">
+		<div class="field"><small>تخصص</small><b>ارتودنسی</b></div>
+		<div class="field"><small>پزشک</small><b>همه‌ی پزشکان</b></div>
+		<div class="field"><small>تاریخ</small><b>سه‌شنبه، ۱۵ مهر</b></div>
+		<a class="btn">جست‌وجوی نوبت</a>
+	</div>
+</section>
+<div class="below"></div>
+</div></body></html>
