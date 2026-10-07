@@ -30,6 +30,7 @@
 - Index numbers on cards and steps follow Persian digits.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
 - Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
+- Demo Sayal (سیال) rebuilt as a restrained motion studio: long-exposure light trails instead of 3D orbs and glass, a staggered thin title, selected work in a horizontal scroll, a services list, a zooming reel, a written brief form; no illustrated avatars.
 
 **Theme**
 - Profile, team archive and service templates for the booking module.
@@ -42,6 +43,8 @@
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.
+- Flux kit redrawn: graphite, ivory and a single ember accent, square corners and hairlines instead of glass and glow.
+- WooCommerce shows its most visible front-end strings (add to cart, cart, checkout, notices, sorting, pagination) in Persian even before its own language pack is downloaded. Installed translations always take precedence.
 
 ## 1.0.0
 

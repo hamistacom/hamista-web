@@ -121,7 +121,7 @@ T = {
     "Quick actions": "دسترسی سریع",
     "Call us": "تماس با ما",
     "Chat on WhatsApp": "گفت~وگو در واتس~اپ",
-    "Flux — cinematic, glass and glow": "سیال — سینمایی، شیشه و درخشش",
+    "Flux — graphite, ivory and ember": "سیال — زغالی و عاجی با رگه~ی اخگری",
     "Interface sounds": "صداهای رابط کاربری",
     "Selected work": "نمونه~کارهای منتخب",
     "Project categories": "دسته~بندی پروژه~ها",

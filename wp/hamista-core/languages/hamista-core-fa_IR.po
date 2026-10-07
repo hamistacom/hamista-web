@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T16:27:49+00:00\n"
-"PO-Revision-Date: 2026-10-07 16:27+0000\n"
+"POT-Creation-Date: 2026-10-07T17:56:38+00:00\n"
+"PO-Revision-Date: 2026-10-07 17:56+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -6565,8 +6565,8 @@ msgid "Flux"
 msgstr "سیال"
 
 #: includes/settings/schema.php:102
-msgid "Cinematic dark, frosted glass and amber glow"
-msgstr "تاریک و سینمایی، شیشه‌ی مات و درخشش کهربایی"
+msgid "Graphite, ivory and one ember accent"
+msgstr "زغالی و عاجی، با تنها یک رنگ تأکیدی اخگری"
 
 #: includes/settings/schema.php:106
 msgid "Honey"

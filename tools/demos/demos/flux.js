@@ -1,36 +1,33 @@
 /**
  * Demo: Sayal — a motion design studio (Flux kit).
  *
- * The showcase for scroll choreography: floating elements, zoom in and zoom out,
- * a depth tunnel, horizontal scroll and stacked cards.
+ * Editorial and restrained: light-trail stills, a staggered title, horizontal
+ * scroll, one cinematic zoom and a slider on the second home page.
  */
 'use strict';
 
 const L = require('../lib');
 const { img, link, px, section, cols, heading, button } = L;
 
-const images = { hero: 'images/hero.webp', chat: 'images/chat.webp' };
-for (let i = 1; i <= 6; i++) { images['orb-' + i] = 'images/orb-' + i + '.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; images['product-' + i] = 'images/product-' + i + '.webp'; images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp'; }
-for (let i = 1; i <= 4; i++) { images['glass-' + i] = 'images/glass-' + i + '.webp'; }
-for (let i = 1; i <= 3; i++) { images['ribbon-' + i] = 'images/ribbon-' + i + '.webp'; }
-for (let i = 1; i <= 8; i++) { images['float-' + i] = 'images/float-' + i + '.webp'; }
-images.logo = 'images/logo.webp';
-images['logo-dark'] = 'images/logo-dark.webp';
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
+const images = { hero: 'images/hero.webp', reel: 'images/reel.webp', logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp' };
+for (let i = 1; i <= 6; i++) {
+	images['work-' + i] = 'images/work-' + i + '.webp';
+	images['journal-' + i] = 'images/journal-' + i + '.webp';
+	images['product-' + i] = 'images/product-' + i + '.webp';
+	images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp';
+}
 
 const alts = {
-	hero: 'کره‌ی نورانی با حلقه‌های مداری و ذرات نور',
-	chat: 'گفت‌وگوی دستیار هوشمند استودیو برای ایده‌پردازی موشن',
-	'ribbon-1': 'موج‌های نوری سیال روی پس‌زمینه‌ی تیره',
-	'glass-1': 'پنل‌های شیشه‌ای شناور روی نور گرم',
-};
+	hero: 'رد نورهای گرم در عکاسی با نوردهی طولانی',
+	reel: 'خطوط نور نارنجی روی زمینه‌ی تیره',
+}
 
 const anchor = (id, el) => { el.settings._element_id = id; return el; };
 
 const QUOTES = [
-	{ quote: 'ده‌ثانیه‌ی ابتدایی ویدیوی معرفی ما را از پایه عوض کردند. از همان روز نرخ دیده شدن تا انتها تقریباً دو برابر شد.', name: 'ندا فروغی', role: 'مدیر برند، شرکت فین‌تک', avatar: img('person-6') },
-	{ quote: 'برعکس استودیوهایی که فقط زیبا می‌سازند، سیال اول می‌پرسد حرکت قرار است چه چیزی را به کاربر بفهماند.', name: 'آرین کامیاب', role: 'مدیر محصول اپلیکیشن سفر', avatar: img('person-1') },
-	{ quote: 'انیمیشن‌های رابط کاربری‌شان هم زیبا بود هم سبک. روی گوشی‌های ضعیف هم روان اجرا شد.', name: 'ساناز رحمتی', role: 'سرپرست فنی، استارتاپ آموزشی', avatar: img('person-2') },
+	{ quote: 'ده‌ثانیه‌ی ابتدایی ویدیوی معرفی ما را از پایه عوض کردند. از همان روز نرخ دیده شدن تا انتها تقریباً دو برابر شد.', name: 'ندا فروغی', role: 'مدیر برند، شرکت فین‌تک' },
+	{ quote: 'برعکس استودیوهایی که فقط زیبا می‌سازند، سیال اول می‌پرسد حرکت قرار است چه چیزی را به کاربر بفهماند.', name: 'آرین کامیاب', role: 'مدیر محصول اپلیکیشن سفر' },
+	{ quote: 'انیمیشن‌های رابط کاربری‌شان هم زیبا بود هم سبک. روی گوشی‌های ضعیف هم روان اجرا شد.', name: 'ساناز رحمتی', role: 'سرپرست فنی، استارتاپ آموزشی' },
 ];
 
 const FAQ = [
@@ -70,133 +67,87 @@ const BRIEF = {
 };
 
 const WORK = [
-	{ image: img('orb-1'), label: 'ویدیوی معرفی', title: 'فین‌تک پیمانه', text: 'ویدیوی ۴۵ ثانیه‌ای معرفی اپ؛ نرخ ثبت‌نام صفحه‌ی فرود ۸۲٪ بیشتر شد.', link: link('{{post:case-peymaneh}}') },
-	{ image: img('glass-2'), label: 'انیمیشن رابط', title: 'اپ سفرنو', text: 'ریزتعامل‌هایی که رزرو را سه‌قدم کوتاه‌تر کرد؛ بدون افزایش حجم اپ.', link: link('{{post:case-safarno-motion}}') },
-	{ image: img('ribbon-2'), label: 'وب‌سایت اسکرولی', title: 'نمایشگاه هنر معاصر', text: 'سایتی که با اسکرول داستان می‌گوید؛ میانگین ماندگاری ۳ دقیقه و ۴۰ ثانیه.', link: link('#') },
-	{ image: img('orb-5'), label: 'هویت متحرک', title: 'برند تازه‌ی نیلوفر', text: 'سیستم حرکتی کامل برای یک برند لوازم آرایشی؛ از لوگوی متحرک تا استوری.', link: link('#') },
-	{ image: img('glass-3'), label: 'موشن اجتماعی', title: 'کمپین ریلز بیمه‌یار', text: 'سی ویدیوی کوتاه در یک ماه؛ ۱٫۲ میلیون بازدید ارگانیک.', link: link('#') },
-	{ image: img('orb-3'), label: 'فیلم کوتاه', title: 'شوریل ۱۴۰۴', text: 'دو دقیقه از بهترین حرکت‌های سال گذشته.', link: link('#') },
+	{ image: img('work-1'), label: 'ویدیوی معرفی', title: 'فین‌تک پیمانه', text: 'ویدیوی ۴۵ ثانیه‌ای معرفی اپ؛ نرخ ثبت‌نام صفحه‌ی فرود ۸۲٪ بیشتر شد.', link: link('{{post:case-peymaneh}}') },
+	{ image: img('work-2'), label: 'انیمیشن رابط', title: 'اپ سفرنو', text: 'ریزتعامل‌هایی که رزرو را سه‌قدم کوتاه‌تر کرد؛ بدون افزایش حجم اپ.', link: link('{{post:case-safarno-motion}}') },
+	{ image: img('work-3'), label: 'وب‌سایت اسکرولی', title: 'نمایشگاه هنر معاصر', text: 'سایتی که با اسکرول داستان می‌گوید؛ میانگین ماندگاری ۳ دقیقه و ۴۰ ثانیه.', link: link('#') },
+	{ image: img('work-4'), label: 'هویت متحرک', title: 'برند تازه‌ی نیلوفر', text: 'سیستم حرکتی کامل برای یک برند لوازم آرایشی؛ از لوگوی متحرک تا استوری.', link: link('#') },
+	{ image: img('work-5'), label: 'موشن اجتماعی', title: 'کمپین ریلز بیمه‌یار', text: 'سی ویدیوی کوتاه در یک ماه؛ ۱٫۲ میلیون بازدید ارگانیک.', link: link('#') },
+	{ image: img('work-6'), label: 'فیلم کوتاه', title: 'شوریل ۱۴۰۴', text: 'دو دقیقه از بهترین حرکت‌های سال گذشته.', link: link('#') },
 ];
 
 /* ---------------- Home A: choreography ---------------- */
 
 const homeA = [
-	L.flow({
-		eyebrow: 'استودیوی موشن و تجربه‌ی تعاملی',
+	L.bleed(L.w('hm-hero', {
+		layout: 'full', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words', title_stagger: 'yes',
+		eyebrow: 'سیال · استودیوی موشن',
 		title: 'حرکت،\n*جان* می‌دهد.',
-		desc: 'سیال ایده‌های ثابت را به تجربه‌های متحرک تبدیل می‌کند: ویدیو، انیمیشن رابط کاربری و وب‌سایت‌هایی که با اسکرول داستان می‌گویند.',
-		btn1_text: 'شروع پروژه', btn1_link: link('#brief'),
-		mode: 'drift',
-		items: [
-			{ image: img('float-1'), x: 11, y: 24, size: 250, depth: 0.7, rot: -7 },
-			{ image: img('float-2'), x: 87, y: 20, size: 220, depth: 1.0, rot: 6, shape: 'tall' },
-			{ image: img('float-3'), x: 17, y: 76, size: 200, depth: 1.2, rot: 5, shape: 'circle' },
-			{ image: img('float-4'), x: 83, y: 76, size: 260, depth: 0.45, rot: -5 },
-			{ text: '۴۲ کمپین در سال', x: 50, y: 11, size: 190, depth: 0.25, shape: 'pill' },
-			{ text: 'Lottie · AE · WebGL', x: 66, y: 90, size: 200, depth: 0.15, shape: 'pill', mobile: false },
-			{ image: img('float-5'), x: 36, y: 90, size: 150, depth: 0.9, rot: -3, shape: 'card', mobile: false },
+		desc: 'ایده‌های ثابت را به تجربه‌های متحرک تبدیل می‌کنیم: ویدیوی معرفی، انیمیشن رابط کاربری و وب‌سایت‌هایی که با اسکرول داستان می‌گویند.',
+		btn1_text: 'شروع پروژه', btn1_link: link('#brief'), btn1_style: 'primary',
+		btn2_text: '', 
+		stats: [
+			{ value: '۴۲', suffix: '', label: 'کمپین در سال' },
+			{ value: '۸', suffix: '', label: 'سال تجربه' },
+			{ value: '۹۶', suffix: '٪', label: 'مشتری بازگشتی' },
 		],
-		scheme: 'inverse',
-	}),
-	L.marquee(['موشن گرافیک', 'انیمیشن رابط کاربری', 'وب‌سایت اسکرولی', 'ویدیوی معرفی', 'هویت متحرک', 'موشن اجتماعی'], { look: 'alternate', size: 'xl', separator: 'plus', speed: px(80) }),
-	L.scrollZoom({
-		eyebrow: 'شوریل ۱۴۰۴',
-		title: 'یک سال،\n*۴۲ حرکت*',
-		image: img('hero'),
-		start_scale: px(0.34),
-		radius: px(48),
-		length: px(2.2),
-		o_title: 'هر پروژه با یک\n*سؤال ساده* شروع می‌شود.',
-		o_desc: 'حرکت قرار است چه چیزی را به بیننده بفهماند؟ اگر جوابی نداشته باشد، حرکت نمی‌دهیم.',
-		btn1_text: 'نمونه‌کارها', btn1_link: link('#work'), btn1_style: 'inverse',
-	}),
-	L.depth({
-		layout: 'card',
-		length: px(0.7),
-		scenes: [
-			{ image: img('glass-1'), label: '۰۱ — کشف', title: 'ابتدا *گوش می‌دهیم*', text: 'یک هفته با تیم شما و مخاطبانتان حرف می‌زنیم تا بدانیم حرکت باید چه چیزی را روشن کند.' },
-			{ image: img('orb-2'), label: '۰۲ — طراحی', title: 'بعد *حرکت* را می‌کشیم', text: 'استوری‌بورد، زمان‌بندی و سبک حرکتی را پیش از ساخت تأیید می‌کنید.' },
-			{ image: img('ribbon-3'), label: '۰۳ — ساخت', title: 'سپس *جان* می‌دهیم', text: 'انیمیشن، طراحی صدا و بهینه‌سازی خروجی برای هر دستگاه و پلتفرم.' },
-			{ image: img('orb-4'), label: '۰۴ — انتشار', title: 'و *اندازه می‌گیریم*', text: 'اثر حرکت را روی دیده شدن، ماندگاری و تبدیل می‌سنجیم و گزارش می‌دهیم.' },
-		],
-	}),
-	section({ space: 'md', width: 1100 }, [
-		L.textScrub('حرکت خوب *دیده نمی‌شود*، حس می‌شود. صفحه را روان‌تر، توضیح را روشن‌تر و برند را *به‌یادماندنی‌تر* می‌کند؛ مشروط بر اینکه هر حرکتی دلیلی داشته باشد.', { eyebrow: 'باور ما', size: 'lg' }),
+		media_type: 'image', image: img('hero'), height: 'screen', decor: '', overlay: px(0.12), hint: '',
+	})),
+	L.marquee(['موشن گرافیک', 'انیمیشن رابط کاربری', 'وب‌سایت اسکرولی', 'ویدیوی معرفی', 'هویت متحرک', 'موشن اجتماعی'], { look: 'alternate', size: 'md', separator: 'dot', speed: px(50) }),
+	section({ space: 'md', width: 1040 }, [
+		L.textScrub('حرکت خوب *دیده نمی‌شود*، حس می‌شود. صفحه را روان‌تر، توضیح را روشن‌تر و برند را *به‌یادماندنی‌تر* می‌کند؛ به شرط آنکه هر حرکتی دلیلی داشته باشد.', { eyebrow: 'باور ما', size: 'lg' }),
 	]),
 	anchor('work', L.hscroll({
 		eyebrow: 'نمونه‌کارها',
 		title: 'کارهایی که\n*حرکت* دارند',
 		desc: 'به اسکرول ادامه دهید؛ ردیف با شما می‌رود.',
 		items: WORK,
-		card_size: 'lg',
+		card_size: 'md',
 		card_style: 'overlay',
 		btn1_text: 'همه‌ی پروژه‌ها', btn1_link: link('{{blog}}'),
 		scheme: 'inverse',
 	})),
-	L.scrollZoom({
-		direction: 'out',
-		eyebrow: 'نگاهی از نزدیک',
-		title: 'از *یک قاب*\nتا یک تجربه',
-		image: img('ribbon-1'),
-		start_scale: px(0.4),
-		radius: px(40),
-		length: px(2.2),
-		o_title: 'صفحه‌ای که *نفس می‌کشد*.',
-		o_desc: 'پس از زوم‌اوت، کارت کوچک می‌شود و جای خود را به بخش بعد می‌دهد.',
-		btn1_text: 'خدمات ما', btn1_link: link('#services'), btn1_style: 'inverse',
-	}),
-	anchor('services', section({ space: 'md' }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: 'خدمات', title: 'چهار شکل *حرکت*' })],
-			[L.textEditor('<p>می‌توانید یک خدمت را جداگانه سفارش دهید یا یک بسته‌ی کامل بگیرید؛ در هر دو حالت یک مدیر پروژه و یک جدول زمانی روشن دارید.</p>')],
+	anchor('services', section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[
+				heading({ eyebrow: 'خدمات', title: 'چهار شکل\n*حرکت*', desc: 'یک خدمت جدا یا بسته‌ی کامل؛ در هر دو حالت یک مدیر پروژه و جدول زمانی روشن دارید.' }),
+				button('شروع پروژه', '#brief', 'secondary'),
+			],
+			[L.features([
+				{ icon: '', title: 'ویدیوی معرفی', text: 'از فیلمنامه و استوری‌بورد تا انیمیشن و طراحی صدا؛ برای هر پلتفرم با نسبت و حجم درست.', meta: '۳۰ تا ۹۰ ثانیه' },
+				{ icon: '', title: 'انیمیشن رابط کاربری', text: 'ورود، بارگذاری، تأیید و خطا؛ حرکت‌هایی که راهنمایی می‌کنند. خروجی Lottie یا کد.', meta: 'وب و اپلیکیشن' },
+				{ icon: '', title: 'وب‌سایت اسکرولی', text: 'سایت‌های نمایشی با زوم، پین و اسکرول افقی؛ با تمرکز روی سرعت و دسترس‌پذیری.', meta: 'داستان‌گویی با اسکرول' },
+				{ icon: '', title: 'هویت متحرک', text: 'لوگوی متحرک، قواعد حرکتی و قالب‌های استوری؛ تا برند همه‌جا یک‌دست حرکت کند.', meta: 'سیستم حرکتی برند' },
+			], { layout: 'list', style: 'plain', icon_style: 'plain', numbered: 'yes' })],
 		]),
-		L.tabs([
-			{ title: 'ویدیوی معرفی', subtitle: '۳۰ تا ۹۰ ثانیه', meta: '۰۱', image: img('orb-1'), panel_title: 'داستانی که در ده ثانیه‌ی اول گیر می‌اندازد', panel_text: 'از فیلمنامه و استوری‌بورد تا انیمیشن، موسیقی و طراحی صدا. هر ویدیو برای پلتفرم مقصد، نسبت تصویر و حجم درست خروجی می‌گیرد.', chips: 'استوری‌بورد، انیمیشن، طراحی صدا', btn_text: 'شروع پروژه', btn_link: link('#brief') },
-			{ title: 'انیمیشن رابط کاربری', subtitle: 'وب و اپلیکیشن', meta: '۰۲', image: img('glass-2'), panel_title: 'ریزتعامل‌هایی که کار را ساده می‌کنند', panel_text: 'ورود، بارگذاری، تأیید و خطا؛ حرکت‌هایی که راهنمایی می‌کنند، نه حواس‌پرتی. خروجی Lottie یا کد، بهینه برای گوشی‌های ضعیف.', chips: 'Lottie، CSS، جاوااسکریپت', btn_text: 'شروع پروژه', btn_link: link('#brief') },
-			{ title: 'وب‌سایت اسکرولی', subtitle: 'داستان‌گویی با اسکرول', meta: '۰۳', image: img('ribbon-2'), panel_title: 'سایتی که با اسکرول حرف می‌زند', panel_text: 'طراحی و ساخت سایت‌های نمایشی با زوم، پین، اسکرول افقی و عمق؛ با تمرکز روی سرعت و دسترس‌پذیری.', chips: 'المنتور، زوم اسکرول، عمق', btn_text: 'شروع پروژه', btn_link: link('#brief') },
-			{ title: 'هویت متحرک', subtitle: 'سیستم حرکتی برند', meta: '۰۴', image: img('orb-5'), panel_title: 'برندی که حرکت هم دارد', panel_text: 'لوگوی متحرک، قواعد حرکتی، قالب‌های استوری و ارائه؛ تا همه‌چیز در هر نقطه‌ی تماس یک‌دست حرکت کند.', chips: 'لوگوی متحرک، قواعد حرکت', btn_text: 'شروع پروژه', btn_link: link('#brief') },
-		], { autoplay: 7, media_side: 'end' }),
 	])),
-	L.flow({
-		eyebrow: 'جعبه‌ابزار',
-		title: 'آنچه با خودمان *می‌آوریم*',
-		title_tag: 'h2', title_size: 'xl',
-		mode: 'converge',
-		strength: px(1.1),
-		items: [
-			{ text: 'استوری‌بورد', x: 14, y: 26, size: 190, depth: 0.9, shape: 'pill', rot: -6 },
-			{ text: 'After Effects', x: 82, y: 22, size: 210, depth: 1.1, shape: 'pill', rot: 5 },
-			{ text: 'Lottie', x: 22, y: 72, size: 140, depth: 0.7, shape: 'pill', rot: 4 },
-			{ text: 'WebGL', x: 78, y: 74, size: 150, depth: 0.5, shape: 'pill', rot: -4 },
-			{ text: 'طراحی صدا', x: 50, y: 88, size: 170, depth: 0.3, shape: 'pill', mobile: false },
-			{ image: img('float-6'), x: 8, y: 52, size: 170, depth: 1.2, shape: 'circle', mobile: false },
-			{ image: img('float-7'), x: 92, y: 52, size: 150, depth: 0.8, shape: 'circle', mobile: false },
-		],
-		height: { unit: 'vh', size: 100 },
+	L.scrollZoom({
+		eyebrow: 'شوریل ۱۴۰۴',
+		title: 'یک سال، *۴۲ حرکت*',
+		image: img('reel'),
+		start_scale: px(0.42),
+		radius: px(6),
+		length: px(2),
+		o_title: 'هر پروژه با یک *سؤال ساده* شروع می‌شود.',
+		o_desc: 'حرکت قرار است چه چیزی را به بیننده بفهماند؟ اگر جوابی نداشته باشد، حرکت نمی‌دهیم.',
+		btn1_text: 'نمونه‌کارها', btn1_link: link('#work'), btn1_style: 'inverse',
 	}),
-	section({ space: 'md' }, [
+	section({ space: 'sm', scheme: 'surface' }, [
 		L.counters([
 			{ value: 42, label: 'کمپین در سال گذشته' },
-			{ value: 8, suffix: ' سال', label: 'تجربه‌ی موشن' },
-			{ value: 96, suffix: '٪', label: 'مشتری‌های بازگشتی' },
-			{ value: 3, suffix: '×', label: 'میانگین رشد ماندگاری', desc: 'پس از افزودن موشن' },
-		], { style: 'cards', columns: '4' }),
+			{ value: 8, label: 'سال تجربه‌ی موشن' },
+			{ value: 96, suffix: '٪', label: 'مشتری بازگشتی' },
+			{ value: 3, suffix: '×', label: 'رشد میانگین ماندگاری' },
+		], { style: 'plain', columns: '4' }),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [48, 52], gap: 64, align: 'center' }, [
-			[
-				heading({ eyebrow: 'دستیار ایده‌پردازی', title: 'پیش از جلسه،\n*با دستیار ما* حرف بزنید', desc: 'دستیار هوشمند سیال از برند و هدف شما چند ایده‌ی حرکتی می‌سازد تا جلسه‌ی اول را با یک نقطه‌ی شروع روشن شروع کنیم.' }),
-				button('امتحان کنید', '#brief', 'secondary'),
-			],
-			[L.imageReveal('chat', { ratio: '16-9', reveal: 'clip-x', parallax: px(0.25) })],
-		]),
-	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'مشتری‌ها می‌گویند', title: 'حرکتی که *اثر* داشت', header_align: 'center' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'مشتری‌ها می‌گویند', title: 'حرکتی که *اثر* داشت' }),
 		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'فروشگاه', title: 'ابزارهای آماده‌ی *موشن*', header_align: 'center', desc: 'بسته‌های انیمیشن و قالب‌هایی که در استودیو برای خودمان ساختیم.' }),
+	section({ space: 'md', scheme: 'surface', gap: 40 }, [
+		cols({ widths: [60, 40], align: 'flex-end' }, [
+			[heading({ eyebrow: 'فروشگاه', title: 'ابزارهای آماده‌ی *موشن*', desc: 'بسته‌های انیمیشن و قالب‌هایی که در استودیو برای خودمان ساختیم.' })],
+			[button('همه‌ی محصولات', '{{shop}}', 'secondary', { _flex_align_self: 'flex-end' })],
+		]),
 		L.products({ source: 'featured', count: 3, columns: '3' }),
 	]),
 	section({ space: 'md' }, [
@@ -205,7 +156,7 @@ const homeA = [
 			[L.faq(FAQ)],
 		]),
 	]),
-	anchor('brief', section({ space: 'md', scheme: 'inverse', cls: 'hm-glow-bg' }, [
+	anchor('brief', section({ space: 'md', scheme: 'inverse' }, [
 		cols({ widths: [42, 58], gap: 64, align: 'flex-start' }, [
 			[
 				heading({ eyebrow: 'شروع پروژه', title: 'ایده‌تان را\n*متحرک* کنیم', desc: 'سه سؤال کوتاه؛ ظرف یک روز کاری با شما تماس می‌گیریم تا درباره‌ی ایده‌تان حرف بزنیم.' }),
@@ -216,30 +167,29 @@ const homeA = [
 	])),
 ];
 
-/* ---------------- Home B: tunnel ---------------- */
+/* ---------------- Home B: cinematic ---------------- */
 
 const homeB = [
-	L.hero({
-		layout: 'full',
+	L.showcase({
 		eyebrow: 'سیال · استودیوی موشن',
-		title: 'در جریان\n*باشید*.',
-		desc: 'حرکت، زبان تازه‌ی برندهاست.',
-		btn1_text: 'دیدن کارها', btn1_link: link('#work'),
-		btn2_text: 'شروع پروژه', btn2_link: link('{{page:contact}}'),
-		media_type: 'image',
-		image: img('hero'),
-		height: 'screen',
-		scheme: 'inverse',
-		decor: '',
-		hint: 'اسکرول کنید',
-	}),
-	L.depth({
-		layout: 'cover',
-		length: px(0.7),
-		scenes: [
-			{ image: img('ribbon-1'), label: '۰۱', title: 'حرکت، *توجه* می‌آورد', text: 'در یک صفحه‌ی شلوغ، چشم اول به چیزی می‌رود که حرکت دارد.' },
-			{ image: img('orb-3'), label: '۰۲', title: 'حرکت، *معنا* می‌رساند', text: 'یک انتقال درست، هزار توضیح را کوتاه می‌کند.' },
-			{ image: img('glass-4'), label: '۰۳', title: 'حرکت، *اعتماد* می‌سازد', text: 'رابطی که روان است، قابل اتکاتر هم حس می‌شود.' },
+		title: 'در جریان\n*باشید*',
+		btn_text: 'شروع پروژه',
+		btn_url: '{{page:contact}}',
+		slides: [
+			{ image: img('hero'), label: 'ویدیوی معرفی', text: 'فین‌تک پیمانه؛ ۴۵ ثانیه که نرخ ثبت‌نام را ۸۲٪ بالا برد.' },
+			{ image: img('work-2'), label: 'انیمیشن رابط', text: 'اپ سفرنو؛ ریزتعامل‌هایی که رزرو را سه قدم کوتاه‌تر کرد.' },
+			{ image: img('work-3'), label: 'وب‌سایت اسکرولی', text: 'نمایشگاه هنر معاصر؛ سایتی که با اسکرول داستان می‌گوید.' },
+			{ image: img('reel'), label: 'شوریل ۱۴۰۴', text: 'دو دقیقه از بهترین حرکت‌های سال گذشته.' },
+		],
+		stats: [
+			{ value: '۴۲', label: 'کمپین در سال' },
+			{ value: '۳۲۰', label: 'پروژه' },
+			{ value: '۱۲', label: 'جایزه‌ی طراحی' },
+		],
+		social: [
+			{ label: 'اینستاگرام', url: 'https://instagram.com/' },
+			{ label: 'آپارات', url: 'https://www.aparat.com/' },
+			{ label: 'بیهنس', url: 'https://behance.net/' },
 		],
 	}),
 	anchor('work', L.hscroll({
@@ -250,20 +200,6 @@ const homeB = [
 		card_size: 'md',
 		card_style: 'caption',
 	})),
-	L.flow({
-		eyebrow: 'در یک نگاه',
-		title: 'نور، *شیشه* و حرکت',
-		title_tag: 'h2', title_size: 'xl',
-		desc: 'سبک بصری سیال ترکیبی از نور گرم، سطوح شیشه‌ای و حرکت‌های آرام است.',
-		mode: 'disperse',
-		items: [
-			{ image: img('float-8'), x: 12, y: 30, size: 230, depth: 0.8, rot: -6 },
-			{ image: img('float-2'), x: 86, y: 28, size: 200, depth: 1.1, rot: 5, shape: 'tall' },
-			{ image: img('float-5'), x: 20, y: 78, size: 190, depth: 0.5, rot: 4, shape: 'circle' },
-			{ image: img('float-7'), x: 80, y: 80, size: 240, depth: 0.9, rot: -4 },
-		],
-		scheme: 'inverse',
-	}),
 	L.scrollPath({
 		eyebrow: 'روند کار',
 		title: 'از ایده تا\n*اولین فریم*',
@@ -275,19 +211,18 @@ const homeB = [
 			{ code: 'هفته‌ی ۵', title: 'تحویل و اندازه‌گیری', text: 'خروجی‌های بهینه برای هر پلتفرم و گزارش اثر روی ماندگاری و تبدیل.' },
 		],
 	}),
-	section({ space: 'md' }, [
+	section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'تعرفه', title: 'قیمت *روشن*', header_align: 'center', desc: 'هر پروژه پیشنهاد مکتوب دارد؛ این بسته‌ها نقطه‌ی شروع‌اند.' }),
 		L.pricing([
 			{ name: 'انیمیشن رابط', desc: 'ریزتعامل‌ها و صفحه‌های کلیدی', price: '۳۵', price_alt: '۳۲', unit: 'میلیون تومان', period: 'از', features: 'تا ۱۲ ریزتعامل\nخروجی Lottie و کد\nیک دور بازبینی', btn_text: 'درخواست', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
 			{ name: 'ویدیوی معرفی', desc: '۳۰ تا ۶۰ ثانیه، کامل', price: '۹۰', price_alt: '۸۱', unit: 'میلیون تومان', period: 'از', features: 'فیلمنامه و استوری‌بورد\nانیمیشن و طراحی صدا\nسه دور بازبینی\nنسخه‌های شبکه‌های اجتماعی', btn_text: 'درخواست', btn_link: link('{{page:contact}}'), featured: 'yes', badge: 'پرسفارش' },
-			{ name: 'وب‌سایت اسکرولی', desc: 'سایت نمایشی کامل', price: '۱۶۰', price_alt: '۱۴۴', unit: 'میلیون تومان', period: 'از', features: 'طراحی و ساخت\nزوم، عمق و اسکرول افقی\nبهینه‌سازی سرعت\nآموزش مدیریت محتوا', btn_text: 'درخواست', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
+			{ name: 'وب‌سایت اسکرولی', desc: 'سایت نمایشی کامل', price: '۱۶۰', price_alt: '۱۴۴', unit: 'میلیون تومان', period: 'از', features: 'طراحی و ساخت\nزوم، پین و اسکرول افقی\nبهینه‌سازی سرعت\nآموزش مدیریت محتوا', btn_text: 'درخواست', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
 		], { switch_off: 'پرداخت یکجا', switch_on: 'پرداخت در سه مرحله', switch_note: '' }),
 	]),
-	L.testimonials(QUOTES, { layout: 'marquee' }),
-	section({ space: 'md' }, [
+	section({ space: 'md', scheme: 'surface', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
 			[heading({ eyebrow: 'یادداشت‌ها', title: 'پشت‌صحنه‌ی *حرکت*' })],
-			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary')],
+			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary', { _flex_align_self: 'flex-end' })],
 		]),
 		L.posts({ count: 3, layout: 'grid', columns: '3' }),
 	]),
@@ -296,7 +231,7 @@ const homeB = [
 		title: 'فریم اول را\n*با هم* بسازیم.',
 		desc: 'ایده‌تان هر چه هست، یک جلسه‌ی رایگان برای شنیدنش وقت داریم.',
 		btn1_text: 'رزرو جلسه', btn1_link: link('{{page:contact}}'),
-		look: 'accent',
+		look: 'image', image: img('work-6'),
 		decor: '',
 		note: '',
 	}),
@@ -311,37 +246,39 @@ const about = [
 			[L.textEditor('<p>سیال را سال ۱۳۹۶ سه نفر راه انداختند که هر کدام از یک طرف به موشن رسیده بودند: یکی از نقاشی، یکی از برنامه‌نویسی و یکی از فیلم. اسم استودیو از همان‌جا آمد: چیزی که نه جامد است نه ثابت.</p>')],
 		]),
 	]),
-	section({ space: 'md' }, [L.imageReveal('ribbon-1', { ratio: '21-9', reveal: 'clip-up', parallax: px(0.3) })]),
-	section({ space: 'md', width: 1100 }, [
+	section({ space: 'md' }, [L.imageReveal('reel', { ratio: '21-9', reveal: 'clip-up', parallax: px(0.3) })]),
+	section({ space: 'md', width: 1040 }, [
 		L.textScrub('هشت سال بعد، هنوز یک قاعده داریم: *هیچ حرکتی بدون دلیل*. اگر نتوانیم بگوییم یک انیمیشن چه چیزی را روشن می‌کند، آن را حذف می‌کنیم؛ حتی اگر زیبا باشد.', { eyebrow: 'قاعده‌ی ما', size: 'md' }),
 	]),
-	section({ space: 'sm' }, [
+	section({ space: 'sm', scheme: 'surface' }, [
 		L.counters([
-			{ value: 1396, label: 'سال تأسیس', grouping: '' },
+			{ value: 8, label: 'سال' },
 			{ value: 18, label: 'نفر در تیم' },
 			{ value: 320, suffix: '+', label: 'پروژه‌ی تحویل‌شده' },
 			{ value: 12, label: 'جایزه‌ی طراحی' },
-		], { style: 'plain', columns: '4', grouping: '' }),
+		], { style: 'plain', columns: '4' }),
 	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'اصول ما', title: 'چهار *قاعده*' }),
-		L.features([
-			{ icon: 'target', title: 'حرکت برای فهماندن', text: 'هر حرکتی باید چیزی را روشن‌تر کند، نه فقط جذاب‌تر.' },
-			{ icon: 'bolt', title: 'سبک بودن', text: 'انیمیشن زیبایی که صفحه را کند کند، شکست خورده است.' },
-			{ icon: 'eye', title: 'دسترس‌پذیری', text: 'حرکت را برای کسانی که آن را نمی‌خواهند هم طراحی می‌کنیم.' },
-			{ icon: 'heart', title: 'صداقت درباره‌ی نتیجه', text: 'اثر کار را می‌سنجیم و عددها را همان‌طور که هست می‌گوییم.' },
-		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'soft' }),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'اصول ما', title: 'چهار *قاعده*' })],
+			[L.features([
+				{ icon: '', title: 'حرکت برای فهماندن', text: 'هر حرکتی باید چیزی را روشن‌تر کند، نه فقط جذاب‌تر.' },
+				{ icon: '', title: 'سبک بودن', text: 'انیمیشن زیبایی که صفحه را کند کند، شکست خورده است.' },
+				{ icon: '', title: 'دسترس‌پذیری', text: 'حرکت را برای کسانی که آن را نمی‌خواهند هم طراحی می‌کنیم.' },
+				{ icon: '', title: 'صداقت درباره‌ی نتیجه', text: 'اثر کار را می‌سنجیم و عددها را همان‌طور که هست می‌گوییم.' },
+			], { layout: 'list', style: 'plain', icon_style: 'plain', numbered: 'yes' })],
+		]),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
+	section({ space: 'md', scheme: 'surface', gap: 40 }, [
 		heading({ eyebrow: 'تیم', title: 'آدم‌های *سیال*' }),
-		L.team([
-			{ photo: img('person-2'), name: 'ترانه آذری', role: 'هم‌بنیان‌گذار، کارگردان هنری' },
-			{ photo: img('person-3'), name: 'سینا نیک‌پی', role: 'هم‌بنیان‌گذار، مهندس خلاق' },
-			{ photo: img('person-4'), name: 'مینا رضوی', role: 'سرپرست انیمیشن' },
-			{ photo: img('person-1'), name: 'پارسا تاجیک', role: 'طراح صدا' },
-			{ photo: img('person-5'), name: 'کیان صالحی', role: 'برنامه‌نویس تعاملی' },
-			{ photo: img('person-6'), name: 'هستی ملکی', role: 'مدیر پروژه' },
-		], { columns: '3' }),
+		L.features([
+			{ icon: '', title: 'ترانه آذری', text: 'هم‌بنیان‌گذار، کارگردان هنری' },
+			{ icon: '', title: 'سینا نیک‌پی', text: 'هم‌بنیان‌گذار، مهندس خلاق' },
+			{ icon: '', title: 'مینا رضوی', text: 'سرپرست انیمیشن' },
+			{ icon: '', title: 'پارسا تاجیک', text: 'طراح صدا' },
+			{ icon: '', title: 'کیان صالحی', text: 'برنامه‌نویس تعاملی' },
+			{ icon: '', title: 'هستی ملکی', text: 'مدیر پروژه' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'plain' }),
 	]),
 	L.cta({
 		title: 'یک *جلسه‌ی* آشنایی؟',
@@ -458,19 +395,19 @@ const posts = [
 /* ---------------- Products ---------------- */
 
 const products = [
-	{ key: 'pack-ui', title: 'پک انیمیشن رابط کاربری', slug: 'ui-animation-pack', price: 1450000, sku: 'SY-UIPACK', image: 'product-1', gallery: ['product-1-b', 'glass-1'], terms: ['pcat-pack'], virtual: true, featured: true,
+	{ key: 'pack-ui', title: 'پک انیمیشن رابط کاربری', slug: 'ui-animation-pack', price: 1450000, sku: 'SY-UIPACK', image: 'product-1', gallery: ['product-1-b'], terms: ['pcat-pack'], virtual: true, featured: true,
 		excerpt: '۴۸ انیمیشن Lottie آماده برای دکمه، فرم، بارگذاری و خطا.',
 		content: L.productBody(['۴۸ انیمیشن Lottie آماده‌ی استفاده در وب و اپلیکیشن: دکمه‌ها، فرم‌ها، اسکلت بارگذاری، حالت موفقیت و خطا.', 'همه‌ی انیمیشن‌ها زیر ۲۰ کیلوبایت‌اند و رنگ‌هایشان از یک فایل تنظیمات عوض می‌شود.'], [['تعداد', '۴۸ انیمیشن'], ['فرمت', 'Lottie (JSON)'], ['حجم هر فایل', 'کمتر از ۲۰ کیلوبایت'], ['مجوز', 'استفاده‌ی تجاری، نامحدود']]) },
 	{ key: 'pack-transitions', title: 'ترنزیشن‌های ویدیویی', slug: 'video-transitions', price: 1180000, sku: 'SY-TRANS', image: 'product-2', gallery: ['product-2-b'], terms: ['pcat-pack'], virtual: true, featured: true,
 		excerpt: '۱۲۰ ترنزیشن آماده‌ی پریمیر و افترافکت بدون نیاز به پلاگین.',
 		content: L.productBody(['۱۲۰ ترنزیشن: زوم، ویپ، اعوجاج مایع و گذار نوری، همه آماده‌ی کشیدن روی تایم‌لاین.', 'بدون پلاگین؛ فقط با ابزارهای خود نرم‌افزار ساخته شده‌اند و روی سیستم‌های ضعیف هم روان‌اند.'], [['تعداد', '۱۲۰ ترنزیشن'], ['نرم‌افزار', 'Premiere و After Effects'], ['رزولوشن', 'تا 4K']]) },
-	{ key: 'kit-glass', title: 'کیت موکاپ شیشه‌ای', slug: 'glass-mockup-kit', price: 890000, sale_price: 690000, sku: 'SY-GLASS', image: 'product-3', gallery: ['product-3-b'], terms: ['pcat-kit'], virtual: true, featured: true,
+	{ key: 'kit-glass', title: 'کیت موکاپ نمایش', slug: 'showcase-mockup-kit', price: 890000, sale_price: 690000, sku: 'SY-GLASS', image: 'product-3', gallery: ['product-3-b'], terms: ['pcat-kit'], virtual: true, featured: true,
 		excerpt: '۳۶ صحنه‌ی شیشه‌ای برای معرفی اپ و سایت؛ فایل فیگما.',
 		content: L.productBody(['۳۶ صحنه‌ی آماده با کارت‌های شیشه‌ای و نور نرم برای معرفی اپ و سایت، با اجزای قابل ویرایش.', 'رنگ نور، شفافیت و محتوای کارت‌ها را در چند ثانیه عوض کنید.'], [['تعداد', '۳۶ صحنه'], ['فرمت', 'Figma'], ['اجزا', 'قابل ویرایش']]) },
 	{ key: 'pack-icons', title: 'آیکون‌های متحرک', slug: 'animated-icons', price: 760000, sku: 'SY-ICONS', image: 'product-4', gallery: ['product-4-b'], terms: ['pcat-pack'], virtual: true,
 		excerpt: '۲۴۰ آیکون SVG متحرک با سه سبک خطی، توپر و دوتایی.',
 		content: L.productBody(['۲۴۰ آیکون متحرک برای رابط کاربری، هر کدام با حالت ایستا و متحرک.', 'سه سبک یکپارچه‌ی خطی، توپر و دوتایی.'], [['تعداد', '۲۴۰ آیکون'], ['فرمت', 'SVG و Lottie']]) },
-	{ key: 'kit-3d', title: 'قالب ارائه‌ی سه‌بعدی', slug: '3d-presentation-template', price: 1320000, sku: 'SY-3DPRES', image: 'product-5', gallery: ['product-5-b'], terms: ['pcat-kit'], virtual: true,
+	{ key: 'kit-3d', title: 'قالب ارائه‌ی سینمایی', slug: 'cinematic-presentation-template', price: 1320000, sku: 'SY-3DPRES', image: 'product-5', gallery: ['product-5-b'], terms: ['pcat-kit'], virtual: true,
 		excerpt: '۴۰ اسلاید با عمق و حرکت، برای ارائه‌ی کیی‌نوت و پاورپوینت.',
 		content: L.productBody(['۴۰ اسلاید با ترکیب عمق، نور و حرکت‌های نرم، برای ارائه‌ی محصول و گزارش.', 'همه‌ی متن‌ها و رنگ‌ها قابل ویرایش‌اند.'], [['تعداد', '۴۰ اسلاید'], ['فرمت', 'Keynote و PowerPoint']]) },
 	{ key: 'course-motion', title: 'دوره‌ی موشن دیزاین', slug: 'motion-design-course', price: 8900000, sku: 'SY-COURSE', image: 'product-6', gallery: ['product-6-b'], terms: ['pcat-course'], virtual: true,
@@ -483,7 +420,7 @@ module.exports = {
 		id: 'flux',
 		order: 6,
 		title: 'سیال',
-		desc: 'استودیوی موشن؛ زوم‌این و زوم‌اوت، تونل عمق، اسکرول افقی، عناصر شناور و حالت تاریک سینمایی.',
+		desc: 'استودیوی موشن؛ گرافیتی و عاجی با رد نور، تیتر پلکانی، نمونه‌کار در اسکرول افقی، زوم سینمایی و اسلایدر.',
 		kit: 'flux',
 		thumb: 'thumb.webp',
 		required: ['elementor'],
@@ -495,8 +432,8 @@ module.exports = {
 		site: { title: 'سیال', tagline: 'استودیوی موشن و تجربه‌ی تعاملی' },
 		images, alts, terms, posts, products,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent-light' }) },
+			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent-light' }) },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'contact', title: 'تماس با ما', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'وبلاگ', slug: 'blog', content: '' },
@@ -506,19 +443,17 @@ module.exports = {
 			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'سیال — صفحه‌ی اصلی، مدل دوم' },
 			{ key: 'tpl-about', type: 'page', page: 'about', title: 'سیال — درباره‌ی ما' },
 			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'سیال — تماس' },
-			{ key: 'tpl-flow', type: 'section', page: 'home', index: 0, title: 'سیال — هیرو با عناصر شناور' },
-			{ key: 'tpl-zoom-in', type: 'section', page: 'home', index: 2, title: 'سیال — زوم‌این با اسکرول' },
-			{ key: 'tpl-depth', type: 'section', page: 'home', index: 3, title: 'سیال — تونل عمق' },
-			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 5, title: 'سیال — اسکرول افقی نمونه‌کار' },
-			{ key: 'tpl-zoom-out', type: 'section', page: 'home', index: 6, title: 'سیال — زوم‌اوت با اسکرول' },
-			{ key: 'tpl-converge', type: 'section', page: 'home', index: 8, title: 'سیال — عناصر شناور همگرا' },
-			{ key: 'tpl-depth-cover', type: 'section', page: 'home-2', index: 1, title: 'سیال — تونل عمق تمام‌صفحه' },
-			{ key: 'tpl-disperse', type: 'section', page: 'home-2', index: 3, title: 'سیال — عناصر شناور پراکنده' },
+			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'سیال — هیرو با تیتر پلکانی' },
+			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 3, title: 'سیال — اسکرول افقی نمونه‌کار' },
+			{ key: 'tpl-services', type: 'section', page: 'home', index: 4, title: 'سیال — فهرست خدمات' },
+			{ key: 'tpl-zoom', type: 'section', page: 'home', index: 5, title: 'سیال — زوم سینمایی با اسکرول' },
+			{ key: 'tpl-showcase', type: 'section', page: 'home-2', index: 0, title: 'سیال — اسلایدر سینمایی' },
+			{ key: 'tpl-path', type: 'section', page: 'home-2', index: 2, title: 'سیال — مسیر روند کار' },
 		],
 		menus: [
 			{
 				name: 'سیال — منوی اصلی', location: 'primary', items: [
-					{ title: 'خانه', page: 'home', children: [{ title: 'مدل اول — تونل عمق', page: 'home' }, { title: 'مدل دوم — سینمایی', page: 'home-2' }] },
+					{ title: 'خانه', page: 'home', children: [{ title: 'مدل اول — ادیتوریال', page: 'home' }, { title: 'مدل دوم — سینمایی', page: 'home-2' }] },
 					{ title: 'فروشگاه', url: '{{shop}}' },
 					{ title: 'وبلاگ', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },
@@ -539,6 +474,9 @@ module.exports = {
 			logo_dark: '{{imgid:logo-dark}}',
 			logo_height: 38,
 			color_scheme: 'dark',
+			font_body: 'iransansx',
+			font_heading: 'lahzeh',
+			font_heading_weight: '600',
 			header_layout: 'split',
 			header_cta_text: 'شروع پروژه',
 			header_cta_url: '{{page:contact}}',

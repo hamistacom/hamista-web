@@ -270,7 +270,7 @@ T = {
     "Analytics, verification tags. Requires the unfiltered_html capability.": "کدهای آمار و تگ~های تأیید مالکیت. به مجوز unfiltered_html نیاز دارد.",
     "Code before </body>": "کد پیش از </body>",
     "Flux": "سیال",
-    "Cinematic dark, frosted glass and amber glow": "تاریک و سینمایی، شیشه~ی مات و درخشش کهربایی",
+    "Graphite, ivory and one ember accent": "زغالی و عاجی، با تنها یک رنگ تأکیدی اخگری",
     # Layout v2, cursor, sound, language.
     "Maximum width of page content. 1150px keeps every section comfortable on a 15\" laptop; Elementor's container width is kept in sync.": "بیشترین عرض محتوای برگه~ها. عرض ۱۱۵۰ پیکسل همه~ی بخش~ها را روی لپ~تاپ ۱۵ اینچی جمع~وجور و خوانا نگه می~دارد. عرض کانتینرهای المنتور هم هم~زمان با همین مقدار تنظیم می~شود.",
     "Density": "تراکم",

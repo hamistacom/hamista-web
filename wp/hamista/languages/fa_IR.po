@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T16:27:50+00:00\n"
-"PO-Revision-Date: 2026-10-07 16:27+0000\n"
+"POT-Creation-Date: 2026-10-07T17:56:38+00:00\n"
+"PO-Revision-Date: 2026-10-07 17:56+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -103,8 +103,8 @@ msgid "Pulse — bold agency"
 msgstr "تپش — جسور و آژانسی"
 
 #: inc/assets.php:39
-msgid "Flux — cinematic, glass and glow"
-msgstr "سیال — سینمایی، شیشه و درخشش"
+msgid "Flux — graphite, ivory and ember"
+msgstr "سیال — زغالی و عاجی با رگه‌ی اخگری"
 
 #: inc/assets.php:40
 msgid "Honey — warm and natural"

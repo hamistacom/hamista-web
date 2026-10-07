@@ -99,7 +99,7 @@ return ( static function () {
 						),
 						'flux'       => array(
 							'label' => __( 'Flux', 'hamista-core' ),
-							'desc'  => __( 'Cinematic dark, frosted glass and amber glow', 'hamista-core' ),
+							'desc'  => __( 'Graphite, ivory and one ember accent', 'hamista-core' ),
 							'image' => $img . 'kit-flux.svg',
 						),
 						'honey'      => array(

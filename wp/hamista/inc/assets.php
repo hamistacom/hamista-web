@@ -36,7 +36,7 @@ function hamista_kits() {
 			'spark'      => __( 'Spark — editorial', 'hamista' ),
 			'industrial' => __( 'Industrial — tactile', 'hamista' ),
 			'pulse'      => __( 'Pulse — bold agency', 'hamista' ),
-			'flux'       => __( 'Flux — cinematic, glass and glow', 'hamista' ),
+			'flux'       => __( 'Flux — graphite, ivory and ember', 'hamista' ),
 			'honey'      => __( 'Honey — warm and natural', 'hamista' ),
 			'nomad'      => __( 'Nomad — handwoven, earthy', 'hamista' ),
 			'voyage'     => __( 'Voyage — cinematic travel, turquoise', 'hamista' ),
