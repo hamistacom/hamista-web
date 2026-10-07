@@ -165,7 +165,7 @@ class Testimonials extends Widget_Base {
 		$html .= '<span class="hm-quote__mark" aria-hidden="true">' . hamista_core_icon( 'quote' ) . '</span>';
 		if ( (int) $item['rating'] > 0 ) {
 			/* translators: %d: star rating */
-			$html .= '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) . '">' . str_repeat( '★', (int) $item['rating'] ) . '</span>';
+			$html .= '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( hamista_core_digits( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) ) . '">' . str_repeat( '★', (int) $item['rating'] ) . '</span>';
 		}
 		$html  .= '<blockquote class="hm-quote__text">' . esc_html( $item['quote'] ) . '</blockquote>';
 		$html  .= '<figcaption class="hm-quote__who">';
@@ -178,7 +178,7 @@ class Testimonials extends Widget_Base {
 			)
 		);
 		if ( ! $avatar ) {
-			$avatar = '<span class="hm-quote__avatar hm-quote__avatar--initial" aria-hidden="true">' . esc_html( mb_substr( (string) $item['name'], 0, 1 ) ) . '</span>';
+			$avatar = '<span class="hm-quote__avatar hm-quote__avatar--initial" aria-hidden="true">' . esc_html( hamista_core_initial( $item['name'] ) ) . '</span>';
 		}
 		$html .= $avatar . '<span><b>' . esc_html( $item['name'] ) . '</b><small>' . esc_html( $item['role'] ) . '</small></span></figcaption>';
 		return $html . '</figure>';
@@ -222,7 +222,7 @@ class Testimonials extends Widget_Base {
 				echo '<div class="hm-qexpand__body">';
 				if ( (int) $item['rating'] > 0 ) {
 					/* translators: %d: star rating */
-					echo '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) . '">' . esc_html( str_repeat( '★', (int) $item['rating'] ) ) . '</span>';
+					echo '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( hamista_core_digits( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) ) . '">' . esc_html( str_repeat( '★', (int) $item['rating'] ) ) . '</span>';
 				}
 				echo '<blockquote>' . esc_html( $item['quote'] ) . '</blockquote>';
 				echo '<figcaption><b>' . esc_html( $item['name'] ) . '</b><small>' . esc_html( $item['role'] ) . '</small></figcaption>';

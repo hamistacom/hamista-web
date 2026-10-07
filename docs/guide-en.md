@@ -35,6 +35,7 @@ A full Persian guide is in `guide-fa.md`. This page is the short English version
 |---|---|---|
 | سازه (Sazeh) | `sazeh` / `stone` | architecture and interior studio; complete site, 14 pages, 8 portfolio projects |
 | دادگر (Dadgar) | `dadgar` / `counsel` | law firm with online consultation booking; complete site, 16 pages, 6 lawyers |
+| گلینه (Gelineh) | `gelineh` / `clay` | handmade ceramics shop; complete store, 10 products (needs WooCommerce) |
 | ره‌نورد (Rahnavard) | `rahnavard` / `voyage` | travel agency, cinematic slider |
 | پروازیار (Parvazyar) | `parvazyar` / `azure` | flight tickets, search over clouds |
 | خانه‌ی حکمت (Hekmat) | `hekmat` / `ink` | reading circles, astrolabe and calligraphy |

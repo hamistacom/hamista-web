@@ -62,6 +62,26 @@ function hamista_core_latin_digits( $value ) {
 }
 
 /**
+ * First letter of a person's name for a monogram, skipping titles such as
+ * «دکتر» or «مهندس» so "Dr Maryam Kazemi" gives «م», not «د».
+ *
+ * @param string $name Name.
+ * @return string
+ */
+function hamista_core_initial( $name ) {
+	$titles = array( 'دکتر', 'مهندس', 'استاد', 'خانم', 'آقای', 'آقا', 'سرکار', 'جناب', 'کاکا', 'خاله', 'Dr.', 'Dr', 'Mr.', 'Mrs.', 'Ms.' );
+	$words  = (array) preg_split( '/\s+/u', trim( wp_strip_all_tags( (string) $name ) ) );
+	$first  = (string) reset( $words );
+	foreach ( $words as $word ) {
+		if ( '' !== $word && ! in_array( $word, $titles, true ) ) {
+			$first = (string) $word;
+			break;
+		}
+	}
+	return function_exists( 'mb_substr' ) ? mb_substr( $first, 0, 1 ) : substr( $first, 0, 1 );
+}
+
+/**
  * Persian digits for display (when the site is Persian and the option is on).
  *
  * @param string|int $value Input.

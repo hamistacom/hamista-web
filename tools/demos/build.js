@@ -72,6 +72,7 @@ function validate(id, demo) {
 	(c.posts || []).forEach((p) => { if (p.image) { found.img.add(p.image); } });
 	(c.products || []).forEach((p) => { if (p.image) { found.img.add(p.image); } (p.gallery || []).forEach((g) => found.img.add(g)); });
 	(c.projects || []).concat(c.experts || []).forEach((p) => { if (p.image) { found.img.add(p.image); } });
+	(c.terms || []).forEach((t) => { if (t.image) { found.img.add(t.image); } });
 	const has = {
 		page: new Set((c.pages || []).map((p) => p.key)),
 		post: new Set((c.posts || []).map((p) => p.key)),

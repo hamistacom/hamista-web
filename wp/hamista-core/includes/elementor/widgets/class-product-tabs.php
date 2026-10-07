@@ -120,7 +120,12 @@ class Product_Tabs extends Widget_Base {
 		Product_Card::controls( $this );
 		$this->end_controls_section();
 
-		$this->add_carousel_controls( array( 'layout' => 'grid' ) );
+		$this->add_carousel_controls(
+			array(
+				'layout'         => 'grid',
+				'columns_mobile' => '2',
+			)
+		);
 		$this->add_section_controls();
 	}
 

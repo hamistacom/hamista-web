@@ -327,4 +327,6 @@ T = {
     "Limestone, charcoal and bronze": "سنگ آهکی، زغالی و مفرغ",
     "Counsel": "وکالت",
     "Ivory, navy and oxblood": "عاجی، سرمه~ای و زرشکی",
+    "Clay": "سفال",
+    "Porcelain, sage and terracotta": "سفید چینی، سبز مریمی و آجری",
 }

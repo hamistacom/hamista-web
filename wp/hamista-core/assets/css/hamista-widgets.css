@@ -860,7 +860,15 @@
 	background: radial-gradient(circle, rgba(0, 0, 0, .55) 1.6px, transparent 2px) 0 0 / 14px 14px;
 	-webkit-mask-image: radial-gradient(ellipse 50% 60% at 50% 50%, #000, transparent 80%); mask-image: radial-gradient(ellipse 50% 60% at 50% 50%, #000, transparent 80%);
 }
-.hm-cta--image { color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .8); --hm-accent-ink: #fff; }
+.hm-cta--image {
+	color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .8); --hm-accent-ink: #fff;
+	--hm-border: rgba(255, 255, 255, .2); --hm-border-strong: rgba(255, 255, 255, .34);
+	--hm-input-bg: rgba(255, 255, 255, .1); --hm-input-border: 1px solid rgba(255, 255, 255, .34); --hm-surface: rgba(255, 255, 255, .1);
+}
+.hm-cta--image .hm-eyebrow { color: rgba(255, 255, 255, .85); }
+.hm-cta--image .hm-eyebrow::before { background: currentColor; }
+.hm-cta--image .hm-cta__input { color: #fff; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.hm-cta--image .hm-cta__input::placeholder { color: rgba(255, 255, 255, .72); }
 .hm-cta__bg { position: absolute; inset: 0; z-index: -1; }
 .hm-cta .hm-cta__bg img { width: 100%; height: 100%; object-fit: cover; }
 .hm-cta__bg::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .55); }

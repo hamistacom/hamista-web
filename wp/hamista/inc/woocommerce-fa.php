@@ -21,6 +21,10 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 function hamista_wc_persian_strings() {
 	return array(
 		'Add to cart'                                   => 'افزودن به سبد خرید',
+		'Sale'                                          => 'حراج',
+		'Product on sale'                               => 'محصول تخفیف‌دار',
+		'New in store'                                  => 'تازه‌های فروشگاه',
+		'Your cart is currently empty!'                 => 'سبد خرید شما خالی است!',
 		'Read more'                                     => 'بیشتر بخوانید',
 		'Add to cart: &ldquo;%s&rdquo;'                 => 'افزودن «%s» به سبد خرید',
 		'Read more about &ldquo;%s&rdquo;'              => 'درباره‌ی «%s» بیشتر بخوانید',
@@ -126,6 +130,7 @@ function hamista_wc_persian_strings() {
 function hamista_wc_persian_plurals() {
 	return array(
 		'Showing all %d result'                  => array( 'نمایش %d محصول', 'نمایش همه‌ی %d محصول' ),
+		'Showing all %1$d result'                => array( 'نمایش %1$d محصول', 'نمایش همه‌ی %1$d محصول' ),
 		'Showing %1$d&ndash;%2$d of %3$d result' => array( 'نمایش %1$d تا %2$d از %3$d محصول', 'نمایش %1$d تا %2$d از %3$d محصول' ),
 		'%s customer review'                     => array( '%s نظر', '%s نظر' ),
 		'%d item'                                => array( '%d کالا', '%d کالا' ),
@@ -168,6 +173,55 @@ function hamista_wc_ngettext( $translation, $single, $plural, $number ) {
 }
 
 /**
+ * Same, for strings that carry a context (WooCommerce uses _x and _nx too).
+ *
+ * @param string $translation Translated text.
+ * @param string $text        Original text.
+ * @return string
+ */
+function hamista_wc_gettext_context( $translation, $text ) {
+	return hamista_wc_gettext( $translation, $text );
+}
+
+/**
+ * Plural with a context.
+ *
+ * @param string $translation Translated text.
+ * @param string $single      Singular original.
+ * @param string $plural      Plural original.
+ * @param int    $number      Count.
+ * @return string
+ */
+function hamista_wc_ngettext_context( $translation, $single, $plural, $number ) {
+	return hamista_wc_ngettext( $translation, $single, $plural, $number );
+}
+
+/**
+ * The cart and checkout pages WooCommerce creates on a site without its
+ * language pack store a few English headings in their blocks; show them in Persian.
+ *
+ * @param string $content Block HTML.
+ * @param array  $block   Block.
+ * @return string
+ */
+function hamista_wc_block_text( $content, $block ) {
+	if ( empty( $block['blockName'] ) || ! in_array( $block['blockName'], array( 'core/heading', 'core/paragraph', 'woocommerce/empty-cart-block' ), true ) ) {
+		return $content;
+	}
+	if ( ! ( function_exists( 'is_cart' ) && is_cart() ) && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+		return $content;
+	}
+	return strtr(
+		$content,
+		array(
+			'Your cart is currently empty!' => 'سبد خرید شما خالی است!',
+			'New in store'                  => 'تازه‌های فروشگاه',
+			'Browse store'                  => 'دیدن فروشگاه',
+		)
+	);
+}
+
+/**
  * Hook only on Persian sites (or with the Persian interface switch on).
  */
 function hamista_wc_persian_fallback() {
@@ -179,5 +233,8 @@ function hamista_wc_persian_fallback() {
 	}
 	add_filter( 'gettext_woocommerce', 'hamista_wc_gettext', 10, 2 );
 	add_filter( 'ngettext_woocommerce', 'hamista_wc_ngettext', 10, 4 );
+	add_filter( 'gettext_with_context_woocommerce', 'hamista_wc_gettext_context', 10, 2 );
+	add_filter( 'ngettext_with_context_woocommerce', 'hamista_wc_ngettext_context', 10, 4 );
+	add_filter( 'render_block', 'hamista_wc_block_text', 10, 2 );
 }
 add_action( 'init', 'hamista_wc_persian_fallback', 1 );

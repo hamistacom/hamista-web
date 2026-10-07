@@ -9,7 +9,6 @@ const { img, link, px, section, cols, heading, button } = L;
 const images = { hero: 'images/hero.webp', comb: 'images/comb.webp', apiary: 'images/apiary.webp' };
 for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; }
 for (let i = 1; i <= 3; i++) { images['process-' + i] = 'images/process-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
 
 images.logo = 'images/logo.webp';
 images['logo-dark'] = 'images/logo-dark.webp';
@@ -23,9 +22,9 @@ const alts = {
 };
 
 const QUOTES = [
-	{ quote: 'عسل گونشان را برای پدرم گرفتم که سال‌ها زنبوردار بود. اولین قاشق را که خورد گفت «این را از کندو آورده‌اند، نه از کارخانه».', name: 'فرناز موسوی', role: 'مشتری از اصفهان', avatar: img('person-4') },
-	{ quote: 'برگه‌ی آزمایش همراه هر شیشه برای من کافی بود. دیگر لازم نیست به حرف فروشنده اعتماد کنم.', name: 'دکتر سینا رحمانی', role: 'مشتری از تهران', avatar: img('person-1') },
-	{ quote: 'بسته‌بندی آن‌قدر محکم بود که حتی در پست به شیراز هم یک قطره بیرون نزد. عسل آویشنش هم فوق‌العاده است.', name: 'مهسا کریمی', role: 'مشتری از شیراز', avatar: img('person-6') },
+	{ quote: 'عسل گونشان را برای پدرم گرفتم که سال‌ها زنبوردار بود. اولین قاشق را که خورد گفت «این را از کندو آورده‌اند، نه از کارخانه».', name: 'فرناز موسوی', role: 'مشتری از اصفهان' },
+	{ quote: 'برگه‌ی آزمایش همراه هر شیشه برای من کافی بود. دیگر لازم نیست به حرف فروشنده اعتماد کنم.', name: 'دکتر سینا رحمانی', role: 'مشتری از تهران' },
+	{ quote: 'بسته‌بندی آن‌قدر محکم بود که حتی در پست به شیراز هم یک قطره بیرون نزد. عسل آویشنش هم فوق‌العاده است.', name: 'مهسا کریمی', role: 'مشتری از شیراز' },
 ];
 
 const FAQ = [
@@ -193,10 +192,10 @@ const homeB = [
 	section({ space: 'md', scheme: 'surface' }, [
 		heading({ eyebrow: 'زنبوردارهای ما', title: 'دست‌هایی که *پشت هر شیشه* است' }),
 		L.team([
-			{ photo: img('person-5'), name: 'کاکا رحیم', role: 'زنبوردار، دامنه‌ی سبلان' },
-			{ photo: img('person-2'), name: 'خاله فاطمه', role: 'زنبوردار، کوه‌های زاگرس' },
-			{ photo: img('person-3'), name: 'آقا موسی', role: 'زنبوردار، دامنه‌ی البرز' },
-			{ photo: img('person-6'), name: 'گلاره', role: 'مسئول آزمایش و کیفیت' },
+			{ photo: {}, name: 'کاکا رحیم', role: 'زنبوردار، دامنه‌ی سبلان' },
+			{ photo: {}, name: 'خاله فاطمه', role: 'زنبوردار، کوه‌های زاگرس' },
+			{ photo: {}, name: 'آقا موسی', role: 'زنبوردار، دامنه‌ی البرز' },
+			{ photo: {}, name: 'گلاره', role: 'مسئول آزمایش و کیفیت' },
 		], { columns: '4' }),
 	]),
 	L.testimonials(QUOTES, { layout: 'marquee' }),
@@ -240,10 +239,10 @@ const about = [
 	section({ space: 'md' }, [
 		heading({ eyebrow: 'تیم و زنبوردارها', title: 'آدم‌های *شهدینه*' }),
 		L.team([
-			{ photo: img('person-2'), name: 'نگار صدری', role: 'بنیان‌گذار' },
-			{ photo: img('person-6'), name: 'گلاره امینی', role: 'مسئول آزمایش و کیفیت' },
-			{ photo: img('person-5'), name: 'کاکا رحیم', role: 'زنبوردار، سبلان' },
-			{ photo: img('person-3'), name: 'آقا موسی', role: 'زنبوردار، البرز' },
+			{ photo: {}, name: 'نگار صدری', role: 'بنیان‌گذار' },
+			{ photo: {}, name: 'گلاره امینی', role: 'مسئول آزمایش و کیفیت' },
+			{ photo: {}, name: 'کاکا رحیم', role: 'زنبوردار، سبلان' },
+			{ photo: {}, name: 'آقا موسی', role: 'زنبوردار، البرز' },
 		], { columns: '4' }),
 	]),
 	L.cta({

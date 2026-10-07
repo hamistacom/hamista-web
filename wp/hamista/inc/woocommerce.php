@@ -174,12 +174,22 @@ add_action(
 	'woocommerce_before_shop_loop',
 	static function () {
 		echo '<div class="hm-shop-toolbar">';
+		ob_start();
 	},
 	15
 );
 add_action(
 	'woocommerce_before_shop_loop',
 	static function () {
+		// WooCommerce prints the result count with Latin digits; follow the site's digit setting.
+		$html = (string) ob_get_clean();
+		echo preg_replace_callback( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce's own markup, digits swapped.
+			'#(<p class="woocommerce-result-count"[^>]*>)(.*?)(</p>)#s',
+			static function ( $m ) {
+				return $m[1] . hamista_digits( $m[2] ) . $m[3];
+			},
+			$html
+		);
 		echo '</div>';
 	},
 	35

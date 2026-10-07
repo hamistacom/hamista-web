@@ -10,7 +10,6 @@ const images = {};
 ['ui-1', 'ui-2', 'ui-3', 'ui-4', 'ui-5', 'ui-6', 'ui-7', 'studio', 'workspace', 'community'].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
 for (const i of [1, 3, 4, 5, 6, 8]) { images['journal-' + i] = 'images/journal-' + i + '.webp'; }
 for (let i = 1; i <= 6; i++) { images['course-' + i] = 'images/course-' + i + '.webp'; images['course-' + i + '-b'] = 'images/course-' + i + '-b.webp'; }
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
 
 images.logo = 'images/logo.webp';
 images['logo-dark'] = 'images/logo-dark.webp';
@@ -45,9 +44,9 @@ const SHIPPED = [
 ];
 
 const QUOTES = [
-	{ quote: 'قبل از هامیستا سه دوره‌ی آنلاین را نیمه‌کاره رها کرده بودم. اینجا کسی منتظر پروژه‌ات است و همین فرق اصلی است.', name: 'مریم صالحی', role: 'طراح محصول در یک استارتاپ پرداخت', avatar: img('person-4') },
-	{ quote: 'بهترین بخش دوره، جلسه‌های بازبینی با منتور بود. یاد گرفتم برای تصمیم‌هایم دلیل بیاورم، نه سلیقه.', name: 'آرش نیک‌فر', role: 'دانش‌آموخته‌ی مسیر طراحی محصول', avatar: img('person-1') },
-	{ quote: 'برای تیم‌مان دوره‌ی تیمی گرفتیم. شش هفته بعد اولین نسخه‌ی اپ داخلی شرکت روی گوشی همه بود.', name: 'نیلوفر کاظمی', role: 'مدیر محصول، شرکت پخش', avatar: img('person-6') },
+	{ quote: 'قبل از هامیستا سه دوره‌ی آنلاین را نیمه‌کاره رها کرده بودم. اینجا کسی منتظر پروژه‌ات است و همین فرق اصلی است.', name: 'مریم صالحی', role: 'طراح محصول در یک استارتاپ پرداخت' },
+	{ quote: 'بهترین بخش دوره، جلسه‌های بازبینی با منتور بود. یاد گرفتم برای تصمیم‌هایم دلیل بیاورم، نه سلیقه.', name: 'آرش نیک‌فر', role: 'دانش‌آموخته‌ی مسیر طراحی محصول' },
+	{ quote: 'برای تیم‌مان دوره‌ی تیمی گرفتیم. شش هفته بعد اولین نسخه‌ی اپ داخلی شرکت روی گوشی همه بود.', name: 'نیلوفر کاظمی', role: 'مدیر محصول، شرکت پخش' },
 ];
 
 const FAQ = [
@@ -221,10 +220,10 @@ const homeB = [
 	section({ space: 'md', top0: true }, [
 		heading({ eyebrow: 'منتورها', title: 'کسانی که *کنارتان* هستند' }),
 		L.team([
-			{ photo: img('person-1'), name: 'آرمان شریفی', role: 'منتور طراحی محصول' },
-			{ photo: img('person-4'), name: 'سارا رحیمی', role: 'منتور توسعه‌ی وب' },
-			{ photo: img('person-3'), name: 'بهراد مقدم', role: 'منتور تحلیل داده' },
-			{ photo: img('person-2'), name: 'ترانه افشار', role: 'منتور کسب‌وکار دیجیتال' },
+			{ photo: {}, name: 'آرمان شریفی', role: 'منتور طراحی محصول' },
+			{ photo: {}, name: 'سارا رحیمی', role: 'منتور توسعه‌ی وب' },
+			{ photo: {}, name: 'بهراد مقدم', role: 'منتور تحلیل داده' },
+			{ photo: {}, name: 'ترانه افشار', role: 'منتور کسب‌وکار دیجیتال' },
 		], { columns: '4' }),
 	]),
 	L.testimonials(QUOTES, { layout: 'marquee' }),
@@ -283,12 +282,12 @@ const about = [
 	section({ space: 'md' }, [
 		heading({ eyebrow: 'تیم', title: 'آدم‌های *هامیستا*' }),
 		L.team([
-			{ photo: img('person-1'), name: 'آرمان شریفی', role: 'هم‌بنیان‌گذار، طراحی محصول' },
-			{ photo: img('person-4'), name: 'سارا رحیمی', role: 'هم‌بنیان‌گذار، توسعه‌ی وب' },
-			{ photo: img('person-3'), name: 'بهراد مقدم', role: 'سرپرست آموزش داده' },
-			{ photo: img('person-2'), name: 'ترانه افشار', role: 'مدیر تجربه‌ی دانشجو' },
-			{ photo: img('person-5'), name: 'کاوه بهرامی', role: 'منتور هوش مصنوعی' },
-			{ photo: img('person-6'), name: 'نگار امینی', role: 'هماهنگ‌کننده‌ی دوره‌های تیمی' },
+			{ photo: {}, name: 'آرمان شریفی', role: 'هم‌بنیان‌گذار، طراحی محصول' },
+			{ photo: {}, name: 'سارا رحیمی', role: 'هم‌بنیان‌گذار، توسعه‌ی وب' },
+			{ photo: {}, name: 'بهراد مقدم', role: 'سرپرست آموزش داده' },
+			{ photo: {}, name: 'ترانه افشار', role: 'مدیر تجربه‌ی دانشجو' },
+			{ photo: {}, name: 'کاوه بهرامی', role: 'منتور هوش مصنوعی' },
+			{ photo: {}, name: 'نگار امینی', role: 'هماهنگ‌کننده‌ی دوره‌های تیمی' },
 		], { columns: '3' }),
 	]),
 	section({ space: 'md', top0: true }, [L.imageReveal('community', { ratio: '16-9', reveal: 'clip-x', caption: 'جمعه‌ها استودیو برای همه‌ی دانش‌آموخته‌ها باز است.' })]),

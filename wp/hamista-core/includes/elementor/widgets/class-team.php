@@ -166,7 +166,7 @@ class Team extends Widget_Base {
 					'sizes' => '(max-width: 760px) 50vw, 25vw',
 				)
 			);
-			echo '<div class="hm-person__photo">' . ( $photo ? $photo : '<span class="hm-person__initial" aria-hidden="true">' . esc_html( mb_substr( (string) $person['name'], 0, 1 ) ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<div class="hm-person__photo">' . ( $photo ? $photo : '<span class="hm-person__initial" aria-hidden="true">' . esc_html( hamista_core_initial( $person['name'] ) ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$links = '';
 			foreach ( array( 'linkedin', 'instagram' ) as $network ) {
 				if ( ! empty( $person[ $network ]['url'] ) ) {

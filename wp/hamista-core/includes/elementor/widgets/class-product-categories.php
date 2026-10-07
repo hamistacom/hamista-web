@@ -114,6 +114,8 @@ class Product_Categories extends Widget_Base {
 				'per_view_tablet' => 4.3,
 				'per_view_mobile' => 2.6,
 				'columns'         => '6',
+				'columns_tablet'  => '3',
+				'columns_mobile'  => '2',
 			)
 		);
 		$this->add_section_controls();

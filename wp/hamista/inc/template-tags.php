@@ -209,19 +209,19 @@ function hamista_pagination() {
  */
 function hamista_social_networks() {
 	return array(
-		'instagram' => 'Instagram',
-		'telegram'  => 'Telegram',
-		'whatsapp'  => 'WhatsApp',
-		'linkedin'  => 'LinkedIn',
-		'x'         => 'X',
-		'youtube'   => 'YouTube',
-		'aparat'    => 'Aparat',
-		'eitaa'     => 'Eitaa',
-		'bale'      => 'Bale',
-		'rubika'    => 'Rubika',
-		'github'    => 'GitHub',
-		'dribbble'  => 'Dribbble',
-		'behance'   => 'Behance',
+		'instagram' => _x( 'Instagram', 'social network', 'hamista' ),
+		'telegram'  => _x( 'Telegram', 'social network', 'hamista' ),
+		'whatsapp'  => _x( 'WhatsApp', 'social network', 'hamista' ),
+		'linkedin'  => _x( 'LinkedIn', 'social network', 'hamista' ),
+		'x'         => _x( 'X', 'social network', 'hamista' ),
+		'youtube'   => _x( 'YouTube', 'social network', 'hamista' ),
+		'aparat'    => _x( 'Aparat', 'social network', 'hamista' ),
+		'eitaa'     => _x( 'Eitaa', 'social network', 'hamista' ),
+		'bale'      => _x( 'Bale', 'social network', 'hamista' ),
+		'rubika'    => _x( 'Rubika', 'social network', 'hamista' ),
+		'github'    => _x( 'GitHub', 'social network', 'hamista' ),
+		'dribbble'  => _x( 'Dribbble', 'social network', 'hamista' ),
+		'behance'   => _x( 'Behance', 'social network', 'hamista' ),
 	);
 }
 

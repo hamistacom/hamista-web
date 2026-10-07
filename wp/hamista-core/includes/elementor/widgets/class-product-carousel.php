@@ -76,7 +76,7 @@ class Product_Carousel extends Widget_Base {
 		Product_Card::controls( $this );
 		$this->end_controls_section();
 
-		$this->add_carousel_controls();
+		$this->add_carousel_controls( array( 'columns_mobile' => '2' ) );
 		$this->add_section_controls();
 	}
 

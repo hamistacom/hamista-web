@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T19:55:26+00:00\n"
-"PO-Revision-Date: 2026-10-07 19:55+0000\n"
+"POT-Creation-Date: 2026-10-07T20:20:19+00:00\n"
+"PO-Revision-Date: 2026-10-07 20:21+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -142,7 +142,11 @@ msgstr "سنگ — سنگ آهکی، زغالی و مفرغ"
 msgid "Counsel — ivory, navy and oxblood"
 msgstr "وکالت — عاجی، سرمه‌ای و زرشکی"
 
-#: inc/assets.php:86
+#: inc/assets.php:49
+msgid "Clay — porcelain, sage and terracotta"
+msgstr "سفال — سفید چینی، سبز مریمی و آجری"
+
+#: inc/assets.php:87
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 
@@ -306,6 +310,71 @@ msgstr "برگه‌ی بعد"
 msgid "Posts pagination"
 msgstr "صفحه‌بندی نوشته‌ها"
 
+#: inc/template-tags.php:212
+msgctxt "social network"
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+#: inc/template-tags.php:213
+msgctxt "social network"
+msgid "Telegram"
+msgstr "تلگرام"
+
+#: inc/template-tags.php:214
+msgctxt "social network"
+msgid "WhatsApp"
+msgstr "واتس‌اپ"
+
+#: inc/template-tags.php:215
+msgctxt "social network"
+msgid "LinkedIn"
+msgstr "لینکدین"
+
+#: inc/template-tags.php:216
+msgctxt "social network"
+msgid "X"
+msgstr "ایکس"
+
+#: inc/template-tags.php:217
+msgctxt "social network"
+msgid "YouTube"
+msgstr "یوتیوب"
+
+#: inc/template-tags.php:218
+msgctxt "social network"
+msgid "Aparat"
+msgstr "آپارات"
+
+#: inc/template-tags.php:219
+msgctxt "social network"
+msgid "Eitaa"
+msgstr "ایتا"
+
+#: inc/template-tags.php:220
+msgctxt "social network"
+msgid "Bale"
+msgstr "بله"
+
+#: inc/template-tags.php:221
+msgctxt "social network"
+msgid "Rubika"
+msgstr "روبیکا"
+
+#: inc/template-tags.php:222
+msgctxt "social network"
+msgid "GitHub"
+msgstr "گیت‌هاب"
+
+#: inc/template-tags.php:223
+msgctxt "social network"
+msgid "Dribbble"
+msgstr "دریبل"
+
+#: inc/template-tags.php:224
+msgctxt "social network"
+msgid "Behance"
+msgstr "بیهنس"
+
 #. translators: %s: network name
 #: inc/template-tags.php:271
 #, php-format
@@ -334,47 +403,47 @@ msgid "All products"
 msgstr "همه‌ی محصولات"
 
 #. translators: %s: discount percent
-#: inc/woocommerce.php:248
+#: inc/woocommerce.php:258
 #, php-format
 msgid "%s%% off"
 msgstr "%s%% تخفیف"
 
 #. translators: %s: discount percent
-#: inc/woocommerce.php:248
+#: inc/woocommerce.php:258
 msgid "Sale"
 msgstr "حراج"
 
-#: inc/woocommerce.php:339
+#: inc/woocommerce.php:349
 msgid "Dashboard"
 msgstr "پیشخوان"
 
-#: inc/woocommerce.php:340
-#: inc/woocommerce.php:366
+#: inc/woocommerce.php:350
+#: inc/woocommerce.php:376
 msgid "Orders"
 msgstr "سفارش‌ها"
 
-#: inc/woocommerce.php:341
-#: inc/woocommerce.php:381
+#: inc/woocommerce.php:351
+#: inc/woocommerce.php:391
 msgid "Downloads"
 msgstr "دانلودها"
 
-#: inc/woocommerce.php:342
+#: inc/woocommerce.php:352
 msgid "Addresses"
 msgstr "نشانی‌ها"
 
-#: inc/woocommerce.php:343
+#: inc/woocommerce.php:353
 msgid "Payment methods"
 msgstr "روش‌های پرداخت"
 
-#: inc/woocommerce.php:344
+#: inc/woocommerce.php:354
 msgid "Account details"
 msgstr "جزئیات حساب"
 
-#: inc/woocommerce.php:345
+#: inc/woocommerce.php:355
 msgid "Log out"
 msgstr "خروج"
 
-#: inc/woocommerce.php:372
+#: inc/woocommerce.php:382
 msgid "Total purchases"
 msgstr "مجموع خرید"
 

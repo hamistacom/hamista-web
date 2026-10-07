@@ -34,6 +34,13 @@
 - New demo: Dadgar (دادگر), a law firm built as a complete site with online consultation booking: two home pages, the firm, practice areas with a page for each of five areas, six lawyers with profiles and weekly hours, booking, fees, insights (six articles), careers, FAQ and contact. Photography of a law library, marble, a typed letter and office light; a gilt light line and Doran headings.
 - Demo import: bookable profiles (doctors, lawyers, rooms) with their details, weekly hours and groups; the booking module is switched on for demos that include them. Tokens for profile links and page IDs.
 - Demo build fails on unknown widget names.
+- New demo: Gelineh (گلینه), a shop for handmade ceramics built as a complete store: two home pages, collections, the atelier, custom and wholesale orders with a multi-step request form, care guide, shipping and returns, journal, FAQ and contact; ten products in five categories with category images. Studio photographs of plates, bowls, cups and vases rendered from their profiles, with glaze, iron speckles and bare clay at the foot.
+- Older demos (Spark, Pulse, Hamoon, Shahdineh, Kooch) no longer use illustrated avatars: quotes and team cards show initials.
+- Initials skip titles such as «دکتر» and «مهندس» everywhere they are used (team, quotes, booking profiles).
+- Product grids and category grids show two per row on phones by default (other grids stay at one); the column count per device remains editable.
+- Demo import messages and errors are in Persian; they were left out of the translation template before.
+- WooCommerce: the result count, sale badges and the empty cart and checkout blocks are in Persian with Persian digits.
+- Social network names in link labels are translatable.
 - Booking: profiles without a photo show the person's initial (titles such as Dr skipped) instead of a generic icon, on cards, profile pages and in the booking form.
 - Icons have Persian names in every icon picker; new icons for house, set square, arch, stairs, window and tree.
 - Card motions pick the cards themselves (features, posts, plans) rather than a section's header and grid.
@@ -53,6 +60,7 @@
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.
+- New style kit: Clay. Porcelain white, sage and terracotta, soft corners and pill buttons.
 - New style kit: Counsel. Ivory, deep navy and oxblood, classical headings and small square buttons.
 - New style kit: Stone. Limestone, charcoal and bronze, thin headings, square buttons and hairlines.
 - Flux kit redrawn: graphite, ivory and a single ember accent, square corners and hairlines instead of glass and glow.

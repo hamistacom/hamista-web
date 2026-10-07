@@ -19,7 +19,6 @@ for (let i = 1; i <= 6; i++) { images['work-' + i] = 'images/work-' + i + '.webp
 for (let i = 1; i <= 4; i++) { images['social-' + i] = 'images/social-' + i + '.webp'; }
 for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; }
 for (let i = 1; i <= 6; i++) { images['journal-' + i] = 'images/journal-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
 
 images.logo = 'images/logo.webp';
 images['logo-dark'] = 'images/logo-dark.webp';
@@ -49,9 +48,9 @@ const WORK = [
 ];
 
 const QUOTES = [
-	{ quote: 'اولین آژانسی بود که به‌جای لایک، گزارش فروش برایمان فرستاد. بعد از سه ماه هزینه‌ی هر رزرو تقریباً نصف شد.', name: 'کامران اسدی', role: 'مدیر بازاریابی سفرنو', avatar: img('person-1') },
-	{ quote: 'تیم تپش قبل از هر کاری یک هفته کنار ما در کافه نشست تا مشتری‌ها را بشناسد. نتیجه‌اش را در صف آخر هفته می‌بینیم.', name: 'شیرین مهدوی', role: 'هم‌بنیان‌گذار کافه‌ی ری', avatar: img('person-4') },
-	{ quote: 'داشبورد هفتگی‌شان را مدیرعامل ما هم می‌خواند. شفافیت عددها برایمان از هر چیزی مهم‌تر بود.', name: 'دکتر رضا آرامش', role: 'مدیر کلینیک پوست آرا', avatar: img('person-5') },
+	{ quote: 'اولین آژانسی بود که به‌جای لایک، گزارش فروش برایمان فرستاد. بعد از سه ماه هزینه‌ی هر رزرو تقریباً نصف شد.', name: 'کامران اسدی', role: 'مدیر بازاریابی سفرنو' },
+	{ quote: 'تیم تپش قبل از هر کاری یک هفته کنار ما در کافه نشست تا مشتری‌ها را بشناسد. نتیجه‌اش را در صف آخر هفته می‌بینیم.', name: 'شیرین مهدوی', role: 'هم‌بنیان‌گذار کافه‌ی ری' },
+	{ quote: 'داشبورد هفتگی‌شان را مدیرعامل ما هم می‌خواند. شفافیت عددها برایمان از هر چیزی مهم‌تر بود.', name: 'دکتر رضا آرامش', role: 'مدیر کلینیک پوست آرا' },
 ];
 
 const FAQ = [
@@ -255,10 +254,10 @@ const homeB = [
 	section({ space: 'md' }, [
 		heading({ eyebrow: 'تیم', title: 'آدم‌هایی که *پشت عددها* هستند' }),
 		L.team([
-			{ photo: img('person-2'), name: 'لیلا پارسا', role: 'مدیر استراتژی' },
-			{ photo: img('person-1'), name: 'امیرحسین راد', role: 'سرپرست تبلیغات کلیکی' },
-			{ photo: img('person-6'), name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
-			{ photo: img('person-3'), name: 'پویا کریمی', role: 'متخصص سئو' },
+			{ photo: {}, name: 'لیلا پارسا', role: 'مدیر استراتژی' },
+			{ photo: {}, name: 'امیرحسین راد', role: 'سرپرست تبلیغات کلیکی' },
+			{ photo: {}, name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
+			{ photo: {}, name: 'پویا کریمی', role: 'متخصص سئو' },
 		], { columns: '4' }),
 	]),
 	L.testimonials(QUOTES, { layout: 'marquee' }),
@@ -382,12 +381,12 @@ const about = [
 	section({ space: 'md', scheme: 'surface' }, [
 		heading({ eyebrow: 'تیم', title: 'چند نفر از *ما*' }),
 		L.team([
-			{ photo: img('person-2'), name: 'لیلا پارسا', role: 'هم‌بنیان‌گذار، مدیر استراتژی' },
-			{ photo: img('person-1'), name: 'امیرحسین راد', role: 'هم‌بنیان‌گذار، تبلیغات کلیکی' },
-			{ photo: img('person-6'), name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
-			{ photo: img('person-3'), name: 'پویا کریمی', role: 'متخصص سئو' },
-			{ photo: img('person-4'), name: 'سمانه نوری', role: 'سرپرست محتوا' },
-			{ photo: img('person-5'), name: 'مهدی فرهادی', role: 'تحلیلگر داده' },
+			{ photo: {}, name: 'لیلا پارسا', role: 'هم‌بنیان‌گذار، مدیر استراتژی' },
+			{ photo: {}, name: 'امیرحسین راد', role: 'هم‌بنیان‌گذار، تبلیغات کلیکی' },
+			{ photo: {}, name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
+			{ photo: {}, name: 'پویا کریمی', role: 'متخصص سئو' },
+			{ photo: {}, name: 'سمانه نوری', role: 'سرپرست محتوا' },
+			{ photo: {}, name: 'مهدی فرهادی', role: 'تحلیلگر داده' },
 		], { columns: '3' }),
 	]),
 	L.cta({

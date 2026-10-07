@@ -8,7 +8,6 @@ const { img, link, px, section, cols, heading, button } = L;
 
 const images = { hero: 'images/hero.webp', pattern: 'images/pattern.webp', weaving: 'images/weaving.webp' };
 for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
 
 images.logo = 'images/logo.webp';
 images['logo-dark'] = 'images/logo-dark.webp';
@@ -22,9 +21,9 @@ const alts = {
 };
 
 const QUOTES = [
-	{ quote: 'روغن حیوانی‌اش همان بوی خانه‌ی مادربزرگم در فارس را می‌دهد. سال‌ها بود چنین روغنی پیدا نکرده بودم.', name: 'منیژه بهادری', role: 'مشتری از تهران', avatar: img('person-4') },
-	{ quote: 'گبه را برای اتاق بچه گرفتیم. پشت هر فرش اسم بافنده‌اش نوشته شده؛ این برای ما خیلی ارزش داشت.', name: 'پیمان افشار', role: 'مشتری از کرج', avatar: img('person-1') },
-	{ quote: 'کشک و قره‌قروت را برای رستورانمان می‌گیریم. کیفیتش ثابت است و همیشه به موقع می‌رسد.', name: 'سحر نادری', role: 'سرآشپز، رستوران سنتی', avatar: img('person-6') },
+	{ quote: 'روغن حیوانی‌اش همان بوی خانه‌ی مادربزرگم در فارس را می‌دهد. سال‌ها بود چنین روغنی پیدا نکرده بودم.', name: 'منیژه بهادری', role: 'مشتری از تهران' },
+	{ quote: 'گبه را برای اتاق بچه گرفتیم. پشت هر فرش اسم بافنده‌اش نوشته شده؛ این برای ما خیلی ارزش داشت.', name: 'پیمان افشار', role: 'مشتری از کرج' },
+	{ quote: 'کشک و قره‌قروت را برای رستورانمان می‌گیریم. کیفیتش ثابت است و همیشه به موقع می‌رسد.', name: 'سحر نادری', role: 'سرآشپز، رستوران سنتی' },
 ];
 
 const FAQ = [
@@ -224,10 +223,10 @@ const about = [
 	section({ space: 'md', scheme: 'surface' }, [
 		heading({ eyebrow: 'تیم کوچ', title: 'کسانی که *راه را* باز نگه می‌دارند' }),
 		L.team([
-			{ photo: img('person-2'), name: 'آیدا کشکولی', role: 'بنیان‌گذار' },
-			{ photo: img('person-3'), name: 'بهمن دره‌شوری', role: 'ارتباط با خانواده‌ها' },
-			{ photo: img('person-6'), name: 'نسیم فروغی', role: 'کیفیت و بسته‌بندی' },
-			{ photo: img('person-5'), name: 'رستم شش‌بلوکی', role: 'ارسال و انبار' },
+			{ photo: {}, name: 'آیدا کشکولی', role: 'بنیان‌گذار' },
+			{ photo: {}, name: 'بهمن دره‌شوری', role: 'ارتباط با خانواده‌ها' },
+			{ photo: {}, name: 'نسیم فروغی', role: 'کیفیت و بسته‌بندی' },
+			{ photo: {}, name: 'رستم شش‌بلوکی', role: 'ارسال و انبار' },
 		], { columns: '4' }),
 	]),
 	L.cta({

@@ -585,17 +585,7 @@ class Booking {
 		if ( 'place' === self::kind() ) {
 			return hamista_core_icon( 'layers', array( 'size' => $size ) );
 		}
-		$name   = trim( wp_strip_all_tags( get_the_title( $id ) ) );
-		$titles = array( 'دکتر', 'مهندس', 'استاد', 'خانم', 'آقای', 'سرکار', 'جناب', 'Dr.', 'Dr', 'Mr.', 'Mrs.', 'Ms.' );
-		$words  = (array) preg_split( '/\s+/u', $name );
-		$first  = (string) reset( $words );
-		foreach ( $words as $word ) {
-			if ( ! in_array( $word, $titles, true ) ) {
-				$first = (string) $word;
-				break;
-			}
-		}
-		$initial = function_exists( 'mb_substr' ) ? mb_substr( $first, 0, 1 ) : substr( $first, 0, 1 );
+		$initial = hamista_core_initial( get_the_title( $id ) );
 		if ( '' === $initial ) {
 			return hamista_core_icon( 'user', array( 'size' => $size ) );
 		}

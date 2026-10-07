@@ -13,6 +13,8 @@
 @font-face { font-family: "Peyda"; src: url(../../wp/hamista-core/assets/fonts/library/peyda/peyda-300.woff2) format("woff2"); font-weight: 300; }
 @font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-500.woff2) format("woff2"); font-weight: 500; }
 .word.doran-med { font-family: "Doran", serif; font-weight: 500; font-size: 88px; }
+@font-face { font-family: "Pinar"; src: url(../../wp/hamista-core/assets/fonts/library/pinar/pinar-variable.woff2) format("woff2"); font-weight: 300 900; }
+.word.pinar { font-family: "Pinar", sans-serif; font-weight: 450; font-size: 90px; }
 .word.peyda-thin { font-family: "Peyda", sans-serif; font-weight: 300; font-size: 90px; }
 .sub.thin { font: 400 14px/1 "Vazirmatn", sans-serif; letter-spacing: .62em; opacity: .5; margin-top: 12px; }
 html, body { margin: 0; background: transparent; }
@@ -42,6 +44,7 @@ const L = {
 	rahnavard: () => `<svg width="84" height="84" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" fill="none" stroke="${ink}" stroke-width="4"/><path d="M8 50h68" stroke="${ink}" stroke-width="4"/><path d="M24 50a18 18 0 0 1 36 0" fill="#2bb3c4"/><path d="M18 62h48M28 72h28" stroke="${ink}" stroke-width="4" stroke-opacity=".35"/></svg><span class="word">ره‌نورد</span>`,
 	sazeh: () => `<svg width="78" height="84" viewBox="0 0 78 84"><path d="M8 80V36a31 31 0 0 1 62 0v44" fill="none" stroke="${ink}" stroke-width="3.5"/><path d="M22 80v-9h11v-9h11v-9h11v-9" fill="none" stroke="${dark ? '#c4a27a' : '#8b6b45'}" stroke-width="3.5" stroke-linejoin="miter"/><path d="M2 80h74" stroke="${ink}" stroke-width="3.5"/></svg><span><span class="word peyda-thin">سازه</span><span class="sub thin">SAZEH STUDIO</span></span>`,
 	dadgar: () => `<svg width="80" height="84" viewBox="0 0 80 84"><path d="M6 26 40 6l34 20Z" fill="${dark ? '#c2665a' : '#7b2d26'}"/><path d="M10 32h60M10 74h60M4 80h72" stroke="${ink}" stroke-width="3.5"/><path d="M18 38v30M32 38v30M48 38v30M62 38v30" stroke="${ink}" stroke-width="3.5"/></svg><span><span class="word doran-med">دادگر</span><span class="sub thin">DADGAR LAW FIRM</span></span>`,
+	gelineh: () => `<svg width="86" height="70" viewBox="0 0 86 70"><path d="M4 22h78a39 39 0 0 1-78 0Z" fill="${dark ? '#d07a58' : '#a85a3c'}"/><path d="M4 22h78" stroke="${dark ? '#9fb3a1' : '#5f7464'}" stroke-width="4"/><path d="M14 34a29 29 0 0 0 58 0" fill="none" stroke="${dark ? '#9fb3a1' : '#5f7464'}" stroke-width="3" stroke-opacity=".7"/><rect x="30" y="61" width="26" height="5" rx="1" fill="${ink}"/></svg><span><span class="word pinar">گلینه</span><span class="sub thin">GELINEH CERAMICS</span></span>`,
 	nomad: () => `<svg width="88" height="88" viewBox="0 0 88 88"><path d="M44 2 86 44 44 86 2 44Z" fill="#b5532f"/><path d="M44 18 70 44 44 70 18 44Z" fill="${dark ? '#e3a72f' : '#2e3a5c'}"/><path d="M44 32 56 44 44 56 32 44Z" fill="${dark ? '#17130f' : '#f3ede2'}"/></svg><span class="word">کوچ</span>`,
 };
 document.getElementById('logo').innerHTML = L[id]();

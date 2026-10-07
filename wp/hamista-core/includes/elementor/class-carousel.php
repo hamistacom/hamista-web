@@ -20,7 +20,7 @@ trait Carousel {
 	/**
 	 * Layout section: carousel or grid, items per view, gap, arrows, dots, autoplay.
 	 *
-	 * @param array $defaults layout, per_view, per_view_tablet, per_view_mobile, columns, gap.
+	 * @param array $defaults layout, per_view, per_view_tablet, per_view_mobile, columns, columns_tablet, columns_mobile, gap.
 	 */
 	protected function add_carousel_controls( $defaults = array() ) {
 		$defaults = wp_parse_args(
@@ -31,6 +31,8 @@ trait Carousel {
 				'per_view_tablet' => 2.4,
 				'per_view_mobile' => 1.25,
 				'columns'         => '4',
+				'columns_tablet'  => '2',
+				'columns_mobile'  => '1',
 				'gap'             => 20,
 				'arrows'          => 'top',
 				'dots'            => '',
@@ -64,8 +66,8 @@ trait Carousel {
 				'label'          => __( 'Columns', 'hamista-core' ),
 				'type'           => Controls_Manager::SELECT,
 				'default'        => $defaults['columns'],
-				'tablet_default' => '2',
-				'mobile_default' => '1',
+				'tablet_default' => $defaults['columns_tablet'],
+				'mobile_default' => $defaults['columns_mobile'],
 				'options'        => array_combine( array( '1', '2', '3', '4', '5', '6' ), array( '1', '2', '3', '4', '5', '6' ) ),
 				'selectors'      => array( '{{WRAPPER}} .hm-carousel' => '--hm-cols: {{VALUE}};' ),
 				'condition'      => array( 'layout' => 'grid' ),

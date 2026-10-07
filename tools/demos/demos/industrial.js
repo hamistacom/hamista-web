@@ -8,7 +8,6 @@ const { img, link, px, section, cols, heading, button } = L;
 
 const images = { hero: 'images/hero.webp', plant: 'images/plant.webp', workbench: 'images/workbench.webp' };
 for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp'; images['drawing-' + i] = 'images/drawing-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['person-' + i] = '../shared/images/person-' + i + '.webp'; }
 
 images.logo = 'images/logo.webp';
 images['logo-dark'] = 'images/logo-dark.webp';
@@ -31,9 +30,9 @@ const LINES = [
 ];
 
 const QUOTES = [
-	{ quote: 'گیج‌ها و شیرهای هامون را سه سال است در خط تصفیه‌ی آب استفاده می‌کنیم. مهم‌تر از کیفیت، پاسخ‌گویی تیم فنی‌شان در شیفت شب است.', name: 'مهندس علیرضا توکلی', role: 'سرپرست تعمیرات، شرکت آب منطقه‌ای', avatar: img('person-3') },
-	{ quote: 'پنل کنترل را دقیقاً با نقشه‌ی خط ما ساختند و راه‌اندازی در دو روز تمام شد. مستندات کامل تحویل دادند که کمتر می‌بینیم.', name: 'مهندس نسرین فاضلی', role: 'مدیر فنی، کارخانه‌ی لبنیات', avatar: img('person-2') },
-	{ quote: 'قطعه‌ی یدکی پمپ را دو روزه رساندند. برای خطی که نباید بخوابد، همین تفاوت اصلی است.', name: 'مهندس حمید شاکری', role: 'مدیر تولید، صنایع سیمان', avatar: img('person-5') },
+	{ quote: 'گیج‌ها و شیرهای هامون را سه سال است در خط تصفیه‌ی آب استفاده می‌کنیم. مهم‌تر از کیفیت، پاسخ‌گویی تیم فنی‌شان در شیفت شب است.', name: 'مهندس علیرضا توکلی', role: 'سرپرست تعمیرات، شرکت آب منطقه‌ای' },
+	{ quote: 'پنل کنترل را دقیقاً با نقشه‌ی خط ما ساختند و راه‌اندازی در دو روز تمام شد. مستندات کامل تحویل دادند که کمتر می‌بینیم.', name: 'مهندس نسرین فاضلی', role: 'مدیر فنی، کارخانه‌ی لبنیات' },
+	{ quote: 'قطعه‌ی یدکی پمپ را دو روزه رساندند. برای خطی که نباید بخوابد، همین تفاوت اصلی است.', name: 'مهندس حمید شاکری', role: 'مدیر تولید، صنایع سیمان' },
 ];
 
 const FAQ = [
@@ -290,10 +289,10 @@ const about = [
 	section({ space: 'md' }, [
 		heading({ eyebrow: 'مدیران', title: 'تیم *فنی و مدیریت*' }),
 		L.team([
-			{ photo: img('person-5'), name: 'مهندس جمشید هامونی', role: 'مدیرعامل و بنیان‌گذار' },
-			{ photo: img('person-2'), name: 'مهندس فرزانه راستین', role: 'مدیر فنی' },
-			{ photo: img('person-3'), name: 'مهندس کیوان ستاری', role: 'مدیر واحد اتوماسیون' },
-			{ photo: img('person-6'), name: 'مهندس الهام نیکزاد', role: 'مدیر کنترل کیفیت' },
+			{ photo: {}, name: 'مهندس جمشید هامونی', role: 'مدیرعامل و بنیان‌گذار' },
+			{ photo: {}, name: 'مهندس فرزانه راستین', role: 'مدیر فنی' },
+			{ photo: {}, name: 'مهندس کیوان ستاری', role: 'مدیر واحد اتوماسیون' },
+			{ photo: {}, name: 'مهندس الهام نیکزاد', role: 'مدیر کنترل کیفیت' },
 		], { columns: '4', mono: 'yes' }),
 	]),
 	L.cta({
