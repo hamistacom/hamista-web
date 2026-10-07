@@ -73,14 +73,14 @@ class Team extends Widget_Base {
 		$people->add_control(
 			'linkedin',
 			array(
-				'label' => 'LinkedIn',
+				'label' => __( 'LinkedIn', 'hamista-core' ),
 				'type'  => Controls_Manager::URL,
 			)
 		);
 		$people->add_control(
 			'instagram',
 			array(
-				'label' => 'Instagram',
+				'label' => __( 'Instagram', 'hamista-core' ),
 				'type'  => Controls_Manager::URL,
 			)
 		);

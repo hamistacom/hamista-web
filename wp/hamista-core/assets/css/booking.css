@@ -35,6 +35,9 @@
 .hm-expert__book.hm-btn { position: relative; z-index: 2; align-self: flex-start; min-height: 0; margin-top: 8px; padding: 0 0 2px; border: 0; border-bottom: 1px solid currentColor; border-radius: 0; background: none; box-shadow: none; color: var(--hm-fg); font-size: .86rem; font-weight: 600; gap: 6px; }
 .hm-expert__book.hm-btn::before, .hm-expert__book.hm-btn::after { display: none; }
 
+/* Places and things read better in landscape. */
+.hm-expert--place.hm-expert--card .hm-expert__media { aspect-ratio: 4 / 3; }
+
 /* Round photo, centred. */
 .hm-expert--minimal { align-items: center; padding: 22px 16px 18px; border: 1px solid var(--hm-bk-line); border-radius: var(--hm-bk-r); background: var(--hm-bk-tile); text-align: center; }
 .hm-expert--minimal .hm-expert__media { width: 96px; aspect-ratio: 1; border-radius: 50%; }
@@ -140,6 +143,9 @@
 .hm-book__time:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--hm-accent); outline-offset: -2px; }
 .hm-book__time[aria-checked="true"] { background: var(--hm-fg); color: var(--hm-bg, #fff); }
 
+/* Places left under each time, for shared slots. */
+.hm-book__time small { display: block; font-size: .66rem; font-weight: 400; opacity: .7; }
+
 /* Details */
 .hm-book__summary { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); margin: 0 0 16px; background: var(--hm-bk-sunken); }
 .hm-book__summary > div { padding: 10px 14px; }
@@ -154,6 +160,13 @@
 .hm-book__form :where(input[type="text"], input[type="tel"], textarea) { width: 100%; border-radius: var(--hm-bk-r); }
 .hm-book__form textarea { min-height: 76px; }
 .hm-book__form .is-invalid :where(input, textarea) { border-color: var(--hm-danger, #b42318); box-shadow: 0 0 0 3px color-mix(in srgb, var(--hm-danger, #b42318) 12%, transparent); }
+.hm-book__stepper { display: inline-flex; align-items: stretch; width: max-content; overflow: hidden; border: 1px solid var(--hm-bk-line); border-radius: var(--hm-bk-r); }
+.hm-book__stepper button { display: grid; place-items: center; width: 40px; border: 0; background: var(--hm-bk-tile); color: var(--hm-fg); cursor: pointer; }
+.hm-book__stepper button[disabled] { opacity: .35; cursor: default; }
+.hm-book__stepper input[type="text"] { width: 56px; min-height: 40px; padding: 0; border: 0; border-inline: 1px solid var(--hm-bk-line); border-radius: 0; background: var(--hm-bk-tile); box-shadow: none; font-family: var(--hm-font-num, inherit); font-weight: 700; text-align: center; }
+.hm-book__form .hm-field--check label { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: .9rem; }
+.hm-book__form .hm-field label .hm-field__opt { color: var(--hm-bk-muted); font-weight: 400; }
+.hm-book__form select { width: 100%; border-radius: var(--hm-bk-r); }
 .hm-book__msg { margin: 0; color: var(--hm-danger, #b42318); font-size: .86rem; font-weight: 600; }
 .hm-book__msg:empty { display: none; }
 .hm-book__form .hm-btn[aria-busy="true"] { opacity: .7; pointer-events: none; }

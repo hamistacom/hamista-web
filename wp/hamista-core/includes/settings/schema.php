@@ -5,7 +5,7 @@
  * Field keys: type, label, desc, choices, min, max, step, unit, placeholder,
  * fields (repeater), show_if (key => value|values), group (sub-heading), width (half),
  * requires (plugin slug), mode (code language), action (button id), ltr (left-to-right text input),
- * group_desc (a line under the group heading).
+ * group_desc (a line under the group heading), show_if_row (repeater sub-field shown only for some rows).
  * Defaults come from defaults.php.
  *
  * @package Hamista\Core
@@ -20,6 +20,26 @@ return ( static function () {
 	$pages = array( 0 => __( '— Automatic —', 'hamista-core' ) );
 	foreach ( get_pages( array( 'number' => 300 ) ) as $page ) {
 		$pages[ $page->ID ] = $page->post_title;
+	}
+
+	// Pages and Hamista block templates, for content placed inside other screens.
+	$content_sources = array( 0 => __( '— None —', 'hamista-core' ) );
+	foreach ( get_posts(
+		array(
+			'post_type'      => 'hm_layout',
+			'posts_per_page' => 100,
+			'meta_key'       => '_hm_layout_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'meta_value'     => 'block', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+		)
+	) as $block ) {
+		/* translators: %s: template title */
+		$content_sources[ $block->ID ] = sprintf( __( 'Block: %s', 'hamista-core' ), $block->post_title );
+	}
+	foreach ( $pages as $page_id => $page_title ) {
+		if ( $page_id ) {
+			/* translators: %s: page title */
+			$content_sources[ $page_id ] = sprintf( __( 'Page: %s', 'hamista-core' ), $page_title );
+		}
 	}
 
 	$layouts = static function ( $type ) {
@@ -399,19 +419,19 @@ return ( static function () {
 							'type'    => 'select',
 							'label'   => __( 'Network', 'hamista-core' ),
 							'choices' => array(
-								'instagram' => 'Instagram',
-								'telegram'  => 'Telegram',
-								'whatsapp'  => 'WhatsApp',
-								'linkedin'  => 'LinkedIn',
-								'x'         => 'X',
-								'youtube'   => 'YouTube',
-								'aparat'    => 'Aparat',
-								'eitaa'     => 'Eitaa',
-								'bale'      => 'Bale',
-								'rubika'    => 'Rubika',
-								'github'    => 'GitHub',
-								'dribbble'  => 'Dribbble',
-								'behance'   => 'Behance',
+								'instagram' => __( 'Instagram', 'hamista-core' ),
+								'telegram'  => __( 'Telegram', 'hamista-core' ),
+								'whatsapp'  => __( 'WhatsApp', 'hamista-core' ),
+								'linkedin'  => __( 'LinkedIn', 'hamista-core' ),
+								'x'         => __( 'X', 'hamista-core' ),
+								'youtube'   => __( 'YouTube', 'hamista-core' ),
+								'aparat'    => __( 'Aparat', 'hamista-core' ),
+								'eitaa'     => __( 'Eitaa', 'hamista-core' ),
+								'bale'      => __( 'Bale', 'hamista-core' ),
+								'rubika'    => __( 'Rubika', 'hamista-core' ),
+								'github'    => __( 'GitHub', 'hamista-core' ),
+								'dribbble'  => __( 'Dribbble', 'hamista-core' ),
+								'behance'   => __( 'Behance', 'hamista-core' ),
 							),
 						),
 						'url'     => array(
@@ -503,14 +523,110 @@ return ( static function () {
 				),
 			),
 		),
+		'account'     => array(
+			'title'    => __( 'Account area', 'hamista-core' ),
+			'icon'     => 'account',
+			'requires' => 'woocommerce',
+			'desc'     => __( 'The customer\'s account pages: menu items, your own tabs and what the dashboard shows. Tabs can show any page or a Hamista block designed with Elementor.', 'hamista-core' ),
+			'fields'   => array(
+				'account_layout'           => array(
+					'type'    => 'cards',
+					'label'   => __( 'Layout', 'hamista-core' ),
+					'choices' => array(
+						'side' => array(
+							'label' => __( 'Menu beside the content', 'hamista-core' ),
+							'icon'  => 'menu',
+						),
+						'tabs' => array(
+							'label' => __( 'Tabs above the content', 'hamista-core' ),
+							'icon'  => 'grid',
+						),
+					),
+				),
+				'account_menu'             => array(
+					'type'   => 'repeater',
+					'label'  => __( 'Menu', 'hamista-core' ),
+					'desc'   => __( 'Add the items in the order you want them. Leave the list empty to keep the standard WooCommerce menu. "Your own tab" shows the chosen page or block at the address you give it; "Link" goes to any address.', 'hamista-core' ),
+					'add'    => __( 'Add an item', 'hamista-core' ),
+					'group'  => __( 'Menu', 'hamista-core' ),
+					'fields' => array(
+						'item'    => array(
+							'type'    => 'select',
+							'label'   => __( 'Item', 'hamista-core' ),
+							'choices' => array_merge(
+								\Hamista\Core\Account\Panel::items(),
+								array(
+									'page' => __( 'Your own tab', 'hamista-core' ),
+									'link' => __( 'Link', 'hamista-core' ),
+								)
+							),
+						),
+						'label'   => array(
+							'type'        => 'text',
+							'label'       => __( 'Name in the menu', 'hamista-core' ),
+							'placeholder' => __( 'Empty keeps the standard name', 'hamista-core' ),
+						),
+						'icon'    => array(
+							'type'    => 'select',
+							'label'   => __( 'Icon', 'hamista-core' ),
+							'choices' => \Hamista\Core\Account\Panel::icons(),
+						),
+						'content' => array(
+							'type'        => 'select',
+							'label'       => __( 'Content', 'hamista-core' ),
+							'choices'     => $content_sources,
+							'show_if_row' => array( 'item' => 'page' ),
+						),
+						'slug'    => array(
+							'type'        => 'text',
+							'label'       => __( 'Address in English letters', 'hamista-core' ),
+							'placeholder' => 'my-courses',
+							'show_if_row' => array( 'item' => 'page' ),
+						),
+						'url'     => array(
+							'type'        => 'url',
+							'label'       => __( 'Link address', 'hamista-core' ),
+							'show_if_row' => array( 'item' => 'link' ),
+						),
+					),
+				),
+				'account_dash_greeting'    => $on_off + array(
+					'label' => __( 'Greeting', 'hamista-core' ),
+					'group' => __( 'Dashboard', 'hamista-core' ),
+				),
+				'account_dash_text'        => array(
+					'type'        => 'text',
+					'label'       => __( 'Line under the greeting', 'hamista-core' ),
+					'placeholder' => __( 'Your orders, appointments and account details, all in one place.', 'hamista-core' ),
+					'show_if'     => array( 'account_dash_greeting' => true ),
+				),
+				'account_dash_cards'       => $on_off + array( 'label' => __( 'Summary cards', 'hamista-core' ) ),
+				'account_dash_orders'      => $on_off + array( 'label' => __( 'Latest orders', 'hamista-core' ) ),
+				'account_dash_block'       => array(
+					'type'    => 'select',
+					'label'   => __( 'Your own content', 'hamista-core' ),
+					'desc'    => __( 'A page or a Hamista block (Hamista → Templates) designed with Elementor, e.g. offers, news or a support form.', 'hamista-core' ),
+					'choices' => $content_sources,
+				),
+				'account_dash_block_place' => array(
+					'type'    => 'select',
+					'label'   => __( 'Where it goes', 'hamista-core' ),
+					'choices' => array(
+						'before'  => __( 'Above the dashboard', 'hamista-core' ),
+						'after'   => __( 'Below the dashboard', 'hamista-core' ),
+						'replace' => __( 'Instead of the dashboard', 'hamista-core' ),
+					),
+				),
+			),
+		),
 		'booking'     => array(
 			'title'  => __( 'Booking & appointments', 'hamista-core' ),
 			'icon'   => 'calendar',
-			'desc'   => __( 'For any business that works by appointment: a team with services and weekly hours, online booking of free times, and a "My appointments" tab for customers.', 'hamista-core' ),
+			'desc'   => __( 'For anything booked by time: people (doctor, teacher, consultant) or places (table, court, studio), with weekly hours, capacity, online booking of free times and a "My appointments" tab for customers.', 'hamista-core' ),
 			'fields' => array(
 				'booking_enabled'          => $on_off + array(
 					'label' => __( 'Enable online booking', 'hamista-core' ),
-					'desc'  => __( 'Adds a "Booking" menu to the dashboard for your team and appointments, plus the "Experts & team" and "Appointment booking" widgets.', 'hamista-core' ),
+					'desc'  => __( 'Adds a "Booking" menu to the dashboard for what you take bookings for and the appointments, plus the "Booking: list" and "Booking: form" widgets.', 'hamista-core' ),
 				),
 				'booking_type'             => array(
 					'type'    => 'cards',
@@ -536,6 +652,26 @@ return ( static function () {
 						'consulting' => array(
 							'label' => __( 'Consulting and coaching', 'hamista-core' ),
 							'icon'  => 'chat',
+						),
+						'education'  => array(
+							'label' => __( 'Education and tutoring', 'hamista-core' ),
+							'icon'  => 'book',
+						),
+						'restaurant' => array(
+							'label' => __( 'Restaurant and café', 'hamista-core' ),
+							'icon'  => 'cup',
+						),
+						'sports'     => array(
+							'label' => __( 'Sports venue', 'hamista-core' ),
+							'icon'  => 'ball',
+						),
+						'space'      => array(
+							'label' => __( 'Studio and space rental', 'hamista-core' ),
+							'icon'  => 'grid',
+						),
+						'auto'       => array(
+							'label' => __( 'Car service', 'hamista-core' ),
+							'icon'  => 'car',
 						),
 					),
 					'show_if' => array( 'booking_enabled' => true ),
@@ -570,10 +706,82 @@ return ( static function () {
 					'width'       => 'half',
 					'show_if'     => array( 'booking_enabled' => true ),
 				),
+				'booking_kind'             => array(
+					'type'    => 'select',
+					'label'   => __( 'What is booked', 'hamista-core' ),
+					'desc'    => __( 'People get title, experience and licence fields; places and things get a short description instead.', 'hamista-core' ),
+					'choices' => array(
+						''       => __( 'As the business type suggests', 'hamista-core' ),
+						'person' => __( 'People (doctor, teacher, consultant…)', 'hamista-core' ),
+						'place'  => __( 'Places and things (table, court, room…)', 'hamista-core' ),
+					),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_qty'              => $on_off + array(
+					'label'   => __( 'Ask how many people', 'hamista-core' ),
+					'desc'    => __( 'For tables, classes and tours. Each booking takes that many places from the slot\'s capacity.', 'hamista-core' ),
+					'group'   => __( 'Booking form', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_qty_label'        => array(
+					'type'        => 'text',
+					'label'       => __( 'Label of the field', 'hamista-core' ),
+					'placeholder' => __( 'Number of people', 'hamista-core' ),
+					'width'       => 'half',
+					'show_if'     => array(
+						'booking_enabled' => true,
+						'booking_qty'     => true,
+					),
+				),
+				'booking_qty_max'          => array(
+					'type'    => 'range',
+					'label'   => __( 'Most people in one booking', 'hamista-core' ),
+					'min'     => 1,
+					'max'     => 50,
+					'width'   => 'half',
+					'show_if' => array(
+						'booking_enabled' => true,
+						'booking_qty'     => true,
+					),
+				),
+				'booking_fields'           => array(
+					'type'    => 'repeater',
+					'label'   => __( 'Extra questions', 'hamista-core' ),
+					'desc'    => __( 'Asked after name and mobile, e.g. car model, occasion or seating preference. Answers appear in the appointment and the email.', 'hamista-core' ),
+					'add'     => __( 'Add a question', 'hamista-core' ),
+					'fields'  => array(
+						'label'    => array(
+							'type'  => 'text',
+							'label' => __( 'Question', 'hamista-core' ),
+						),
+						'type'     => array(
+							'type'    => 'select',
+							'label'   => __( 'Answer type', 'hamista-core' ),
+							'choices' => array(
+								'text'     => __( 'Short text', 'hamista-core' ),
+								'textarea' => __( 'Long text', 'hamista-core' ),
+								'number'   => __( 'Number', 'hamista-core' ),
+								'select'   => __( 'Choose from a list', 'hamista-core' ),
+								'checkbox' => __( 'Tick box', 'hamista-core' ),
+							),
+						),
+						'choices'  => array(
+							'type'        => 'text',
+							'label'       => __( 'Options', 'hamista-core' ),
+							'placeholder' => __( 'Separate with commas', 'hamista-core' ),
+							'show_if_row' => array( 'type' => 'select' ),
+						),
+						'required' => array(
+							'type'  => 'toggle',
+							'label' => __( 'Required', 'hamista-core' ),
+						),
+					),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
 				'booking_page'             => array(
 					'type'    => 'select',
 					'label'   => __( 'Booking page', 'hamista-core' ),
-					'desc'    => __( 'A page with the "Appointment booking" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each person\'s own profile page.', 'hamista-core' ),
+					'desc'    => __( 'A page with the "Booking: form" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each profile page.', 'hamista-core' ),
 					'choices' => $pages,
 					'group'   => __( 'Booking rules', 'hamista-core' ),
 					'show_if' => array( 'booking_enabled' => true ),
@@ -614,6 +822,27 @@ return ( static function () {
 				'booking_auto_confirm'     => $on_off + array(
 					'label'   => __( 'Confirm new appointments automatically', 'hamista-core' ),
 					'desc'    => __( 'When off, new appointments wait for the reception to confirm them.', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_profile_facts'    => $on_off + array(
+					'label'   => __( 'Key facts (fee, experience, address)', 'hamista-core' ),
+					'group'   => __( 'Profile pages', 'hamista-core' ),
+					'desc'    => __( 'A profile built with Elementor shows its own design; these switches apply to the standard layout.', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_profile_hours'    => $on_off + array(
+					'label'   => __( 'Weekly hours', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_profile_form'     => $on_off + array(
+					'label'   => __( 'Booking form on the profile', 'hamista-core' ),
+					'show_if' => array( 'booking_enabled' => true ),
+				),
+				'booking_profile_block'    => array(
+					'type'    => 'select',
+					'label'   => __( 'Content under every profile', 'hamista-core' ),
+					'desc'    => __( 'A page or a Hamista block template (built with Elementor), e.g. insurance partners or a call to action.', 'hamista-core' ),
+					'choices' => $content_sources,
 					'show_if' => array( 'booking_enabled' => true ),
 				),
 				'booking_email'            => array(

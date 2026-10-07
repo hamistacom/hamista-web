@@ -31,7 +31,7 @@ class Experts extends Widget_Base {
 
 	/** @return string */
 	public function get_title() {
-		return __( 'Experts & team', 'hamista-core' );
+		return __( 'Booking: list', 'hamista-core' );
 	}
 
 	/** @return string */
@@ -62,9 +62,12 @@ class Experts extends Widget_Base {
 		$this->start_controls_section( 'section_header', array( 'label' => __( 'Heading', 'hamista-core' ) ) );
 		$this->add_header_controls(
 			array(
-				'eyebrow' => __( 'Our team', 'hamista-core' ),
-				/* translators: %s: e.g. "doctors", "lawyers" */
-				'title'   => sprintf( __( 'Meet our *%s*', 'hamista-core' ), Bookings::label( 'many' ) ),
+				'eyebrow' => 'place' === Bookings::kind() ? __( 'Book online', 'hamista-core' ) : __( 'Our team', 'hamista-core' ),
+				'title'   => 'place' === Bookings::kind()
+					/* translators: %s: e.g. "tables", "courts" */
+					? sprintf( __( 'Browse the *%s*', 'hamista-core' ), Bookings::label( 'many' ) )
+					/* translators: %s: e.g. "doctors", "lawyers" */
+					: sprintf( __( 'Meet our *%s*', 'hamista-core' ), Bookings::label( 'many' ) ),
 				'size'    => 'md',
 			),
 			false
@@ -127,6 +130,22 @@ class Experts extends Widget_Base {
 					'minimal' => __( 'Round photo, centred', 'hamista-core' ),
 					'row'     => __( 'Compact row', 'hamista-core' ),
 				),
+			)
+		);
+		$this->add_control(
+			'ratio',
+			array(
+				'label'     => __( 'Image shape', 'hamista-core' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'place' === Bookings::kind() ? '4/3' : '4/5',
+				'options'   => array(
+					'4/5'  => __( 'Portrait', 'hamista-core' ),
+					'1/1'  => __( 'Square', 'hamista-core' ),
+					'4/3'  => __( 'Landscape', 'hamista-core' ),
+					'16/9' => __( 'Wide', 'hamista-core' ),
+				),
+				'selectors' => array( '{{WRAPPER}} .hm-expert--card .hm-expert__media' => 'aspect-ratio: {{VALUE}};' ),
+				'condition' => array( 'card_style' => 'card' ),
 			)
 		);
 		$this->add_control(

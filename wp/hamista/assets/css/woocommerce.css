@@ -155,6 +155,20 @@ div.product > span.onsale { grid-column: 1; grid-row: 1; align-self: start; }
 .woocommerce-MyAccount-content { min-width: 0; }
 .woocommerce-MyAccount-content > :first-child, .woocommerce-MyAccount-content > .woocommerce-notices-wrapper:first-child + * { margin-top: 0; }
 
+/* Tabs layout (Hamista → Account area): the menu becomes a row of tabs above the content. */
+.hm-account-tabs.woocommerce-account .woocommerce { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.hm-account-tabs .hm-account-nav { position: static; display: flex; align-items: stretch; }
+.hm-account-tabs .hm-account-nav__user { flex: none; border-bottom: 0; border-inline-end: 1px solid var(--hm-border); }
+.hm-account-tabs .woocommerce-MyAccount-navigation ul { display: flex; flex: 1; min-width: 0; overflow-x: auto; padding: 0; scrollbar-width: none; }
+.hm-account-tabs .woocommerce-MyAccount-navigation ul::-webkit-scrollbar { display: none; }
+.hm-account-tabs .woocommerce-MyAccount-navigation li a { height: 100%; padding: 0 16px; white-space: nowrap; }
+.hm-account-tabs .woocommerce-MyAccount-navigation li a::before { inset-block: auto 0; inset-inline: 12px; width: auto; height: 2px; }
+.hm-account-tabs .woocommerce-MyAccount-navigation-link--customer-logout { margin: 0 0 0 0 !important; margin-inline-start: auto !important; padding: 0; border-top: 0; border-inline-start: 1px solid var(--hm-border); }
+
+/* Your own tabs and dashboard blocks (pages or Elementor designs). */
+.hm-account-tab > :first-child, .hm-account-dash__block > :first-child { margin-top: 0; }
+.hm-account-tab__empty { margin: 0; padding: 14px 16px; border: 1px dashed var(--hm-border); border-radius: min(var(--hm-radius-md), 10px); color: var(--hm-fg-muted); }
+
 /* Dashboard */
 .hm-account-dash { display: grid; gap: 18px; }
 .hm-account-dash__head h2 { margin: 0 0 2px; font-size: clamp(1.2rem, 1.8vw, 1.45rem); }

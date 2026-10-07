@@ -81,6 +81,16 @@ return array(
 	'shop_sidebar'             => false,
 	'shop_hover_image'         => true,
 
+	// Account area.
+	'account_layout'           => 'side',
+	'account_menu'             => array(),
+	'account_dash_greeting'    => true,
+	'account_dash_text'        => '',
+	'account_dash_cards'       => true,
+	'account_dash_orders'      => true,
+	'account_dash_block'       => 0,
+	'account_dash_block_place' => 'after',
+
 	// Booking.
 	'booking_enabled'          => false,
 	'booking_type'             => 'general',
@@ -88,6 +98,15 @@ return array(
 	'booking_label_many'       => '',
 	'booking_label_group_one'  => '',
 	'booking_label_group_many' => '',
+	'booking_kind'             => '',
+	'booking_qty'              => false,
+	'booking_qty_label'        => '',
+	'booking_qty_max'          => 10,
+	'booking_fields'           => array(),
+	'booking_profile_facts'    => true,
+	'booking_profile_hours'    => true,
+	'booking_profile_form'     => true,
+	'booking_profile_block'    => 0,
 	'booking_page'             => 0,
 	'booking_days'             => 14,
 	'booking_notice'           => 2,

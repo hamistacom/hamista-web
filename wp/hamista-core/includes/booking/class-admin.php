@@ -68,7 +68,7 @@ class Admin {
 		wp_enqueue_style( 'hamista-booking-admin' );
 		wp_add_inline_style(
 			'hamista-booking-admin',
-			'.hm-hours{width:100%;border-collapse:collapse}.hm-hours th,.hm-hours td{padding:8px 6px;text-align:start;vertical-align:middle;border-bottom:1px solid #f0f0f1}.hm-hours tr:last-child td{border-bottom:0}.hm-hours th{font-weight:600;color:#50575e;font-size:12px}.hm-hours select{min-width:88px}.hm-hours__day{font-weight:600;white-space:nowrap}.hm-hours tr.is-off td:not(:first-child){opacity:.45}.hm-hours__sep{color:#8c8f94;padding-inline:4px}.hm-booking-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px 18px}.hm-booking-row label{display:block;font-weight:600;margin-bottom:5px}.hm-booking-row .widefat{max-width:100%}.hm-booking-note{color:#646970;margin:10px 0 0}'
+			'.hm-hours{width:100%;border-collapse:collapse}.hm-hours th,.hm-hours td{padding:8px 6px;text-align:start;vertical-align:middle;border-bottom:1px solid #f0f0f1}.hm-hours tr:last-child td{border-bottom:0}.hm-hours th{font-weight:600;color:#50575e;font-size:12px}.hm-hours select{min-width:88px}.hm-ap-extra{margin-top:12px}.hm-ap-extra th{width:30%;font-weight:600}.hm-ap-time select{min-width:110px}.hm-hours__day{font-weight:600;white-space:nowrap}.hm-hours tr.is-off td:not(:first-child){opacity:.45}.hm-hours__sep{color:#8c8f94;padding-inline:4px}.hm-booking-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px 18px}.hm-booking-row label{display:block;font-weight:600;margin-bottom:5px}.hm-booking-row .widefat{max-width:100%}.hm-booking-note{color:#646970;margin:10px 0 0}'
 			. '.hm-status{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;line-height:1.6;background:#f0f0f1;color:#3c434a}.hm-status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.hm-status--pending{background:#fcf3dc;color:#8a5a00}.hm-status--confirmed{background:#e3f1e8;color:#1f6b3a}.hm-status--done{background:#e6eef9;color:#1d4f91}.hm-status--cancelled{background:#fbe9e9;color:#a12a2a}'
 			. '.column-hm_when{width:16%}.column-hm_status{width:13%}.column-hm_mobile{width:12%}.column-hm_mobile bdi{direction:ltr;unicode-bidi:isolate}.hm-when__day{display:block;font-weight:600}.hm-when__time{color:#646970}.column-hm_photo{width:52px}.column-hm_photo img{width:40px;height:40px;border-radius:50%;object-fit:cover}.hm-days{display:flex;gap:3px;flex-wrap:wrap}.hm-days span{font-size:11px;padding:1px 6px;border-radius:4px;background:#e3f1e8;color:#1f6b3a}'
 		);
@@ -125,6 +125,11 @@ class Admin {
 			);
 		}
 		echo '</div>';
+		printf(
+			'<p><label><input type="checkbox" name="hm_profile[bookable]" value="1"%1$s> %2$s</label></p>',
+			checked( Booking::bookable( $post->ID ), true, false ),
+			esc_html__( 'Takes online bookings', 'hamista-core' )
+		);
 		echo '<p class="hm-booking-note">' . esc_html(
 			sprintf(
 			/* translators: %s: e.g. "specialties", "services" */
@@ -166,7 +171,14 @@ class Admin {
 			/* translators: %s: number of minutes */
 			printf( '<option value="%1$d"%2$s>%3$s</option>', (int) $minutes, selected( $length, $minutes, false ), esc_html( sprintf( __( '%s minutes', 'hamista-core' ), hamista_core_digits( (string) $minutes ) ) ) );
 		}
-		echo '</select></span></p>';
+		echo '</select></span>';
+		printf(
+			'<span><label for="hm-capacity">%1$s</label><input type="number" id="hm-capacity" name="hm_capacity" value="%2$d" min="1" max="500" class="small-text"><span class="description"> %3$s</span></span>',
+			esc_html__( 'Bookings at the same time', 'hamista-core' ),
+			(int) Booking::capacity( $post->ID ),
+			esc_html__( 'e.g. seats in a dining area or places in a class; 1 for one booking at a time', 'hamista-core' )
+		);
+		echo '</p>';
 		echo '<p class="hm-booking-note">' . esc_html__( 'Visitors can book any free slot inside these hours. Leave the evening shift empty for mornings only.', 'hamista-core' ) . '</p>';
 		echo "<script>document.querySelectorAll('[data-hm-day]').forEach(function(c){c.addEventListener('change',function(){c.closest('tr').classList.toggle('is-off',!c.checked);});});</script>";
 	}
@@ -184,9 +196,39 @@ class Admin {
 		if ( $empty ) {
 			echo '<option value="">—</option>';
 		}
+		$times = array();
 		for ( $m = 6 * 60; $m < 24 * 60; $m += 15 ) {
-			$time = sprintf( '%02d:%02d', intdiv( $m, 60 ), $m % 60 );
+			$times[] = sprintf( '%02d:%02d', intdiv( $m, 60 ), $m % 60 );
+		}
+		if ( $value && ! in_array( $value, $times, true ) ) {
+			$times[] = $value;
+			sort( $times );
+		}
+		foreach ( $times as $time ) {
 			echo '<option value="' . esc_attr( $time ) . '"' . selected( $value, $time, false ) . '>' . esc_html( hamista_core_digits( $time ) ) . '</option>';
+		}
+		echo '</select>';
+	}
+
+	/**
+	 * A date dropdown with Jalali labels (a month back, three months ahead).
+	 *
+	 * @param string $name  Field name.
+	 * @param string $value Y-m-d.
+	 * @param string $id    Element id.
+	 */
+	private static function date_select( $name, $value, $id ) {
+		$start = new \DateTimeImmutable( 'today -30 days', wp_timezone() );
+		$dates = array();
+		for ( $i = 0; $i <= 120; $i++ ) {
+			$dates[] = $start->modify( '+' . $i . ' days' )->format( 'Y-m-d' );
+		}
+		if ( $value && ! in_array( $value, $dates, true ) ) {
+			array_unshift( $dates, $value );
+		}
+		echo '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" class="widefat">';
+		foreach ( $dates as $date ) {
+			echo '<option value="' . esc_attr( $date ) . '"' . selected( $value, $date, false ) . '>' . esc_html( Booking::date_label( $date, 'l j F Y' ) ) . '</option>';
 		}
 		echo '</select>';
 	}
@@ -229,6 +271,9 @@ class Admin {
 		update_post_meta( $post_id, '_hm_schedule', $clean );
 		$slot = isset( $_POST['hm_slot'] ) ? absint( $_POST['hm_slot'] ) : 30;
 		update_post_meta( $post_id, '_hm_slot', in_array( $slot, Booking::slot_lengths(), true ) ? $slot : 30 );
+		$capacity = isset( $_POST['hm_capacity'] ) ? absint( hamista_core_latin_digits( sanitize_text_field( wp_unslash( $_POST['hm_capacity'] ) ) ) ) : 1;
+		update_post_meta( $post_id, '_hm_capacity', max( 1, min( 500, $capacity ) ) );
+		update_post_meta( $post_id, '_hm_bookable', empty( $input['bookable'] ) ? '0' : '1' );
 	}
 
 	/**
@@ -312,17 +357,29 @@ class Admin {
 			printf( '<option value="%1$d"%2$s>%3$s</option>', (int) $expert->ID, selected( (int) $get( 'expert' ), $expert->ID, false ), esc_html( $expert->post_title ) );
 		}
 		echo '</select></p>';
-		printf(
-			'<p><label for="hm-ap-date">%1$s</label><input type="date" id="hm-ap-date" name="hm_ap[date]" value="%2$s" class="widefat" dir="ltr"><span class="description">%3$s</span></p>',
-			esc_html__( 'Date', 'hamista-core' ),
-			esc_attr( $date ),
-			esc_html( $date ? Booking::date_label( $date, 'l j F Y' ) : '' )
-		);
-		printf( '<p><label for="hm-ap-time">%1$s</label><input type="time" id="hm-ap-time" name="hm_ap[time]" value="%2$s" step="300" class="widefat" dir="ltr"></p>', esc_html__( 'Time', 'hamista-core' ), esc_attr( $get( 'time' ) ) );
+		echo '<p><label for="hm-ap-date">' . esc_html__( 'Date', 'hamista-core' ) . '</label>';
+		self::date_select( 'hm_ap[date]', $date, 'hm-ap-date' );
+		echo '</p><p><label>' . esc_html__( 'Time', 'hamista-core' ) . '</label><span class="hm-ap-time">';
+		self::time_select( 'hm_ap[time]', $get( 'time' ), __( 'Time', 'hamista-core' ) );
+		echo '</span></p>';
+		$qty = max( 1, (int) $get( 'qty' ) );
+		if ( hamista_core_option( 'booking_qty', false ) || $qty > 1 ) {
+			printf( '<p><label for="hm-ap-qty">%1$s</label><input type="number" id="hm-ap-qty" name="hm_ap[qty]" value="%2$d" min="1" max="500" class="small-text"></p>', esc_html( Rest::qty_label() ), (int) $qty );
+		}
 		printf( '<p><label for="hm-ap-name">%1$s</label><input type="text" id="hm-ap-name" name="hm_ap[name]" value="%2$s" class="widefat"></p>', esc_html__( 'Name', 'hamista-core' ), esc_attr( $get( 'name' ) ) );
 		printf( '<p><label for="hm-ap-mobile">%1$s</label><input type="tel" id="hm-ap-mobile" name="hm_ap[mobile]" value="%2$s" class="widefat" dir="ltr"></p>', esc_html__( 'Mobile', 'hamista-core' ), esc_attr( $get( 'mobile' ) ) );
 		echo '</div>';
 		printf( '<p><label for="hm-ap-note" style="display:block;font-weight:600;margin-bottom:5px">%1$s</label><textarea id="hm-ap-note" name="hm_ap[note]" rows="3" class="widefat">%2$s</textarea></p>', esc_html__( 'Notes', 'hamista-core' ), esc_textarea( $get( 'note' ) ) );
+		$extra = get_post_meta( $post->ID, '_hm_extra', true );
+		if ( is_array( $extra ) && $extra ) {
+			echo '<table class="widefat striped hm-ap-extra"><tbody>';
+			foreach ( $extra as $row ) {
+				if ( isset( $row['label'], $row['value'] ) ) {
+					echo '<tr><th scope="row">' . esc_html( $row['label'] ) . '</th><td>' . esc_html( $row['value'] ) . '</td></tr>';
+				}
+			}
+			echo '</tbody></table>';
+		}
 		$user = (int) $get( 'user' );
 		if ( $user && get_userdata( $user ) ) {
 			/* translators: %s: user display name with a link */
@@ -355,6 +412,7 @@ class Admin {
 			'_hm_name'   => $name,
 			'_hm_mobile' => sanitize_text_field( hamista_core_latin_digits( $in['mobile'] ?? '' ) ),
 			'_hm_note'   => sanitize_textarea_field( $in['note'] ?? '' ),
+			'_hm_qty'    => isset( $in['qty'] ) ? max( 1, min( 500, absint( hamista_core_latin_digits( (string) $in['qty'] ) ) ) ) : max( 1, (int) get_post_meta( $post_id, '_hm_qty', true ) ),
 		);
 		foreach ( $meta as $key => $value ) {
 			update_post_meta( $post_id, $key, $value );
@@ -386,14 +444,16 @@ class Admin {
 	 * @return array
 	 */
 	public static function columns( $columns ) {
+		$qty = hamista_core_option( 'booking_qty', false ) ? array( 'hm_qty' => Rest::qty_label() ) : array();
 		return array(
 			'cb'          => $columns['cb'] ?? '<input type="checkbox">',
 			'title'       => __( 'Name', 'hamista-core' ),
-			'hm_when'     => __( 'Appointment time', 'hamista-core' ),
+			'hm_when'     => Booking::word( 'when' ),
 			'hm_provider' => Booking::label( 'one' ),
 			'hm_mobile'   => __( 'Mobile', 'hamista-core' ),
-			'hm_status'   => __( 'Status', 'hamista-core' ),
-			'date'        => __( 'Booked on', 'hamista-core' ),
+		) + $qty + array(
+			'hm_status' => __( 'Status', 'hamista-core' ),
+			'date'      => __( 'Booked on', 'hamista-core' ),
 		);
 	}
 
@@ -428,6 +488,9 @@ class Admin {
 			case 'hm_mobile':
 				$mobile = (string) get_post_meta( $post_id, '_hm_mobile', true );
 				echo $mobile ? '<a href="tel:' . esc_attr( $mobile ) . '"><bdi>' . esc_html( $mobile ) . '</bdi></a>' : '—';
+				break;
+			case 'hm_qty':
+				echo esc_html( hamista_core_num( max( 1, (int) get_post_meta( $post_id, '_hm_qty', true ) ) ) );
 				break;
 			case 'hm_status':
 				echo self::badge( (string) get_post_meta( $post_id, '_hm_status', true ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in badge().

@@ -27,7 +27,7 @@ class Booking_Form extends Widget_Base {
 
 	/** @return string */
 	public function get_title() {
-		return __( 'Appointment booking', 'hamista-core' );
+		return __( 'Booking: form', 'hamista-core' );
 	}
 
 	/** @return string */
@@ -91,7 +91,7 @@ class Booking_Form extends Widget_Base {
 			array(
 				'label'       => __( 'Title', 'hamista-core' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'Book an appointment online', 'hamista-core' ),
+				'default'     => Bookings::word( 'form_title' ),
 				'label_block' => true,
 			)
 		);

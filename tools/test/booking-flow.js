@@ -35,7 +35,12 @@ const { chromium } = require('playwright');
   console.log('validation:', await book.locator('[data-hm-book-msg]').textContent());
   await book.locator('input[name="name"]').fill('نرگس توکلی');
   await book.locator('input[name="mobile"]').fill('۰۹۳۵ ۱۱۱ ۲۲۳۳');
-  await book.locator('textarea[name="note"]').fill('مشاوره‌ی ارتودنسی');
+  if (await book.locator('textarea[name="note"]').count()) { await book.locator('textarea[name="note"]').fill('توضیح آزمایشی'); }
+  // Guest stepper, list questions and required tick boxes, when the site asks for them.
+  const plus = book.locator('[data-qty="1"]');
+  if (await plus.count()) { await plus.click(); await plus.click(); console.log('guests:', await book.locator('input[name="qty"]').inputValue()); }
+  for (const sel of await book.locator('select[name^="fields["]').all()) { await sel.selectOption({ index: 2 }); }
+  for (const box of await book.locator('input[type="checkbox"][name^="fields["][required]').all()) { await box.check(); }
   await book.locator('button[type="submit"]').click();
   await book.locator('[data-step="done"]:not([hidden])').waitFor({ timeout: 8000 });
   console.log('done:', await book.locator('[data-hm-book-done]').textContent());

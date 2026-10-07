@@ -3,13 +3,22 @@
  * wp eval-file booking-sample.php [type] — turns booking on (business type: general,
  * clinic, beauty, legal, consulting), adds five team members with weekly hours
  * (using existing media) and a page with the Experts, Booking and Before/After widgets.
+ * Replaces any existing bookable items and appointments (test data only).
  */
 $opts                        = get_option( 'hamista_options', array() );
 $opts['booking_enabled']      = true;
 $opts['booking_type']         = $args[0] ?? 'clinic';
 $opts['booking_notice']       = 0;
 $opts['booking_auto_confirm'] = false;
+$opts['booking_kind']         = '';
+$opts['booking_qty']          = false;
+$opts['booking_fields']       = array();
 update_option( 'hamista_options', $opts );
+
+// Start from a clean list (test data only).
+foreach ( get_posts( array( 'post_type' => array( 'hm_expert', 'hm_appointment' ), 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids' ) ) as $old ) {
+	wp_delete_post( $old, true );
+}
 delete_option( 'hamista_booking_rewrite' );
 
 // The module hooks ran before the option changed; register the types for this run.

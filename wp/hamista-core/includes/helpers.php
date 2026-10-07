@@ -171,3 +171,31 @@ function hamista_core_template( $name, $args = array() ) {
 function hamista_core_num( $number, $decimals = 0 ) {
 	return hamista_core_digits( number_format_i18n( $number, $decimals ) );
 }
+
+/**
+ * Render a page or a Hamista block template inside another screen (account
+ * tabs, under profiles…). Elementor designs keep their layout; other pages
+ * get blocks, paragraphs and shortcodes.
+ *
+ * @param int $id Page or template ID.
+ * @return string HTML.
+ */
+function hamista_core_render_content( $id ) {
+	static $depth = 0;
+	$id           = (int) $id;
+	if ( ! $id || 'publish' !== get_post_status( $id ) || $depth > 1 || ( is_singular() && get_queried_object_id() === $id ) ) {
+		return '';
+	}
+	++$depth;
+	$html     = '';
+	$document = class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->documents ) ? \Elementor\Plugin::$instance->documents->get( $id ) : null;
+	if ( $document && $document->is_built_with_elementor() ) {
+		$html = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $id, true );
+	} else {
+		$content = (string) get_post_field( 'post_content', $id );
+		$content = has_blocks( $content ) ? do_blocks( $content ) : wpautop( $content );
+		$html    = do_shortcode( shortcode_unautop( $content ) );
+	}
+	--$depth;
+	return (string) $html;
+}

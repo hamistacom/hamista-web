@@ -47,6 +47,7 @@ final class Plugin {
 			'Forms\\Forms',
 			'Portfolio\\Portfolio',
 			'Booking\\Booking',
+			'Account\\Panel',
 			'Auth\\Auth',
 			'Jalali\\Jalali',
 			'Performance\\Performance',

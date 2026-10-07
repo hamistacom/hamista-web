@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T14:18:14+00:00\n"
+"POT-Creation-Date: 2026-10-07T14:46:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -41,6 +41,10 @@ msgstr ""
 
 #: 404.php:18
 msgid "Back to home"
+msgstr ""
+
+#: archive-hm_expert.php:18
+msgid "Book online"
 msgstr ""
 
 #: archive-hm_expert.php:18
@@ -380,37 +384,41 @@ msgid "Sidebar"
 msgstr ""
 
 #. translators: %s: number of years
-#: single-hm_expert.php:25
+#: single-hm_expert.php:53
 #, php-format
 msgid "%s years"
 msgstr ""
 
-#: single-hm_expert.php:27
+#: single-hm_expert.php:55
 msgid "Experience"
 msgstr ""
 
-#: single-hm_expert.php:30
+#: single-hm_expert.php:58
 msgid "Where"
 msgstr ""
 
-#: single-hm_expert.php:84
+#: single-hm_expert.php:112
 msgid "About"
 msgstr ""
 
-#: single-hm_expert.php:90
+#: single-hm_expert.php:118
 msgid "Weekly hours"
 msgstr ""
 
-#: single-hm_expert.php:98
-msgid "Book an appointment"
+#. translators: %s: e.g. "doctors", "tables"
+#: single-hm_expert.php:129
+#, php-format
+msgid "All %s"
 msgstr ""
 
-#: single-hm_expert.php:99
-msgid "The whole team"
+#. translators: %s: item name, e.g. "Table 4"
+#: single-hm_expert.php:142
+#, php-format
+msgid "Book %s"
 msgstr ""
 
 #. translators: %s: person's name
-#: single-hm_expert.php:110
+#: single-hm_expert.php:144
 #, php-format
 msgid "Book an appointment with %s"
 msgstr ""
@@ -526,35 +534,35 @@ msgstr ""
 msgid "All posts"
 msgstr ""
 
+#: woocommerce/myaccount/dashboard.php:20
+msgid "Your orders, appointments and account details, all in one place."
+msgstr ""
+
 #. translators: %s: first name
-#: woocommerce/myaccount/dashboard.php:32
+#: woocommerce/myaccount/dashboard.php:53
 #, php-format
 msgid "Hello, %s"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:35
-msgid "Your orders, appointments and account details, all in one place."
-msgstr ""
-
-#: woocommerce/myaccount/dashboard.php:52
+#: woocommerce/myaccount/dashboard.php:77
 msgid "Latest orders"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:54
+#: woocommerce/myaccount/dashboard.php:79
 msgid "All orders"
 msgstr ""
 
 #. translators: %s: order number
-#: woocommerce/myaccount/dashboard.php:65
+#: woocommerce/myaccount/dashboard.php:90
 #, php-format
 msgid "Order %s"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:77
+#: woocommerce/myaccount/dashboard.php:102
 msgid "No orders yet."
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:78
+#: woocommerce/myaccount/dashboard.php:103
 msgid "Visit the shop"
 msgstr ""
 

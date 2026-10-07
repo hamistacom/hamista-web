@@ -82,12 +82,15 @@ class View {
 						'pickExpert'  => sprintf( __( 'Choose the %s first.', 'hamista-core' ), Booking::label( 'one' ) ),
 						'pickTime'    => __( 'Choose a time to continue.', 'hamista-core' ),
 						'sending'     => __( 'Booking…', 'hamista-core' ),
-						'cancelAsk'   => __( 'Cancel this appointment? The time will be offered to others.', 'hamista-core' ),
+						'cancelAsk'   => Booking::word( 'cancel_ask' ),
 						'cancelling'  => __( 'Cancelling…', 'hamista-core' ),
 						'cancelled'   => __( 'Cancelled', 'hamista-core' ),
 						'loginNeeded' => __( 'Please log in first; it takes a few seconds with your mobile number.', 'hamista-core' ),
 						'morning'     => __( 'Morning', 'hamista-core' ),
 						'afternoon'   => __( 'Afternoon & evening', 'hamista-core' ),
+						/* translators: %s: number of places left */
+						'left'        => __( '%s left', 'hamista-core' ),
+						'required'    => __( 'Please fill in the required fields.', 'hamista-core' ),
 					),
 				)
 			) . ';',
@@ -98,16 +101,17 @@ class View {
 	/**
 	 * Published experts, optionally limited to groups (services, specialties…) or IDs.
 	 *
-	 * @param array $args groups (int[]), ids (int[]), count (int).
+	 * @param array $args groups (int[]), ids (int[]), count (int), bookable (only items that take bookings).
 	 * @return \WP_Post[]
 	 */
 	public static function experts( $args = array() ) {
 		$args           = wp_parse_args(
 			$args,
 			array(
-				'groups' => array(),
-				'ids'    => array(),
-				'count'  => 50,
+				'groups'   => array(),
+				'bookable' => false,
+				'ids'      => array(),
+				'count'    => 50,
 			)
 		);
 		$args['ids']    = array_filter( array_map( 'intval', (array) $args['ids'] ) );
@@ -134,7 +138,18 @@ class View {
 				),
 			);
 		}
-		return get_posts( $query );
+		$items = get_posts( $query );
+		if ( $args['bookable'] ) {
+			$items = array_values(
+				array_filter(
+					$items,
+					static function ( $item ) {
+						return Booking::bookable( $item->ID );
+					}
+				)
+			);
+		}
+		return $items;
 	}
 
 	/**
@@ -191,7 +206,12 @@ class View {
 			)
 		);
 
-		$experts = self::experts( array( 'groups' => $args['groups'] ) );
+		$experts = self::experts(
+			array(
+				'groups'   => $args['groups'],
+				'bookable' => true,
+			)
+		);
 		if ( ! $experts ) {
 			return current_user_can( 'edit_posts' ) ? '<div class="hm-empty">' . esc_html( sprintf( /* translators: %s: e.g. "doctors", "lawyers" */ __( 'Add %s under Booking in the dashboard and set their weekly hours to start taking appointments.', 'hamista-core' ), Booking::label( 'many' ) ) ) . '</div>' : '';
 		}
@@ -320,7 +340,7 @@ class View {
 				</dl>
 				<?php if ( $login ) : ?>
 					<div class="hm-book__login">
-						<p><?php esc_html_e( 'Log in with your mobile number to book. It takes a few seconds and you can manage your appointments later.', 'hamista-core' ); ?></p>
+						<p><?php echo esc_html( Booking::word( 'login_book' ) ); ?></p>
 						<a class="hm-btn" href="<?php echo esc_url( $login_url ); ?>" data-hm-login><?php esc_html_e( 'Log in or sign up', 'hamista-core' ); ?></a>
 					</div>
 				<?php else : ?>
@@ -335,6 +355,40 @@ class View {
 								<input type="tel" id="<?php echo esc_attr( $id ); ?>-mobile" name="mobile" autocomplete="tel" inputmode="tel" dir="ltr" required maxlength="16" placeholder="<?php echo esc_attr( hamista_core_digits( '0912 123 4567' ) ); ?>" value="<?php echo esc_attr( $mobile ); ?>">
 							</p>
 						</div>
+						<?php if ( hamista_core_option( 'booking_qty', false ) ) : ?>
+							<p class="hm-field hm-book__qty">
+								<label for="<?php echo esc_attr( $id ); ?>-qty"><?php echo esc_html( Rest::qty_label() ); ?></label>
+								<span class="hm-book__stepper">
+									<button type="button" data-qty="-1" aria-label="<?php esc_attr_e( 'Fewer', 'hamista-core' ); ?>"><?php echo hamista_core_icon( 'minus', array( 'size' => 14 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></button>
+									<input type="text" id="<?php echo esc_attr( $id ); ?>-qty" name="qty" value="<?php echo esc_attr( hamista_core_digits( '1' ) ); ?>" data-max="<?php echo esc_attr( (string) Rest::qty_max() ); ?>" inputmode="numeric" dir="ltr" maxlength="3">
+									<button type="button" data-qty="1" aria-label="<?php esc_attr_e( 'More', 'hamista-core' ); ?>"><?php echo hamista_core_icon( 'plus', array( 'size' => 14 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></button>
+								</span>
+							</p>
+						<?php endif; ?>
+						<?php foreach ( Rest::form_fields() as $hm_key => $hm_field ) : ?>
+							<?php $hm_fid = $id . '-' . $hm_key; ?>
+							<?php if ( 'checkbox' === $hm_field['type'] ) : ?>
+								<p class="hm-field hm-field--check">
+									<label><input type="checkbox" name="fields[<?php echo esc_attr( $hm_key ); ?>]" value="1"<?php echo $hm_field['required'] ? ' required' : ''; ?>> <?php echo esc_html( $hm_field['label'] ); ?></label>
+								</p>
+							<?php else : ?>
+								<p class="hm-field">
+									<label for="<?php echo esc_attr( $hm_fid ); ?>"><?php echo esc_html( $hm_field['label'] ); ?><?php echo $hm_field['required'] ? '' : ' <span class="hm-field__opt">(' . esc_html__( 'optional', 'hamista-core' ) . ')</span>'; ?></label>
+									<?php if ( 'textarea' === $hm_field['type'] ) : ?>
+										<textarea id="<?php echo esc_attr( $hm_fid ); ?>" name="fields[<?php echo esc_attr( $hm_key ); ?>]" rows="2" maxlength="1000"<?php echo $hm_field['required'] ? ' required' : ''; ?>></textarea>
+									<?php elseif ( 'select' === $hm_field['type'] ) : ?>
+										<select id="<?php echo esc_attr( $hm_fid ); ?>" name="fields[<?php echo esc_attr( $hm_key ); ?>]"<?php echo $hm_field['required'] ? ' required' : ''; ?>>
+											<option value=""><?php esc_html_e( 'Choose…', 'hamista-core' ); ?></option>
+											<?php foreach ( $hm_field['choices'] as $hm_choice ) : ?>
+												<option value="<?php echo esc_attr( $hm_choice ); ?>"><?php echo esc_html( $hm_choice ); ?></option>
+											<?php endforeach; ?>
+										</select>
+									<?php else : ?>
+										<input type="text" id="<?php echo esc_attr( $hm_fid ); ?>" name="fields[<?php echo esc_attr( $hm_key ); ?>]" maxlength="200"<?php echo 'number' === $hm_field['type'] ? ' inputmode="numeric"' : ''; ?><?php echo $hm_field['required'] ? ' required' : ''; ?>>
+									<?php endif; ?>
+								</p>
+							<?php endif; ?>
+						<?php endforeach; ?>
 						<?php if ( $args['note'] ) : ?>
 							<p class="hm-field">
 								<label for="<?php echo esc_attr( $id ); ?>-note"><?php esc_html_e( 'Notes (optional)', 'hamista-core' ); ?></label>
@@ -344,7 +398,7 @@ class View {
 						<p class="hm-hp" aria-hidden="true"><label><?php esc_html_e( 'Leave this field empty', 'hamista-core' ); ?><input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
 						<p class="hm-book__msg" role="alert" data-hm-book-msg></p>
 						<div class="hm-book__nav">
-							<button type="submit" class="hm-btn"><?php echo hamista_core_icon( 'calendar', array( 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><span><?php esc_html_e( 'Book appointment', 'hamista-core' ); ?></span></button>
+							<button type="submit" class="hm-btn"><?php echo hamista_core_icon( 'calendar', array( 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><span><?php echo esc_html( Booking::word( 'submit' ) ); ?></span></button>
 						</div>
 					</form>
 				<?php endif; ?>
@@ -352,11 +406,11 @@ class View {
 
 			<section class="hm-book__step hm-book__done" data-step="done" hidden tabindex="-1">
 				<span class="hm-book__done-icon" aria-hidden="true"><?php echo hamista_core_icon( 'check', array( 'size' => 28 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span>
-				<h3 class="hm-book__label"><?php esc_html_e( 'Your appointment is booked', 'hamista-core' ); ?></h3>
+				<h3 class="hm-book__label"><?php echo esc_html( Booking::word( 'done' ) ); ?></h3>
 				<p data-hm-book-done></p>
 				<div class="hm-book__nav hm-book__nav--center">
 					<?php if ( is_user_logged_in() && self::appointments_url() ) : ?>
-						<a class="hm-btn hm-btn--ghost" href="<?php echo esc_url( self::appointments_url() ); ?>"><?php esc_html_e( 'My appointments', 'hamista-core' ); ?></a>
+						<a class="hm-btn hm-btn--ghost" href="<?php echo esc_url( self::appointments_url() ); ?>"><?php echo esc_html( Booking::word( 'mine' ) ); ?></a>
 					<?php endif; ?>
 					<button type="button" class="hm-btn hm-btn--ghost" data-hm-book-again><?php esc_html_e( 'Book another', 'hamista-core' ); ?></button>
 				</div>
@@ -484,6 +538,10 @@ class View {
 		if ( $sub ) {
 			$html .= '<span class="hm-appt__dot" aria-hidden="true">·</span><span>' . esc_html( $sub ) . '</span>';
 		}
+		$qty = max( 1, (int) get_post_meta( $item['id'], '_hm_qty', true ) );
+		if ( $qty > 1 ) {
+			$html .= '<span class="hm-appt__dot" aria-hidden="true">·</span><span>' . esc_html( Rest::qty_label() . ': ' . hamista_core_num( $qty ) ) . '</span>';
+		}
 		$html .= '</p>';
 		if ( $place && $item['upcoming'] ) {
 			$html .= '<p class="hm-appt__meta">' . hamista_core_icon( 'pin', array( 'size' => 14 ) ) . '<span>' . esc_html( hamista_core_digits( $place ) ) . '</span></p>';
@@ -512,22 +570,22 @@ class View {
 
 		$html = '<div class="hm-appts" data-hm-appts>';
 		if ( ! $items ) {
-			$html .= '<div class="hm-appts__empty">' . hamista_core_icon( 'calendar', array( 'size' => 28 ) ) . '<p>' . esc_html__( 'You have no appointments yet.', 'hamista-core' ) . '</p>';
+			$html .= '<div class="hm-appts__empty">' . hamista_core_icon( 'calendar', array( 'size' => 28 ) ) . '<p>' . esc_html( Booking::word( 'empty' ) ) . '</p>';
 			if ( $book ) {
-				$html .= '<a class="hm-btn" href="' . esc_url( $book ) . '">' . esc_html__( 'Book an appointment', 'hamista-core' ) . '</a>';
+				$html .= '<a class="hm-btn" href="' . esc_url( $book ) . '">' . esc_html( Booking::word( 'book' ) ) . '</a>';
 			}
 			return $html . '</div></div>';
 		}
 		$html .= '<div class="hm-appts__head"><h3>' . esc_html__( 'Upcoming', 'hamista-core' ) . '</h3>';
 		if ( $book ) {
-			$html .= '<a class="hm-btn hm-btn--sm" href="' . esc_url( $book ) . '">' . hamista_core_icon( 'plus', array( 'size' => 14 ) ) . esc_html__( 'New appointment', 'hamista-core' ) . '</a>';
+			$html .= '<a class="hm-btn hm-btn--sm" href="' . esc_url( $book ) . '">' . hamista_core_icon( 'plus', array( 'size' => 14 ) ) . esc_html( Booking::word( 'new' ) ) . '</a>';
 		}
 		$html .= '</div>';
 		if ( $upcoming ) {
 			// Soonest first for what is ahead.
 			$html .= '<ul class="hm-appts__list">' . implode( '', array_map( array( __CLASS__, 'appointment_item' ), array_reverse( $upcoming ) ) ) . '</ul>';
 		} else {
-			$html .= '<p class="hm-appts__none">' . esc_html__( 'No upcoming appointments.', 'hamista-core' ) . '</p>';
+			$html .= '<p class="hm-appts__none">' . esc_html( Booking::word( 'none_upcoming' ) ) . '</p>';
 		}
 		if ( $past ) {
 			$html .= '<details class="hm-appts__past"' . ( $upcoming ? '' : ' open' ) . '><summary>' . esc_html__( 'Past and cancelled', 'hamista-core' ) . ' <span>' . esc_html( hamista_core_num( count( $past ) ) ) . '</span></summary><ul class="hm-appts__list">' . implode( '', array_map( array( __CLASS__, 'appointment_item' ), $past ) ) . '</ul></details>';

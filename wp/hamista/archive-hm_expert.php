@@ -15,7 +15,7 @@ if ( ! hamista_elementor_location( 'archive' ) ) :
 	hamista_page_head(
 		$hamista_term ? single_term_title( '', false ) : post_type_archive_title( '', false ),
 		$hamista_term ? term_description() : '',
-		__( 'Our team', 'hamista' )
+		$hamista_booking && 'place' === \Hamista\Core\Booking\Booking::kind() ? __( 'Book online', 'hamista' ) : __( 'Our team', 'hamista' )
 	);
 	$hamista_groups = get_terms(
 		array(

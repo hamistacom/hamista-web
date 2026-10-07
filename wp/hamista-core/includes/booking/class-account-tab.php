@@ -47,7 +47,7 @@ class Account_Tab {
 	 * @return string
 	 */
 	public static function label() {
-		return __( 'My appointments', 'hamista-core' );
+		return Booking::word( 'mine' );
 	}
 
 	/**
@@ -118,7 +118,7 @@ class Account_Tab {
 		}
 		$card = array(
 			'icon'  => 'calendar',
-			'label' => __( 'Next appointment', 'hamista-core' ),
+			'label' => Booking::word( 'next' ),
 			'value' => $next ? Booking::date_label( $next['date'], 'j F' ) . ' · ' . Booking::time_label( $next['time'] ) : __( 'None booked', 'hamista-core' ),
 			'url'   => wc_get_account_endpoint_url( self::ENDPOINT ),
 		);
@@ -144,7 +144,7 @@ class Account_Tab {
 	 */
 	public static function shortcode_appointments() {
 		if ( ! is_user_logged_in() ) {
-			return '<p class="hm-appts__guest">' . esc_html__( 'Log in to see your appointments.', 'hamista-core' ) . '</p>';
+			return '<p class="hm-appts__guest">' . esc_html( Booking::word( 'login_see' ) ) . '</p>';
 		}
 		return View::appointments();
 	}

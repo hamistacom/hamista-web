@@ -245,6 +245,10 @@
 		stethoscope: '<path d="M6 3H5a1 1 0 0 0-1 1v5a5 5 0 0 0 10 0V4a1 1 0 0 0-1-1h-1"/><path d="M9 14v1a5 5 0 0 0 10 0v-3"/><circle cx="19" cy="10" r="2"/>',
 		scissors: '<circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M8.3 15.7 18 4M15.7 15.7 6 4"/>',
 		scale: '<path d="M12 4v16M8 20h8M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0L5 7ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6Z"/>',
+		cup: '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5v2.5M11 3.5v2.5"/>',
+		ball: '<circle cx="12" cy="12" r="8.5"/><path d="M3.6 9.5c3 .8 5.6 3.5 6.4 6.9M20.4 14.5c-3-.8-5.6-3.5-6.4-6.9"/>',
+		car: '<path d="M4 15.5V12l2-5h12l2 5v3.5a1 1 0 0 1-1 1h-1.5M4 15.5a1 1 0 0 0 1 1h1.5M9 16.5h6"/><circle cx="8" cy="16.5" r="1.6"/><circle cx="16" cy="16.5" r="1.6"/><path d="M4.5 12h15"/>',
+		account: '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5a7 7 0 0 1 14 0"/>',
 		chat: '<path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-4 3v-3H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M8 9.5h8M8 12.5h5"/>',
 		speaker: '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
 		gauge: '<path d="M4.5 18a9 9 0 1 1 15 0"/><path d="m12 13 4-4"/><circle cx="12" cy="13" r="1.4"/>',
@@ -763,6 +767,18 @@
 		return row;
 	}
 
+	/** Whether a repeater sub-field applies to a row (`show_if_row`: { sub: value|[values] }). */
+	function rowFieldShown( d, row ) {
+		if ( ! isObj( d.show_if_row ) ) {
+			return true;
+		}
+		return Object.keys( d.show_if_row ).every( function ( sub ) {
+			const want = d.show_if_row[ sub ];
+			const have = isObj( row ) ? row[ sub ] : '';
+			return Array.isArray( want ) ? want.indexOf( have ) > -1 : want === have;
+		} );
+	}
+
 	/** One sub-field inside a repeater row. */
 	function subControl( ctx, i, sub, d, value ) {
 		const id = ctx.id + '-' + i + '-' + sub;
@@ -1108,7 +1124,9 @@
 				rows.forEach( function ( row, i ) {
 					list.appendChild( h( 'li', { class: 'hm-row', 'data-row': i, 'aria-label': fmt( t( 'rowLabel' ), i + 1 ) }, [
 						h( 'span', { class: 'hm-row__num', 'aria-hidden': 'true', text: i + 1 } ),
-						h( 'div', { class: 'hm-row__fields' }, Object.keys( subs ).map( function ( sub ) {
+						h( 'div', { class: 'hm-row__fields' }, Object.keys( subs ).filter( function ( sub ) {
+							return rowFieldShown( subs[ sub ], row );
+						} ).map( function ( sub ) {
 							return subControl( ctx, i, sub, subs[ sub ], isObj( row ) ? row[ sub ] : '' );
 						} ) ),
 						h( 'div', { class: 'hm-row__tools' }, [
@@ -1136,6 +1154,16 @@
 				}
 				rows[ i ][ sub ] = 'checkbox' === e.target.type ? e.target.checked : e.target.value;
 				set( ctx.key, rows );
+				// A sub-field other fields depend on: redraw so they appear or hide.
+				const controls = Object.keys( ctx.def.fields || {} ).some( function ( other ) {
+					const cond = ctx.def.fields[ other ].show_if_row;
+					return isObj( cond ) && Object.prototype.hasOwnProperty.call( cond, sub );
+				} );
+				if ( controls ) {
+					rerenderControl( ctx );
+					const again = ctx.control.querySelector( '[data-row="' + i + '"] [data-sub="' + sub + '"]' );
+					focusLater( again );
+				}
 			},
 			click( ctx, act, btn ) {
 				const rows = Array.isArray( val( ctx.key ) ) ? clone( val( ctx.key ) ) : [];

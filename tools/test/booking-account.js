@@ -17,11 +17,12 @@ const { chromium } = require('playwright');
   await book.locator('.hm-book__pick').first().click();
   await book.locator('[data-step="expert"] [data-go="time"]').click();
   // A day after tomorrow, so the 24-hour cancellation window still allows cancelling.
-  await book.locator('.hm-book__day:not([disabled])').nth(2).click();
+  await book.locator('.hm-book__day:not([disabled])').last().click();
   await book.locator('.hm-book__time').nth(2).click();
   await book.locator('[data-step="time"] [data-go="details"]').click();
   console.log('prefilled name:', await book.locator('input[name="name"]').inputValue());
   await book.locator('input[name="mobile"]').fill('09351112233');
+  for (const box of await book.locator('input[type="checkbox"][name^="fields["][required]').all()) { await box.check(); }
   await book.locator('button[type="submit"]').click();
   await book.locator('[data-step="done"]:not([hidden])').waitFor({ timeout: 8000 });
   const link = book.locator('[data-step="done"] a.hm-btn');

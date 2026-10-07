@@ -85,7 +85,7 @@ class Booking {
 	/**
 	 * Business types and their wording.
 	 *
-	 * @return array[] type => { title, one, many, group_one, group_many, fee, license, slug, group_slug }
+	 * @return array[] type => { title, one, many, group_one, group_many, fee, license, slug, group_slug, kind (person|place) }
 	 */
 	public static function presets() {
 		$presets = array(
@@ -99,6 +99,7 @@ class Booking {
 				'license'    => __( 'Licence number', 'hamista-core' ),
 				'slug'       => 'experts',
 				'group_slug' => 'service',
+				'kind'       => 'person',
 			),
 			'clinic'     => array(
 				'title'      => __( 'Clinic and medical', 'hamista-core' ),
@@ -110,6 +111,7 @@ class Booking {
 				'license'    => __( 'Medical council number', 'hamista-core' ),
 				'slug'       => 'doctors',
 				'group_slug' => 'specialty',
+				'kind'       => 'person',
 			),
 			'beauty'     => array(
 				'title'      => __( 'Beauty salon', 'hamista-core' ),
@@ -121,6 +123,7 @@ class Booking {
 				'license'    => __( 'Licence number', 'hamista-core' ),
 				'slug'       => 'stylists',
 				'group_slug' => 'service',
+				'kind'       => 'person',
 			),
 			'legal'      => array(
 				'title'      => __( 'Law firm', 'hamista-core' ),
@@ -132,6 +135,7 @@ class Booking {
 				'license'    => __( 'Bar licence number', 'hamista-core' ),
 				'slug'       => 'lawyers',
 				'group_slug' => 'practice',
+				'kind'       => 'person',
 			),
 			'consulting' => array(
 				'title'      => __( 'Consulting and coaching', 'hamista-core' ),
@@ -143,6 +147,67 @@ class Booking {
 				'license'    => __( 'Licence number', 'hamista-core' ),
 				'slug'       => 'consultants',
 				'group_slug' => 'field',
+				'kind'       => 'person',
+			),
+			'education'  => array(
+				'title'      => __( 'Education and tutoring', 'hamista-core' ),
+				'one'        => __( 'Teacher', 'hamista-core' ),
+				'many'       => __( 'Teachers', 'hamista-core' ),
+				'group_one'  => _x( 'Subject', 'school subject', 'hamista-core' ),
+				'group_many' => __( 'Subjects', 'hamista-core' ),
+				'fee'        => __( 'Fee per session', 'hamista-core' ),
+				'license'    => __( 'Licence number', 'hamista-core' ),
+				'slug'       => 'teachers',
+				'group_slug' => 'subject',
+				'kind'       => 'person',
+			),
+			'restaurant' => array(
+				'title'      => __( 'Restaurant and café', 'hamista-core' ),
+				'one'        => __( 'Dining area', 'hamista-core' ),
+				'many'       => __( 'Dining areas', 'hamista-core' ),
+				'group_one'  => __( 'Section', 'hamista-core' ),
+				'group_many' => __( 'Sections', 'hamista-core' ),
+				'fee'        => __( 'Deposit', 'hamista-core' ),
+				'license'    => '',
+				'slug'       => 'reservations',
+				'group_slug' => 'section',
+				'kind'       => 'place',
+			),
+			'sports'     => array(
+				'title'      => __( 'Sports venue', 'hamista-core' ),
+				'one'        => __( 'Court', 'hamista-core' ),
+				'many'       => __( 'Courts', 'hamista-core' ),
+				'group_one'  => __( 'Sport', 'hamista-core' ),
+				'group_many' => __( 'Sports', 'hamista-core' ),
+				'fee'        => __( 'Price per session', 'hamista-core' ),
+				'license'    => '',
+				'slug'       => 'courts',
+				'group_slug' => 'sport',
+				'kind'       => 'place',
+			),
+			'space'      => array(
+				'title'      => __( 'Studio and space rental', 'hamista-core' ),
+				'one'        => __( 'Space', 'hamista-core' ),
+				'many'       => __( 'Spaces', 'hamista-core' ),
+				'group_one'  => __( 'Space type', 'hamista-core' ),
+				'group_many' => __( 'Space types', 'hamista-core' ),
+				'fee'        => __( 'Price per session', 'hamista-core' ),
+				'license'    => '',
+				'slug'       => 'spaces',
+				'group_slug' => 'space-type',
+				'kind'       => 'place',
+			),
+			'auto'       => array(
+				'title'      => __( 'Car service', 'hamista-core' ),
+				'one'        => __( 'Service bay', 'hamista-core' ),
+				'many'       => __( 'Service bays', 'hamista-core' ),
+				'group_one'  => __( 'Service', 'hamista-core' ),
+				'group_many' => __( 'Services', 'hamista-core' ),
+				'fee'        => __( 'Price', 'hamista-core' ),
+				'license'    => '',
+				'slug'       => 'service-bays',
+				'group_slug' => 'car-service',
+				'kind'       => 'place',
 			),
 		);
 		/**
@@ -173,6 +238,51 @@ class Booking {
 			}
 		}
 		return $labels;
+	}
+
+	/**
+	 * Whether bookable items are people (doctor, lawyer…) or places and
+	 * things (table, court, studio…). Decides which profile fields show.
+	 *
+	 * @return string person|place
+	 */
+	public static function kind() {
+		$kind = (string) hamista_core_option( 'booking_kind', '' );
+		if ( ! in_array( $kind, array( 'person', 'place' ), true ) ) {
+			$kind = (string) ( self::labels()['kind'] ?? 'person' );
+		}
+		return 'place' === $kind ? 'place' : 'person';
+	}
+
+	/**
+	 * Front-end wording: "appointment" for people, "booking" for places.
+	 *
+	 * @param string $key Phrase key.
+	 * @return string
+	 */
+	public static function word( $key ) {
+		$place = 'place' === self::kind();
+		$words = array(
+			'mine'          => $place ? __( 'My bookings', 'hamista-core' ) : __( 'My appointments', 'hamista-core' ),
+			'book'          => $place ? __( 'Book now', 'hamista-core' ) : __( 'Book an appointment', 'hamista-core' ),
+			'submit'        => $place ? __( 'Confirm booking', 'hamista-core' ) : __( 'Book appointment', 'hamista-core' ),
+			'done'          => $place ? __( 'Your booking is saved', 'hamista-core' ) : __( 'Your appointment is booked', 'hamista-core' ),
+			'empty'         => $place ? __( 'You have no bookings yet.', 'hamista-core' ) : __( 'You have no appointments yet.', 'hamista-core' ),
+			'new'           => $place ? __( 'New booking', 'hamista-core' ) : __( 'New appointment', 'hamista-core' ),
+			'none_upcoming' => $place ? __( 'No upcoming bookings.', 'hamista-core' ) : __( 'No upcoming appointments.', 'hamista-core' ),
+			'next'          => $place ? __( 'Next booking', 'hamista-core' ) : __( 'Next appointment', 'hamista-core' ),
+			'cancel_ask'    => $place ? __( 'Cancel this booking? The time will be offered to others.', 'hamista-core' ) : __( 'Cancel this appointment? The time will be offered to others.', 'hamista-core' ),
+			'cancelled'     => $place ? __( 'Your booking was cancelled.', 'hamista-core' ) : __( 'Your appointment was cancelled.', 'hamista-core' ),
+			'too_late'      => $place ? __( 'This booking can no longer be cancelled online. Please call us.', 'hamista-core' ) : __( 'This appointment can no longer be cancelled online. Please call us.', 'hamista-core' ),
+			'login_see'     => $place ? __( 'Log in to see your bookings.', 'hamista-core' ) : __( 'Log in to see your appointments.', 'hamista-core' ),
+			'form_title'    => $place ? __( 'Book online', 'hamista-core' ) : __( 'Book an appointment online', 'hamista-core' ),
+			'login_book'    => $place ? __( 'Log in with your mobile number to book. It takes a few seconds and you can manage your bookings later.', 'hamista-core' ) : __( 'Log in with your mobile number to book. It takes a few seconds and you can manage your appointments later.', 'hamista-core' ),
+			'save_failed'   => $place ? __( 'Your booking could not be saved. Please try again.', 'hamista-core' ) : __( 'Your appointment could not be saved. Please try again.', 'hamista-core' ),
+			'plural'        => $place ? __( 'Bookings', 'hamista-core' ) : __( 'Appointments', 'hamista-core' ),
+			'singular'      => $place ? _x( 'Booking', 'a reservation', 'hamista-core' ) : __( 'Appointment', 'hamista-core' ),
+			'when'          => $place ? __( 'Booking time', 'hamista-core' ) : __( 'Appointment time', 'hamista-core' ),
+		);
+		return (string) ( $words[ $key ] ?? '' );
 	}
 
 	/**
@@ -251,12 +361,12 @@ class Booking {
 			self::APPOINTMENT,
 			array(
 				'labels'          => array(
-					'name'          => __( 'Appointments', 'hamista-core' ),
-					'singular_name' => __( 'Appointment', 'hamista-core' ),
+					'name'          => self::word( 'plural' ),
+					'singular_name' => self::word( 'singular' ),
 					'edit_item'     => __( 'Appointment details', 'hamista-core' ),
 					'search_items'  => __( 'Search appointments', 'hamista-core' ),
 					'not_found'     => __( 'No appointments yet.', 'hamista-core' ),
-					'all_items'     => __( 'Appointments', 'hamista-core' ),
+					'all_items'     => self::word( 'plural' ),
 				),
 				'public'          => false,
 				'show_ui'         => true,
@@ -336,13 +446,41 @@ class Booking {
 	 * @return array
 	 */
 	public static function expert_fields() {
-		return array(
+		if ( 'place' === self::kind() ) {
+			return array(
+				'role'     => __( 'Short description under the name', 'hamista-core' ),
+				'fee'      => self::label( 'fee' ),
+				'location' => __( 'Address or floor', 'hamista-core' ),
+			);
+		}
+		$fields = array(
 			'role'       => __( 'Title shown under the name', 'hamista-core' ),
-			'license'    => self::label( 'license' ),
+			'license'    => self::label( 'license' ) ? self::label( 'license' ) : __( 'Licence number', 'hamista-core' ),
 			'experience' => __( 'Years of experience', 'hamista-core' ),
 			'fee'        => self::label( 'fee' ),
 			'location'   => __( 'Address or room', 'hamista-core' ),
 		);
+		return $fields;
+	}
+
+	/**
+	 * How many bookings one item takes at the same time (seats, places…).
+	 *
+	 * @param int $id Item ID.
+	 * @return int
+	 */
+	public static function capacity( $id ) {
+		return max( 1, min( 500, (int) get_post_meta( $id, '_hm_capacity', true ) ) );
+	}
+
+	/**
+	 * Whether an item takes online bookings (profiles can be listed without).
+	 *
+	 * @param int $id Item ID.
+	 * @return bool
+	 */
+	public static function bookable( $id ) {
+		return '0' !== (string) get_post_meta( $id, '_hm_bookable', true );
 	}
 
 	/**
@@ -493,8 +631,8 @@ class Booking {
 				'decoding' => 'async',
 			)
 		);
-		$html  = '<article class="hm-expert hm-expert--' . esc_attr( $args['style'] ) . '" data-terms="' . esc_attr( implode( ' ', $slugs ) ) . '">';
-		$html .= '<a class="hm-expert__media" href="' . esc_url( get_permalink( $id ) ) . '" tabindex="-1" aria-hidden="true">' . ( $photo ? $photo : '<span class="hm-expert__blank">' . hamista_core_icon( 'user', array( 'size' => 34 ) ) . '</span>' ) . '</a>';
+		$html  = '<article class="hm-expert hm-expert--' . esc_attr( $args['style'] ) . ( 'place' === self::kind() ? ' hm-expert--place' : '' ) . '" data-terms="' . esc_attr( implode( ' ', $slugs ) ) . '">';
+		$html .= '<a class="hm-expert__media" href="' . esc_url( get_permalink( $id ) ) . '" tabindex="-1" aria-hidden="true">' . ( $photo ? $photo : '<span class="hm-expert__blank">' . hamista_core_icon( 'place' === self::kind() ? 'layers' : 'user', array( 'size' => 34 ) ) . '</span>' ) . '</a>';
 		$html .= '<div class="hm-expert__body">';
 		$html .= '<h3 class="hm-expert__name"><a href="' . esc_url( get_permalink( $id ) ) . '">' . esc_html( get_the_title( $id ) ) . '</a></h3>';
 		$html .= '<p class="hm-expert__role">' . esc_html( $role ? $role : implode( '، ', wp_list_pluck( $terms, 'name' ) ) ) . '</p>';
@@ -502,9 +640,9 @@ class Booking {
 			/* translators: %s: years of experience */
 			$html .= '<p class="hm-expert__meta">' . hamista_core_icon( 'award', array( 'size' => 15 ) ) . esc_html( sprintf( __( '%s years of experience', 'hamista-core' ), hamista_core_digits( $years ) ) ) . '</p>';
 		}
-		$booking = $args['button'] ? self::booking_url( $id ) : '';
+		$booking = $args['button'] && self::bookable( $id ) ? self::booking_url( $id ) : '';
 		if ( $booking ) {
-			$html .= '<a class="hm-btn hm-btn--sm hm-expert__book" href="' . esc_url( $booking ) . '">' . hamista_core_icon( 'calendar', array( 'size' => 16 ) ) . esc_html__( 'Book an appointment', 'hamista-core' ) . '</a>';
+			$html .= '<a class="hm-btn hm-btn--sm hm-expert__book" href="' . esc_url( $booking ) . '">' . hamista_core_icon( 'calendar', array( 'size' => 16 ) ) . esc_html( self::word( 'book' ) ) . '</a>';
 		}
 		return $html . '</div></article>';
 	}

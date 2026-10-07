@@ -172,7 +172,7 @@ class Hero extends Widget_Base {
 			array(
 				'label'     => __( 'Status label', 'hamista-core' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => 'SYSTEM ONLINE',
+				'default'   => __( 'System online', 'hamista-core' ),
 				'condition' => array( 'media_type' => 'device' ),
 			)
 		);

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T14:18:14+00:00\n"
-"PO-Revision-Date: 2026-10-07 14:18+0000\n"
+"POT-Creation-Date: 2026-10-07T14:46:55+00:00\n"
+"PO-Revision-Date: 2026-10-07 14:49+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -43,6 +43,10 @@ msgstr "شاید نشانی را اشتباه وارد کرده‌اید یا ب
 #: 404.php:18
 msgid "Back to home"
 msgstr "بازگشت به خانه"
+
+#: archive-hm_expert.php:18
+msgid "Book online"
+msgstr "رزرو آنلاین"
 
 #: archive-hm_expert.php:18
 msgid "Our team"
@@ -381,37 +385,41 @@ msgid "Sidebar"
 msgstr "ستون کناری"
 
 #. translators: %s: number of years
-#: single-hm_expert.php:25
+#: single-hm_expert.php:53
 #, php-format
 msgid "%s years"
 msgstr "%s سال"
 
-#: single-hm_expert.php:27
+#: single-hm_expert.php:55
 msgid "Experience"
 msgstr "سابقه"
 
-#: single-hm_expert.php:30
+#: single-hm_expert.php:58
 msgid "Where"
 msgstr "محل"
 
-#: single-hm_expert.php:84
+#: single-hm_expert.php:112
 msgid "About"
 msgstr "درباره"
 
-#: single-hm_expert.php:90
+#: single-hm_expert.php:118
 msgid "Weekly hours"
 msgstr "ساعت‌های کاری هفته"
 
-#: single-hm_expert.php:98
-msgid "Book an appointment"
-msgstr "رزرو نوبت"
+#. translators: %s: e.g. "doctors", "tables"
+#: single-hm_expert.php:129
+#, php-format
+msgid "All %s"
+msgstr "همه‌ی %s"
 
-#: single-hm_expert.php:99
-msgid "The whole team"
-msgstr "همه‌ی اعضای تیم"
+#. translators: %s: item name, e.g. "Table 4"
+#: single-hm_expert.php:142
+#, php-format
+msgid "Book %s"
+msgstr "رزرو %s"
 
 #. translators: %s: person's name
-#: single-hm_expert.php:110
+#: single-hm_expert.php:144
 #, php-format
 msgid "Book an appointment with %s"
 msgstr "رزرو نوبت با %s"
@@ -527,35 +535,35 @@ msgstr "بیشتر بخوانید"
 msgid "All posts"
 msgstr "همه‌ی نوشته‌ها"
 
+#: woocommerce/myaccount/dashboard.php:20
+msgid "Your orders, appointments and account details, all in one place."
+msgstr "سفارش‌ها، نوبت‌ها و اطلاعات حسابتان، همه یک‌جا."
+
 #. translators: %s: first name
-#: woocommerce/myaccount/dashboard.php:32
+#: woocommerce/myaccount/dashboard.php:53
 #, php-format
 msgid "Hello, %s"
 msgstr "سلام، %s"
 
-#: woocommerce/myaccount/dashboard.php:35
-msgid "Your orders, appointments and account details, all in one place."
-msgstr "سفارش‌ها، نوبت‌ها و اطلاعات حسابتان، همه یک‌جا."
-
-#: woocommerce/myaccount/dashboard.php:52
+#: woocommerce/myaccount/dashboard.php:77
 msgid "Latest orders"
 msgstr "آخرین سفارش‌ها"
 
-#: woocommerce/myaccount/dashboard.php:54
+#: woocommerce/myaccount/dashboard.php:79
 msgid "All orders"
 msgstr "همه‌ی سفارش‌ها"
 
 #. translators: %s: order number
-#: woocommerce/myaccount/dashboard.php:65
+#: woocommerce/myaccount/dashboard.php:90
 #, php-format
 msgid "Order %s"
 msgstr "سفارش %s"
 
-#: woocommerce/myaccount/dashboard.php:77
+#: woocommerce/myaccount/dashboard.php:102
 msgid "No orders yet."
 msgstr "هنوز سفارشی ثبت نکرده‌اید."
 
-#: woocommerce/myaccount/dashboard.php:78
+#: woocommerce/myaccount/dashboard.php:103
 msgid "Visit the shop"
 msgstr "رفتن به فروشگاه"
 

@@ -74,7 +74,7 @@ class Device extends Widget_Base {
 			array(
 				'label'   => __( 'Status label', 'hamista-core' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => 'SYSTEM ONLINE',
+				'default' => __( 'System online', 'hamista-core' ),
 			)
 		);
 		$this->add_control(
@@ -82,7 +82,7 @@ class Device extends Widget_Base {
 			array(
 				'label'     => __( 'Dashboard title', 'hamista-core' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => 'OUTPUT / CH-01',
+				'default'   => __( 'Output / channel 01', 'hamista-core' ),
 				'condition' => array( 'image[url]' => '' ),
 			)
 		);
@@ -163,8 +163,8 @@ class Device extends Widget_Base {
 			array(
 				'variant' => 'monitor',
 				'image'   => array(),
-				'label'   => 'SYSTEM ONLINE',
-				'title'   => 'OUTPUT / CH-01',
+				'label'   => __( 'System online', 'hamista-core' ),
+				'title'   => __( 'Output / channel 01', 'hamista-core' ),
 				'value'   => '98.6',
 				'unit'    => '%',
 				'float'   => true,

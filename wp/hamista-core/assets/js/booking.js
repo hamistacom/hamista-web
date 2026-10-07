@@ -137,6 +137,7 @@
 		}
 		if ('details' === step) {
 			this.fillSummary();
+			this.setQty(this.qty());
 		}
 
 		var section = $('[data-step="' + step + '"]', root);
@@ -178,6 +179,11 @@
 	};
 
 	Booking.prototype.onClick = function (e) {
+		var stepper = e.target.closest('[data-qty]');
+		if (stepper && this.root.contains(stepper)) {
+			this.setQty(this.qty() + parseInt(stepper.getAttribute('data-qty'), 10));
+			return;
+		}
 		var go = e.target.closest('[data-go]');
 		if (go && this.root.contains(go)) {
 			e.preventDefault();
@@ -304,20 +310,27 @@
 		];
 		var grid = el('div', { class: 'hm-book__times', role: 'radiogroup', 'aria-label': day.weekday + ' ' + day.day });
 		var first = true;
+		// Items that take several bookings at once (tables, classes…) show the places left.
+		var shared = day.slots.some(function (s) { return s.left > 1; });
 		groups.forEach(function (group) {
 			if (!group.items.length) { return; }
 			grid.appendChild(el('p', { class: 'hm-book__part' }, group.label));
 			var row = el('div', { class: 'hm-book__row-times' });
 			group.items.forEach(function (slot) {
 				var on = slot.time === self.time;
-				row.appendChild(el('button', {
+				var btn = el('button', {
 					type: 'button',
 					class: 'hm-book__time',
 					role: 'radio',
 					'aria-checked': String(on),
 					'data-time': slot.time,
+					'data-left': slot.left || 1,
 					tabindex: on || (first && !self.time) ? '0' : '-1'
-				}, slot.label));
+				}, slot.label);
+				if (shared) {
+					btn.appendChild(el('small', {}, (t.left || '%s').replace('%s', num(slot.left || 1))));
+				}
+				row.appendChild(btn);
 				first = false;
 			});
 			grid.appendChild(row);
@@ -328,13 +341,38 @@
 	};
 
 	Booking.prototype.pickTime = function (time) {
+		var self = this;
 		this.time = time;
 		$$('[data-time]', this.slotsEl).forEach(function (btn) {
 			var on = btn.getAttribute('data-time') === time;
 			btn.setAttribute('aria-checked', String(on));
 			btn.setAttribute('tabindex', on ? '0' : '-1');
+			if (on) { self.left = parseInt(btn.getAttribute('data-left'), 10) || 1; }
 		});
+		this.setQty(this.qty());
 		this.setContinue(true);
+	};
+
+	// "How many people" stepper, capped by the field's maximum and the places left.
+	Booking.prototype.qtyInput = function () {
+		return this.form ? this.form.elements.qty : null;
+	};
+
+	Booking.prototype.qty = function () {
+		var input = this.qtyInput();
+		return input ? (parseInt(latin(input.value), 10) || 1) : 1;
+	};
+
+	Booking.prototype.setQty = function (value) {
+		var input = this.qtyInput();
+		if (!input) { return; }
+		var max = Math.max(1, Math.min(parseInt(input.getAttribute('data-max'), 10) || 1, this.left || 1));
+		value = Math.max(1, Math.min(max, value));
+		input.value = num(value);
+		$$('[data-qty]', this.form).forEach(function (btn) {
+			var step = parseInt(btn.getAttribute('data-qty'), 10);
+			btn.disabled = step < 0 ? value <= 1 : value >= max;
+		});
 	};
 
 	Booking.prototype.setContinue = function (on) {
@@ -391,6 +429,10 @@
 		$$('[aria-invalid]', form).forEach(function (f) { f.removeAttribute('aria-invalid'); });
 		if (name.value.trim().length < 2) { this.error(t.name, name); return; }
 		if (!mobileOk(mobile.value)) { this.error(t.mobile, mobile); return; }
+		var missing = $$('[required]', form).filter(function (f) {
+			return 'checkbox' === f.type ? !f.checked : !String(f.value || '').trim();
+		})[0];
+		if (missing && missing !== name && missing !== mobile) { this.error(t.required, missing); return; }
 		this.error('');
 
 		var button = $('button[type="submit"]', form);
@@ -407,8 +449,14 @@
 			name: name.value.trim(),
 			mobile: latin(mobile.value),
 			note: form.elements.note ? form.elements.note.value : '',
-			website: form.elements.website ? form.elements.website.value : ''
+			website: form.elements.website ? form.elements.website.value : '',
+			qty: this.qty(),
+			fields: {}
 		};
+		$$('[name^="fields["]', form).forEach(function (f) {
+			var key = f.name.slice(7, -1);
+			body.fields[key] = 'checkbox' === f.type ? f.checked : f.value;
+		});
 		api('nonce').then(function (data) {
 			body.nonce = data.nonce;
 			return api('book', { method: 'POST', body: body });

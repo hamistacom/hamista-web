@@ -13,8 +13,20 @@ defined( 'ABSPATH' ) || exit;
 
 $hamista_user  = isset( $current_user ) && $current_user instanceof WP_User ? $current_user : wp_get_current_user();
 $hamista_name  = '' !== trim( (string) $hamista_user->first_name ) ? $hamista_user->first_name : $hamista_user->display_name;
-$hamista_cards = hamista_account_cards( $hamista_user->ID );
-$hamista_last  = wc_get_orders(
+$hamista_dash  = (array) apply_filters(
+	'hamista/account_dashboard',
+	array(
+		'greeting' => true,
+		'text'     => __( 'Your orders, appointments and account details, all in one place.', 'hamista' ),
+		'cards'    => true,
+		'orders'   => true,
+		'before'   => '',
+		'after'    => '',
+		'replace'  => '',
+	)
+);
+$hamista_cards = ! empty( $hamista_dash['cards'] ) ? hamista_account_cards( $hamista_user->ID ) : array();
+$hamista_last  = empty( $hamista_dash['orders'] ) ? array() : wc_get_orders(
 	array(
 		'customer_id' => $hamista_user->ID,
 		'limit'       => 3,
@@ -25,17 +37,29 @@ $hamista_last  = wc_get_orders(
 ?>
 
 <div class="hm-account-dash">
-	<header class="hm-account-dash__head">
-		<h2>
-			<?php
-			/* translators: %s: first name */
-			echo esc_html( sprintf( __( 'Hello, %s', 'hamista' ), $hamista_name ) );
-			?>
-		</h2>
-		<p><?php esc_html_e( 'Your orders, appointments and account details, all in one place.', 'hamista' ); ?></p>
-	</header>
+	<?php if ( ! empty( $hamista_dash['before'] ) ) : ?>
+		<div class="hm-account-dash__block"><?php echo $hamista_dash['before']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered page or Elementor block. ?></div>
+	<?php endif; ?>
 
-	<?php if ( $hamista_cards ) : ?>
+	<?php if ( ! empty( $hamista_dash['replace'] ) ) : ?>
+		<div class="hm-account-dash__block"><?php echo $hamista_dash['replace']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered page or Elementor block. ?></div>
+	<?php else : ?>
+
+		<?php if ( ! empty( $hamista_dash['greeting'] ) ) : ?>
+		<header class="hm-account-dash__head">
+			<h2>
+				<?php
+				/* translators: %s: first name */
+				echo esc_html( sprintf( __( 'Hello, %s', 'hamista' ), $hamista_name ) );
+				?>
+			</h2>
+			<?php if ( ! empty( $hamista_dash['text'] ) ) : ?>
+				<p><?php echo esc_html( $hamista_dash['text'] ); ?></p>
+			<?php endif; ?>
+		</header>
+	<?php endif; ?>
+
+		<?php if ( $hamista_cards ) : ?>
 		<div class="hm-account-cards">
 			<?php foreach ( $hamista_cards as $hamista_card ) : ?>
 				<a class="hm-account-card" href="<?php echo esc_url( $hamista_card['url'] ?? '#' ); ?>">
@@ -47,6 +71,7 @@ $hamista_last  = wc_get_orders(
 		</div>
 	<?php endif; ?>
 
+		<?php if ( ! empty( $hamista_dash['orders'] ) ) : ?>
 	<section class="hm-account-recent" aria-labelledby="hm-account-recent">
 		<div class="hm-account-recent__head">
 			<h3 id="hm-account-recent"><?php esc_html_e( 'Latest orders', 'hamista' ); ?></h3>
@@ -54,7 +79,7 @@ $hamista_last  = wc_get_orders(
 				<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>"><?php esc_html_e( 'All orders', 'hamista' ); ?></a>
 			<?php endif; ?>
 		</div>
-		<?php if ( $hamista_last ) : ?>
+			<?php if ( $hamista_last ) : ?>
 			<ul class="hm-account-orders">
 				<?php foreach ( $hamista_last as $hamista_order ) : ?>
 					<li>
@@ -79,6 +104,13 @@ $hamista_last  = wc_get_orders(
 			</p>
 		<?php endif; ?>
 	</section>
+	<?php endif; ?>
+
+	<?php endif; ?>
+
+	<?php if ( ! empty( $hamista_dash['after'] ) ) : ?>
+		<div class="hm-account-dash__block"><?php echo $hamista_dash['after']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered page or Elementor block. ?></div>
+	<?php endif; ?>
 </div>
 
 <?php
