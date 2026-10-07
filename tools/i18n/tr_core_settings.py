@@ -315,4 +315,6 @@ T = {
     "Other": "سایر",
     "Voyage": "سفر",
     "Stone white, charcoal and Persian turquoise": "سفید سنگی، زغالی و فیروزه~ای ایرانی",
+    "Azure": "لاجورد",
+    "Cloud white, navy and royal blue": "سفید ابری، سرمه~ای و آبی سلطنتی",
 }

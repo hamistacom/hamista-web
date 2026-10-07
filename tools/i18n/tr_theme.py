@@ -164,4 +164,5 @@ T = {
     "All %s": "همه~ی %s",
     "Book %s": "رزرو %s",
     "Voyage — cinematic travel, turquoise": "سفر — گردشگری سینمایی، فیروزه~ای",
+    "Azure — navy and royal blue, frosted panels": "لاجورد — سرمه~ای و آبی، پنل~های شیشه~ای",
 }

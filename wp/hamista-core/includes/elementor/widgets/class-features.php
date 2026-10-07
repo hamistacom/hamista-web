@@ -184,6 +184,17 @@ class Features extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'lead',
+			array(
+				'label'        => __( 'Feature the first card', 'hamista-core' ),
+				'description'  => __( 'The first card takes a dark fill and, in a grid, the height of two rows.', 'hamista-core' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => '',
+				'condition'    => array( 'layout!' => 'list' ),
+			)
+		);
+		$this->add_control(
 			'icon_style',
 			array(
 				'label'   => __( 'Icon style', 'hamista-core' ),
@@ -205,6 +216,9 @@ class Features extends Widget_Base {
 	protected function render() {
 		$s       = $this->get_settings_for_display();
 		$classes = 'hm-features hm-features--' . sanitize_html_class( $s['layout'] ) . ' hm-features--' . sanitize_html_class( $s['style'] ) . ' hm-features--icon-' . sanitize_html_class( $s['icon_style'] );
+		if ( 'yes' === ( $s['lead'] ?? '' ) && 'list' !== $s['layout'] ) {
+			$classes .= ' hm-features--lead';
+		}
 		echo '<div class="' . esc_attr( $classes ) . '" data-hm-stagger="0.08">';
 		foreach ( $s['items'] as $i => $item ) {
 			$url   = ! empty( $item['link']['url'] ) ? $item['link']['url'] : '';

@@ -117,6 +117,11 @@ return ( static function () {
 							'desc'  => __( 'Stone white, charcoal and Persian turquoise', 'hamista-core' ),
 							'image' => $img . 'kit-voyage.svg',
 						),
+						'azure'      => array(
+							'label' => __( 'Azure', 'hamista-core' ),
+							'desc'  => __( 'Cloud white, navy and royal blue', 'hamista-core' ),
+							'image' => $img . 'kit-azure.svg',
+						),
 					),
 				),
 				'container_width'   => array(

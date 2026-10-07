@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T15:45:08+00:00\n"
+"POT-Creation-Date: 2026-10-07T15:58:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -117,7 +117,11 @@ msgstr ""
 msgid "Voyage — cinematic travel, turquoise"
 msgstr ""
 
-#: inc/assets.php:80
+#: inc/assets.php:43
+msgid "Azure — navy and royal blue, frosted panels"
+msgstr ""
+
+#: inc/assets.php:81
 msgid "Toggle submenu"
 msgstr ""
 

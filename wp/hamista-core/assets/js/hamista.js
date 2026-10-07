@@ -1451,6 +1451,34 @@
 	});
 
 	/* ------------------------------------------------------------------ */
+	/* Search box: swap the first two fields; without a results page, the */
+	/* text fields become a site search.                                  */
+	/* ------------------------------------------------------------------ */
+	H.register('searchbox', function (el) {
+		var swap = el.querySelector('[data-swap]');
+		var controls = $$('.hm-sbox__control input, .hm-sbox__control select', el);
+		if (swap && controls.length > 1) {
+			swap.addEventListener('click', function () {
+				var a = controls[0];
+				var b = controls[1];
+				var v = a.value;
+				a.value = b.value;
+				b.value = v;
+				swap.classList.remove('is-turning');
+				void swap.offsetWidth;
+				swap.classList.add('is-turning');
+			});
+		}
+		var site = el.querySelector('input[name="s"][type="hidden"]');
+		if (site) {
+			el.addEventListener('submit', function () {
+				site.value = controls.filter(function (c) { return 'text' === c.type && c.value.trim(); }).map(function (c) { return c.value.trim(); }).join(' ');
+				controls.forEach(function (c) { c.disabled = true; });
+			});
+		}
+	});
+
+	/* ------------------------------------------------------------------ */
 	/* Showcase hero: slides, index, info cards, film window              */
 	/* ------------------------------------------------------------------ */
 	H.register('showcase', function (el) {

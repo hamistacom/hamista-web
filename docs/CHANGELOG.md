@@ -15,6 +15,10 @@
 - New demo: Rahnavard (ره‌نورد), a slow-travel agency. Cinematic hero, destinations in a horizontal scroll, tour cards that stack while scrolling, a night sky that zooms out, travellers' quotes, journal and an image call to action. Five pages, light and dark.
 - Font library (Typography → Font library): IRANYekan, IRANSansX, Peyda, Pinar (variable), Doran, Ravagh, Lahzeh, Modam, Hamrah and Gramophone, each previewed in its own face. Switch any family off (it leaves the font menus and Elementor) and any weight within it. Pages download only the families and weights they use, including fonts picked inside Elementor widgets.
 - Typography: body text weight and heading weight menus that offer only the weights the chosen font has.
+- New widget: Search box. A row of fields (text with suggestions, list, date in the Persian calendar, count) with options above them and a swap button, sent as parameters to a results page or to the site search. Solid, frosted-glass and outline looks.
+- Features: "feature the first card" (dark fill, two rows tall in a grid). Hero: "columns of light" background detail and properly centred full-bleed layouts.
+- New demo: Parvazyar (پروازیار), a flight-ticket site after the AirLume reference: a sea of clouds at dawn with columns of light, a glass search box over the photo, a featured-card grid, route offers, steps, a night-flight banner, quotes and FAQ.
+- Section classes `hm-pull-up` and `hm-room-below` to lay one section over the edge of the one above.
 - Index numbers on cards and steps follow Persian digits.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
 - Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
@@ -23,6 +27,7 @@
 - Profile, team archive and service templates for the booking module.
 - Redesigned WooCommerce account area: full-width layout, icon menu with Persian labels even without WooCommerce's language pack, dashboard with summary cards and latest orders, monogram instead of Gravatar.
 - New style kit: Voyage. Stone white, charcoal and Persian turquoise, small corners and hairlines.
+- New style kit: Azure. Cloud white, deep navy and royal blue.
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.

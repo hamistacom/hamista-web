@@ -226,9 +226,10 @@ class Hero extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'grid',
 				'options' => array(
-					''     => __( 'None', 'hamista-core' ),
-					'grid' => __( 'Fine grid', 'hamista-core' ),
-					'rule' => __( 'Hairline rules', 'hamista-core' ),
+					''      => __( 'None', 'hamista-core' ),
+					'grid'  => __( 'Fine grid', 'hamista-core' ),
+					'rule'  => __( 'Hairline rules', 'hamista-core' ),
+					'beams' => __( 'Columns of light', 'hamista-core' ),
 				),
 			)
 		);
@@ -283,6 +284,9 @@ class Hero extends Widget_Base {
 		}
 		if ( $s['decor'] ) {
 			$classes[] = 'hm-hero--decor-' . $s['decor'];
+		}
+		if ( 'center' === ( $s['header_align'] ?? '' ) ) {
+			$classes[] = 'hm-hero--centered';
 		}
 		if ( 'full' === $layout ) {
 			$s['title_size'] = $s['title_size'] ? $s['title_size'] : 'xl';

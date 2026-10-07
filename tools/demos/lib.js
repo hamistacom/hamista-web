@@ -134,6 +134,11 @@ const flow = (s) => {
 const imageReveal = (key, s = {}) => w('hm-image-reveal', Object.assign({ image: img(key), ratio: '4-3', reveal: 'clip-up', parallax: px(0.4), frame: '' }, s));
 const counters = (items, s = {}) => w('hm-counters', Object.assign({ items, style: 'plain', duration: 2, grouping: 'yes' }, s));
 const features = (items, s = {}) => w('hm-features', Object.assign({ items, layout: 'grid', style: 'cards', icon_style: 'tile', link_text: '' }, s));
+/** Search box: fields are { label, name, type, placeholder, options (array), icon, max, days }. */
+const searchBox = (fields, s = {}) => w('hm-search-box', Object.assign({ pills: '', pills_name: 'type', swap: 'yes', button: 'جست‌وجو', look: 'solid', align: 'center' }, s, {
+	fields: fields.map((f) => Object.assign({ type: 'text', placeholder: '', icon: '', max: 9, days: 60 }, f, { options: (f.options || []).join('\n') })),
+	action: link(s.action || ''),
+}));
 const steps = (items, s = {}) => w('hm-steps', Object.assign({ items, layout: 'h', cards: 'yes' }, s));
 const tabs = (items, s = {}) => w('hm-tabs', Object.assign({ items, autoplay: 6, media_side: 'end' }, s));
 const faq = (items, s = {}) => w('hm-accordion', Object.assign({ items: items.map(([q, a]) => ({ q, a: '<p>' + a + '</p>' })), first_open: 'yes', single: 'yes', schema: 'yes', style: 'cards' }, s));
@@ -180,6 +185,6 @@ const pageSettings = (o = {}) => Object.assign({ hm_header: o.header || '', hm_f
 module.exports = {
 	reset, uid, img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols,
 	heading, button, buttons, textEditor, spacer, hero, showcase, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
-	imageReveal, counters, features, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
+	imageReveal, counters, features, searchBox, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,
 };
