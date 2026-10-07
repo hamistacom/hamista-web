@@ -588,6 +588,13 @@
 .hm-feature__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .hm-feature__link svg { width: 18px; height: 18px; transition: transform .35s var(--hm-ease); }
 .hm-feature:hover .hm-feature__link .hm-i-arrow { transform: translateX(-4px); }
+/* Card tones (bento panels). Kits tint them with --hm-tone-soft, --hm-tone-warm and --hm-tone-sand. */
+.hm-feature.is-tone-soft { background: var(--hm-tone-soft, var(--hm-accent-soft)); border-color: transparent; }
+.hm-feature.is-tone-warm { background: var(--hm-tone-warm, var(--hm-surface-2)); border-color: transparent; }
+.hm-feature.is-tone-sand { background: var(--hm-tone-sand, var(--hm-sunken)); border-color: transparent; }
+.hm-feature.is-tone-dark { --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .14); --hm-accent-soft: rgba(255, 255, 255, .08); color: var(--hm-inv-fg); background: var(--hm-inv-bg); border-color: transparent; }
+.hm-features--plain .hm-feature[class*="is-tone-"] { padding: clamp(22px, 2.6vw, 34px); border-radius: var(--hm-radius-xl); }
+.hm-feature__figure { margin: 4px 0 -4px; font-family: var(--hm-font-heading); font-size: clamp(2.2rem, 1.6rem + 2.2vw, 3.6rem); font-weight: var(--hm-fw-heading); line-height: 1.1; color: var(--hm-fg); unicode-bidi: plaintext; text-align: start; }
 /* Featured first card: dark fill, and two rows tall in a grid. */
 .hm-features--lead > .hm-feature:first-child {
 	--hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .14); --hm-border-strong: rgba(255, 255, 255, .28); --hm-accent-soft: rgba(255, 255, 255, .07); --hm-accent-ink: var(--hm-accent);

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T16:22:16+00:00\n"
-"PO-Revision-Date: 2026-10-07 16:22+0000\n"
+"POT-Creation-Date: 2026-10-07T16:27:50+00:00\n"
+"PO-Revision-Date: 2026-10-07 16:27+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -130,7 +130,11 @@ msgstr "مرکب — آبی نسخه‌های خطی، کاغذ کهنه و طل
 msgid "Aurum — black, ivory and brushed gold"
 msgstr "زر — سیاه، عاجی و طلای مات"
 
-#: inc/assets.php:83
+#: inc/assets.php:46
+msgid "Coral — teal and coral, soft panels"
+msgstr "مرجان — سبزآبی و مرجانی، پنل‌های ملایم"
+
+#: inc/assets.php:84
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 

@@ -321,4 +321,6 @@ T = {
     "Manuscript blue, parchment and gilt": "آبی نسخه~های خطی، کاغذ کهنه و طلاکاری",
     "Aurum": "زر",
     "Black, ivory and brushed gold": "سیاه، عاجی و طلای مات",
+    "Coral": "مرجان",
+    "Warm white, deep teal and coral": "سفید گرم، سبزآبی تیره و مرجانی",
 }

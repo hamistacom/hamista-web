@@ -167,4 +167,5 @@ T = {
     "Azure — navy and royal blue, frosted panels": "لاجورد — سرمه~ای و آبی، پنل~های شیشه~ای",
     "Ink — manuscript blue, parchment and gilt": "مرکب — آبی نسخه~های خطی، کاغذ کهنه و طلاکاری",
     "Aurum — black, ivory and brushed gold": "زر — سیاه، عاجی و طلای مات",
+    "Coral — teal and coral, soft panels": "مرجان — سبزآبی و مرجانی، پنل~های ملایم",
 }

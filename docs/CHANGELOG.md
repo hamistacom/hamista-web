@@ -24,6 +24,8 @@
 - Hero: "stagger the title lines" (thin, very large type; the first line at one edge, the last at the other). Buttons: a round style with a metallic ring that turns on hover.
 - New demo: Zarrinbal (زرین‌بال), private jet charter after the Aeroluxe reference: rendered gold silk on black, a split thin title, a round metallic button, a gold-lit featured service card, a fleet list, quiet figures and an image call to action. Dark by default, ivory in light mode.
 - The scroll-lit statement follows the kit's weight (`--hm-fw-scrub`).
+- Features: per-card tone (soft accent, soft second colour, soft neutral, dark) and a large figure above the title, for bento panels.
+- New demo: Roshd (رشد), management consulting after the Coquice reference: soft teal and coral bento panels with large figures, a dark figures band, four steps, quotes, a monthly/quarterly pricing table and FAQ.
 - Section classes `hm-pull-up` and `hm-room-below` to lay one section over the edge of the one above.
 - Index numbers on cards and steps follow Persian digits.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
@@ -36,6 +38,7 @@
 - New style kit: Azure. Cloud white, deep navy and royal blue.
 - New style kit: Ink. Manuscript blue, parchment and gilt, square corners and hairlines.
 - New style kit: Aurum. Black, ivory and brushed gold, thin headings and pill buttons.
+- New style kit: Coral. Warm white, deep teal and coral, soft tinted panels.
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.

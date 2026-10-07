@@ -8,7 +8,7 @@ const os = require('os');
 	const b = await chromium.launch();
 	const p = await b.newPage({ deviceScaleFactor: 1, viewport: { width: 900, height: 300 } });
 	const jobs = [];
-	const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['spark', 'agency', 'industrial', 'honey', 'nomad', 'flux', 'rahnavard', 'parvazyar', 'hekmat', 'zarrinbal'];
+	const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['spark', 'agency', 'industrial', 'honey', 'nomad', 'flux', 'rahnavard', 'parvazyar', 'hekmat', 'zarrinbal', 'roshd'];
 	for (const id of ids) {
 		for (const dark of [0, 1]) {
 			await p.goto('file://' + path.join(__dirname, 'logos.html') + `?id=${id}&dark=${dark}`);

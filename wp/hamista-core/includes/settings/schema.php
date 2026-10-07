@@ -132,6 +132,11 @@ return ( static function () {
 							'desc'  => __( 'Black, ivory and brushed gold', 'hamista-core' ),
 							'image' => $img . 'kit-aurum.svg',
 						),
+						'coral'      => array(
+							'label' => __( 'Coral', 'hamista-core' ),
+							'desc'  => __( 'Warm white, deep teal and coral', 'hamista-core' ),
+							'image' => $img . 'kit-coral.svg',
+						),
 					),
 				),
 				'container_width'   => array(

@@ -100,6 +100,29 @@ class Features extends Widget_Base {
 				'return_value' => 'yes',
 			)
 		);
+		$items->add_control(
+			'figure',
+			array(
+				'label'       => __( 'Large figure', 'hamista-core' ),
+				'description' => __( 'Optional, shown large above the title, e.g. 38% or 2×.', 'hamista-core' ),
+				'type'        => Controls_Manager::TEXT,
+			)
+		);
+		$items->add_control(
+			'tone',
+			array(
+				'label'   => __( 'Card tone', 'hamista-core' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => array(
+					''     => __( 'Page colours', 'hamista-core' ),
+					'soft' => __( 'Soft accent', 'hamista-core' ),
+					'warm' => __( 'Soft second colour', 'hamista-core' ),
+					'sand' => __( 'Soft neutral', 'hamista-core' ),
+					'dark' => __( 'Dark', 'hamista-core' ),
+				),
+			)
+		);
 		$this->add_control(
 			'items',
 			array(
@@ -222,7 +245,7 @@ class Features extends Widget_Base {
 		echo '<div class="' . esc_attr( $classes ) . '" data-hm-stagger="0.08">';
 		foreach ( $s['items'] as $i => $item ) {
 			$url   = ! empty( $item['link']['url'] ) ? $item['link']['url'] : '';
-			$class = 'hm-feature' . ( 'cards' === $s['style'] ? ' hm-feature--card hm-bolted' : '' ) . ( 'yes' === $item['wide'] ? ' is-wide' : '' );
+			$class = 'hm-feature' . ( 'cards' === $s['style'] ? ' hm-feature--card hm-bolted' : '' ) . ( 'yes' === $item['wide'] ? ' is-wide' : '' ) . ( ! empty( $item['tone'] ) ? ' is-tone-' . sanitize_html_class( $item['tone'] ) : '' );
 			echo '<article class="' . esc_attr( $class ) . '" data-hm-reveal="up" data-hm-spot>';
 			if ( 'cards' === $s['style'] ) {
 				echo '<span class="hm-vents" aria-hidden="true"><i></i><i></i><i></i></span>';
@@ -239,6 +262,9 @@ class Features extends Widget_Base {
 				echo '<span class="hm-feature__num hm-num">' . esc_html( self::index_label( $i ) ) . '</span>';
 			}
 			echo '</div>';
+			if ( ! empty( $item['figure'] ) ) {
+				echo '<p class="hm-feature__figure hm-num">' . esc_html( $item['figure'] ) . '</p>';
+			}
 			echo '<h3 class="hm-feature__title">' . esc_html( $item['title'] ) . '</h3>';
 			if ( $item['text'] ) {
 				echo '<p class="hm-feature__text">' . esc_html( $item['text'] ) . '</p>';
