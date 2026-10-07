@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-06T19:13:35+00:00\n"
+"POT-Creation-Date: 2026-10-07T00:41:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:445
-#: includes/elementor/class-elementor.php:82
+#: includes/elementor/class-elementor.php:84
 msgid "Hamista"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgid "Extra light"
 msgstr ""
 
 #: includes/admin/class-admin.php:535
-#: includes/settings/schema.php:118
+#: includes/settings/schema.php:123
 msgid "Light"
 msgstr ""
 
@@ -826,7 +826,7 @@ msgid "Remove demo content"
 msgstr ""
 
 #: includes/admin/class-admin.php:631
-#: includes/settings/schema.php:756
+#: includes/settings/schema.php:761
 msgid "Tools"
 msgstr ""
 
@@ -1154,7 +1154,7 @@ msgstr ""
 
 #: includes/auth/class-woocommerce.php:91
 #: includes/elementor/widgets/class-lead-form.php:58
-#: includes/settings/schema.php:626
+#: includes/settings/schema.php:631
 #: templates/auth/account.php:66
 #: templates/auth/form.php:60
 msgid "Mobile number"
@@ -1263,7 +1263,7 @@ msgid "The provider had an internal error. Try again shortly."
 msgstr ""
 
 #: includes/auth/gateways/class-ghasedak.php:27
-#: includes/settings/schema.php:510
+#: includes/settings/schema.php:515
 msgid "Ghasedak"
 msgstr ""
 
@@ -1285,7 +1285,7 @@ msgid "IPPanel"
 msgstr ""
 
 #: includes/auth/gateways/class-kavenegar.php:26
-#: includes/settings/schema.php:506
+#: includes/settings/schema.php:511
 msgid "Kavenegar"
 msgstr ""
 
@@ -1322,7 +1322,7 @@ msgid "The template tag name is invalid."
 msgstr ""
 
 #: includes/auth/gateways/class-melipayamak.php:27
-#: includes/settings/schema.php:507
+#: includes/settings/schema.php:512
 msgid "Melipayamak"
 msgstr ""
 
@@ -1372,7 +1372,7 @@ msgid "The number is on the telecom blacklist."
 msgstr ""
 
 #: includes/auth/gateways/class-smsir.php:27
-#: includes/settings/schema.php:508
+#: includes/settings/schema.php:513
 msgid "SMS.ir"
 msgstr ""
 
@@ -1523,7 +1523,7 @@ msgstr ""
 
 #: includes/elementor/class-page-settings.php:48
 #: includes/layouts/class-layouts.php:120
-#: includes/settings/schema.php:200
+#: includes/settings/schema.php:205
 msgid "Header"
 msgstr ""
 
@@ -1548,7 +1548,7 @@ msgstr ""
 
 #: includes/elementor/class-page-settings.php:62
 #: includes/layouts/class-layouts.php:121
-#: includes/settings/schema.php:322
+#: includes/settings/schema.php:327
 msgid "Footer"
 msgstr ""
 
@@ -1570,6 +1570,7 @@ msgstr ""
 
 #: includes/elementor/class-widget-base.php:101
 #: includes/elementor/class-widget-base.php:217
+#: includes/elementor/widgets/class-flow.php:47
 #: includes/elementor/widgets/class-heading.php:26
 msgid "Heading"
 msgstr ""
@@ -1580,12 +1581,13 @@ msgid "Eyebrow"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:118
+#: includes/elementor/widgets/class-depth.php:66
 #: includes/elementor/widgets/class-features.php:67
 #: includes/elementor/widgets/class-hscroll.php:80
 #: includes/elementor/widgets/class-login.php:67
 #: includes/elementor/widgets/class-posts.php:89
 #: includes/elementor/widgets/class-scroll-path.php:80
-#: includes/elementor/widgets/class-scroll-zoom.php:124
+#: includes/elementor/widgets/class-scroll-zoom.php:137
 #: includes/elementor/widgets/class-stack.php:59
 #: includes/elementor/widgets/class-steps.php:67
 msgid "Title"
@@ -1687,12 +1689,13 @@ msgid "Space below heading"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:350
+#: includes/elementor/widgets/class-depth.php:76
 #: includes/elementor/widgets/class-features.php:75
 #: includes/elementor/widgets/class-hscroll.php:88
 #: includes/elementor/widgets/class-marquee.php:51
 #: includes/elementor/widgets/class-marquee.php:192
 #: includes/elementor/widgets/class-scroll-path.php:88
-#: includes/elementor/widgets/class-scroll-zoom.php:133
+#: includes/elementor/widgets/class-scroll-zoom.php:146
 #: includes/elementor/widgets/class-stack.php:67
 #: includes/elementor/widgets/class-steps.php:75
 #: includes/elementor/widgets/class-text-scrub.php:45
@@ -1734,12 +1737,16 @@ msgid "Section"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:483
+#: includes/elementor/widgets/class-depth.php:151
+#: includes/elementor/widgets/class-flow.php:210
 #: includes/elementor/widgets/class-hero.php:212
 #: includes/elementor/widgets/class-hscroll.php:171
 msgid "Colour scheme"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:487
+#: includes/elementor/widgets/class-depth.php:155
+#: includes/elementor/widgets/class-flow.php:214
 #: includes/elementor/widgets/class-hero.php:216
 #: includes/elementor/widgets/class-hscroll.php:175
 msgid "Page colours"
@@ -1747,12 +1754,15 @@ msgstr ""
 
 #: includes/elementor/class-widget-base.php:488
 #: includes/elementor/widgets/class-cta.php:107
+#: includes/elementor/widgets/class-flow.php:215
 #: includes/elementor/widgets/class-hero.php:217
 #: includes/elementor/widgets/class-hscroll.php:176
 msgid "Soft surface"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:489
+#: includes/elementor/widgets/class-depth.php:156
+#: includes/elementor/widgets/class-flow.php:216
 #: includes/elementor/widgets/class-hero.php:218
 #: includes/elementor/widgets/class-hscroll.php:177
 msgid "Inverted (dark slab)"
@@ -1769,7 +1779,7 @@ msgid "Vertical spacing"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:511
-#: includes/settings/schema.php:91
+#: includes/settings/schema.php:96
 msgid "Content width"
 msgstr ""
 
@@ -1788,7 +1798,7 @@ msgstr ""
 #: includes/elementor/class-widget-base.php:524
 #: includes/elementor/widgets/class-hero.php:263
 #: includes/elementor/widgets/class-lead-form.php:440
-#: includes/settings/schema.php:137
+#: includes/settings/schema.php:142
 msgid "Accent color"
 msgstr ""
 
@@ -1899,7 +1909,7 @@ msgstr ""
 
 #: includes/elementor/widgets/class-contact-form.php:51
 #: includes/forms/class-forms.php:307
-#: includes/settings/schema.php:289
+#: includes/settings/schema.php:294
 msgid "Mobile"
 msgstr ""
 
@@ -1928,6 +1938,7 @@ msgstr ""
 #: includes/elementor/widgets/class-contact-form.php:77
 #: includes/elementor/widgets/class-contact-info.php:59
 #: includes/elementor/widgets/class-counters.php:72
+#: includes/elementor/widgets/class-depth.php:59
 #: includes/elementor/widgets/class-hero.php:100
 #: includes/elementor/widgets/class-hscroll.php:72
 #: includes/elementor/widgets/class-lead-form.php:302
@@ -1943,7 +1954,7 @@ msgstr ""
 #: includes/elementor/widgets/class-pricing.php:106
 #: includes/elementor/widgets/class-stack.php:91
 #: includes/elementor/widgets/class-tabs.php:105
-#: includes/settings/schema.php:274
+#: includes/settings/schema.php:279
 msgid "Button text"
 msgstr ""
 
@@ -2169,6 +2180,8 @@ msgid "Dark slab"
 msgstr ""
 
 #: includes/elementor/widgets/class-cta.php:108
+#: includes/elementor/widgets/class-depth.php:52
+#: includes/elementor/widgets/class-flow.php:65
 #: includes/elementor/widgets/class-hero.php:126
 #: includes/elementor/widgets/class-hero.php:137
 #: includes/elementor/widgets/class-hscroll.php:64
@@ -2197,6 +2210,88 @@ msgstr ""
 
 #: includes/elementor/widgets/class-cta.php:136
 msgid "Inset with rounded corners"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:30
+msgid "Depth Scroll"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:47
+#: includes/elementor/widgets/class-depth.php:84
+msgid "Scenes"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:69
+msgid "A scene title"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:70
+msgid "Wrap words in *asterisks* to highlight them."
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:91
+msgid "It starts *far away*"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:92
+msgid "Every scene arrives from the distance…"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:96
+msgid "Comes *closer*"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:97
+msgid "…holds for a moment…"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:101
+msgid "And passes *through*"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:102
+msgid "…then flies past the camera."
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:109
+#: includes/elementor/widgets/class-features.php:135
+#: includes/elementor/widgets/class-features.php:139
+#: includes/elementor/widgets/class-hero.php:50
+#: includes/elementor/widgets/class-hscroll.php:116
+#: includes/elementor/widgets/class-posts.php:112
+#: includes/elementor/widgets/class-posts.php:116
+#: includes/elementor/widgets/class-steps.php:96
+#: includes/elementor/widgets/class-testimonials.php:109
+#: includes/settings/schema.php:234
+msgid "Layout"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:113
+msgid "Scene layout"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:117
+msgid "Image card with text below"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:118
+msgid "Full-screen image, text on top"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:119
+msgid "Text only, giant type"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:126
+msgid "Scroll per scene"
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:127
+msgid "In screen heights."
+msgstr ""
+
+#: includes/elementor/widgets/class-depth.php:142
+msgid "Background glow"
 msgstr ""
 
 #: includes/elementor/widgets/class-device.php:28
@@ -2305,22 +2400,10 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: includes/elementor/widgets/class-features.php:135
-#: includes/elementor/widgets/class-features.php:139
-#: includes/elementor/widgets/class-hero.php:50
-#: includes/elementor/widgets/class-hscroll.php:116
-#: includes/elementor/widgets/class-posts.php:112
-#: includes/elementor/widgets/class-posts.php:116
-#: includes/elementor/widgets/class-steps.php:96
-#: includes/elementor/widgets/class-testimonials.php:109
-#: includes/settings/schema.php:229
-msgid "Layout"
-msgstr ""
-
 #: includes/elementor/widgets/class-features.php:143
 #: includes/elementor/widgets/class-posts.php:120
 #: includes/elementor/widgets/class-testimonials.php:113
-#: includes/settings/schema.php:400
+#: includes/settings/schema.php:405
 msgid "Grid"
 msgstr ""
 
@@ -2351,6 +2434,112 @@ msgstr ""
 
 #: includes/elementor/widgets/class-features.php:194
 msgid "Soft tile"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:30
+msgid "Floating Elements"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:50
+msgid "In motion"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:51
+msgid "Ideas that *move*"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:57
+#: includes/elementor/widgets/class-hscroll.php:56
+#: includes/elementor/widgets/class-scroll-zoom.php:152
+msgid "Button"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:60
+msgid "Floating elements"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:72
+msgid "Text (when there is no image)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:80
+#: includes/elementor/widgets/class-image-reveal.php:56
+msgid "Shape"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:84
+msgid "Rounded card"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:85
+msgid "Circle"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:86
+msgid "Pill"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:87
+msgid "Tall card"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:92
+msgid "Horizontal position (%)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:93
+msgid "Vertical position (%)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:94
+msgid "Width (px)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:95
+msgid "Depth (closer = faster)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:96
+msgid "Rotation (°)"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:117
+msgid "Show on phones"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:137
+msgid "Elements"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:146
+#: includes/elementor/widgets/class-flow.php:150
+#: includes/settings/schema.php:465
+msgid "Motion"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:154
+msgid "Drift: layers move at different speeds"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:155
+msgid "Converge: fly in and settle"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:156
+msgid "Disperse: fly apart when leaving"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:163
+msgid "Strength"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:178
+msgid "Gentle idle float"
+msgstr ""
+
+#: includes/elementor/widgets/class-flow.php:187
+#: includes/elementor/widgets/class-hero.php:200
+msgid "Height"
 msgstr ""
 
 #: includes/elementor/widgets/class-heading.php:45
@@ -2466,10 +2655,6 @@ msgstr ""
 msgid "Arch"
 msgstr ""
 
-#: includes/elementor/widgets/class-hero.php:200
-msgid "Height"
-msgstr ""
-
 #: includes/elementor/widgets/class-hero.php:204
 msgid "Fit content"
 msgstr ""
@@ -2518,11 +2703,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-hscroll.php:51
 msgid "Keep scrolling — the row moves with you."
-msgstr ""
-
-#: includes/elementor/widgets/class-hscroll.php:56
-#: includes/elementor/widgets/class-scroll-zoom.php:139
-msgid "Button"
 msgstr ""
 
 #: includes/elementor/widgets/class-hscroll.php:74
@@ -2593,10 +2773,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-image-reveal.php:27
 msgid "Image Reveal"
-msgstr ""
-
-#: includes/elementor/widgets/class-image-reveal.php:56
-msgid "Shape"
 msgstr ""
 
 #: includes/elementor/widgets/class-image-reveal.php:60
@@ -3086,7 +3262,7 @@ msgid "Featured first + grid"
 msgstr ""
 
 #: includes/elementor/widgets/class-posts.php:122
-#: includes/settings/schema.php:404
+#: includes/settings/schema.php:409
 msgid "List"
 msgstr ""
 
@@ -3169,7 +3345,7 @@ msgstr ""
 #: includes/elementor/widgets/class-pricing.php:114
 #: includes/elementor/widgets/class-stack.php:98
 #: includes/elementor/widgets/class-tabs.php:112
-#: includes/settings/schema.php:281
+#: includes/settings/schema.php:286
 msgid "Button link"
 msgstr ""
 
@@ -3360,26 +3536,42 @@ msgid "Video URL (optional, mp4/webm)"
 msgstr ""
 
 #: includes/elementor/widgets/class-scroll-zoom.php:76
+msgid "Direction"
+msgstr ""
+
+#: includes/elementor/widgets/class-scroll-zoom.php:80
+msgid "Zoom in: card grows to full screen"
+msgstr ""
+
+#: includes/elementor/widgets/class-scroll-zoom.php:81
+msgid "Zoom out: full screen shrinks to a card"
+msgstr ""
+
+#: includes/elementor/widgets/class-scroll-zoom.php:83
+msgid "With zoom out, the closing message shows first, over the full-screen image."
+msgstr ""
+
+#: includes/elementor/widgets/class-scroll-zoom.php:89
 msgid "Starting size"
 msgstr ""
 
-#: includes/elementor/widgets/class-scroll-zoom.php:91
+#: includes/elementor/widgets/class-scroll-zoom.php:104
 msgid "Starting corner radius"
 msgstr ""
 
-#: includes/elementor/widgets/class-scroll-zoom.php:105
+#: includes/elementor/widgets/class-scroll-zoom.php:118
 msgid "Scroll length"
 msgstr ""
 
-#: includes/elementor/widgets/class-scroll-zoom.php:106
+#: includes/elementor/widgets/class-scroll-zoom.php:119
 msgid "How long the effect lasts, in screen heights."
 msgstr ""
 
-#: includes/elementor/widgets/class-scroll-zoom.php:120
+#: includes/elementor/widgets/class-scroll-zoom.php:133
 msgid "Closing message"
 msgstr ""
 
-#: includes/elementor/widgets/class-scroll-zoom.php:127
+#: includes/elementor/widgets/class-scroll-zoom.php:140
 msgid "Then it ships to *real people*."
 msgstr ""
 
@@ -3408,7 +3600,7 @@ msgid "Surface"
 msgstr ""
 
 #: includes/elementor/widgets/class-stack.php:110
-#: includes/settings/schema.php:122
+#: includes/settings/schema.php:127
 msgid "Dark"
 msgstr ""
 
@@ -3876,652 +4068,656 @@ msgid "Bold and kinetic, violet with acid lime"
 msgstr ""
 
 #: includes/settings/schema.php:78
-msgid "Honey"
+msgid "Flux"
 msgstr ""
 
 #: includes/settings/schema.php:79
-msgid "Warm cream, amber and soft hexagons"
+msgid "Cinematic dark, frosted glass and amber glow"
 msgstr ""
 
 #: includes/settings/schema.php:83
-msgid "Nomad"
+msgid "Honey"
 msgstr ""
 
 #: includes/settings/schema.php:84
+msgid "Warm cream, amber and soft hexagons"
+msgstr ""
+
+#: includes/settings/schema.php:88
+msgid "Nomad"
+msgstr ""
+
+#: includes/settings/schema.php:89
 msgid "Wool, terracotta and kilim patterns"
 msgstr ""
 
-#: includes/settings/schema.php:92
+#: includes/settings/schema.php:97
 msgid "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync."
 msgstr ""
 
-#: includes/settings/schema.php:99
+#: includes/settings/schema.php:104
 msgid "Smooth page transitions"
 msgstr ""
 
-#: includes/settings/schema.php:100
+#: includes/settings/schema.php:105
 msgid "Cross-fades between pages in supporting browsers. No JavaScript, no delay."
 msgstr ""
 
-#: includes/settings/schema.php:102
+#: includes/settings/schema.php:107
 msgid "Back-to-top button"
 msgstr ""
 
-#: includes/settings/schema.php:104
+#: includes/settings/schema.php:109
 msgid "Breadcrumbs"
 msgstr ""
 
-#: includes/settings/schema.php:105
+#: includes/settings/schema.php:110
 msgid "Uses Yoast SEO or Rank Math breadcrumbs when they are enabled."
 msgstr ""
 
-#: includes/settings/schema.php:110
+#: includes/settings/schema.php:115
 msgid "Colors & dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:115
+#: includes/settings/schema.php:120
 msgid "Default color scheme"
 msgstr ""
 
-#: includes/settings/schema.php:126
+#: includes/settings/schema.php:131
 msgid "Follow device"
 msgstr ""
 
-#: includes/settings/schema.php:132
+#: includes/settings/schema.php:137
 msgid "Let visitors switch light/dark"
 msgstr ""
 
-#: includes/settings/schema.php:133
+#: includes/settings/schema.php:138
 msgid "Shows the toggle in the header and remembers each visitor's choice."
 msgstr ""
 
-#: includes/settings/schema.php:138
+#: includes/settings/schema.php:143
 msgid "Buttons, links and highlights. Leave empty to use the style kit's color."
 msgstr ""
 
-#: includes/settings/schema.php:144
+#: includes/settings/schema.php:149
 msgid "Accent in dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:145
+#: includes/settings/schema.php:150
 msgid "Optional. A slightly brighter tone usually reads better on dark."
 msgstr ""
 
-#: includes/settings/schema.php:152
+#: includes/settings/schema.php:157
 msgid "Typography"
 msgstr ""
 
-#: includes/settings/schema.php:154
+#: includes/settings/schema.php:159
 msgid "All fonts are served from your own site — nothing loads from Google."
 msgstr ""
 
-#: includes/settings/schema.php:158
+#: includes/settings/schema.php:163
 msgid "Font files"
 msgstr ""
 
-#: includes/settings/schema.php:159
+#: includes/settings/schema.php:164
 msgid "Upload your licensed font files (woff2 recommended). The weight is detected from each file name, e.g. YekanBakhFaNum-Bold.woff2 → 700. Use the family names \"Yekan Bakh\" and \"Digits\" to replace the theme defaults."
 msgstr ""
 
-#: includes/settings/schema.php:163
+#: includes/settings/schema.php:168
 msgid "Body font"
 msgstr ""
 
-#: includes/settings/schema.php:169
+#: includes/settings/schema.php:174
 msgid "Heading font"
 msgstr ""
 
-#: includes/settings/schema.php:175
+#: includes/settings/schema.php:180
 msgid "Numbers font"
 msgstr ""
 
-#: includes/settings/schema.php:176
+#: includes/settings/schema.php:181
 msgid "Used for counters, prices, dates and codes."
 msgstr ""
 
-#: includes/settings/schema.php:182
+#: includes/settings/schema.php:187
 msgid "Base font size"
 msgstr ""
 
-#: includes/settings/schema.php:190
+#: includes/settings/schema.php:195
 msgid "Persian digits"
 msgstr ""
 
-#: includes/settings/schema.php:191
+#: includes/settings/schema.php:196
 msgid "Prefer FaNum font files and show numbers as ۱۲۳ in theme output."
 msgstr ""
 
-#: includes/settings/schema.php:194
+#: includes/settings/schema.php:199
 msgid "Solar Hijri (Jalali) dates"
 msgstr ""
 
-#: includes/settings/schema.php:195
+#: includes/settings/schema.php:200
 msgid "Shows post and comment dates in the Persian calendar on Persian sites. Skipped automatically if WP-Parsidate is active."
 msgstr ""
 
-#: includes/settings/schema.php:205
+#: includes/settings/schema.php:210
 msgid "Header source"
 msgstr ""
 
-#: includes/settings/schema.php:206
+#: includes/settings/schema.php:211
 msgid "Design your own header with Elementor in Hamista → Templates, then pick it here."
 msgstr ""
 
-#: includes/settings/schema.php:211
-#: includes/settings/schema.php:212
+#: includes/settings/schema.php:216
+#: includes/settings/schema.php:217
 msgid "Logo"
 msgstr ""
 
-#: includes/settings/schema.php:217
+#: includes/settings/schema.php:222
 msgid "Logo for dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:222
+#: includes/settings/schema.php:227
 msgid "Logo height"
 msgstr ""
 
-#: includes/settings/schema.php:230
+#: includes/settings/schema.php:235
 msgid "Built-in header"
 msgstr ""
 
-#: includes/settings/schema.php:233
+#: includes/settings/schema.php:238
 msgid "Menu in the middle"
 msgstr ""
 
-#: includes/settings/schema.php:237
+#: includes/settings/schema.php:242
 msgid "Menu beside the logo"
 msgstr ""
 
-#: includes/settings/schema.php:241
+#: includes/settings/schema.php:246
 msgid "Centered logo"
 msgstr ""
 
-#: includes/settings/schema.php:248
+#: includes/settings/schema.php:253
 msgid "Sticky header"
 msgstr ""
 
-#: includes/settings/schema.php:252
+#: includes/settings/schema.php:257
 msgid "Hide while scrolling down"
 msgstr ""
 
-#: includes/settings/schema.php:253
+#: includes/settings/schema.php:258
 msgid "Gives content more room; reappears as soon as visitors scroll up."
 msgstr ""
 
-#: includes/settings/schema.php:260
+#: includes/settings/schema.php:265
 msgid "Search button"
 msgstr ""
 
-#: includes/settings/schema.php:264
+#: includes/settings/schema.php:269
 msgid "Account button"
 msgstr ""
 
-#: includes/settings/schema.php:268
+#: includes/settings/schema.php:273
 msgid "Cart button"
 msgstr ""
 
-#: includes/settings/schema.php:275
+#: includes/settings/schema.php:280
 msgid "e.g. Get started"
 msgstr ""
 
-#: includes/settings/schema.php:287
+#: includes/settings/schema.php:292
 msgid "Mobile action bar"
 msgstr ""
 
-#: includes/settings/schema.php:288
+#: includes/settings/schema.php:293
 msgid "A bar fixed to the bottom of phone screens, within thumb reach: one main button plus call and WhatsApp shortcuts."
 msgstr ""
 
-#: includes/settings/schema.php:293
+#: includes/settings/schema.php:298
 msgid "Main button text"
 msgstr ""
 
-#: includes/settings/schema.php:294
+#: includes/settings/schema.php:299
 msgid "e.g. Free consultation"
 msgstr ""
 
-#: includes/settings/schema.php:300
+#: includes/settings/schema.php:305
 msgid "Main button link"
 msgstr ""
 
-#: includes/settings/schema.php:307
+#: includes/settings/schema.php:312
 msgid "Phone number"
 msgstr ""
 
-#: includes/settings/schema.php:314
+#: includes/settings/schema.php:319
 msgid "WhatsApp number"
 msgstr ""
 
-#: includes/settings/schema.php:327
+#: includes/settings/schema.php:332
 msgid "Footer source"
 msgstr ""
 
-#: includes/settings/schema.php:328
+#: includes/settings/schema.php:333
 msgid "Design your own footer with Elementor in Hamista → Templates, then pick it here."
 msgstr ""
 
-#: includes/settings/schema.php:333
+#: includes/settings/schema.php:338
 msgid "About text"
 msgstr ""
 
-#: includes/settings/schema.php:338
+#: includes/settings/schema.php:343
 msgid "Widget columns"
 msgstr ""
 
-#: includes/settings/schema.php:339
+#: includes/settings/schema.php:344
 msgid "Fill them in Appearance → Widgets (Footer column 1–4)."
 msgstr ""
 
-#: includes/settings/schema.php:351
+#: includes/settings/schema.php:356
 msgid "Social links"
 msgstr ""
 
-#: includes/settings/schema.php:352
+#: includes/settings/schema.php:357
 msgid "Add link"
 msgstr ""
 
-#: includes/settings/schema.php:356
+#: includes/settings/schema.php:361
 msgid "Network"
 msgstr ""
 
-#: includes/settings/schema.php:372
+#: includes/settings/schema.php:377
 msgid "Profile URL"
 msgstr ""
 
-#: includes/settings/schema.php:380
+#: includes/settings/schema.php:385
 msgid "Copyright line"
 msgstr ""
 
-#: includes/settings/schema.php:381
+#: includes/settings/schema.php:386
 msgid "Use {year} for the current year."
 msgstr ""
 
-#: includes/settings/schema.php:382
+#: includes/settings/schema.php:387
 msgid "© {year} Your brand. All rights reserved."
 msgstr ""
 
-#: includes/settings/schema.php:386
+#: includes/settings/schema.php:391
 msgid "Large wordmark at the bottom"
 msgstr ""
 
-#: includes/settings/schema.php:392
+#: includes/settings/schema.php:397
 msgid "Blog"
 msgstr ""
 
-#: includes/settings/schema.php:397
+#: includes/settings/schema.php:402
 msgid "Archive layout"
 msgstr ""
 
-#: includes/settings/schema.php:411
+#: includes/settings/schema.php:416
 msgid "Grid columns"
 msgstr ""
 
-#: includes/settings/schema.php:420
+#: includes/settings/schema.php:425
 msgid "Feature the newest post"
 msgstr ""
 
-#: includes/settings/schema.php:423
+#: includes/settings/schema.php:428
 msgid "Sidebar on archives"
 msgstr ""
 
-#: includes/settings/schema.php:425
+#: includes/settings/schema.php:430
 msgid "Reading time"
 msgstr ""
 
-#: includes/settings/schema.php:426
+#: includes/settings/schema.php:431
 msgid "Single post"
 msgstr ""
 
-#: includes/settings/schema.php:428
+#: includes/settings/schema.php:433
 msgid "Reading progress bar"
 msgstr ""
 
-#: includes/settings/schema.php:429
+#: includes/settings/schema.php:434
 msgid "Share buttons"
 msgstr ""
 
-#: includes/settings/schema.php:430
+#: includes/settings/schema.php:435
 msgid "Author box"
 msgstr ""
 
-#: includes/settings/schema.php:431
+#: includes/settings/schema.php:436
 msgid "Previous / next post"
 msgstr ""
 
-#: includes/settings/schema.php:432
+#: includes/settings/schema.php:437
 msgid "Related posts"
 msgstr ""
 
-#: includes/settings/schema.php:436
+#: includes/settings/schema.php:441
 msgid "Shop"
 msgstr ""
 
-#: includes/settings/schema.php:442
+#: includes/settings/schema.php:447
 msgid "Products per row"
 msgstr ""
 
-#: includes/settings/schema.php:451
+#: includes/settings/schema.php:456
 msgid "Shop sidebar"
 msgstr ""
 
-#: includes/settings/schema.php:452
+#: includes/settings/schema.php:457
 msgid "Add filters in Appearance → Widgets → Shop sidebar."
 msgstr ""
 
-#: includes/settings/schema.php:455
+#: includes/settings/schema.php:460
 msgid "Show second image on hover"
 msgstr ""
 
-#: includes/settings/schema.php:460
-msgid "Motion"
-msgstr ""
-
-#: includes/settings/schema.php:462
+#: includes/settings/schema.php:467
 msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
 msgstr ""
 
-#: includes/settings/schema.php:465
+#: includes/settings/schema.php:470
 msgid "Smooth scrolling"
 msgstr ""
 
-#: includes/settings/schema.php:466
+#: includes/settings/schema.php:471
 msgid "Inertia scrolling for mouse wheels. Touch devices keep native scrolling."
 msgstr ""
 
-#: includes/settings/schema.php:470
+#: includes/settings/schema.php:475
 msgid "Scroll smoothness"
 msgstr ""
 
-#: includes/settings/schema.php:471
+#: includes/settings/schema.php:476
 msgid "Lower is silkier, higher is snappier."
 msgstr ""
 
-#: includes/settings/schema.php:478
+#: includes/settings/schema.php:483
 msgid "Entrance animations"
 msgstr ""
 
-#: includes/settings/schema.php:479
+#: includes/settings/schema.php:484
 msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
 msgstr ""
 
-#: includes/settings/schema.php:482
+#: includes/settings/schema.php:487
 msgid "Animations on phones"
 msgstr ""
 
-#: includes/settings/schema.php:485
+#: includes/settings/schema.php:490
 msgid "Magnetic buttons"
 msgstr ""
 
-#: includes/settings/schema.php:486
+#: includes/settings/schema.php:491
 msgid "Buttons lean slightly toward the cursor."
 msgstr ""
 
-#: includes/settings/schema.php:489
+#: includes/settings/schema.php:494
 msgid "Custom cursor"
 msgstr ""
 
-#: includes/settings/schema.php:490
+#: includes/settings/schema.php:495
 msgid "A soft follower dot that grows over links. Desktop only."
 msgstr ""
 
-#: includes/settings/schema.php:495
+#: includes/settings/schema.php:500
 msgid "Login & SMS"
 msgstr ""
 
-#: includes/settings/schema.php:497
+#: includes/settings/schema.php:502
 msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
 msgstr ""
 
-#: includes/settings/schema.php:499
+#: includes/settings/schema.php:504
 msgid "Enable mobile login (OTP)"
 msgstr ""
 
-#: includes/settings/schema.php:502
-#: includes/settings/schema.php:503
+#: includes/settings/schema.php:507
+#: includes/settings/schema.php:508
 msgid "SMS provider"
 msgstr ""
 
-#: includes/settings/schema.php:505
+#: includes/settings/schema.php:510
 msgid "Test mode (no SMS, code shown to admins)"
 msgstr ""
 
-#: includes/settings/schema.php:509
+#: includes/settings/schema.php:514
 msgid "IPPanel / Farazsms"
 msgstr ""
 
-#: includes/settings/schema.php:511
+#: includes/settings/schema.php:516
 msgid "Custom HTTP API"
 msgstr ""
 
-#: includes/settings/schema.php:517
-#: includes/settings/schema.php:546
-#: includes/settings/schema.php:563
-#: includes/settings/schema.php:586
+#: includes/settings/schema.php:522
+#: includes/settings/schema.php:551
+#: includes/settings/schema.php:568
+#: includes/settings/schema.php:591
 msgid "API key"
 msgstr ""
 
-#: includes/settings/schema.php:522
+#: includes/settings/schema.php:527
 msgid "Verify template name"
 msgstr ""
 
-#: includes/settings/schema.php:523
+#: includes/settings/schema.php:528
 msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
 msgstr ""
 
-#: includes/settings/schema.php:528
+#: includes/settings/schema.php:533
 msgid "Username"
 msgstr ""
 
-#: includes/settings/schema.php:534
+#: includes/settings/schema.php:539
 msgid "Password / API key"
 msgstr ""
 
-#: includes/settings/schema.php:540
+#: includes/settings/schema.php:545
 msgid "Pattern (bodyId)"
 msgstr ""
 
-#: includes/settings/schema.php:541
+#: includes/settings/schema.php:546
 msgid "Shared-line pattern ID with one variable for the code."
 msgstr ""
 
-#: includes/settings/schema.php:551
+#: includes/settings/schema.php:556
 msgid "Template ID"
 msgstr ""
 
-#: includes/settings/schema.php:557
+#: includes/settings/schema.php:562
 msgid "Parameter name"
 msgstr ""
 
-#: includes/settings/schema.php:568
+#: includes/settings/schema.php:573
 msgid "Pattern code"
 msgstr ""
 
-#: includes/settings/schema.php:574
+#: includes/settings/schema.php:579
 msgid "Sender number"
 msgstr ""
 
-#: includes/settings/schema.php:581
+#: includes/settings/schema.php:586
 msgid "Variable name"
 msgstr ""
 
-#: includes/settings/schema.php:591
+#: includes/settings/schema.php:596
 msgid "Template name"
 msgstr ""
 
-#: includes/settings/schema.php:596
+#: includes/settings/schema.php:601
 msgid "Endpoint URL"
 msgstr ""
 
-#: includes/settings/schema.php:597
+#: includes/settings/schema.php:602
 msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
 msgstr ""
 
-#: includes/settings/schema.php:602
+#: includes/settings/schema.php:607
 msgid "Method"
 msgstr ""
 
-#: includes/settings/schema.php:611
+#: includes/settings/schema.php:616
 msgid "Headers (one per line)"
 msgstr ""
 
-#: includes/settings/schema.php:617
+#: includes/settings/schema.php:622
 msgid "Request body"
 msgstr ""
 
-#: includes/settings/schema.php:622
+#: includes/settings/schema.php:627
 msgid "Send a test code"
 msgstr ""
 
-#: includes/settings/schema.php:623
+#: includes/settings/schema.php:628
 msgid "Save first, then send a code to your own number to check the provider settings."
 msgstr ""
 
-#: includes/settings/schema.php:625
+#: includes/settings/schema.php:630
 msgid "Send test SMS"
 msgstr ""
 
-#: includes/settings/schema.php:631
+#: includes/settings/schema.php:636
 msgid "Code length"
 msgstr ""
 
-#: includes/settings/schema.php:632
+#: includes/settings/schema.php:637
 msgid "Behaviour"
 msgstr ""
 
-#: includes/settings/schema.php:643
+#: includes/settings/schema.php:648
 msgid "Code lifetime"
 msgstr ""
 
-#: includes/settings/schema.php:647
-#: includes/settings/schema.php:657
+#: includes/settings/schema.php:652
+#: includes/settings/schema.php:662
 msgid "sec"
 msgstr ""
 
-#: includes/settings/schema.php:653
+#: includes/settings/schema.php:658
 msgid "Wait before resending"
 msgstr ""
 
-#: includes/settings/schema.php:661
+#: includes/settings/schema.php:666
 msgid "Create accounts for new numbers"
 msgstr ""
 
-#: includes/settings/schema.php:665
+#: includes/settings/schema.php:670
 msgid "Ask new users for their name"
 msgstr ""
 
-#: includes/settings/schema.php:669
+#: includes/settings/schema.php:674
 msgid "Also allow password login"
 msgstr ""
 
-#: includes/settings/schema.php:674
+#: includes/settings/schema.php:679
 msgid "Login page"
 msgstr ""
 
-#: includes/settings/schema.php:675
+#: includes/settings/schema.php:680
 msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
 msgstr ""
 
-#: includes/settings/schema.php:677
+#: includes/settings/schema.php:682
 msgid "Pages & redirects"
 msgstr ""
 
-#: includes/settings/schema.php:682
+#: includes/settings/schema.php:687
 msgid "After login, go to"
 msgstr ""
 
-#: includes/settings/schema.php:683
+#: includes/settings/schema.php:688
 msgid "Leave empty to return to the previous page"
 msgstr ""
 
-#: includes/settings/schema.php:687
+#: includes/settings/schema.php:692
 msgid "Use mobile login on WooCommerce account & checkout"
 msgstr ""
 
-#: includes/settings/schema.php:692
+#: includes/settings/schema.php:697
 msgid "Add mobile login to wp-login.php"
 msgstr ""
 
-#: includes/settings/schema.php:698
+#: includes/settings/schema.php:703
 msgid "Performance"
 msgstr ""
 
-#: includes/settings/schema.php:700
+#: includes/settings/schema.php:705
 msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
 msgstr ""
 
-#: includes/settings/schema.php:703
+#: includes/settings/schema.php:708
 msgid "Block Google Fonts"
 msgstr ""
 
-#: includes/settings/schema.php:704
+#: includes/settings/schema.php:709
 msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
 msgstr ""
 
-#: includes/settings/schema.php:706
+#: includes/settings/schema.php:711
 msgid "Remove emoji script"
 msgstr ""
 
-#: includes/settings/schema.php:707
+#: includes/settings/schema.php:712
 msgid "Remove oEmbed discovery script"
 msgstr ""
 
-#: includes/settings/schema.php:708
+#: includes/settings/schema.php:713
 msgid "Skip Dashicons for visitors"
 msgstr ""
 
-#: includes/settings/schema.php:710
+#: includes/settings/schema.php:715
 msgid "Skip block-editor CSS on Elementor pages"
 msgstr ""
 
-#: includes/settings/schema.php:713
+#: includes/settings/schema.php:718
 msgid "Load WooCommerce cart scripts only where needed"
 msgstr ""
 
-#: includes/settings/schema.php:717
+#: includes/settings/schema.php:722
 msgid "Prioritise the hero image"
 msgstr ""
 
-#: includes/settings/schema.php:718
+#: includes/settings/schema.php:723
 msgid "Loads the first large image of each page eagerly with high priority."
 msgstr ""
 
-#: includes/settings/schema.php:721
+#: includes/settings/schema.php:726
 msgid "Remove jQuery Migrate"
 msgstr ""
 
-#: includes/settings/schema.php:722
+#: includes/settings/schema.php:727
 msgid "Only if your plugins are up to date."
 msgstr ""
 
-#: includes/settings/schema.php:725
+#: includes/settings/schema.php:730
 msgid "Slow down the Heartbeat API"
 msgstr ""
 
-#: includes/settings/schema.php:728
+#: includes/settings/schema.php:733
 msgid "Disable XML-RPC"
 msgstr ""
 
-#: includes/settings/schema.php:729
+#: includes/settings/schema.php:734
 msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
 msgstr ""
 
-#: includes/settings/schema.php:734
+#: includes/settings/schema.php:739
 msgid "Custom code"
 msgstr ""
 
-#: includes/settings/schema.php:740
+#: includes/settings/schema.php:745
 msgid "Custom CSS"
 msgstr ""
 
-#: includes/settings/schema.php:745
+#: includes/settings/schema.php:750
 msgid "Code in <head>"
 msgstr ""
 
-#: includes/settings/schema.php:746
+#: includes/settings/schema.php:751
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr ""
 
-#: includes/settings/schema.php:751
+#: includes/settings/schema.php:756
 msgid "Code before </body>"
 msgstr ""
 

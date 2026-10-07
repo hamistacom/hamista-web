@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-06T19:13:35+00:00\n"
-"PO-Revision-Date: 2026-10-06 19:18+0000\n"
+"POT-Creation-Date: 2026-10-07T00:41:38+00:00\n"
+"PO-Revision-Date: 2026-10-07 00:42+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -77,14 +77,18 @@ msgid "Pulse — bold agency"
 msgstr "تپش — جسور و آژانسی"
 
 #: inc/assets.php:39
+msgid "Flux — cinematic, glass and glow"
+msgstr "سیال — سینمایی، شیشه و درخشش"
+
+#: inc/assets.php:40
 msgid "Honey — warm and natural"
 msgstr "عسل — گرم و طبیعی"
 
-#: inc/assets.php:40
+#: inc/assets.php:41
 msgid "Nomad — handwoven, earthy"
 msgstr "ایلیاتی — دست‌بافت و خاکی"
 
-#: inc/assets.php:78
+#: inc/assets.php:79
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 
