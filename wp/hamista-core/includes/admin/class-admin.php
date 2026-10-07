@@ -243,7 +243,7 @@ class Admin {
 	 *
 	 * @return string CSS, or '' to fall back to the system font.
 	 */
-	private static function font_css() {
+	public static function font_css() {
 		$dir = get_template_directory() . '/assets/fonts/vazirmatn/';
 		if ( ! file_exists( $dir . 'vazirmatn-arabic.woff2' ) ) {
 			return '';

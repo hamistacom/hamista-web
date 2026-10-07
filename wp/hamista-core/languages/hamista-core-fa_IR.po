@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T06:34:30+00:00\n"
-"PO-Revision-Date: 2026-10-07 06:34+0000\n"
+"POT-Creation-Date: 2026-10-07T07:06:41+00:00\n"
+"PO-Revision-Date: 2026-10-07 07:06+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -36,7 +36,7 @@ msgstr "ویجت‌های المنتور، موتور انیمیشن بدون و
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:445
-#: includes/elementor/class-elementor.php:84
+#: includes/elementor/class-elementor.php:86
 msgid "Hamista"
 msgstr "هامیستا"
 
@@ -321,12 +321,14 @@ msgstr "یک کد رنگ هگز مثل #0052FF وارد کنید."
 #: includes/admin/class-admin.php:498
 #: includes/elementor/widgets/class-login.php:96
 #: includes/elementor/widgets/class-products.php:74
+#: includes/shop/class-product-card.php:71
+#: includes/shop/class-product-query.php:79
 msgid "Show"
 msgstr "نمایش"
 
 #: includes/admin/class-admin.php:499
 #: includes/elementor/widgets/class-login.php:97
-#: includes/elementor/widgets/class-testimonials.php:86
+#: includes/elementor/widgets/class-testimonials.php:89
 msgid "Hide"
 msgstr "پنهان"
 
@@ -456,6 +458,7 @@ msgstr "وزن"
 #: includes/elementor/widgets/class-accordion.php:107
 #: includes/elementor/widgets/class-counters.php:115
 #: includes/elementor/widgets/class-features.php:152
+#: includes/elementor/widgets/class-product-categories.php:89
 msgid "Style"
 msgstr "سبک"
 
@@ -501,6 +504,7 @@ msgstr "معمولی"
 #: includes/elementor/class-widget-base.php:503
 #: includes/elementor/widgets/class-hscroll.php:125
 #: includes/elementor/widgets/class-marquee.php:104
+#: includes/elementor/widgets/class-stories.php:124
 #: includes/elementor/widgets/class-text-scrub.php:70
 msgid "Medium"
 msgstr "متوسط"
@@ -1408,14 +1412,88 @@ msgstr "نام پارامتر با پترن مطابقت ندارد."
 msgid "Test mode"
 msgstr "حالت آزمایشی"
 
-#: includes/elementor/class-motion.php:46
-msgid "Hamista Motion"
-msgstr "انیمیشن هامیستا"
+#: includes/elementor/class-carousel.php:41
+#: includes/elementor/class-carousel.php:45
+#: includes/elementor/widgets/class-depth.php:109
+#: includes/elementor/widgets/class-features.php:135
+#: includes/elementor/widgets/class-features.php:139
+#: includes/elementor/widgets/class-hero.php:50
+#: includes/elementor/widgets/class-hscroll.php:116
+#: includes/elementor/widgets/class-posts.php:115
+#: includes/elementor/widgets/class-posts.php:119
+#: includes/elementor/widgets/class-product-deal.php:65
+#: includes/elementor/widgets/class-steps.php:96
+#: includes/elementor/widgets/class-team.php:104
+#: includes/elementor/widgets/class-testimonials.php:112
+#: includes/settings/schema.php:268
+msgid "Layout"
+msgstr "چیدمان"
 
-#: includes/elementor/class-motion.php:54
-msgid "Entrance"
-msgstr "انیمیشن ورود"
+#: includes/elementor/class-carousel.php:51
+#: includes/elementor/widgets/class-posts.php:124
+#: includes/elementor/widgets/class-team.php:109
+#: includes/elementor/widgets/class-testimonials.php:117
+msgid "Carousel"
+msgstr "اسلایدر"
 
+#: includes/elementor/class-carousel.php:55
+#: includes/elementor/widgets/class-features.php:143
+#: includes/elementor/widgets/class-posts.php:123
+#: includes/elementor/widgets/class-team.php:108
+#: includes/elementor/widgets/class-testimonials.php:116
+#: includes/settings/schema.php:442
+msgid "Grid"
+msgstr "شبکه‌ای"
+
+#: includes/elementor/class-carousel.php:64
+#: includes/elementor/widgets/class-counters.php:128
+#: includes/elementor/widgets/class-features.php:164
+#: includes/elementor/widgets/class-posts.php:134
+#: includes/elementor/widgets/class-products.php:109
+#: includes/elementor/widgets/class-team.php:116
+#: includes/elementor/widgets/class-testimonials.php:127
+msgid "Columns"
+msgstr "ستون‌ها"
+
+#: includes/elementor/class-carousel.php:101
+msgid "Items in view"
+msgstr "تعداد آیتم در دید"
+
+#: includes/elementor/class-carousel.php:102
+msgid "Decimals show part of the next item, which tells visitors there is more to swipe."
+msgstr "با عدد اعشاری، بخشی از آیتم بعدی هم دیده می‌شود و بازدیدکننده می‌فهمد که می‌تواند ورق بزند."
+
+#: includes/elementor/class-carousel.php:117
+msgid "Gap"
+msgstr "فاصله"
+
+#: includes/elementor/class-carousel.php:136
+#: includes/elementor/widgets/class-slider.php:175
+msgid "Arrows"
+msgstr "فلش‌ها"
+
+#: includes/elementor/class-carousel.php:140
+#: includes/elementor/class-page-settings.php:55
+#: includes/elementor/class-page-settings.php:67
+#: includes/elementor/widgets/class-slider.php:179
+msgid "Hidden"
+msgstr "پنهان"
+
+#: includes/elementor/class-carousel.php:141
+msgid "Beside the heading"
+msgstr "کنار تیتر"
+
+#: includes/elementor/class-carousel.php:142
+#: includes/elementor/widgets/class-slider.php:180
+msgid "On the sides"
+msgstr "دو طرف"
+
+#: includes/elementor/class-carousel.php:150
+#: includes/elementor/widgets/class-slider.php:187
+msgid "Progress"
+msgstr "نشانگر پیشرفت"
+
+#: includes/elementor/class-carousel.php:154
 #: includes/elementor/class-motion.php:58
 #: includes/elementor/class-widget-base.php:200
 #: includes/elementor/class-widget-base.php:501
@@ -1426,8 +1504,79 @@ msgstr "انیمیشن ورود"
 #: includes/elementor/widgets/class-image-reveal.php:81
 #: includes/elementor/widgets/class-image-reveal.php:115
 #: includes/elementor/widgets/class-marquee.php:89
+#: includes/elementor/widgets/class-slider.php:191
 msgid "None"
 msgstr "هیچ‌کدام"
+
+#: includes/elementor/class-carousel.php:155
+#: includes/elementor/widgets/class-slider.php:192
+msgid "Dots"
+msgstr "نقطه‌ها"
+
+#: includes/elementor/class-carousel.php:156
+#: includes/elementor/widgets/class-hscroll.php:162
+#: includes/elementor/widgets/class-slider.php:193
+msgid "Progress bar"
+msgstr "نوار پیشرفت"
+
+#: includes/elementor/class-carousel.php:164
+#: includes/elementor/widgets/class-slider.php:200
+msgid "Autoplay"
+msgstr "پخش خودکار"
+
+#: includes/elementor/class-carousel.php:168
+#: includes/elementor/widgets/class-slider.php:204
+msgid "Off"
+msgstr "خاموش"
+
+#: includes/elementor/class-carousel.php:169
+#: includes/elementor/widgets/class-slider.php:205
+msgid "Every 4 seconds"
+msgstr "هر ۴ ثانیه"
+
+#: includes/elementor/class-carousel.php:170
+#: includes/elementor/widgets/class-slider.php:206
+msgid "Every 6 seconds"
+msgstr "هر ۶ ثانیه"
+
+#: includes/elementor/class-carousel.php:171
+#: includes/elementor/widgets/class-slider.php:207
+msgid "Every 8 seconds"
+msgstr "هر ۸ ثانیه"
+
+#: includes/elementor/class-carousel.php:173
+msgid "Pauses while the pointer is over it, while it is off screen and for visitors who prefer reduced motion."
+msgstr "وقتی نشانگر ماوس رویش است، وقتی در صفحه دیده نمی‌شود و برای کسانی که «کاهش حرکت» را در سیستم‌شان روشن کرده‌اند، متوقف می‌ماند."
+
+#: includes/elementor/class-carousel.php:190
+msgid "Previous"
+msgstr "قبلی"
+
+#: includes/elementor/class-carousel.php:191
+#: includes/elementor/widgets/class-lead-form.php:339
+#: includes/elementor/widgets/class-lead-form.php:491
+msgid "Next"
+msgstr "بعدی"
+
+#: includes/elementor/class-carousel.php:235
+msgid "\"View all\" text"
+msgstr "متن «مشاهده‌ی همه»"
+
+#: includes/elementor/class-carousel.php:237
+msgid "View all"
+msgstr "مشاهده‌ی همه"
+
+#: includes/elementor/class-carousel.php:244
+msgid "\"View all\" link"
+msgstr "لینک «مشاهده‌ی همه»"
+
+#: includes/elementor/class-motion.php:46
+msgid "Hamista Motion"
+msgstr "انیمیشن هامیستا"
+
+#: includes/elementor/class-motion.php:54
+msgid "Entrance"
+msgstr "انیمیشن ورود"
 
 #: includes/elementor/class-motion.php:59
 #: includes/elementor/class-widget-base.php:197
@@ -1561,11 +1710,6 @@ msgstr "شفاف روی محتوا"
 msgid "Transparent, light text (dark hero)"
 msgstr "شفاف با متن روشن (برای هیروی تیره)"
 
-#: includes/elementor/class-page-settings.php:55
-#: includes/elementor/class-page-settings.php:67
-msgid "Hidden"
-msgstr "پنهان"
-
 #: includes/elementor/class-page-settings.php:62
 #: includes/layouts/class-layouts.php:121
 #: includes/settings/schema.php:361
@@ -1592,10 +1736,15 @@ msgstr "همیشه تاریک"
 #: includes/elementor/class-widget-base.php:217
 #: includes/elementor/widgets/class-flow.php:47
 #: includes/elementor/widgets/class-heading.php:26
+#: includes/elementor/widgets/class-product-carousel.php:60
+#: includes/elementor/widgets/class-product-categories.php:53
+#: includes/elementor/widgets/class-product-deal.php:61
+#: includes/elementor/widgets/class-product-tabs.php:61
 msgid "Heading"
 msgstr "تیتر"
 
 #: includes/elementor/class-widget-base.php:108
+#: includes/elementor/widgets/class-slider.php:69
 #: includes/elementor/widgets/class-text-scrub.php:49
 msgid "Eyebrow"
 msgstr "روتیتر"
@@ -1605,11 +1754,13 @@ msgstr "روتیتر"
 #: includes/elementor/widgets/class-features.php:67
 #: includes/elementor/widgets/class-hscroll.php:80
 #: includes/elementor/widgets/class-login.php:67
-#: includes/elementor/widgets/class-posts.php:89
+#: includes/elementor/widgets/class-posts.php:92
 #: includes/elementor/widgets/class-scroll-path.php:80
 #: includes/elementor/widgets/class-scroll-zoom.php:137
+#: includes/elementor/widgets/class-slider.php:76
 #: includes/elementor/widgets/class-stack.php:59
 #: includes/elementor/widgets/class-steps.php:67
+#: includes/elementor/widgets/class-stories.php:52
 msgid "Title"
 msgstr "عنوان"
 
@@ -1643,6 +1794,7 @@ msgstr "نمایشی"
 #: includes/elementor/widgets/class-button.php:59
 #: includes/elementor/widgets/class-hscroll.php:126
 #: includes/elementor/widgets/class-marquee.php:105
+#: includes/elementor/widgets/class-stories.php:125
 #: includes/elementor/widgets/class-text-scrub.php:71
 msgid "Large"
 msgstr "بزرگ"
@@ -1652,17 +1804,21 @@ msgstr "بزرگ"
 #: includes/elementor/widgets/class-button.php:57
 #: includes/elementor/widgets/class-hscroll.php:124
 #: includes/elementor/widgets/class-marquee.php:103
+#: includes/elementor/widgets/class-stories.php:123
 msgid "Small"
 msgstr "کوچک"
 
 #: includes/elementor/class-widget-base.php:170
 #: includes/elementor/widgets/class-button.php:66
+#: includes/elementor/widgets/class-stories.php:132
 #: includes/elementor/widgets/class-text-scrub.php:79
 msgid "Alignment"
 msgstr "چینش"
 
 #: includes/elementor/class-widget-base.php:175
 #: includes/elementor/widgets/class-button.php:70
+#: includes/elementor/widgets/class-slider.php:126
+#: includes/elementor/widgets/class-stories.php:136
 #: includes/elementor/widgets/class-text-scrub.php:83
 #: includes/forms/class-forms.php:312
 msgid "Start"
@@ -1670,12 +1826,15 @@ msgstr "شروع"
 
 #: includes/elementor/class-widget-base.php:179
 #: includes/elementor/widgets/class-button.php:74
+#: includes/elementor/widgets/class-slider.php:127
+#: includes/elementor/widgets/class-stories.php:137
 #: includes/elementor/widgets/class-text-scrub.php:87
 msgid "Center"
 msgstr "وسط"
 
 #: includes/elementor/class-widget-base.php:183
 #: includes/elementor/widgets/class-button.php:78
+#: includes/elementor/widgets/class-slider.php:128
 msgid "End"
 msgstr "پایان"
 
@@ -1716,6 +1875,7 @@ msgstr "فاصله‌ی زیر تیتر"
 #: includes/elementor/widgets/class-marquee.php:192
 #: includes/elementor/widgets/class-scroll-path.php:88
 #: includes/elementor/widgets/class-scroll-zoom.php:146
+#: includes/elementor/widgets/class-slider.php:86
 #: includes/elementor/widgets/class-stack.php:67
 #: includes/elementor/widgets/class-steps.php:75
 #: includes/elementor/widgets/class-text-scrub.php:45
@@ -1728,6 +1888,7 @@ msgstr "متن"
 #: includes/elementor/widgets/class-features.php:91
 #: includes/elementor/widgets/class-hscroll.php:96
 #: includes/elementor/widgets/class-image-reveal.php:131
+#: includes/elementor/widgets/class-slider.php:102
 msgid "Link"
 msgstr "لینک"
 
@@ -1904,6 +2065,7 @@ msgstr "دکمه‌ی دوم"
 
 #: includes/elementor/widgets/class-button.php:52
 #: includes/elementor/widgets/class-marquee.php:99
+#: includes/elementor/widgets/class-stories.php:119
 #: includes/elementor/widgets/class-text-scrub.php:66
 msgid "Size"
 msgstr "اندازه"
@@ -1972,7 +2134,9 @@ msgstr "ارسال"
 
 #: includes/elementor/widgets/class-contact-form.php:100
 #: includes/elementor/widgets/class-pricing.php:106
+#: includes/elementor/widgets/class-slider.php:94
 #: includes/elementor/widgets/class-stack.php:91
+#: includes/elementor/widgets/class-stories.php:91
 #: includes/elementor/widgets/class-tabs.php:105
 #: includes/settings/schema.php:313
 msgid "Button text"
@@ -2114,15 +2278,6 @@ msgstr "ساده با جداکننده"
 msgid "LCD displays"
 msgstr "نمایشگر LCD"
 
-#: includes/elementor/widgets/class-counters.php:128
-#: includes/elementor/widgets/class-features.php:164
-#: includes/elementor/widgets/class-posts.php:130
-#: includes/elementor/widgets/class-products.php:109
-#: includes/elementor/widgets/class-team.php:101
-#: includes/elementor/widgets/class-testimonials.php:122
-msgid "Columns"
-msgstr "ستون‌ها"
-
 #: includes/elementor/widgets/class-counters.php:146
 msgid "Count duration (s)"
 msgstr "مدت شمارش (ثانیه)"
@@ -2209,6 +2364,7 @@ msgstr "زمینه‌ی تیره"
 #: includes/elementor/widgets/class-hscroll.php:64
 #: includes/elementor/widgets/class-image-reveal.php:44
 #: includes/elementor/widgets/class-image-reveal.php:48
+#: includes/elementor/widgets/class-slider.php:54
 #: includes/elementor/widgets/class-stack.php:83
 msgid "Image"
 msgstr "تصویر"
@@ -2248,6 +2404,7 @@ msgid "A scene title"
 msgstr "عنوان صحنه"
 
 #: includes/elementor/widgets/class-depth.php:70
+#: includes/elementor/widgets/class-slider.php:80
 msgid "Wrap words in *asterisks* to highlight them."
 msgstr "برای برجسته کردن، کلمه‌ها را بین دو *ستاره* بگذارید."
 
@@ -2274,19 +2431,6 @@ msgstr "و از *میان صفحه* می‌گذرد"
 #: includes/elementor/widgets/class-depth.php:102
 msgid "…then flies past the camera."
 msgstr "…و از کنار دوربین رد می‌شود."
-
-#: includes/elementor/widgets/class-depth.php:109
-#: includes/elementor/widgets/class-features.php:135
-#: includes/elementor/widgets/class-features.php:139
-#: includes/elementor/widgets/class-hero.php:50
-#: includes/elementor/widgets/class-hscroll.php:116
-#: includes/elementor/widgets/class-posts.php:112
-#: includes/elementor/widgets/class-posts.php:116
-#: includes/elementor/widgets/class-steps.php:96
-#: includes/elementor/widgets/class-testimonials.php:109
-#: includes/settings/schema.php:268
-msgid "Layout"
-msgstr "چیدمان"
 
 #: includes/elementor/widgets/class-depth.php:113
 msgid "Scene layout"
@@ -2422,13 +2566,6 @@ msgstr "متن لینک"
 msgid "Learn more"
 msgstr "بیشتر بدانید"
 
-#: includes/elementor/widgets/class-features.php:143
-#: includes/elementor/widgets/class-posts.php:120
-#: includes/elementor/widgets/class-testimonials.php:113
-#: includes/settings/schema.php:442
-msgid "Grid"
-msgstr "شبکه‌ای"
-
 #: includes/elementor/widgets/class-features.php:144
 msgid "Bento (mixed sizes)"
 msgstr "بنتو (اندازه‌های متنوع)"
@@ -2561,6 +2698,7 @@ msgstr "شناوری آرام در حالت سکون"
 
 #: includes/elementor/widgets/class-flow.php:187
 #: includes/elementor/widgets/class-hero.php:200
+#: includes/elementor/widgets/class-slider.php:147
 msgid "Height"
 msgstr "ارتفاع"
 
@@ -2659,18 +2797,22 @@ msgid "Plays muted and looped; paused for visitors who prefer reduced motion."
 msgstr "بی‌صدا و تکرارشونده پخش می‌شود؛ برای بازدیدکنندگانی که «کاهش حرکت» را فعال کرده‌اند، متوقف می‌ماند."
 
 #: includes/elementor/widgets/class-hero.php:182
+#: includes/shop/class-product-card.php:57
 msgid "Image shape"
 msgstr "شکل تصویر"
 
 #: includes/elementor/widgets/class-hero.php:186
+#: includes/shop/class-product-card.php:62
 msgid "Portrait"
 msgstr "عمودی"
 
 #: includes/elementor/widgets/class-hero.php:187
+#: includes/shop/class-product-card.php:61
 msgid "Square"
 msgstr "مربع"
 
 #: includes/elementor/widgets/class-hero.php:188
+#: includes/shop/class-product-card.php:64
 msgid "Landscape"
 msgstr "افقی"
 
@@ -2770,6 +2912,7 @@ msgid "Screen-wide"
 msgstr "هم‌عرض صفحه"
 
 #: includes/elementor/widgets/class-hscroll.php:134
+#: includes/shop/class-product-card.php:48
 msgid "Card style"
 msgstr "سبک کارت"
 
@@ -2778,20 +2921,20 @@ msgid "Image with caption below"
 msgstr "تصویر با زیرنویس"
 
 #: includes/elementor/widgets/class-hscroll.php:139
+#: includes/shop/class-product-card.php:33
 msgid "Text over image"
 msgstr "متن روی تصویر"
 
 #: includes/elementor/widgets/class-hscroll.php:140
+#: includes/elementor/widgets/class-product-carousel.php:75
+#: includes/elementor/widgets/class-product-deal.php:117
+#: includes/elementor/widgets/class-product-tabs.php:119
 msgid "Card"
 msgstr "کارت"
 
 #: includes/elementor/widgets/class-hscroll.php:147
 msgid "Extra pause at the end"
 msgstr "مکث اضافه در پایان"
-
-#: includes/elementor/widgets/class-hscroll.php:162
-msgid "Progress bar"
-msgstr "نوار پیشرفت"
 
 #: includes/elementor/widgets/class-hscroll.php:206
 msgid "View"
@@ -2826,7 +2969,7 @@ msgid "Inner parallax"
 msgstr "پارالاکس درونی"
 
 #: includes/elementor/widgets/class-image-reveal.php:103
-#: includes/elementor/widgets/class-team.php:118
+#: includes/elementor/widgets/class-team.php:142
 msgid "Black & white until hover"
 msgstr "سیاه‌وسفید؛ رنگی با رفتن ماوس"
 
@@ -2843,6 +2986,7 @@ msgid "Paper mat"
 msgstr "پاسپارتوی کاغذی"
 
 #: includes/elementor/widgets/class-image-reveal.php:124
+#: includes/elementor/widgets/class-stories.php:83
 msgid "Caption"
 msgstr "زیرنویس"
 
@@ -2855,11 +2999,11 @@ msgid "Multi-step Form"
 msgstr "فرم چندمرحله‌ای"
 
 #: includes/elementor/widgets/class-lead-form.php:57
-#: includes/elementor/widgets/class-team.php:59
-#: includes/elementor/widgets/class-team.php:91
-#: includes/elementor/widgets/class-team.php:92
-#: includes/elementor/widgets/class-team.php:93
+#: includes/elementor/widgets/class-team.php:62
 #: includes/elementor/widgets/class-team.php:94
+#: includes/elementor/widgets/class-team.php:95
+#: includes/elementor/widgets/class-team.php:96
+#: includes/elementor/widgets/class-team.php:97
 #: templates/auth/form.php:91
 msgid "Full name"
 msgstr "نام و نام خانوادگی"
@@ -3025,11 +3169,6 @@ msgstr "دکمه‌ها و پیام تأیید"
 #: includes/elementor/widgets/class-lead-form.php:337
 msgid "Next button"
 msgstr "دکمه‌ی بعدی"
-
-#: includes/elementor/widgets/class-lead-form.php:339
-#: includes/elementor/widgets/class-lead-form.php:491
-msgid "Next"
-msgstr "بعدی"
 
 #: includes/elementor/widgets/class-lead-form.php:345
 msgid "Back button"
@@ -3242,65 +3381,70 @@ msgstr "رنگ"
 msgid "Band background"
 msgstr "پس‌زمینه‌ی نوار"
 
-#: includes/elementor/widgets/class-posts.php:28
+#: includes/elementor/widgets/class-posts.php:31
+#: includes/elementor/widgets/class-posts.php:218
 msgid "Posts"
 msgstr "نوشته‌ها"
 
-#: includes/elementor/widgets/class-posts.php:54
+#: includes/elementor/widgets/class-posts.php:57
 msgid "Query"
 msgstr "انتخاب نوشته‌ها"
 
-#: includes/elementor/widgets/class-posts.php:62
+#: includes/elementor/widgets/class-posts.php:65
 msgid "Number of posts"
 msgstr "تعداد نوشته‌ها"
 
-#: includes/elementor/widgets/class-posts.php:72
+#: includes/elementor/widgets/class-posts.php:75
+#: includes/elementor/widgets/class-product-categories.php:64
+#: includes/elementor/widgets/class-product-categories.php:68
 #: includes/elementor/widgets/class-products.php:89
+#: includes/shop/class-product-query.php:98
 msgid "Categories"
 msgstr "دسته‌بندی‌ها"
 
-#: includes/elementor/widgets/class-posts.php:82
+#: includes/elementor/widgets/class-posts.php:85
 msgid "Order"
 msgstr "ترتیب"
 
-#: includes/elementor/widgets/class-posts.php:86
+#: includes/elementor/widgets/class-posts.php:89
 msgid "Newest first"
 msgstr "جدیدترین‌ها اول"
 
-#: includes/elementor/widgets/class-posts.php:87
+#: includes/elementor/widgets/class-posts.php:90
 msgid "Most discussed"
 msgstr "پربحث‌ترین‌ها"
 
-#: includes/elementor/widgets/class-posts.php:88
+#: includes/elementor/widgets/class-posts.php:91
+#: includes/shop/class-product-query.php:31
 msgid "Random"
 msgstr "تصادفی"
 
-#: includes/elementor/widgets/class-posts.php:96
+#: includes/elementor/widgets/class-posts.php:99
 msgid "Skip first"
 msgstr "رد کردن موارد اول"
 
-#: includes/elementor/widgets/class-posts.php:105
+#: includes/elementor/widgets/class-posts.php:108
 msgid "Page numbers"
 msgstr "شماره‌ی صفحات"
 
-#: includes/elementor/widgets/class-posts.php:121
+#: includes/elementor/widgets/class-posts.php:125
 msgid "Featured first + grid"
 msgstr "اولی برجسته + شبکه‌ای"
 
-#: includes/elementor/widgets/class-posts.php:122
+#: includes/elementor/widgets/class-posts.php:126
 #: includes/settings/schema.php:446
 msgid "List"
 msgstr "فهرستی"
 
-#: includes/elementor/widgets/class-posts.php:123
+#: includes/elementor/widgets/class-posts.php:127
 msgid "Compact index"
 msgstr "فهرست فشرده"
 
-#: includes/elementor/widgets/class-posts.php:148
+#: includes/elementor/widgets/class-posts.php:153
 msgid "Excerpt"
 msgstr "خلاصه"
 
-#: includes/elementor/widgets/class-posts.php:184
+#: includes/elementor/widgets/class-posts.php:189
 msgid "No posts found for this query."
 msgstr "نوشته‌ای با این مشخصات پیدا نشد."
 
@@ -3322,6 +3466,7 @@ msgid "Starter"
 msgstr "پایه"
 
 #: includes/elementor/widgets/class-pricing.php:58
+#: includes/shop/class-product-card.php:83
 msgid "Short description"
 msgstr "توضیح کوتاه"
 
@@ -3373,6 +3518,7 @@ msgstr "انتخاب پلن"
 
 #: includes/elementor/widgets/class-pricing.php:114
 #: includes/elementor/widgets/class-stack.php:98
+#: includes/elementor/widgets/class-stories.php:98
 #: includes/elementor/widgets/class-tabs.php:112
 #: includes/settings/schema.php:320
 msgid "Button link"
@@ -3395,7 +3541,8 @@ msgid "Most popular"
 msgstr "محبوب‌ترین"
 
 #: includes/elementor/widgets/class-pricing.php:146
-#: includes/elementor/widgets/class-team.php:28
+#: includes/elementor/widgets/class-team.php:31
+#: includes/elementor/widgets/class-team.php:184
 msgid "Team"
 msgstr "تیم"
 
@@ -3419,32 +3566,206 @@ msgstr "اقساط ماهانه"
 msgid "Note next to the switch"
 msgstr "توضیح کنار کلید"
 
+#: includes/elementor/widgets/class-product-carousel.php:33
+msgid "Product Carousel"
+msgstr "اسلایدر محصولات"
+
+#: includes/elementor/widgets/class-product-carousel.php:63
+msgid "Bestsellers this week"
+msgstr "پرفروش‌های این هفته"
+
+#: includes/elementor/widgets/class-product-carousel.php:71
+#: includes/elementor/widgets/class-product-carousel.php:106
+#: includes/elementor/widgets/class-product-deal.php:107
 #: includes/elementor/widgets/class-products.php:27
 #: includes/elementor/widgets/class-products.php:58
 msgid "Products"
 msgstr "محصولات"
 
+#: includes/elementor/widgets/class-product-carousel.php:90
+msgid "Activate WooCommerce to show products."
+msgstr "برای نمایش محصولات، ووکامرس را فعال کنید."
+
+#: includes/elementor/widgets/class-product-carousel.php:104
+msgid "No products match these settings yet."
+msgstr "هنوز محصولی با این تنظیمات وجود ندارد."
+
+#: includes/elementor/widgets/class-product-categories.php:31
+msgid "Product Categories"
+msgstr "دسته‌بندی محصولات"
+
+#: includes/elementor/widgets/class-product-categories.php:56
+msgid "Shop by category"
+msgstr "خرید بر اساس دسته‌بندی"
+
+#: includes/elementor/widgets/class-product-categories.php:69
+msgid "Leave empty to show top-level categories."
+msgstr "اگر خالی بماند، دسته‌های اصلی نمایش داده می‌شوند."
+
+#: includes/elementor/widgets/class-product-categories.php:79
+msgid "Maximum"
+msgstr "حداکثر"
+
+#: includes/elementor/widgets/class-product-categories.php:93
+msgid "Round image"
+msgstr "تصویر گرد"
+
+#: includes/elementor/widgets/class-product-categories.php:94
+msgid "Image card"
+msgstr "کارت تصویری"
+
+#: includes/elementor/widgets/class-product-categories.php:95
+msgid "Compact tile"
+msgstr "کاشی فشرده"
+
+#: includes/elementor/widgets/class-product-categories.php:96
+#: includes/elementor/widgets/class-product-tabs.php:76
+msgid "Pills"
+msgstr "کپسولی"
+
+#: includes/elementor/widgets/class-product-categories.php:103
+msgid "Show product count"
+msgstr "نمایش تعداد محصولات"
+
+#. translators: %s: number of products
+#: includes/elementor/widgets/class-product-categories.php:153
+#, php-format
+msgid "%s product"
+msgid_plural "%s products"
+msgstr[0] "%s محصول"
+msgstr[1] "%s محصول"
+
+#: includes/elementor/widgets/class-product-categories.php:161
+msgid "Product categories"
+msgstr "دسته‌بندی محصولات"
+
+#: includes/elementor/widgets/class-product-deal.php:34
+msgid "Deal of the Day"
+msgstr "پیشنهاد شگفت‌انگیز"
+
+#: includes/elementor/widgets/class-product-deal.php:69
+msgid "Heading panel beside products"
+msgstr "پنل تیتر کنار محصولات"
+
+#: includes/elementor/widgets/class-product-deal.php:70
+msgid "Coloured band above products"
+msgstr "نوار رنگی بالای محصولات"
+
+#: includes/elementor/widgets/class-product-deal.php:71
+msgid "One product in the spotlight"
+msgstr "یک محصول ویژه در مرکز توجه"
+
+#: includes/elementor/widgets/class-product-deal.php:77
+msgid "Today only"
+msgstr "فقط امروز"
+
+#: includes/elementor/widgets/class-product-deal.php:78
+msgid "Deals that end *tonight*"
+msgstr "پیشنهادهایی که *امشب* تمام می‌شوند"
+
+#: includes/elementor/widgets/class-product-deal.php:86
+msgid "Countdown ends"
+msgstr "پایان شمارش معکوس"
+
+#: includes/elementor/widgets/class-product-deal.php:90
+msgid "At midnight, every day"
+msgstr "هر روز، نیمه‌شب"
+
+#: includes/elementor/widgets/class-product-deal.php:91
+msgid "On a fixed date"
+msgstr "در تاریخ مشخص"
+
+#: includes/elementor/widgets/class-product-deal.php:92
+msgid "When the product's sale ends"
+msgstr "با پایان تخفیف محصول"
+
+#: includes/elementor/widgets/class-product-deal.php:99
+msgid "End date"
+msgstr "تاریخ پایان"
+
+#: includes/elementor/widgets/class-product-deal.php:167
+msgid "No products match these settings yet. Put a product on sale or choose another source."
+msgstr "هنوز محصولی با این تنظیمات وجود ندارد. برای یک محصول تخفیف بگذارید یا منبع دیگری انتخاب کنید."
+
+#. translators: %s: discount percent
+#: includes/elementor/widgets/class-product-deal.php:185
+#: includes/shop/class-product-card.php:140
+#, php-format
+msgid "%s%% off"
+msgstr "%s٪ تخفیف"
+
+#: includes/elementor/widgets/class-product-deal.php:212
+msgid "Deals"
+msgstr "پیشنهادها"
+
+#: includes/elementor/widgets/class-product-tabs.php:34
+msgid "Product Tabs"
+msgstr "محصولات زبانه‌ای"
+
+#: includes/elementor/widgets/class-product-tabs.php:64
+msgid "Picked for you"
+msgstr "منتخب برای شما"
+
+#: includes/elementor/widgets/class-product-tabs.php:72
+msgid "Tab style"
+msgstr "سبک زبانه‌ها"
+
+#: includes/elementor/widgets/class-product-tabs.php:77
+msgid "Underline"
+msgstr "خط زیرین"
+
+#: includes/elementor/widgets/class-product-tabs.php:78
+msgid "Segmented"
+msgstr "دکمه‌های چسبیده"
+
+#: includes/elementor/widgets/class-product-tabs.php:84
+#: includes/elementor/widgets/class-tabs.php:46
+msgid "Tabs"
+msgstr "زبانه‌ها"
+
+#: includes/elementor/widgets/class-product-tabs.php:89
+msgid "Tab label"
+msgstr "عنوان زبانه"
+
+#: includes/elementor/widgets/class-product-tabs.php:91
+#: includes/elementor/widgets/class-product-tabs.php:103
 #: includes/elementor/widgets/class-products.php:78
+#: includes/shop/class-product-query.php:26
 msgid "Newest"
 msgstr "جدیدترین"
 
-#: includes/elementor/widgets/class-products.php:79
-msgid "Featured"
-msgstr "ویژه"
-
+#: includes/elementor/widgets/class-product-tabs.php:107
 #: includes/elementor/widgets/class-products.php:80
+#: includes/shop/class-product-query.php:28
 msgid "On sale"
 msgstr "حراج"
 
+#: includes/elementor/widgets/class-product-tabs.php:111
+msgid "Bestsellers"
+msgstr "پرفروش‌ترین‌ها"
+
+#: includes/elementor/widgets/class-product-tabs.php:149
+msgid "No products here yet."
+msgstr "هنوز محصولی اینجا نیست."
+
+#: includes/elementor/widgets/class-products.php:79
+#: includes/elementor/widgets/class-slider.php:268
+#: includes/shop/class-product-query.php:27
+msgid "Featured"
+msgstr "ویژه"
+
 #: includes/elementor/widgets/class-products.php:81
+#: includes/shop/class-product-query.php:29
 msgid "Best selling"
 msgstr "پرفروش‌ترین"
 
 #: includes/elementor/widgets/class-products.php:82
+#: includes/shop/class-product-query.php:30
 msgid "Top rated"
 msgstr "بالاترین امتیاز"
 
 #: includes/elementor/widgets/class-products.php:99
+#: includes/shop/class-product-query.php:109
 msgid "Number of products"
 msgstr "تعداد محصولات"
 
@@ -3606,6 +3927,59 @@ msgstr "پیام پایانی"
 msgid "Then it ships to *real people*."
 msgstr "و بعد به دست *آدم‌های واقعی* می‌رسد."
 
+#: includes/elementor/widgets/class-slider.php:32
+msgid "Banner Slider"
+msgstr "اسلایدر بنر"
+
+#: includes/elementor/widgets/class-slider.php:49
+msgid "Slides"
+msgstr "اسلایدها"
+
+#: includes/elementor/widgets/class-slider.php:61
+msgid "Phone image (optional)"
+msgstr "تصویر موبایل (اختیاری)"
+
+#: includes/elementor/widgets/class-slider.php:62
+msgid "A portrait crop for screens narrower than 768px."
+msgstr "برش عمودی برای صفحه‌های کوچک‌تر از ۷۶۸ پیکسل."
+
+#: includes/elementor/widgets/class-slider.php:79
+#: includes/elementor/widgets/class-slider.php:139
+msgid "A fresh *season* has arrived"
+msgstr "*فصل* تازه رسید"
+
+#: includes/elementor/widgets/class-slider.php:96
+msgid "Shop now"
+msgstr "خرید کنید"
+
+#: includes/elementor/widgets/class-slider.php:103
+msgid "Used by the button; without a button text, the whole slide becomes the link."
+msgstr "برای دکمه استفاده می‌شود؛ اگر متن دکمه خالی باشد، کل اسلاید لینک می‌شود."
+
+#: includes/elementor/widgets/class-slider.php:110
+msgid "Text colour"
+msgstr "رنگ متن"
+
+#: includes/elementor/widgets/class-slider.php:114
+msgid "Light (for dark images)"
+msgstr "روشن (برای تصاویر تیره)"
+
+#: includes/elementor/widgets/class-slider.php:115
+msgid "Dark (for light images)"
+msgstr "تیره (برای تصاویر روشن)"
+
+#: includes/elementor/widgets/class-slider.php:122
+msgid "Text position"
+msgstr "جای متن"
+
+#: includes/elementor/widgets/class-slider.php:140
+msgid "Up to *40%* off this week"
+msgstr "تا *۴۰٪* تخفیف در این هفته"
+
+#: includes/elementor/widgets/class-slider.php:166
+msgid "Rounded box"
+msgstr "قاب با گوشه‌های گرد"
+
 #: includes/elementor/widgets/class-stack.php:29
 msgid "Stacking Cards"
 msgstr "کارت‌های پشته‌ای"
@@ -3664,6 +4038,7 @@ msgid "Choose your path"
 msgstr "مسیرتان را انتخاب کنید"
 
 #: includes/elementor/widgets/class-steps.php:100
+#: includes/shop/class-product-card.php:34
 msgid "Horizontal"
 msgstr "افقی"
 
@@ -3675,12 +4050,46 @@ msgstr "خط زمانی عمودی"
 msgid "Show as cards"
 msgstr "نمایش به‌صورت کارت"
 
+#: includes/elementor/widgets/class-stories.php:30
+#: includes/elementor/widgets/class-stories.php:47
+msgid "Stories"
+msgstr "استوری‌ها"
+
+#: includes/elementor/widgets/class-stories.php:54
+#: includes/elementor/widgets/class-stories.php:109
+msgid "New arrivals"
+msgstr "تازه‌ها"
+
+#: includes/elementor/widgets/class-stories.php:60
+msgid "Cover"
+msgstr "کاور"
+
+#: includes/elementor/widgets/class-stories.php:67
+msgid "Story images"
+msgstr "تصاویر استوری"
+
+#: includes/elementor/widgets/class-stories.php:68
+msgid "Shown one after another, five seconds each. Leave empty to use the cover."
+msgstr "پشت سر هم، هر کدام پنج ثانیه نمایش داده می‌شوند. اگر خالی بماند، همان کاور نمایش داده می‌شود."
+
+#: includes/elementor/widgets/class-stories.php:75
+msgid "Or a video (MP4)"
+msgstr "یا یک ویدیو (MP4)"
+
+#: includes/elementor/widgets/class-stories.php:110
+msgid "Best sellers"
+msgstr "پرفروش‌ها"
+
+#: includes/elementor/widgets/class-stories.php:111
+msgid "Behind the scenes"
+msgstr "پشت صحنه"
+
+#: includes/elementor/widgets/class-stories.php:112
+msgid "Customer stories"
+msgstr "روایت مشتریان"
+
 #: includes/elementor/widgets/class-tabs.php:29
 msgid "Tabs Showcase"
-msgstr "زبانه‌ها"
-
-#: includes/elementor/widgets/class-tabs.php:46
-msgid "Tabs"
 msgstr "زبانه‌ها"
 
 #: includes/elementor/widgets/class-tabs.php:51
@@ -3735,74 +4144,80 @@ msgstr "بعد از زبانه‌ها"
 msgid "Before the tabs"
 msgstr "قبل از زبانه‌ها"
 
-#: includes/elementor/widgets/class-team.php:45
+#: includes/elementor/widgets/class-team.php:48
 msgid "People"
 msgstr "اعضا"
 
-#: includes/elementor/widgets/class-team.php:50
-#: includes/elementor/widgets/class-testimonials.php:75
+#: includes/elementor/widgets/class-team.php:53
+#: includes/elementor/widgets/class-testimonials.php:78
 msgid "Photo"
 msgstr "عکس"
 
-#: includes/elementor/widgets/class-team.php:57
-#: includes/elementor/widgets/class-testimonials.php:59
+#: includes/elementor/widgets/class-team.php:60
+#: includes/elementor/widgets/class-testimonials.php:62
 #: includes/forms/class-forms.php:305
 msgid "Name"
 msgstr "نام"
 
-#: includes/elementor/widgets/class-team.php:65
-#: includes/elementor/widgets/class-testimonials.php:67
+#: includes/elementor/widgets/class-team.php:68
+#: includes/elementor/widgets/class-testimonials.php:70
 msgid "Role"
 msgstr "سمت"
 
-#: includes/elementor/widgets/class-team.php:67
+#: includes/elementor/widgets/class-team.php:70
 msgid "Mentor"
 msgstr "منتور"
 
-#: includes/elementor/widgets/class-testimonials.php:28
-#: includes/elementor/widgets/class-testimonials.php:45
+#: includes/elementor/widgets/class-testimonials.php:31
+#: includes/elementor/widgets/class-testimonials.php:48
+#: includes/elementor/widgets/class-testimonials.php:204
 msgid "Testimonials"
 msgstr "نظرات مشتریان"
 
-#: includes/elementor/widgets/class-testimonials.php:50
+#: includes/elementor/widgets/class-testimonials.php:53
 msgid "Quote"
 msgstr "نقل‌قول"
 
-#: includes/elementor/widgets/class-testimonials.php:53
+#: includes/elementor/widgets/class-testimonials.php:56
 msgid "I finished the course with a product people actually use. Nothing else I tried did that."
 msgstr "دوره را با محصولی تمام کردم که آدم‌ها واقعاً از آن استفاده می‌کنند. هیچ تجربه‌ی دیگری چنین نتیجه‌ای برایم نداشت."
 
-#: includes/elementor/widgets/class-testimonials.php:61
-#: includes/elementor/widgets/class-testimonials.php:100
+#: includes/elementor/widgets/class-testimonials.php:64
+#: includes/elementor/widgets/class-testimonials.php:103
 msgid "Sara Ahmadi"
 msgstr "سارا احمدی"
 
-#: includes/elementor/widgets/class-testimonials.php:69
+#: includes/elementor/widgets/class-testimonials.php:72
 msgid "Product designer"
 msgstr "طراح محصول"
 
-#: includes/elementor/widgets/class-testimonials.php:82
+#: includes/elementor/widgets/class-testimonials.php:85
 msgid "Stars"
 msgstr "ستاره‌ها"
 
-#: includes/elementor/widgets/class-testimonials.php:101
+#: includes/elementor/widgets/class-testimonials.php:104
 msgid "Reza Karimi"
 msgstr "رضا کریمی"
 
-#: includes/elementor/widgets/class-testimonials.php:102
+#: includes/elementor/widgets/class-testimonials.php:105
 msgid "Nazanin Rad"
 msgstr "نازنین راد"
 
-#: includes/elementor/widgets/class-testimonials.php:114
+#: includes/elementor/widgets/class-testimonials.php:118
+msgid "Expanding panels"
+msgstr "پنل‌های تاشو"
+
+#: includes/elementor/widgets/class-testimonials.php:119
 msgid "Moving wall"
 msgstr "دیوار متحرک"
 
-#: includes/elementor/widgets/class-testimonials.php:115
+#: includes/elementor/widgets/class-testimonials.php:120
 msgid "One large quote"
 msgstr "یک نقل‌قول بزرگ"
 
 #. translators: %d: star rating
-#: includes/elementor/widgets/class-testimonials.php:155
+#: includes/elementor/widgets/class-testimonials.php:168
+#: includes/elementor/widgets/class-testimonials.php:218
 #, php-format
 msgid "%d out of 5 stars"
 msgstr "%d از ۵ ستاره"
@@ -4859,6 +5274,127 @@ msgstr "کدهای آمار و تگ‌های تأیید مالکیت. به مج�
 #: includes/settings/schema.php:909
 msgid "Code before </body>"
 msgstr "کد پیش از </body>"
+
+#: includes/shop/class-product-card.php:30
+msgid "Classic"
+msgstr "کلاسیک"
+
+#: includes/shop/class-product-card.php:31
+msgid "Minimal"
+msgstr "مینیمال"
+
+#: includes/shop/class-product-card.php:32
+msgid "Framed"
+msgstr "قاب‌دار"
+
+#: includes/shop/class-product-card.php:63
+msgid "Tall"
+msgstr "کشیده"
+
+#: includes/shop/class-product-card.php:77
+msgid "Category"
+msgstr "دسته‌بندی"
+
+#: includes/shop/class-product-card.php:78
+msgid "Rating"
+msgstr "امتیاز"
+
+#: includes/shop/class-product-card.php:79
+msgid "Sale and new badges"
+msgstr "برچسب تخفیف و جدید"
+
+#: includes/shop/class-product-card.php:80
+msgid "Second image on hover"
+msgstr "تصویر دوم هنگام رفتن ماوس"
+
+#: includes/shop/class-product-card.php:81
+#: includes/shop/class-product-card.php:186
+msgid "Add to cart"
+msgstr "افزودن به سبد"
+
+#: includes/shop/class-product-card.php:82
+msgid "Stock left bar"
+msgstr "نوار موجودی باقی‌مانده"
+
+#: includes/shop/class-product-card.php:137
+msgid "Sold out"
+msgstr "ناموجود"
+
+#: includes/shop/class-product-card.php:144
+msgid "New"
+msgstr "جدید"
+
+#. translators: %s: product name
+#: includes/shop/class-product-card.php:171
+#, php-format
+msgid "Add “%s” to cart"
+msgstr "افزودن «%s» به سبد خرید"
+
+#: includes/shop/class-product-card.php:187
+msgid "Choose options"
+msgstr "انتخاب گزینه‌ها"
+
+#: includes/shop/class-product-card.php:188
+msgid "View products"
+msgstr "مشاهده‌ی محصولات"
+
+#: includes/shop/class-product-card.php:189
+msgid "View product"
+msgstr "مشاهده‌ی محصول"
+
+#: includes/shop/class-product-card.php:190
+msgid "Buy now"
+msgstr "خرید"
+
+#. translators: %s: number of items left
+#: includes/shop/class-product-card.php:210
+#, php-format
+msgid "Only %s left"
+msgstr "فقط %s عدد مانده"
+
+#. translators: %s: number sold
+#: includes/shop/class-product-card.php:212
+#, php-format
+msgid "%s sold"
+msgstr "%s فروش"
+
+#: includes/shop/class-product-card.php:230
+msgid "Days"
+msgstr "روز"
+
+#: includes/shop/class-product-card.php:231
+msgid "Hours"
+msgstr "ساعت"
+
+#: includes/shop/class-product-card.php:232
+msgid "Minutes"
+msgstr "دقیقه"
+
+#: includes/shop/class-product-card.php:233
+msgid "Seconds"
+msgstr "ثانیه"
+
+#. translators: %s: average rating
+#: includes/shop/class-product-card.php:282
+#, php-format
+msgid "Rated %s out of 5"
+msgstr "امتیاز %s از ۵"
+
+#: includes/shop/class-product-query.php:32
+msgid "Hand-picked"
+msgstr "انتخاب دستی"
+
+#: includes/shop/class-product-query.php:88
+msgid "Product IDs"
+msgstr "شناسه‌ی محصولات"
+
+#: includes/shop/class-product-query.php:89
+msgid "Comma-separated, in the order to show them."
+msgstr "با ویرگول جدا کنید، به همان ترتیبی که باید نمایش داده شوند."
+
+#: includes/shop/class-product-query.php:120
+msgid "Hide out-of-stock products"
+msgstr "پنهان کردن محصولات ناموجود"
 
 #. translators: %s: first or display name
 #: templates/auth/account.php:36

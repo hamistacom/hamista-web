@@ -9,6 +9,7 @@ namespace Hamista\Core\Elementor\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
+use Hamista\Core\Elementor\Carousel;
 use Hamista\Core\Elementor\Widget_Base;
 
 defined( 'ABSPATH' ) || exit;
@@ -17,6 +18,8 @@ defined( 'ABSPATH' ) || exit;
  * Testimonials widget.
  */
 class Testimonials extends Widget_Base {
+
+	use Carousel;
 
 	/** @return string */
 	public function get_name() {
@@ -110,9 +113,11 @@ class Testimonials extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'grid',
 				'options' => array(
-					'grid'    => __( 'Grid', 'hamista-core' ),
-					'marquee' => __( 'Moving wall', 'hamista-core' ),
-					'single'  => __( 'One large quote', 'hamista-core' ),
+					'grid'     => __( 'Grid', 'hamista-core' ),
+					'carousel' => __( 'Carousel', 'hamista-core' ),
+					'expand'   => __( 'Expanding panels', 'hamista-core' ),
+					'marquee'  => __( 'Moving wall', 'hamista-core' ),
+					'single'   => __( 'One large quote', 'hamista-core' ),
 				),
 			)
 		);
@@ -131,6 +136,14 @@ class Testimonials extends Widget_Base {
 				),
 				'condition'      => array( 'layout' => 'grid' ),
 				'selectors'      => array( '{{WRAPPER}} .hm-quotes--grid' => '--cols: {{VALUE}};' ),
+			)
+		);
+		$this->add_carousel_options(
+			array( 'layout' => 'carousel' ),
+			array(
+				'per_view' => 3,
+				'arrows'   => 'top',
+				'dots'     => 'dots',
 			)
 		);
 		$this->end_controls_section();
@@ -180,6 +193,42 @@ class Testimonials extends Widget_Base {
 
 		if ( 'single' === $s['layout'] && $items ) {
 			echo '<div class="hm-quotes hm-quotes--single" data-hm-reveal="up">' . $this->card( $items[0], 0, true ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return;
+		}
+
+		if ( 'carousel' === $s['layout'] ) {
+			$cards = array();
+			foreach ( $items as $i => $item ) {
+				$cards[] = $this->card( $item, $i );
+			}
+			echo '<div class="hm-quotes hm-quotes--carousel">' . $this->carousel_head( $s, '' ) . $this->carousel_wrap( $s, $cards, __( 'Testimonials', 'hamista-core' ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return;
+		}
+
+		if ( 'expand' === $s['layout'] ) {
+			echo '<div class="hm-qexpand">';
+			foreach ( $items as $i => $item ) {
+				$photo = hamista_core_image(
+					$item['avatar'],
+					'medium_large',
+					array(
+						'class' => 'hm-qexpand__photo',
+						'alt'   => '',
+					)
+				);
+				echo '<figure class="hm-qexpand__item" tabindex="0">'; // Focusable so keyboard users can open each panel.
+				echo $photo ? $photo : '<span class="hm-qexpand__photo hm-qexpand__photo--blank" aria-hidden="true"></span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo '<span class="hm-qexpand__name" aria-hidden="true">' . esc_html( $item['name'] ) . '</span>';
+				echo '<div class="hm-qexpand__body">';
+				if ( (int) $item['rating'] > 0 ) {
+					/* translators: %d: star rating */
+					echo '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) . '">' . esc_html( str_repeat( '★', (int) $item['rating'] ) ) . '</span>';
+				}
+				echo '<blockquote>' . esc_html( $item['quote'] ) . '</blockquote>';
+				echo '<figcaption><b>' . esc_html( $item['name'] ) . '</b><small>' . esc_html( $item['role'] ) . '</small></figcaption>';
+				echo '</div></figure>';
+			}
+			echo '</div>';
 			return;
 		}
 

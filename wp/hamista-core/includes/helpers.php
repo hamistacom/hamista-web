@@ -160,3 +160,14 @@ function hamista_core_template( $name, $args = array() ) {
 		load_template( $file, false, $args );
 	}
 }
+
+/**
+ * Localised number in the site's digits (Persian digits when enabled).
+ *
+ * @param float $number   Number.
+ * @param int   $decimals Decimals.
+ * @return string
+ */
+function hamista_core_num( $number, $decimals = 0 ) {
+	return hamista_core_digits( number_format_i18n( $number, $decimals ) );
+}

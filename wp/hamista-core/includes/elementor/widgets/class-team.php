@@ -9,6 +9,7 @@ namespace Hamista\Core\Elementor\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
+use Hamista\Core\Elementor\Carousel;
 use Hamista\Core\Elementor\Widget_Base;
 
 defined( 'ABSPATH' ) || exit;
@@ -17,6 +18,8 @@ defined( 'ABSPATH' ) || exit;
  * Team widget.
  */
 class Team extends Widget_Base {
+
+	use Carousel;
 
 	/** @return string */
 	public function get_name() {
@@ -95,6 +98,18 @@ class Team extends Widget_Base {
 				),
 			)
 		);
+		$this->add_control(
+			'layout',
+			array(
+				'label'   => __( 'Layout', 'hamista-core' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'grid',
+				'options' => array(
+					'grid'     => __( 'Grid', 'hamista-core' ),
+					'carousel' => __( 'Carousel', 'hamista-core' ),
+				),
+			)
+		);
 		$this->add_responsive_control(
 			'columns',
 			array(
@@ -110,6 +125,15 @@ class Team extends Widget_Base {
 					'5' => '5',
 				),
 				'selectors'      => array( '{{WRAPPER}} .hm-team' => '--cols: {{VALUE}};' ),
+				'condition'      => array( 'layout' => 'grid' ),
+			)
+		);
+		$this->add_carousel_options(
+			array( 'layout' => 'carousel' ),
+			array(
+				'per_view'        => 4,
+				'per_view_tablet' => 2.4,
+				'per_view_mobile' => 1.6,
 			)
 		);
 		$this->add_control(
@@ -128,10 +152,12 @@ class Team extends Widget_Base {
 	 * Render.
 	 */
 	protected function render() {
-		$s = $this->get_settings_for_display();
-		echo '<div class="hm-team' . ( 'yes' === $s['mono'] ? ' hm-team--mono' : '' ) . '" data-hm-stagger="0.08">';
+		$s        = $this->get_settings_for_display();
+		$carousel = 'carousel' === ( $s['layout'] ?? 'grid' );
+		$people   = array();
 		foreach ( $s['people'] as $person ) {
-			echo '<figure class="hm-person" data-hm-reveal="up">';
+			ob_start();
+			echo '<figure class="hm-person"' . ( $carousel ? '' : ' data-hm-reveal="up"' ) . '>';
 			$photo = hamista_core_image(
 				$person['photo'],
 				'medium_large',
@@ -151,7 +177,13 @@ class Team extends Widget_Base {
 				echo '<span class="hm-person__links">' . $links . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 			echo '</div><figcaption><b>' . esc_html( $person['name'] ) . '</b><span>' . esc_html( $person['role'] ) . '</span></figcaption></figure>';
+			$people[] = ob_get_clean();
 		}
-		echo '</div>';
+		$mono = 'yes' === $s['mono'] ? ' hm-team--mono' : '';
+		if ( $carousel ) {
+			echo '<div class="hm-team-carousel' . esc_attr( $mono ) . '">' . $this->carousel_head( $s, '' ) . $this->carousel_wrap( $s, $people, __( 'Team', 'hamista-core' ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return;
+		}
+		echo '<div class="hm-team' . esc_attr( $mono ) . '" data-hm-stagger="0.08">' . implode( '', $people ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

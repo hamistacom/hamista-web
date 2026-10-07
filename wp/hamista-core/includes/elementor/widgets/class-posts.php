@@ -9,6 +9,7 @@
 namespace Hamista\Core\Elementor\Widgets;
 
 use Elementor\Controls_Manager;
+use Hamista\Core\Elementor\Carousel;
 use Hamista\Core\Elementor\Widget_Base;
 
 defined( 'ABSPATH' ) || exit;
@@ -17,6 +18,8 @@ defined( 'ABSPATH' ) || exit;
  * Posts widget.
  */
 class Posts extends Widget_Base {
+
+	use Carousel;
 
 	/** @return string */
 	public function get_name() {
@@ -118,6 +121,7 @@ class Posts extends Widget_Base {
 				'default' => 'grid',
 				'options' => array(
 					'grid'     => __( 'Grid', 'hamista-core' ),
+					'carousel' => __( 'Carousel', 'hamista-core' ),
 					'featured' => __( 'Featured first + grid', 'hamista-core' ),
 					'list'     => __( 'List', 'hamista-core' ),
 					'compact'  => __( 'Compact index', 'hamista-core' ),
@@ -142,6 +146,7 @@ class Posts extends Widget_Base {
 				'condition'      => array( 'layout' => array( 'grid', 'featured' ) ),
 			)
 		);
+		$this->add_carousel_options( array( 'layout' => 'carousel' ) );
 		$this->add_control(
 			'excerpt',
 			array(
@@ -194,6 +199,23 @@ class Posts extends Widget_Base {
 			}
 			echo '</ol>';
 			wp_reset_postdata();
+			return;
+		}
+
+		if ( 'carousel' === $s['layout'] ) {
+			$cards = array();
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				ob_start();
+				if ( hamista_core_theme_active() && locate_template( 'template-parts/content/card.php' ) ) {
+					get_template_part( 'template-parts/content/card', null, array( 'excerpt' => 'yes' === $s['excerpt'] ) );
+				} else {
+					self::fallback_card( array( 'excerpt' => 'yes' === $s['excerpt'] ) );
+				}
+				$cards[] = ob_get_clean();
+			}
+			wp_reset_postdata();
+			echo '<div class="hm-posts-carousel">' . $this->carousel_head( $s, '' ) . $this->carousel_wrap( $s, $cards, __( 'Posts', 'hamista-core' ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			return;
 		}
 

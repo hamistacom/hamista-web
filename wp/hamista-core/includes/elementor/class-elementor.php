@@ -48,9 +48,11 @@ class Elementor {
 			'Lead_Form',
 			'Contact_Info',
 			'Posts',
+			'Slider',
+			'Stories',
 		);
 		if ( class_exists( 'WooCommerce' ) ) {
-			$widgets[] = 'Products';
+			array_push( $widgets, 'Products', 'Product_Carousel', 'Product_Tabs', 'Product_Deal', 'Product_Categories' );
 		}
 		if ( class_exists( '\Hamista\Core\Auth\Account' ) ) {
 			$widgets[] = 'Login';
@@ -117,6 +119,15 @@ class Elementor {
 	 */
 	public static function editor_styles() {
 		wp_enqueue_style( 'hamista-editor', HAMISTA_CORE_URL . 'assets/css/editor.css', array(), HAMISTA_CORE_VERSION );
+
+		// Persian sites: the editor panel uses the same Persian font as the Hamista panel.
+		if ( 0 === strpos( determine_locale(), 'fa' ) && class_exists( '\Hamista\Core\Admin\Admin' ) ) {
+			$fonts = \Hamista\Core\Admin\Admin::font_css();
+			if ( $fonts ) {
+				$fonts = str_replace( '.hm-admin{--hm-a-font:', '#elementor-panel,#elementor-navigator,.dialog-widget-content,.e-route-panel-editor-content{font-family:', $fonts );
+				wp_add_inline_style( 'hamista-editor', $fonts );
+			}
+		}
 	}
 
 	/**
