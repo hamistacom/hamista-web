@@ -1091,3 +1091,9 @@
 @media (prefers-reduced-motion: reduce) {
 	.hm-device.is-float .hm-device__body, .hm-knob, .hm-dash__bars i, .hm-path__dust i, .hm-led { animation: none; }
 }
+
+/* Touch targets for widget controls. */
+@media (pointer: coarse) {
+	.hm-feature__link, .hm-link-btn { min-height: 44px; display: inline-flex; align-items: center; }
+	.hm-pricing__switch { min-height: 44px; padding-block: 6px; background-clip: content-box; }
+}

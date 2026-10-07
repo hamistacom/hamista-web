@@ -225,7 +225,7 @@
 /* Utility classes for Elementor containers (Advanced → CSS classes) */
 .hm-kit-pulse .hm-lime-slab { background: var(--hm-lime); color: var(--hm-lime-fg); --hm-fg: var(--hm-lime-fg); --hm-fg-muted: rgba(8, 6, 18, .72); --hm-border: rgba(8, 6, 18, .14); --hm-accent: var(--hm-lime-fg); --hm-accent-fg: var(--hm-lime); --hm-accent-ink: var(--hm-lime-fg); }
 .hm-kit-pulse .hm-violet-glow { position: relative; isolation: isolate; }
-.hm-kit-pulse .hm-violet-glow::before {
+.hm-kit-pulse .hm-violet-glow::after {
 	content: ""; position: absolute; z-index: -1; inset: 10% 15% auto; height: 60%;
 	background: radial-gradient(closest-side, rgba(106, 61, 245, .32), transparent); filter: blur(30px); pointer-events: none;
 }

@@ -129,7 +129,7 @@
 .hm-kit-honey .hm-honeycomb { background-image: var(--hm-comb); background-size: 56px 96px; }
 /* Dripping top edge: put it on a dark or amber container */
 .hm-kit-honey .hm-drip-top { position: relative; }
-.hm-kit-honey .hm-drip-top::before {
+.hm-kit-honey .hm-drip-top::after {
 	content: ""; position: absolute; inset-inline: 0; top: -1px; height: clamp(26px, 4vw, 54px); z-index: 1; pointer-events: none;
 	background: var(--hm-drip-color, var(--hm-bg)); -webkit-mask: var(--hm-drip) center top / 100% 100% no-repeat; mask: var(--hm-drip) center top / 100% 100% no-repeat;
 }

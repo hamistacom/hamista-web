@@ -672,3 +672,11 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
+
+/* Touch: every control reaches a comfortable target size. */
+@media (pointer: coarse) {
+	.hm-brand { min-height: 44px; }
+	.hm-widget a, .hm-footer-menu a, .hm-post-card__meta a, .woocommerce-breadcrumb a { min-block-size: 32px; display: inline-flex; align-items: center; }
+	.product_meta a { padding-block: 8px; display: inline-block; }
+	a.hm-chip, button.hm-chip, .hm-post-card__meta a.hm-chip { min-height: 40px; }
+}

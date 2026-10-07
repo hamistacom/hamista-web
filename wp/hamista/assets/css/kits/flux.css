@@ -112,8 +112,8 @@
 
 /* Utility: a soft light behind any container (Advanced → CSS classes: hm-glow-bg). */
 .hm-kit-flux .hm-glow-bg { position: relative; isolation: isolate; }
-.hm-kit-flux .hm-glow-bg::before {
-	content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: min(1100px, 120vw); height: min(700px, 90vw); transform: translate(-50%, -50%);
+.hm-kit-flux .hm-glow-bg::after {
+	content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: min(1100px, 100%); height: min(700px, 90vw); transform: translate(-50%, -50%);
 	background: radial-gradient(closest-side, rgba(255, 138, 31, .22), rgba(255, 61, 110, .08) 55%, transparent 75%); filter: blur(40px); pointer-events: none;
 }
 
