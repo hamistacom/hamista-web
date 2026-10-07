@@ -142,6 +142,13 @@
 
 	/** Iterate choices given as an object or (PHP list) array. */
 	function eachChoice( choices, fn ) {
+		// An ordered list of [ value, label ] pairs keeps "" ahead of numeric keys, which objects reorder.
+		if ( Array.isArray( choices ) ) {
+			choices.forEach( function ( pair ) {
+				fn( pair[ 0 ], pair[ 1 ] );
+			} );
+			return;
+		}
 		if ( ! isObj( choices ) ) {
 			return;
 		}
@@ -426,6 +433,7 @@
 			return;
 		}
 		state[ key ] = value;
+		refreshFontMenus( key );
 		refreshVisibility( false );
 		updateDirtyUI();
 	}
@@ -754,6 +762,128 @@
 		] );
 	}
 
+	/* ------------------------------------------------------------------ *
+	 * Font library (bundled licensed families)
+	 * ------------------------------------------------------------------ */
+
+	const LIBRARY = data.fontLibrary || {};
+	const DIGITS = new Intl.NumberFormat( 0 === ( document.documentElement.lang || '' ).indexOf( 'fa' ) ? 'fa-IR' : undefined );
+
+	/** Saved switches over the defaults: every family and weight on. */
+	function libraryState() {
+		const saved = val( 'font_library' );
+		const out = {};
+		Object.keys( LIBRARY ).forEach( function ( slug ) {
+			const row = isObj( saved ) && isObj( saved[ slug ] ) ? saved[ slug ] : {};
+			const all = LIBRARY[ slug ].weights;
+			const weights = Array.isArray( row.weights ) ? all.filter( function ( w ) {
+				return row.weights.indexOf( w ) > -1;
+			} ) : all.slice();
+			out[ slug ] = { on: undefined === row.on ? true : !! row.on, weights: weights.length ? weights : all.slice() };
+		} );
+		return out;
+	}
+
+	/** Load every library family once so each card previews in its own face. */
+	function libraryFaces() {
+		if ( document.getElementById( 'hm-lib-faces' ) ) {
+			return;
+		}
+		let css = '';
+		Object.keys( LIBRARY ).forEach( function ( slug ) {
+			LIBRARY[ slug ].files.forEach( function ( file ) {
+				css += '@font-face{font-family:"hm-lib-' + slug + '";src:url(' + cssString( file.url ) + ') format("woff2");font-weight:' + file.weight + ';font-display:swap}';
+			} );
+		} );
+		document.head.appendChild( h( 'style', { id: 'hm-lib-faces', text: css } ) );
+	}
+
+	function libraryCard( slug, font, st ) {
+		const face = '"hm-lib-' + slug + '", var(--hm-a-font)';
+		const sampleWeight = font.weights.indexOf( '700' ) > -1 ? '700' : font.weights[ font.weights.length - 1 ];
+		const weights = font.variable
+			? h( 'p', { class: 'hm-lib__variable', text: fmt( t( 'libVariable' ), t( 'w' + font.weights[ 0 ] ), t( 'w' + font.weights[ font.weights.length - 1 ] ) ) } )
+			: h( 'div', { class: 'hm-lib__weights', role: 'group', 'aria-label': t( 'libWeights' ) + ': ' + font.label }, font.weights.map( function ( w ) {
+				const on = st.weights.indexOf( w ) > -1;
+				return h( 'button', {
+					type: 'button',
+					class: 'hm-lib__weight',
+					'data-act': 'lib-weight',
+					'data-weight': w,
+					'aria-pressed': String( on ),
+					disabled: ! st.on || 1 === font.weights.length,
+					style: { 'font-family': face, 'font-weight': w },
+					title: w,
+					text: t( 'w' + w ),
+				} );
+			} ) );
+		return h( 'article', { class: 'hm-lib' + ( st.on ? '' : ' is-off' ), 'data-lib': slug, style: { '--hm-lib-face': face } }, [
+			h( 'div', { class: 'hm-lib__head' }, [
+				h( 'div', { class: 'hm-lib__names' }, [
+					h( 'h3', { class: 'hm-lib__name', text: font.label } ),
+					h( 'span', { class: 'hm-lib__latin', dir: 'ltr', text: font.family } ),
+				] ),
+				h( 'span', { class: 'hm-lib__tag', text: 'heading' === font.use ? t( 'libForHeadings' ) : t( 'libForText' ) } ),
+				h( 'span', { class: 'hm-switch' }, [
+					h( 'input', { type: 'checkbox', role: 'switch', class: 'hm-switch__input', checked: st.on, 'data-part': 'lib-on', 'aria-label': fmt( t( 'libSwitch' ), font.label ) } ),
+					h( 'span', { class: 'hm-switch__track', 'aria-hidden': 'true' }, h( 'span', { class: 'hm-switch__thumb' } ) ),
+				] ),
+			] ),
+			h( 'p', { class: 'hm-lib__sample', lang: 'fa', dir: 'rtl', style: { 'font-family': face, 'font-weight': sampleWeight }, 'data-weight': sampleWeight, text: t( 'heading' === font.use ? 'libSampleShort' : 'libSample' ) } ),
+			h( 'p', { class: 'hm-lib__desc', text: font.desc } ),
+			weights,
+		] );
+	}
+
+	/** Font menus list switched-on library families (and the current choice, marked, if it was switched off). */
+	function fontChoices( choices, cur ) {
+		const st = libraryState();
+		const out = {};
+		eachChoice( choices, function ( value, label ) {
+			if ( st[ value ] && ! st[ value ].on ) {
+				if ( value === cur ) {
+					out[ value ] = fmt( t( 'libOffChoice' ), label );
+				}
+				return;
+			}
+			out[ value ] = label;
+		} );
+		return out;
+	}
+
+	/** Weight menus offer the weights the chosen family really has. */
+	function weightChoices( def, cur ) {
+		const family = val( def.weights_of );
+		const st = libraryState();
+		const have = st[ family ] ? ( LIBRARY[ family ].variable ? LIBRARY[ family ].weights : st[ family ].weights ) : ( def.weights_map && def.weights_map[ family ] ) || null;
+		const out = [ [ '', def.choices[ '' ] ] ];
+		eachChoice( def.choices, function ( value, label ) {
+			if ( '' === value ) {
+				return;
+			}
+			if ( ! have || have.indexOf( value ) > -1 ) {
+				out.push( [ value, label ] );
+			} else if ( value === cur ) {
+				out.push( [ value, fmt( t( 'libNearest' ), label ) ] );
+			}
+		} );
+		return out;
+	}
+
+	/** Font and weight menus follow the library switches and the chosen family. */
+	function refreshFontMenus( key ) {
+		if ( 'font_library' !== key && ! /^font_(body|heading)$/.test( key ) ) {
+			return;
+		}
+		ui.rendered.forEach( function ( ctx ) {
+			const isFamily = ctx.def.fonts && 'font_library' === key;
+			const isWeight = ctx.def.weights_of && ( ctx.def.weights_of === key || 'font_library' === key );
+			if ( ( isFamily || isWeight ) && ctx.key !== key ) {
+				rerenderControl( ctx );
+			}
+		} );
+	}
+
 	function blankRow( subs ) {
 		const row = {};
 		Object.keys( subs || {} ).forEach( function ( sub ) {
@@ -829,7 +959,13 @@
 			render( ctx ) {
 				const cur = val( ctx.key );
 				const sel = h( 'select', { id: ctx.id, class: 'hm-select__el', 'aria-describedby': describedBy( ctx ) } );
-				eachChoice( ctx.def.choices, function ( value, label ) {
+				let choices = ctx.def.choices;
+				if ( ctx.def.fonts ) {
+					choices = fontChoices( choices, scalar( cur ) );
+				} else if ( ctx.def.weights_of ) {
+					choices = weightChoices( ctx.def, scalar( cur ) );
+				}
+				eachChoice( choices, function ( value, label ) {
 					sel.appendChild( h( 'option', { value, selected: scalar( value ) === scalar( cur ), text: isObj( label ) ? label.label : label } ) );
 				} );
 				return selectWrap( sel );
@@ -1286,6 +1422,90 @@
 				} else if ( 'font-upload' === act && fams[ fi ] ) {
 					uploadFonts( ctx, fi );
 				}
+			},
+		},
+
+		font_library: {
+			group: true,
+			render( ctx ) {
+				libraryFaces();
+				const st = libraryState();
+				const slugs = Object.keys( LIBRARY );
+				const on = slugs.filter( function ( slug ) {
+					return st[ slug ].on;
+				} ).length;
+				return [
+					h( 'div', { class: 'hm-lib-bar' }, [
+						h( 'span', { class: 'hm-lib-bar__count', role: 'status', text: fmt( t( 'libCount' ), DIGITS.format( on ), DIGITS.format( slugs.length ) ) } ),
+						h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet hm-btn--sm', 'data-act': 'lib-all', 'data-on': '1', disabled: on === slugs.length, text: t( 'libAllOn' ) } ),
+						h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet hm-btn--sm', 'data-act': 'lib-all', 'data-on': '0', disabled: 0 === on, text: t( 'libAllOff' ) } ),
+					] ),
+					h( 'div', { class: 'hm-libs' }, slugs.map( function ( slug ) {
+						return libraryCard( slug, LIBRARY[ slug ], st[ slug ] );
+					} ) ),
+				];
+			},
+			mount( ctx ) {
+				// Pointing at a weight previews it in the card's sample line.
+				const preview = function ( e ) {
+					const btn = e.target.closest( '.hm-lib__weight' );
+					const card = e.target.closest( '.hm-lib' );
+					if ( ! card ) {
+						return;
+					}
+					const sample = card.querySelector( '.hm-lib__sample' );
+					sample.style.fontWeight = btn ? btn.dataset.weight : sample.dataset.weight;
+				};
+				ctx.control.addEventListener( 'pointerover', preview );
+				ctx.control.addEventListener( 'focusin', preview );
+				ctx.control.addEventListener( 'pointerleave', function () {
+					ctx.control.querySelectorAll( '.hm-lib__sample' ).forEach( function ( p ) {
+						p.style.fontWeight = p.dataset.weight;
+					} );
+				} );
+			},
+			input( ctx, e ) {
+				if ( 'lib-on' !== e.target.dataset.part || 'change' !== e.type ) {
+					return;
+				}
+				const slug = e.target.closest( '[data-lib]' ).dataset.lib;
+				const st = libraryState();
+				st[ slug ].on = !! e.target.checked;
+				set( ctx.key, st );
+				rerenderControl( ctx );
+				focusLater( ctx.control.querySelector( '[data-lib="' + slug + '"] [data-part="lib-on"]' ) );
+			},
+			click( ctx, act, btn ) {
+				const st = libraryState();
+				if ( 'lib-all' === act ) {
+					Object.keys( st ).forEach( function ( slug ) {
+						st[ slug ].on = '1' === btn.dataset.on;
+					} );
+					set( ctx.key, st );
+					rerenderControl( ctx );
+					return;
+				}
+				if ( 'lib-weight' !== act ) {
+					return;
+				}
+				const slug = btn.closest( '[data-lib]' ).dataset.lib;
+				const w = btn.dataset.weight;
+				const list = st[ slug ].weights;
+				const i = list.indexOf( w );
+				if ( i > -1 ) {
+					if ( 1 === list.length ) {
+						toast( t( 'libLastWeight' ) );
+						return;
+					}
+					list.splice( i, 1 );
+				} else {
+					list.push( w );
+					list.sort( function ( a, b ) {
+						return Number( a ) - Number( b );
+					} );
+				}
+				set( ctx.key, st );
+				btn.setAttribute( 'aria-pressed', String( i < 0 ) );
 			},
 		},
 

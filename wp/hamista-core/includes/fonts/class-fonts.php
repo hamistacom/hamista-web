@@ -96,7 +96,7 @@ class Fonts {
 	 * @return array
 	 */
 	public static function elementor_fonts( $fonts ) {
-		$families = function_exists( 'hamista_font_families' ) ? hamista_font_families() : self::add_families( array() );
+		$families = function_exists( 'hamista_font_families' ) ? hamista_font_families() : self::add_families( Library::add_families( array() ) );
 		foreach ( $families as $family ) {
 			$fonts[ $family['family'] ] = 'hamista';
 		}

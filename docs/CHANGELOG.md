@@ -13,6 +13,8 @@
 - Settings: switches for the page title area (pages, archives, shop), with alignment and size.
 - New widget: Showcase hero. Full-screen slides that crossfade with a slow zoom, numbered index with progress, an info card, a film button (MP4, Aparat or YouTube in a window over the page), figures and links along the bottom. Pauses when off screen, on keyboard focus and in a hidden tab; arrow keys move between slides.
 - New demo: Rahnavard (ره‌نورد), a slow-travel agency. Cinematic hero, destinations in a horizontal scroll, tour cards that stack while scrolling, a night sky that zooms out, travellers' quotes, journal and an image call to action. Five pages, light and dark.
+- Font library (Typography → Font library): IRANYekan, IRANSansX, Peyda, Pinar (variable), Doran, Ravagh, Lahzeh, Modam, Hamrah and Gramophone, each previewed in its own face. Switch any family off (it leaves the font menus and Elementor) and any weight within it. Pages download only the families and weights they use, including fonts picked inside Elementor widgets.
+- Typography: body text weight and heading weight menus that offer only the weights the chosen font has.
 - Index numbers on cards and steps follow Persian digits.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
 - Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
@@ -23,6 +25,7 @@
 - New style kit: Voyage. Stone white, charcoal and Persian turquoise, small corners and hairlines.
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
+- IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.
 
 ## 1.0.0
 

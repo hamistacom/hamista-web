@@ -42,6 +42,7 @@ final class Plugin {
 		$modules = array(
 			'Settings\\Settings',
 			'Fonts\\Fonts',
+			'Fonts\\Library',
 			'Frontend\\Frontend',
 			'Layouts\\Layouts',
 			'Forms\\Forms',

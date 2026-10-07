@@ -258,31 +258,54 @@ return ( static function () {
 			'icon'   => 'pen',
 			'desc'   => __( 'All fonts are served from your own site — nothing loads from Google.', 'hamista-core' ),
 			'fields' => array(
-				'custom_fonts'   => array(
-					'type'  => 'fonts',
-					'label' => __( 'Font files', 'hamista-core' ),
-					'desc'  => __( 'Upload your licensed font files (woff2 recommended). The weight is detected from each file name, e.g. YekanBakhFaNum-Bold.woff2 → 700. Use the family names "Yekan Bakh" and "Digits" to replace the theme defaults.', 'hamista-core' ),
+				'font_library'        => array(
+					'type'  => 'font_library',
+					'group' => __( 'Font library', 'hamista-core' ),
+					'label' => __( 'Font library', 'hamista-core' ),
+					'desc'  => __( 'Licensed Persian fonts that come with Hamista. Switch off the ones you do not want in the menus and in Elementor, and the weights you do not need. A page only downloads the fonts and weights it uses.', 'hamista-core' ),
 				),
-				'font_body'      => array(
+				'font_body'           => array(
 					'type'    => 'select',
+					'group'   => __( 'Site fonts', 'hamista-core' ),
 					'label'   => __( 'Body font', 'hamista-core' ),
 					'choices' => 'font_families',
 					'width'   => 'half',
 				),
-				'font_heading'   => array(
+				'font_body_weight'    => array(
+					'type'       => 'select',
+					'label'      => __( 'Body text weight', 'hamista-core' ),
+					'choices'    => 'font_weights',
+					'weights_of' => 'font_body',
+					'width'      => 'half',
+				),
+				'font_heading'        => array(
 					'type'    => 'select',
 					'label'   => __( 'Heading font', 'hamista-core' ),
 					'choices' => 'font_families',
 					'width'   => 'half',
 				),
-				'font_numbers'   => array(
+				'font_heading_weight' => array(
+					'type'       => 'select',
+					'label'      => __( 'Heading weight', 'hamista-core' ),
+					'choices'    => 'font_weights',
+					'weights_of' => 'font_heading',
+					'width'      => 'half',
+				),
+				'custom_fonts'        => array(
+					'type'  => 'fonts',
+					'group' => __( 'Your own fonts', 'hamista-core' ),
+					'label' => __( 'Font files', 'hamista-core' ),
+					'desc'  => __( 'Upload your licensed font files (woff2 recommended). The weight is detected from each file name, e.g. YekanBakhFaNum-Bold.woff2 → 700. Use the family names "Yekan Bakh" and "Digits" to replace the theme defaults.', 'hamista-core' ),
+				),
+				'font_numbers'        => array(
 					'type'    => 'select',
+					'group'   => __( 'Numbers, size and dates', 'hamista-core' ),
 					'label'   => __( 'Numbers font', 'hamista-core' ),
 					'desc'    => __( 'Used for counters, prices, dates and codes.', 'hamista-core' ),
 					'choices' => 'font_families',
 					'width'   => 'half',
 				),
-				'font_size'      => array(
+				'font_size'           => array(
 					'type'  => 'range',
 					'label' => __( 'Base font size', 'hamista-core' ),
 					'min'   => 14,
@@ -291,11 +314,11 @@ return ( static function () {
 					'unit'  => 'px',
 					'width' => 'half',
 				),
-				'persian_digits' => $on_off + array(
+				'persian_digits'      => $on_off + array(
 					'label' => __( 'Persian digits', 'hamista-core' ),
 					'desc'  => __( 'Prefer FaNum font files and show numbers as ۱۲۳ in theme output.', 'hamista-core' ),
 				),
-				'jalali_dates'   => $on_off + array(
+				'jalali_dates'        => $on_off + array(
 					'label' => __( 'Solar Hijri (Jalali) dates', 'hamista-core' ),
 					'desc'  => __( 'Shows post and comment dates in the Persian calendar on Persian sites. Skipped automatically if WP-Parsidate is active.', 'hamista-core' ),
 				),

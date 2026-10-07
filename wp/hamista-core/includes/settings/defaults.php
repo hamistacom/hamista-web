@@ -34,9 +34,12 @@ return array(
 	'accent_dark'              => '',
 
 	// Typography.
+	'font_library'             => array(),
 	'custom_fonts'             => array(),
-	'font_body'                => 'yekan-bakh',
-	'font_heading'             => 'yekan-bakh',
+	'font_body'                => 'iranyekan',
+	'font_body_weight'         => '',
+	'font_heading'             => 'iranyekan',
+	'font_heading_weight'      => '',
 	'font_numbers'             => 'digits',
 	'font_size'                => 16,
 	'persian_digits'           => true,

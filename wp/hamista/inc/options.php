@@ -39,8 +39,10 @@ function hamista_option_defaults() {
 				'breadcrumbs'           => true,
 
 				// Typography.
-				'font_body'             => 'yekan-bakh',
-				'font_heading'          => 'yekan-bakh',
+				'font_body'             => 'iranyekan',
+				'font_body_weight'      => '',
+				'font_heading'          => 'iranyekan',
+				'font_heading_weight'   => '',
 				'font_numbers'          => 'digits',
 				'font_size'             => 16,
 				'persian_digits'        => true,

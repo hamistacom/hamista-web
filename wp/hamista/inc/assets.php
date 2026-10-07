@@ -135,6 +135,21 @@ function hamista_dynamic_css() {
 	}
 	$css .= '}';
 
+	// Chosen weights beat the style kit's own (kits set them on body).
+	$weights = '';
+	foreach ( array(
+		'font_body_weight'    => '--hm-fw-body',
+		'font_heading_weight' => '--hm-fw-heading',
+	) as $option => $var ) {
+		$weight = absint( hamista_option( $option ) );
+		if ( $weight >= 100 && $weight <= 950 ) {
+			$weights .= $var . ':' . $weight . ';';
+		}
+	}
+	if ( $weights ) {
+		$css .= ':root:root body{' . $weights . '}';
+	}
+
 	$accent = sanitize_hex_color( (string) hamista_option( 'accent' ) );
 	if ( $accent ) {
 		$css .= ':root:root body{--hm-accent:' . $accent . ';--hm-accent-ink:' . $accent . ';--hm-accent-soft:' . hamista_hex_to_rgba( $accent, .1 ) . ';--hm-accent-fg:' . hamista_contrast_color( $accent ) . ';}';

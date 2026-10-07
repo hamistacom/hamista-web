@@ -291,19 +291,20 @@ class Admin {
 	 */
 	private static function data() {
 		return array(
-			'version' => HAMISTA_CORE_VERSION,
-			'schema'  => Settings::schema(),
-			'values'  => Settings::admin_values(),
-			'rest'    => array(
+			'version'     => HAMISTA_CORE_VERSION,
+			'schema'      => Settings::schema(),
+			'values'      => Settings::admin_values(),
+			'rest'        => array(
 				'root'  => esc_url_raw( rest_url( 'hamista/v1/' ) ),
 				'nonce' => wp_create_nonce( 'wp_rest' ),
 			),
-			'demos'   => array(),
-			'plugins' => self::plugins(),
-			'system'  => self::system(),
-			'links'   => self::links(),
-			'rtl'     => is_rtl(),
-			'i18n'    => self::i18n(),
+			'demos'       => array(),
+			'plugins'     => self::plugins(),
+			'fontLibrary' => \Hamista\Core\Fonts\Library::admin_data(),
+			'system'      => self::system(),
+			'links'       => self::links(),
+			'rtl'         => is_rtl(),
+			'i18n'        => self::i18n(),
 		);
 	}
 
@@ -540,16 +541,34 @@ class Admin {
 			'fontSampleShort'  => 'ابجد Aa ۱۲۳',
 			'fontEmpty'        => __( 'No custom fonts yet. Add a family, then upload its files.', 'hamista-core' ),
 			'fontReloadHint'   => __( 'New families appear in the font menus below after you save and reload.', 'hamista-core' ),
-			'w100'             => __( 'Thin', 'hamista-core' ),
-			'w200'             => __( 'Extra light', 'hamista-core' ),
-			'w300'             => __( 'Light', 'hamista-core' ),
-			'w400'             => __( 'Regular', 'hamista-core' ),
-			'w500'             => __( 'Medium', 'hamista-core' ),
-			'w600'             => __( 'Semi bold', 'hamista-core' ),
-			'w700'             => __( 'Bold', 'hamista-core' ),
-			'w800'             => __( 'Extra bold', 'hamista-core' ),
-			'w900'             => __( 'Black', 'hamista-core' ),
-			'w950'             => __( 'Extra black', 'hamista-core' ),
+			'libSample'        => 'ایران را آهسته ببینید؛ گروه‌های کوچک، راهنمای بومی و وقت کافی برای دیدن. ۱۴۰۵',
+			'libSampleShort'   => 'سفری بی‌پایان ۱۴۰۵',
+			/* translators: 1: switched-on families, 2: all families. */
+			'libCount'         => __( '%1$s of %2$s fonts on', 'hamista-core' ),
+			'libAllOn'         => __( 'Switch all on', 'hamista-core' ),
+			'libAllOff'        => __( 'Switch all off', 'hamista-core' ),
+			/* translators: %s: font name. */
+			'libSwitch'        => __( 'Use %s', 'hamista-core' ),
+			'libWeights'       => __( 'Weights', 'hamista-core' ),
+			'libForText'       => __( 'Text and headings', 'hamista-core' ),
+			'libForHeadings'   => __( 'Headings', 'hamista-core' ),
+			/* translators: 1: lightest weight name, 2: heaviest weight name. */
+			'libVariable'      => __( 'Variable: every weight from %1$s to %2$s', 'hamista-core' ),
+			'libLastWeight'    => __( 'Keep at least one weight on.', 'hamista-core' ),
+			/* translators: %s: font name. */
+			'libOffChoice'     => __( '%s (switched off)', 'hamista-core' ),
+			/* translators: %s: weight name. */
+			'libNearest'       => __( '%s: not in this font, the nearest weight shows', 'hamista-core' ),
+			'w100'             => _x( 'Thin', 'font weight', 'hamista-core' ),
+			'w200'             => _x( 'Extra light', 'font weight', 'hamista-core' ),
+			'w300'             => _x( 'Light', 'font weight', 'hamista-core' ),
+			'w400'             => _x( 'Regular', 'font weight', 'hamista-core' ),
+			'w500'             => _x( 'Medium', 'font weight', 'hamista-core' ),
+			'w600'             => _x( 'Semi bold', 'font weight', 'hamista-core' ),
+			'w700'             => _x( 'Bold', 'font weight', 'hamista-core' ),
+			'w800'             => _x( 'Extra bold', 'font weight', 'hamista-core' ),
+			'w900'             => _x( 'Black', 'font weight', 'hamista-core' ),
+			'w950'             => _x( 'Extra black', 'font weight', 'hamista-core' ),
 
 			// Actions.
 			'actionSaveFirst'  => __( 'Save your changes in this section first.', 'hamista-core' ),

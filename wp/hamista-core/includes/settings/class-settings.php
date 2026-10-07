@@ -100,8 +100,9 @@ class Settings {
 	 * @return array
 	 */
 	public static function schema() {
-		$schema = apply_filters( 'hamista_core/settings_schema', require __DIR__ . '/schema.php' );
-		$fonts  = self::font_choices();
+		$schema  = apply_filters( 'hamista_core/settings_schema', require __DIR__ . '/schema.php' );
+		$fonts   = self::font_choices();
+		$weights = self::weight_choices();
 
 		foreach ( $schema as $section_id => $section ) {
 			if ( empty( $section['fields'] ) ) {
@@ -110,6 +111,11 @@ class Settings {
 			foreach ( $section['fields'] as $key => $field ) {
 				if ( isset( $field['choices'] ) && 'font_families' === $field['choices'] ) {
 					$schema[ $section_id ]['fields'][ $key ]['choices'] = $fonts;
+					$schema[ $section_id ]['fields'][ $key ]['fonts']   = true;
+				}
+				if ( isset( $field['choices'] ) && 'font_weights' === $field['choices'] ) {
+					$schema[ $section_id ]['fields'][ $key ]['choices']     = $weights;
+					$schema[ $section_id ]['fields'][ $key ]['weights_map'] = self::font_weight_map();
 				}
 				$schema[ $section_id ]['fields'][ $key ]['default'] = self::defaults()[ $key ] ?? null;
 			}
@@ -155,8 +161,59 @@ class Settings {
 				'digits'     => 'Digits',
 			);
 		}
+		// Switched-off library families stay listed; the settings screen hides them until switched on.
+		foreach ( \Hamista\Core\Fonts\Library::catalog() as $slug => $font ) {
+			if ( ! isset( $choices[ $slug ] ) ) {
+				$choices[ $slug ] = $font['label'];
+			}
+		}
 		$choices['system'] = __( 'System font', 'hamista-core' );
 		return $choices;
+	}
+
+	/**
+	 * Weight choices: the theme default, then every weight by name.
+	 *
+	 * @return array
+	 */
+	public static function weight_choices() {
+		$choices = array( '' => __( 'Theme default', 'hamista-core' ) );
+		foreach ( \Hamista\Core\Fonts\Library::weight_labels() as $weight => $label ) {
+			/* translators: 1: weight name, 2: weight number */
+			$choices[ (string) $weight ] = sprintf( __( '%1$s (%2$s)', 'hamista-core' ), $label, hamista_core_digits( $weight ) );
+		}
+		return $choices;
+	}
+
+	/**
+	 * Weights each family really has, so the weight menus only offer those.
+	 * Families without files (they fall back to Vazirmatn) and variable fonts offer all.
+	 *
+	 * @return array slug => string[]
+	 */
+	public static function font_weight_map() {
+		$all      = array_map( 'strval', array_keys( \Hamista\Core\Fonts\Library::weight_labels() ) );
+		$map      = array();
+		$families = function_exists( 'hamista_font_families' ) ? hamista_font_families() : array();
+		foreach ( \Hamista\Core\Fonts\Library::catalog() as $slug => $font ) {
+			$map[ $slug ] = $font['weights'];
+		}
+		foreach ( $families as $slug => $family ) {
+			if ( ! empty( $family['library'] ) ) {
+				continue;
+			}
+			$weights = array();
+			foreach ( (array) $family['faces'] as $face ) {
+				if ( false !== strpos( (string) $face['weight'], ' ' ) ) {
+					$weights = $all;
+					break;
+				}
+				$weights[] = (string) $face['weight'];
+			}
+			$map[ $slug ] = $weights ? array_values( array_unique( $weights ) ) : $all;
+		}
+		$map['system'] = $all;
+		return $map;
 	}
 
 	/**
@@ -250,8 +307,34 @@ class Settings {
 
 			case 'fonts':
 				return self::sanitize_fonts( $value );
+
+			case 'font_library':
+				return self::sanitize_library( $value );
 		}
 		return $default;
+	}
+
+	/**
+	 * Font library switches: slug => [ on, weights ]. Unknown families and weights are dropped.
+	 *
+	 * @param mixed $value Raw.
+	 * @return array
+	 */
+	private static function sanitize_library( $value ) {
+		$clean = array();
+		foreach ( \Hamista\Core\Fonts\Library::catalog() as $slug => $font ) {
+			if ( ! isset( $value[ $slug ] ) || ! is_array( $value[ $slug ] ) ) {
+				continue;
+			}
+			$row            = $value[ $slug ];
+			$weights        = isset( $row['weights'] ) ? array_map( 'strval', (array) $row['weights'] ) : $font['weights'];
+			$weights        = array_values( array_intersect( $font['weights'], $weights ) );
+			$clean[ $slug ] = array(
+				'on'      => ! empty( $row['on'] ) && 'false' !== $row['on'],
+				'weights' => $weights ? $weights : $font['weights'],
+			);
+		}
+		return $clean;
 	}
 
 	/**

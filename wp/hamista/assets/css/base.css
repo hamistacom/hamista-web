@@ -38,6 +38,7 @@
 	--hm-fs-base: 16px;
 	--hm-lh-body: 1.85;
 	--hm-lh-heading: 1.25;
+	--hm-fw-body: 400;
 	--hm-fw-heading: 800;
 	--hm-fw-bold: 700;
 	/* Laptop-first scale: a 1366–1536px screen shows a full section without scrolling. */
@@ -128,6 +129,7 @@
 	color: var(--hm-fg);
 	font-family: var(--hm-font-body);
 	font-size: var(--hm-fs-base);
+	font-weight: var(--hm-fw-body);
 	line-height: var(--hm-lh-body);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

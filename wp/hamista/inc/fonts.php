@@ -256,11 +256,14 @@ function hamista_font_face_css() {
 		}
 	}
 
-	// Preload the body font's regular face (or Vazirmatn's Arabic subset when it is the fallback).
-	$body = hamista_option( 'font_body' );
+	// Preload the body font's face at the body weight (or Vazirmatn's Arabic subset when it is the fallback).
+	$body   = hamista_option( 'font_body' );
+	$weight = absint( hamista_option( 'font_body_weight' ) );
+	$weight = $weight ? $weight : 400;
 	if ( ! empty( $families[ $body ]['faces'] ) ) {
 		foreach ( $families[ $body ]['faces'] as $face ) {
-			if ( isset( $face['src']['woff2'] ) && in_array( $face['weight'], array( '400', '100 900' ), true ) ) {
+			$range = array_map( 'intval', explode( ' ', (string) $face['weight'] ) );
+			if ( isset( $face['src']['woff2'] ) && $weight >= $range[0] && $weight <= end( $range ) ) {
 				$preload[] = $face['src']['woff2'];
 				break;
 			}
