@@ -1,8 +1,9 @@
 """
-Editorial photographs for the Spark academy and the Tapesh agency demos:
-printed covers, cards, letterheads, posters and sketch pages laid on a desk.
+Editorial photographs for the Spark academy, the Tapesh agency and the Sayal
+motion studio: printed covers, cards, letterheads, posters, storyboards,
+easing-curve sheets, contact sheets and style frames laid on a desk.
 
-    python3 tools/demo-images/scenes-editorial.py <spark|agency> <out-dir> [name ...]
+    python3 tools/demo-images/scenes-editorial.py <spark|agency|flux> <out-dir> [name ...]
 
 Prints are typeset in editorial.html with the theme's licensed Persian fonts
 (editorial-render.js), then laid on linen, oak, plaster or concrete: each
@@ -367,17 +368,122 @@ def agency_plan(P):
     return plan
 
 
+# --------------------------------------------------------------------------
+# Sayal: a motion studio
+# --------------------------------------------------------------------------
+
+FLUX_INK = '#141312'
+FLUX_ACCENT = '#e2622b'
+FLUX_PAPER = '#f4f2ee'
+
+
+def flux_sources(work):
+    """Long-exposure stills the prints are cut from, rendered once into the work folder."""
+    tr = _load('trails', 'scenes-trails.py')
+    src = {
+        'src-a': (1600, 900, 3, 'ember', dict(bundles=3, lines=70)),
+        'src-b': (1600, 900, 8, 'ivory', dict(bundles=2, lines=60, tilt=0.12)),
+        'src-c': (1600, 900, 23, 'mono', dict(bundles=2, lines=60, tilt=-0.2)),
+        'src-d': (1600, 900, 41, 'ember', dict(bundles=2, amp=0.1, lines=80)),
+        'src-reel': (1600, 900, 12, 'ember', dict(bundles=3, lines=80, amp=0.12)),
+        'src-v1': (900, 1600, 25, 'ember', dict(amp=0.22, bundles=2)),
+        'src-v2': (900, 1600, 26, 'ivory', dict(amp=0.1, lines=90)),
+        'src-v3': (900, 1600, 64, 'mono', dict(bundles=2, tilt=-0.3)),
+    }
+    paths = {}
+    for name, (w, h, seed, pal, extra) in src.items():
+        path = os.path.join(work, name + '.png')
+        if not os.path.exists(path):
+            tr.trails(w, h, seed, pal, **extra).save(path)
+        paths[name] = path
+    return paths
+
+
+def flux_spec(work):
+    S = flux_sources(work)
+    base = {'bg': FLUX_PAPER, 'ink': FLUX_INK, 'accent': FLUX_ACCENT, 'line': 'rgba(20,19,18,.16)', 'pencil': '#34312e'}
+    spec = []
+    spec.append({'name': 'sb-peymaneh', 'w': 1754, 'h': 1240, 'p': dict(base, t='board', seed=5, title='پیمانه — ویدیوی معرفی', sub='استوری‌بورد، نسخه‌ی سوم', code='SB 03/04 · 45s', footA='استودیوی سیال', footB='تأیید مشتری: ــــــــــــ', frames=[
+        {'img': S['src-a'], 'pos': '30% 50%', 'scale': 1.3, 'n': '۰۱', 'tc': '00:00:00', 'note': 'شروع در تاریکی؛ یک خط نور از راست وارد می‌شود.'},
+        {'sketch': 'arc', 'n': '۰۲', 'tc': '00:00:03', 'note': 'نور مسیر قوسی را می‌رود و روی نشانه می‌نشیند.'},
+        {'sketch': 'type', 'n': '۰۳', 'tc': '00:00:07', 'note': 'تیتر کلمه به کلمه: «ماهت را ببین».'},
+        {'img': S['src-d'], 'pos': '60% 40%', 'scale': 1.5, 'n': '۰۴', 'tc': '00:00:12', 'note': 'گذار نرم به نمای اپ؛ نور پشت گوشی می‌ماند.'},
+        {'sketch': 'phone', 'n': '۰۵', 'tc': '00:00:18', 'note': 'کارت هزینه‌ها از پایین بالا می‌آید؛ ۴۲۰ میلی‌ثانیه.'},
+        {'sketch': 'chart', 'n': '۰۶', 'tc': '00:00:26', 'note': 'نمودار ماه کشیده می‌شود؛ دوربین آرام عقب می‌رود.'},
+    ])})
+    spec.append({'name': 'sb-safarno', 'w': 1754, 'h': 1240, 'p': dict(base, t='board', seed=19, title='سفرنو — ریزتعامل رزرو', sub='انتخاب تاریخ و مسافر', code='UI 07 · 1.2s', footA='استودیوی سیال', footB='خروجی: Lottie، زیر ۲۰ کیلوبایت', frames=[
+        {'sketch': 'phone', 'n': '۰۱', 'tc': '0ms', 'note': 'لمس تاریخ؛ دایره از نقطه‌ی لمس باز می‌شود.'},
+        {'sketch': 'zoom', 'n': '۰۲', 'tc': '120ms', 'note': 'روز انتخاب‌شده کمی بزرگ می‌شود و می‌نشیند.'},
+        {'sketch': 'arc', 'n': '۰۳', 'tc': '280ms', 'note': 'نشانگر با جهش کوچک به بازه‌ی دوم می‌رود.'},
+        {'sketch': 'type', 'n': '۰۴', 'tc': '420ms', 'note': 'خلاصه‌ی سفر بالای دکمه نوشته می‌شود.'},
+        {'sketch': 'phone', 'n': '۰۵', 'tc': '700ms', 'note': 'دکمه از خاکستری به رنگ برند؛ بدون پرش.'},
+        {'sketch': 'chart', 'n': '۰۶', 'tc': '1200ms', 'note': 'پایان؛ همه‌چیز آرام و بی‌حرکت.'},
+    ])})
+    spec.append({'name': 'curves-1', 'w': 1240, 'h': 1754, 'p': dict(base, t='curves', kicker='سیال · کتابچه‌ی حرکت، برگه‌ی ۴', title='منحنی شتاب\nورود کارت‌ها',
+                                                               curves=[[0.22, 1, 0.36, 1], [0.34, 1.56, 0.64, 1], [0, 0, 1, 1]],
+                                                               legend=[['ورود کارت', 'cubic-bezier(.22, 1, .36, 1) · 420ms'], ['تأیید با جهش', 'cubic-bezier(.34, 1.56, .64, 1) · 280ms'], ['خطی، برای مقایسه', 'linear · 420ms']])})
+    spec.append({'name': 'curves-2', 'w': 1240, 'h': 1754, 'p': dict(base, t='curves', kicker='سیال · کتابچه‌ی حرکت، برگه‌ی ۹', title='اسکرول نرم\nو اینرسی',
+                                                               curves=[[0.16, 1, 0.3, 1], [0.65, 0, 0.35, 1], [0, 0, 1, 1]],
+                                                               legend=[['توقف اسکرول', 'cubic-bezier(.16, 1, .3, 1) · 900ms'], ['گذار صفحه', 'cubic-bezier(.65, 0, .35, 1) · 600ms'], ['خطی، برای مقایسه', 'linear']])})
+    spec.append({'name': 'frames-reel', 'w': 1754, 'h': 1240, 'p': dict(base, t='frames', img=S['src-reel'], title='شوریل ۱۴۰۴ — انتخاب فریم', code='ROLL 07 · 24 FPS', count=16, cols=4, s0=1.0, s1=1.5, x0=15, x1=85, pick=[5, 10])})
+    spec.append({'name': 'frames-zoom', 'w': 1754, 'h': 1240, 'p': dict(base, t='frames', img=S['src-b'], title='زوم آهسته — آزمون سرعت', code='TEST 03 · 2.4s', count=16, cols=4, s0=1.0, s1=2.8, x0=50, x1=50, pick=[11])})
+    style = dict(base, t='style', capA='استودیوی سیال', safe=True)
+    spec.append({'name': 'style-peymaneh', 'w': 1600, 'h': 1000, 'p': dict(style, img=S['src-a'], pos='40% 50%', scale=1.1, kicker='پیمانه · مدیریت مالی شخصی', title='ماهت را\nببین.', size=11, tag='SF 02', capB='STYLE FRAME 02/06')})
+    spec.append({'name': 'style-gallery', 'w': 1600, 'h': 1000, 'p': dict(style, img=S['src-c'], pos='50% 50%', scale=1.2, kicker='نمایشگاه هنر معاصر · پاییز ۱۴۰۵', title='نور، آهسته', size=12, tag='WEB 01', capB='HOME · SCROLL 0%')})
+    spec.append({'name': 'style-mockup', 'w': 1600, 'h': 1000, 'p': dict(style, img=S['src-d'], pos='50% 50%', scale=1.0, kicker='کیت موکاپ نمایش', title='صحنه‌ی ۱۸', size=10, tag='KIT 18/36', capB='FIGMA · 1920×1080')})
+    spec.append({'name': 'style-deck-1', 'w': 1600, 'h': 1000, 'p': dict(style, img=S['src-b'], pos='30% 50%', scale=1.2, kicker='قالب ارائه‌ی سینمایی', title='گزارش\nسال ۱۴۰۴', size=10, tag='۰۱', capB='SLIDE 01/40', safe=False)})
+    spec.append({'name': 'style-deck-2', 'w': 1600, 'h': 1000, 'p': dict(style, img=S['src-reel'], pos='70% 50%', scale=1.4, kicker='فصل دوم', title='رشد،\nبدون شتاب‌زدگی', size=9, tag='۱۴', capB='SLIDE 14/40', safe=False)})
+    for i, (word, sub) in enumerate([('یک دقیقه\nتا آرامش', 'بیمه‌یار · ریلز ۰۷'), ('بیمه،\nبدون کاغذ', 'بیمه‌یار · ریلز ۱۲'), ('خسارت\nدر سه روز', 'بیمه‌یار · ریلز ۲۱')]):
+        spec.append({'name': 'style-reel-%d' % (i + 1), 'w': 900, 'h': 1560, 'p': dict(style, img=S['src-v%d' % (i + 1)], kicker=sub, title=word, size=5.4, tag='9:16', capB='REEL %02d' % (7 + i * 7), pad='5%')})
+    spec.append({'name': 'seq-niloufar', 'w': 1754, 'h': 1240, 'p': dict(base, t='seq', mark='lotus', bg='#f3eee9', ink='#2a2224', accent='#a8506a', title='نیلوفر — نشانه‌ی متحرک', code='ID 01 · 48F · 24 FPS', footA='استودیوی سیال', footB='هر فریم کلیدی با لوزی علامت خورده است')})
+    spec.append({'name': 'seq-icons', 'w': 1754, 'h': 1240, 'p': dict(base, t='seq', mark='check', title='آیکون متحرک — تأیید', code='ICON 112 · 36F', footA='آیکون‌های متحرک سیال', footB='SVG و Lottie')})
+    spec.append({'name': 'chip-niloufar-1', 'w': 600, 'h': 900, 'p': {'t': 'swatch', 'bg': '#f5f3ee', 'ink': '#222', 'chip': '#a8506a', 'name': 'گلبرگ', 'code': '#A8506A'}})
+    spec.append({'name': 'chip-niloufar-2', 'w': 600, 'h': 900, 'p': {'t': 'swatch', 'bg': '#f5f3ee', 'ink': '#222', 'chip': '#2a2224', 'name': 'جوهر', 'code': '#2A2224'}})
+    spec.append({'name': 'sketch-phone', 'w': 1000, 'h': 1400, 'p': {'t': 'sketch', 'kind': 'phone', 'bg': '#f2efe8', 'dot': 'rgba(40,40,40,.16)', 'pencil': '#34312e', 'seed': 31, 'note': 'سه حالت دکمه‌ی رزرو'}})
+    spec.append({'name': 'cover-course', 'w': 1000, 'h': 1400, 'p': {'t': 'cover', 'bg': '#ebe7e0', 'ink': FLUX_INK, 'accent': FLUX_ACCENT, 'kicker': 'استودیوی سیال', 'edition': 'دوره‌ی پاییز ۱۴۰۵',
+                                                                 'num': '۱۲', 'title': 'موشن دیزاین', 'sub': 'دوازده هفته، از اصول حرکت تا پروژه‌ی پایانی', 'footA': '۱۲ هفته', 'footB': 'آنلاین زنده', 'motif': 'lines', 'motifColor': 'rgba(226,98,43,.6)', 'font': 'lahzeh'}})
+    return spec
+
+
+def flux_plan(P):
+    dark = (112, 110, 106)
+    plan = {
+        'work-1': lambda: scene((1000, 1250), 'concrete', 201, [(P('sb-peymaneh'), 0.86, 0.5, 0.33, -2, 1), (P('style-peymaneh'), 0.7, 0.55, 0.72, 3, 1.4)], [('pencil', 0.08, 0.94, 0.42, -0.1)], bgc=dark),
+        'work-2': lambda: scene((1000, 1250), 'oak', 202, [(P('sketch-phone'), 0.52, 0.32, 0.42, 3, 1), (P('curves-1'), 0.48, 0.7, 0.58, -4, 1.3)], [('pencil', 0.12, 0.92, 0.5, -0.08)]),
+        'work-3': lambda: wall((1000, 1250), 203, P('style-gallery'), wf=0.78, bgc=(214, 210, 204)),
+        'work-4': lambda: scene((1000, 1250), 'linen', 204, [(P('seq-niloufar'), 0.86, 0.5, 0.4, 2, 1), (P('chip-niloufar-1'), 0.2, 0.36, 0.78, -4, 1.2), (P('chip-niloufar-2'), 0.2, 0.6, 0.8, 3, 1.3)], [('pen', 0.72, 0.94, 0.3, -0.25)], bgc=(226, 214, 208)),
+        'work-5': lambda: scene((1000, 1250), 'concrete', 205, [(P('style-reel-1'), 0.3, 0.2, 0.48, -3, 1), (P('style-reel-2'), 0.3, 0.5, 0.52, 1, 1.2), (P('style-reel-3'), 0.3, 0.8, 0.48, 3, 1.4)], bgc=dark),
+        'studio': lambda: scene((2000, 1100), 'walnut', 206, [
+            (P('frames-reel'), 0.33, 0.58, 0.38, 4, 1), (P('curves-1'), 0.2, 0.84, 0.5, -5, 1.2), (P('sb-peymaneh'), 0.4, 0.23, 0.44, -3, 1.2),
+            (P('style-peymaneh'), 0.26, 0.47, 0.8, 2, 1.4)], [('pencil', 0.12, 0.92, 0.2, -0.2), ('cup', 0.94, 0.14, 0.1, 'night')]),
+        'product-1-b': lambda: scene((1000, 1000), 'linen', 211, [(P('curves-1'), 0.56, 0.5, 0.5, -3, 1.2)], [('pencil', 0.12, 0.9, 0.5, -0.1)], bgc=(214, 206, 194)),
+        'product-2-b': lambda: scene((1000, 1000), 'concrete', 212, [(P('frames-zoom'), 0.84, 0.5, 0.5, 2, 1.2)], bgc=dark),
+        'product-3-b': lambda: scene((1000, 1000), 'walnut', 213, [(P('style-mockup'), 0.82, 0.5, 0.5, -2, 1.2)]),
+        'product-4-b': lambda: scene((1000, 1000), 'paper', 214, [(P('seq-icons'), 0.84, 0.5, 0.5, 2, 1.2)], bgc=(206, 202, 194)),
+        'product-5-b': lambda: scene((1000, 1000), 'oak', 215, [(P('style-deck-1'), 0.66, 0.4, 0.27, -3, 1), (P('style-deck-2'), 0.66, 0.6, 0.73, 2, 1.4)]),
+        'product-6-b': lambda: scene((1000, 1000), 'linen', 216, [(P('cover-course'), 0.54, 0.46, 0.5, -3, 1.2)], [('pencil', 0.2, 0.92, 0.5, -0.08)], bgc=(210, 204, 194)),
+        'journal-1': lambda: scene((1200, 800), 'walnut', 221, [(P('curves-2'), 0.36, 0.42, 0.52, -4, 1.2)], [('pen', 0.66, 0.86, 0.26, -0.35), ('cup', 0.82, 0.3, 0.13, 'white')]),
+        'journal-2': lambda: scene((1200, 800), 'linen', 222, [(P('frames-zoom'), 0.7, 0.5, 0.5, -2, 1.2)], bgc=(214, 208, 198)),
+        'journal-3': lambda: scene((1200, 800), 'concrete', 223, [(P('sb-peymaneh'), 0.74, 0.5, 0.5, 2, 1.2)], [('pencil', 0.06, 0.9, 0.4, -0.06)], bgc=dark),
+        'journal-4': lambda: scene((1200, 800), 'oak', 224, [(P('sb-safarno'), 0.74, 0.5, 0.5, -2, 1.2)]),
+        'journal-6': lambda: scene((1200, 800), 'walnut', 226, [(P('frames-reel'), 0.74, 0.5, 0.5, 2, 1.2)], [('pen', 0.1, 0.92, 0.28, -0.12)]),
+    }
+    return plan
+
+
 if __name__ == '__main__':
     which, out_dir = sys.argv[1], sys.argv[2]
     only = set(sys.argv[3:])
     os.makedirs(out_dir, exist_ok=True)
     work = os.path.join(tempfile.gettempdir(), 'hm-editorial-' + which)
     os.makedirs(work, exist_ok=True)
-    spec = spark_spec() if which == 'spark' else agency_spec()
+    specs = {'spark': spark_spec, 'agency': agency_spec, 'flux': lambda: flux_spec(work)}
+    plans = {'spark': spark_plan, 'agency': agency_plan, 'flux': flux_plan}
+    spec = specs[which]()
     if not os.environ.get('HM_SKIP_PRINTS'):
         render_prints(spec, work)
     P = lambda n: os.path.join(work, n + '.png')
-    plan = spark_plan(P) if which == 'spark' else agency_plan(P)
+    plan = plans[which](P)
     total = 0
     for name, make in plan.items():
         if only and name not in only:

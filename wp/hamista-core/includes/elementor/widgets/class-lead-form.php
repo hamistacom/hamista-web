@@ -422,16 +422,17 @@ class Lead_Form extends Widget_Base {
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'     => __( 'Option columns', 'hamista-core' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => '2',
-				'options'   => array(
+				'label'          => __( 'Option columns', 'hamista-core' ),
+				'type'           => Controls_Manager::SELECT,
+				'default'        => '2',
+				'mobile_default' => '1',
+				'options'        => array(
 					'1' => '1',
 					'2' => '2',
 					'3' => '3',
 					'4' => '4',
 				),
-				'selectors' => array( '{{WRAPPER}} .hm-lead__choices' => '--cols: {{VALUE}};' ),
+				'selectors'      => array( '{{WRAPPER}} .hm-lead__choices' => '--cols: {{VALUE}};' ),
 			)
 		);
 		$this->add_control(

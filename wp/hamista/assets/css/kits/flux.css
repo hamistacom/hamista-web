@@ -83,6 +83,9 @@
 .hm-kit-flux .hm-header.is-scrolled { background: var(--hm-bg); border-bottom: 1px solid var(--hm-border); }
 .hm-kit-flux .hm-menu > li > a { font-weight: 600; }
 
+/* Scroll path: graphite with a low ember glow, no colour of its own. */
+.hm-kit-flux .hm-path { --hm-path-bg: #0b0a09; --hm-path-mid: rgba(226, 98, 43, .14); --hm-path-deep: #1c1410; }
+
 /* Footer: near-black. */
 .hm-kit-flux .hm-footer { background: #0a0909; color: #f2efe9; border-top: 0; --hm-fg: #f2efe9; --hm-fg-muted: #a09b93; --hm-border: rgba(255, 255, 255, .09); --hm-border-strong: rgba(255, 255, 255, .2); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-accent-ink: #f39a70; --hm-logo-dark: block; --hm-logo-light: none; }
 .hm-kit-flux .hm-footer__wordmark { color: #fff; opacity: .05; }
