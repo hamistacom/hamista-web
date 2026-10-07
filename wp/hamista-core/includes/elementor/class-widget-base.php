@@ -457,7 +457,7 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 			$attrs .= ' rel="' . esc_attr( implode( ' ', $rel ) ) . '"';
 		}
 		$icon = ( ! isset( $args['icon'] ) || $args['icon'] ) ? hamista_core_icon( 'arrow', array( 'class' => 'hm-i-arrow' ) ) : '';
-		return '<a class="' . esc_attr( implode( ' ', $classes ) ) . '"' . $attrs . '><span>' . esc_html( $text ) . '</span>' . $icon . '</a>';
+		return '<a class="' . esc_attr( implode( ' ', $classes ) ) . '"' . $attrs . '><span>' . hamista_core_ltr_phone( esc_html( $text ) ) . '</span>' . $icon . '</a>';
 	}
 
 	/**

@@ -245,7 +245,7 @@ const ctaBook = (title = 'نوبت را\n*آنلاین* بگیرید', desc = '�
 	eyebrow: 'نوبت‌دهی', title, desc,
 	btn1_text: 'نوبت بگیرید', btn1_link: link(bookUrl),
 	btn2_text: phone, btn2_link: link(phoneLink),
-	look: 'image', image: img('light'), decor: '', note: '',
+	look: 'inverse', decor: '', note: '',
 });
 
 const infoStrip = () => section({ space: 'sm', gap: 0 }, [
@@ -260,16 +260,18 @@ const infoStrip = () => section({ space: 'sm', gap: 0 }, [
 /* ---------------- Home ---------------- */
 
 const home = [
-	L.bleed(w('hm-hero', {
-		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
-		eyebrow: 'کلینیک تخصصی سپیدار',
-		title: 'مراقبتِ دقیق،\nدر *آرامش*',
-		desc: 'شش بخش تخصصی زیر یک سقف؛ پوست، دندان، چشم، قلب، تغذیه و فیزیوتراپی. نوبت آنلاین، انتظار کوتاه و پزشکانی که برای شنیدن وقت دارند.',
-		btn1_text: 'نوبت بگیرید', btn1_link: link(bookUrl), btn1_style: 'primary',
-		btn2_text: 'بخش‌ها', btn2_link: link('{{page:departments}}'), btn2_style: 'secondary',
-		media_type: 'image', image: img('reception'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
-		stats: [{ value: '۶', suffix: '', label: 'بخش تخصصی' }, { value: '۲۴', suffix: '', label: 'پزشک' }, { value: '۱۰', suffix: ' دقیقه', label: 'بیشترین انتظار' }],
-	})),
+	section({ space: 'md', bottom0: true, gap: 32 }, [
+		cols({ widths: [56, 44], gap: 64, align: 'flex-end' }, [
+			[heading({ eyebrow: 'کلینیک تخصصی سپیدار', title: 'مراقبتِ دقیق،\nدر *آرامش*', title_tag: 'h1', title_size: 'xl' })],
+			[
+				L.textEditor('<p>شش بخش تخصصی زیر یک سقف؛ پوست، دندان، چشم، قلب، تغذیه و فیزیوتراپی. نوبت آنلاین، انتظار کوتاه و پزشکانی که برای شنیدن وقت دارند.</p>'),
+				L.buttons(['نوبت بگیرید', bookUrl, 'primary'], ['بخش‌ها', '{{page:departments}}', 'secondary']),
+			],
+		]),
+	]),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.16, zoomInner: true, zoomRadius: 6 }, [
+		L.imageReveal('reception', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
 	infoStrip(),
 	fx(section({ space: 'md', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
@@ -584,22 +586,17 @@ const doctorsPage = [
 
 const booking = [
 	L.pageHead('نوبت‌دهی', 'نوبت را\n*آنلاین* بگیرید', 'پزشک یا بخش، روز و ساعت را انتخاب کنید. نوبت شما در ساعات کاری تأیید و پیامک تأیید ارسال می‌شود.'),
-	section({ space: 'md' }, [
-		cols({ widths: [62, 38], gap: 56 }, [
-			[w('hm-booking', { title: 'رزرو نوبت ویزیت', intro: 'ویزیت‌ها بین بیست تا چهل‌وپنج دقیقه‌اند؛ پانزده دقیقه زودتر در پذیرش باشید.', expert: '0', groups: [], note: 'yes', box: 'card' })],
-			[
-				L.features([
-					{ icon: 'clock', title: 'پانزده دقیقه زودتر', text: 'برای پذیرش و تشکیل پرونده.' },
-					{ icon: 'card', title: 'پرداخت در پذیرش', text: 'هزینه‌ی ویزیت را پیش از ویزیت می‌پردازید.' },
-					{ icon: 'refresh', title: 'لغو تا ۲۴ ساعت قبل', text: 'از بخش «نوبت‌های من» در حساب کاربری.' },
-				], { layout: 'list', style: 'plain', numbered: '', icon_style: 'plain' }),
-				L.contactInfo([
-					{ icon: 'phone', label: 'نوبت‌دهی تلفنی', value: phone, link: link(phoneLink) },
-					{ icon: 'pin', label: 'نشانی', value: 'تهران، زعفرانیه، خیابان مقدس اردبیلی، پلاک ۶۴', link: link('') },
-				]),
-			],
-		]),
+	section({ space: 'md', gap: 32, width: 1040 }, [
+		w('hm-booking', { title: 'رزرو نوبت ویزیت', intro: 'ویزیت‌ها بین بیست تا چهل‌وپنج دقیقه‌اند؛ پانزده دقیقه زودتر در پذیرش باشید.', expert: '0', groups: [], note: 'yes', box: 'card' }),
 	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'clock', title: 'پانزده دقیقه زودتر', text: 'برای پذیرش و تشکیل پرونده.' },
+			{ icon: 'card', title: 'پرداخت در پذیرش', text: 'هزینه‌ی ویزیت را پیش از ویزیت می‌پردازید.' },
+			{ icon: 'refresh', title: 'لغو تا ۲۴ ساعت قبل', text: 'از بخش «نوبت‌های من» در حساب کاربری.' },
+			{ icon: 'phone', title: 'نوبت‌دهی تلفنی', text: 'شنبه تا پنجشنبه، ساعت ۹ تا ۲۰.' },
+		], { layout: 'grid', style: 'plain', columns: '4', icon_style: 'plain' }),
+	]), { tone: 'surface' }),
 	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [36, 64], gap: 64 }, [
 			[heading({ eyebrow: 'پرسش‌ها', title: 'درباره‌ی\n*نوبت*' })],
@@ -790,9 +787,9 @@ module.exports = {
 			{ key: 'tpl-booking', type: 'page', page: 'booking', title: 'سپیدار — نوبت‌دهی' },
 			{ key: 'tpl-checkup', type: 'page', page: 'checkup', title: 'سپیدار — چکاپ و تعرفه‌ها' },
 			{ key: 'tpl-guide', type: 'page', page: 'guide', title: 'سپیدار — راهنمای بیماران' },
-			{ key: 'tpl-depts', type: 'section', page: 'home', index: 2, title: 'سپیدار — کارت‌های بخش‌ها' },
-			{ key: 'tpl-doctors', type: 'section', page: 'home', index: 5, title: 'سپیدار — پزشکان' },
-			{ key: 'tpl-checkups', type: 'section', page: 'home', index: 7, title: 'سپیدار — بسته‌های چکاپ' },
+			{ key: 'tpl-depts', type: 'section', page: 'home', index: 3, title: 'سپیدار — کارت‌های بخش‌ها' },
+			{ key: 'tpl-doctors', type: 'section', page: 'home', index: 6, title: 'سپیدار — پزشکان' },
+			{ key: 'tpl-checkups', type: 'section', page: 'home', index: 8, title: 'سپیدار — بسته‌های چکاپ' },
 			{ key: 'tpl-tabs', type: 'section', page: 'home-2', index: 2, title: 'سپیدار — بخش‌ها در زبانه‌ها' },
 			{ key: 'tpl-programs', type: 'section', page: 'home-2', index: 3, title: 'سپیدار — برنامه‌ها با کارت‌های پشته‌ای' },
 		],
@@ -802,15 +799,16 @@ module.exports = {
 					{ title: 'خانه', page: 'home' },
 					{ title: 'بخش‌ها', page: 'departments', children: DEPTS.map((d) => ({ title: d.title, page: d.page })) },
 					{ title: 'پزشکان', page: 'doctors' },
-					{ title: 'چکاپ و تعرفه‌ها', page: 'checkup' },
+					{ title: 'چکاپ', page: 'checkup' },
 					{
 						title: 'بیماران', page: 'guide', children: [
 							{ title: 'راهنمای بیماران', page: 'guide' },
+							{ title: 'چکاپ و تعرفه‌ها', page: 'checkup' },
 							{ title: 'پرسش‌های متداول', page: 'faq' },
 							{ title: 'مجله‌ی سلامت', page: 'blog' },
 						],
 					},
-					{ title: 'درباره‌ی ما', page: 'about' },
+					{ title: 'درباره', page: 'about' },
 					{ title: 'تماس', page: 'contact' },
 				],
 			},

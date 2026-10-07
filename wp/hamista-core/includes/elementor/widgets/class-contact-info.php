@@ -135,7 +135,7 @@ class Contact_Info extends Widget_Base {
 			echo '<li class="hm-cinfo__item hm-bolted" data-hm-reveal="up">';
 			echo '<span class="hm-cinfo__icon">' . hamista_core_icon( $item['icon'] ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<span class="hm-cinfo__text"><small>' . esc_html( $item['label'] ) . '</small>';
-			$value = nl2br( esc_html( $item['value'] ) );
+			$value = hamista_core_ltr_phone( nl2br( esc_html( $item['value'] ) ) );
 			echo $url ? '<a href="' . esc_url( $url, array( 'http', 'https', 'tel', 'mailto' ) ) . '">' . $value . '</a>' : '<span>' . $value . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</span></li>';
 		}

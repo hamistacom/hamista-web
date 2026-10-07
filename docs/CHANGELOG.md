@@ -42,6 +42,11 @@
 - Editorial prints: storyboard, easing-curve, contact-sheet, style-frame and mark-sequence templates; prints now wait for their pictures before they are photographed, and font names no longer break inline styles.
 - Lead form: option cards fall to one column on phones by default.
 - Flux kit: the scroll path takes graphite with an ember glow instead of the default violet.
+- New demo: Sepidar (سپیدار), a specialty clinic built as a complete site with online appointments: two home pages, six departments with a page each, eight doctors as bookable profiles with weekly hours and visit fees, booking, check-up packages and fees, a patient guide, about, FAQ, contact and a health journal. Pictures are the clinic in daylight (reception with a brass sign on a slatted oak wall, a corridor, a consulting room, a waiting nook, leaf shadows on plaster) and its printed patient booklets, check-up report and appointment cards.
+- New style kit: Care (porcelain white, deep green and a eucalyptus accent, with brass for small details).
+- Clinic interiors renderer: a small ray caster with window light filtered by a tree outside, sheer curtains, corner occlusion, a satin floor and set-in signage.
+- Phone numbers keep their reading order in right-to-left text, in contact details and buttons, even when typed with spaces.
+- The header menu keeps each item on one line and tightens its spacing on smaller laptops.
 - Hamoon (صنایع هامون) rebuilt as a complete corporate site with a catalogue: two home pages, product families, services, industries, quality and certificates, about, careers, FAQ, a three-step quote request and a knowledge base. New photographs of the factory hall, ray-cast so that the morning light through the windows, its reflection on the polished floor and the haze agree; a night-shift view for the test hall.
 - Shahdineh (شهدینه) rebuilt as a complete shop: two home pages, our story with lab results, the beekeepers, a honey guide, monthly subscription, corporate gifts with a request form, storage, shipping and returns, FAQ and contact; nine products in four categories. Photographs rendered from the honey itself: light through hexagonal jars, capped and open comb, pollen, a turned dipper and an apiary in a meadow.
 - Honey kit redrawn: cream paper, comb brown and a deep honey amber; small corners, no pills, no dripping edges.

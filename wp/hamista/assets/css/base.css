@@ -379,9 +379,10 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 .hm-menu > li { position: relative; }
 .hm-menu > li > a {
 	display: flex; align-items: center; gap: .35em; min-height: 44px; padding: .4em .95em; border-radius: var(--hm-radius-sm);
-	font-size: .95rem; font-weight: 600; text-decoration: none; color: inherit; opacity: .78;
+	font-size: .95rem; font-weight: 600; text-decoration: none; color: inherit; opacity: .78; white-space: nowrap;
 	transition: opacity var(--hm-dur-fast), background-color var(--hm-dur-fast);
 }
+@media (max-width: 1360px) { .hm-menu > li > a { padding-inline: .7em; } .hm-menu > .current-menu-item > a::after, .hm-menu > .current-menu-ancestor > a::after { inset-inline: .7em; } }
 .hm-menu > li > a:hover, .hm-menu > li:focus-within > a, .hm-menu > .current-menu-item > a, .hm-menu > .current-menu-ancestor > a { opacity: 1; color: inherit; }
 .hm-menu > .current-menu-item > a::after, .hm-menu > .current-menu-ancestor > a::after {
 	content: ""; position: absolute; inset-inline: .95em; bottom: 6px; height: 2px; border-radius: 2px; background: var(--hm-accent);

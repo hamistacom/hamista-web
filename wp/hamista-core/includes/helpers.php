@@ -116,6 +116,24 @@ function hamista_core_icon( $name, $attrs = array() ) {
 }
 
 /**
+ * Keep a phone number in reading order inside right-to-left text.
+ *
+ * Groups of digits separated by spaces are separate runs to the bidi
+ * algorithm, so "۰۲۱ ۸۸۰۰ ۱۲۳۴" would be laid out from the right. Text that is
+ * only a phone number is isolated left to right; anything else is returned
+ * as it came.
+ *
+ * @param string $html Escaped text.
+ * @return string
+ */
+function hamista_core_ltr_phone( $html ) {
+	if ( preg_match( '/^\+?[\s\-()0-9\x{06F0}-\x{06F9}\x{0660}-\x{0669}]{7,}$/u', trim( wp_strip_all_tags( $html ) ) ) ) {
+		return '<bdi dir="ltr">' . $html . '</bdi>';
+	}
+	return $html;
+}
+
+/**
  * Turn `*word*` into a highlighted span, escaping everything else.
  *
  * @param string $text Text with optional *highlight* markers and line breaks.
