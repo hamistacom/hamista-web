@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T14:46:55+00:00\n"
-"PO-Revision-Date: 2026-10-07 14:56+0000\n"
+"POT-Creation-Date: 2026-10-07T15:32:08+00:00\n"
+"PO-Revision-Date: 2026-10-07 15:32+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -58,7 +58,7 @@ msgstr "دسته‌بندی‌ها"
 
 #: archive-hm_expert.php:32
 #: archive-hm_portfolio.php:31
-#: inc/template-tags.php:328
+#: inc/template-tags.php:342
 msgid "All"
 msgstr "همه"
 
@@ -114,7 +114,11 @@ msgstr "عسل — گرم و طبیعی"
 msgid "Nomad — handwoven, earthy"
 msgstr "ایلیاتی — دست‌بافت و خاکی"
 
-#: inc/assets.php:79
+#: inc/assets.php:42
+msgid "Voyage — cinematic travel, turquoise"
+msgstr "سفر — گردشگری سینمایی، فیروزه‌ای"
+
+#: inc/assets.php:80
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 
@@ -245,7 +249,7 @@ msgstr[1] "%s دقیقه مطالعه"
 
 #: inc/template-tags.php:142
 #: inc/template-tags.php:177
-#: inc/woocommerce.php:98
+#: inc/woocommerce.php:107
 msgid "Breadcrumb"
 msgstr "مسیر راهنما"
 
@@ -292,61 +296,61 @@ msgstr "کپی لینک"
 msgid "Link copied"
 msgstr "لینک کپی شد"
 
-#: inc/template-tags.php:354
+#: inc/template-tags.php:368
 msgid "Your comment is awaiting moderation."
 msgstr "دیدگاه شما پس از بررسی منتشر می‌شود."
 
-#: inc/woocommerce.php:102
+#: inc/woocommerce.php:111
 msgctxt "breadcrumb"
 msgid "Home"
 msgstr "خانه"
 
-#: inc/woocommerce.php:125
+#: inc/woocommerce.php:134
 msgid "All products"
 msgstr "همه‌ی محصولات"
 
 #. translators: %s: discount percent
-#: inc/woocommerce.php:239
+#: inc/woocommerce.php:248
 #, php-format
 msgid "%s%% off"
 msgstr "%s%% تخفیف"
 
 #. translators: %s: discount percent
-#: inc/woocommerce.php:239
+#: inc/woocommerce.php:248
 msgid "Sale"
 msgstr "حراج"
 
-#: inc/woocommerce.php:330
+#: inc/woocommerce.php:339
 msgid "Dashboard"
 msgstr "پیشخوان"
 
-#: inc/woocommerce.php:331
-#: inc/woocommerce.php:357
+#: inc/woocommerce.php:340
+#: inc/woocommerce.php:366
 msgid "Orders"
 msgstr "سفارش‌ها"
 
-#: inc/woocommerce.php:332
-#: inc/woocommerce.php:372
+#: inc/woocommerce.php:341
+#: inc/woocommerce.php:381
 msgid "Downloads"
 msgstr "دانلودها"
 
-#: inc/woocommerce.php:333
+#: inc/woocommerce.php:342
 msgid "Addresses"
 msgstr "نشانی‌ها"
 
-#: inc/woocommerce.php:334
+#: inc/woocommerce.php:343
 msgid "Payment methods"
 msgstr "روش‌های پرداخت"
 
-#: inc/woocommerce.php:335
+#: inc/woocommerce.php:344
 msgid "Account details"
 msgstr "جزئیات حساب"
 
-#: inc/woocommerce.php:336
+#: inc/woocommerce.php:345
 msgid "Log out"
 msgstr "خروج"
 
-#: inc/woocommerce.php:363
+#: inc/woocommerce.php:372
 msgid "Total purchases"
 msgstr "مجموع خرید"
 

@@ -173,7 +173,7 @@
 .hm-kit-industrial .hm-footer {
 	position: relative; border-top: 0; background: var(--hm-inv-bg); color: var(--hm-inv-fg);
 	--hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .08); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .06);
-	--hm-hi: #3a4045; --hm-lo: #1f2427;
+	--hm-hi: #3a4045; --hm-lo: #1f2427; --hm-logo-dark: block; --hm-logo-light: none;
 	box-shadow: inset 0 12px 24px -12px rgba(0, 0, 0, .55);
 }
 .hm-kit-industrial .hm-footer::before {

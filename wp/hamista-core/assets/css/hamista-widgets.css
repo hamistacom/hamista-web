@@ -307,6 +307,15 @@
 .hm-hscroll__title { margin: 0; font-size: clamp(1.15rem, 1rem + .6vw, 1.55rem); line-height: 1.45; }
 .hm-hscroll__text { margin: 0; color: var(--hm-fg-muted); font-size: .95rem; }
 .hm-hscroll--overlay .hm-hscroll__body { position: absolute; inset-inline: 0; bottom: 0; padding: 24px; color: #fff; --hm-fg-muted: rgba(255, 255, 255, .78); background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent); border-radius: 0 0 var(--hm-radius-lg) var(--hm-radius-lg); pointer-events: none; }
+/* Overlay cards with a mouse: the line of text waits for hover, a hairline draws under the title. Touch screens always show the text. */
+@media (hover: hover) and (pointer: fine) {
+	.hm-hscroll--overlay .hm-hscroll__text { max-height: 0; opacity: 0; transform: translateY(6px); transition: max-height .5s var(--hm-ease), opacity .4s var(--hm-ease), transform .5s var(--hm-ease); }
+	.hm-hscroll--overlay .hm-hscroll__item:hover .hm-hscroll__text, .hm-hscroll--overlay .hm-hscroll__item:focus-within .hm-hscroll__text { max-height: 5em; opacity: 1; transform: none; }
+	.hm-hscroll--overlay .hm-hscroll__title::after { content: ""; display: block; height: 1px; margin-top: 8px; background: currentColor; opacity: .55; transform: scaleX(.14); transform-origin: right; transition: transform .7s var(--hm-ease); }
+	[dir="ltr"] .hm-hscroll--overlay .hm-hscroll__title::after { transform-origin: left; }
+	.hm-hscroll--overlay .hm-hscroll__item:hover .hm-hscroll__title::after, .hm-hscroll--overlay .hm-hscroll__item:focus-within .hm-hscroll__title::after { transform: scaleX(1); }
+	.hm-hscroll__item:hover .hm-hscroll__media img { filter: brightness(1.08) saturate(1.06); }
+}
 .hm-hscroll--card .hm-hscroll__item { padding: 12px; border: var(--hm-card-border, 1px solid var(--hm-border)); border-radius: var(--hm-radius-xl); background: var(--hm-card-bg, var(--hm-surface)); }
 .hm-hscroll--card .hm-hscroll__body { padding: 6px 10px 12px; }
 .hm-hscroll__progress { position: absolute; bottom: clamp(28px, 6vh, 64px); inset-inline: max(var(--hm-gutter), (100vw - var(--hm-container)) / 2); height: 2px; background: var(--hm-border); border-radius: 2px; overflow: hidden; }

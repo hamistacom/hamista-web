@@ -1,0 +1,127 @@
+/*!
+ * Hamista showcase hero. Loaded only on pages that use the widget.
+ */
+
+/* ==========================================================================
+   Cinematic: full-screen slides, index, info card, figures
+   ========================================================================== */
+.hm-show { --hm-show-shade: .35; --hm-show-delay: 7s; position: relative; isolation: isolate; overflow: clip; background: #0b0d12; color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .74); --hm-border: rgba(255, 255, 255, .18); }
+.hm-show--h-screen { min-height: max(560px, min(100svh, 880px)); }
+.hm-show--h-tall { min-height: max(520px, min(88svh, 760px)); }
+.hm-show--h-base { min-height: max(480px, var(--hm-section-h, 500px)); }
+
+.hm-show__media { position: absolute; inset: -5% 0; z-index: -2; transform: translate3d(0, var(--hm-py, 0px), 0); }
+.hm-show__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s cubic-bezier(.4, 0, .2, 1); }
+.hm-show__slide.is-active { opacity: 1; }
+.hm-show .hm-show__img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transform: scale(1.08); transition: transform calc(var(--hm-show-delay) + 1.6s) linear; }
+.hm-show__slide.is-active .hm-show__img { transform: scale(1); }
+.hm-show__shade { position: absolute; inset: 0; z-index: -1; background:
+	linear-gradient(to top, rgba(6, 8, 12, calc(var(--hm-show-shade) + .35)) 0%, rgba(6, 8, 12, 0) 34%),
+	linear-gradient(to right, rgba(6, 8, 12, calc(var(--hm-show-shade) + .2)) 0%, rgba(6, 8, 12, var(--hm-show-shade)) 45%, rgba(6, 8, 12, calc(var(--hm-show-shade) * .5)) 100%); }
+[dir="rtl"] .hm-show__shade { background:
+	linear-gradient(to top, rgba(6, 8, 12, calc(var(--hm-show-shade) + .35)) 0%, rgba(6, 8, 12, 0) 34%),
+	linear-gradient(to left, rgba(6, 8, 12, calc(var(--hm-show-shade) + .2)) 0%, rgba(6, 8, 12, var(--hm-show-shade)) 45%, rgba(6, 8, 12, calc(var(--hm-show-shade) * .5)) 100%); }
+
+.hm-show__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: minmax(0, 1fr) auto; gap: 20px 36px; min-height: inherit; padding-top: calc(var(--hm-header-h, 72px) + 28px); padding-bottom: 26px; }
+.hm-show__main { grid-column: 1; grid-row: 1; align-self: center; display: grid; justify-items: start; gap: 26px; max-width: 620px; }
+.hm-show__eyebrow { margin: 0; font-size: .82rem; font-weight: 700; letter-spacing: .04em; color: rgba(255, 255, 255, .8); }
+.hm-show__title { margin: 0; color: #fff; font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.75rem); font-weight: 900; line-height: .98; letter-spacing: -.01em; text-wrap: balance; text-shadow: 0 2px 28px rgba(0, 0, 0, .25); }
+.hm-show__title .hm-hl { color: var(--hm-accent); }
+.hm-show__actions { display: grid; justify-items: start; gap: 26px; }
+
+/* Film link: a ring that fills on hover. */
+.hm-show__play { display: inline-flex; align-items: center; gap: 14px; padding: 0; border: 0; background: none; color: #fff; font: inherit; font-size: .92rem; font-weight: 700; cursor: pointer; }
+.hm-show__play-ring { position: relative; display: grid; place-items: center; width: 50px; height: 50px; border: 1.5px solid rgba(255, 255, 255, .9); border-radius: 50%; transition: background .35s, color .35s, transform .5s var(--hm-ease, ease); }
+.hm-show__play-ring::after { content: ""; position: absolute; inset: -1.5px; border: 1.5px solid rgba(255, 255, 255, .6); border-radius: 50%; opacity: 0; }
+.hm-show__play-ring svg { margin-inline-start: 2px; }
+[dir="rtl"] .hm-show__play-ring svg { margin-inline-start: 0; margin-inline-end: 2px; }
+.hm-show__play:focus-visible .hm-show__play-ring { outline: 2px solid var(--hm-accent); outline-offset: 4px; }
+@media (hover: hover) {
+	.hm-show__play:hover .hm-show__play-ring { background: #fff; color: #0b0d12; transform: scale(1.06); }
+	.hm-show__play:hover .hm-show__play-ring::after { animation: hm-show-ping 1.2s cubic-bezier(.2, .6, .3, 1) infinite; }
+}
+@keyframes hm-show-ping { from { opacity: .7; transform: scale(1); } to { opacity: 0; transform: scale(1.6); } }
+
+.hm-show .hm-show__cta { min-height: 0; padding: 10px 24px; border-radius: 3px; font-size: .84rem; letter-spacing: .02em; }
+
+/* Index: 01, a segmented line, 04. */
+.hm-show__index { grid-column: 2; grid-row: 1; align-self: end; display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 8px; }
+.hm-show__num { font-family: var(--hm-font-num, inherit); font-size: .95rem; font-weight: 700; line-height: 1; min-width: 2ch; text-align: center; }
+.hm-show__num--last { opacity: .55; }
+.hm-show__dots { display: flex; flex-direction: column; height: clamp(150px, 26vh, 230px); }
+.hm-show__dot { position: relative; flex: 1; width: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+.hm-show__dot::before, .hm-show__dot i { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 2px; margin-left: -1px; border-radius: 2px; }
+.hm-show__dot::before { background: rgba(255, 255, 255, .26); transition: background .3s; }
+.hm-show__dot i { background: #fff; transform: scaleY(0); transform-origin: top; }
+.hm-show__dot.is-past i { transform: scaleY(1); opacity: .5; }
+.hm-show__dot.is-active i { transform: scaleY(1); }
+.hm-show.is-playing .hm-show__dot.is-active i { animation: hm-show-fill var(--hm-show-delay) linear forwards; }
+.hm-show__dot:focus-visible { outline: 2px solid var(--hm-accent); outline-offset: 2px; border-radius: 4px; }
+@media (hover: hover) {
+	.hm-show__dot:hover::before { background: rgba(255, 255, 255, .6); }
+}
+@keyframes hm-show-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* Info card, one per slide. */
+.hm-show__cards { grid-column: 1; grid-row: 1; align-self: end; justify-self: end; width: min(300px, 100%); margin-bottom: 8px; }
+.hm-show__card { padding: 18px 20px; border: 1px solid rgba(255, 255, 255, .12); border-radius: 4px; background: rgba(16, 20, 26, .55); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); }
+.hm-show__card[hidden] { display: none; }
+.hm-show__card.is-active { animation: hm-show-card .7s cubic-bezier(.16, 1, .3, 1) both; }
+.hm-show__card-title { margin: 0 0 8px; color: #fff; font-size: .95rem; font-weight: 800; }
+.hm-show__card p { margin: 0; color: rgba(255, 255, 255, .78); font-size: .82rem; line-height: 1.9; }
+.hm-show__card-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: #fff; font-size: .8rem; font-weight: 700; text-decoration: none; }
+.hm-show__card-link svg { transition: transform .3s var(--hm-ease, ease); }
+@media (hover: hover) {
+	.hm-show__card-link:hover svg { transform: translateX(-4px); }
+	[dir="ltr"] .hm-show__card-link:hover svg { transform: translateX(4px); }
+}
+@keyframes hm-show-card { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Bottom bar: links at the start, figures at the end. */
+.hm-show__bar { grid-column: 1 / -1; grid-row: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 40px; flex-wrap: wrap; animation: hm-show-rise 1s .55s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes hm-show-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hm-show__social { display: flex; gap: 10px 40px; margin: 0; padding: 0; list-style: none; }
+.hm-show__social a { position: relative; color: rgba(255, 255, 255, .82); font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: color .25s; }
+.hm-show__social a::after { content: ""; position: absolute; inset-inline: 0; bottom: -5px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s var(--hm-ease, ease); }
+@media (hover: hover) {
+	.hm-show__social a:hover { color: #fff; }
+	.hm-show__social a:hover::after { transform: scaleX(1); }
+}
+.hm-show__stats { display: flex; gap: 14px clamp(28px, 4.4vw, 64px); margin: 0; }
+.hm-show__stats div { display: grid; gap: 2px; }
+.hm-show__stats dt { font-family: var(--hm-font-num, inherit); font-size: clamp(1.5rem, 1.1rem + 1.1vw, 2.15rem); font-weight: 800; line-height: 1.15; }
+.hm-show__stats dd { margin: 0; color: rgba(255, 255, 255, .78); font-size: .8rem; font-weight: 600; }
+
+/* Film window. */
+.hm-show__dialog { width: min(960px, 92vw); max-width: none; padding: 0; border: 0; border-radius: 6px; background: #000; color: #fff; overflow: visible; }
+.hm-show__dialog::backdrop { background: rgba(4, 6, 10, .78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.hm-show__player { aspect-ratio: 16 / 9; }
+.hm-show__player :where(video, iframe) { display: block; width: 100%; height: 100%; border: 0; border-radius: 6px; }
+.hm-show__close { position: absolute; top: -48px; inset-inline-end: 0; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 50%; background: transparent; color: #fff; cursor: pointer; }
+
+@media (max-width: 900px) {
+	.hm-show__inner { grid-template-columns: minmax(0, 1fr); }
+	.hm-show__index { grid-column: 1; grid-row: 2; flex-direction: row; align-self: auto; justify-self: start; margin: 0; }
+	.hm-show__dots { flex-direction: row; width: clamp(140px, 40vw, 220px); height: 28px; }
+	.hm-show__dot { width: auto; height: 28px; }
+	.hm-show__dot::before, .hm-show__dot i { top: 50%; bottom: auto; left: 2px; right: 2px; width: auto; height: 2px; margin: -1px 0 0; }
+	.hm-show__dot i { transform: scaleX(0); transform-origin: right; }
+	[dir="ltr"] .hm-show__dot i { transform-origin: left; }
+	.hm-show__dot.is-past i, .hm-show__dot.is-active i { transform: scaleX(1); }
+	.hm-show.is-playing .hm-show__dot.is-active i { animation-name: hm-show-fill-x; }
+	.hm-show__cards { display: none; }
+	.hm-show__bar { grid-row: 3; }
+}
+@keyframes hm-show-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (max-width: 560px) {
+	.hm-show__stats { width: 100%; justify-content: space-between; }
+	.hm-show__social { gap: 18px; }
+}
+@media (max-width: 767px) {
+	/* Leave room for the theme's floating mobile bar. */
+	.hm-has-mobile-bar .hm-show__inner { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.hm-show .hm-show__img, .hm-show__slide { transition: none; transform: none; }
+	.hm-show.is-playing .hm-show__dot.is-active i, .hm-show__bar { animation: none; }
+}

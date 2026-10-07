@@ -107,6 +107,17 @@ function hero(s) {
 }
 const marquee = (items, s = {}) => bleed(w('hm-marquee', Object.assign({ items: items.map((t) => (typeof t === 'string' ? { text: t } : t)), separator: 'dot', size: 'lg', look: 'alternate', speed: px(60), follow: 'yes', bordered: 'yes' }, s)));
 const textScrub = (text, s = {}) => w('hm-text-scrub', Object.assign({ text, size: 'lg' }, s));
+/** Cinematic hero with crossfading slides: slides { image, label, text, url? }, social { label, url }, plus btn_url and video. */
+function showcase(s) {
+	const { slides = [], stats = [], social = [], btn_url = '', video = '', ...rest } = s;
+	return bleed(w('hm-showcase', Object.assign({ autoplay: '7', show_card: 'yes', show_index: 'yes', height: 'screen' }, rest, {
+		slides: slides.map(({ url = '', ...i }) => Object.assign(i, { link: link(url) })),
+		stats,
+		social: social.map((i) => ({ label: i.label, url: link(i.url, true) })),
+		btn_link: link(btn_url),
+		video_url: link(video, true),
+	})));
+}
 const scrollZoom = (s) => bleed(w('hm-scroll-zoom', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', start_scale: px(0.42), radius: px(28), length: px(2), btn1_style: 'inverse' }, s)));
 const hscroll = (s) => bleed(w('hm-hscroll', Object.assign({ title_tag: 'h2', title_size: 'lg', header_align: 'start', title_reveal: 'words', card_size: 'md', card_style: 'caption', length: px(1), progress: 'yes', btn1_style: 'secondary' }, s)));
 const scrollPath = (s) => bleed(w('hm-scroll-path', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', length: px(3) }, s)));
@@ -168,7 +179,7 @@ const pageSettings = (o = {}) => Object.assign({ hm_header: o.header || '', hm_f
 
 module.exports = {
 	reset, uid, img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols,
-	heading, button, buttons, textEditor, spacer, hero, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
+	heading, button, buttons, textEditor, spacer, hero, showcase, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
 	imageReveal, counters, features, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,
 };

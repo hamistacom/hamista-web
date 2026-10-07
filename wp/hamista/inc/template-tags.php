@@ -115,7 +115,7 @@ function hamista_reading_minutes( $post_id = null ) {
 function hamista_reading_time( $post_id = null ) {
 	$minutes = hamista_reading_minutes( $post_id );
 	/* translators: %s: number of minutes */
-	return sprintf( _n( '%s min read', '%s min read', $minutes, 'hamista' ), number_format_i18n( $minutes ) );
+	return sprintf( _n( '%s min read', '%s min read', $minutes, 'hamista' ), hamista_digits( number_format_i18n( $minutes ) ) );
 }
 
 /**

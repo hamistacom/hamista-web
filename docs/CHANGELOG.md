@@ -10,10 +10,19 @@
 - Profile pages: section switches, shared content under every profile; profiles built with Elementor keep their own design.
 - Settings: conditional fields inside repeaters; social network names and widget defaults in Persian.
 - Settings: optional left-to-right text fields and group descriptions.
+- Settings: switches for the page title area (pages, archives, shop), with alignment and size.
+- New widget: Showcase hero. Full-screen slides that crossfade with a slow zoom, numbered index with progress, an info card, a film button (MP4, Aparat or YouTube in a window over the page), figures and links along the bottom. Pauses when off screen, on keyboard focus and in a hidden tab; arrow keys move between slides.
+- New demo: Rahnavard (ره‌نورد), a slow-travel agency. Cinematic hero, destinations in a horizontal scroll, tour cards that stack while scrolling, a night sky that zooms out, travellers' quotes, journal and an image call to action. Five pages, light and dark.
+- Index numbers on cards and steps follow Persian digits.
+- Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
+- Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
 
 **Theme**
 - Profile, team archive and service templates for the booking module.
 - Redesigned WooCommerce account area: full-width layout, icon menu with Persian labels even without WooCommerce's language pack, dashboard with summary cards and latest orders, monogram instead of Gravatar.
+- New style kit: Voyage. Stone white, charcoal and Persian turquoise, small corners and hairlines.
+- The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
+- Reading time in Persian digits.
 
 ## 1.0.0
 

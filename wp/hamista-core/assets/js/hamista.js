@@ -651,7 +651,8 @@
 				for (var i = 0; i < offsets.length; i++) {
 					var o = offsets[i];
 					if (!o.media) { continue; }
-					var c = (o.center + x - w / 2) / w;
+					// Clamped so the 8% drift never exceeds the 9% margin the 1.18 scale leaves.
+					var c = clamp((o.center + x - w / 2) / w, -1, 1);
 					o.media.style.transform = 'translate3d(' + (c * -8).toFixed(2) + '%,0,0) scale(1.18)';
 				}
 			}
@@ -765,7 +766,7 @@
 				s.classList.toggle('is-active', i === active);
 				s.classList.toggle('is-past', i < active);
 			});
-			if (count) { count.textContent = String(Math.max(0, active + 1)).padStart(2, '0'); }
+			if (count) { count.textContent = numberFormat.format(Math.max(0, active + 1)).padStart(2, numberFormat.format(0)); }
 		}
 
 		build();
@@ -1447,6 +1448,116 @@
 			range.addEventListener(type, function () { el.classList.remove('is-dragging'); });
 		});
 		set();
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* Showcase hero: slides, index, info cards, film window              */
+	/* ------------------------------------------------------------------ */
+	H.register('showcase', function (el) {
+		var slides = $$('.hm-show__slide', el);
+		var cards = $$('.hm-show__card', el);
+		var dots = $$('[data-show-go]', el);
+		var current = el.querySelector('[data-show-current]');
+		var n = slides.length;
+		var at = 0;
+		var timer = null;
+		var visible = true;
+		var delay = (parseInt(el.getAttribute('data-autoplay'), 10) || 0) * 1000;
+		if (delay) { el.style.setProperty('--hm-show-delay', (delay / 1000) + 's'); }
+
+		function playing() { return delay && n > 1 && visible && !reduce && !doc.hidden && !el.contains(doc.activeElement); }
+
+		function schedule() {
+			clearTimeout(timer);
+			el.classList.remove('is-playing');
+			dots.forEach(function (d) { var i = d.querySelector('i'); if (i) { i.style.animation = 'none'; void i.offsetWidth; i.style.animation = ''; } });
+			if (!playing()) { return; }
+			el.classList.add('is-playing');
+			timer = setTimeout(function () { go(at + 1); }, delay);
+		}
+
+		function go(k) {
+			k = (k + n) % n;
+			slides.forEach(function (s, i) { s.classList.toggle('is-active', i === k); });
+			cards.forEach(function (c) {
+				var on = c.id && c.id.slice(-('-card-' + k).length) === '-card-' + k;
+				c.hidden = !on;
+				c.classList.toggle('is-active', on);
+			});
+			dots.forEach(function (d, i) {
+				d.classList.toggle('is-active', i === k);
+				d.classList.toggle('is-past', i < k);
+				d.setAttribute('aria-selected', String(i === k));
+				d.tabIndex = i === k ? 0 : -1;
+			});
+			if (current && dots[k]) { current.textContent = dots[k].getAttribute('data-num'); }
+			at = k;
+			schedule();
+		}
+
+		dots.forEach(function (d, i) {
+			d.addEventListener('click', function () { go(i); });
+			d.addEventListener('keydown', function (e) {
+				var next = { ArrowDown: 1, ArrowUp: -1, ArrowLeft: 1, ArrowRight: -1, Home: -i, End: n - 1 - i }[e.key];
+				if (doc.documentElement.dir !== 'rtl' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { next = -next; }
+				if (next === undefined) { return; }
+				e.preventDefault();
+				go(i + next);
+				dots[at].focus();
+			});
+		});
+
+		if ('IntersectionObserver' in win) {
+			new IntersectionObserver(function (entries) {
+				visible = entries[0].isIntersecting;
+				schedule();
+			}, { threshold: 0.25 }).observe(el);
+		}
+		doc.addEventListener('visibilitychange', schedule);
+		el.addEventListener('focusin', schedule);
+		el.addEventListener('focusout', function () { setTimeout(schedule, 0); });
+
+		// Film window: MP4 plays in a <video>; Aparat and YouTube links become embeds.
+		var dialog = el.querySelector('.hm-show__dialog');
+		var player = el.querySelector('[data-show-player]');
+		function embed(url) {
+			var m = url.match(/aparat\.com\/v\/([A-Za-z0-9]+)/);
+			if (m) { return 'https://www.aparat.com/video/video/embed/videohash/' + m[1] + '/vt/frame'; }
+			m = url.match(/(?:youtu\.be\/|v=|embed\/)([A-Za-z0-9_-]{11})/);
+			if (m) { return 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0'; }
+			return '';
+		}
+		$$('[data-show-video]', el).forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				if (!dialog || !player || typeof dialog.showModal !== 'function') { win.open(btn.getAttribute('data-show-video'), '_blank', 'noopener'); return; }
+				var url = btn.getAttribute('data-show-video');
+				var src = embed(url);
+				player.innerHTML = '';
+				var media = doc.createElement(src ? 'iframe' : 'video');
+				if (src) {
+					media.src = src;
+					media.allow = 'autoplay; fullscreen; picture-in-picture';
+					media.allowFullscreen = true;
+					media.title = btn.textContent.trim();
+				} else {
+					media.src = url;
+					media.controls = true;
+					media.autoplay = true;
+					media.playsInline = true;
+				}
+				player.appendChild(media);
+				dialog.showModal();
+			});
+		});
+		if (dialog) {
+			var shut = function () { dialog.close(); };
+			var close = dialog.querySelector('[data-show-close]');
+			if (close) { close.addEventListener('click', shut); }
+			dialog.addEventListener('click', function (e) { if (e.target === dialog) { shut(); } });
+			dialog.addEventListener('close', function () { if (player) { player.innerHTML = ''; } });
+		}
+
+		go(0);
 	});
 
 	/* ------------------------------------------------------------------ */

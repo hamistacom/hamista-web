@@ -581,12 +581,22 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * Two-digit index label (01, 02…).
+	 * Two-digit index label (01, 02…), in Persian digits on Persian sites.
 	 *
 	 * @param int $i Zero-based index.
 	 * @return string
 	 */
 	protected static function index_label( $i ) {
-		return str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT );
+		return self::pad_number( $i + 1 );
+	}
+
+	/**
+	 * A number padded to two digits, in Persian digits on Persian sites.
+	 *
+	 * @param int $n Number.
+	 * @return string
+	 */
+	protected static function pad_number( $n ) {
+		return hamista_core_digits( str_pad( (string) $n, 2, '0', STR_PAD_LEFT ) );
 	}
 }

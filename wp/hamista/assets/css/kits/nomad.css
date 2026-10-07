@@ -139,7 +139,7 @@
 .hm-kit-nomad .hm-plan.is-featured { background: var(--hm-indigo); color: #f3ede2; --hm-fg: #f3ede2; --hm-fg-muted: #c9c3d6; --hm-border: rgba(243, 237, 226, .18); --hm-accent: var(--hm-saffron); --hm-accent-fg: #1e1b18; border-color: var(--hm-fg); box-shadow: var(--hm-shadow-lg); }
 
 /* ---------- Footer: indigo wool with a kilim band on top ---------- */
-.hm-kit-nomad .hm-footer { position: relative; background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(243, 237, 226, .14); --hm-surface: rgba(243, 237, 226, .05); --hm-surface-2: rgba(243, 237, 226, .08); --hm-accent-ink: var(--hm-saffron); }
+.hm-kit-nomad .hm-footer { position: relative; background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(243, 237, 226, .14); --hm-surface: rgba(243, 237, 226, .05); --hm-surface-2: rgba(243, 237, 226, .08); --hm-accent-ink: var(--hm-saffron); --hm-logo-dark: block; --hm-logo-light: none; }
 .hm-kit-nomad .hm-footer::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 16px; background: var(--hm-kilim) 0 0 / 48px 16px repeat-x; }
 .hm-kit-nomad .hm-footer__wordmark { color: var(--hm-saffron); opacity: .1; }
 .hm-kit-nomad .hm-footer .hm-btn { border-color: #f3ede2; }

@@ -54,7 +54,29 @@ class Jalali {
 		}
 		$dt = new \DateTime( '@' . $timestamp );
 		$dt->setTimezone( $timezone instanceof \DateTimeZone ? $timezone : wp_timezone() );
-		return self::format( $format, $dt );
+		return str_replace( ', ', '، ', self::format( self::persian_order( $format ), $dt ) );
+	}
+
+	/**
+	 * Persian reads day, month, year: English defaults such as "F j, Y" (left by
+	 * an install that started in English) become "j F Y".
+	 *
+	 * @param string $format Format.
+	 * @return string
+	 */
+	private static function persian_order( $format ) {
+		$map = array(
+			'F j, Y'         => 'j F Y',
+			'F jS, Y'        => 'j F Y',
+			'M j, Y'         => 'j M Y',
+			'D, M j, Y'      => 'D j M Y',
+			'l, F j, Y'      => 'l j F Y',
+			'F j, Y g:i a'   => 'j F Y, H:i',
+			'F j, Y g:i A'   => 'j F Y, H:i',
+			'F j, Y @ g:i a' => 'j F Y, H:i',
+			'F Y'            => 'F Y',
+		);
+		return isset( $map[ $format ] ) ? $map[ $format ] : $format;
 	}
 
 	/**

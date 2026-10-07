@@ -161,7 +161,7 @@ class Stack extends Widget_Base {
 			echo '<div class="hm-stack__item" style="--i:' . (int) $i . '">';
 			echo '<article class="hm-stack__card hm-bolted' . esc_attr( $tone ) . '">';
 			echo '<div class="hm-stack__body">';
-			echo '<div class="hm-stack__top"><span class="hm-stack__num hm-num">' . esc_html( self::index_label( $i ) . ' / ' . str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</span>';
+			echo '<div class="hm-stack__top"><span class="hm-stack__num hm-num">' . esc_html( self::index_label( $i ) . ' / ' . self::pad_number( $total ) ) . '</span>';
 			if ( $item['eyebrow'] ) {
 				echo '<span class="hm-stack__label">' . esc_html( $item['eyebrow'] ) . '</span>';
 			}

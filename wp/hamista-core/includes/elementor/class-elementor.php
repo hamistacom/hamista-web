@@ -54,6 +54,7 @@ class Elementor {
 			'Nav_Menu',
 			'Header_Actions',
 			'Before_After',
+			'Showcase',
 		);
 		if ( post_type_exists( 'hm_portfolio' ) || hamista_core_option( 'portfolio_enabled', true ) ) {
 			$widgets[] = 'Portfolio';

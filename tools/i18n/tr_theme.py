@@ -163,4 +163,5 @@ T = {
     "Book online": "رزرو آنلاین",
     "All %s": "همه~ی %s",
     "Book %s": "رزرو %s",
+    "Voyage — cinematic travel, turquoise": "سفر — گردشگری سینمایی، فیروزه~ای",
 }

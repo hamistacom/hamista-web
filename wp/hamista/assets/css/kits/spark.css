@@ -27,7 +27,7 @@
 .hm-kit-spark .hm-card:hover { border-color: var(--hm-border-strong); }
 
 /* Footer is an ink slab with a giant outlined wordmark */
-.hm-kit-spark .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .22); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); }
+.hm-kit-spark .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .22); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-logo-dark: block; --hm-logo-light: none; }
 .hm-kit-spark .hm-footer__wordmark { color: #fff; opacity: .045; }
 [data-hm-theme="dark"] .hm-kit-spark .hm-footer, [data-hm-theme="dark"].hm-kit-spark .hm-footer { background: #050608; }
 

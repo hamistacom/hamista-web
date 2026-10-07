@@ -39,6 +39,7 @@ function hamista_kits() {
 			'flux'       => __( 'Flux — cinematic, glass and glow', 'hamista' ),
 			'honey'      => __( 'Honey — warm and natural', 'hamista' ),
 			'nomad'      => __( 'Nomad — handwoven, earthy', 'hamista' ),
+			'voyage'     => __( 'Voyage — cinematic travel, turquoise', 'hamista' ),
 		)
 	);
 }
@@ -227,6 +228,7 @@ function hamista_theme_color_meta() {
 		'flux'       => '#f5f1ea',
 		'honey'      => '#fbf6ec',
 		'nomad'      => '#f3ede2',
+		'voyage'     => '#f4f2ee',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

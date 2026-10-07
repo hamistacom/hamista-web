@@ -237,7 +237,7 @@
 .hm-kit-pulse .hm-stat__value { color: var(--hm-fg); }
 
 /* ---------- Footer: ink slab, giant wordmark, lime hover ---------- */
-.hm-kit-pulse .hm-footer { background: var(--hm-color-neutral-950); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: #aaa9b6; --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .2); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-accent-ink: var(--hm-lime); }
+.hm-kit-pulse .hm-footer { background: var(--hm-color-neutral-950); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: #aaa9b6; --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .2); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-accent-ink: var(--hm-lime); --hm-logo-dark: block; --hm-logo-light: none; }
 .hm-kit-pulse .hm-footer a:hover { color: var(--hm-lime); }
 .hm-kit-pulse .hm-footer__wordmark { color: var(--hm-lime); opacity: .08; }
 [data-hm-theme="dark"] .hm-kit-pulse .hm-footer { background: #04030a; }

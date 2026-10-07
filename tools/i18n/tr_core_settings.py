@@ -313,4 +313,6 @@ T = {
     "Right": "راست~چین",
     "Centre": "وسط~چین",
     "Other": "سایر",
+    "Voyage": "سفر",
+    "Stone white, charcoal and Persian turquoise": "سفید سنگی، زغالی و فیروزه~ای ایرانی",
 }

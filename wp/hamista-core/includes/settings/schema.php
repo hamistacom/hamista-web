@@ -112,6 +112,11 @@ return ( static function () {
 							'desc'  => __( 'Wool, terracotta and kilim patterns', 'hamista-core' ),
 							'image' => $img . 'kit-nomad.svg',
 						),
+						'voyage'     => array(
+							'label' => __( 'Voyage', 'hamista-core' ),
+							'desc'  => __( 'Stone white, charcoal and Persian turquoise', 'hamista-core' ),
+							'image' => $img . 'kit-voyage.svg',
+						),
 					),
 				),
 				'container_width'   => array(

@@ -122,7 +122,7 @@
 .hm-kit-flux .hm-flow__in { border: 1px solid rgba(255, 255, 255, .1); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 40px -20px rgba(255, 138, 31, .5); }
 
 /* ---------- Footer ---------- */
-.hm-kit-flux .hm-footer { background: #050507; color: #f3efe8; border-top: 1px solid rgba(255, 255, 255, .06); --hm-fg: #f3efe8; --hm-fg-muted: #a19c94; --hm-border: rgba(255, 255, 255, .08); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-accent-ink: #ffb062; }
+.hm-kit-flux .hm-footer { background: #050507; color: #f3efe8; border-top: 1px solid rgba(255, 255, 255, .06); --hm-fg: #f3efe8; --hm-fg-muted: #a19c94; --hm-border: rgba(255, 255, 255, .08); --hm-surface: rgba(255, 255, 255, .04); --hm-surface-2: rgba(255, 255, 255, .07); --hm-accent-ink: #ffb062; --hm-logo-dark: block; --hm-logo-light: none; }
 .hm-kit-flux .hm-footer__wordmark { background: var(--hm-sheen); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .16; }
 .hm-kit-flux .hm-pagination .page-numbers { border-radius: 999px; }
 .hm-kit-flux .hm-pagination .page-numbers.current { background: var(--hm-sheen); color: var(--hm-accent-fg); border-color: transparent; }

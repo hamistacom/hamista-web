@@ -198,12 +198,12 @@ class Scroll_Path extends Widget_Base {
 
 		echo '<ol class="hm-path__steps">';
 		foreach ( $steps as $i => $step ) {
-			echo '<li class="hm-path__step"><span class="hm-path__n">' . esc_html( self::index_label( $i ) . ' / ' . str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</span>';
+			echo '<li class="hm-path__step"><span class="hm-path__n">' . esc_html( self::index_label( $i ) . ' / ' . self::pad_number( $total ) ) . '</span>';
 			echo '<h3>' . esc_html( $step['title'] ) . '</h3><p>' . esc_html( $step['text'] ) . '</p></li>';
 		}
 		echo '</ol>';
 		echo '<div class="hm-path__rail" aria-hidden="true"><i></i></div>';
-		echo '<div class="hm-path__count" aria-hidden="true"><b>00</b> / ' . esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</div>';
+		echo '<div class="hm-path__count" aria-hidden="true"><b>' . esc_html( self::pad_number( 0 ) ) . '</b> / ' . esc_html( self::pad_number( $total ) ) . '</div>';
 		echo '</div></section>';
 	}
 }
