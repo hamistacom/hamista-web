@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+<rect width="320" height="200" fill="#f5f4f0"/>
+<rect x="266" y="13" width="34" height="11" rx="2" fill="#17201d"/>
+<g fill="#17201d" fill-opacity=".3"><rect x="150" y="17" width="14" height="2" rx="1"/><rect x="128" y="17" width="14" height="2" rx="1"/><rect x="172" y="17" width="14" height="2" rx="1"/></g>
+<path d="M30 25c-6-4-6-10 0-14 6 4 6 10 0 14Z" stroke="#2f6b5c" stroke-width="1.6"/><rect x="38" y="15" width="22" height="6" rx="1.5" fill="#17201d"/>
+<rect x="196" y="46" width="104" height="9" rx="2" fill="#17201d"/>
+<rect x="232" y="61" width="68" height="9" rx="2" fill="#2f6b5c"/>
+<rect x="250" y="80" width="50" height="13" rx="2" fill="#17201d"/>
+<rect x="20" y="40" width="160" height="96" rx="6" fill="#e9e6de"/>
+<path d="M20 112 L180 76 V136 H20Z" fill="#f3efe4"/>
+<rect x="104" y="58" width="56" height="44" rx="1" fill="#c9a87f" fill-opacity=".7"/>
+<g stroke="#9c7c55" stroke-opacity=".5"><path d="M110 58v44M116 58v44M122 58v44M128 58v44M134 58v44M140 58v44M146 58v44M152 58v44"/></g>
+<rect x="96" y="96" width="70" height="16" rx="1" fill="#fbfbf9"/>
+<rect x="20" y="150" width="88" height="40" rx="6" fill="#fbfbf9" stroke="#17201d" stroke-opacity=".1"/>
+<rect x="116" y="150" width="88" height="40" rx="6" fill="#fbfbf9" stroke="#17201d" stroke-opacity=".1"/>
+<rect x="212" y="150" width="88" height="40" rx="6" fill="#16201d"/>
+<circle cx="228" cy="166" r="5" fill="#a8834f"/>
+</svg>

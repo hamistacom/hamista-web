@@ -1,0 +1,106 @@
+/*!
+ * Hamista style kit — Care
+ * Porcelain white, a deep green graphite and one eucalyptus accent, with brass
+ * kept for the smallest details: the calm of a good clinic. Hairline rules,
+ * soft corners, quiet headings and room to breathe.
+ */
+.hm-kit-care {
+	--hm-bg: #f5f4f0;
+	--hm-surface: #fbfbf9;
+	--hm-surface-2: #ecebe5;
+	--hm-sunken: #e4e3dc;
+	--hm-fg: #17201d;
+	--hm-fg-muted: #5b6561;
+	--hm-border: rgba(23, 32, 29, .11);
+	--hm-border-strong: rgba(23, 32, 29, .24);
+	--hm-accent: #2f6b5c;
+	--hm-accent-2: #a8834f;
+	--hm-accent-fg: #ffffff;
+	--hm-accent-ink: #2a5f52;
+	--hm-accent-soft: rgba(47, 107, 92, .08);
+	--hm-inv-bg: #16201d;
+	--hm-inv-fg: #eef0ec;
+	--hm-inv-muted: #a3aea9;
+	--hm-path-deep: #16201d;
+
+	--hm-radius-sm: 2px;
+	--hm-radius-md: 6px;
+	--hm-radius-lg: 8px;
+	--hm-radius-xl: 12px;
+	--hm-radius-btn: 4px;
+	--hm-fw-heading: 500;
+	--hm-fw-monument: 300;
+	--hm-lh-heading: 1.4;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: 0 1px 3px rgba(23, 32, 29, .05);
+	--hm-shadow-lg: 0 24px 48px -30px rgba(23, 32, 29, .3);
+	--hm-card-border: 1px solid var(--hm-border);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 0 20px 40px -28px rgba(23, 32, 29, .32);
+	--hm-input-bg: var(--hm-surface);
+	--hm-ease: cubic-bezier(.22, 1, .36, 1);
+	--hm-focus: 0 0 0 2px var(--hm-bg), 0 0 0 4px var(--hm-accent);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-care,
+[data-hm-theme="dark"].hm-kit-care {
+	--hm-bg: #101614;
+	--hm-surface: #161d1a;
+	--hm-surface-2: #1c2421;
+	--hm-sunken: #0b0f0e;
+	--hm-fg: #e9ece8;
+	--hm-fg-muted: #9aa6a1;
+	--hm-border: rgba(233, 236, 232, .1);
+	--hm-border-strong: rgba(233, 236, 232, .22);
+	--hm-accent: #7fb5a5;
+	--hm-accent-2: #c9a46c;
+	--hm-accent-fg: #101614;
+	--hm-accent-ink: #8fc2b2;
+	--hm-accent-soft: rgba(127, 181, 165, .12);
+	--hm-inv-bg: #080b0a;
+	--hm-shadow-lg: 0 24px 48px -30px rgba(0, 0, 0, .8);
+	color-scheme: dark;
+}
+
+.hm-kit-care ::selection { background: rgba(47, 107, 92, .2); color: inherit; }
+.hm-kit-care .hm-hl { color: var(--hm-accent-ink); }
+.hm-kit-care .hm-scheme-inverse .hm-hl { color: #8fc2b2; }
+.hm-kit-care .hm-head__desc, .hm-kit-care .hm-lead { color: var(--hm-fg-muted); }
+
+/* Section labels: a short eucalyptus rule. */
+.hm-kit-care .hm-eyebrow { color: var(--hm-fg-muted); font-weight: 500; font-size: .82rem; }
+.hm-kit-care .hm-eyebrow::before { width: 18px; height: 1px; opacity: 1; background: var(--hm-accent); border-radius: 0; }
+
+.hm-kit-care .hm-btn { font-weight: 600; }
+.hm-kit-care .hm-btn--primary, .hm-kit-care .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+.hm-kit-care .hm-btn--primary:hover { background: var(--hm-accent); border-color: var(--hm-accent); color: #fff; box-shadow: none; }
+.hm-kit-care .hm-btn--secondary, .hm-kit-care .hm-btn--ghost { background: transparent; border-color: var(--hm-border-strong); color: var(--hm-fg); }
+.hm-kit-care .hm-btn--secondary:hover, .hm-kit-care .hm-btn--ghost:hover { border-color: var(--hm-fg); color: var(--hm-fg); box-shadow: none; }
+.hm-kit-care .hm-scheme-inverse .hm-btn--primary { background: var(--hm-inv-fg); color: var(--hm-inv-bg); border-color: var(--hm-inv-fg); }
+
+.hm-kit-care .hm-icon-btn__badge { background: var(--hm-accent); }
+.hm-kit-care a.hm-chip:hover, .hm-kit-care .hm-chip.is-active { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-care .hm-menu > .current-menu-item > a::after, .hm-kit-care .hm-menu > .current-menu-ancestor > a::after { height: 1px; border-radius: 0; background: var(--hm-accent); }
+.hm-kit-care .hm-progress { background: var(--hm-accent); }
+
+.hm-kit-care .hm-card, .hm-kit-care .hm-feature--card { box-shadow: none; }
+.hm-kit-care .hm-feature--card:hover { transform: none; box-shadow: var(--hm-card-shadow-hover); }
+.hm-kit-care .hm-features--icon-tile .hm-feature__icon, .hm-kit-care .hm-cinfo__icon { background: transparent; border: 1px solid var(--hm-border-strong); color: var(--hm-fg); border-radius: 50%; }
+.hm-kit-care .hm-feature__num { color: var(--hm-accent); }
+.hm-kit-care .hm-post-card__title, .hm-kit-care .hm-pfcard__title { font-weight: 600; }
+.hm-kit-care ul.products li.product .woocommerce-loop-product__title, .hm-kit-care .hm-product__title { font-weight: 600; }
+.hm-kit-care ul.products li.product .price, .hm-kit-care .hm-product__price { color: var(--hm-fg); }
+.hm-kit-care .onsale { background: var(--hm-accent); color: #fff; border-radius: var(--hm-radius-sm); }
+.hm-kit-care .hm-plan.is-featured { background: var(--hm-inv-bg); color: var(--hm-inv-fg); --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(238, 240, 236, .12); --hm-accent: #8fc2b2; --hm-accent-fg: #101614; border-color: transparent; }
+.hm-kit-care .hm-scheme-inverse { --hm-accent: #8fc2b2; --hm-accent-fg: #101614; --hm-accent-ink: #8fc2b2; }
+
+.hm-kit-care .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(238, 240, 236, .1); --hm-border-strong: rgba(238, 240, 236, .22); --hm-surface: rgba(255, 255, 255, .03); --hm-surface-2: rgba(255, 255, 255, .06); --hm-accent-ink: #8fc2b2; --hm-logo-dark: block; --hm-logo-light: none; }
+.hm-kit-care .hm-footer__wordmark { color: #8fc2b2; opacity: .05; }
+.hm-kit-care .hm-pagination .page-numbers.current { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+
+/* Small brass details: index numbers and the featured badge. */
+.hm-kit-care .hm-feature__num { color: var(--hm-accent-2); }
+.hm-kit-care .hm-plan__badge { background: var(--hm-accent-2); color: #fff; }
+.hm-kit-care .hm-path { --hm-path-bg: #0c1311; --hm-path-mid: rgba(127, 181, 165, .12); --hm-path-deep: #16201d; }

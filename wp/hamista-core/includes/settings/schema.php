@@ -162,6 +162,11 @@ return ( static function () {
 							'desc'  => __( 'Warm grey, black ink and vermilion', 'hamista-core' ),
 							'image' => $img . 'kit-studio.svg',
 						),
+						'care'       => array(
+							'label' => __( 'Care', 'hamista-core' ),
+							'desc'  => __( 'Porcelain white, deep green and a eucalyptus accent', 'hamista-core' ),
+							'image' => $img . 'kit-care.svg',
+						),
 					),
 				),
 				'container_width'   => array(

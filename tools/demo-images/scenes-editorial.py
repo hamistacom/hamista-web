@@ -3,7 +3,7 @@ Editorial photographs for the Spark academy, the Tapesh agency and the Sayal
 motion studio: printed covers, cards, letterheads, posters, storyboards,
 easing-curve sheets, contact sheets and style frames laid on a desk.
 
-    python3 tools/demo-images/scenes-editorial.py <spark|agency|flux> <out-dir> [name ...]
+    python3 tools/demo-images/scenes-editorial.py <spark|agency|flux|clinic> <out-dir> [name ...]
 
 Prints are typeset in editorial.html with the theme's licensed Persian fonts
 (editorial-render.js), then laid on linen, oak, plaster or concrete: each
@@ -69,6 +69,9 @@ def desk(out, bg, rng, color=None):
         return base * (1 - 0.12 * pits[..., None])
     if bg == 'wall':
         return archi.texture(h, w, color or (226, 222, 214), rng) * 255
+    if bg == 'marble':
+        law = _load('law', 'scenes-law.py')
+        return np.asarray(law.marble(int(rng.integers(1, 999)), (w, h), color or (234, 231, 225), (150, 148, 142)), np.float32)
     return cer.paper(h, w, rng, color or (230, 226, 218))
 
 
@@ -471,14 +474,70 @@ def flux_plan(P):
     return plan
 
 
+# --------------------------------------------------------------------------
+# Sepidar: a specialty clinic
+# --------------------------------------------------------------------------
+
+CLINIC_INK = '#17201d'
+CLINIC_ACCENT = '#2f6b5c'
+DEPARTMENTS = [
+    ('dept-1', '۰۱', 'پوست و مو', 'درمان، مراقبت و زیبایی پوست', 'طبقه‌ی دوم', 'circle', '#eef0eb'),
+    ('dept-2', '۰۲', 'دندان‌پزشکی', 'از معاینه‌ی سالانه تا ایمپلنت', 'طبقه‌ی سوم', 'arch', '#f1efe9'),
+    ('dept-3', '۰۳', 'چشم‌پزشکی', 'بینایی‌سنجی، عینک و جراحی', 'طبقه‌ی دوم', 'dots', '#ecefee'),
+    ('dept-4', '۰۴', 'قلب و عروق', 'چکاپ، نوار قلب و اکو', 'طبقه‌ی اول', 'lines', '#f0eeea'),
+    ('dept-5', '۰۵', 'تغذیه', 'برنامه‌ی غذایی برای هر سن', 'طبقه‌ی اول', 'grid', '#eef0ea'),
+    ('dept-6', '۰۶', 'فیزیوتراپی', 'درد، آسیب و بازتوانی', 'همکف', 'bars', '#efede8'),
+]
+
+
+def clinic_spec():
+    spec = []
+    for key, num, title, sub, floor, motif, bg in DEPARTMENTS:
+        spec.append({'name': 'p-' + key, 'w': 1000, 'h': 1400, 'p': {
+            't': 'cover', 'bg': bg, 'ink': CLINIC_INK, 'accent': CLINIC_ACCENT, 'kicker': 'کلینیک سپیدار', 'edition': 'راهنمای بیمار',
+            'num': num, 'title': title, 'sub': sub, 'footA': floor, 'footB': 'سپیدار', 'motif': None, 'font': 'yekan'}})
+    base = {'ink': CLINIC_INK, 'accent': CLINIC_ACCENT, 'mark': 'poplar', 'font': 'yekan', 'brand': 'کلینیک سپیدار'}
+    spec.append({'name': 'p-card-a', 'w': 1050, 'h': 600, 'p': dict(base, t='card', back=True, bg='#f3f2ec')})
+    spec.append({'name': 'p-card-b', 'w': 1050, 'h': 600, 'p': dict(base, t='card', bg='#f3f2ec', name='نوبت بعدی شما', role='دکتر سارا امینی · سه‌شنبه ۲۴ مهر، ساعت ۱۰:۳۰', phone='۰۲۱-۲۲۰۴ ۸۸۰۰')})
+    spec.append({'name': 'p-letter', 'w': 1240, 'h': 1754, 'p': dict(base, t='letter', bg='#f7f6f2', line='rgba(23,32,29,.14)',
+                                                                 subject='راهنمای پیش از نخستین مراجعه',
+                                                                 paras=['بیمار گرامی، از اعتماد شما سپاسگزاریم. برای آنکه نخستین ملاقات با پزشک کامل و بی‌دغدغه باشد، چند نکته‌ی کوتاه را در این برگه آورده‌ایم.',
+                                                                        'لطفاً پانزده دقیقه پیش از ساعت نوبت در پذیرش حاضر باشید و کارت ملی، دفترچه یا کارت بیمه و نتیجه‌ی آزمایش‌ها و تصویربرداری‌های پیشین را همراه داشته باشید.',
+                                                                        'اگر دارویی مصرف می‌کنید، نام و مقدار آن را یادداشت کنید. در صورت نیاز به جابه‌جایی نوبت، تا بیست‌وچهار ساعت پیش از آن از بخش «نوبت‌های من» یا با تماس تلفنی اقدام کنید.'],
+                                                                 sign='پذیرش کلینیک سپیدار', address='تهران، زعفرانیه، خیابان مقدس اردبیلی، پلاک ۶۴', web='sepidar.clinic')})
+    spec.append({'name': 'p-report', 'w': 1240, 'h': 1754, 'p': {
+        't': 'report', 'bg': '#f7f6f2', 'ink': CLINIC_INK, 'accent': CLINIC_ACCENT, 'line': 'rgba(23,32,29,.12)', 'kicker': 'چکاپ سالانه · برگه‌ی خلاصه',
+        'title': 'روند آمادگی قلبی\nدر دوازده ماه گذشته',
+        'figs': [['۱۱۸/۷۶', 'فشار خون'], ['۸۹', 'قند ناشتا'], ['۲۲٫۸', 'شاخص توده‌ی بدنی']],
+        'values': [41, 43, 42, 46, 48, 47, 51, 53, 55, 58], 'note': 'نتیجه‌ها در محدوده‌ی طبیعی است. پیاده‌روی روزانه را ادامه دهید؛ چکاپ بعدی شش ماه دیگر.'}})
+    spec.append({'name': 'p-chip-1', 'w': 600, 'h': 900, 'p': {'t': 'swatch', 'bg': '#f5f3ee', 'ink': '#222', 'chip': CLINIC_ACCENT, 'name': 'اکالیپتوس', 'code': '#2F6B5C'}})
+    spec.append({'name': 'p-chip-2', 'w': 600, 'h': 900, 'p': {'t': 'swatch', 'bg': '#f5f3ee', 'ink': '#222', 'chip': '#a8834f', 'name': 'برنج', 'code': '#A8834F'}})
+    return spec
+
+
+def clinic_plan(P):
+    plan = {}
+    surfaces = [('marble', None), ('linen', (214, 216, 206)), ('oak', None), ('marble', (230, 230, 226)), ('linen', (222, 218, 208)), ('paper', (214, 212, 204))]
+    for k, (key, *_r) in enumerate(DEPARTMENTS):
+        bg, c = surfaces[k]
+        props = [('pencil', 0.14, 0.9, 0.42, -0.08)] if k % 3 == 1 else ([('cup', 0.86, 0.18, 0.11, 'white')] if k % 3 == 2 else [])
+        plan[key] = (lambda n=key, s=k, b=bg, cc=c, pr=props: scene((1200, 1200), b, 300 + s, [(P('p-' + n), 0.54, 0.48, 0.5, [-3, 2, -2, 3, -1, 2][s], 1.2)], pr, bgc=cc))
+    plan['checkup'] = lambda: scene((1600, 1000), 'oak', 320, [(P('p-report'), 0.34, 0.4, 0.5, -3, 1.1), (P('p-card-b'), 0.2, 0.72, 0.36, 7, 1.3)], [('pen', 0.6, 0.9, 0.26, -0.3), ('cup', 0.86, 0.72, 0.1, 'white')])
+    plan['guide'] = lambda: scene((1600, 1000), 'marble', 321, [(P('p-letter'), 0.34, 0.34, 0.5, -2, 1.1), (P('p-card-a'), 0.2, 0.68, 0.32, 6, 1.3), (P('p-card-b'), 0.2, 0.72, 0.58, -4, 1.4),
+                                                                (P('p-chip-1'), 0.08, 0.88, 0.3, 3, 1.1), (P('p-chip-2'), 0.08, 0.92, 0.5, -4, 1.2)], [('pen', 0.56, 0.92, 0.24, -0.2)])
+    plan['booklets'] = lambda: scene((1600, 1000), 'linen', 322, [(P('p-dept-1'), 0.22, 0.2, 0.5, -4, 1), (P('p-dept-2'), 0.22, 0.4, 0.52, 2, 1.2), (P('p-dept-4'), 0.22, 0.6, 0.48, -2, 1.3),
+                                                                  (P('p-dept-6'), 0.22, 0.8, 0.52, 4, 1.4)], bgc=(214, 214, 204))
+    return plan
+
+
 if __name__ == '__main__':
     which, out_dir = sys.argv[1], sys.argv[2]
     only = set(sys.argv[3:])
     os.makedirs(out_dir, exist_ok=True)
     work = os.path.join(tempfile.gettempdir(), 'hm-editorial-' + which)
     os.makedirs(work, exist_ok=True)
-    specs = {'spark': spark_spec, 'agency': agency_spec, 'flux': lambda: flux_spec(work)}
-    plans = {'spark': spark_plan, 'agency': agency_plan, 'flux': flux_plan}
+    specs = {'spark': spark_spec, 'agency': agency_spec, 'flux': lambda: flux_spec(work), 'clinic': clinic_spec}
+    plans = {'spark': spark_plan, 'agency': agency_plan, 'flux': flux_plan, 'clinic': clinic_plan}
     spec = specs[which]()
     if not os.environ.get('HM_SKIP_PRINTS'):
         render_prints(spec, work)

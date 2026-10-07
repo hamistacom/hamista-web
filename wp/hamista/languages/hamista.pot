@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T22:20:50+00:00\n"
+"POT-Creation-Date: 2026-10-07T23:06:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -153,7 +153,11 @@ msgstr ""
 msgid "Studio — warm grey, ink and vermilion"
 msgstr ""
 
-#: inc/assets.php:89
+#: inc/assets.php:52
+msgid "Care — porcelain, deep green and eucalyptus"
+msgstr ""
+
+#: inc/assets.php:90
 msgid "Toggle submenu"
 msgstr ""
 

@@ -49,6 +49,7 @@ function hamista_kits() {
 			'clay'       => __( 'Clay — porcelain, sage and terracotta', 'hamista' ),
 			'paper'      => __( 'Paper — off-white, graphite and cobalt', 'hamista' ),
 			'studio'     => __( 'Studio — warm grey, ink and vermilion', 'hamista' ),
+			'care'       => __( 'Care — porcelain, deep green and eucalyptus', 'hamista' ),
 		)
 	);
 }
@@ -262,6 +263,7 @@ function hamista_theme_color_meta() {
 		'clay'       => '#f3efe8',
 		'paper'      => '#f3f0ea',
 		'studio'     => '#edebe6',
+		'care'       => '#f5f4f0',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

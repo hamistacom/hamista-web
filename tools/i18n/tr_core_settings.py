@@ -86,6 +86,8 @@ T = {
     "Off-white paper, graphite and cobalt ink": "کاغذ سفید استخوانی، گرافیتی و جوهر کبالتی",
     "Studio": "استودیو",
     "Warm grey, black ink and vermilion": "خاکستری گرم، جوهر مشکی و شنگرفی",
+    "Care": "مراقبت",
+    "Porcelain white, deep green and a eucalyptus accent": "سفید چینی، سبز تیره و رنگ تأکید اکالیپتوسی",
     "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync.":
         "حداکثر عرض محتوای صفحه. ۱۳۲۰ پیکسل برای لپ~تاپ~های ۱۵ اینچی مناسب است؛ عرض کانتینر المنتور هم خودکار با آن هماهنگ می~شود.",
     "Smooth page transitions": "انتقال نرم بین برگه~ها",

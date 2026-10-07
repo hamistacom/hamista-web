@@ -14,6 +14,8 @@
 @font-face { font-family: "IRANSansX"; src: url(../../wp/hamista-core/assets/fonts/library/iransansx/iransansx-400.woff2) format("woff2"); font-weight: 400; }
 @font-face { font-family: "IRANSansX"; src: url(../../wp/hamista-core/assets/fonts/library/iransansx/iransansx-700.woff2) format("woff2"); font-weight: 700; }
 @font-face { font-family: "Ravagh"; src: url(../../wp/hamista-core/assets/fonts/library/ravagh/ravagh-400.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: "IRANYekan"; src: url(../../wp/hamista-core/assets/fonts/library/iranyekan/iranyekan-300.woff2) format("woff2"); font-weight: 300; }
+@font-face { font-family: "IRANYekan"; src: url(../../wp/hamista-core/assets/fonts/library/iranyekan/iranyekan-500.woff2) format("woff2"); font-weight: 500; }
 @font-face { font-family: "Lahzeh"; src: url(../../wp/hamista-core/assets/fonts/library/lahzeh/lahzeh-400.woff2) format("woff2"); font-weight: 400; }
 @font-face { font-family: "Lahzeh"; src: url(../../wp/hamista-core/assets/fonts/library/lahzeh/lahzeh-600.woff2) format("woff2"); font-weight: 600; }
 @font-face { font-family: "Lahzeh"; src: url(../../wp/hamista-core/assets/fonts/library/lahzeh/lahzeh-900.woff2) format("woff2"); font-weight: 900; }
@@ -161,7 +163,7 @@ css.setProperty('--accent', P.accent || P.ink || '#1d1b18');
 css.setProperty('--line', P.line || 'rgba(0,0,0,.15)');
 css.setProperty('--dot', P.dot || 'rgba(0,0,0,.18)');
 css.setProperty('--chip', P.chip || '#888');
-const font = (f) => ({ lahzeh: "'Lahzeh', sans-serif", doran: "'Doran', serif", peyda: "'Peyda', sans-serif", ravagh: "'Ravagh', sans-serif", pinar: "'Pinar', sans-serif", sans: "'IRANSansX', sans-serif" }[f] || "'Doran', serif");
+const font = (f) => ({ yekan: "'IRANYekan', sans-serif", lahzeh: "'Lahzeh', sans-serif", doran: "'Doran', serif", peyda: "'Peyda', sans-serif", ravagh: "'Ravagh', sans-serif", pinar: "'Pinar', sans-serif", sans: "'IRANSansX', sans-serif" }[f] || "'Doran', serif");
 
 // Simple geometric marks and motifs, all in thin strokes.
 const motifs = {
@@ -177,6 +179,7 @@ const marks = {
 	ring: (c, a) => `<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="${c}" stroke-width="5"/><circle cx="30" cy="30" r="9" fill="${a}"/></svg>`,
 	square: (c, a) => `<svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" fill="none" stroke="${c}" stroke-width="5"/><rect x="18" y="18" width="24" height="24" fill="${a}"/></svg>`,
 	arch: (c, a) => `<svg viewBox="0 0 60 60"><path d="M8 56V30a22 22 0 0 1 44 0v26" fill="none" stroke="${c}" stroke-width="5"/><path d="M4 56h52" stroke="${a}" stroke-width="5"/></svg>`,
+	poplar: (c, a) => `<svg viewBox="0 0 60 60"><g fill="none" stroke="${a}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 3C42 12 49 23 46 35c-2 8-8 13-16 15-8-2-14-7-16-15C11 23 18 12 30 3Z"/><path d="M30 11v47"/><path d="M30 25l8-6M30 34l10-7M30 25l-8-6M30 34l-10-7" stroke-width="2.4" stroke-opacity=".7"/></g></svg>`,
 	leaf: (c, a) => `<svg viewBox="0 0 60 60"><path d="M10 50C10 24 26 8 52 8c0 26-16 42-42 42Z" fill="${a}"/><path d="M10 50 40 20" stroke="${c}" stroke-width="4"/></svg>`,
 	wave: (c, a) => `<svg viewBox="0 0 60 60"><path d="M4 24c10-10 16 10 26 0s16 10 26 0M4 38c10-10 16 10 26 0s16 10 26 0" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/><circle cx="48" cy="12" r="5" fill="${a}"/></svg>`,
 	bean: (c, a) => `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="18" ry="25" fill="${a}" transform="rotate(-25 30 30)"/><path d="M22 10c10 14-6 26 4 40" fill="none" stroke="${c}" stroke-width="3.5"/></svg>`,
