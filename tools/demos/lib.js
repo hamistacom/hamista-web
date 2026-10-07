@@ -55,7 +55,32 @@ function section(opts, elements) {
 	const s = { content_width: 'boxed', css_classes: cls.join(' '), flex_gap: gap(opts.gap ?? 48) };
 	if (opts.width) { s.boxed_width = px(opts.width); }
 	if (opts.align) { s.flex_align_items = opts.align; }
-	return con(s, elements);
+	return con(Object.assign(s, motion(opts)), elements);
+}
+
+/**
+ * Scroll effects from compact options (Advanced → Hamista Motion):
+ *   tone: 'inverse'|'accent'|'soft'|'surface'|'page'   cards: 'cascade'|'flip'|'spread'|'gather'|'tilt'
+ *   zoom: 'in'|'out'|'expand'|'shrink'|'through' (+ zoomAmount, zoomInner)   light: 'weave'|'start'|'end'
+ */
+function motion(o = {}) {
+	const s = {};
+	if (o.tone) { s.hm_tone = o.tone; }
+	if (o.cards) { s.hm_cards = o.cards; }
+	if (o.zoom) {
+		s.hm_zoom = o.zoom;
+		s.hm_zoom_amount = px(o.zoomAmount ?? 0.2);
+		if (o.zoomInner) { s.hm_zoom_inner = 'yes'; }
+		if (o.zoomRadius !== undefined) { s.hm_zoom_radius = o.zoomRadius; }
+	}
+	if (o.light) { s.hm_light = o.light; }
+	return s;
+}
+
+/** Add scroll effects to a widget or container built elsewhere. */
+function fx(element, o) {
+	Object.assign(element.settings, motion(o));
+	return element;
 }
 
 /**
@@ -180,10 +205,10 @@ function productBody(paragraphs, specs) {
 }
 
 /** Page settings for Hamista's layout options. */
-const pageSettings = (o = {}) => Object.assign({ hm_header: o.header || '', hm_footer: o.footer || '', hm_title: o.title || 'hide' }, o.extra || {});
+const pageSettings = (o = {}) => Object.assign({ hm_header: o.header || '', hm_footer: o.footer || '', hm_title: o.title || 'hide' }, o.light ? { hm_page_light: o.light } : {}, o.extra || {});
 
 module.exports = {
-	reset, uid, img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols,
+	reset, uid, img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols, motion, fx,
 	heading, button, buttons, textEditor, spacer, hero, showcase, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
 	imageReveal, counters, features, searchBox, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,

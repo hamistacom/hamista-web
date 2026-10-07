@@ -62,6 +62,17 @@ class Frontend {
 		wp_add_inline_script( 'hamista-motion', 'window.hamistaMotion=' . wp_json_encode( self::motion_config() ) . ';', 'before' );
 
 		wp_register_script(
+			'hamista-scroll-fx',
+			self::asset( 'js/scroll-fx.js' ),
+			array( 'hamista-motion' ),
+			HAMISTA_CORE_VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		wp_register_script(
 			'hamista-lead-form',
 			self::asset( 'js/lead-form.js' ),
 			array( 'hamista-motion' ),

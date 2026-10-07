@@ -613,6 +613,7 @@
 		all('[data-hm-magnetic]').forEach(setupMagnetic);
 		if (cfg.magnetic) { all('.hm-btn--magnetic').forEach(setupMagnetic); }
 		all('[data-hm-widget]').forEach(initWidget);
+		H.emit('init', scope);
 	};
 
 	/* ================================================================== */

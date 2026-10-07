@@ -65,6 +65,17 @@ One panel, saved over REST without a page reload: style kit and content width (d
 
 The motion engine (`window.Hamista`) is dependency-free: one `requestAnimationFrame` loop, `IntersectionObserver` reveals, no GSAP or jQuery. It honours `prefers-reduced-motion`, can be toned down on phones (**Hamista → Motion**), and each widget loads its script and styles only on pages that use it.
 
+### Scroll effects on any element
+
+Set in Elementor → Advanced → Hamista Motion, on any widget or container:
+
+- **Scroll zoom**: zoom in, zoom out, open out to full width, close into a card as it leaves, or fly through; with an amount and an optional counter-move of the image inside.
+- **Card motion** (containers): the items inside, or the cards of the single widget inside, rise one after another, flip up, deal out from a pile, close in from around, or lean with the scroll.
+- **Page colour while in view** (containers): the whole page fades to the section's colour (dark, accent, accent tint or your own) as it reaches the middle of the screen; text, lines and cards follow.
+- **Light line** (containers, or the whole page under Page settings → Hamista scroll effects): a thread of light drawn down the margins with the scroll, weaving across between sections and shifting colour down the page.
+
+The code for these effects loads only on pages that use them.
+
 ## Mobile login (OTP) and the user panel
 
 **Hamista → Login & SMS**: switch on mobile login, pick a provider (Kavenegar, Melipayamak, SMS.ir, IPPanel, Ghasedak, or a custom HTTP API), enter the credentials and send a test code. Until a provider is chosen the module runs in *test mode*: nothing is sent and the latest code is visible to administrators only.

@@ -74,7 +74,7 @@ function hamista_icon_paths() {
  */
 function hamista_get_icon( $name, $attrs = array() ) {
 	$paths = hamista_icon_paths();
-	if ( ! isset( $paths[ $name ] ) ) {
+	if ( ! is_string( $name ) || ! isset( $paths[ $name ] ) ) {
 		return '';
 	}
 

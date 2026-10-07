@@ -1634,3 +1634,46 @@
 	.hm-sbox__swap { top: 46px; inset-inline-start: auto; inset-inline-end: 16px; margin: 0; transform: rotate(90deg); }
 	.hm-sbox__swap.is-turning { transform: rotate(270deg); }
 }
+
+/* ------------------------------------------------------------------ */
+/* Scroll effects (scroll-fx.js)                                       */
+/* ------------------------------------------------------------------ */
+
+/* Light line: segments are drawn in page pixels, so they stay physical (left). */
+.hm-light { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; color: var(--hm-fg); }
+.hm-light__seg { position: absolute; left: 0; display: block; max-width: none; overflow: visible; }
+.hm-light__seg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hm-light__track { stroke: currentColor; stroke-width: 1; opacity: 0; }
+.hm-light.has-track .hm-light__track { opacity: .1; }
+.hm-light__glow { stroke-width: calc(var(--hm-light-w, 2px) * 6); opacity: .14; }
+.hm-light__line { stroke-width: var(--hm-light-w, 2px); }
+.hm-light__tail { stroke-width: calc(var(--hm-light-w, 2px) * 2); opacity: .9; }
+.hm-light__head { position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0; transition: opacity .5s var(--hm-ease); color: var(--hm-accent); will-change: transform; }
+.hm-light__head.is-on { opacity: 1; }
+.hm-light__head::before, .hm-light__head::after { content: ""; position: absolute; top: 0; left: 0; border-radius: 50%; transform: translate(-50%, -50%); }
+.hm-light__head::before { width: calc(var(--hm-light-w, 2px) * 3 + 6px); height: calc(var(--hm-light-w, 2px) * 3 + 6px); background: radial-gradient(circle, #fff 0 28%, currentColor 58%, transparent 72%); }
+.hm-light__head::after { width: 180px; height: 180px; background: radial-gradient(circle, currentColor, transparent 66%); opacity: .22; }
+@media (prefers-reduced-motion: reduce) { .hm-light__tail, .hm-light__head { display: none; } }
+
+/* Scroll colour: a fixed backdrop takes the blended colour; sections inside
+   the page read the colour that holds the middle of the screen. */
+@property --hm-tone-fg { syntax: "<color>"; inherits: true; initial-value: #0d0e12; }
+@property --hm-tone-muted { syntax: "<color>"; inherits: true; initial-value: #5c616e; }
+@property --hm-tone-surface { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --hm-tone-surface-2 { syntax: "<color>"; inherits: true; initial-value: #efefea; }
+@property --hm-tone-line { syntax: "<color>"; inherits: true; initial-value: rgba(13, 14, 18, .1); }
+@property --hm-tone-line-strong { syntax: "<color>"; inherits: true; initial-value: rgba(13, 14, 18, .18); }
+.hm-tone-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-color: var(--hm-bg); }
+html:not(.hm-toned) .hm-tone-bg { display: none; }
+html.hm-toned {
+	transition: --hm-tone-fg .5s var(--hm-ease), --hm-tone-muted .5s var(--hm-ease), --hm-tone-surface .5s var(--hm-ease),
+		--hm-tone-surface-2 .5s var(--hm-ease), --hm-tone-line .5s var(--hm-ease), --hm-tone-line-strong .5s var(--hm-ease);
+}
+.hm-toned .hm-main {
+	--hm-bg: var(--hm-tone-bg); --hm-fg: var(--hm-tone-fg); --hm-fg-muted: var(--hm-tone-muted);
+	--hm-border: var(--hm-tone-line); --hm-border-strong: var(--hm-tone-line-strong);
+	--hm-surface: var(--hm-tone-surface); --hm-surface-2: var(--hm-tone-surface-2); --hm-card-bg: var(--hm-tone-surface); --hm-input-bg: var(--hm-tone-surface);
+	color: var(--hm-fg);
+}
+.hm-toned.hm-tone-ac .hm-main { --hm-accent: var(--hm-tone-accent); --hm-accent-ink: var(--hm-tone-accent); --hm-accent-fg: var(--hm-tone-bg); --hm-accent-soft: color-mix(in srgb, var(--hm-tone-accent) 12%, transparent); }
+.hm-toned [data-hm-tone] { background-color: transparent !important; }

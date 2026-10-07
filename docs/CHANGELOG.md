@@ -28,6 +28,7 @@
 - New demo: Roshd (رشد), management consulting after the Coquice reference: soft teal and coral bento panels with large figures, a dark figures band, four steps, quotes, a monthly/quarterly pricing table and FAQ.
 - Section classes `hm-pull-up` and `hm-room-below` to lay one section over the edge of the one above.
 - Index numbers on cards and steps follow Persian digits.
+- Scroll effects on any element (Advanced → Hamista Motion): scroll zoom (zoom in, zoom out, open out to full width, close into a card, fly through), card motions for the items inside a container (rise in turn, flip up, deal out from a pile, close in, lean with the scroll), page colour that changes with each section, and a light line drawn down the margins with the scroll. The light line can also run along a whole page from Page settings. Loaded only on pages that use them.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
 - Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
 - Demo Sayal (سیال) rebuilt as a restrained motion studio: long-exposure light trails instead of 3D orbs and glass, a staggered thin title, selected work in a horizontal scroll, a services list, a zooming reel, a written brief form; no illustrated avatars.

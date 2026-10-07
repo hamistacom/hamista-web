@@ -148,6 +148,7 @@ class Elementor {
 	public static function preview_assets() {
 		wp_enqueue_style( 'hamista-widgets' );
 		wp_enqueue_script( 'hamista-motion' );
+		wp_enqueue_script( 'hamista-scroll-fx' );
 	}
 
 	/**

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T17:56:38+00:00\n"
+"POT-Creation-Date: 2026-10-07T19:06:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -2680,8 +2680,8 @@ msgid "Arrows"
 msgstr ""
 
 #: includes/elementor/class-carousel.php:140
-#: includes/elementor/class-page-settings.php:55
-#: includes/elementor/class-page-settings.php:67
+#: includes/elementor/class-page-settings.php:76
+#: includes/elementor/class-page-settings.php:88
 #: includes/elementor/widgets/class-slider.php:179
 msgid "Hidden"
 msgstr ""
@@ -2701,7 +2701,10 @@ msgid "Progress"
 msgstr ""
 
 #: includes/elementor/class-carousel.php:154
-#: includes/elementor/class-motion.php:58
+#: includes/elementor/class-motion.php:60
+#: includes/elementor/class-motion.php:197
+#: includes/elementor/class-motion.php:268
+#: includes/elementor/class-motion.php:343
 #: includes/elementor/class-widget-base.php:200
 #: includes/elementor/class-widget-base.php:502
 #: includes/elementor/class-widget-base.php:577
@@ -2777,166 +2780,357 @@ msgstr ""
 msgid "\"View all\" link"
 msgstr ""
 
-#: includes/elementor/class-motion.php:46
+#: includes/elementor/class-motion.php:48
 msgid "Hamista Motion"
 msgstr ""
 
-#: includes/elementor/class-motion.php:54
+#: includes/elementor/class-motion.php:56
 msgid "Entrance"
 msgstr ""
 
-#: includes/elementor/class-motion.php:59
+#: includes/elementor/class-motion.php:61
 #: includes/elementor/class-widget-base.php:197
 msgid "Rise"
 msgstr ""
 
-#: includes/elementor/class-motion.php:60
+#: includes/elementor/class-motion.php:62
 msgid "Drop"
 msgstr ""
 
-#: includes/elementor/class-motion.php:61
+#: includes/elementor/class-motion.php:63
 msgid "Slide from start"
 msgstr ""
 
-#: includes/elementor/class-motion.php:62
+#: includes/elementor/class-motion.php:64
 msgid "Slide from end"
 msgstr ""
 
-#: includes/elementor/class-motion.php:63
+#: includes/elementor/class-motion.php:65
 #: includes/elementor/class-widget-base.php:199
 #: includes/elementor/widgets/class-image-reveal.php:80
 msgid "Fade"
 msgstr ""
 
-#: includes/elementor/class-motion.php:64
+#: includes/elementor/class-motion.php:66
 msgid "Scale up"
 msgstr ""
 
-#: includes/elementor/class-motion.php:65
+#: includes/elementor/class-motion.php:67
 #: includes/elementor/class-widget-base.php:198
 msgid "Blur in"
 msgstr ""
 
-#: includes/elementor/class-motion.php:66
+#: includes/elementor/class-motion.php:68
 msgid "Wipe up (images)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:67
+#: includes/elementor/class-motion.php:69
 msgid "Wipe sideways (images)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:68
+#: includes/elementor/class-motion.php:70
 msgid "Words rise (headings)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:75
+#: includes/elementor/class-motion.php:77
 msgid "Delay (s)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:87
+#: includes/elementor/class-motion.php:89
 msgid "Duration (s)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:100
+#: includes/elementor/class-motion.php:102
 msgid "Scroll parallax"
 msgstr ""
 
-#: includes/elementor/class-motion.php:101
+#: includes/elementor/class-motion.php:103
 msgid "Negative values move against the scroll."
 msgstr ""
 
-#: includes/elementor/class-motion.php:117
+#: includes/elementor/class-motion.php:119
 msgid "Scroll-linked entrance"
 msgstr ""
 
-#: includes/elementor/class-motion.php:118
+#: includes/elementor/class-motion.php:120
 msgid "Animates with the scroll position instead of once."
 msgstr ""
 
-#: includes/elementor/class-motion.php:125
+#: includes/elementor/class-motion.php:127
 msgid "Start opacity"
 msgstr ""
 
-#: includes/elementor/class-motion.php:126
+#: includes/elementor/class-motion.php:128
 msgid "Start offset Y (px)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:127
+#: includes/elementor/class-motion.php:129
 msgid "Start offset X (px)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:128
+#: includes/elementor/class-motion.php:130
 msgid "Start scale"
 msgstr ""
 
-#: includes/elementor/class-motion.php:129
+#: includes/elementor/class-motion.php:131
 msgid "Start rotation (°)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:130
+#: includes/elementor/class-motion.php:132
 msgid "Start blur (px)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:150
+#: includes/elementor/class-motion.php:152
 msgid "Sticky inside parent"
 msgstr ""
 
-#: includes/elementor/class-motion.php:159
+#: includes/elementor/class-motion.php:161
 msgid "Sticky offset (px)"
 msgstr ""
 
-#: includes/elementor/class-motion.php:172
+#: includes/elementor/class-motion.php:174
 msgid "3D tilt on hover"
 msgstr ""
 
-#: includes/elementor/class-motion.php:181
+#: includes/elementor/class-motion.php:183
 msgid "Magnetic (follows the cursor)"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:41
+#: includes/elementor/class-motion.php:192
+msgid "Scroll zoom"
+msgstr ""
+
+#: includes/elementor/class-motion.php:198
+msgid "Zoom in (grows into place)"
+msgstr ""
+
+#: includes/elementor/class-motion.php:199
+msgid "Zoom out (settles from close up)"
+msgstr ""
+
+#: includes/elementor/class-motion.php:200
+msgid "Open out to full width"
+msgstr ""
+
+#: includes/elementor/class-motion.php:201
+msgid "Close into a card as it leaves"
+msgstr ""
+
+#: includes/elementor/class-motion.php:202
+msgid "Fly through as it leaves"
+msgstr ""
+
+#: includes/elementor/class-motion.php:209
+msgid "Zoom amount"
+msgstr ""
+
+#: includes/elementor/class-motion.php:228
+msgid "Corner radius of the card (px)"
+msgstr ""
+
+#: includes/elementor/class-motion.php:239
+msgid "Move the image inside the other way"
+msgstr ""
+
+#: includes/elementor/class-motion.php:262
+msgid "Card motion"
+msgstr ""
+
+#: includes/elementor/class-motion.php:263
+msgid "Moves the items inside this container, or the cards of the single widget inside it, as one group."
+msgstr ""
+
+#: includes/elementor/class-motion.php:269
+msgid "Rise one after another"
+msgstr ""
+
+#: includes/elementor/class-motion.php:270
+msgid "Flip up one after another"
+msgstr ""
+
+#: includes/elementor/class-motion.php:271
+msgid "Deal out from a pile"
+msgstr ""
+
+#: includes/elementor/class-motion.php:272
+msgid "Close in from around"
+msgstr ""
+
+#: includes/elementor/class-motion.php:273
+msgid "Lean with the scroll"
+msgstr ""
+
+#: includes/elementor/class-motion.php:281
+msgid "Page colour while in view"
+msgstr ""
+
+#: includes/elementor/class-motion.php:282
+msgid "The whole page fades to this colour as the section reaches the middle of the screen. The section's own background colour is replaced by it."
+msgstr ""
+
+#: includes/elementor/class-motion.php:287
+msgid "Unchanged"
+msgstr ""
+
+#: includes/elementor/class-motion.php:288
+msgid "Page background"
+msgstr ""
+
+#: includes/elementor/class-motion.php:289
+#: includes/elementor/widgets/class-features.php:121
+msgid "Soft neutral"
+msgstr ""
+
+#: includes/elementor/class-motion.php:290
+msgid "Accent tint"
+msgstr ""
+
+#: includes/elementor/class-motion.php:291
+#: includes/elementor/widgets/class-features.php:122
+#: includes/elementor/widgets/class-stack.php:110
+#: includes/settings/schema.php:247
+msgid "Dark"
+msgstr ""
+
+#: includes/elementor/class-motion.php:292
+msgid "Accent colour"
+msgstr ""
+
+#: includes/elementor/class-motion.php:293
+msgid "Your own colours"
+msgstr ""
+
+#: includes/elementor/class-motion.php:300
+#: includes/elementor/class-widget-base.php:533
+#: includes/elementor/widgets/class-cta.php:101
+#: includes/elementor/widgets/class-scroll-path.php:151
+msgid "Background"
+msgstr ""
+
+#: includes/elementor/class-motion.php:308
+#: includes/elementor/class-widget-base.php:350
+#: includes/elementor/widgets/class-booking-form.php:101
+#: includes/elementor/widgets/class-depth.php:76
+#: includes/elementor/widgets/class-features.php:75
+#: includes/elementor/widgets/class-hscroll.php:88
+#: includes/elementor/widgets/class-marquee.php:51
+#: includes/elementor/widgets/class-marquee.php:192
+#: includes/elementor/widgets/class-scroll-path.php:88
+#: includes/elementor/widgets/class-scroll-zoom.php:146
+#: includes/elementor/widgets/class-search-box.php:102
+#: includes/elementor/widgets/class-slider.php:86
+#: includes/elementor/widgets/class-stack.php:67
+#: includes/elementor/widgets/class-steps.php:75
+#: includes/elementor/widgets/class-text-scrub.php:45
+#: includes/elementor/widgets/class-text-scrub.php:116
+msgid "Text"
+msgstr ""
+
+#: includes/elementor/class-motion.php:316
+msgid "Accent (optional)"
+msgstr ""
+
+#: includes/elementor/class-motion.php:325
+msgid "Light line"
+msgstr ""
+
+#: includes/elementor/class-motion.php:326
+msgid "A thread of light that draws itself down the side margins as visitors scroll through the sections inside this container. For the whole page, use Page settings."
+msgstr ""
+
+#: includes/elementor/class-motion.php:344
+msgid "Weave from margin to margin"
+msgstr ""
+
+#: includes/elementor/class-motion.php:345
+msgid "Along the start margin"
+msgstr ""
+
+#: includes/elementor/class-motion.php:346
+msgid "Along the end margin"
+msgstr ""
+
+#: includes/elementor/class-motion.php:361
+msgid "First colour"
+msgstr ""
+
+#: includes/elementor/class-motion.php:369
+msgid "Second colour"
+msgstr ""
+
+#: includes/elementor/class-motion.php:370
+msgid "The line shifts from the first colour to the second down the page. Empty: the accent colours."
+msgstr ""
+
+#: includes/elementor/class-motion.php:378
+msgid "Thickness (px)"
+msgstr ""
+
+#: includes/elementor/class-motion.php:397
+msgid "Show the path ahead faintly"
+msgstr ""
+
+#: includes/elementor/class-motion.php:407
+#: includes/elementor/widgets/class-flow.php:117
+msgid "Show on phones"
+msgstr ""
+
+#: includes/elementor/class-page-settings.php:62
 msgid "Hamista layout"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:48
+#: includes/elementor/class-page-settings.php:69
 #: includes/layouts/class-layouts.php:120
 #: includes/settings/schema.php:348
 msgid "Header"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:52
-#: includes/elementor/class-page-settings.php:66
+#: includes/elementor/class-page-settings.php:73
+#: includes/elementor/class-page-settings.php:87
 #: includes/elementor/widgets/class-button.php:58
 msgid "Default"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:53
+#: includes/elementor/class-page-settings.php:74
 msgid "Transparent over content"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:54
+#: includes/elementor/class-page-settings.php:75
 msgid "Transparent, light text (dark hero)"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:62
+#: includes/elementor/class-page-settings.php:83
 #: includes/layouts/class-layouts.php:121
 #: includes/settings/schema.php:470
 msgid "Footer"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:74
+#: includes/elementor/class-page-settings.php:95
 msgid "Force colour scheme"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:78
+#: includes/elementor/class-page-settings.php:99
 msgid "Visitor choice"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:79
+#: includes/elementor/class-page-settings.php:100
 msgid "Always light"
 msgstr ""
 
-#: includes/elementor/class-page-settings.php:80
+#: includes/elementor/class-page-settings.php:101
 msgid "Always dark"
+msgstr ""
+
+#: includes/elementor/class-page-settings.php:110
+msgid "Hamista scroll effects"
+msgstr ""
+
+#: includes/elementor/class-page-settings.php:117
+msgid "Light line along the page"
+msgstr ""
+
+#: includes/elementor/class-page-settings.php:118
+msgid "A thread of light that draws itself through every section of this page as visitors scroll, with a glowing head at the reading point."
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:101
@@ -3100,24 +3294,6 @@ msgstr ""
 msgid "Space below heading"
 msgstr ""
 
-#: includes/elementor/class-widget-base.php:350
-#: includes/elementor/widgets/class-booking-form.php:101
-#: includes/elementor/widgets/class-depth.php:76
-#: includes/elementor/widgets/class-features.php:75
-#: includes/elementor/widgets/class-hscroll.php:88
-#: includes/elementor/widgets/class-marquee.php:51
-#: includes/elementor/widgets/class-marquee.php:192
-#: includes/elementor/widgets/class-scroll-path.php:88
-#: includes/elementor/widgets/class-scroll-zoom.php:146
-#: includes/elementor/widgets/class-search-box.php:102
-#: includes/elementor/widgets/class-slider.php:86
-#: includes/elementor/widgets/class-stack.php:67
-#: includes/elementor/widgets/class-steps.php:75
-#: includes/elementor/widgets/class-text-scrub.php:45
-#: includes/elementor/widgets/class-text-scrub.php:116
-msgid "Text"
-msgstr ""
-
 #: includes/elementor/class-widget-base.php:385
 #: includes/elementor/widgets/class-nav-menu.php:125
 msgid "Primary"
@@ -3208,12 +3384,6 @@ msgstr ""
 #: includes/elementor/widgets/class-lead-form.php:440
 #: includes/settings/schema.php:262
 msgid "Accent color"
-msgstr ""
-
-#: includes/elementor/class-widget-base.php:533
-#: includes/elementor/widgets/class-cta.php:101
-#: includes/elementor/widgets/class-scroll-path.php:151
-msgid "Background"
 msgstr ""
 
 #: includes/elementor/widgets/class-accordion.php:28
@@ -4005,16 +4175,6 @@ msgstr ""
 msgid "Soft second colour"
 msgstr ""
 
-#: includes/elementor/widgets/class-features.php:121
-msgid "Soft neutral"
-msgstr ""
-
-#: includes/elementor/widgets/class-features.php:122
-#: includes/elementor/widgets/class-stack.php:110
-#: includes/settings/schema.php:247
-msgid "Dark"
-msgstr ""
-
 #: includes/elementor/widgets/class-features.php:135
 msgid "Pick your path"
 msgstr ""
@@ -4140,10 +4300,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-flow.php:96
 msgid "Rotation (°)"
-msgstr ""
-
-#: includes/elementor/widgets/class-flow.php:117
-msgid "Show on phones"
 msgstr ""
 
 #: includes/elementor/widgets/class-flow.php:137
@@ -6275,31 +6431,31 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: includes/frontend/class-frontend.php:78
+#: includes/frontend/class-frontend.php:89
 msgid "Choose at least one option."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:79
+#: includes/frontend/class-frontend.php:90
 msgid "Choose an option."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:80
+#: includes/frontend/class-frontend.php:91
 msgid "This field is required."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:81
+#: includes/frontend/class-frontend.php:92
 msgid "Enter a valid mobile number, e.g. 0912 345 6789."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:82
+#: includes/frontend/class-frontend.php:93
 msgid "Enter a valid email address."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:83
+#: includes/frontend/class-frontend.php:94
 msgid "Please accept to continue."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:124
+#: includes/frontend/class-frontend.php:135
 msgid "Could not connect. Please try again."
 msgstr ""
 
