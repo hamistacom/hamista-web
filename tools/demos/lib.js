@@ -3,7 +3,7 @@
  *
  * Tokens resolved by the importer (wp/hamista-core/includes/demos/class-importer.php):
  *   img('key')              → media value          gallery(['a','b']) → gallery value
- *   '{{page:key}}' '{{post:key}}' '{{product:key}}' '{{shop}}' '{{blog}}' '{{cart}}' '{{account}}' '{{home}}'
+ *   '{{page:key}}' '{{post:key}}' '{{product:key}}' '{{project:key}}' '{{projects}}' '{{shop}}' '{{blog}}' '{{cart}}' '{{account}}' '{{home}}'
  *   '{{img:key}}' '{{imgid:key}}' '{{term:key}}' '{{termlink:key}}' '{{ids:a,b}}'
  */
 'use strict';

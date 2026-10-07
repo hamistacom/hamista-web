@@ -304,4 +304,5 @@ T = {
     "All settings were reset.": "همه~ی تنظیمات بازنشانی شد.",
     "Elementor CSS cleared. Pages rebuild their styles on the next visit.": "CSS المنتور پاک شد. استایل برگه~ها در بازدید بعدی دوباره ساخته می~شود.",
     "Font cache cleared.": "کش فونت پاک شد.",
+    "Adding portfolio projects…": "افزودن نمونه~کارها…",
 }

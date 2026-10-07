@@ -260,7 +260,7 @@ class Motion {
 			'hm_cards',
 			array(
 				'label'       => __( 'Card motion', 'hamista-core' ),
-				'description' => __( 'Moves the items inside this container, or the cards of the single widget inside it, as one group.', 'hamista-core' ),
+				'description' => __( 'Moves the cards inside this container as one group: the largest set of alike items it finds, such as a grid of features, posts or plans.', 'hamista-core' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '',
 				'separator'   => 'before',

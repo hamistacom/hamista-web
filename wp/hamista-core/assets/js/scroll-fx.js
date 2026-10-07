@@ -374,7 +374,7 @@
 			if (!tone.items.length || !tone.base) { return; }
 			var h = vh();
 			var y = win.scrollY + h * 0.5;
-			var band = h * 0.42;
+			var band = h * 0.3;
 			var acc = [0, 0, 0, 0], wsum = 0;
 			for (var k = -5; k <= 5; k++) {
 				var wgt = 6 - Math.abs(k);
@@ -476,26 +476,35 @@
 	function kids(node) {
 		return Array.prototype.filter.call(node.children, function (k) { return !/^(SCRIPT|STYLE|TEMPLATE|LINK)$/.test(k.tagName) && !k.classList.contains('hm-light'); });
 	}
-	function signature(node) { return node.tagName + '.' + (node.classList[0] || ''); }
+	function signature(node) {
+		var sig = node.tagName + '.' + (node.classList[0] || '');
+		if (node.classList.contains('e-con')) { sig += ':con'; } else if (node.hasAttribute('data-widget_type')) { sig += ':' + node.getAttribute('data-widget_type'); }
+		return sig;
+	}
 
-	/** The repeating items inside a container: its own children, or the cards inside a single widget. */
+	/**
+	 * The cards inside a container: the largest set of alike, card-sized siblings
+	 * found anywhere inside it (a grid of features, posts, plans, or the
+	 * container's own columns), the shallowest set winning a tie.
+	 */
 	function findItems(el) {
 		var host = el.querySelector(':scope > .e-con-inner') || el;
-		var direct = kids(host);
-		if (direct.length >= 2) { return direct; }
-		var queue = direct.slice();
-		var guard = 0;
-		while (queue.length && guard++ < 400) {
-			var node = queue.shift();
+		var best = [], bestDepth = 99;
+		var queue = [[host, 0]], guard = 0;
+		while (queue.length && guard++ < 800) {
+			var pair = queue.shift(), node = pair[0], depth = pair[1];
 			var ch = kids(node);
 			if (ch.length >= 2) {
-				var sig = signature(ch[0]);
-				var same = ch.filter(function (c) { return signature(c) === sig; });
-				if (same.length >= 2 && same.length >= ch.length * 0.6) { return same; }
+				var groups = {};
+				ch.forEach(function (c) { var sg = signature(c); (groups[sg] = groups[sg] || []).push(c); });
+				Object.keys(groups).forEach(function (k) {
+					var g = groups[k].filter(function (c) { return c.offsetWidth >= 100 && c.offsetHeight >= 48; });
+					if (g.length >= 2 && (g.length > best.length || (g.length === best.length && depth < bestDepth))) { best = g; bestDepth = depth; }
+				});
 			}
-			Array.prototype.push.apply(queue, ch);
+			if (depth < 7) { ch.forEach(function (c) { queue.push([c, depth + 1]); }); }
 		}
-		return [];
+		return best;
 	}
 
 	/** Reading-order column of each item (right to left in RTL), for staggering a row. */

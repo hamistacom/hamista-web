@@ -137,6 +137,11 @@ return ( static function () {
 							'desc'  => __( 'Warm white, deep teal and coral', 'hamista-core' ),
 							'image' => $img . 'kit-coral.svg',
 						),
+						'stone'      => array(
+							'label' => __( 'Stone', 'hamista-core' ),
+							'desc'  => __( 'Limestone, charcoal and bronze', 'hamista-core' ),
+							'image' => $img . 'kit-stone.svg',
+						),
 					),
 				),
 				'container_width'   => array(

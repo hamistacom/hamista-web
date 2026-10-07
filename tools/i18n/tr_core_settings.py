@@ -323,4 +323,6 @@ T = {
     "Black, ivory and brushed gold": "سیاه، عاجی و طلای مات",
     "Coral": "مرجان",
     "Warm white, deep teal and coral": "سفید گرم، سبزآبی تیره و مرجانی",
+    "Stone": "سنگ",
+    "Limestone, charcoal and bronze": "سنگ آهکی، زغالی و مفرغ",
 }

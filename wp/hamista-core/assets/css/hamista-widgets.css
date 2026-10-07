@@ -413,7 +413,7 @@
 	--hm-fg: #f1f5f9; --hm-fg-muted: rgba(226, 232, 240, .66); --hm-accent-ink: color-mix(in srgb, var(--hm-accent) 50%, #fff); --hm-border: rgba(255, 255, 255, .1);
 }
 .hm-path__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; background: var(--hm-path-bg); --p: 0; --mid: 0; }
-.hm-path__bg { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--hm-path-bg) 80%, #1c1240)); }
+.hm-path__bg { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--hm-path-bg) 80%, var(--hm-path-deep, #1c1240))); }
 .hm-path__bg::before, .hm-path__bg::after { content: ""; position: absolute; inset: 0; }
 .hm-path__bg::before { opacity: var(--mid); background: radial-gradient(55% 50% at 30% 40%, var(--hm-path-mid), transparent 70%); }
 [dir="ltr"] .hm-path__bg::before { background: radial-gradient(55% 50% at 70% 40%, var(--hm-path-mid), transparent 70%); }

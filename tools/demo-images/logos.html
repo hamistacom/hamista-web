@@ -10,6 +10,9 @@
 .word.doran { font-family: "Doran", serif; font-weight: 700; font-size: 84px; }
 @font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-300.woff2) format("woff2"); font-weight: 300; }
 .word.doran-thin { font-family: "Doran", serif; font-weight: 300; font-size: 88px; letter-spacing: .01em; }
+@font-face { font-family: "Peyda"; src: url(../../wp/hamista-core/assets/fonts/library/peyda/peyda-300.woff2) format("woff2"); font-weight: 300; }
+.word.peyda-thin { font-family: "Peyda", sans-serif; font-weight: 300; font-size: 90px; }
+.sub.thin { font: 400 14px/1 "Vazirmatn", sans-serif; letter-spacing: .62em; opacity: .5; margin-top: 12px; }
 html, body { margin: 0; background: transparent; }
 #logo { display: inline-flex; align-items: center; gap: 22px; padding: 12px 8px; font-family: "Vazirmatn", sans-serif; color: var(--ink); }
 .word { font-size: 92px; font-weight: 900; line-height: 1; letter-spacing: 0; }
@@ -35,6 +38,7 @@ const L = {
 	hekmat: () => `<svg width="82" height="82" viewBox="0 0 82 82"><g fill="none" stroke="${dark ? '#d8b46c' : '#8a6a2f'}"><path d="M41 3 52 30 79 41 52 52 41 79 30 52 3 41 30 30Z" stroke-width="3"/><path d="M14 14l27 11 27-11-11 27 11 27-27-11-27 11 11-27Z" stroke-width="2" stroke-opacity=".7"/><circle cx="41" cy="41" r="9" stroke-width="3"/></g></svg><span class="word doran">خانه‌ی حکمت</span>`,
 	parvazyar: () => `<svg width="84" height="84" viewBox="0 0 84 84"><rect width="84" height="84" rx="20" fill="${dark ? '#2459ff' : '#0a1633'}"/><path d="M18 62C30 60 50 46 64 22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 10"/><path d="m56 20 10-2-2 10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="62" r="5" fill="${dark ? '#fff' : '#2459ff'}"/></svg><span class="word">پروازیار</span>`,
 	rahnavard: () => `<svg width="84" height="84" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" fill="none" stroke="${ink}" stroke-width="4"/><path d="M8 50h68" stroke="${ink}" stroke-width="4"/><path d="M24 50a18 18 0 0 1 36 0" fill="#2bb3c4"/><path d="M18 62h48M28 72h28" stroke="${ink}" stroke-width="4" stroke-opacity=".35"/></svg><span class="word">ره‌نورد</span>`,
+	sazeh: () => `<svg width="78" height="84" viewBox="0 0 78 84"><path d="M8 80V36a31 31 0 0 1 62 0v44" fill="none" stroke="${ink}" stroke-width="3.5"/><path d="M22 80v-9h11v-9h11v-9h11v-9" fill="none" stroke="${dark ? '#c4a27a' : '#8b6b45'}" stroke-width="3.5" stroke-linejoin="miter"/><path d="M2 80h74" stroke="${ink}" stroke-width="3.5"/></svg><span><span class="word peyda-thin">سازه</span><span class="sub thin">SAZEH STUDIO</span></span>`,
 	nomad: () => `<svg width="88" height="88" viewBox="0 0 88 88"><path d="M44 2 86 44 44 86 2 44Z" fill="#b5532f"/><path d="M44 18 70 44 44 70 18 44Z" fill="${dark ? '#e3a72f' : '#2e3a5c'}"/><path d="M44 32 56 44 44 56 32 44Z" fill="${dark ? '#17130f' : '#f3ede2'}"/></svg><span class="word">کوچ</span>`,
 };
 document.getElementById('logo').innerHTML = L[id]();

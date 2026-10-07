@@ -33,6 +33,7 @@ function collectTokens(value, found) {
 			if (type === 'page') { found.page.add(key); }
 			if (type === 'post') { found.post.add(key); }
 			if (type === 'product') { found.product.add(key); }
+			if (type === 'project') { found.project.add(key); }
 			if (type === 'term' || type === 'termlink') { found.term.add(key); }
 			if (type === 'ids') { key.split(',').forEach((k) => found.product.add(k)); }
 		}
@@ -44,20 +45,22 @@ function validate(id, demo) {
 	const c = demo.content;
 	const dir = path.join(OUT, id);
 	const errors = [];
-	const found = collectTokens(c, { img: new Set(), page: new Set(), post: new Set(), product: new Set(), term: new Set() });
+	const found = collectTokens(c, { img: new Set(), page: new Set(), post: new Set(), product: new Set(), project: new Set(), term: new Set() });
 	(c.posts || []).forEach((p) => { if (p.image) { found.img.add(p.image); } });
 	(c.products || []).forEach((p) => { if (p.image) { found.img.add(p.image); } (p.gallery || []).forEach((g) => found.img.add(g)); });
+	(c.projects || []).forEach((p) => { if (p.image) { found.img.add(p.image); } });
 	const has = {
 		page: new Set((c.pages || []).map((p) => p.key)),
 		post: new Set((c.posts || []).map((p) => p.key)),
 		product: new Set((c.products || []).map((p) => p.key)),
+		project: new Set((c.projects || []).map((p) => p.key)),
 		term: new Set((c.terms || []).map((t) => t.key)),
 	};
 	for (const key of found.img) {
 		if (!c.images[key]) { errors.push('image key not declared: ' + key); continue; }
 		if (!fs.existsSync(path.join(dir, c.images[key]))) { errors.push('image file missing: ' + c.images[key]); }
 	}
-	for (const type of ['page', 'post', 'product', 'term']) {
+	for (const type of ['page', 'post', 'product', 'project', 'term']) {
 		for (const key of found[type]) { if (!has[type].has(key)) { errors.push(type + ' not found: ' + key); } }
 	}
 	const walkMenu = (items) => items.forEach((it) => {
@@ -65,7 +68,8 @@ function validate(id, demo) {
 		if (it.children) { walkMenu(it.children); }
 	});
 	(c.menus || []).forEach((m) => walkMenu(m.items));
-	(c.posts || []).concat(c.products || []).forEach((p) => (p.terms || []).forEach((t) => { if (!has.term.has(t)) { errors.push('term not found: ' + t + ' (' + p.key + ')'); } }));
+	(c.posts || []).concat(c.products || [], c.projects || []).forEach((p) => (p.terms || []).forEach((t) => { if (!has.term.has(t)) { errors.push('term not found: ' + t + ' (' + p.key + ')'); } }));
+	(c.pages || []).forEach((p) => { if (p.parent && !has.page.has(p.parent)) { errors.push('parent page not found: ' + p.parent + ' (' + p.key + ')'); } });
 	(c.templates || []).forEach((t) => { if (!has.page.has(t.page)) { errors.push('template page not found: ' + t.page); } });
 	// Unused images only cost download size: report them.
 	const unused = Object.keys(c.images).filter((k) => !found.img.has(k));
@@ -88,5 +92,5 @@ for (const id of ids) {
 	fs.writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify(demo.manifest, null, '\t') + '\n');
 	fs.writeFileSync(path.join(dir, 'content.json'), JSON.stringify(demo.content));
 	const kb = (fs.statSync(path.join(dir, 'content.json')).size / 1024).toFixed(1);
-	console.log(`${id}: ${demo.content.pages.length} pages, ${(demo.content.posts || []).length} posts, ${(demo.content.products || []).length} products, content ${kb} KB` + (unused.length ? `\n  skipped unused images: ${unused.join(', ')}` : ''));
+	console.log(`${id}: ${demo.content.pages.length} pages, ${(demo.content.posts || []).length} posts, ${(demo.content.projects || []).length} projects, ${(demo.content.products || []).length} products, content ${kb} KB` + (unused.length ? `\n  skipped unused images: ${unused.join(', ')}` : ''));
 }

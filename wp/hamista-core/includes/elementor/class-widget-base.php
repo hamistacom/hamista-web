@@ -574,11 +574,7 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	protected static function icon_options() {
-		$options = array( '' => __( 'None', 'hamista-core' ) );
-		foreach ( \Hamista\Core\Icons::choices() as $name ) {
-			$options[ $name ] = $name;
-		}
-		return $options;
+		return array( '' => __( 'None', 'hamista-core' ) ) + \Hamista\Core\Icons::labels();
 	}
 
 	/**

@@ -29,6 +29,11 @@
 - Section classes `hm-pull-up` and `hm-room-below` to lay one section over the edge of the one above.
 - Index numbers on cards and steps follow Persian digits.
 - Scroll effects on any element (Advanced → Hamista Motion): scroll zoom (zoom in, zoom out, open out to full width, close into a card, fly through), card motions for the items inside a container (rise in turn, flip up, deal out from a pile, close in, lean with the scroll), page colour that changes with each section, and a light line drawn down the margins with the scroll. The light line can also run along a whole page from Page settings. Loaded only on pages that use them.
+- New demo: Sazeh (سازه), an architecture and interior design studio built as a complete site: two home pages, studio, services with a page for each of four services, projects (eight portfolio projects with details), process, journal (six posts), careers, FAQ and contact. Light-and-shadow photography of plaster, arches and stairs; a bronze light line, sections that turn the page charcoal, and images that open out to full width as they scroll.
+- Demo import: portfolio projects with their details and categories, and child pages (a service under Services).
+- Icons have Persian names in every icon picker; new icons for house, set square, arch, stairs, window and tree.
+- Card motions pick the cards themselves (features, posts, plans) rather than a section's header and grid.
+- Pricing: the monthly/yearly switch shows only when a plan has a different second price.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
 - Horizontal scroll: overlay cards reveal their text and draw a hairline on hover; images no longer drift past their edge.
 - Demo Sayal (سیال) rebuilt as a restrained motion studio: long-exposure light trails instead of 3D orbs and glass, a staggered thin title, selected work in a horizontal scroll, a services list, a zooming reel, a written brief form; no illustrated avatars.
@@ -44,6 +49,7 @@
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.
+- New style kit: Stone. Limestone, charcoal and bronze, thin headings, square buttons and hairlines.
 - Flux kit redrawn: graphite, ivory and a single ember accent, square corners and hairlines instead of glass and glow.
 - WooCommerce shows its most visible front-end strings (add to cart, cart, checkout, notices, sorting, pagination) in Persian even before its own language pack is downloaded. Installed translations always take precedence.
 

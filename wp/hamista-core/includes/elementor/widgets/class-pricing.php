@@ -180,8 +180,9 @@ class Pricing extends Widget_Base {
 	protected function render() {
 		$s       = $this->get_settings_for_display();
 		$has_alt = false;
+		// The switch only makes sense when some plan has a different second price.
 		foreach ( $s['plans'] as $plan ) {
-			if ( '' !== $plan['price_alt'] ) {
+			if ( '' !== $plan['price_alt'] && $plan['price_alt'] !== $plan['price'] ) {
 				$has_alt = true;
 			}
 		}

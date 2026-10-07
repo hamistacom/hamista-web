@@ -6,6 +6,7 @@ cd /opt/wpdev/wordpress
 export WP_CLI_ALLOW_ROOT=1
 wp db reset --yes >/dev/null 2>&1
 wp core install --url=http://localhost:8080 --title='هامیستا' --admin_user=admin --admin_password=hamista-i18n-2026 --admin_email=admin@example.com --skip-email >/dev/null 2>&1
+wp user update 1 --display_name='تحریریه' --first_name='تحریریه' >/dev/null 2>&1 || true
 wp db query "INSERT INTO wp_options (option_name, option_value, autoload) VALUES ('WPLANG','fa_IR','yes') ON DUPLICATE KEY UPDATE option_value='fa_IR'" >/dev/null 2>&1
 wp theme activate hamista >/dev/null 2>&1
 wp plugin activate elementor >/dev/null 2>&1 || true

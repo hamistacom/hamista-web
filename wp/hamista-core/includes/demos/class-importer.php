@@ -36,6 +36,7 @@ class Importer {
 	const BATCH = array(
 		'media'    => 3,
 		'posts'    => 6,
+		'projects' => 6,
 		'products' => 4,
 		'content'  => 2,
 	);
@@ -47,7 +48,8 @@ class Importer {
 		'prepare'   => 3,
 		'media'     => 45,
 		'terms'     => 48,
-		'posts'     => 58,
+		'posts'     => 55,
+		'projects'  => 60,
 		'products'  => 68,
 		'pages'     => 71,
 		'content'   => 86,
@@ -279,6 +281,7 @@ class Importer {
 			'media'     => ! $opt['content'],
 			'terms'     => ! $opt['content'],
 			'posts'     => ! $opt['content'],
+			'projects'  => ! $opt['content'] || ! post_type_exists( 'hm_portfolio' ),
 			'products'  => ! $opt['content'] || ! class_exists( 'WooCommerce' ),
 			'pages'     => ! $opt['content'],
 			'content'   => ! $opt['content'],
@@ -353,6 +356,7 @@ class Importer {
 			'media'     => __( 'Copying images…', 'hamista-core' ),
 			'terms'     => __( 'Creating categories…', 'hamista-core' ),
 			'posts'     => __( 'Adding blog posts…', 'hamista-core' ),
+			'projects'  => __( 'Adding portfolio projects…', 'hamista-core' ),
 			'products'  => __( 'Adding products…', 'hamista-core' ),
 			'pages'     => __( 'Creating pages…', 'hamista-core' ),
 			'content'   => __( 'Building pages with Elementor…', 'hamista-core' ),
@@ -536,6 +540,59 @@ class Importer {
 	}
 
 	/**
+	 * Portfolio projects, with their details (client, year, services, link).
+	 *
+	 * @param int $batch Batch.
+	 * @return int|false
+	 */
+	private function step_projects( $batch ) {
+		$projects = (array) ( $this->content['projects'] ?? array() );
+		$size     = self::BATCH['projects'];
+		$total    = (int) ceil( count( $projects ) / $size );
+
+		foreach ( array_slice( $projects, $batch * $size, $size ) as $i => $project ) {
+			$age = (int) ( $project['days_ago'] ?? ( ( $batch * $size + $i ) * 20 + 2 ) );
+			$id  = $this->upsert(
+				'hm_portfolio',
+				$project['key'],
+				array(
+					'post_title'   => $project['title'],
+					'post_name'    => $project['slug'] ?? '',
+					'post_excerpt' => $project['excerpt'] ?? '',
+					'post_content' => $this->replace_string( $project['content'] ?? '' ),
+					'post_status'  => 'publish',
+					'post_date'    => wp_date( 'Y-m-d H:i:s', time() - $age * DAY_IN_SECONDS ),
+				)
+			);
+			if ( ! $id ) {
+				continue;
+			}
+			$this->state['map']['projects'][ $project['key'] ] = $id;
+			if ( ! empty( $project['image'] ) && $this->media_id( $project['image'] ) ) {
+				set_post_thumbnail( $id, $this->media_id( $project['image'] ) );
+			}
+			foreach ( array( 'client', 'year', 'services', 'url' ) as $field ) {
+				if ( isset( $project['meta'][ $field ] ) ) {
+					update_post_meta( $id, '_hm_' . $field, sanitize_text_field( $project['meta'][ $field ] ) );
+				}
+			}
+			if ( ! empty( $project['elementor'] ) ) {
+				$this->save_elementor( $id, $this->replace( $project['elementor'] ), $this->replace( (array) ( $project['settings'] ?? array() ) ), 'wp-post' );
+			}
+			$ids = array();
+			foreach ( (array) ( $project['terms'] ?? array() ) as $term_key ) {
+				if ( isset( $this->state['map']['terms'][ $term_key ] ) ) {
+					$ids[] = (int) $this->state['map']['terms'][ $term_key ];
+				}
+			}
+			if ( $ids ) {
+				wp_set_object_terms( $id, $ids, 'hm_portfolio_cat' );
+			}
+		}
+		return $batch + 1 < $total ? $total : false;
+	}
+
+	/**
 	 * WooCommerce products.
 	 *
 	 * @param int $batch Batch.
@@ -632,6 +689,19 @@ class Importer {
 			);
 			if ( $id ) {
 				$this->state['map']['pages'][ $page['key'] ] = $id;
+			}
+		}
+		// Child pages (a service under Services) once every page exists.
+		foreach ( (array) ( $this->content['pages'] ?? array() ) as $page ) {
+			$id     = $this->state['map']['pages'][ $page['key'] ] ?? 0;
+			$parent = $this->state['map']['pages'][ $page['parent'] ?? '' ] ?? 0;
+			if ( $id && $parent && (int) wp_get_post_parent_id( $id ) !== (int) $parent ) {
+				wp_update_post(
+					array(
+						'ID'          => $id,
+						'post_parent' => $parent,
+					)
+				);
 			}
 		}
 		return false;
@@ -1127,13 +1197,14 @@ class Importer {
 	/**
 	 * Store an Elementor layout on a page.
 	 *
-	 * @param int   $id       Page ID.
-	 * @param array $elements Elements.
-	 * @param array $settings Page settings.
+	 * @param int    $id       Page ID.
+	 * @param array  $elements Elements.
+	 * @param array  $settings Page settings.
+	 * @param string $type     Elementor document type.
 	 */
-	private function save_elementor( $id, $elements, $settings ) {
+	private function save_elementor( $id, $elements, $settings, $type = 'wp-page' ) {
 		update_post_meta( $id, '_elementor_edit_mode', 'builder' );
-		update_post_meta( $id, '_elementor_template_type', 'wp-page' );
+		update_post_meta( $id, '_elementor_template_type', $type );
 		update_post_meta( $id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.0.0' );
 		update_post_meta( $id, '_elementor_data', wp_slash( wp_json_encode( $elements ) ) );
 		if ( $settings ) {
@@ -1197,8 +1268,8 @@ class Importer {
 	 * Replace {{tokens}} in a string.
 	 *
 	 * {{home}} {{blog}} {{shop}} {{cart}} {{account}} {{page:key}} {{post:key}}
-	 * {{product:key}} {{img:key}} {{imgid:key}} {{term:key}} {{termlink:key}}
-	 * {{ids:key,key}} (product IDs, comma separated)
+	 * {{product:key}} {{project:key}} {{projects}} {{img:key}} {{imgid:key}}
+	 * {{term:key}} {{termlink:key}} {{ids:key,key}} (product IDs, comma separated)
 	 *
 	 * @param string $text Text.
 	 * @return string
@@ -1231,6 +1302,11 @@ class Importer {
 						return isset( $map['posts'][ $key ] ) ? get_permalink( $map['posts'][ $key ] ) : home_url( '/' );
 					case 'product':
 						return isset( $map['products'][ $key ] ) ? get_permalink( $map['products'][ $key ] ) : home_url( '/' );
+					case 'project':
+						return isset( $map['projects'][ $key ] ) ? get_permalink( $map['projects'][ $key ] ) : home_url( '/' );
+					case 'projects':
+						$archive = post_type_exists( 'hm_portfolio' ) ? get_post_type_archive_link( 'hm_portfolio' ) : '';
+						return $archive ? $archive : home_url( '/' );
 					case 'img':
 						return isset( $map['media'][ $key ] ) ? (string) wp_get_attachment_url( $map['media'][ $key ] ) : '';
 					case 'imgid':
