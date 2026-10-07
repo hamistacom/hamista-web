@@ -154,8 +154,8 @@ class Testimonials extends Widget_Base {
 			/* translators: %d: star rating */
 			$html .= '<span class="hm-quote__stars" role="img" aria-label="' . esc_attr( sprintf( __( '%d out of 5 stars', 'hamista-core' ), (int) $item['rating'] ) ) . '">' . str_repeat( '★', (int) $item['rating'] ) . '</span>';
 		}
-		$html .= '<blockquote class="hm-quote__text">' . esc_html( $item['quote'] ) . '</blockquote>';
-		$html .= '<figcaption class="hm-quote__who">';
+		$html  .= '<blockquote class="hm-quote__text">' . esc_html( $item['quote'] ) . '</blockquote>';
+		$html  .= '<figcaption class="hm-quote__who">';
 		$avatar = hamista_core_image(
 			$item['avatar'],
 			'thumbnail',

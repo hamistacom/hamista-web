@@ -208,7 +208,7 @@ class Admin {
 			wp_add_inline_style( 'hamista-admin', $font_css );
 		}
 
-		$data                = self::data();
+		$data               = self::data();
 		$data['codeEditor'] = $code_editor;
 
 		/**
@@ -325,7 +325,7 @@ class Admin {
 		$plugins = array();
 		foreach ( $known as $slug => $info ) {
 			list( $file, $name ) = $info;
-			$plugins[ $slug ] = array(
+			$plugins[ $slug ]    = array(
 				'installed' => isset( $installed[ $file ] ),
 				'active'    => is_plugin_active( $file ),
 				'name'      => isset( $installed[ $file ]['Name'] ) ? $installed[ $file ]['Name'] : $name,
@@ -447,12 +447,16 @@ class Admin {
 			'navSettings'      => __( 'Settings', 'hamista-core' ),
 			'search'           => __( 'Search settings', 'hamista-core' ),
 			'searchClear'      => __( 'Clear search', 'hamista-core' ),
+			/* translators: %s: the search term. */
 			'searchFor'        => __( 'Results for “%s”', 'hamista-core' ),
+			/* translators: %s: the search term. */
 			'searchNone'       => __( 'No settings match “%s”.', 'hamista-core' ),
 			'searchNoneHint'   => __( 'Try a shorter word, or browse the sections on the side.', 'hamista-core' ),
 			'resultOne'        => __( '1 setting', 'hamista-core' ),
+			/* translators: %d: number of settings. */
 			'resultMany'       => __( '%d settings', 'hamista-core' ),
 			'openSection'      => __( 'Open section', 'hamista-core' ),
+			/* translators: %s: label of the setting this one depends on. */
 			'dependsOn'        => __( 'Applies when: %s', 'hamista-core' ),
 			'docs'             => __( 'Documentation', 'hamista-core' ),
 			'viewSite'         => __( 'View site', 'hamista-core' ),
@@ -462,6 +466,7 @@ class Admin {
 
 			// Save bar.
 			'unsaved'          => __( 'Unsaved changes', 'hamista-core' ),
+			/* translators: %d: number of unsaved changes. */
 			'unsavedCount'     => __( '%d unsaved changes', 'hamista-core' ),
 			'allSaved'         => __( 'All changes saved', 'hamista-core' ),
 			'save'             => __( 'Save changes', 'hamista-core' ),
@@ -475,6 +480,7 @@ class Admin {
 
 			// Sections.
 			'resetSection'     => __( 'Reset section', 'hamista-core' ),
+			/* translators: %s: section name. */
 			'resetSectionQ'    => __( 'Reset “%s”?', 'hamista-core' ),
 			'resetSectionMsg'  => __( 'Every setting in this section goes back to its default. Other sections are not affected.', 'hamista-core' ),
 			'reset'            => __( 'Reset', 'hamista-core' ),
@@ -503,6 +509,7 @@ class Admin {
 			'rowUp'            => __( 'Move up', 'hamista-core' ),
 			'rowDown'          => __( 'Move down', 'hamista-core' ),
 			'rowRemove'        => __( 'Remove', 'hamista-core' ),
+			/* translators: %d: item number in a repeating list. */
 			'rowLabel'         => __( 'Item %d', 'hamista-core' ),
 			'codeHint'         => __( 'Syntax highlighting is off in your profile, so this is a plain text box.', 'hamista-core' ),
 
@@ -513,12 +520,15 @@ class Admin {
 			'fontFamilyExists' => __( 'A family with this name already exists.', 'hamista-core' ),
 			'fontFamilyEmpty'  => __( 'Enter a family name first.', 'hamista-core' ),
 			'fontUpload'       => __( 'Upload font files', 'hamista-core' ),
+			/* translators: %s: font family name. */
 			'fontUploadTitle'  => __( 'Font files for “%s”', 'hamista-core' ),
 			'fontUse'          => __( 'Add to family', 'hamista-core' ),
 			'fontRemoveFamily' => __( 'Remove family', 'hamista-core' ),
 			'fontRemoveFile'   => __( 'Remove file', 'hamista-core' ),
 			'fontNoFiles'      => __( 'No files yet. Upload woff2, woff, ttf or otf files.', 'hamista-core' ),
+			/* translators: %d: number of skipped files. */
 			'fontNotFont'      => __( 'Skipped %d file(s) that are not fonts.', 'hamista-core' ),
+			/* translators: %d: number of font files. */
 			'fontFiles'        => __( '%d files', 'hamista-core' ),
 			'fontFileOne'      => __( '1 file', 'hamista-core' ),
 			'fontWeight'       => __( 'Weight', 'hamista-core' ),
@@ -545,6 +555,7 @@ class Admin {
 			'actionSaveFirst'  => __( 'Save your changes in this section first.', 'hamista-core' ),
 			'actionWorking'    => __( 'Sending…', 'hamista-core' ),
 			'actionMissing'    => __( 'Enter a value first.', 'hamista-core' ),
+			/* translators: %s: the one-time code. */
 			'lastTestCode'     => __( 'Last test code: %s', 'hamista-core' ),
 
 			// Requests.
@@ -555,8 +566,10 @@ class Admin {
 			// Dashboard.
 			'welcome'          => __( 'Welcome to Hamista', 'hamista-core' ),
 			'welcomeLead'      => __( 'Style, header, login, motion and more — everything that shapes your site lives here. A few steps get you from a fresh install to a finished site.', 'hamista-core' ),
+			/* translators: %s: version number. */
 			'versionLabel'     => __( 'Version %s', 'hamista-core' ),
 			'getStarted'       => __( 'Get started', 'hamista-core' ),
+			/* translators: 1: number of finished steps, 2: total number of steps. */
 			'stepsDone'        => __( '%1$d of %2$d done', 'hamista-core' ),
 			'stepDemo'         => __( 'Import a demo', 'hamista-core' ),
 			'stepDemoDesc'     => __( 'Start from finished pages, menus and a style kit.', 'hamista-core' ),
@@ -578,6 +591,7 @@ class Admin {
 			'pluginInstall'    => __( 'Install & activate', 'hamista-core' ),
 			'pluginActivate'   => __( 'Activate', 'hamista-core' ),
 			'pluginWorking'    => __( 'Installing…', 'hamista-core' ),
+			/* translators: %s: plugin name. */
 			'pluginDone'       => __( '%s is active.', 'hamista-core' ),
 			'elementorDesc'    => __( 'Page builder for every Hamista widget and template.', 'hamista-core' ),
 			'wooDesc'          => __( 'Shop, cart, checkout and customer accounts.', 'hamista-core' ),
@@ -599,8 +613,11 @@ class Admin {
 			'demosEmptyDesc'   => __( 'Demo sites ship with Hamista Core updates. Check back after updating the plugin.', 'hamista-core' ),
 			'demoPreview'      => __( 'Preview', 'hamista-core' ),
 			'demoImport'       => __( 'Import', 'hamista-core' ),
+			/* translators: %s: demo name. */
 			'demoImportTitle'  => __( 'Import “%s”', 'hamista-core' ),
+			/* translators: %d: number of pages. */
 			'demoPages'        => __( '%d pages', 'hamista-core' ),
+			/* translators: %s: style kit name. */
 			'demoKit'          => __( 'Style kit: %s', 'hamista-core' ),
 			'demoPluginsHead'  => __( 'Plugins', 'hamista-core' ),
 			'demoPluginsNeed'  => __( 'Activate the required plugins to continue.', 'hamista-core' ),
@@ -637,6 +654,7 @@ class Admin {
 			'importTitle'      => __( 'Import settings', 'hamista-core' ),
 			'importDesc'       => __( 'Load a file exported from Hamista. Settings in the file replace the current ones.', 'hamista-core' ),
 			'importButton'     => __( 'Choose file…', 'hamista-core' ),
+			/* translators: %s: file name. */
 			'importQ'          => __( 'Import “%s”?', 'hamista-core' ),
 			'importMsg'        => __( 'Settings in this file replace your current ones. Consider exporting a backup first.', 'hamista-core' ),
 			'importGo'         => __( 'Import settings', 'hamista-core' ),
@@ -654,6 +672,7 @@ class Admin {
 			'resetAllButton'   => __( 'Reset everything', 'hamista-core' ),
 			'resetAllQ'        => __( 'Reset all Hamista settings?', 'hamista-core' ),
 			'resetAllMsg'      => __( 'This cannot be undone. Export your settings first if you might need them again.', 'hamista-core' ),
+			/* translators: %s: the word the user must type. */
 			'resetAllType'     => __( 'Type %s to confirm', 'hamista-core' ),
 			'resetAllWord'     => _x( 'reset', 'word typed to confirm resetting all settings', 'hamista-core' ),
 			'resetAllDone'     => __( 'All settings were reset.', 'hamista-core' ),

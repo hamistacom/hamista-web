@@ -20,8 +20,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Rest {
 
-	const NS     = 'hamista/v1';
-	const NONCE  = 'hamista_auth';
+	const NS       = 'hamista/v1';
+	const NONCE    = 'hamista_auth';
 	const HONEYPOT = 'website';
 
 	/**
@@ -133,7 +133,14 @@ class Rest {
 
 		// Bots that fill the honeypot get a convincing answer and nothing is sent.
 		if ( self::is_bot( $request ) ) {
-			return self::sent_response( $mobile, array( 'resend_in' => OTP::resend_delay(), 'expires_in' => OTP::expiry(), 'length' => OTP::length() ) );
+			return self::sent_response(
+				$mobile,
+				array(
+					'resend_in'  => OTP::resend_delay(),
+					'expires_in' => OTP::expiry(),
+					'length'     => OTP::length(),
+				)
+			);
 		}
 
 		$result = OTP::issue( $mobile );

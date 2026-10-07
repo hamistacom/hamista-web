@@ -115,9 +115,9 @@ class Contact_Info extends Widget_Base {
 		$this->add_control(
 			'map_image',
 			array(
-				'label'       => __( 'Map preview image', 'hamista-core' ),
-				'type'        => Controls_Manager::MEDIA,
-				'condition'   => array( 'map!' => '' ),
+				'label'     => __( 'Map preview image', 'hamista-core' ),
+				'type'      => Controls_Manager::MEDIA,
+				'condition' => array( 'map!' => '' ),
 			)
 		);
 		$this->end_controls_section();

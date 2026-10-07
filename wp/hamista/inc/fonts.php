@@ -103,8 +103,8 @@ function hamista_scan_font_dir( $dir, $url ) {
 		$variant = preg_match( '/fa[\s_-]?num|farsi[\s_-]?digits|[-_]fd[-_.]/i', $base ) ? 'fa' : 'en';
 		$key     = $weight . '|' . $style;
 
-		$candidates[ $key ][ $variant ]['weight']                   = $weight;
-		$candidates[ $key ][ $variant ]['style']                    = $style;
+		$candidates[ $key ][ $variant ]['weight']                  = $weight;
+		$candidates[ $key ][ $variant ]['style']                   = $style;
 		$candidates[ $key ][ $variant ]['src'][ $formats[ $ext ] ] = trailingslashit( $url ) . rawurlencode( $base );
 	}
 
@@ -179,7 +179,12 @@ function hamista_font_families() {
 	);
 
 	// Files dropped into the parent and child theme.
-	$roots = array_unique( array( get_template_directory() => get_template_directory_uri(), get_stylesheet_directory() => get_stylesheet_directory_uri() ) );
+	$roots = array_unique(
+		array(
+			get_template_directory()   => get_template_directory_uri(),
+			get_stylesheet_directory() => get_stylesheet_directory_uri(),
+		)
+	);
 	foreach ( array( 'yekan-bakh', 'digits' ) as $slug ) {
 		foreach ( $roots as $root_dir => $root_url ) {
 			$families[ $slug ]['faces'] = array_merge(
@@ -298,7 +303,7 @@ add_filter( 'upload_mimes', 'hamista_font_mimes' );
 function hamista_font_filetype( $data, $file, $filename ) {
 	$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
 	if ( current_user_can( 'manage_options' ) && in_array( $ext, array( 'woff2', 'woff', 'ttf' ), true ) ) {
-		$types = array(
+		$types        = array(
 			'woff2' => 'font/woff2',
 			'woff'  => 'font/woff',
 			'ttf'   => 'font/ttf',

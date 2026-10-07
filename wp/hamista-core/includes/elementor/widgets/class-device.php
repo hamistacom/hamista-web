@@ -136,7 +136,8 @@ class Device extends Widget_Base {
 	 */
 	protected function render() {
 		$s = $this->get_settings_for_display();
-		echo self::render_device( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped inside render_device().
+		echo self::render_device(
 			array(
 				'variant' => $s['variant'],
 				'image'   => $s['image'],
@@ -147,6 +148,7 @@ class Device extends Widget_Base {
 				'float'   => 'yes' === $s['float'],
 			)
 		);
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -195,7 +197,7 @@ class Device extends Widget_Base {
 				break;
 
 			case 'synth':
-				$keys = str_repeat( '<i></i>', 14 );
+				$keys  = str_repeat( '<i></i>', 14 );
 				$html .= '<div class="hm-device__body">' . $label
 					. '<div class="hm-device__top"><div class="hm-device__screen">' . $screen . '<span class="hm-device__scan"></span></div>'
 					. '<div class="hm-device__knobs"><span class="hm-knob hm-knob--blue"></span><span class="hm-knob hm-knob--green"></span><span class="hm-knob"></span><span class="hm-knob hm-knob--red"></span></div></div>'

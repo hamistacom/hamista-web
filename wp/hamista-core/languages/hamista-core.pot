@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T00:41:37+00:00\n"
+"POT-Creation-Date: 2026-10-07T01:01:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -50,8 +50,8 @@ msgstr ""
 
 #: includes/admin/class-admin.php:78
 #: includes/admin/class-admin.php:79
-#: includes/admin/class-admin.php:596
-#: includes/settings/schema.php:49
+#: includes/admin/class-admin.php:610
+#: includes/settings/schema.php:51
 msgid "Demo import"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgid "Templates"
 msgstr ""
 
 #: includes/admin/class-admin.php:91
-#: includes/admin/class-admin.php:590
+#: includes/admin/class-admin.php:604
 #: includes/forms/class-forms.php:42
 #: includes/forms/class-forms.php:44
 msgid "Form messages"
@@ -156,291 +156,301 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
-#: includes/admin/class-admin.php:450
+#. translators: %s: the search term.
+#: includes/admin/class-admin.php:451
 #, php-format
 msgid "Results for “%s”"
 msgstr ""
 
-#: includes/admin/class-admin.php:451
+#. translators: %s: the search term.
+#: includes/admin/class-admin.php:453
 #, php-format
 msgid "No settings match “%s”."
 msgstr ""
 
-#: includes/admin/class-admin.php:452
+#: includes/admin/class-admin.php:454
 msgid "Try a shorter word, or browse the sections on the side."
 msgstr ""
 
-#: includes/admin/class-admin.php:453
+#: includes/admin/class-admin.php:455
 msgid "1 setting"
 msgstr ""
 
-#: includes/admin/class-admin.php:454
+#. translators: %d: number of settings.
+#: includes/admin/class-admin.php:457
 #, php-format
 msgid "%d settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:455
+#: includes/admin/class-admin.php:458
 msgid "Open section"
 msgstr ""
 
-#: includes/admin/class-admin.php:456
+#. translators: %s: label of the setting this one depends on.
+#: includes/admin/class-admin.php:460
 #, php-format
 msgid "Applies when: %s"
 msgstr ""
 
-#: includes/admin/class-admin.php:457
+#: includes/admin/class-admin.php:461
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin/class-admin.php:458
+#: includes/admin/class-admin.php:462
 msgid "View site"
 msgstr ""
 
-#: includes/admin/class-admin.php:459
+#: includes/admin/class-admin.php:463
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: includes/admin/class-admin.php:460
+#: includes/admin/class-admin.php:464
 msgid "Has unsaved changes"
 msgstr ""
 
-#: includes/admin/class-admin.php:461
+#: includes/admin/class-admin.php:465
 #: includes/forms/class-forms.php:248
 msgctxt "list separator"
 msgid ", "
 msgstr ""
 
-#: includes/admin/class-admin.php:464
+#: includes/admin/class-admin.php:468
 msgid "Unsaved changes"
 msgstr ""
 
-#: includes/admin/class-admin.php:465
+#. translators: %d: number of unsaved changes.
+#: includes/admin/class-admin.php:470
 #, php-format
 msgid "%d unsaved changes"
 msgstr ""
 
-#: includes/admin/class-admin.php:466
+#: includes/admin/class-admin.php:471
 msgid "All changes saved"
 msgstr ""
 
-#: includes/admin/class-admin.php:467
+#: includes/admin/class-admin.php:472
 #: templates/auth/account.php:74
 msgid "Save changes"
 msgstr ""
 
-#: includes/admin/class-admin.php:468
+#: includes/admin/class-admin.php:473
 msgid "Saving…"
 msgstr ""
 
-#: includes/admin/class-admin.php:469
+#: includes/admin/class-admin.php:474
 #: includes/settings/class-settings.php:354
 msgid "Settings saved."
 msgstr ""
 
-#: includes/admin/class-admin.php:470
+#: includes/admin/class-admin.php:475
 msgid "Discard"
 msgstr ""
 
-#: includes/admin/class-admin.php:471
+#: includes/admin/class-admin.php:476
 msgid "Changes discarded."
 msgstr ""
 
-#: includes/admin/class-admin.php:472
+#: includes/admin/class-admin.php:477
 msgid "Ctrl + S"
 msgstr ""
 
-#: includes/admin/class-admin.php:473
+#: includes/admin/class-admin.php:478
 msgid "⌘ S"
 msgstr ""
 
-#: includes/admin/class-admin.php:474
+#: includes/admin/class-admin.php:479
 msgid "You have unsaved changes. Leave anyway?"
 msgstr ""
 
-#: includes/admin/class-admin.php:477
+#: includes/admin/class-admin.php:482
 msgid "Reset section"
 msgstr ""
 
-#: includes/admin/class-admin.php:478
+#. translators: %s: section name.
+#: includes/admin/class-admin.php:484
 #, php-format
 msgid "Reset “%s”?"
 msgstr ""
 
-#: includes/admin/class-admin.php:479
+#: includes/admin/class-admin.php:485
 msgid "Every setting in this section goes back to its default. Other sections are not affected."
 msgstr ""
 
-#: includes/admin/class-admin.php:480
+#: includes/admin/class-admin.php:486
 msgid "Reset"
 msgstr ""
 
-#: includes/admin/class-admin.php:481
+#: includes/admin/class-admin.php:487
 msgid "Section reset to defaults."
 msgstr ""
 
-#: includes/admin/class-admin.php:482
+#: includes/admin/class-admin.php:488
 msgid "Cancel"
 msgstr ""
 
-#: includes/admin/class-admin.php:483
+#: includes/admin/class-admin.php:489
 #: includes/auth/class-account.php:406
 msgid "Close"
 msgstr ""
 
-#: includes/admin/class-admin.php:484
+#: includes/admin/class-admin.php:490
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/class-admin.php:487
+#: includes/admin/class-admin.php:493
 msgid "Style kit default"
 msgstr ""
 
-#: includes/admin/class-admin.php:488
+#: includes/admin/class-admin.php:494
 msgid "Pick a color"
 msgstr ""
 
-#: includes/admin/class-admin.php:489
+#: includes/admin/class-admin.php:495
 msgid "Suggested colors"
 msgstr ""
 
-#: includes/admin/class-admin.php:490
+#: includes/admin/class-admin.php:496
 msgid "Use default"
 msgstr ""
 
-#: includes/admin/class-admin.php:491
+#: includes/admin/class-admin.php:497
 msgid "Use a hex color like #0052FF."
 msgstr ""
 
-#: includes/admin/class-admin.php:492
+#: includes/admin/class-admin.php:498
 #: includes/elementor/widgets/class-login.php:96
 #: includes/elementor/widgets/class-products.php:74
 msgid "Show"
 msgstr ""
 
-#: includes/admin/class-admin.php:493
+#: includes/admin/class-admin.php:499
 #: includes/elementor/widgets/class-login.php:97
 #: includes/elementor/widgets/class-testimonials.php:86
 msgid "Hide"
 msgstr ""
 
-#: includes/admin/class-admin.php:494
+#: includes/admin/class-admin.php:500
 msgid "Choose image"
 msgstr ""
 
-#: includes/admin/class-admin.php:495
+#: includes/admin/class-admin.php:501
 msgid "Replace"
 msgstr ""
 
-#: includes/admin/class-admin.php:496
-#: includes/admin/class-admin.php:505
+#: includes/admin/class-admin.php:502
+#: includes/admin/class-admin.php:511
 msgid "Remove"
 msgstr ""
 
-#: includes/admin/class-admin.php:497
+#: includes/admin/class-admin.php:503
 msgid "Select an image"
 msgstr ""
 
-#: includes/admin/class-admin.php:498
+#: includes/admin/class-admin.php:504
 msgid "Use this image"
 msgstr ""
 
-#: includes/admin/class-admin.php:499
+#: includes/admin/class-admin.php:505
 msgid "No image selected"
 msgstr ""
 
-#: includes/admin/class-admin.php:500
+#: includes/admin/class-admin.php:506
 msgid "The media library could not be loaded. Reload the page and try again."
 msgstr ""
 
-#: includes/admin/class-admin.php:501
+#: includes/admin/class-admin.php:507
 msgid "Add item"
 msgstr ""
 
-#: includes/admin/class-admin.php:502
+#: includes/admin/class-admin.php:508
 msgid "Nothing here yet."
 msgstr ""
 
-#: includes/admin/class-admin.php:503
+#: includes/admin/class-admin.php:509
 msgid "Move up"
 msgstr ""
 
-#: includes/admin/class-admin.php:504
+#: includes/admin/class-admin.php:510
 msgid "Move down"
 msgstr ""
 
-#: includes/admin/class-admin.php:506
+#. translators: %d: item number in a repeating list.
+#: includes/admin/class-admin.php:513
 #, php-format
 msgid "Item %d"
 msgstr ""
 
-#: includes/admin/class-admin.php:507
+#: includes/admin/class-admin.php:514
 msgid "Syntax highlighting is off in your profile, so this is a plain text box."
 msgstr ""
 
-#: includes/admin/class-admin.php:510
+#: includes/admin/class-admin.php:517
 msgid "Add family"
 msgstr ""
 
-#: includes/admin/class-admin.php:511
+#: includes/admin/class-admin.php:518
 msgid "Family name"
 msgstr ""
 
-#: includes/admin/class-admin.php:512
+#: includes/admin/class-admin.php:519
 msgid "e.g. Yekan Bakh"
 msgstr ""
 
-#: includes/admin/class-admin.php:513
+#: includes/admin/class-admin.php:520
 msgid "A family with this name already exists."
 msgstr ""
 
-#: includes/admin/class-admin.php:514
+#: includes/admin/class-admin.php:521
 msgid "Enter a family name first."
 msgstr ""
 
-#: includes/admin/class-admin.php:515
+#: includes/admin/class-admin.php:522
 msgid "Upload font files"
 msgstr ""
 
-#: includes/admin/class-admin.php:516
+#. translators: %s: font family name.
+#: includes/admin/class-admin.php:524
 #, php-format
 msgid "Font files for “%s”"
 msgstr ""
 
-#: includes/admin/class-admin.php:517
+#: includes/admin/class-admin.php:525
 msgid "Add to family"
 msgstr ""
 
-#: includes/admin/class-admin.php:518
+#: includes/admin/class-admin.php:526
 msgid "Remove family"
 msgstr ""
 
-#: includes/admin/class-admin.php:519
+#: includes/admin/class-admin.php:527
 msgid "Remove file"
 msgstr ""
 
-#: includes/admin/class-admin.php:520
+#: includes/admin/class-admin.php:528
 msgid "No files yet. Upload woff2, woff, ttf or otf files."
 msgstr ""
 
-#: includes/admin/class-admin.php:521
+#. translators: %d: number of skipped files.
+#: includes/admin/class-admin.php:530
 #, php-format
 msgid "Skipped %d file(s) that are not fonts."
 msgstr ""
 
-#: includes/admin/class-admin.php:522
+#. translators: %d: number of font files.
+#: includes/admin/class-admin.php:532
 #, php-format
 msgid "%d files"
 msgstr ""
 
-#: includes/admin/class-admin.php:523
+#: includes/admin/class-admin.php:533
 msgid "1 file"
 msgstr ""
 
-#: includes/admin/class-admin.php:524
+#: includes/admin/class-admin.php:534
 msgid "Weight"
 msgstr ""
 
-#: includes/admin/class-admin.php:525
+#: includes/admin/class-admin.php:535
 #: includes/elementor/class-widget-base.php:369
 #: includes/elementor/widgets/class-accordion.php:107
 #: includes/elementor/widgets/class-counters.php:115
@@ -448,44 +458,44 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: includes/admin/class-admin.php:526
+#: includes/admin/class-admin.php:536
 msgid "Normal"
 msgstr ""
 
-#: includes/admin/class-admin.php:527
+#: includes/admin/class-admin.php:537
 msgid "Italic"
 msgstr ""
 
-#: includes/admin/class-admin.php:528
+#: includes/admin/class-admin.php:538
 msgid "Variable (100–900)"
 msgstr ""
 
-#: includes/admin/class-admin.php:531
+#: includes/admin/class-admin.php:541
 msgid "No custom fonts yet. Add a family, then upload its files."
 msgstr ""
 
-#: includes/admin/class-admin.php:532
+#: includes/admin/class-admin.php:542
 msgid "New families appear in the font menus below after you save and reload."
 msgstr ""
 
-#: includes/admin/class-admin.php:533
+#: includes/admin/class-admin.php:543
 msgid "Thin"
 msgstr ""
 
-#: includes/admin/class-admin.php:534
+#: includes/admin/class-admin.php:544
 msgid "Extra light"
 msgstr ""
 
-#: includes/admin/class-admin.php:535
-#: includes/settings/schema.php:123
+#: includes/admin/class-admin.php:545
+#: includes/settings/schema.php:125
 msgid "Light"
 msgstr ""
 
-#: includes/admin/class-admin.php:536
+#: includes/admin/class-admin.php:546
 msgid "Regular"
 msgstr ""
 
-#: includes/admin/class-admin.php:537
+#: includes/admin/class-admin.php:547
 #: includes/elementor/class-widget-base.php:162
 #: includes/elementor/class-widget-base.php:503
 #: includes/elementor/widgets/class-hscroll.php:125
@@ -494,452 +504,461 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: includes/admin/class-admin.php:538
+#: includes/admin/class-admin.php:548
 msgid "Semi bold"
 msgstr ""
 
-#: includes/admin/class-admin.php:539
+#: includes/admin/class-admin.php:549
 msgid "Bold"
 msgstr ""
 
-#: includes/admin/class-admin.php:540
+#: includes/admin/class-admin.php:550
 msgid "Extra bold"
 msgstr ""
 
-#: includes/admin/class-admin.php:541
+#: includes/admin/class-admin.php:551
 msgid "Black"
 msgstr ""
 
-#: includes/admin/class-admin.php:542
+#: includes/admin/class-admin.php:552
 msgid "Extra black"
 msgstr ""
 
-#: includes/admin/class-admin.php:545
+#: includes/admin/class-admin.php:555
 msgid "Save your changes in this section first."
 msgstr ""
 
-#: includes/admin/class-admin.php:546
+#: includes/admin/class-admin.php:556
 msgid "Sending…"
 msgstr ""
 
-#: includes/admin/class-admin.php:547
+#: includes/admin/class-admin.php:557
 msgid "Enter a value first."
 msgstr ""
 
-#: includes/admin/class-admin.php:548
+#. translators: %s: the one-time code.
+#: includes/admin/class-admin.php:559
 #, php-format
 msgid "Last test code: %s"
 msgstr ""
 
-#: includes/admin/class-admin.php:551
+#: includes/admin/class-admin.php:562
 #: includes/auth/class-account.php:114
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: includes/admin/class-admin.php:552
+#: includes/admin/class-admin.php:563
 msgid "Your session has expired. Reload the page and try again."
 msgstr ""
 
-#: includes/admin/class-admin.php:553
+#: includes/admin/class-admin.php:564
 msgid "Could not reach the server. Check your connection."
 msgstr ""
 
-#: includes/admin/class-admin.php:556
+#: includes/admin/class-admin.php:567
 msgid "Welcome to Hamista"
 msgstr ""
 
-#: includes/admin/class-admin.php:557
+#: includes/admin/class-admin.php:568
 msgid "Style, header, login, motion and more — everything that shapes your site lives here. A few steps get you from a fresh install to a finished site."
 msgstr ""
 
-#: includes/admin/class-admin.php:558
+#. translators: %s: version number.
+#: includes/admin/class-admin.php:570
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: includes/admin/class-admin.php:559
+#: includes/admin/class-admin.php:571
 #: includes/elementor/widgets/class-button.php:40
 msgid "Get started"
 msgstr ""
 
-#: includes/admin/class-admin.php:560
+#. translators: 1: number of finished steps, 2: total number of steps.
+#: includes/admin/class-admin.php:573
 #, php-format
 msgid "%1$d of %2$d done"
 msgstr ""
 
-#: includes/admin/class-admin.php:561
+#: includes/admin/class-admin.php:574
 msgid "Import a demo"
 msgstr ""
 
-#: includes/admin/class-admin.php:562
+#: includes/admin/class-admin.php:575
 msgid "Start from finished pages, menus and a style kit."
 msgstr ""
 
-#: includes/admin/class-admin.php:563
+#: includes/admin/class-admin.php:576
 msgid "Upload your logo"
 msgstr ""
 
-#: includes/admin/class-admin.php:564
+#: includes/admin/class-admin.php:577
 msgid "Shown in the header, with an optional dark-mode version."
 msgstr ""
 
-#: includes/admin/class-admin.php:565
+#: includes/admin/class-admin.php:578
 msgid "Pick your colors"
 msgstr ""
 
-#: includes/admin/class-admin.php:566
+#: includes/admin/class-admin.php:579
 msgid "Set the accent used for buttons, links and highlights."
 msgstr ""
 
-#: includes/admin/class-admin.php:567
+#: includes/admin/class-admin.php:580
 msgid "Set up mobile login"
 msgstr ""
 
-#: includes/admin/class-admin.php:568
+#: includes/admin/class-admin.php:581
 msgid "Let customers sign in with a one-time SMS code."
 msgstr ""
 
-#: includes/admin/class-admin.php:569
+#: includes/admin/class-admin.php:582
 msgid "Done"
 msgstr ""
 
-#: includes/admin/class-admin.php:570
+#: includes/admin/class-admin.php:583
 msgid "Open"
 msgstr ""
 
-#: includes/admin/class-admin.php:571
-#: includes/admin/class-admin.php:605
+#: includes/admin/class-admin.php:584
+#: includes/admin/class-admin.php:622
 msgid "Plugins"
 msgstr ""
 
-#: includes/admin/class-admin.php:572
+#: includes/admin/class-admin.php:585
 msgid "Manage"
 msgstr ""
 
-#: includes/admin/class-admin.php:573
+#: includes/admin/class-admin.php:586
 msgid "Active"
 msgstr ""
 
-#: includes/admin/class-admin.php:574
+#: includes/admin/class-admin.php:587
 msgid "Installed, not active"
 msgstr ""
 
-#: includes/admin/class-admin.php:575
+#: includes/admin/class-admin.php:588
 msgid "Not installed"
 msgstr ""
 
-#: includes/admin/class-admin.php:576
+#: includes/admin/class-admin.php:589
 #: includes/elementor/widgets/class-contact-form.php:86
 #: includes/elementor/widgets/class-lead-form.php:312
 msgid "Required"
 msgstr ""
 
-#: includes/admin/class-admin.php:577
+#: includes/admin/class-admin.php:590
 msgid "Recommended"
 msgstr ""
 
-#: includes/admin/class-admin.php:578
+#: includes/admin/class-admin.php:591
 msgid "Install & activate"
 msgstr ""
 
-#: includes/admin/class-admin.php:579
+#: includes/admin/class-admin.php:592
 msgid "Activate"
 msgstr ""
 
-#: includes/admin/class-admin.php:580
+#: includes/admin/class-admin.php:593
 msgid "Installing…"
 msgstr ""
 
-#: includes/admin/class-admin.php:581
+#. translators: %s: plugin name.
+#: includes/admin/class-admin.php:595
 #, php-format
 msgid "%s is active."
 msgstr ""
 
-#: includes/admin/class-admin.php:582
+#: includes/admin/class-admin.php:596
 msgid "Page builder for every Hamista widget and template."
 msgstr ""
 
-#: includes/admin/class-admin.php:583
+#: includes/admin/class-admin.php:597
 msgid "Shop, cart, checkout and customer accounts."
 msgstr ""
 
-#: includes/admin/class-admin.php:584
+#: includes/admin/class-admin.php:598
 msgid "System status"
 msgstr ""
 
-#: includes/admin/class-admin.php:585
+#: includes/admin/class-admin.php:599
 msgid "OK"
 msgstr ""
 
-#: includes/admin/class-admin.php:586
+#: includes/admin/class-admin.php:600
 msgid "Needs attention"
 msgstr ""
 
-#: includes/admin/class-admin.php:587
+#: includes/admin/class-admin.php:601
 msgid "Info"
 msgstr ""
 
-#: includes/admin/class-admin.php:588
+#: includes/admin/class-admin.php:602
 msgid "Quick links"
 msgstr ""
 
-#: includes/admin/class-admin.php:589
+#: includes/admin/class-admin.php:603
 msgid "Header & footer templates"
 msgstr ""
 
-#: includes/admin/class-admin.php:591
-#: includes/admin/class-admin.php:610
+#: includes/admin/class-admin.php:605
+#: includes/admin/class-admin.php:627
 msgid "Menus"
 msgstr ""
 
-#: includes/admin/class-admin.php:592
+#: includes/admin/class-admin.php:606
 msgid "Widgets"
 msgstr ""
 
-#: includes/admin/class-admin.php:593
+#: includes/admin/class-admin.php:607
 msgid "Customizer"
 msgstr ""
 
-#: includes/admin/class-admin.php:597
+#: includes/admin/class-admin.php:611
 msgid "Start from a finished site. Pages, menus and the style kit are imported in one go; your existing content is kept."
 msgstr ""
 
-#: includes/admin/class-admin.php:598
+#: includes/admin/class-admin.php:612
 msgid "No demos available yet"
 msgstr ""
 
-#: includes/admin/class-admin.php:599
+#: includes/admin/class-admin.php:613
 msgid "Demo sites ship with Hamista Core updates. Check back after updating the plugin."
 msgstr ""
 
-#: includes/admin/class-admin.php:600
+#: includes/admin/class-admin.php:614
 msgid "Preview"
 msgstr ""
 
-#: includes/admin/class-admin.php:601
+#: includes/admin/class-admin.php:615
 msgid "Import"
 msgstr ""
 
-#: includes/admin/class-admin.php:602
+#. translators: %s: demo name.
+#: includes/admin/class-admin.php:617
 #, php-format
 msgid "Import “%s”"
 msgstr ""
 
-#: includes/admin/class-admin.php:603
+#. translators: %d: number of pages.
+#: includes/admin/class-admin.php:619
 #, php-format
 msgid "%d pages"
 msgstr ""
 
-#: includes/admin/class-admin.php:604
+#. translators: %s: style kit name.
+#: includes/admin/class-admin.php:621
 #, php-format
 msgid "Style kit: %s"
 msgstr ""
 
-#: includes/admin/class-admin.php:606
+#: includes/admin/class-admin.php:623
 msgid "Activate the required plugins to continue."
 msgstr ""
 
-#: includes/admin/class-admin.php:607
+#: includes/admin/class-admin.php:624
 msgid "What to import"
 msgstr ""
 
-#: includes/admin/class-admin.php:608
+#: includes/admin/class-admin.php:625
 #: includes/elementor/widgets/class-cta.php:44
 #: includes/elementor/widgets/class-hero.php:46
 msgid "Content"
 msgstr ""
 
-#: includes/admin/class-admin.php:609
+#: includes/admin/class-admin.php:626
 msgid "Pages, posts and products with their images."
 msgstr ""
 
-#: includes/admin/class-admin.php:611
+#: includes/admin/class-admin.php:628
 msgid "Header and footer navigation."
 msgstr ""
 
-#: includes/admin/class-admin.php:612
+#: includes/admin/class-admin.php:629
 msgid "Settings & style kit"
 msgstr ""
 
-#: includes/admin/class-admin.php:613
+#: includes/admin/class-admin.php:630
 msgid "Hamista settings, colors and Elementor kit."
 msgstr ""
 
-#: includes/admin/class-admin.php:614
+#: includes/admin/class-admin.php:631
 msgid "Set as front page"
 msgstr ""
 
-#: includes/admin/class-admin.php:615
+#: includes/admin/class-admin.php:632
 msgid "Use the demo home page as your site's front page."
 msgstr ""
 
-#: includes/admin/class-admin.php:616
+#: includes/admin/class-admin.php:633
 msgid "Your existing pages, posts and products are kept. Imported items are tagged, so you can remove them later with “Uninstall demo content”."
 msgstr ""
 
-#: includes/admin/class-admin.php:617
+#: includes/admin/class-admin.php:634
 msgid "Start import"
 msgstr ""
 
-#: includes/admin/class-admin.php:618
+#: includes/admin/class-admin.php:635
 msgid "Preparing…"
 msgstr ""
 
-#: includes/admin/class-admin.php:619
+#: includes/admin/class-admin.php:636
 msgid "Importing — keep this window open."
 msgstr ""
 
-#: includes/admin/class-admin.php:620
+#: includes/admin/class-admin.php:637
 msgid "Your demo is ready"
 msgstr ""
 
-#: includes/admin/class-admin.php:621
+#: includes/admin/class-admin.php:638
 msgid "Everything was imported. Take a look, then make it yours."
 msgstr ""
 
-#: includes/admin/class-admin.php:622
+#: includes/admin/class-admin.php:639
 msgid "Edit home page with Elementor"
 msgstr ""
 
-#: includes/admin/class-admin.php:623
+#: includes/admin/class-admin.php:640
 msgid "The import stopped"
 msgstr ""
 
-#: includes/admin/class-admin.php:624
+#: includes/admin/class-admin.php:641
 msgid "Retry"
 msgstr ""
 
-#: includes/admin/class-admin.php:625
+#: includes/admin/class-admin.php:642
 msgid "Uninstall demo content"
 msgstr ""
 
-#: includes/admin/class-admin.php:626
+#: includes/admin/class-admin.php:643
 msgid "Remove imported demo content?"
 msgstr ""
 
-#: includes/admin/class-admin.php:627
+#: includes/admin/class-admin.php:644
 msgid "Pages, posts, products, menus and images that came from a demo are deleted. Content you created yourself is not touched."
 msgstr ""
 
-#: includes/admin/class-admin.php:628
+#: includes/admin/class-admin.php:645
 msgid "Remove demo content"
 msgstr ""
 
-#: includes/admin/class-admin.php:631
-#: includes/settings/schema.php:761
+#: includes/admin/class-admin.php:648
+#: includes/settings/schema.php:824
 msgid "Tools"
 msgstr ""
 
-#: includes/admin/class-admin.php:632
+#: includes/admin/class-admin.php:649
 msgid "Back up, move and reset your settings, and clear generated files."
 msgstr ""
 
-#: includes/admin/class-admin.php:633
+#: includes/admin/class-admin.php:650
 msgid "Export settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:634
+#: includes/admin/class-admin.php:651
 msgid "Download every Hamista setting as a JSON file — for backups or to copy them to another site."
 msgstr ""
 
-#: includes/admin/class-admin.php:635
+#: includes/admin/class-admin.php:652
 msgid "Download .json"
 msgstr ""
 
-#: includes/admin/class-admin.php:636
+#: includes/admin/class-admin.php:653
 msgid "Settings file downloaded."
 msgstr ""
 
-#: includes/admin/class-admin.php:637
-#: includes/admin/class-admin.php:642
+#: includes/admin/class-admin.php:654
+#: includes/admin/class-admin.php:660
 msgid "Import settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:638
+#: includes/admin/class-admin.php:655
 msgid "Load a file exported from Hamista. Settings in the file replace the current ones."
 msgstr ""
 
-#: includes/admin/class-admin.php:639
+#: includes/admin/class-admin.php:656
 msgid "Choose file…"
 msgstr ""
 
-#: includes/admin/class-admin.php:640
+#. translators: %s: file name.
+#: includes/admin/class-admin.php:658
 #, php-format
 msgid "Import “%s”?"
 msgstr ""
 
-#: includes/admin/class-admin.php:641
+#: includes/admin/class-admin.php:659
 msgid "Settings in this file replace your current ones. Consider exporting a backup first."
 msgstr ""
 
-#: includes/admin/class-admin.php:643
+#: includes/admin/class-admin.php:661
 msgid "This file could not be read as JSON."
 msgstr ""
 
-#: includes/admin/class-admin.php:644
+#: includes/admin/class-admin.php:662
 msgid "Regenerate Elementor CSS"
 msgstr ""
 
-#: includes/admin/class-admin.php:645
+#: includes/admin/class-admin.php:663
 msgid "Clears Elementor's generated CSS files. Use it after changing colors, fonts or the content width if a page still looks old."
 msgstr ""
 
-#: includes/admin/class-admin.php:646
+#: includes/admin/class-admin.php:664
 msgid "Regenerate"
 msgstr ""
 
-#: includes/admin/class-admin.php:647
+#: includes/admin/class-admin.php:665
 #: includes/admin/class-tools.php:67
 msgid "Elementor is not active."
 msgstr ""
 
-#: includes/admin/class-admin.php:648
+#: includes/admin/class-admin.php:666
 msgid "Clear font cache"
 msgstr ""
 
-#: includes/admin/class-admin.php:649
+#: includes/admin/class-admin.php:667
 msgid "Re-scans the font folders. Use it after adding or replacing font files in the theme."
 msgstr ""
 
-#: includes/admin/class-admin.php:650
+#: includes/admin/class-admin.php:668
 msgid "Clear cache"
 msgstr ""
 
-#: includes/admin/class-admin.php:651
+#: includes/admin/class-admin.php:669
 msgid "Danger zone"
 msgstr ""
 
-#: includes/admin/class-admin.php:652
+#: includes/admin/class-admin.php:670
 msgid "Reset all settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:653
+#: includes/admin/class-admin.php:671
 msgid "Every Hamista setting goes back to its default. Your content, menus and templates are not touched."
 msgstr ""
 
-#: includes/admin/class-admin.php:654
+#: includes/admin/class-admin.php:672
 msgid "Reset everything"
 msgstr ""
 
-#: includes/admin/class-admin.php:655
+#: includes/admin/class-admin.php:673
 msgid "Reset all Hamista settings?"
 msgstr ""
 
-#: includes/admin/class-admin.php:656
+#: includes/admin/class-admin.php:674
 msgid "This cannot be undone. Export your settings first if you might need them again."
 msgstr ""
 
-#: includes/admin/class-admin.php:657
+#. translators: %s: the word the user must type.
+#: includes/admin/class-admin.php:676
 #, php-format
 msgid "Type %s to confirm"
 msgstr ""
 
-#: includes/admin/class-admin.php:658
+#: includes/admin/class-admin.php:677
 msgctxt "word typed to confirm resetting all settings"
 msgid "reset"
 msgstr ""
 
-#: includes/admin/class-admin.php:659
+#: includes/admin/class-admin.php:678
 msgid "All settings were reset."
 msgstr ""
 
@@ -981,7 +1000,7 @@ msgid "Please enter your name."
 msgstr ""
 
 #: includes/auth/class-account.php:116
-#: includes/auth/class-rest.php:258
+#: includes/auth/class-rest.php:265
 msgid "Please enter your login and password."
 msgstr ""
 
@@ -1002,7 +1021,7 @@ msgid "Digit %1$s of %2$s"
 msgstr ""
 
 #: includes/auth/class-account.php:121
-#: includes/auth/class-rest.php:333
+#: includes/auth/class-rest.php:340
 msgid "Your details were saved."
 msgstr ""
 
@@ -1077,84 +1096,84 @@ msgstr[1] ""
 msgid "We couldn’t send the code right now. Please try again in a few minutes."
 msgstr ""
 
-#: includes/auth/class-rest.php:163
+#: includes/auth/class-rest.php:170
 msgid "That code isn’t right."
 msgstr ""
 
-#: includes/auth/class-rest.php:183
+#: includes/auth/class-rest.php:190
 msgid "No account is linked to this number. Please sign in another way or contact us."
 msgstr ""
 
-#: includes/auth/class-rest.php:193
+#: includes/auth/class-rest.php:200
 msgid "One last step: what should we call you?"
 msgstr ""
 
-#: includes/auth/class-rest.php:218
+#: includes/auth/class-rest.php:225
 msgid "Welcome! Your account is ready."
 msgstr ""
 
-#: includes/auth/class-rest.php:218
-#: includes/auth/class-rest.php:286
+#: includes/auth/class-rest.php:225
+#: includes/auth/class-rest.php:293
 msgid "You’re signed in."
 msgstr ""
 
-#: includes/auth/class-rest.php:237
+#: includes/auth/class-rest.php:244
 msgid "The login details you entered are incorrect."
 msgstr ""
 
 #. translators: %s: minutes
-#: includes/auth/class-rest.php:249
+#: includes/auth/class-rest.php:256
 #, php-format
 msgid "Too many attempts. Please try again in %s minute."
 msgid_plural "Too many attempts. Please try again in %s minutes."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/auth/class-rest.php:312
+#: includes/auth/class-rest.php:319
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: includes/auth/class-rest.php:316
+#: includes/auth/class-rest.php:323
 msgid "This email address is already used by another account."
 msgstr ""
 
-#: includes/auth/class-rest.php:327
+#: includes/auth/class-rest.php:334
 msgid "Your details could not be saved. Please try again."
 msgstr ""
 
 #. translators: 1: code, 2: masked mobile
-#: includes/auth/class-rest.php:365
+#: includes/auth/class-rest.php:372
 #, php-format
 msgid "Test mode: no SMS was sent. Code %1$s was generated for %2$s."
 msgstr ""
 
 #. translators: 1: provider, 2: mobile
-#: includes/auth/class-rest.php:373
+#: includes/auth/class-rest.php:380
 #, php-format
 msgid "%1$s accepted the message. A test code is on its way to %2$s."
 msgstr ""
 
-#: includes/auth/class-rest.php:394
+#: includes/auth/class-rest.php:401
 msgid "Your session expired. Please try again."
 msgstr ""
 
-#: includes/auth/class-rest.php:421
+#: includes/auth/class-rest.php:428
 msgid "Test mode: the code was not sent by SMS."
 msgstr ""
 
 #. translators: %s: mobile number
-#: includes/auth/class-rest.php:423
+#: includes/auth/class-rest.php:430
 #, php-format
 msgid "We sent a code to %s."
 msgstr ""
 
-#: includes/auth/class-rest.php:440
+#: includes/auth/class-rest.php:447
 msgid "We couldn’t sign you in with this number. Please contact us."
 msgstr ""
 
 #: includes/auth/class-woocommerce.php:91
 #: includes/elementor/widgets/class-lead-form.php:58
-#: includes/settings/schema.php:631
+#: includes/settings/schema.php:691
 #: templates/auth/account.php:66
 #: templates/auth/form.php:60
 msgid "Mobile number"
@@ -1263,7 +1282,7 @@ msgid "The provider had an internal error. Try again shortly."
 msgstr ""
 
 #: includes/auth/gateways/class-ghasedak.php:27
-#: includes/settings/schema.php:515
+#: includes/settings/schema.php:520
 msgid "Ghasedak"
 msgstr ""
 
@@ -1285,7 +1304,7 @@ msgid "IPPanel"
 msgstr ""
 
 #: includes/auth/gateways/class-kavenegar.php:26
-#: includes/settings/schema.php:511
+#: includes/settings/schema.php:516
 msgid "Kavenegar"
 msgstr ""
 
@@ -1322,7 +1341,7 @@ msgid "The template tag name is invalid."
 msgstr ""
 
 #: includes/auth/gateways/class-melipayamak.php:27
-#: includes/settings/schema.php:512
+#: includes/settings/schema.php:517
 msgid "Melipayamak"
 msgstr ""
 
@@ -1372,7 +1391,7 @@ msgid "The number is on the telecom blacklist."
 msgstr ""
 
 #: includes/auth/gateways/class-smsir.php:27
-#: includes/settings/schema.php:513
+#: includes/settings/schema.php:518
 msgid "SMS.ir"
 msgstr ""
 
@@ -1523,7 +1542,7 @@ msgstr ""
 
 #: includes/elementor/class-page-settings.php:48
 #: includes/layouts/class-layouts.php:120
-#: includes/settings/schema.php:205
+#: includes/settings/schema.php:207
 msgid "Header"
 msgstr ""
 
@@ -1548,7 +1567,7 @@ msgstr ""
 
 #: includes/elementor/class-page-settings.php:62
 #: includes/layouts/class-layouts.php:121
-#: includes/settings/schema.php:327
+#: includes/settings/schema.php:329
 msgid "Footer"
 msgstr ""
 
@@ -1779,7 +1798,7 @@ msgid "Vertical spacing"
 msgstr ""
 
 #: includes/elementor/class-widget-base.php:511
-#: includes/settings/schema.php:96
+#: includes/settings/schema.php:98
 msgid "Content width"
 msgstr ""
 
@@ -1798,7 +1817,7 @@ msgstr ""
 #: includes/elementor/class-widget-base.php:524
 #: includes/elementor/widgets/class-hero.php:263
 #: includes/elementor/widgets/class-lead-form.php:440
-#: includes/settings/schema.php:142
+#: includes/settings/schema.php:144
 msgid "Accent color"
 msgstr ""
 
@@ -1909,7 +1928,7 @@ msgstr ""
 
 #: includes/elementor/widgets/class-contact-form.php:51
 #: includes/forms/class-forms.php:307
-#: includes/settings/schema.php:294
+#: includes/settings/schema.php:296
 msgid "Mobile"
 msgstr ""
 
@@ -1954,7 +1973,7 @@ msgstr ""
 #: includes/elementor/widgets/class-pricing.php:106
 #: includes/elementor/widgets/class-stack.php:91
 #: includes/elementor/widgets/class-tabs.php:105
-#: includes/settings/schema.php:279
+#: includes/settings/schema.php:281
 msgid "Button text"
 msgstr ""
 
@@ -2262,7 +2281,7 @@ msgstr ""
 #: includes/elementor/widgets/class-posts.php:116
 #: includes/elementor/widgets/class-steps.php:96
 #: includes/elementor/widgets/class-testimonials.php:109
-#: includes/settings/schema.php:234
+#: includes/settings/schema.php:236
 msgid "Layout"
 msgstr ""
 
@@ -2403,7 +2422,7 @@ msgstr ""
 #: includes/elementor/widgets/class-features.php:143
 #: includes/elementor/widgets/class-posts.php:120
 #: includes/elementor/widgets/class-testimonials.php:113
-#: includes/settings/schema.php:405
+#: includes/settings/schema.php:410
 msgid "Grid"
 msgstr ""
 
@@ -2513,7 +2532,7 @@ msgstr ""
 
 #: includes/elementor/widgets/class-flow.php:146
 #: includes/elementor/widgets/class-flow.php:150
-#: includes/settings/schema.php:465
+#: includes/settings/schema.php:470
 msgid "Motion"
 msgstr ""
 
@@ -3086,7 +3105,7 @@ msgstr ""
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: includes/elementor/widgets/class-lead-form.php:585
+#: includes/elementor/widgets/class-lead-form.php:587
 msgid "(optional)"
 msgstr ""
 
@@ -3262,7 +3281,7 @@ msgid "Featured first + grid"
 msgstr ""
 
 #: includes/elementor/widgets/class-posts.php:122
-#: includes/settings/schema.php:409
+#: includes/settings/schema.php:414
 msgid "List"
 msgstr ""
 
@@ -3345,7 +3364,7 @@ msgstr ""
 #: includes/elementor/widgets/class-pricing.php:114
 #: includes/elementor/widgets/class-stack.php:98
 #: includes/elementor/widgets/class-tabs.php:112
-#: includes/settings/schema.php:286
+#: includes/settings/schema.php:288
 msgid "Button link"
 msgstr ""
 
@@ -3600,7 +3619,7 @@ msgid "Surface"
 msgstr ""
 
 #: includes/elementor/widgets/class-stack.php:110
-#: includes/settings/schema.php:127
+#: includes/settings/schema.php:129
 msgid "Dark"
 msgstr ""
 
@@ -4019,705 +4038,705 @@ msgstr ""
 msgid "Settings imported."
 msgstr ""
 
-#: includes/settings/schema.php:17
+#: includes/settings/schema.php:19
 msgid "— Automatic —"
 msgstr ""
 
-#: includes/settings/schema.php:23
+#: includes/settings/schema.php:25
 msgid "Built-in (configured below)"
 msgstr ""
 
-#: includes/settings/schema.php:44
+#: includes/settings/schema.php:46
 msgid "Dashboard"
 msgstr ""
 
-#: includes/settings/schema.php:54
+#: includes/settings/schema.php:56
 msgid "Style & layout"
 msgstr ""
 
-#: includes/settings/schema.php:56
+#: includes/settings/schema.php:58
 msgid "The overall look of the site. Style kits change typography, surfaces and details at once."
 msgstr ""
 
-#: includes/settings/schema.php:60
+#: includes/settings/schema.php:62
 msgid "Style kit"
 msgstr ""
 
-#: includes/settings/schema.php:63
+#: includes/settings/schema.php:65
 msgid "Spark"
 msgstr ""
 
-#: includes/settings/schema.php:64
+#: includes/settings/schema.php:66
 msgid "Editorial, typographic, electric accent"
 msgstr ""
 
-#: includes/settings/schema.php:68
+#: includes/settings/schema.php:70
 msgid "Industrial"
 msgstr ""
 
-#: includes/settings/schema.php:69
+#: includes/settings/schema.php:71
 msgid "Tactile, skeuomorphic, safety red"
 msgstr ""
 
-#: includes/settings/schema.php:73
+#: includes/settings/schema.php:75
 msgid "Pulse"
 msgstr ""
 
-#: includes/settings/schema.php:74
+#: includes/settings/schema.php:76
 msgid "Bold and kinetic, violet with acid lime"
 msgstr ""
 
-#: includes/settings/schema.php:78
+#: includes/settings/schema.php:80
 msgid "Flux"
 msgstr ""
 
-#: includes/settings/schema.php:79
+#: includes/settings/schema.php:81
 msgid "Cinematic dark, frosted glass and amber glow"
 msgstr ""
 
-#: includes/settings/schema.php:83
+#: includes/settings/schema.php:85
 msgid "Honey"
 msgstr ""
 
-#: includes/settings/schema.php:84
+#: includes/settings/schema.php:86
 msgid "Warm cream, amber and soft hexagons"
 msgstr ""
 
-#: includes/settings/schema.php:88
+#: includes/settings/schema.php:90
 msgid "Nomad"
 msgstr ""
 
-#: includes/settings/schema.php:89
+#: includes/settings/schema.php:91
 msgid "Wool, terracotta and kilim patterns"
 msgstr ""
 
-#: includes/settings/schema.php:97
+#: includes/settings/schema.php:99
 msgid "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync."
 msgstr ""
 
-#: includes/settings/schema.php:104
+#: includes/settings/schema.php:106
 msgid "Smooth page transitions"
 msgstr ""
 
-#: includes/settings/schema.php:105
+#: includes/settings/schema.php:107
 msgid "Cross-fades between pages in supporting browsers. No JavaScript, no delay."
 msgstr ""
 
-#: includes/settings/schema.php:107
+#: includes/settings/schema.php:109
 msgid "Back-to-top button"
 msgstr ""
 
-#: includes/settings/schema.php:109
+#: includes/settings/schema.php:111
 msgid "Breadcrumbs"
 msgstr ""
 
-#: includes/settings/schema.php:110
+#: includes/settings/schema.php:112
 msgid "Uses Yoast SEO or Rank Math breadcrumbs when they are enabled."
 msgstr ""
 
-#: includes/settings/schema.php:115
+#: includes/settings/schema.php:117
 msgid "Colors & dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:120
+#: includes/settings/schema.php:122
 msgid "Default color scheme"
 msgstr ""
 
-#: includes/settings/schema.php:131
+#: includes/settings/schema.php:133
 msgid "Follow device"
 msgstr ""
 
-#: includes/settings/schema.php:137
+#: includes/settings/schema.php:139
 msgid "Let visitors switch light/dark"
 msgstr ""
 
-#: includes/settings/schema.php:138
+#: includes/settings/schema.php:140
 msgid "Shows the toggle in the header and remembers each visitor's choice."
 msgstr ""
 
-#: includes/settings/schema.php:143
+#: includes/settings/schema.php:145
 msgid "Buttons, links and highlights. Leave empty to use the style kit's color."
 msgstr ""
 
-#: includes/settings/schema.php:149
+#: includes/settings/schema.php:151
 msgid "Accent in dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:150
+#: includes/settings/schema.php:152
 msgid "Optional. A slightly brighter tone usually reads better on dark."
 msgstr ""
 
-#: includes/settings/schema.php:157
+#: includes/settings/schema.php:159
 msgid "Typography"
 msgstr ""
 
-#: includes/settings/schema.php:159
+#: includes/settings/schema.php:161
 msgid "All fonts are served from your own site — nothing loads from Google."
 msgstr ""
 
-#: includes/settings/schema.php:163
+#: includes/settings/schema.php:165
 msgid "Font files"
 msgstr ""
 
-#: includes/settings/schema.php:164
+#: includes/settings/schema.php:166
 msgid "Upload your licensed font files (woff2 recommended). The weight is detected from each file name, e.g. YekanBakhFaNum-Bold.woff2 → 700. Use the family names \"Yekan Bakh\" and \"Digits\" to replace the theme defaults."
 msgstr ""
 
-#: includes/settings/schema.php:168
+#: includes/settings/schema.php:170
 msgid "Body font"
 msgstr ""
 
-#: includes/settings/schema.php:174
+#: includes/settings/schema.php:176
 msgid "Heading font"
 msgstr ""
 
-#: includes/settings/schema.php:180
+#: includes/settings/schema.php:182
 msgid "Numbers font"
 msgstr ""
 
-#: includes/settings/schema.php:181
+#: includes/settings/schema.php:183
 msgid "Used for counters, prices, dates and codes."
 msgstr ""
 
-#: includes/settings/schema.php:187
+#: includes/settings/schema.php:189
 msgid "Base font size"
 msgstr ""
 
-#: includes/settings/schema.php:195
+#: includes/settings/schema.php:197
 msgid "Persian digits"
 msgstr ""
 
-#: includes/settings/schema.php:196
+#: includes/settings/schema.php:198
 msgid "Prefer FaNum font files and show numbers as ۱۲۳ in theme output."
 msgstr ""
 
-#: includes/settings/schema.php:199
+#: includes/settings/schema.php:201
 msgid "Solar Hijri (Jalali) dates"
 msgstr ""
 
-#: includes/settings/schema.php:200
+#: includes/settings/schema.php:202
 msgid "Shows post and comment dates in the Persian calendar on Persian sites. Skipped automatically if WP-Parsidate is active."
 msgstr ""
 
-#: includes/settings/schema.php:210
+#: includes/settings/schema.php:212
 msgid "Header source"
 msgstr ""
 
-#: includes/settings/schema.php:211
+#: includes/settings/schema.php:213
 msgid "Design your own header with Elementor in Hamista → Templates, then pick it here."
 msgstr ""
 
-#: includes/settings/schema.php:216
-#: includes/settings/schema.php:217
+#: includes/settings/schema.php:218
+#: includes/settings/schema.php:219
 msgid "Logo"
 msgstr ""
 
-#: includes/settings/schema.php:222
+#: includes/settings/schema.php:224
 msgid "Logo for dark mode"
 msgstr ""
 
-#: includes/settings/schema.php:227
+#: includes/settings/schema.php:229
 msgid "Logo height"
 msgstr ""
 
-#: includes/settings/schema.php:235
+#: includes/settings/schema.php:237
 msgid "Built-in header"
 msgstr ""
 
-#: includes/settings/schema.php:238
+#: includes/settings/schema.php:240
 msgid "Menu in the middle"
 msgstr ""
 
-#: includes/settings/schema.php:242
+#: includes/settings/schema.php:244
 msgid "Menu beside the logo"
 msgstr ""
 
-#: includes/settings/schema.php:246
+#: includes/settings/schema.php:248
 msgid "Centered logo"
 msgstr ""
 
-#: includes/settings/schema.php:253
+#: includes/settings/schema.php:255
 msgid "Sticky header"
 msgstr ""
 
-#: includes/settings/schema.php:257
+#: includes/settings/schema.php:259
 msgid "Hide while scrolling down"
 msgstr ""
 
-#: includes/settings/schema.php:258
+#: includes/settings/schema.php:260
 msgid "Gives content more room; reappears as soon as visitors scroll up."
 msgstr ""
 
-#: includes/settings/schema.php:265
+#: includes/settings/schema.php:267
 msgid "Search button"
 msgstr ""
 
-#: includes/settings/schema.php:269
+#: includes/settings/schema.php:271
 msgid "Account button"
 msgstr ""
 
-#: includes/settings/schema.php:273
+#: includes/settings/schema.php:275
 msgid "Cart button"
 msgstr ""
 
-#: includes/settings/schema.php:280
+#: includes/settings/schema.php:282
 msgid "e.g. Get started"
 msgstr ""
 
-#: includes/settings/schema.php:292
+#: includes/settings/schema.php:294
 msgid "Mobile action bar"
 msgstr ""
 
-#: includes/settings/schema.php:293
+#: includes/settings/schema.php:295
 msgid "A bar fixed to the bottom of phone screens, within thumb reach: one main button plus call and WhatsApp shortcuts."
 msgstr ""
 
-#: includes/settings/schema.php:298
+#: includes/settings/schema.php:300
 msgid "Main button text"
 msgstr ""
 
-#: includes/settings/schema.php:299
+#: includes/settings/schema.php:301
 msgid "e.g. Free consultation"
 msgstr ""
 
-#: includes/settings/schema.php:305
+#: includes/settings/schema.php:307
 msgid "Main button link"
 msgstr ""
 
-#: includes/settings/schema.php:312
+#: includes/settings/schema.php:314
 msgid "Phone number"
 msgstr ""
 
-#: includes/settings/schema.php:319
+#: includes/settings/schema.php:321
 msgid "WhatsApp number"
 msgstr ""
 
-#: includes/settings/schema.php:332
+#: includes/settings/schema.php:334
 msgid "Footer source"
 msgstr ""
 
-#: includes/settings/schema.php:333
+#: includes/settings/schema.php:335
 msgid "Design your own footer with Elementor in Hamista → Templates, then pick it here."
 msgstr ""
 
-#: includes/settings/schema.php:338
+#: includes/settings/schema.php:340
 msgid "About text"
 msgstr ""
 
-#: includes/settings/schema.php:343
+#: includes/settings/schema.php:345
 msgid "Widget columns"
 msgstr ""
 
-#: includes/settings/schema.php:344
+#: includes/settings/schema.php:346
 msgid "Fill them in Appearance → Widgets (Footer column 1–4)."
 msgstr ""
 
-#: includes/settings/schema.php:356
+#: includes/settings/schema.php:358
 msgid "Social links"
 msgstr ""
 
-#: includes/settings/schema.php:357
+#: includes/settings/schema.php:359
 msgid "Add link"
 msgstr ""
 
-#: includes/settings/schema.php:361
+#: includes/settings/schema.php:363
 msgid "Network"
 msgstr ""
 
-#: includes/settings/schema.php:377
+#: includes/settings/schema.php:382
 msgid "Profile URL"
 msgstr ""
 
-#: includes/settings/schema.php:385
+#: includes/settings/schema.php:390
 msgid "Copyright line"
 msgstr ""
 
-#: includes/settings/schema.php:386
+#: includes/settings/schema.php:391
 msgid "Use {year} for the current year."
 msgstr ""
 
-#: includes/settings/schema.php:387
+#: includes/settings/schema.php:392
 msgid "© {year} Your brand. All rights reserved."
 msgstr ""
 
-#: includes/settings/schema.php:391
+#: includes/settings/schema.php:396
 msgid "Large wordmark at the bottom"
 msgstr ""
 
-#: includes/settings/schema.php:397
+#: includes/settings/schema.php:402
 msgid "Blog"
 msgstr ""
 
-#: includes/settings/schema.php:402
+#: includes/settings/schema.php:407
 msgid "Archive layout"
 msgstr ""
 
-#: includes/settings/schema.php:416
+#: includes/settings/schema.php:421
 msgid "Grid columns"
 msgstr ""
 
-#: includes/settings/schema.php:425
+#: includes/settings/schema.php:430
 msgid "Feature the newest post"
 msgstr ""
 
-#: includes/settings/schema.php:428
+#: includes/settings/schema.php:433
 msgid "Sidebar on archives"
 msgstr ""
 
-#: includes/settings/schema.php:430
+#: includes/settings/schema.php:435
 msgid "Reading time"
 msgstr ""
 
-#: includes/settings/schema.php:431
+#: includes/settings/schema.php:436
 msgid "Single post"
 msgstr ""
 
-#: includes/settings/schema.php:433
+#: includes/settings/schema.php:438
 msgid "Reading progress bar"
 msgstr ""
 
-#: includes/settings/schema.php:434
+#: includes/settings/schema.php:439
 msgid "Share buttons"
 msgstr ""
 
-#: includes/settings/schema.php:435
+#: includes/settings/schema.php:440
 msgid "Author box"
 msgstr ""
 
-#: includes/settings/schema.php:436
+#: includes/settings/schema.php:441
 msgid "Previous / next post"
 msgstr ""
 
-#: includes/settings/schema.php:437
+#: includes/settings/schema.php:442
 msgid "Related posts"
 msgstr ""
 
-#: includes/settings/schema.php:441
+#: includes/settings/schema.php:446
 msgid "Shop"
 msgstr ""
 
-#: includes/settings/schema.php:447
+#: includes/settings/schema.php:452
 msgid "Products per row"
 msgstr ""
 
-#: includes/settings/schema.php:456
+#: includes/settings/schema.php:461
 msgid "Shop sidebar"
 msgstr ""
 
-#: includes/settings/schema.php:457
+#: includes/settings/schema.php:462
 msgid "Add filters in Appearance → Widgets → Shop sidebar."
 msgstr ""
 
-#: includes/settings/schema.php:460
+#: includes/settings/schema.php:465
 msgid "Show second image on hover"
 msgstr ""
 
-#: includes/settings/schema.php:467
+#: includes/settings/schema.php:472
 msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
 msgstr ""
 
-#: includes/settings/schema.php:470
+#: includes/settings/schema.php:475
 msgid "Smooth scrolling"
 msgstr ""
 
-#: includes/settings/schema.php:471
+#: includes/settings/schema.php:476
 msgid "Inertia scrolling for mouse wheels. Touch devices keep native scrolling."
 msgstr ""
 
-#: includes/settings/schema.php:475
+#: includes/settings/schema.php:480
 msgid "Scroll smoothness"
 msgstr ""
 
-#: includes/settings/schema.php:476
+#: includes/settings/schema.php:481
 msgid "Lower is silkier, higher is snappier."
 msgstr ""
 
-#: includes/settings/schema.php:483
+#: includes/settings/schema.php:488
 msgid "Entrance animations"
 msgstr ""
 
-#: includes/settings/schema.php:484
+#: includes/settings/schema.php:489
 msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
 msgstr ""
 
-#: includes/settings/schema.php:487
+#: includes/settings/schema.php:492
 msgid "Animations on phones"
 msgstr ""
 
-#: includes/settings/schema.php:490
+#: includes/settings/schema.php:495
 msgid "Magnetic buttons"
 msgstr ""
 
-#: includes/settings/schema.php:491
+#: includes/settings/schema.php:496
 msgid "Buttons lean slightly toward the cursor."
 msgstr ""
 
-#: includes/settings/schema.php:494
+#: includes/settings/schema.php:499
 msgid "Custom cursor"
 msgstr ""
 
-#: includes/settings/schema.php:495
+#: includes/settings/schema.php:500
 msgid "A soft follower dot that grows over links. Desktop only."
 msgstr ""
 
-#: includes/settings/schema.php:500
+#: includes/settings/schema.php:505
 msgid "Login & SMS"
 msgstr ""
 
-#: includes/settings/schema.php:502
+#: includes/settings/schema.php:507
 msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
 msgstr ""
 
-#: includes/settings/schema.php:504
+#: includes/settings/schema.php:509
 msgid "Enable mobile login (OTP)"
 msgstr ""
 
-#: includes/settings/schema.php:507
-#: includes/settings/schema.php:508
+#: includes/settings/schema.php:512
+#: includes/settings/schema.php:513
 msgid "SMS provider"
 msgstr ""
 
-#: includes/settings/schema.php:510
+#: includes/settings/schema.php:515
 msgid "Test mode (no SMS, code shown to admins)"
 msgstr ""
 
-#: includes/settings/schema.php:514
+#: includes/settings/schema.php:519
 msgid "IPPanel / Farazsms"
 msgstr ""
 
-#: includes/settings/schema.php:516
+#: includes/settings/schema.php:521
 msgid "Custom HTTP API"
 msgstr ""
 
-#: includes/settings/schema.php:522
-#: includes/settings/schema.php:551
-#: includes/settings/schema.php:568
-#: includes/settings/schema.php:591
+#: includes/settings/schema.php:527
+#: includes/settings/schema.php:571
+#: includes/settings/schema.php:597
+#: includes/settings/schema.php:632
 msgid "API key"
 msgstr ""
 
-#: includes/settings/schema.php:527
+#: includes/settings/schema.php:535
 msgid "Verify template name"
 msgstr ""
 
-#: includes/settings/schema.php:528
+#: includes/settings/schema.php:536
 msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
 msgstr ""
 
-#: includes/settings/schema.php:533
+#: includes/settings/schema.php:544
 msgid "Username"
 msgstr ""
 
-#: includes/settings/schema.php:539
+#: includes/settings/schema.php:553
 msgid "Password / API key"
 msgstr ""
 
-#: includes/settings/schema.php:545
+#: includes/settings/schema.php:562
 msgid "Pattern (bodyId)"
 msgstr ""
 
-#: includes/settings/schema.php:546
+#: includes/settings/schema.php:563
 msgid "Shared-line pattern ID with one variable for the code."
 msgstr ""
 
-#: includes/settings/schema.php:556
+#: includes/settings/schema.php:579
 msgid "Template ID"
 msgstr ""
 
-#: includes/settings/schema.php:562
+#: includes/settings/schema.php:588
 msgid "Parameter name"
 msgstr ""
 
-#: includes/settings/schema.php:573
+#: includes/settings/schema.php:605
 msgid "Pattern code"
 msgstr ""
 
-#: includes/settings/schema.php:579
+#: includes/settings/schema.php:614
 msgid "Sender number"
 msgstr ""
 
-#: includes/settings/schema.php:586
+#: includes/settings/schema.php:624
 msgid "Variable name"
 msgstr ""
 
-#: includes/settings/schema.php:596
+#: includes/settings/schema.php:640
 msgid "Template name"
 msgstr ""
 
-#: includes/settings/schema.php:601
+#: includes/settings/schema.php:648
 msgid "Endpoint URL"
 msgstr ""
 
-#: includes/settings/schema.php:602
+#: includes/settings/schema.php:649
 msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
 msgstr ""
 
-#: includes/settings/schema.php:607
+#: includes/settings/schema.php:657
 msgid "Method"
 msgstr ""
 
-#: includes/settings/schema.php:616
+#: includes/settings/schema.php:669
 msgid "Headers (one per line)"
 msgstr ""
 
-#: includes/settings/schema.php:622
+#: includes/settings/schema.php:678
 msgid "Request body"
 msgstr ""
 
-#: includes/settings/schema.php:627
+#: includes/settings/schema.php:687
 msgid "Send a test code"
 msgstr ""
 
-#: includes/settings/schema.php:628
+#: includes/settings/schema.php:688
 msgid "Save first, then send a code to your own number to check the provider settings."
 msgstr ""
 
-#: includes/settings/schema.php:630
+#: includes/settings/schema.php:690
 msgid "Send test SMS"
 msgstr ""
 
-#: includes/settings/schema.php:636
+#: includes/settings/schema.php:696
 msgid "Code length"
 msgstr ""
 
-#: includes/settings/schema.php:637
+#: includes/settings/schema.php:697
 msgid "Behaviour"
 msgstr ""
 
-#: includes/settings/schema.php:648
+#: includes/settings/schema.php:708
 msgid "Code lifetime"
 msgstr ""
 
-#: includes/settings/schema.php:652
-#: includes/settings/schema.php:662
+#: includes/settings/schema.php:712
+#: includes/settings/schema.php:722
 msgid "sec"
 msgstr ""
 
-#: includes/settings/schema.php:658
+#: includes/settings/schema.php:718
 msgid "Wait before resending"
 msgstr ""
 
-#: includes/settings/schema.php:666
+#: includes/settings/schema.php:726
 msgid "Create accounts for new numbers"
 msgstr ""
 
-#: includes/settings/schema.php:670
+#: includes/settings/schema.php:730
 msgid "Ask new users for their name"
 msgstr ""
 
-#: includes/settings/schema.php:674
+#: includes/settings/schema.php:737
 msgid "Also allow password login"
 msgstr ""
 
-#: includes/settings/schema.php:679
+#: includes/settings/schema.php:742
 msgid "Login page"
 msgstr ""
 
-#: includes/settings/schema.php:680
+#: includes/settings/schema.php:743
 msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
 msgstr ""
 
-#: includes/settings/schema.php:682
+#: includes/settings/schema.php:745
 msgid "Pages & redirects"
 msgstr ""
 
-#: includes/settings/schema.php:687
+#: includes/settings/schema.php:750
 msgid "After login, go to"
 msgstr ""
 
-#: includes/settings/schema.php:688
+#: includes/settings/schema.php:751
 msgid "Leave empty to return to the previous page"
 msgstr ""
 
-#: includes/settings/schema.php:692
+#: includes/settings/schema.php:755
 msgid "Use mobile login on WooCommerce account & checkout"
 msgstr ""
 
-#: includes/settings/schema.php:697
+#: includes/settings/schema.php:760
 msgid "Add mobile login to wp-login.php"
 msgstr ""
 
-#: includes/settings/schema.php:703
+#: includes/settings/schema.php:766
 msgid "Performance"
 msgstr ""
 
-#: includes/settings/schema.php:705
+#: includes/settings/schema.php:768
 msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
 msgstr ""
 
-#: includes/settings/schema.php:708
+#: includes/settings/schema.php:771
 msgid "Block Google Fonts"
 msgstr ""
 
-#: includes/settings/schema.php:709
+#: includes/settings/schema.php:772
 msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
 msgstr ""
 
-#: includes/settings/schema.php:711
+#: includes/settings/schema.php:774
 msgid "Remove emoji script"
 msgstr ""
 
-#: includes/settings/schema.php:712
+#: includes/settings/schema.php:775
 msgid "Remove oEmbed discovery script"
 msgstr ""
 
-#: includes/settings/schema.php:713
+#: includes/settings/schema.php:776
 msgid "Skip Dashicons for visitors"
 msgstr ""
 
-#: includes/settings/schema.php:715
+#: includes/settings/schema.php:778
 msgid "Skip block-editor CSS on Elementor pages"
 msgstr ""
 
-#: includes/settings/schema.php:718
+#: includes/settings/schema.php:781
 msgid "Load WooCommerce cart scripts only where needed"
 msgstr ""
 
-#: includes/settings/schema.php:722
+#: includes/settings/schema.php:785
 msgid "Prioritise the hero image"
 msgstr ""
 
-#: includes/settings/schema.php:723
+#: includes/settings/schema.php:786
 msgid "Loads the first large image of each page eagerly with high priority."
 msgstr ""
 
-#: includes/settings/schema.php:726
+#: includes/settings/schema.php:789
 msgid "Remove jQuery Migrate"
 msgstr ""
 
-#: includes/settings/schema.php:727
+#: includes/settings/schema.php:790
 msgid "Only if your plugins are up to date."
 msgstr ""
 
-#: includes/settings/schema.php:730
+#: includes/settings/schema.php:793
 msgid "Slow down the Heartbeat API"
 msgstr ""
 
-#: includes/settings/schema.php:733
+#: includes/settings/schema.php:796
 msgid "Disable XML-RPC"
 msgstr ""
 
-#: includes/settings/schema.php:734
+#: includes/settings/schema.php:797
 msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
 msgstr ""
 
-#: includes/settings/schema.php:739
+#: includes/settings/schema.php:802
 msgid "Custom code"
 msgstr ""
 
-#: includes/settings/schema.php:745
+#: includes/settings/schema.php:808
 msgid "Custom CSS"
 msgstr ""
 
-#: includes/settings/schema.php:750
+#: includes/settings/schema.php:813
 msgid "Code in <head>"
 msgstr ""
 
-#: includes/settings/schema.php:751
+#: includes/settings/schema.php:814
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr ""
 
-#: includes/settings/schema.php:756
+#: includes/settings/schema.php:819
 msgid "Code before </body>"
 msgstr ""
 
@@ -4833,10 +4852,10 @@ msgstr ""
 msgid "Log in with your mobile number"
 msgstr ""
 
-#: templates/auth/woocommerce-checkout-login.php:32
+#: templates/auth/woocommerce-checkout-login.php:33
 msgid "Welcome back"
 msgstr ""
 
-#: templates/auth/woocommerce-checkout-login.php:33
+#: templates/auth/woocommerce-checkout-login.php:34
 msgid "Log in to use your saved details. New here? Just continue to billing below."
 msgstr ""

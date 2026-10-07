@@ -515,6 +515,7 @@ class Lead_Form extends Widget_Base {
 			if ( '' === $label ) {
 				continue;
 			}
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Icon markup comes from the internal icon map.
 			printf(
 				'<label class="hm-choice"><input type="%1$s" name="need[]" value="%2$s"><span class="hm-choice__box">%3$s<span class="hm-choice__text"><b>%4$s</b>%5$s</span><span class="hm-choice__mark" aria-hidden="true">%6$s</span></span></label>',
 				esc_attr( $type ),
@@ -524,6 +525,7 @@ class Lead_Form extends Widget_Base {
 				! empty( $choice['note'] ) ? '<small>' . esc_html( $choice['note'] ) . '</small>' : '',
 				hamista_core_icon( 'check', array( 'size' => 16 ) )
 			);
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		echo '</div>';
 	}

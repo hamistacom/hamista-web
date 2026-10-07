@@ -183,7 +183,11 @@ function hamista_head_early() {
 	$scheme = hamista_option( 'color_scheme', 'light' );
 	$toggle = (bool) hamista_option( 'dark_toggle', true );
 	?>
-	<script>(function(d){var r=d.documentElement,t=null,def=<?php echo wp_json_encode( $scheme ); ?>;<?php if ( $toggle ) : ?>try{t=localStorage.getItem('hm-theme')}catch(e){}<?php endif; ?>if(t!=='light'&&t!=='dark'){t=def==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):def}r.setAttribute('data-hm-theme',t);r.classList.add('hm-js')})(document);</script>
+	<script>(function(d){var r=d.documentElement,t=null,def=<?php echo wp_json_encode( $scheme ); ?>;
+	<?php
+	if ( $toggle ) :
+		?>
+		try{t=localStorage.getItem('hm-theme')}catch(e){}<?php endif; ?>if(t!=='light'&&t!=='dark'){t=def==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):def}r.setAttribute('data-hm-theme',t);r.classList.add('hm-js')})(document);</script>
 	<?php
 	$fonts = hamista_font_face_css();
 	foreach ( $fonts['preload'] as $font_url ) {

@@ -56,7 +56,7 @@ class Products extends Widget_Base {
 	 */
 	protected function register_controls() {
 		$this->start_controls_section( 'section_query', array( 'label' => __( 'Products', 'hamista-core' ) ) );
-		$cats = array();
+		$cats  = array();
 		$terms = get_terms(
 			array(
 				'taxonomy'   => 'product_cat',

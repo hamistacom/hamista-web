@@ -47,9 +47,9 @@ class Demos {
 				if ( ! is_array( $manifest ) || empty( $manifest['id'] ) ) {
 					continue;
 				}
-				$folder               = basename( dirname( $file ) );
-				$manifest['path']     = trailingslashit( dirname( $file ) );
-				$manifest['url']      = trailingslashit( $url ) . $folder . '/';
+				$folder                                   = basename( dirname( $file ) );
+				$manifest['path']                         = trailingslashit( dirname( $file ) );
+				$manifest['url']                          = trailingslashit( $url ) . $folder . '/';
 				$demos[ sanitize_key( $manifest['id'] ) ] = $manifest;
 			}
 		}

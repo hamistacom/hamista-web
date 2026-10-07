@@ -180,10 +180,9 @@ add_filter( 'excerpt_more', 'hamista_excerpt_more' );
  *
  * @param string $title  Title.
  * @param string $orig   Original title.
- * @param string $prefix Prefix.
  * @return string
  */
-function hamista_archive_title( $title, $orig, $prefix ) {
+function hamista_archive_title( $title, $orig ) {
 	return $orig ? $orig : $title;
 }
-add_filter( 'get_the_archive_title', 'hamista_archive_title', 10, 3 );
+add_filter( 'get_the_archive_title', 'hamista_archive_title', 10, 2 );

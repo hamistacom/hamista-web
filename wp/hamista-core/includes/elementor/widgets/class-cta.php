@@ -147,8 +147,8 @@ class Cta extends Widget_Base {
 	 * Render.
 	 */
 	protected function render() {
-		$s       = $this->get_settings_for_display();
-		$classes = 'hm-cta hm-cta--' . sanitize_html_class( $s['look'] ) . ( 'image' === $s['look'] ? '' : ' hm-scheme-' . sanitize_html_class( $s['look'] ) );
+		$s        = $this->get_settings_for_display();
+		$classes  = 'hm-cta hm-cta--' . sanitize_html_class( $s['look'] ) . ( 'image' === $s['look'] ? '' : ' hm-scheme-' . sanitize_html_class( $s['look'] ) );
 		$classes .= $s['decor'] ? ' hm-cta--' . sanitize_html_class( $s['decor'] ) : '';
 		$classes .= 'yes' === $s['rounded'] ? ' hm-cta--inset' : '';
 

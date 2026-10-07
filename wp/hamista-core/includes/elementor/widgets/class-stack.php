@@ -72,9 +72,9 @@ class Stack extends Widget_Base {
 		$items->add_control(
 			'points',
 			array(
-				'label'       => __( 'Bullet points (one per line)', 'hamista-core' ),
-				'type'        => Controls_Manager::TEXTAREA,
-				'rows'        => 4,
+				'label' => __( 'Bullet points (one per line)', 'hamista-core' ),
+				'type'  => Controls_Manager::TEXTAREA,
+				'rows'  => 4,
 			)
 		);
 		$items->add_control(

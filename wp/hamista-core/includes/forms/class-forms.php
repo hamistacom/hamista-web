@@ -189,8 +189,8 @@ class Forms {
 		}
 
 		if ( 'newsletter' !== $form ) {
-			$to   = ! empty( $settings['to'] ) && is_email( $settings['to'] ) ? $settings['to'] : get_option( 'admin_email' );
-			$body = '';
+			$to     = ! empty( $settings['to'] ) && is_email( $settings['to'] ) ? $settings['to'] : get_option( 'admin_email' );
+			$body   = '';
 			$labels = self::labels();
 			foreach ( $values as $key => $value ) {
 				$body .= ( $labels[ $key ] ?? ucfirst( $key ) ) . ': ' . $value . "\n";

@@ -86,7 +86,7 @@ abstract class Gateway {
 	 * @return array|\WP_Error { status: int, body: string, json: mixed }
 	 */
 	protected function request( $url, array $args = array() ) {
-		$args = wp_parse_args(
+		$args            = wp_parse_args(
 			$args,
 			array(
 				'method'      => 'GET',

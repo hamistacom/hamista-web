@@ -26,7 +26,8 @@ $hamista_target = wp_unique_id( 'hm-checkout-login-' );
 </div>
 <div class="hm-auth-collapse" id="<?php echo esc_attr( $hamista_target ); ?>" hidden>
 	<?php
-	echo \Hamista\Core\Auth\Account::render_form( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the form template.
+	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped inside the form template.
+	echo \Hamista\Core\Auth\Account::render_form(
 		array(
 			'context'  => 'woocommerce',
 			'title'    => __( 'Welcome back', 'hamista-core' ),
@@ -34,5 +35,6 @@ $hamista_target = wp_unique_id( 'hm-checkout-login-' );
 			'redirect' => wc_get_checkout_url(),
 		)
 	);
+	// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </div>

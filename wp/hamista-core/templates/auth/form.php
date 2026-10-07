@@ -22,11 +22,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$hamista_id     = $args['id'];
-$hamista_length = (int) $args['length'];
-$hamista_tabs   = ! empty( $args['show_password'] );
-$hamista_hp     = \Hamista\Core\Auth\Rest::HONEYPOT;
-$hamista_icon   = static function ( $name ) {
+$hamista_id       = $args['id'];
+$hamista_length   = (int) $args['length'];
+$hamista_tabs     = ! empty( $args['show_password'] );
+$hamista_hp       = \Hamista\Core\Auth\Rest::HONEYPOT;
+$hamista_icon     = static function ( $name ) {
 	echo hamista_core_icon( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG.
 };
 $hamista_honeypot = static function () use ( $hamista_hp ) {

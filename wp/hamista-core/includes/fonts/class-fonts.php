@@ -52,8 +52,8 @@ class Fonts {
 			$slug  = self::slug( $font['family'] );
 			$faces = array();
 			foreach ( $font['files'] as $file ) {
-				$ext    = strtolower( pathinfo( wp_parse_url( $file['url'], PHP_URL_PATH ), PATHINFO_EXTENSION ) );
-				$format = array(
+				$ext     = strtolower( pathinfo( wp_parse_url( $file['url'], PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+				$format  = array(
 					'woff2' => 'woff2',
 					'woff'  => 'woff',
 					'ttf'   => 'truetype',

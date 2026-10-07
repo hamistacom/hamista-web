@@ -109,7 +109,8 @@ class Login extends Widget_Base {
 		if ( ! hamista_core_option( 'otp_enabled' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			echo '<div class="hm-empty">' . esc_html__( 'Mobile login is off. Turn it on in Hamista → Login & SMS.', 'hamista-core' ) . '</div>';
 		}
-		echo \Hamista\Core\Auth\Account::render_form( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by the template.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped inside the form template.
+		echo \Hamista\Core\Auth\Account::render_form(
 			array(
 				'title'         => $s['title'],
 				'subtitle'      => $s['subtitle'],
@@ -118,5 +119,6 @@ class Login extends Widget_Base {
 				'context'       => 'page',
 			)
 		);
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

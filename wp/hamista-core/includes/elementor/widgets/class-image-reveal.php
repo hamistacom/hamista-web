@@ -159,7 +159,7 @@ class Image_Reveal extends Widget_Base {
 		if ( ! $img ) {
 			return;
 		}
-		$classes = 'hm-imgr hm-imgr--' . sanitize_html_class( $s['ratio'] );
+		$classes  = 'hm-imgr hm-imgr--' . sanitize_html_class( $s['ratio'] );
 		$classes .= 'yes' === $s['mono'] ? ' hm-imgr--mono' : '';
 		$classes .= $s['frame'] ? ' hm-imgr--' . sanitize_html_class( $s['frame'] ) : '';
 		$reveal   = 'none' !== $s['reveal'] ? ' data-hm-reveal="' . esc_attr( $s['reveal'] ) . '"' : '';

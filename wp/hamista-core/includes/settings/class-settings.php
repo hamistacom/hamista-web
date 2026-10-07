@@ -18,8 +18,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Settings {
 
-	const OPTION    = 'hamista_options';
-	const REST_NS   = 'hamista/v1';
+	const OPTION     = 'hamista_options';
+	const REST_NS    = 'hamista/v1';
 	const CAPABILITY = 'manage_options';
 
 	/**
@@ -273,7 +273,7 @@ class Settings {
 				if ( ! $url || ! preg_match( '/\.(woff2?|ttf|otf)(\?.*)?$/i', $url ) ) {
 					continue;
 				}
-				$weight = isset( $file['weight'] ) ? preg_replace( '/[^0-9 ]/', '', (string) $file['weight'] ) : '400';
+				$weight  = isset( $file['weight'] ) ? preg_replace( '/[^0-9 ]/', '', (string) $file['weight'] ) : '400';
 				$files[] = array(
 					'id'     => isset( $file['id'] ) ? absint( $file['id'] ) : 0,
 					'url'    => $url,

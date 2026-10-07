@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T00:41:38+00:00\n"
-"PO-Revision-Date: 2026-10-07 00:42+0000\n"
+"POT-Creation-Date: 2026-10-07T01:01:40+00:00\n"
+"PO-Revision-Date: 2026-10-07 01:01+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -210,25 +210,25 @@ msgid "Footer column %d"
 msgstr "ستون پابرگ %d"
 
 #. translators: %s: number of minutes
-#: inc/template-tags.php:100
+#: inc/template-tags.php:118
 #, php-format
 msgid "%s min read"
 msgid_plural "%s min read"
 msgstr[0] "%s دقیقه مطالعه"
 msgstr[1] "%s دقیقه مطالعه"
 
-#: inc/template-tags.php:124
-#: inc/template-tags.php:159
+#: inc/template-tags.php:142
+#: inc/template-tags.php:177
 #: inc/woocommerce.php:98
 msgid "Breadcrumb"
 msgstr "مسیر راهنما"
 
-#: inc/template-tags.php:132
+#: inc/template-tags.php:150
 msgid "Home"
 msgstr "خانه"
 
 #. translators: %s: search query
-#: inc/template-tags.php:150
+#: inc/template-tags.php:168
 #: index.php:15
 #: searchform.php:15
 #: template-parts/header/site-header.php:55
@@ -236,41 +236,41 @@ msgstr "خانه"
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: inc/template-tags.php:152
+#: inc/template-tags.php:170
 msgid "Not found"
 msgstr "پیدا نشد"
 
-#: inc/template-tags.php:178
+#: inc/template-tags.php:196
 msgid "Previous page"
 msgstr "برگه‌ی قبل"
 
-#: inc/template-tags.php:179
+#: inc/template-tags.php:197
 msgid "Next page"
 msgstr "برگه‌ی بعد"
 
-#: inc/template-tags.php:183
+#: inc/template-tags.php:201
 msgid "Posts pagination"
 msgstr "صفحه‌بندی نوشته‌ها"
 
 #. translators: %s: network name
-#: inc/template-tags.php:250
+#: inc/template-tags.php:271
 #, php-format
 msgid "Share on %s"
 msgstr "اشتراک‌گذاری در %s"
 
-#: inc/template-tags.php:257
+#: inc/template-tags.php:278
 msgid "Copy link"
 msgstr "کپی لینک"
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:279
 msgid "Link copied"
 msgstr "لینک کپی شد"
 
-#: inc/template-tags.php:307
+#: inc/template-tags.php:328
 msgid "All"
 msgstr "همه"
 
-#: inc/template-tags.php:333
+#: inc/template-tags.php:354
 msgid "Your comment is awaiting moderation."
 msgstr "دیدگاه شما پس از بررسی منتشر می‌شود."
 

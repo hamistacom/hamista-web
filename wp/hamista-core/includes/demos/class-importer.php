@@ -899,7 +899,10 @@ class Importer {
 	 * they are untouched, so a fresh site shows the demo and nothing else.
 	 */
 	private function trash_starter_content() {
-		foreach ( array( 'post' => 'hello-world', 'page' => 'sample-page' ) as $type => $slug ) {
+		foreach ( array(
+			'post' => 'hello-world',
+			'page' => 'sample-page',
+		) as $type => $slug ) {
 			$item = get_page_by_path( $slug, OBJECT, $type );
 			if ( $item && 'publish' === $item->post_status && $item->post_modified_gmt === $item->post_date_gmt && (int) $item->comment_count <= 1 ) {
 				wp_trash_post( $item->ID );
@@ -917,7 +920,7 @@ class Importer {
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			\Elementor\Plugin::$instance->files_manager->clear_cache();
 		}
-		$imported = (array) get_option( self::IMPORTED, array() );
+		$imported                         = (array) get_option( self::IMPORTED, array() );
 		$imported[ $this->state['demo'] ] = time();
 		update_option( self::IMPORTED, $imported, false );
 		delete_option( self::STATE );
@@ -955,7 +958,7 @@ class Importer {
 	 * @return \WP_REST_Response
 	 */
 	public static function uninstall() {
-		$ids = get_posts(
+		$ids   = get_posts(
 			array(
 				'post_type'      => 'any',
 				'post_status'    => 'any',
@@ -965,7 +968,7 @@ class Importer {
 				'no_found_rows'  => true,
 			)
 		);
-		$ids = array_merge(
+		$ids   = array_merge(
 			$ids,
 			get_posts(
 				array(
@@ -1156,7 +1159,14 @@ class Importer {
 				return $this->media_value( $value['__img'] );
 			}
 			if ( isset( $value['__gallery'] ) && 1 === count( $value ) ) {
-				return array_values( array_filter( array_map( array( $this, 'media_value' ), (array) $value['__gallery'] ), static function ( $m ) { return ! empty( $m['id'] ); } ) );
+				return array_values(
+					array_filter(
+						array_map( array( $this, 'media_value' ), (array) $value['__gallery'] ),
+						static function ( $m ) {
+							return ! empty( $m['id'] );
+						}
+					)
+				);
 			}
 			foreach ( $value as $k => $v ) {
 				$value[ $k ] = $this->replace( $v );

@@ -171,10 +171,10 @@ class Marquee extends Widget_Base {
 		$this->add_control(
 			'tilt',
 			array(
-				'label'   => __( 'Tilt', 'hamista-core' ),
-				'type'    => Controls_Manager::SLIDER,
-				'default' => array( 'size' => 0 ),
-				'range'   => array(
+				'label'     => __( 'Tilt', 'hamista-core' ),
+				'type'      => Controls_Manager::SLIDER,
+				'default'   => array( 'size' => 0 ),
+				'range'     => array(
 					'px' => array(
 						'min'  => -6,
 						'max'  => 6,

@@ -51,9 +51,9 @@ class Hero extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'split',
 				'options' => array(
-					'split'  => __( 'Text + media side by side', 'hamista-core' ),
-					'center' => __( 'Centered, media below', 'hamista-core' ),
-					'full'   => __( 'Full-bleed background media', 'hamista-core' ),
+					'split'     => __( 'Text + media side by side', 'hamista-core' ),
+					'center'    => __( 'Centered, media below', 'hamista-core' ),
+					'full'      => __( 'Full-bleed background media', 'hamista-core' ),
 					'editorial' => __( 'Editorial: giant title, media strip', 'hamista-core' ),
 				),
 			)
@@ -134,9 +134,9 @@ class Hero extends Widget_Base {
 		$this->add_control(
 			'image',
 			array(
-				'label'     => __( 'Image', 'hamista-core' ),
-				'type'      => Controls_Manager::MEDIA,
-				'condition' => array( 'media_type' => array( 'image', 'device', 'video' ) ),
+				'label'       => __( 'Image', 'hamista-core' ),
+				'type'        => Controls_Manager::MEDIA,
+				'condition'   => array( 'media_type' => array( 'image', 'device', 'video' ) ),
 				'description' => __( 'For video, this is the poster. For the device, the screen image.', 'hamista-core' ),
 			)
 		);

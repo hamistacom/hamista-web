@@ -37,8 +37,26 @@ function hamista_core_latin_digits( $value ) {
 	return strtr(
 		(string) $value,
 		array(
-			'۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
-			'٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9',
+			'۰' => '0',
+			'۱' => '1',
+			'۲' => '2',
+			'۳' => '3',
+			'۴' => '4',
+			'۵' => '5',
+			'۶' => '6',
+			'۷' => '7',
+			'۸' => '8',
+			'۹' => '9',
+			'٠' => '0',
+			'١' => '1',
+			'٢' => '2',
+			'٣' => '3',
+			'٤' => '4',
+			'٥' => '5',
+			'٦' => '6',
+			'٧' => '7',
+			'٨' => '8',
+			'٩' => '9',
 		)
 	);
 }
@@ -101,7 +119,13 @@ function hamista_core_image( $media, $size = 'large', $attrs = array() ) {
 	$id  = is_array( $media ) ? ( isset( $media['id'] ) ? (int) $media['id'] : 0 ) : (int) $media;
 	$url = is_array( $media ) && ! empty( $media['url'] ) ? $media['url'] : '';
 
-	$attrs = array_merge( array( 'loading' => 'lazy', 'decoding' => 'async' ), $attrs );
+	$attrs = array_merge(
+		array(
+			'loading'  => 'lazy',
+			'decoding' => 'async',
+		),
+		$attrs
+	);
 
 	if ( $id && wp_attachment_is_image( $id ) ) {
 		return wp_get_attachment_image( $id, $size, false, $attrs );

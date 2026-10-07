@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T00:41:38+00:00\n"
+"POT-Creation-Date: 2026-10-07T01:01:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -209,25 +209,25 @@ msgid "Footer column %d"
 msgstr ""
 
 #. translators: %s: number of minutes
-#: inc/template-tags.php:100
+#: inc/template-tags.php:118
 #, php-format
 msgid "%s min read"
 msgid_plural "%s min read"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:124
-#: inc/template-tags.php:159
+#: inc/template-tags.php:142
+#: inc/template-tags.php:177
 #: inc/woocommerce.php:98
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/template-tags.php:132
+#: inc/template-tags.php:150
 msgid "Home"
 msgstr ""
 
 #. translators: %s: search query
-#: inc/template-tags.php:150
+#: inc/template-tags.php:168
 #: index.php:15
 #: searchform.php:15
 #: template-parts/header/site-header.php:55
@@ -235,41 +235,41 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: inc/template-tags.php:152
+#: inc/template-tags.php:170
 msgid "Not found"
 msgstr ""
 
-#: inc/template-tags.php:178
+#: inc/template-tags.php:196
 msgid "Previous page"
 msgstr ""
 
-#: inc/template-tags.php:179
+#: inc/template-tags.php:197
 msgid "Next page"
 msgstr ""
 
-#: inc/template-tags.php:183
+#: inc/template-tags.php:201
 msgid "Posts pagination"
 msgstr ""
 
 #. translators: %s: network name
-#: inc/template-tags.php:250
+#: inc/template-tags.php:271
 #, php-format
 msgid "Share on %s"
 msgstr ""
 
-#: inc/template-tags.php:257
+#: inc/template-tags.php:278
 msgid "Copy link"
 msgstr ""
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:279
 msgid "Link copied"
 msgstr ""
 
-#: inc/template-tags.php:307
+#: inc/template-tags.php:328
 msgid "All"
 msgstr ""
 
-#: inc/template-tags.php:333
+#: inc/template-tags.php:354
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
