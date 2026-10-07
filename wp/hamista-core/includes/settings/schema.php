@@ -96,15 +96,47 @@ return ( static function () {
 				'container_width'  => array(
 					'type'  => 'range',
 					'label' => __( 'Content width', 'hamista-core' ),
-					'desc'  => __( 'Maximum width of page content. 1320px suits 15" laptops; Elementor\'s container width is kept in sync.', 'hamista-core' ),
+					'desc'  => __( 'Maximum width of page content. 1150px keeps every section comfortable on a 15" laptop; Elementor\'s container width is kept in sync.', 'hamista-core' ),
 					'min'   => 960,
 					'max'   => 1920,
+					'step'  => 10,
+					'unit'  => 'px',
+				),
+				'density'          => array(
+					'type'    => 'cards',
+					'label'   => __( 'Density', 'hamista-core' ),
+					'desc'    => __( 'Vertical spacing between and inside sections. Compact shows more on a laptop screen with less scrolling.', 'hamista-core' ),
+					'choices' => array(
+						'compact' => array(
+							'label' => __( 'Compact', 'hamista-core' ),
+							'icon'  => 'compress',
+						),
+						'normal'  => array(
+							'label' => __( 'Balanced', 'hamista-core' ),
+							'icon'  => 'grid',
+						),
+						'roomy'   => array(
+							'label' => __( 'Spacious', 'hamista-core' ),
+							'icon'  => 'expand',
+						),
+					),
+				),
+				'section_height'   => array(
+					'type'  => 'range',
+					'label' => __( 'Base section height', 'hamista-core' ),
+					'desc'  => __( 'Heroes, sliders and showcase sections are sized from this value so each one fits a laptop screen.', 'hamista-core' ),
+					'min'   => 400,
+					'max'   => 720,
 					'step'  => 10,
 					'unit'  => 'px',
 				),
 				'page_transitions' => $on_off + array(
 					'label' => __( 'Smooth page transitions', 'hamista-core' ),
 					'desc'  => __( 'Cross-fades between pages in supporting browsers. No JavaScript, no delay.', 'hamista-core' ),
+				),
+				'ui_persian'       => $on_off + array(
+					'label' => __( 'Always show Hamista in Persian', 'hamista-core' ),
+					'desc'  => __( 'Keeps the Hamista panel, widgets and theme texts in Persian even if the site or your profile language is set to English.', 'hamista-core' ),
 				),
 				'back_to_top'      => $on_off + array( 'label' => __( 'Back-to-top button', 'hamista-core' ) ),
 				'breadcrumbs'      => $on_off + array(
@@ -473,7 +505,7 @@ return ( static function () {
 			'fields' => array(
 				'smooth_scroll'    => $on_off + array(
 					'label' => __( 'Smooth scrolling', 'hamista-core' ),
-					'desc'  => __( 'Inertia scrolling for mouse wheels. Touch devices keep native scrolling.', 'hamista-core' ),
+					'desc'  => __( 'Inertia scrolling for mouse wheels. Off by default: the browser\'s own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively.', 'hamista-core' ),
 				),
 				'smooth_intensity' => array(
 					'type'    => 'range',
@@ -495,9 +527,67 @@ return ( static function () {
 					'label' => __( 'Magnetic buttons', 'hamista-core' ),
 					'desc'  => __( 'Buttons lean slightly toward the cursor.', 'hamista-core' ),
 				),
-				'cursor'           => $on_off + array(
-					'label' => __( 'Custom cursor', 'hamista-core' ),
-					'desc'  => __( 'A soft follower dot that grows over links. Desktop only.', 'hamista-core' ),
+				'cursor'           => array(
+					'type'    => 'cards',
+					'label'   => __( 'Cursor style', 'hamista-core' ),
+					'desc'    => __( 'Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor="…".', 'hamista-core' ),
+					'choices' => array(
+						'none'  => array(
+							'label' => __( 'System cursor', 'hamista-core' ),
+							'icon'  => 'mouse',
+						),
+						'dot'   => array(
+							'label' => __( 'Dot', 'hamista-core' ),
+							'icon'  => 'dot',
+						),
+						'ring'  => array(
+							'label' => __( 'Dot and ring', 'hamista-core' ),
+							'icon'  => 'ring',
+						),
+						'blend' => array(
+							'label' => __( 'Inverting lens', 'hamista-core' ),
+							'icon'  => 'contrast',
+						),
+						'glow'  => array(
+							'label' => __( 'Soft glow', 'hamista-core' ),
+							'icon'  => 'sun',
+						),
+					),
+				),
+				'sound_enabled'    => $on_off + array(
+					'label' => __( 'Interface sounds', 'hamista-core' ),
+					'group' => __( 'Sound', 'hamista-core' ),
+					'desc'  => __( 'Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off.', 'hamista-core' ),
+				),
+				'sound_default'    => $on_off + array(
+					'label'   => __( 'On for first-time visitors', 'hamista-core' ),
+					'desc'    => __( 'Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts.', 'hamista-core' ),
+					'show_if' => array( 'sound_enabled' => true ),
+				),
+				'sound_theme'      => array(
+					'type'    => 'select',
+					'label'   => __( 'Sound character', 'hamista-core' ),
+					'choices' => array(
+						'soft'       => __( 'Soft — rounded and quiet', 'hamista-core' ),
+						'glass'      => __( 'Glass — bright and airy', 'hamista-core' ),
+						'mechanical' => __( 'Mechanical — crisp switch clicks', 'hamista-core' ),
+						'digital'    => __( 'Digital — short synth blips', 'hamista-core' ),
+					),
+					'show_if' => array( 'sound_enabled' => true ),
+				),
+				'sound_volume'     => array(
+					'type'    => 'range',
+					'label'   => __( 'Volume', 'hamista-core' ),
+					'min'     => 5,
+					'max'     => 100,
+					'step'    => 5,
+					'unit'    => '%',
+					'show_if' => array( 'sound_enabled' => true ),
+				),
+				'sound_hover'      => $on_off + array(
+					'label'   => __( 'Tick on hover', 'hamista-core' ),
+					'desc'    => __( 'A very quiet tick when the pointer reaches a button or card.', 'hamista-core' ),
+					'show_if' => array( 'sound_enabled' => true ),
 				),
 			),
 		),

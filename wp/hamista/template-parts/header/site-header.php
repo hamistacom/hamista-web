@@ -55,6 +55,9 @@ $hamista_has_woo  = class_exists( 'WooCommerce' ) && function_exists( 'wc_get_ca
 				<button class="hm-icon-btn hm-hide-sm" type="button" data-hm-open="search" aria-label="<?php esc_attr_e( 'Search', 'hamista' ); ?>" aria-controls="hm-search" aria-expanded="false"><?php hamista_icon( 'search' ); ?></button>
 			<?php endif; ?>
 
+			<?php if ( hamista_option( 'sound_enabled' ) ) : ?>
+				<button class="hm-icon-btn hm-sound-toggle" type="button" data-hm-sound-toggle aria-label="<?php esc_attr_e( 'Interface sounds', 'hamista' ); ?>" aria-pressed="false"><?php hamista_icon( 'mute' ); ?><?php hamista_icon( 'sound' ); ?></button>
+			<?php endif; ?>
 			<?php if ( hamista_option( 'dark_toggle' ) ) : ?>
 				<button class="hm-icon-btn hm-theme-toggle" type="button" data-hm-theme-toggle aria-label="<?php esc_attr_e( 'Toggle dark mode', 'hamista' ); ?>" aria-pressed="false"><?php hamista_icon( 'sun' ); ?><?php hamista_icon( 'moon' ); ?></button>
 			<?php endif; ?>

@@ -13,7 +13,10 @@ defined( 'ABSPATH' ) || exit;
 return array(
 	// General.
 	'kit'                   => 'spark',
-	'container_width'       => 1320,
+	'container_width'       => 1150,
+	'density'               => 'compact',
+	'section_height'        => 500,
+	'ui_persian'            => true,
 	'back_to_top'           => true,
 	'breadcrumbs'           => true,
 	'page_transitions'      => true,
@@ -78,12 +81,17 @@ return array(
 	'shop_hover_image'      => true,
 
 	// Motion.
-	'smooth_scroll'         => true,
+	'smooth_scroll'         => false,
 	'smooth_intensity'      => 10,
 	'motion_reveal'         => true,
 	'motion_mobile'         => true,
 	'magnetic'              => true,
-	'cursor'                => false,
+	'cursor'                => 'none',
+	'sound_enabled'         => false,
+	'sound_default'         => false,
+	'sound_theme'           => 'soft',
+	'sound_volume'          => 40,
+	'sound_hover'           => true,
 
 	// Login & SMS.
 	'otp_enabled'           => false,

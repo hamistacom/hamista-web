@@ -107,11 +107,11 @@ function hero(s) {
 }
 const marquee = (items, s = {}) => bleed(w('hm-marquee', Object.assign({ items: items.map((t) => (typeof t === 'string' ? { text: t } : t)), separator: 'dot', size: 'lg', look: 'alternate', speed: px(60), follow: 'yes', bordered: 'yes' }, s)));
 const textScrub = (text, s = {}) => w('hm-text-scrub', Object.assign({ text, size: 'lg' }, s));
-const scrollZoom = (s) => bleed(w('hm-scroll-zoom', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', start_scale: px(0.42), radius: px(28), length: px(3), btn1_style: 'inverse' }, s)));
+const scrollZoom = (s) => bleed(w('hm-scroll-zoom', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', start_scale: px(0.42), radius: px(28), length: px(2), btn1_style: 'inverse' }, s)));
 const hscroll = (s) => bleed(w('hm-hscroll', Object.assign({ title_tag: 'h2', title_size: 'lg', header_align: 'start', title_reveal: 'words', card_size: 'md', card_style: 'caption', length: px(1), progress: 'yes', btn1_style: 'secondary' }, s)));
-const scrollPath = (s) => bleed(w('hm-scroll-path', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', length: px(4.2) }, s)));
+const scrollPath = (s) => bleed(w('hm-scroll-path', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', length: px(3) }, s)));
 const stack = (items) => w('hm-stack', { items });
-const depth = (s) => bleed(w('hm-depth', Object.assign({ layout: 'card', length: px(1), glow: 'yes', scheme: 'inverse' }, s)));
+const depth = (s) => bleed(w('hm-depth', Object.assign({ layout: 'card', length: px(0.7), glow: 'yes', scheme: 'inverse' }, s)));
 /** Floating elements: items are { image?, text?, shape, x, y, size, depth, rot } in plain numbers. */
 const flow = (s) => {
 	const items = (s.items || []).map((i) => ({

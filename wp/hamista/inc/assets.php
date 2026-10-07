@@ -106,12 +106,21 @@ function hamista_is_woocommerce_view() {
  * @return string
  */
 function hamista_dynamic_css() {
-	$width = max( 960, min( 1920, absint( hamista_option( 'container_width', 1320 ) ) ) );
-	$size  = max( 13, min( 20, absint( hamista_option( 'font_size', 16 ) ) ) );
-	$logo  = max( 20, min( 120, absint( hamista_option( 'logo_height', 40 ) ) ) );
+	$width   = max( 960, min( 1920, absint( hamista_option( 'container_width', 1150 ) ) ) );
+	$section = max( 400, min( 720, absint( hamista_option( 'section_height', 500 ) ) ) );
+	$density = array(
+		'compact' => '1',
+		'normal'  => '1.25',
+		'roomy'   => '1.55',
+	);
+	$density = $density[ (string) hamista_option( 'density', 'compact' ) ] ?? '1';
+	$size    = max( 13, min( 20, absint( hamista_option( 'font_size', 16 ) ) ) );
+	$logo    = max( 20, min( 120, absint( hamista_option( 'logo_height', 40 ) ) ) );
 
 	$vars = array(
 		'--hm-container'    => $width . 'px',
+		'--hm-section-h'    => $section . 'px',
+		'--hm-density'      => $density,
 		'--hm-fs-base'      => $size . 'px',
 		'--hm-logo-h'       => $logo . 'px',
 		'--hm-font-body'    => hamista_font_stack( hamista_option( 'font_body' ) ),

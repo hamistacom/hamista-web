@@ -109,7 +109,14 @@ class Frontend {
 			'reveal'   => (bool) hamista_core_option( 'motion_reveal' ),
 			'mobile'   => (bool) hamista_core_option( 'motion_mobile' ),
 			'magnetic' => (bool) hamista_core_option( 'magnetic' ),
-			'cursor'   => (bool) hamista_core_option( 'cursor' ),
+			'cursor'   => self::cursor_mode(),
+			'sound'    => array(
+				'enabled' => (bool) hamista_core_option( 'sound_enabled' ),
+				'def'     => (bool) hamista_core_option( 'sound_default' ),
+				'theme'   => (string) hamista_core_option( 'sound_theme', 'soft' ),
+				'volume'  => (int) hamista_core_option( 'sound_volume', 40 ),
+				'hover'   => (bool) hamista_core_option( 'sound_hover', true ),
+			),
 			'editor'   => $editor,
 			'rest'     => esc_url_raw( rest_url( 'hamista/v1/' ) ),
 			'i18n'     => array(
@@ -119,12 +126,38 @@ class Frontend {
 	}
 
 	/**
-	 * Smooth scroll and the cursor are site-wide, so the engine must load everywhere when they are on.
+	 * Cursor style; older installs stored a boolean.
+	 *
+	 * @return string
+	 */
+	public static function cursor_mode() {
+		$mode = hamista_core_option( 'cursor', 'none' );
+		if ( true === $mode || '1' === $mode ) {
+			return 'dot';
+		}
+		return in_array( $mode, array( 'dot', 'ring', 'blend', 'glow' ), true ) ? $mode : 'none';
+	}
+
+	/**
+	 * Smooth scroll, the cursor and sounds are site-wide, so their code loads everywhere when they are on.
 	 */
 	public static function maybe_enqueue_globally() {
-		if ( hamista_core_option( 'smooth_scroll' ) || hamista_core_option( 'cursor' ) ) {
+		if ( hamista_core_option( 'smooth_scroll' ) || 'none' !== self::cursor_mode() ) {
 			wp_enqueue_script( 'hamista-motion' );
 			wp_enqueue_style( 'hamista-widgets' );
+		}
+		if ( hamista_core_option( 'sound_enabled' ) ) {
+			wp_enqueue_script( 'hamista-motion' );
+			wp_enqueue_script(
+				'hamista-sound',
+				self::asset( 'js/sound.js' ),
+				array( 'hamista-motion' ),
+				HAMISTA_CORE_VERSION,
+				array(
+					'strategy'  => 'defer',
+					'in_footer' => true,
+				)
+			);
 		}
 	}
 

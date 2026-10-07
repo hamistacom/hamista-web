@@ -12,6 +12,10 @@ defined( 'ABSPATH' ) || exit;
  */
 function hamista_setup() {
 	load_theme_textdomain( 'hamista', HAMISTA_DIR . '/languages' );
+	if ( hamista_option( 'ui_persian', true ) && 0 !== strpos( determine_locale(), 'fa' ) ) {
+		unload_textdomain( 'hamista' );
+		load_textdomain( 'hamista', HAMISTA_DIR . '/languages/fa_IR.mo', 'fa_IR' );
+	}
 
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );

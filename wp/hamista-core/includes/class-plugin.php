@@ -83,6 +83,13 @@ final class Plugin {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( 'hamista-core', false, dirname( plugin_basename( HAMISTA_CORE_FILE ) ) . '/languages' );
+
+		// Hamista is written for Persian sites: keep its screens in Persian even when
+		// the site or the user profile is set to another language (Settings → General).
+		if ( hamista_core_option( 'ui_persian', true ) && 0 !== strpos( determine_locale(), 'fa' ) ) {
+			unload_textdomain( 'hamista-core' );
+			load_textdomain( 'hamista-core', HAMISTA_CORE_DIR . 'languages/hamista-core-fa_IR.mo', 'fa_IR' );
+		}
 	}
 
 	/**

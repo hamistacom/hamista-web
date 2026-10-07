@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T01:01:40+00:00\n"
+"POT-Creation-Date: 2026-10-07T06:34:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -182,28 +182,28 @@ msgstr ""
 msgid "You are not allowed to activate plugins."
 msgstr ""
 
-#: inc/setup.php:38
+#: inc/setup.php:42
 msgid "Primary menu"
 msgstr ""
 
-#: inc/setup.php:39
+#: inc/setup.php:43
 msgid "Mobile menu (falls back to primary)"
 msgstr ""
 
-#: inc/setup.php:40
+#: inc/setup.php:44
 msgid "Footer bottom menu"
 msgstr ""
 
-#: inc/setup.php:68
+#: inc/setup.php:72
 msgid "Blog sidebar"
 msgstr ""
 
-#: inc/setup.php:77
+#: inc/setup.php:81
 msgid "Shop sidebar"
 msgstr ""
 
 #. translators: %d: footer column number
-#: inc/setup.php:89
+#: inc/setup.php:93
 #, php-format
 msgid "Footer column %d"
 msgstr ""
@@ -231,7 +231,7 @@ msgstr ""
 #: index.php:15
 #: searchform.php:15
 #: template-parts/header/site-header.php:55
-#: template-parts/header/site-header.php:132
+#: template-parts/header/site-header.php:135
 msgid "Search"
 msgstr ""
 
@@ -370,39 +370,43 @@ msgid "Primary"
 msgstr ""
 
 #: template-parts/header/site-header.php:59
+msgid "Interface sounds"
+msgstr ""
+
+#: template-parts/header/site-header.php:62
 msgid "Toggle dark mode"
 msgstr ""
 
-#: template-parts/header/site-header.php:68
-#: template-parts/header/site-header.php:121
+#: template-parts/header/site-header.php:71
+#: template-parts/header/site-header.php:124
 msgid "My account"
 msgstr ""
 
-#: template-parts/header/site-header.php:68
+#: template-parts/header/site-header.php:71
 msgid "Log in"
 msgstr ""
 
-#: template-parts/header/site-header.php:78
+#: template-parts/header/site-header.php:81
 msgid "Cart"
 msgstr ""
 
-#: template-parts/header/site-header.php:90
+#: template-parts/header/site-header.php:93
 msgid "Open menu"
 msgstr ""
 
-#: template-parts/header/site-header.php:97
+#: template-parts/header/site-header.php:100
 msgid "Menu"
 msgstr ""
 
-#: template-parts/header/site-header.php:100
+#: template-parts/header/site-header.php:103
 msgid "Close menu"
 msgstr ""
 
-#: template-parts/header/site-header.php:121
+#: template-parts/header/site-header.php:124
 msgid "Log in / Sign up"
 msgstr ""
 
-#: template-parts/header/site-header.php:134
+#: template-parts/header/site-header.php:137
 msgid "Press Esc to close"
 msgstr ""
 

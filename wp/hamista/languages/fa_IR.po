@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T01:01:40+00:00\n"
-"PO-Revision-Date: 2026-10-07 01:01+0000\n"
+"POT-Creation-Date: 2026-10-07T06:34:32+00:00\n"
+"PO-Revision-Date: 2026-10-07 06:34+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -183,28 +183,28 @@ msgstr "نصب انجام نشد."
 msgid "You are not allowed to activate plugins."
 msgstr "اجازه‌ی فعال‌سازی افزونه را ندارید."
 
-#: inc/setup.php:38
+#: inc/setup.php:42
 msgid "Primary menu"
 msgstr "منوی اصلی"
 
-#: inc/setup.php:39
+#: inc/setup.php:43
 msgid "Mobile menu (falls back to primary)"
 msgstr "منوی موبایل (پیش‌فرض: منوی اصلی)"
 
-#: inc/setup.php:40
+#: inc/setup.php:44
 msgid "Footer bottom menu"
 msgstr "منوی پایین پابرگ"
 
-#: inc/setup.php:68
+#: inc/setup.php:72
 msgid "Blog sidebar"
 msgstr "ستون کناری وبلاگ"
 
-#: inc/setup.php:77
+#: inc/setup.php:81
 msgid "Shop sidebar"
 msgstr "ستون کناری فروشگاه"
 
 #. translators: %d: footer column number
-#: inc/setup.php:89
+#: inc/setup.php:93
 #, php-format
 msgid "Footer column %d"
 msgstr "ستون پابرگ %d"
@@ -232,7 +232,7 @@ msgstr "خانه"
 #: index.php:15
 #: searchform.php:15
 #: template-parts/header/site-header.php:55
-#: template-parts/header/site-header.php:132
+#: template-parts/header/site-header.php:135
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -371,39 +371,43 @@ msgid "Primary"
 msgstr "منوی اصلی"
 
 #: template-parts/header/site-header.php:59
+msgid "Interface sounds"
+msgstr "صداهای رابط کاربری"
+
+#: template-parts/header/site-header.php:62
 msgid "Toggle dark mode"
 msgstr "تغییر حالت تاریک"
 
-#: template-parts/header/site-header.php:68
-#: template-parts/header/site-header.php:121
+#: template-parts/header/site-header.php:71
+#: template-parts/header/site-header.php:124
 msgid "My account"
 msgstr "حساب کاربری من"
 
-#: template-parts/header/site-header.php:68
+#: template-parts/header/site-header.php:71
 msgid "Log in"
 msgstr "ورود"
 
-#: template-parts/header/site-header.php:78
+#: template-parts/header/site-header.php:81
 msgid "Cart"
 msgstr "سبد خرید"
 
-#: template-parts/header/site-header.php:90
+#: template-parts/header/site-header.php:93
 msgid "Open menu"
 msgstr "باز کردن منو"
 
-#: template-parts/header/site-header.php:97
+#: template-parts/header/site-header.php:100
 msgid "Menu"
 msgstr "منو"
 
-#: template-parts/header/site-header.php:100
+#: template-parts/header/site-header.php:103
 msgid "Close menu"
 msgstr "بستن منو"
 
-#: template-parts/header/site-header.php:121
+#: template-parts/header/site-header.php:124
 msgid "Log in / Sign up"
 msgstr "ورود / ثبت‌نام"
 
-#: template-parts/header/site-header.php:134
+#: template-parts/header/site-header.php:137
 msgid "Press Esc to close"
 msgstr "برای بستن، Esc را بزنید"
 

@@ -15,18 +15,18 @@
 	--hm-ease: cubic-bezier(.16, 1, .3, 1);
 }
 .hm-sec, .hm-hero, .hm-zoom, .hm-hscroll, .hm-path, .hm-cta {
-	--hm-title-xxl: clamp(3.2rem, 1.4rem + 7.4vw, 9.5rem);
-	--hm-title-xl: clamp(2.7rem, 1.5rem + 4.6vw, 6.2rem);
-	--hm-title-lg: clamp(2.1rem, 1.35rem + 2.9vw, 4.1rem);
-	--hm-title-md: clamp(1.7rem, 1.25rem + 1.7vw, 2.8rem);
-	--hm-title-sm: clamp(1.35rem, 1.15rem + .7vw, 1.9rem);
+	--hm-title-xxl: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
+	--hm-title-xl: clamp(2.2rem, 1.3rem + 3vw, 4rem);
+	--hm-title-lg: clamp(1.8rem, 1.2rem + 1.9vw, 2.9rem);
+	--hm-title-md: clamp(1.5rem, 1.15rem + 1.1vw, 2.2rem);
+	--hm-title-sm: clamp(1.25rem, 1.1rem + .5vw, 1.6rem);
 }
 .elementor-widget, .hm-head, .hm-features, .hm-stats, .hm-steps, .hm-tabs, .hm-acc, .hm-quotes, .hm-pricing, .hm-team, .hm-cinfo, .hm-form, .hm-imgr, .hm-scrubtext, .hm-device, .hm-stack {
-	--hm-title-xxl: clamp(3.2rem, 1.4rem + 7.4vw, 9.5rem);
-	--hm-title-xl: clamp(2.7rem, 1.5rem + 4.6vw, 6.2rem);
-	--hm-title-lg: clamp(2.1rem, 1.35rem + 2.9vw, 4.1rem);
-	--hm-title-md: clamp(1.7rem, 1.25rem + 1.7vw, 2.8rem);
-	--hm-title-sm: clamp(1.35rem, 1.15rem + .7vw, 1.9rem);
+	--hm-title-xxl: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
+	--hm-title-xl: clamp(2.2rem, 1.3rem + 3vw, 4rem);
+	--hm-title-lg: clamp(1.8rem, 1.2rem + 1.9vw, 2.9rem);
+	--hm-title-md: clamp(1.5rem, 1.15rem + 1.1vw, 2.2rem);
+	--hm-title-sm: clamp(1.25rem, 1.1rem + .5vw, 1.6rem);
 }
 
 /* ==========================================================================
@@ -73,6 +73,29 @@
 .hm-cursor.is-down::before { transform: scale(.7); }
 .hm-cursor__label { position: absolute; transform: translate(-50%, -50%); color: var(--hm-bg); font-size: 12px; font-weight: 700; white-space: nowrap; opacity: 0; transition: opacity .25s; }
 .hm-cursor.has-label .hm-cursor__label { opacity: 1; }
+/* Dot + trailing ring */
+.hm-cursor--ring::before { width: 6px; height: 6px; margin: -3px; background: var(--hm-accent); mix-blend-mode: normal; filter: none; }
+.hm-cursor--ring.is-hover::before { transform: scale(0); }
+.hm-cursor--ring.has-label::before { transform: scale(13); background: var(--hm-accent); opacity: 1; }
+.hm-cursor--ring .hm-cursor__label { color: var(--hm-accent-fg); }
+.hm-cursor-ring {
+	position: fixed; top: 0; left: 0; z-index: 9999; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; pointer-events: none;
+	border: 1.5px solid color-mix(in srgb, var(--hm-fg) 45%, transparent); opacity: 0; transition: opacity .3s, width .35s var(--hm-ease), height .35s var(--hm-ease), margin .35s var(--hm-ease), border-color .3s, background-color .3s;
+}
+.hm-cursor-ring.is-visible { opacity: 1; }
+.hm-cursor-ring.is-hover { width: 58px; height: 58px; margin: -29px 0 0 -29px; border-color: var(--hm-accent); background: var(--hm-accent-soft); }
+.hm-cursor-ring.has-label { opacity: 0; }
+.hm-cursor-ring.is-down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
+/* Inverting lens */
+.hm-cursor--blend::before { width: 34px; height: 34px; margin: -17px; background: #fff; filter: none; mix-blend-mode: difference; }
+.hm-cursor--blend.is-hover::before { transform: scale(2.2); background: #fff; mix-blend-mode: difference; opacity: 1; }
+.hm-cursor--blend.has-label::before { transform: scale(2.8); mix-blend-mode: normal; background: var(--hm-fg); }
+/* Soft glow (keeps the system pointer) */
+.hm-cursor--glow { z-index: 1; }
+.hm-cursor--glow::before { width: 420px; height: 420px; margin: -210px; background: radial-gradient(closest-side, color-mix(in srgb, var(--hm-accent) 22%, transparent), transparent); filter: none; mix-blend-mode: normal; }
+.hm-cursor--glow.is-hover::before, .hm-cursor--glow.has-label::before { transform: scale(.75); background: radial-gradient(closest-side, color-mix(in srgb, var(--hm-accent) 30%, transparent), transparent); opacity: 1; }
+.hm-cursor--glow .hm-cursor__label { display: none; }
+@media (hover: none), (pointer: coarse) { .hm-cursor, .hm-cursor-ring { display: none; } }
 
 /* ==========================================================================
    Shared: sections, schemes, heads, buttons
@@ -154,7 +177,7 @@
    Hero
    ========================================================================== */
 .hm-hero { position: relative; isolation: isolate; overflow: clip; padding-block: clamp(40px, 6vw, 96px); }
-.hm-hero--h-screen { min-height: calc(100svh - var(--hm-header-h)); display: flex; align-items: center; }
+.hm-hero--h-screen { min-height: var(--hm-hero-h); display: flex; align-items: center; }
 .hm-hero > .hm-hero__inner { position: relative; z-index: 1; }
 .hm-hero--split .hm-hero__inner { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: clamp(32px, 5vw, 88px); align-items: center; }
 .hm-hero--center .hm-hero__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -199,7 +222,7 @@
 @keyframes hm-hint { 0% { transform: scaleY(0); } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
 /* Full-bleed */
-.hm-hero--full { min-height: 100svh; color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .78); --hm-border: rgba(255, 255, 255, .2); --hm-accent-ink: #fff; padding-top: calc(var(--hm-header-h) + 48px); }
+.hm-hero--full { min-height: calc(var(--hm-hero-h) + var(--hm-header-h)); color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .78); --hm-border: rgba(255, 255, 255, .2); --hm-accent-ink: #fff; padding-top: calc(var(--hm-header-h) + 48px); }
 .hm-hero--full.hm-hero--h-screen { align-items: flex-end; }
 .hm-hero__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: #111; }
 .hm-hero .hm-hero__bg > img, .hm-hero .hm-hero__bg > video { width: 100%; height: 100%; object-fit: cover; }
@@ -209,7 +232,7 @@
 
 /* Mosaic */
 .hm-mosaic {
-	position: relative; height: min(80vh, 780px); overflow: hidden; border-radius: var(--hm-radius-xl);
+	position: relative; height: min(76vh, var(--hm-section-h)); overflow: hidden; border-radius: var(--hm-radius-xl);
 	-webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
 }
 .hm-mosaic__inner { position: absolute; inset: -16% -14%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; transform: rotate(-8deg); }
@@ -229,7 +252,7 @@
 .hm-scrubtext__text { margin: 0; font-family: var(--hm-font-heading); font-weight: 800; line-height: 1.35; text-wrap: pretty; }
 .hm-scrubtext--md .hm-scrubtext__text { font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.4rem); }
 .hm-scrubtext--lg .hm-scrubtext__text { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.6rem); line-height: 1.3; }
-.hm-scrubtext--xl .hm-scrubtext__text { font-size: clamp(2.3rem, 1.4rem + 4vw, 5.4rem); line-height: 1.22; }
+.hm-scrubtext--xl .hm-scrubtext__text { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.6rem); line-height: 1.22; }
 .hm-scrubtext .hm-w { overflow: visible; padding: 0; margin: 0; }
 .hm-scrubtext .hm-wi {
 	opacity: clamp(var(--hm-dim, .16), calc(var(--hm-p, 0) * (var(--hm-wn, 20) + 4) - var(--hm-wi, 0)), 1);
@@ -240,7 +263,7 @@
 /* ==========================================================================
    Scroll zoom
    ========================================================================== */
-.hm-zoom { position: relative; height: var(--hm-zoom-len, 300vh); }
+.hm-zoom { position: relative; height: var(--hm-zoom-len, 200vh); }
 .hm-zoom__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .hm-zoom__intro { position: absolute; inset-inline: 0; top: clamp(72px, 11vh, 140px); z-index: 2; will-change: transform, opacity; }
 .hm-zoom__intro .hm-head { margin-inline: auto; }
@@ -306,7 +329,7 @@
    Scroll path story (always a dark stage)
    ========================================================================== */
 .hm-path {
-	position: relative; height: var(--hm-path-len, 420vh); color: #f1f5f9;
+	position: relative; height: var(--hm-path-len, 300vh); color: #f1f5f9;
 	--hm-path-bg: #04060e; --hm-path-mid: rgba(124, 58, 237, .32);
 	--hm-fg: #f1f5f9; --hm-fg-muted: rgba(226, 232, 240, .66); --hm-accent-ink: color-mix(in srgb, var(--hm-accent) 50%, #fff); --hm-border: rgba(255, 255, 255, .1);
 }
@@ -349,7 +372,7 @@
 .hm-path__step.is-active { opacity: 1; transform: none; filter: none; }
 .hm-path__step.is-past { transform: translate3d(0, -26px, 0); }
 .hm-path__n { font-family: ui-monospace, monospace; font-size: 13px; letter-spacing: .2em; color: color-mix(in srgb, var(--hm-accent) 50%, #fff); direction: ltr; justify-self: start; }
-.hm-path__step h3 { margin: 0; font-family: var(--hm-font-heading); font-weight: 800; font-size: clamp(2.3rem, 1.5rem + 2.6vw, 4rem); line-height: 1.15; }
+.hm-path__step h3 { margin: 0; font-family: var(--hm-font-heading); font-weight: 800; font-size: clamp(1.9rem, 1.3rem + 1.8vw, 3rem); line-height: 1.15; }
 .hm-path__step p { margin: 0; max-width: 26rem; font-size: 1.07rem; line-height: 2; color: var(--hm-fg-muted); }
 .hm-path__rail { position: absolute; top: 50%; inset-inline-end: max(var(--hm-gutter), (100vw - var(--hm-container)) / 2); height: 220px; width: 2px; margin-top: -110px; background: rgba(255, 255, 255, .1); border-radius: 2px; }
 .hm-path__rail i { position: absolute; inset: 0 0 auto; height: calc(var(--sp, 0) * 100%); background: var(--hm-accent); border-radius: inherit; box-shadow: 0 0 12px color-mix(in srgb, var(--hm-accent) 80%, transparent); }
@@ -369,7 +392,7 @@
 .hm-stack__item { position: sticky; top: calc(var(--hm-stack-top, 110px) + var(--i, 0) * 18px); padding-bottom: 7vh; }
 .hm-stack__item:last-child { padding-bottom: 0; }
 .hm-stack__card {
-	position: relative; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); min-height: min(72vh, 620px);
+	position: relative; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); min-height: min(68vh, var(--hm-section-h));
 	overflow: hidden; border: var(--hm-card-border, 1px solid var(--hm-border)); border-radius: var(--hm-radius-xl);
 	background-color: var(--hm-card-bg, var(--hm-surface)); box-shadow: var(--hm-shadow-lg); transform-origin: 50% 0; will-change: transform;
 }
@@ -398,8 +421,8 @@
 .hm-marquee__item { flex: none; font-family: var(--hm-font-heading); font-weight: 800; line-height: 1.25; }
 .hm-marquee--sm { font-size: 1.05rem; }
 .hm-marquee--md { font-size: clamp(1.4rem, 1.1rem + 1.3vw, 2.2rem); }
-.hm-marquee--lg { font-size: clamp(2.2rem, 1.3rem + 4vw, 5.2rem); }
-.hm-marquee--xl { font-size: clamp(3.2rem, 1.6rem + 8.5vw, 10.5rem); }
+.hm-marquee--lg { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.6rem); }
+.hm-marquee--xl { font-size: clamp(2.6rem, 1.4rem + 5vw, 6.5rem); }
 .hm-marquee--muted .hm-marquee__item { opacity: .22; }
 .hm-marquee--alternate .hm-marquee__item:nth-child(4n+3) { opacity: .2; }
 .hm-marquee__sep { flex: none; font-size: .32em; color: var(--hm-accent); opacity: .9; }
@@ -434,7 +457,7 @@
 .hm-stat { position: relative; display: grid; gap: 6px; align-content: start; padding-inline: clamp(16px, 2.6vw, 36px); }
 .hm-stats--plain .hm-stat + .hm-stat { border-inline-start: 1px solid var(--hm-border); }
 .hm-stats--plain .hm-stat:first-child { padding-inline-start: 0; }
-.hm-stat__num { display: flex; align-items: baseline; gap: 2px; font-size: clamp(2.4rem, 1.6rem + 2.6vw, 4rem); font-weight: 800; line-height: 1.05; direction: ltr; justify-content: flex-end; unicode-bidi: isolate; }
+.hm-stat__num { display: flex; align-items: baseline; gap: 2px; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); font-weight: 800; line-height: 1.05; direction: ltr; justify-content: flex-end; unicode-bidi: isolate; }
 [dir="ltr"] .hm-stat__num { justify-content: flex-start; }
 .hm-stat__affix { font-size: .5em; color: var(--hm-accent-ink); }
 .hm-stat__label { font-size: .98rem; font-weight: 600; }
@@ -589,7 +612,8 @@
 .hm-quote__pin { display: none; }
 .hm-quote__mark { color: var(--hm-accent-ink); }
 .hm-quote__mark svg { width: 34px; height: 34px; }
-.hm-quote__stars { color: #f5a000; letter-spacing: 2px; font-size: .9rem; }
+.hm-quote__stars { color: var(--hm-star, #9c5d00); letter-spacing: 2px; font-size: .9rem; }
+[data-hm-theme="dark"] .hm-quote__stars { --hm-star: #f5a524; }
 .hm-quote__text { margin: 0; padding: 0; border: 0; font-size: 1.04rem; line-height: 2; color: var(--hm-fg); }
 .hm-quote__who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
 .hm-quote__who b { display: block; font-size: .95rem; }
@@ -774,7 +798,7 @@
 /* ==========================================================================
    Depth scroll (zoom tunnel)
    ========================================================================== */
-.hm-depth { position: relative; height: var(--hm-depth-len, 400vh); }
+.hm-depth { position: relative; height: var(--hm-depth-len, 260vh); }
 .hm-depth__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; perspective: 1200px; }
 .hm-depth__glow {
 	position: absolute; left: 50%; top: 50%; width: 120vmax; height: 120vmax; border-radius: 50%; pointer-events: none;
@@ -813,7 +837,7 @@
 /* ==========================================================================
    Floating elements
    ========================================================================== */
-.hm-flow { position: relative; min-height: 110vh; display: grid; place-items: center; overflow: hidden; isolation: isolate; padding-block: var(--hm-space-section); }
+.hm-flow { position: relative; min-height: min(100svh, calc(var(--hm-section-h) + 140px)); display: grid; place-items: center; overflow: hidden; isolation: isolate; padding-block: var(--hm-space-section); }
 .hm-flow__field { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .hm-flow__item { position: absolute; left: var(--x); top: var(--y); width: var(--w); margin-left: calc(var(--w) / -2); translate: 0 -50%; transform: rotate(var(--r)); will-change: transform; z-index: calc(10 + var(--d) * 10); }
 [dir="rtl"] .hm-flow__item { left: auto; right: var(--x); margin-left: 0; margin-right: calc(var(--w) / -2); }

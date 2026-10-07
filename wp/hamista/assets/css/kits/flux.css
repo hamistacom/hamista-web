@@ -73,7 +73,7 @@
 .hm-kit-flux .hm-eyebrow::before { width: 8px; height: 8px; border-radius: 50%; background: var(--hm-accent); opacity: 1; box-shadow: 0 0 12px 2px rgba(255, 138, 31, .7); }
 
 /* ---------- Buttons: a lit pill; the halo grows on hover ---------- */
-.hm-kit-flux .hm-btn { background: var(--hm-sheen); background-size: 160% 100%; background-position: 0 0; color: var(--hm-accent-fg); font-weight: 800; border: 0; transition: background-position .6s var(--hm-ease), box-shadow .4s var(--hm-ease), transform .2s var(--hm-ease); }
+.hm-kit-flux .hm-btn { background: var(--hm-sheen) var(--hm-accent); background-size: 160% 100%; background-position: 0 0; color: var(--hm-accent-fg); font-weight: 800; border: 0; transition: background-position .6s var(--hm-ease), box-shadow .4s var(--hm-ease), transform .2s var(--hm-ease); }
 .hm-kit-flux .hm-btn:hover { color: var(--hm-accent-fg); background-position: 100% 0; box-shadow: var(--hm-glow); transform: translateY(-2px); }
 .hm-kit-flux .hm-btn:active { transform: scale(.97); }
 .hm-kit-flux .hm-btn:focus-visible { box-shadow: var(--hm-focus); }

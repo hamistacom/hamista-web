@@ -105,14 +105,14 @@ const homeA = [
 		image: img('hero'),
 		start_scale: px(0.34),
 		radius: px(48),
-		length: px(3.4),
+		length: px(2.2),
 		o_title: 'هر پروژه با یک\n*سؤال ساده* شروع می‌شود.',
 		o_desc: 'حرکت قرار است چه چیزی را به بیننده بفهماند؟ اگر جوابی نداشته باشد، حرکت نمی‌دهیم.',
 		btn1_text: 'نمونه‌کارها', btn1_link: link('#work'), btn1_style: 'inverse',
 	}),
 	L.depth({
 		layout: 'card',
-		length: px(1.1),
+		length: px(0.7),
 		scenes: [
 			{ image: img('glass-1'), label: '۰۱ — کشف', title: 'ابتدا *گوش می‌دهیم*', text: 'یک هفته با تیم شما و مخاطبانتان حرف می‌زنیم تا بدانیم حرکت باید چه چیزی را روشن کند.' },
 			{ image: img('orb-2'), label: '۰۲ — طراحی', title: 'بعد *حرکت* را می‌کشیم', text: 'استوری‌بورد، زمان‌بندی و سبک حرکتی را پیش از ساخت تأیید می‌کنید.' },
@@ -140,7 +140,7 @@ const homeA = [
 		image: img('ribbon-1'),
 		start_scale: px(0.4),
 		radius: px(40),
-		length: px(3),
+		length: px(2.2),
 		o_title: 'صفحه‌ای که *نفس می‌کشد*.',
 		o_desc: 'پس از زوم‌اوت، کارت کوچک می‌شود و جای خود را به بخش بعد می‌دهد.',
 		btn1_text: 'خدمات ما', btn1_link: link('#services'), btn1_style: 'inverse',
@@ -235,7 +235,7 @@ const homeB = [
 	}),
 	L.depth({
 		layout: 'cover',
-		length: px(1),
+		length: px(0.7),
 		scenes: [
 			{ image: img('ribbon-1'), label: '۰۱', title: 'حرکت، *توجه* می‌آورد', text: 'در یک صفحه‌ی شلوغ، چشم اول به چیزی می‌رود که حرکت دارد.' },
 			{ image: img('orb-3'), label: '۰۲', title: 'حرکت، *معنا* می‌رساند', text: 'یک انتقال درست، هزار توضیح را کوتاه می‌کند.' },
@@ -495,8 +495,8 @@ module.exports = {
 		site: { title: 'سیال', tagline: 'استودیوی موشن و تجربه‌ی تعاملی' },
 		images, alts, terms, posts, products,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent-light' }) },
-			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent-light' }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },
+			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent' }) },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'contact', title: 'تماس با ما', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 			{ key: 'blog', title: 'وبلاگ', slug: 'blog', content: '' },

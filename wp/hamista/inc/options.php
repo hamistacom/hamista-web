@@ -25,7 +25,11 @@ function hamista_option_defaults() {
 			array(
 				// Style.
 				'kit'                   => 'spark',
-				'container_width'       => 1320,
+				'container_width'       => 1150,
+				'density'               => 'compact',
+				'section_height'        => 500,
+				'sound_enabled'         => false,
+				'ui_persian'            => true,
 				'color_scheme'          => 'light',
 				'dark_toggle'           => true,
 				'accent'                => '',

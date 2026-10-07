@@ -122,4 +122,5 @@ T = {
     "Call us": "تماس با ما",
     "Chat on WhatsApp": "گفت~وگو در واتس~اپ",
     "Flux — cinematic, glass and glow": "سیال — سینمایی، شیشه و درخشش",
+    "Interface sounds": "صداهای رابط کاربری",
 }

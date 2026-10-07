@@ -36,24 +36,33 @@
 	--hm-font-num: "Digits", var(--hm-font-body);
 	--hm-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 	--hm-fs-base: 16px;
-	--hm-lh-body: 1.9;
+	--hm-lh-body: 1.85;
 	--hm-lh-heading: 1.25;
 	--hm-fw-heading: 800;
 	--hm-fw-bold: 700;
-	--hm-fs-h1: clamp(2.4rem, 1.6rem + 3.4vw, 4.4rem);
-	--hm-fs-h2: clamp(1.9rem, 1.4rem + 2vw, 3rem);
-	--hm-fs-h3: clamp(1.35rem, 1.15rem + .8vw, 1.75rem);
-	--hm-fs-h4: 1.25rem;
+	/* Laptop-first scale: a 1366–1536px screen shows a full section without scrolling. */
+	--hm-fs-display: clamp(2.2rem, 1.5rem + 2.4vw, 3.6rem);
+	--hm-fs-h1: clamp(2rem, 1.4rem + 2.1vw, 3.25rem);
+	--hm-fs-h2: clamp(1.6rem, 1.2rem + 1.35vw, 2.4rem);
+	--hm-fs-h3: clamp(1.2rem, 1.05rem + .5vw, 1.5rem);
+	--hm-fs-h4: 1.2rem;
 	--hm-fs-h5: 1.1rem;
 	--hm-fs-h6: 1rem;
 	--hm-fs-small: .875rem;
-	--hm-fs-lead: clamp(1.05rem, 1rem + .3vw, 1.2rem);
+	--hm-fs-lead: clamp(1rem, .96rem + .2vw, 1.1rem);
 
-	--hm-container: 1320px;
-	--hm-container-narrow: 760px;
-	--hm-gutter: clamp(16px, 3.2vw, 32px);
-	--hm-space-section: clamp(72px, 9vw, 140px);
-	--hm-header-h: 76px;
+	--hm-container: 1150px;
+	--hm-container-narrow: 720px;
+	--hm-gutter: clamp(16px, 3vw, 28px);
+	/* Density (Hamista → Layout) rescales every vertical gap from this one value. */
+	--hm-density: 1;
+	--hm-space-section: calc(clamp(44px, 5.6vw, 84px) * var(--hm-density));
+	--hm-space-block: calc(clamp(20px, 2.4vw, 32px) * var(--hm-density));
+	--hm-header-h: 68px;
+	/* Section heights: the hero and pinned stages stay inside a laptop screen. */
+	--hm-section-h: 500px;
+	--hm-hero-h: min(calc(100svh - var(--hm-header-h)), calc(var(--hm-section-h) + 60px));
+	--hm-stage-h: 100svh;
 
 	--hm-radius-sm: 8px;
 	--hm-radius-md: 12px;
@@ -171,7 +180,7 @@
 .hm-prose { font-size: 1.075rem; line-height: 2; overflow-wrap: break-word; }
 .hm-prose > * { margin-block: 0 1.3em; }
 .hm-prose > :where(h2, h3, h4) { margin-top: 2em; scroll-margin-top: calc(var(--hm-header-h) + 24px); }
-.hm-prose :where(a) { color: var(--hm-accent-ink); text-decoration: underline; }
+.hm-prose :where(a:not(.wp-block-button__link, .wp-element-button, .button, .hm-btn)) { color: var(--hm-accent-ink); text-decoration: underline; }
 .hm-prose :where(ul, ol) { padding-inline-start: 1.4em; }
 .hm-prose :where(li) { margin-bottom: .45em; }
 .hm-prose :where(li)::marker { color: var(--hm-accent); }
@@ -378,6 +387,9 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 .hm-menu-toggle { display: none; }
 .hm-theme-toggle .hm-i-moon, [data-hm-theme="dark"] .hm-theme-toggle .hm-i-sun { display: none; }
 [data-hm-theme="dark"] .hm-theme-toggle .hm-i-moon { display: block; }
+.hm-sound-toggle .hm-i-sound, .hm-sound-toggle[aria-pressed="true"] .hm-i-mute { display: none; }
+.hm-sound-toggle[aria-pressed="true"] .hm-i-sound { display: block; }
+.hm-sound-toggle[aria-pressed="true"] { color: var(--hm-accent-ink); }
 
 .hm-progress {
 	position: fixed; inset-inline: 0; top: var(--wp-admin--admin-bar--height, 0px); z-index: 95; height: 3px;
