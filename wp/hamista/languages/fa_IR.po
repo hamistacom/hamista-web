@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T19:35:44+00:00\n"
-"PO-Revision-Date: 2026-10-07 19:35+0000\n"
+"POT-Creation-Date: 2026-10-07T19:55:26+00:00\n"
+"PO-Revision-Date: 2026-10-07 19:55+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -138,7 +138,11 @@ msgstr "مرجان — سبزآبی و مرجانی، پنل‌های ملایم
 msgid "Stone — limestone, charcoal and bronze"
 msgstr "سنگ — سنگ آهکی، زغالی و مفرغ"
 
-#: inc/assets.php:85
+#: inc/assets.php:48
+msgid "Counsel — ivory, navy and oxblood"
+msgstr "وکالت — عاجی، سرمه‌ای و زرشکی"
+
+#: inc/assets.php:86
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 
@@ -422,28 +426,28 @@ msgstr "سابقه"
 msgid "Where"
 msgstr "محل"
 
-#: single-hm_expert.php:112
+#: single-hm_expert.php:113
 msgid "About"
 msgstr "درباره"
 
-#: single-hm_expert.php:118
+#: single-hm_expert.php:119
 msgid "Weekly hours"
 msgstr "ساعت‌های کاری هفته"
 
 #. translators: %s: e.g. "doctors", "tables"
-#: single-hm_expert.php:129
+#: single-hm_expert.php:130
 #, php-format
 msgid "All %s"
 msgstr "همه‌ی %s"
 
 #. translators: %s: item name, e.g. "Table 4"
-#: single-hm_expert.php:142
+#: single-hm_expert.php:143
 #, php-format
 msgid "Book %s"
 msgstr "رزرو %s"
 
 #. translators: %s: person's name
-#: single-hm_expert.php:144
+#: single-hm_expert.php:145
 #, php-format
 msgid "Book an appointment with %s"
 msgstr "رزرو نوبت با %s"

@@ -81,7 +81,8 @@ if ( ! hamista_elementor_location( 'single' ) ) :
 									)
 								);
 							} else {
-								echo '<span class="hm-expert__blank">' . hamista_get_icon( $hamista_place ? 'grid' : 'user', array( 'size' => 42 ) ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG.
+								$hamista_blank = class_exists( '\\Hamista\\Core\\Booking\\Booking' ) ? \Hamista\Core\Booking\Booking::monogram( get_the_ID(), 42 ) : hamista_get_icon( $hamista_place ? 'grid' : 'user', array( 'size' => 42 ) );
+								echo '<span class="hm-expert__blank">' . $hamista_blank . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped initial or static SVG.
 							}
 							?>
 						</figure>

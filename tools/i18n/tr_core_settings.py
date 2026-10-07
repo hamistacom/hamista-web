@@ -325,4 +325,6 @@ T = {
     "Warm white, deep teal and coral": "سفید گرم، سبزآبی تیره و مرجانی",
     "Stone": "سنگ",
     "Limestone, charcoal and bronze": "سنگ آهکی، زغالی و مفرغ",
+    "Counsel": "وکالت",
+    "Ivory, navy and oxblood": "عاجی، سرمه~ای و زرشکی",
 }

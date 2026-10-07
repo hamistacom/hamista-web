@@ -45,6 +45,7 @@ function hamista_kits() {
 			'aurum'      => __( 'Aurum — black, ivory and brushed gold', 'hamista' ),
 			'coral'      => __( 'Coral — teal and coral, soft panels', 'hamista' ),
 			'stone'      => __( 'Stone — limestone, charcoal and bronze', 'hamista' ),
+			'counsel'    => __( 'Counsel — ivory, navy and oxblood', 'hamista' ),
 		)
 	);
 }
@@ -254,6 +255,7 @@ function hamista_theme_color_meta() {
 		'aurum'      => '#070707',
 		'coral'      => '#f6f4ef',
 		'stone'      => '#efebe4',
+		'counsel'    => '#f4f1ea',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

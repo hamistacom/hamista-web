@@ -37,6 +37,7 @@ class Importer {
 		'media'    => 3,
 		'posts'    => 6,
 		'projects' => 6,
+		'experts'  => 6,
 		'products' => 4,
 		'content'  => 2,
 	);
@@ -50,6 +51,7 @@ class Importer {
 		'terms'     => 48,
 		'posts'     => 55,
 		'projects'  => 60,
+		'experts'   => 63,
 		'products'  => 68,
 		'pages'     => 71,
 		'content'   => 86,
@@ -282,6 +284,7 @@ class Importer {
 			'terms'     => ! $opt['content'],
 			'posts'     => ! $opt['content'],
 			'projects'  => ! $opt['content'] || ! post_type_exists( 'hm_portfolio' ),
+			'experts'   => ! $opt['content'] || ! post_type_exists( 'hm_expert' ),
 			'products'  => ! $opt['content'] || ! class_exists( 'WooCommerce' ),
 			'pages'     => ! $opt['content'],
 			'content'   => ! $opt['content'],
@@ -357,6 +360,7 @@ class Importer {
 			'terms'     => __( 'Creating categories…', 'hamista-core' ),
 			'posts'     => __( 'Adding blog posts…', 'hamista-core' ),
 			'projects'  => __( 'Adding portfolio projects…', 'hamista-core' ),
+			'experts'   => __( 'Adding profiles and booking hours…', 'hamista-core' ),
 			'products'  => __( 'Adding products…', 'hamista-core' ),
 			'pages'     => __( 'Creating pages…', 'hamista-core' ),
 			'content'   => __( 'Building pages with Elementor…', 'hamista-core' ),
@@ -386,6 +390,21 @@ class Importer {
 			'products' => array(),
 			'pages'    => array(),
 		);
+		// Bookable profiles need the booking module (its post type and practice
+		// areas) from the next request on, before categories are created.
+		if ( ! empty( $this->content['experts'] ) && $this->state['options']['content'] && class_exists( '\Hamista\Core\Settings\Settings' ) ) {
+			$booking = array( 'booking_enabled' => true );
+			foreach ( (array) ( $this->content['options'] ?? array() ) as $key => $value ) {
+				if ( in_array( $key, array( 'booking_type', 'booking_kind', 'booking_label_one', 'booking_label_many', 'booking_label_group_one', 'booking_label_group_many' ), true ) ) {
+					$booking[ $key ] = $value;
+				}
+			}
+			Settings::save( $booking );
+			// Make the post type available within this request too.
+			if ( ! post_type_exists( 'hm_expert' ) && class_exists( '\\Hamista\\Core\\Booking\\Booking' ) ) {
+				\Hamista\Core\Booking\Booking::register_post_types();
+			}
+		}
 		return false;
 	}
 
@@ -587,6 +606,70 @@ class Importer {
 			}
 			if ( $ids ) {
 				wp_set_object_terms( $id, $ids, 'hm_portfolio_cat' );
+			}
+		}
+		return $batch + 1 < $total ? $total : false;
+	}
+
+	/**
+	 * Bookable profiles (doctors, lawyers, rooms…): details, weekly hours and groups.
+	 *
+	 * @param int $batch Batch.
+	 * @return int|false
+	 */
+	private function step_experts( $batch ) {
+		$experts = (array) ( $this->content['experts'] ?? array() );
+		$size    = self::BATCH['experts'];
+		$total   = (int) ceil( count( $experts ) / $size );
+		$fields  = array( 'role', 'license', 'experience', 'fee', 'location' );
+
+		foreach ( array_slice( $experts, $batch * $size, $size ) as $i => $expert ) {
+			$id = $this->upsert(
+				'hm_expert',
+				$expert['key'],
+				array(
+					'post_title'   => $expert['title'],
+					'post_name'    => $expert['slug'] ?? '',
+					'post_excerpt' => $expert['excerpt'] ?? '',
+					'post_content' => $this->replace_string( $expert['content'] ?? '' ),
+					'post_status'  => 'publish',
+					'menu_order'   => (int) ( $expert['order'] ?? ( $batch * $size + $i ) ),
+				)
+			);
+			if ( ! $id ) {
+				continue;
+			}
+			$this->state['map']['experts'][ $expert['key'] ] = $id;
+			if ( ! empty( $expert['image'] ) && $this->media_id( $expert['image'] ) ) {
+				set_post_thumbnail( $id, $this->media_id( $expert['image'] ) );
+			}
+			foreach ( $fields as $field ) {
+				if ( isset( $expert['meta'][ $field ] ) ) {
+					update_post_meta( $id, '_hm_' . $field, sanitize_text_field( $expert['meta'][ $field ] ) );
+				}
+			}
+			update_post_meta( $id, '_hm_slot', (int) ( $expert['slot'] ?? 30 ) );
+			update_post_meta( $id, '_hm_capacity', max( 1, (int) ( $expert['capacity'] ?? 1 ) ) );
+			update_post_meta( $id, '_hm_bookable', isset( $expert['bookable'] ) && ! $expert['bookable'] ? '0' : '1' );
+			$schedule = array();
+			foreach ( (array) ( $expert['schedule'] ?? array() ) as $day => $row ) {
+				$schedule[ (int) $day ] = array(
+					'on'    => ! empty( $row['on'] ),
+					'from'  => sanitize_text_field( $row['from'] ?? '' ),
+					'to'    => sanitize_text_field( $row['to'] ?? '' ),
+					'from2' => sanitize_text_field( $row['from2'] ?? '' ),
+					'to2'   => sanitize_text_field( $row['to2'] ?? '' ),
+				);
+			}
+			update_post_meta( $id, '_hm_schedule', $schedule );
+			$ids = array();
+			foreach ( (array) ( $expert['terms'] ?? array() ) as $term_key ) {
+				if ( isset( $this->state['map']['terms'][ $term_key ] ) ) {
+					$ids[] = (int) $this->state['map']['terms'][ $term_key ];
+				}
+			}
+			if ( $ids ) {
+				wp_set_object_terms( $id, $ids, 'hm_service' );
 			}
 		}
 		return $batch + 1 < $total ? $total : false;
@@ -1268,7 +1351,8 @@ class Importer {
 	 * Replace {{tokens}} in a string.
 	 *
 	 * {{home}} {{blog}} {{shop}} {{cart}} {{account}} {{page:key}} {{post:key}}
-	 * {{product:key}} {{project:key}} {{projects}} {{img:key}} {{imgid:key}}
+	 * {{product:key}} {{project:key}} {{projects}} {{expert:key}} {{experts}}
+	 * {{pageid:key}} {{img:key}} {{imgid:key}}
 	 * {{term:key}} {{termlink:key}} {{ids:key,key}} (product IDs, comma separated)
 	 *
 	 * @param string $text Text.
@@ -1302,6 +1386,13 @@ class Importer {
 						return isset( $map['posts'][ $key ] ) ? get_permalink( $map['posts'][ $key ] ) : home_url( '/' );
 					case 'product':
 						return isset( $map['products'][ $key ] ) ? get_permalink( $map['products'][ $key ] ) : home_url( '/' );
+					case 'pageid':
+						return (string) ( $map['pages'][ $key ] ?? 0 );
+					case 'expert':
+						return isset( $map['experts'][ $key ] ) ? get_permalink( $map['experts'][ $key ] ) : home_url( '/' );
+					case 'experts':
+						$archive = post_type_exists( 'hm_expert' ) ? get_post_type_archive_link( 'hm_expert' ) : '';
+						return $archive ? $archive : home_url( '/' );
 					case 'project':
 						return isset( $map['projects'][ $key ] ) ? get_permalink( $map['projects'][ $key ] ) : home_url( '/' );
 					case 'projects':

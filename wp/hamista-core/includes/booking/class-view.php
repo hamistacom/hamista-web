@@ -292,7 +292,7 @@ class View {
 												'loading' => 'lazy',
 											)
 										);
-										echo $thumb ? $thumb : hamista_core_icon( 'stethoscope', array( 'size' => 22 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core markup / static SVG.
+										echo $thumb ? $thumb : Booking::monogram( $expert->ID, 22 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core markup / escaped initial.
 										?>
 									</span>
 									<span class="hm-book__pick-text">

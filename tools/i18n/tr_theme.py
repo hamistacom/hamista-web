@@ -169,4 +169,5 @@ T = {
     "Aurum — black, ivory and brushed gold": "زر — سیاه، عاجی و طلای مات",
     "Coral — teal and coral, soft panels": "مرجان — سبزآبی و مرجانی، پنل~های ملایم",
     "Stone — limestone, charcoal and bronze": "سنگ — سنگ آهکی، زغالی و مفرغ",
+    "Counsel — ivory, navy and oxblood": "وکالت — عاجی، سرمه~ای و زرشکی",
 }

@@ -285,3 +285,9 @@
 	.hm-appt__cancel:hover { color: var(--hm-danger, #a52a1f); }
 	.hm-expert__book.hm-btn:hover { color: var(--hm-accent-ink, var(--hm-fg)); transform: none; }
 }
+
+/* Monogram in place of a missing photo. */
+.hm-mono { font-family: var(--hm-font-heading); font-weight: var(--hm-fw-heading, 700); line-height: 1; color: var(--hm-accent-ink, currentColor); }
+.hm-expert__blank .hm-mono { font-size: clamp(3.2rem, 2.4rem + 3vw, 5.4rem); opacity: .9; }
+.hm-expert__blank:has(.hm-mono) { background: linear-gradient(160deg, var(--hm-accent-soft, transparent), transparent 70%); }
+.hm-book__avatar .hm-mono { font-size: 1.15rem; }

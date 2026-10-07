@@ -33,25 +33,27 @@ A full Persian guide is in `guide-fa.md`. This page is the short English version
 
 | Demo | Id / style kit | Character |
 |---|---|---|
+| سازه (Sazeh) | `sazeh` / `stone` | architecture and interior studio; complete site, 14 pages, 8 portfolio projects |
+| دادگر (Dadgar) | `dadgar` / `counsel` | law firm with online consultation booking; complete site, 16 pages, 6 lawyers |
+| ره‌نورد (Rahnavard) | `rahnavard` / `voyage` | travel agency, cinematic slider |
+| پروازیار (Parvazyar) | `parvazyar` / `azure` | flight tickets, search over clouds |
+| خانه‌ی حکمت (Hekmat) | `hekmat` / `ink` | reading circles, astrolabe and calligraphy |
+| زرین‌بال (Zarrinbal) | `zarrinbal` / `aurum` | private aviation, black and gold |
+| رشد (Roshd) | `roshd` / `coral` | management consulting, bento panels |
 | جرقه (Spark) | `spark` | editorial, calm, large type |
 | تپش (Pulse) | `agency` / `pulse` | colourful digital-marketing agency |
 | صنایع هامون (Hamoon Industries) | `industrial` | skeuomorphic control-panel look |
 | شهدینه (Shahdineh) | `honey` | natural honey shop (needs WooCommerce) |
 | کوچ (Kooch) | `nomad` | modern organic nomadic products (needs WooCommerce) |
-| سیال (Flux) | `flux` | night-first motion studio |
+| سیال (Sayal) | `flux` | motion studio; graphite, ivory and ember |
 
-Each demo ships two home-page models, About, Contact, blog, a sample post, shop and a sample product — all built with Elementor and Hamista widgets, with light and dark modes. Imagery is original and bundled; nothing is fetched from the internet.
+Each demo is built with Elementor and Hamista widgets, with light and dark modes. The complete-site demos also ship a page per service or practice area, portfolio projects or bookable profiles, FAQ, careers and contact. Imagery is original and bundled; nothing is fetched from the internet.
 
 ## Fonts
 
-Yekan Bakh and Digits are supported, but their files are licensed separately and are **not** bundled. Drop your `.woff2` files into:
+Ten Persian families are bundled: IRANYekan, IRANSansX, Peyda, Pinar, Doran, Ravagh, Lahzeh, Modam, Hamrah and Gramophone. In **Hamista → Typography → Font library** switch any family or weight on or off; a family that is off leaves every font menu, Elementor's included, and is never downloaded. Pages load only the families and weights they use.
 
-```
-wp-content/themes/hamista-child/assets/fonts/yekan-bakh/
-wp-content/themes/hamista-child/assets/fonts/digits/
-```
-
-The weight is read from each file name (`YekanBakhFaNum-Bold.woff2` → 700). Or upload them in **Hamista → Typography**. Until then the bundled Vazirmatn (OFL) is used. Nothing is loaded from Google.
+Your own fonts: upload them under **Hamista → Typography → Your own fonts**. For Yekan Bakh and Digits you can also drop `.woff2` files into `wp-content/themes/hamista-child/assets/fonts/yekan-bakh/` or `…/digits/`; the weight is read from each file name. Nothing is loaded from Google.
 
 ## Settings
 

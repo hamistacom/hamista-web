@@ -31,6 +31,10 @@
 - Scroll effects on any element (Advanced → Hamista Motion): scroll zoom (zoom in, zoom out, open out to full width, close into a card, fly through), card motions for the items inside a container (rise in turn, flip up, deal out from a pile, close in, lean with the scroll), page colour that changes with each section, and a light line drawn down the margins with the scroll. The light line can also run along a whole page from Page settings. Loaded only on pages that use them.
 - New demo: Sazeh (سازه), an architecture and interior design studio built as a complete site: two home pages, studio, services with a page for each of four services, projects (eight portfolio projects with details), process, journal (six posts), careers, FAQ and contact. Light-and-shadow photography of plaster, arches and stairs; a bronze light line, sections that turn the page charcoal, and images that open out to full width as they scroll.
 - Demo import: portfolio projects with their details and categories, and child pages (a service under Services).
+- New demo: Dadgar (دادگر), a law firm built as a complete site with online consultation booking: two home pages, the firm, practice areas with a page for each of five areas, six lawyers with profiles and weekly hours, booking, fees, insights (six articles), careers, FAQ and contact. Photography of a law library, marble, a typed letter and office light; a gilt light line and Doran headings.
+- Demo import: bookable profiles (doctors, lawyers, rooms) with their details, weekly hours and groups; the booking module is switched on for demos that include them. Tokens for profile links and page IDs.
+- Demo build fails on unknown widget names.
+- Booking: profiles without a photo show the person's initial (titles such as Dr skipped) instead of a generic icon, on cards, profile pages and in the booking form.
 - Icons have Persian names in every icon picker; new icons for house, set square, arch, stairs, window and tree.
 - Card motions pick the cards themselves (features, posts, plans) rather than a section's header and grid.
 - Pricing: the monthly/yearly switch shows only when a plan has a different second price.
@@ -49,6 +53,7 @@
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.
+- New style kit: Counsel. Ivory, deep navy and oxblood, classical headings and small square buttons.
 - New style kit: Stone. Limestone, charcoal and bronze, thin headings, square buttons and hairlines.
 - Flux kit redrawn: graphite, ivory and a single ember accent, square corners and hairlines instead of glass and glow.
 - WooCommerce shows its most visible front-end strings (add to cart, cart, checkout, notices, sorting, pagination) in Persian even before its own language pack is downloaded. Installed translations always take precedence.

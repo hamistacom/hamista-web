@@ -142,6 +142,11 @@ return ( static function () {
 							'desc'  => __( 'Limestone, charcoal and bronze', 'hamista-core' ),
 							'image' => $img . 'kit-stone.svg',
 						),
+						'counsel'    => array(
+							'label' => __( 'Counsel', 'hamista-core' ),
+							'desc'  => __( 'Ivory, navy and oxblood', 'hamista-core' ),
+							'image' => $img . 'kit-counsel.svg',
+						),
 					),
 				),
 				'container_width'   => array(

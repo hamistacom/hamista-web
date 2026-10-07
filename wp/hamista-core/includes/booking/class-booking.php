@@ -574,6 +574,35 @@ class Booking {
 	}
 
 	/**
+	 * Stand-in for a missing photo: the person's initial (titles such as
+	 * Dr or Eng. skipped), or an icon for rooms and other places.
+	 *
+	 * @param int $id   Expert ID.
+	 * @param int $size Icon size for places.
+	 * @return string HTML.
+	 */
+	public static function monogram( $id, $size = 34 ) {
+		if ( 'place' === self::kind() ) {
+			return hamista_core_icon( 'layers', array( 'size' => $size ) );
+		}
+		$name   = trim( wp_strip_all_tags( get_the_title( $id ) ) );
+		$titles = array( 'دکتر', 'مهندس', 'استاد', 'خانم', 'آقای', 'سرکار', 'جناب', 'Dr.', 'Dr', 'Mr.', 'Mrs.', 'Ms.' );
+		$words  = (array) preg_split( '/\s+/u', $name );
+		$first  = (string) reset( $words );
+		foreach ( $words as $word ) {
+			if ( ! in_array( $word, $titles, true ) ) {
+				$first = (string) $word;
+				break;
+			}
+		}
+		$initial = function_exists( 'mb_substr' ) ? mb_substr( $first, 0, 1 ) : substr( $first, 0, 1 );
+		if ( '' === $initial ) {
+			return hamista_core_icon( 'user', array( 'size' => $size ) );
+		}
+		return '<span class="hm-mono" aria-hidden="true">' . esc_html( $initial ) . '</span>';
+	}
+
+	/**
 	 * Services (or specialties, practice areas…) of an expert.
 	 *
 	 * @param int $id Expert ID.
@@ -632,7 +661,7 @@ class Booking {
 			)
 		);
 		$html  = '<article class="hm-expert hm-expert--' . esc_attr( $args['style'] ) . ( 'place' === self::kind() ? ' hm-expert--place' : '' ) . '" data-terms="' . esc_attr( implode( ' ', $slugs ) ) . '">';
-		$html .= '<a class="hm-expert__media" href="' . esc_url( get_permalink( $id ) ) . '" tabindex="-1" aria-hidden="true">' . ( $photo ? $photo : '<span class="hm-expert__blank">' . hamista_core_icon( 'place' === self::kind() ? 'layers' : 'user', array( 'size' => 34 ) ) . '</span>' ) . '</a>';
+		$html .= '<a class="hm-expert__media" href="' . esc_url( get_permalink( $id ) ) . '" tabindex="-1" aria-hidden="true">' . ( $photo ? $photo : '<span class="hm-expert__blank">' . self::monogram( $id ) . '</span>' ) . '</a>';
 		$html .= '<div class="hm-expert__body">';
 		$html .= '<h3 class="hm-expert__name"><a href="' . esc_url( get_permalink( $id ) ) . '">' . esc_html( get_the_title( $id ) ) . '</a></h3>';
 		$html .= '<p class="hm-expert__role">' . esc_html( $role ? $role : implode( '، ', wp_list_pluck( $terms, 'name' ) ) ) . '</p>';

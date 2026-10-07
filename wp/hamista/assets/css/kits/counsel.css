@@ -1,0 +1,96 @@
+/*!
+ * Hamista style kit — Counsel
+ * Ivory paper, deep navy and oxblood. Classical headings, quiet hairlines and
+ * small, square-cornered buttons: the composure of a good law firm.
+ */
+.hm-kit-counsel {
+	--hm-bg: #f4f1ea;
+	--hm-surface: #fbf9f4;
+	--hm-surface-2: #ebe6db;
+	--hm-sunken: #e2dccf;
+	--hm-fg: #111c2e;
+	--hm-fg-muted: #5c6474;
+	--hm-border: rgba(17, 28, 46, .12);
+	--hm-border-strong: rgba(17, 28, 46, .26);
+	--hm-accent: #7b2d26;
+	--hm-accent-2: #1b2a44;
+	--hm-accent-fg: #ffffff;
+	--hm-accent-ink: #6c2620;
+	--hm-accent-soft: rgba(123, 45, 38, .08);
+	--hm-inv-bg: #0f1a2b;
+	--hm-inv-fg: #f1ece2;
+	--hm-inv-muted: #a5acb9;
+	--hm-gold: #b08d57;
+
+	--hm-radius-sm: 2px;
+	--hm-radius-md: 3px;
+	--hm-radius-lg: 4px;
+	--hm-radius-xl: 6px;
+	--hm-radius-btn: 2px;
+	--hm-fw-heading: 500;
+	--hm-fw-monument: 400;
+	--hm-fw-scrub: 500;
+	--hm-lh-heading: 1.45;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: 0 1px 2px rgba(17, 28, 46, .06);
+	--hm-shadow-lg: 0 24px 50px -30px rgba(17, 28, 46, .35);
+	--hm-card-border: 1px solid var(--hm-border);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 0 18px 40px -28px rgba(17, 28, 46, .4);
+	--hm-ease: cubic-bezier(.22, 1, .36, 1);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-counsel,
+[data-hm-theme="dark"].hm-kit-counsel {
+	--hm-bg: #0c1422;
+	--hm-surface: #121c2e;
+	--hm-surface-2: #182338;
+	--hm-sunken: #080e18;
+	--hm-fg: #ece7dd;
+	--hm-fg-muted: #9aa3b4;
+	--hm-border: rgba(236, 231, 221, .1);
+	--hm-border-strong: rgba(236, 231, 221, .24);
+	--hm-accent: #c2665a;
+	--hm-accent-2: #b08d57;
+	--hm-accent-fg: #0c1422;
+	--hm-accent-ink: #d98a7f;
+	--hm-accent-soft: rgba(194, 102, 90, .12);
+	--hm-inv-bg: #060b14;
+	--hm-shadow-lg: 0 24px 50px -30px rgba(0, 0, 0, .8);
+	color-scheme: dark;
+}
+
+/* Type: classical headings, highlighted words in oxblood. */
+.hm-kit-counsel .hm-hl { color: var(--hm-accent-ink); }
+.hm-kit-counsel .hm-head__desc, .hm-kit-counsel .hm-lead { color: var(--hm-fg-muted); }
+
+/* Section labels: small caps feeling, a short gilt rule. */
+.hm-kit-counsel .hm-eyebrow { color: var(--hm-fg-muted); font-weight: 600; font-size: .8rem; letter-spacing: .04em; }
+.hm-kit-counsel .hm-eyebrow::before { width: 2.2em; height: 1px; background: var(--hm-gold); opacity: 1; }
+
+/* Buttons: navy with ivory text; oxblood on hover. */
+.hm-kit-counsel .hm-btn { font-weight: 600; }
+.hm-kit-counsel .hm-btn--primary, .hm-kit-counsel .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-accent-2); color: #f4f1ea; border-color: var(--hm-accent-2); }
+.hm-kit-counsel .hm-btn--primary:hover { background: var(--hm-accent); border-color: var(--hm-accent); color: #fff; box-shadow: none; }
+[data-hm-theme="dark"] .hm-kit-counsel .hm-btn--primary, [data-hm-theme="dark"].hm-kit-counsel .hm-btn--primary { background: var(--hm-gold); color: #0c1422; border-color: var(--hm-gold); }
+.hm-kit-counsel .hm-btn--secondary, .hm-kit-counsel .hm-btn--ghost { background: transparent; border-color: var(--hm-border-strong); }
+.hm-kit-counsel .hm-btn--secondary:hover, .hm-kit-counsel .hm-btn--ghost:hover { border-color: var(--hm-fg); color: var(--hm-fg); box-shadow: none; }
+.hm-kit-counsel .hm-scheme-inverse .hm-btn--primary { background: var(--hm-gold); color: #0c1422; border-color: var(--hm-gold); }
+
+/* Cards: paper panels with a hairline; a gilt rule appears on hover. */
+.hm-kit-counsel .hm-card, .hm-kit-counsel .hm-feature--card { box-shadow: none; }
+.hm-kit-counsel .hm-feature--card { border-top: 2px solid transparent; transition: border-color var(--hm-dur) var(--hm-ease), box-shadow var(--hm-dur) var(--hm-ease); }
+.hm-kit-counsel .hm-feature--card:hover { transform: none; border-top-color: var(--hm-gold); box-shadow: var(--hm-card-shadow-hover); }
+.hm-kit-counsel .hm-feature__num { color: var(--hm-gold); }
+.hm-kit-counsel .hm-feature__icon { color: var(--hm-accent-ink); }
+.hm-kit-counsel .hm-features--icon-tile .hm-feature__icon { background: var(--hm-accent-soft); color: var(--hm-accent-ink); }
+.hm-kit-counsel .hm-post-card__title, .hm-kit-counsel .hm-pfcard__title { font-weight: 600; }
+
+/* Scroll path: night in navy. */
+.hm-kit-counsel .hm-path { --hm-path-bg: #0a1220; --hm-path-mid: rgba(176, 141, 87, .16); --hm-path-deep: #16223a; }
+
+/* Footer: navy. */
+.hm-kit-counsel .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(241, 236, 226, .1); --hm-border-strong: rgba(241, 236, 226, .22); --hm-surface: rgba(255, 255, 255, .03); --hm-surface-2: rgba(255, 255, 255, .06); --hm-logo-dark: block; --hm-logo-light: none; }
+.hm-kit-counsel .hm-footer__wordmark { color: var(--hm-gold); opacity: .06; }
