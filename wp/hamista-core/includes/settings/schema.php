@@ -122,6 +122,11 @@ return ( static function () {
 							'desc'  => __( 'Cloud white, navy and royal blue', 'hamista-core' ),
 							'image' => $img . 'kit-azure.svg',
 						),
+						'ink'        => array(
+							'label' => __( 'Ink', 'hamista-core' ),
+							'desc'  => __( 'Manuscript blue, parchment and gilt', 'hamista-core' ),
+							'image' => $img . 'kit-ink.svg',
+						),
 					),
 				),
 				'container_width'   => array(

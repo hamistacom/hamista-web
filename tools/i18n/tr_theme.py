@@ -165,4 +165,5 @@ T = {
     "Book %s": "رزرو %s",
     "Voyage — cinematic travel, turquoise": "سفر — گردشگری سینمایی، فیروزه~ای",
     "Azure — navy and royal blue, frosted panels": "لاجورد — سرمه~ای و آبی، پنل~های شیشه~ای",
+    "Ink — manuscript blue, parchment and gilt": "مرکب — آبی نسخه~های خطی، کاغذ کهنه و طلاکاری",
 }

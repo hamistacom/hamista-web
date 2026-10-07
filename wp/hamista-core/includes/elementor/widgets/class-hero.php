@@ -55,6 +55,7 @@ class Hero extends Widget_Base {
 					'center'    => __( 'Centered, media below', 'hamista-core' ),
 					'full'      => __( 'Full-bleed background media', 'hamista-core' ),
 					'editorial' => __( 'Editorial: giant title, media strip', 'hamista-core' ),
+					'monument'  => __( 'Monument: one giant word, an object in front of it', 'hamista-core' ),
 				),
 			)
 		);
@@ -138,6 +139,16 @@ class Hero extends Widget_Base {
 				'type'        => Controls_Manager::MEDIA,
 				'condition'   => array( 'media_type' => array( 'image', 'device', 'video' ) ),
 				'description' => __( 'For video, this is the poster. For the device, the screen image.', 'hamista-core' ),
+			)
+		);
+		$this->add_control(
+			'object_turn',
+			array(
+				'label'        => __( 'Turn the object slowly', 'hamista-core' ),
+				'description'  => __( 'One full turn every three minutes; suits round objects such as an astrolabe or a plate. Stops for visitors who prefer less motion.', 'hamista-core' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'condition'    => array( 'layout' => 'monument' ),
 			)
 		);
 		$this->add_control(
@@ -292,6 +303,11 @@ class Hero extends Widget_Base {
 			$s['title_size'] = $s['title_size'] ? $s['title_size'] : 'xl';
 		}
 
+		if ( 'monument' === $layout ) {
+			$this->render_monument( $s, $classes );
+			return;
+		}
+
 		$text  = $this->render_header( $s, 'hm-hero__head' );
 		$text .= $this->render_actions( $s );
 		$text .= $this->render_stats( $s );
@@ -309,6 +325,56 @@ class Hero extends Widget_Base {
 			}
 			echo '</div>';
 		}
+		if ( $s['hint'] && 'screen' === $s['height'] ) {
+			echo '<span class="hm-hero__hint" aria-hidden="true"><i></i>' . esc_html( $s['hint'] ) . '</span>';
+		}
+		echo '</section>';
+	}
+
+	/**
+	 * Monument: the giant word and the object share one grid cell; the text
+	 * under them follows. The object drifts on scroll and may turn slowly.
+	 *
+	 * @param array $s       Settings.
+	 * @param array $classes Section classes.
+	 */
+	private function render_monument( $s, $classes ) {
+		// The label sits above the stage so the object never covers it.
+		$head = $this->render_header(
+			array_merge(
+				$s,
+				array(
+					'eyebrow' => '',
+					'desc'    => '',
+				)
+			),
+			'hm-hero__head'
+		);
+		$img  = hamista_core_image(
+			$s['image'],
+			'full',
+			array(
+				'loading'       => 'eager',
+				'fetchpriority' => 'high',
+				'sizes'         => '(max-width: 900px) 80vw, 640px',
+				'alt'           => '',
+			)
+		);
+		echo '<section class="' . esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) ) . '">';
+		echo '<div class="hm-container hm-hero__inner">';
+		if ( ! empty( $s['eyebrow'] ) ) {
+			echo '<p class="hm-eyebrow" data-hm-reveal="up">' . esc_html( $s['eyebrow'] ) . '</p>';
+		}
+		echo '<div class="hm-hero__stage">' . $head; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in render_header().
+		if ( $img ) {
+			echo '<div class="hm-hero__object' . ( 'yes' === ( $s['object_turn'] ?? '' ) ? ' is-turning' : '' ) . '" data-hm-parallax="0.12" aria-hidden="true"><div class="hm-hero__object-in">' . $img . '</div></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup from WordPress.
+		}
+		echo '</div>';
+		if ( ! empty( $s['desc'] ) ) {
+			echo '<div class="hm-hero__lede" data-hm-reveal="up" data-hm-delay="0.2">' . wp_kses_post( wpautop( $s['desc'] ) ) . '</div>';
+		}
+		echo $this->render_actions( $s ) . $this->render_stats( $s ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helpers.
+		echo '</div>';
 		if ( $s['hint'] && 'screen' === $s['height'] ) {
 			echo '<span class="hm-hero__hint" aria-hidden="true"><i></i>' . esc_html( $s['hint'] ) . '</span>';
 		}

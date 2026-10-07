@@ -18,6 +18,9 @@
 - New widget: Search box. A row of fields (text with suggestions, list, date in the Persian calendar, count) with options above them and a swap button, sent as parameters to a results page or to the site search. Solid, frosted-glass and outline looks.
 - Features: "feature the first card" (dark fill, two rows tall in a grid). Hero: "columns of light" background detail and properly centred full-bleed layouts.
 - New demo: Parvazyar (پروازیار), a flight-ticket site after the AirLume reference: a sea of clouds at dawn with columns of light, a glass search box over the photo, a featured-card grid, route offers, steps, a night-flight banner, quotes and FAQ.
+- Hero: "monument" layout, one giant word with an object standing in front of it that drifts on scroll and can turn slowly (off for visitors who prefer less motion).
+- New demo: Khane-ye Hekmat (خانه‌ی حکمت), reading circles on Persian thought after the Stoicism reference: the word «حکمت» set in Doran Light behind a line-drawn astrolabe whose plate is a true projection for Isfahan's latitude, a numbered list of circles, typographic medallions in a horizontal scroll, verses in two half-lines, an essay index and a Friday letter. Dark by default, parchment in light mode.
+- Quotes keep their line breaks.
 - Section classes `hm-pull-up` and `hm-room-below` to lay one section over the edge of the one above.
 - Index numbers on cards and steps follow Persian digits.
 - Jalali dates read day, month, year even when the site still has WordPress's English date format, with a Persian comma.
@@ -28,6 +31,7 @@
 - Redesigned WooCommerce account area: full-width layout, icon menu with Persian labels even without WooCommerce's language pack, dashboard with summary cards and latest orders, monogram instead of Gravatar.
 - New style kit: Voyage. Stone white, charcoal and Persian turquoise, small corners and hairlines.
 - New style kit: Azure. Cloud white, deep navy and royal blue.
+- New style kit: Ink. Manuscript blue, parchment and gilt, square corners and hairlines.
 - The light logo now shows over a transparent header on a photo and in dark footers, in every kit.
 - Reading time in Persian digits.
 - IRANYekan is the default body and heading font; the chosen body weight is the one preloaded.

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T15:58:17+00:00\n"
-"PO-Revision-Date: 2026-10-07 15:58+0000\n"
+"POT-Creation-Date: 2026-10-07T16:11:00+00:00\n"
+"PO-Revision-Date: 2026-10-07 16:11+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -122,7 +122,11 @@ msgstr "سفر — گردشگری سینمایی، فیروزه‌ای"
 msgid "Azure — navy and royal blue, frosted panels"
 msgstr "لاجورد — سرمه‌ای و آبی، پنل‌های شیشه‌ای"
 
-#: inc/assets.php:81
+#: inc/assets.php:44
+msgid "Ink — manuscript blue, parchment and gilt"
+msgstr "مرکب — آبی نسخه‌های خطی، کاغذ کهنه و طلاکاری"
+
+#: inc/assets.php:82
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 

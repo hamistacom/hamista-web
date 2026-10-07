@@ -8,11 +8,12 @@ const os = require('os');
 	const b = await chromium.launch();
 	const p = await b.newPage({ deviceScaleFactor: 1, viewport: { width: 900, height: 300 } });
 	const jobs = [];
-	const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['spark', 'agency', 'industrial', 'honey', 'nomad', 'flux', 'rahnavard', 'parvazyar'];
+	const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['spark', 'agency', 'industrial', 'honey', 'nomad', 'flux', 'rahnavard', 'parvazyar', 'hekmat'];
 	for (const id of ids) {
 		for (const dark of [0, 1]) {
 			await p.goto('file://' + path.join(__dirname, 'logos.html') + `?id=${id}&dark=${dark}`);
 			await p.waitForSelector('body[data-ready="1"]');
+			await p.evaluate(() => document.fonts.ready);
 			const png = path.join(os.tmpdir(), `logo-${id}-${dark}.png`);
 			await (await p.$('#logo')).screenshot({ path: png, omitBackground: true });
 			jobs.push([png, path.resolve(__dirname, '../../wp/hamista-core/demos', id, 'images', dark ? 'logo-dark.webp' : 'logo.webp')]);

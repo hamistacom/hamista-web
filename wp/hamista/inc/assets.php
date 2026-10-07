@@ -41,6 +41,7 @@ function hamista_kits() {
 			'nomad'      => __( 'Nomad — handwoven, earthy', 'hamista' ),
 			'voyage'     => __( 'Voyage — cinematic travel, turquoise', 'hamista' ),
 			'azure'      => __( 'Azure — navy and royal blue, frosted panels', 'hamista' ),
+			'ink'        => __( 'Ink — manuscript blue, parchment and gilt', 'hamista' ),
 		)
 	);
 }
@@ -246,6 +247,7 @@ function hamista_theme_color_meta() {
 		'nomad'      => '#f3ede2',
 		'voyage'     => '#f4f2ee',
 		'azure'      => '#f5f7fb',
+		'ink'        => '#0b1220',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

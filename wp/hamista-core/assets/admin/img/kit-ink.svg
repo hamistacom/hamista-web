@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+<rect width="320" height="200" fill="#0b1220"/>
+<g stroke="#d8b46c" stroke-opacity=".5"><path d="M20 30h280"/><path d="M20 182h280"/></g>
+<rect x="268" y="13" width="34" height="8" rx="1" fill="#ece3cf"/>
+<g fill="#ece3cf" fill-opacity=".45"><rect x="150" y="16" width="14" height="3"/><rect x="128" y="16" width="14" height="3"/><rect x="172" y="16" width="14" height="3"/></g>
+<text x="160" y="118" text-anchor="middle" font-family="serif" font-size="74" font-weight="300" fill="#ece3cf">حکمت</text>
+<g stroke="#d8b46c" fill="none"><circle cx="160" cy="98" r="52" stroke-width="1.6"/><circle cx="160" cy="98" r="44" stroke-opacity=".6"/><circle cx="160" cy="98" r="22" stroke-opacity=".5"/><path d="M118 98h84M160 56v84" stroke-opacity=".5"/><path d="m126 128 70-62" stroke-width="3"/></g>
+<rect x="128" y="156" width="64" height="12" fill="#d8b46c"/>
+</svg>

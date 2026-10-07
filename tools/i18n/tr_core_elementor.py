@@ -670,4 +670,7 @@ T = {
     "Position": "جایگاه",
     "Search options": "گزینه~های جست~وجو",
     "Swap the first two fields": "جابه~جا کردن دو فیلد اول",
+    "Monument: one giant word, an object in front of it": "یادمانی: یک واژه~ی بزرگ و شیئی در برابر آن",
+    "Turn the object slowly": "چرخش آرام شیء",
+    "One full turn every three minutes; suits round objects such as an astrolabe or a plate. Stops for visitors who prefer less motion.": "هر سه دقیقه یک دور کامل؛ مناسب اشیای گرد مثل اسطرلاب یا بشقاب. برای بازدیدکنندگانی که حرکت کمتر را ترجیح می~دهند متوقف می~شود.",
 }
