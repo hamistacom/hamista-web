@@ -33,20 +33,21 @@ A full Persian guide is in `guide-fa.md`. This page is the short English version
 
 | Demo | Id / style kit | Character |
 |---|---|---|
-| سازه (Sazeh) | `sazeh` / `stone` | architecture and interior studio; complete site, 14 pages, 8 portfolio projects |
+| سپیدار (Sepidar) | `clinic` / `care` | specialty clinic with online appointments; complete site, 17 pages, 6 departments, 8 doctors |
 | دادگر (Dadgar) | `dadgar` / `counsel` | law firm with online consultation booking; complete site, 16 pages, 6 lawyers |
-| گلینه (Gelineh) | `gelineh` / `clay` | handmade ceramics shop; complete store, 10 products (needs WooCommerce) |
-| ره‌نورد (Rahnavard) | `rahnavard` / `voyage` | travel agency, cinematic slider |
-| پروازیار (Parvazyar) | `parvazyar` / `azure` | flight tickets, search over clouds |
-| خانه‌ی حکمت (Hekmat) | `hekmat` / `ink` | reading circles, astrolabe and calligraphy |
-| زرین‌بال (Zarrinbal) | `zarrinbal` / `aurum` | private aviation, black and gold |
-| رشد (Roshd) | `roshd` / `coral` | management consulting, bento panels |
-| جرقه (Spark) | `spark` | editorial, calm, large type |
-| تپش (Pulse) | `agency` / `pulse` | colourful digital-marketing agency |
-| صنایع هامون (Hamoon Industries) | `industrial` | skeuomorphic control-panel look |
-| شهدینه (Shahdineh) | `honey` | natural honey shop (needs WooCommerce) |
-| کوچ (Kooch) | `nomad` | modern organic nomadic products (needs WooCommerce) |
-| سیال (Sayal) | `flux` | motion studio; graphite, ivory and ember |
+| سازه (Sazeh) | `sazeh` / `stone` | architecture and interior studio; complete site, 14 pages, 8 portfolio projects |
+| صنایع هامون (Hamoon) | `industrial` / `industrial` | industrial manufacturer; complete site, 11 pages |
+| تپش (Tapesh) | `agency` / `studio` | brand and growth studio; complete site, 9 pages, online packages |
+| جرقه (Spark) | `spark` / `paper` | product academy; complete site, 12 pages, 6 courses |
+| سیال (Sayal) | `flux` / `flux` | motion studio; complete site, 9 pages, motion packs shop |
+| رشد (Roshd) | `roshd` / `coral` | management consulting; 8 pages, 3 case studies |
+| گلینه (Gelineh) | `gelineh` / `clay` | ceramics shop; complete store, 10 products (needs WooCommerce) |
+| شهدینه (Shahdineh) | `honey` / `honey` | honey shop; complete store, 12 pages (needs WooCommerce) |
+| کوچ (Kooch) | `nomad` / `nomad` | nomadic goods shop; complete store, 12 pages (needs WooCommerce) |
+| ره‌نورد (Rahnavard) | `rahnavard` / `voyage` | travel agency and private journeys; 7 pages |
+| پروازیار (Parvazyar) | `parvazyar` / `azure` | flight tickets and a travel guide; 7 pages |
+| خانه‌ی حکمت (Hekmat) | `hekmat` / `ink` | reading circles with seasonal membership; 7 pages |
+| زرین‌بال (Zarrinbal) | `zarrinbal` / `aurum` | private aviation, black and gold; 7 pages |
 
 Each demo is built with Elementor and Hamista widgets, with light and dark modes. The complete-site demos also ship a page per service or practice area, portfolio projects or bookable profiles, FAQ, careers and contact. Imagery is original and bundled; nothing is fetched from the internet.
 
