@@ -249,7 +249,7 @@ function hamista_theme_color_meta() {
 		'pulse'      => '#fafafd',
 		'flux'       => '#f5f1ea',
 		'honey'      => '#fbf6ec',
-		'nomad'      => '#f3ede2',
+		'nomad'      => '#f2ece2',
 		'voyage'     => '#f4f2ee',
 		'azure'      => '#f5f7fb',
 		'ink'        => '#0b1220',

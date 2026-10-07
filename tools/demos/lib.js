@@ -178,6 +178,37 @@ const posts = (s = {}) => w('hm-posts', Object.assign({ count: 3, orderby: 'date
 const products = (s = {}) => w('hm-products', Object.assign({ source: 'recent', count: 4, columns: '4' }, s));
 const device = (s) => w('hm-device', s);
 
+/* ---------------- Shop widgets ---------------- */
+
+const SHOP_HEAD = { eyebrow: '', title: '', desc: '', header_align: 'start', title_tag: 'h2', title_size: 'lg', title_reveal: 'words', more_text: '', more_link: link('') };
+
+/** Product carousel or grid: source recent|featured|sale|manual, category slugs, layout carousel|grid. */
+const productCarousel = (s = {}) => w('hm-product-carousel', Object.assign({}, SHOP_HEAD, {
+	source: 'recent', category: [], count: 8, hide_out: '',
+	card_style: 'minimal', card_ratio: '1-1', card_parts: ['badges', 'hover', 'cart'],
+	layout: 'carousel', per_view: 4, per_view_tablet: 2.4, per_view_mobile: 1.3, columns: '4', arrows: 'top', dots: '', autoplay: '',
+}, s));
+/** Product categories by slug: style card|circle|pill. */
+const productCategories = (pick, s = {}) => w('hm-product-categories', Object.assign({}, SHOP_HEAD, {
+	pick, count: pick.length, style: 'card', show_count: 'yes',
+	layout: 'grid', columns: String(Math.min(6, pick.length)), per_view: pick.length, per_view_tablet: 2.4, per_view_mobile: 1.6,
+}, s));
+/** Products in tabs: tabs are { label, source, category, count }. */
+const productTabs = (tabs, s = {}) => w('hm-product-tabs', Object.assign({}, SHOP_HEAD, {
+	tabs_style: 'pills', tabs, card_style: 'minimal', card_ratio: '1-1', card_parts: ['badges', 'hover', 'cart'], layout: 'grid', columns: '4',
+}, s));
+/** A deal with a countdown: ids '{{ids:key}}', layout_type spotlight|cards. */
+const productDeal = (s = {}) => w('hm-product-deal', Object.assign({}, SHOP_HEAD, { source: 'manual', count: 1, layout_type: 'spotlight', ends: 'date', end_date: '2026-12-30 23:59' }, s));
+/** Full-width slider: slides { image, eyebrow, title, text, btn_text, url, tone, position }. */
+const slider = (slides, s = {}) => bleed(w('hm-slider', Object.assign({
+	slides: slides.map(({ url = '', ...sl }) => Object.assign({ image_mobile: {}, tone: 'dark', position: 'start' }, sl, { link: link(url) })),
+	height: { unit: 'vh', size: 86, sizes: [] }, boxed: '', arrows: 'sides', dots: 'bar', autoplay: '6',
+}, s)));
+/** The opening of an inner page: eyebrow, h1 and a short lead. */
+const pageHead = (eyebrow, title, desc, extra = {}) => section(Object.assign({ space: 'md', bottom0: true }, extra), [
+	heading({ eyebrow, title, desc, title_tag: 'h1', title_size: 'xl' }),
+]);
+
 /* ---------------- Content helpers ---------------- */
 
 /** A blog post body from a compact outline: strings are paragraphs; ['h', text], ['ul', [...]], ['q', text, cite], ['img', key, caption]. */
@@ -212,4 +243,5 @@ module.exports = {
 	heading, button, buttons, textEditor, spacer, hero, showcase, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
 	imageReveal, counters, features, searchBox, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,
+	productCarousel, productCategories, productTabs, productDeal, slider, pageHead,
 };

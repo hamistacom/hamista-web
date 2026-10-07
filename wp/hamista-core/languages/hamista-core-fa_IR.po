@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T20:20:56+00:00\n"
-"PO-Revision-Date: 2026-10-07 20:21+0000\n"
+"POT-Creation-Date: 2026-10-07T21:35:47+00:00\n"
+"PO-Revision-Date: 2026-10-07 21:35+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -82,7 +82,7 @@ msgid "Automatic"
 msgstr "خودکار"
 
 #: includes/account/class-panel.php:70
-#: includes/elementor/class-carousel.php:55
+#: includes/elementor/class-carousel.php:57
 #: includes/elementor/widgets/class-experts.php:170
 #: includes/elementor/widgets/class-features.php:166
 #: includes/elementor/widgets/class-portfolio.php:132
@@ -3232,8 +3232,8 @@ msgstr "در حال جمع‌بندی…"
 msgid "Demo content removed. Your own content was not touched."
 msgstr "محتوای دمو حذف شد. به محتوای خودتان دست نخورد."
 
-#: includes/elementor/class-carousel.php:41
-#: includes/elementor/class-carousel.php:45
+#: includes/elementor/class-carousel.php:43
+#: includes/elementor/class-carousel.php:47
 #: includes/elementor/widgets/class-depth.php:109
 #: includes/elementor/widgets/class-experts.php:162
 #: includes/elementor/widgets/class-experts.php:166
@@ -3254,7 +3254,7 @@ msgstr "محتوای دمو حذف شد. به محتوای خودتان دست �
 msgid "Layout"
 msgstr "چیدمان"
 
-#: includes/elementor/class-carousel.php:51
+#: includes/elementor/class-carousel.php:53
 #: includes/elementor/widgets/class-experts.php:171
 #: includes/elementor/widgets/class-portfolio.php:134
 #: includes/elementor/widgets/class-posts.php:124
@@ -3263,7 +3263,7 @@ msgstr "چیدمان"
 msgid "Carousel"
 msgstr "اسلایدر"
 
-#: includes/elementor/class-carousel.php:64
+#: includes/elementor/class-carousel.php:66
 #: includes/elementor/widgets/class-counters.php:128
 #: includes/elementor/widgets/class-experts.php:178
 #: includes/elementor/widgets/class-features.php:187
@@ -3275,45 +3275,45 @@ msgstr "اسلایدر"
 msgid "Columns"
 msgstr "ستون‌ها"
 
-#: includes/elementor/class-carousel.php:101
+#: includes/elementor/class-carousel.php:103
 msgid "Items in view"
 msgstr "تعداد آیتم در دید"
 
-#: includes/elementor/class-carousel.php:102
+#: includes/elementor/class-carousel.php:104
 msgid "Decimals show part of the next item, which tells visitors there is more to swipe."
 msgstr "با عدد اعشاری، بخشی از آیتم بعدی هم دیده می‌شود و بازدیدکننده می‌فهمد که می‌تواند ورق بزند."
 
-#: includes/elementor/class-carousel.php:117
+#: includes/elementor/class-carousel.php:119
 msgid "Gap"
 msgstr "فاصله"
 
-#: includes/elementor/class-carousel.php:136
+#: includes/elementor/class-carousel.php:138
 #: includes/elementor/widgets/class-slider.php:175
 msgid "Arrows"
 msgstr "فلش‌ها"
 
-#: includes/elementor/class-carousel.php:140
+#: includes/elementor/class-carousel.php:142
 #: includes/elementor/class-page-settings.php:76
 #: includes/elementor/class-page-settings.php:88
 #: includes/elementor/widgets/class-slider.php:179
 msgid "Hidden"
 msgstr "پنهان"
 
-#: includes/elementor/class-carousel.php:141
+#: includes/elementor/class-carousel.php:143
 msgid "Beside the heading"
 msgstr "کنار تیتر"
 
-#: includes/elementor/class-carousel.php:142
+#: includes/elementor/class-carousel.php:144
 #: includes/elementor/widgets/class-slider.php:180
 msgid "On the sides"
 msgstr "دو طرف"
 
-#: includes/elementor/class-carousel.php:150
+#: includes/elementor/class-carousel.php:152
 #: includes/elementor/widgets/class-slider.php:187
 msgid "Progress"
 msgstr "نشانگر پیشرفت"
 
-#: includes/elementor/class-carousel.php:154
+#: includes/elementor/class-carousel.php:156
 #: includes/elementor/class-motion.php:60
 #: includes/elementor/class-motion.php:197
 #: includes/elementor/class-motion.php:268
@@ -3331,65 +3331,65 @@ msgstr "نشانگر پیشرفت"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: includes/elementor/class-carousel.php:155
+#: includes/elementor/class-carousel.php:157
 #: includes/elementor/widgets/class-slider.php:192
 msgid "Dots"
 msgstr "نقطه‌ها"
 
-#: includes/elementor/class-carousel.php:156
+#: includes/elementor/class-carousel.php:158
 #: includes/elementor/widgets/class-hscroll.php:162
 #: includes/elementor/widgets/class-slider.php:193
 msgid "Progress bar"
 msgstr "نوار پیشرفت"
 
-#: includes/elementor/class-carousel.php:164
+#: includes/elementor/class-carousel.php:166
 #: includes/elementor/widgets/class-slider.php:200
 msgid "Autoplay"
 msgstr "پخش خودکار"
 
-#: includes/elementor/class-carousel.php:168
+#: includes/elementor/class-carousel.php:170
 #: includes/elementor/widgets/class-slider.php:204
 msgid "Off"
 msgstr "خاموش"
 
-#: includes/elementor/class-carousel.php:169
+#: includes/elementor/class-carousel.php:171
 #: includes/elementor/widgets/class-slider.php:205
 msgid "Every 4 seconds"
 msgstr "هر ۴ ثانیه"
 
-#: includes/elementor/class-carousel.php:170
+#: includes/elementor/class-carousel.php:172
 #: includes/elementor/widgets/class-slider.php:206
 msgid "Every 6 seconds"
 msgstr "هر ۶ ثانیه"
 
-#: includes/elementor/class-carousel.php:171
+#: includes/elementor/class-carousel.php:173
 #: includes/elementor/widgets/class-slider.php:207
 msgid "Every 8 seconds"
 msgstr "هر ۸ ثانیه"
 
-#: includes/elementor/class-carousel.php:173
+#: includes/elementor/class-carousel.php:175
 msgid "Pauses while the pointer is over it, while it is off screen and for visitors who prefer reduced motion."
 msgstr "وقتی نشانگر ماوس رویش است، وقتی در صفحه دیده نمی‌شود و برای کسانی که «کاهش حرکت» را در سیستم‌شان روشن کرده‌اند، متوقف می‌ماند."
 
-#: includes/elementor/class-carousel.php:190
+#: includes/elementor/class-carousel.php:192
 msgid "Previous"
 msgstr "قبلی"
 
-#: includes/elementor/class-carousel.php:191
+#: includes/elementor/class-carousel.php:193
 #: includes/elementor/widgets/class-lead-form.php:339
 #: includes/elementor/widgets/class-lead-form.php:491
 msgid "Next"
 msgstr "بعدی"
 
-#: includes/elementor/class-carousel.php:235
+#: includes/elementor/class-carousel.php:237
 msgid "\"View all\" text"
 msgstr "متن «مشاهده‌ی همه»"
 
-#: includes/elementor/class-carousel.php:237
+#: includes/elementor/class-carousel.php:239
 msgid "View all"
 msgstr "مشاهده‌ی همه"
 
-#: includes/elementor/class-carousel.php:244
+#: includes/elementor/class-carousel.php:246
 msgid "\"View all\" link"
 msgstr "لینک «مشاهده‌ی همه»"
 
@@ -6005,14 +6005,14 @@ msgid "Show product count"
 msgstr "نمایش تعداد محصولات"
 
 #. translators: %s: number of products
-#: includes/elementor/widgets/class-product-categories.php:162
+#: includes/elementor/widgets/class-product-categories.php:164
 #, php-format
 msgid "%s product"
 msgid_plural "%s products"
 msgstr[0] "%s محصول"
 msgstr[1] "%s محصول"
 
-#: includes/elementor/widgets/class-product-categories.php:170
+#: includes/elementor/widgets/class-product-categories.php:172
 msgid "Product categories"
 msgstr "دسته‌بندی محصولات"
 
@@ -6117,7 +6117,7 @@ msgstr "حراج"
 msgid "Bestsellers"
 msgstr "پرفروش‌ترین‌ها"
 
-#: includes/elementor/widgets/class-product-tabs.php:149
+#: includes/elementor/widgets/class-product-tabs.php:154
 msgid "No products here yet."
 msgstr "هنوز محصولی اینجا نیست."
 
@@ -7349,8 +7349,8 @@ msgid "Nomad"
 msgstr "ایلیاتی"
 
 #: includes/settings/schema.php:112
-msgid "Wool, terracotta and kilim patterns"
-msgstr "پشم، آجری و نقش‌های گلیم"
+msgid "Undyed wool, madder and indigo, with a thin kilim seam"
+msgstr "پشم خام، روناسی و نیلی، با نوار باریک گلیم"
 
 #: includes/settings/schema.php:116
 msgid "Voyage"

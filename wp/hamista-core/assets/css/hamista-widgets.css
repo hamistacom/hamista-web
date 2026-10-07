@@ -476,6 +476,8 @@
 	background-color: var(--hm-card-bg, var(--hm-surface)); box-shadow: var(--hm-shadow-lg); transform-origin: 50% 0; will-change: transform;
 }
 .hm-stack__card::before { content: ""; position: absolute; inset: 0; z-index: 5; background: #000; opacity: var(--hm-dim, 0); pointer-events: none; }
+.hm-stack__card.hm-stack__card--inverse { background-color: var(--hm-inv-bg); }
+.hm-stack__card.hm-stack__card--accent { background-color: var(--hm-scheme-bg); }
 .hm-stack__card--inverse, .hm-stack__card--accent { border-color: transparent; }
 .hm-stack__body { display: flex; flex-direction: column; gap: 20px; padding: clamp(28px, 4.2vw, 64px); }
 .hm-stack__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: .85rem; color: var(--hm-fg-muted); }

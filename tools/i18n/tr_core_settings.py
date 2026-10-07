@@ -81,7 +81,7 @@ T = {
     "Honey": "عسل",
     "Warm cream, amber and soft hexagons": "کرم گرم، کهربایی و شش~ضلعی~های نرم",
     "Nomad": "ایلیاتی",
-    "Wool, terracotta and kilim patterns": "پشم، آجری و نقش~های گلیم",
+    "Undyed wool, madder and indigo, with a thin kilim seam": "پشم خام، روناسی و نیلی، با نوار باریک گلیم",
     "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync.":
         "حداکثر عرض محتوای صفحه. ۱۳۲۰ پیکسل برای لپ~تاپ~های ۱۵ اینچی مناسب است؛ عرض کانتینر المنتور هم خودکار با آن هماهنگ می~شود.",
     "Smooth page transitions": "انتقال نرم بین برگه~ها",

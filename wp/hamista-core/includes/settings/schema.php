@@ -109,7 +109,7 @@ return ( static function () {
 						),
 						'nomad'      => array(
 							'label' => __( 'Nomad', 'hamista-core' ),
-							'desc'  => __( 'Wool, terracotta and kilim patterns', 'hamista-core' ),
+							'desc'  => __( 'Undyed wool, madder and indigo, with a thin kilim seam', 'hamista-core' ),
 							'image' => $img . 'kit-nomad.svg',
 						),
 						'voyage'     => array(
