@@ -289,8 +289,22 @@ function hamista_share_links() {
  * @param string $eyebrow     Optional small label above the title.
  */
 function hamista_page_head( $title, $description = '', $eyebrow = '' ) {
+	if ( ! hamista_title_area_enabled() ) {
+		// Hidden in the settings: keep one heading for search engines and screen readers.
+		echo '<h1 class="screen-reader-text">' . wp_kses_post( $title ) . '</h1>';
+		return;
+	}
+	$classes = 'hm-page-head';
+	$align   = (string) hamista_option( 'title_align', 'start' );
+	$size    = (string) hamista_option( 'title_size', 'normal' );
+	if ( 'center' === $align ) {
+		$classes .= ' hm-page-head--center';
+	}
+	if ( in_array( $size, array( 'compact', 'large' ), true ) ) {
+		$classes .= ' hm-page-head--' . $size;
+	}
 	?>
-	<header class="hm-page-head">
+	<header class="<?php echo esc_attr( $classes ); ?>">
 		<div class="hm-container">
 			<?php hamista_breadcrumbs(); ?>
 			<?php if ( $eyebrow ) : ?>

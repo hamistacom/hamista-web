@@ -25,7 +25,7 @@ if ( ! hamista_elementor_location( 'archive' ) ) :
 		)
 	);
 	?>
-	<main id="main" class="hm-main hm-section hm-experts-page" style="padding-top:0">
+	<main id="main" class="hm-main hm-section hm-experts-page"<?php echo hamista_main_top_style(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute. ?>>
 		<div class="hm-container">
 			<?php if ( ! is_wp_error( $hamista_groups ) && count( $hamista_groups ) > 1 ) : ?>
 				<nav class="hm-filters" aria-label="<?php echo esc_attr( $hamista_booking ? \Hamista\Core\Booking\Booking::label( 'group_many' ) : __( 'Categories', 'hamista' ) ); ?>">

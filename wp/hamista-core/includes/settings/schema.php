@@ -163,7 +163,43 @@ return ( static function () {
 					'label' => __( 'Portfolio', 'hamista-core' ),
 					'desc'  => __( 'A "Portfolio" section in the dashboard for projects, with categories, an archive page and the Portfolio widget.', 'hamista-core' ),
 				),
-				'back_to_top'       => $on_off + array( 'label' => __( 'Back-to-top button', 'hamista-core' ) ),
+				'title_pages'       => $on_off + array(
+					'label' => __( 'On pages', 'hamista-core' ),
+					'group' => __( 'Page title area', 'hamista-core' ),
+					'desc'  => __( 'The band with the title and breadcrumbs above the content. Pages built with Elementor and the front page never show it; each page can still choose for itself under "Page options".', 'hamista-core' ),
+				),
+				'title_archives'    => $on_off + array( 'label' => __( 'On blog, archives and search results', 'hamista-core' ) ),
+				'title_shop'        => $on_off + array(
+					'label'    => __( 'On shop, cart, checkout and account pages', 'hamista-core' ),
+					'requires' => 'woocommerce',
+				),
+				'title_align'       => array(
+					'type'    => 'cards',
+					'label'   => __( 'Alignment', 'hamista-core' ),
+					'choices' => array(
+						'start'  => array(
+							'label' => __( 'Right', 'hamista-core' ),
+							'icon'  => 'align-start',
+						),
+						'center' => array(
+							'label' => __( 'Centre', 'hamista-core' ),
+							'icon'  => 'align-center',
+						),
+					),
+				),
+				'title_size'        => array(
+					'type'    => 'select',
+					'label'   => __( 'Size', 'hamista-core' ),
+					'choices' => array(
+						'compact' => __( 'Compact', 'hamista-core' ),
+						'normal'  => __( 'Normal', 'hamista-core' ),
+						'large'   => __( 'Large', 'hamista-core' ),
+					),
+				),
+				'back_to_top'       => $on_off + array(
+					'label' => __( 'Back-to-top button', 'hamista-core' ),
+					'group' => __( 'Other', 'hamista-core' ),
+				),
 				'breadcrumbs'       => $on_off + array(
 					'label' => __( 'Breadcrumbs', 'hamista-core' ),
 					'desc'  => __( 'Uses Yoast SEO or Rank Math breadcrumbs when they are enabled.', 'hamista-core' ),

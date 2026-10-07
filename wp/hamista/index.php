@@ -27,7 +27,7 @@ if ( ! hamista_elementor_location( 'archive' ) ) :
 	$hamista_list     = 'list' === hamista_option( 'blog_layout' );
 	$hamista_featured = ! is_search() && ! is_paged() && hamista_option( 'blog_featured_first' ) && ! $hamista_list;
 	?>
-	<main id="main" class="hm-main hm-section" style="padding-top:0">
+	<main id="main" class="hm-main hm-section"<?php echo hamista_main_top_style(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute. ?>>
 		<div class="hm-container <?php echo hamista_has_sidebar() ? 'hm-layout hm-layout--sidebar' : ''; ?>">
 			<div>
 				<?php if ( have_posts() ) : ?>

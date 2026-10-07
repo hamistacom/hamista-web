@@ -24,7 +24,7 @@ if ( ! hamista_elementor_location( 'archive' ) ) :
 		)
 	);
 	?>
-	<main id="main" class="hm-main hm-section" style="padding-top:0">
+	<main id="main" class="hm-main hm-section"<?php echo hamista_main_top_style(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute. ?>>
 		<div class="hm-container">
 			<?php if ( ! is_wp_error( $hamista_cats ) && count( $hamista_cats ) > 1 ) : ?>
 				<nav class="hm-filters" aria-label="<?php esc_attr_e( 'Project categories', 'hamista' ); ?>">

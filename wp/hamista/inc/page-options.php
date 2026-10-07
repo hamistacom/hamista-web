@@ -162,7 +162,48 @@ function hamista_show_page_title() {
 	if ( 'hide' === $choice || hamista_is_built_with_elementor() || is_front_page() ) {
 		return false;
 	}
-	return true;
+	return hamista_title_area_enabled();
+}
+
+/**
+ * Whether the title area shows for this kind of view (Hamista → Style &
+ * layout → Page title area). A page's own "Page title" choice still wins.
+ *
+ * @param string $context pages|archives|shop, or '' to work it out.
+ * @return bool
+ */
+function hamista_title_area_enabled( $context = '' ) {
+	if ( '' === $context ) {
+		$shop = function_exists( 'is_woocommerce' ) && ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() );
+		if ( $shop ) {
+			$context = 'shop';
+		} elseif ( is_page() ) {
+			$context = 'pages';
+		} else {
+			$context = 'archives';
+		}
+	}
+	$enabled = (bool) hamista_option( 'title_' . $context, true );
+	if ( is_page() && 'show' === hamista_page_option( '_hm_title' ) ) {
+		$enabled = true;
+	}
+	/**
+	 * Whether the title area shows.
+	 *
+	 * @param bool   $enabled Enabled.
+	 * @param string $context pages|archives|shop.
+	 */
+	return (bool) apply_filters( 'hamista/title_area', $enabled, $context );
+}
+
+/**
+ * Top spacing for a main area that sits under the title area (none when the
+ * title area is hidden, so content does not touch the header).
+ *
+ * @return string Inline style attribute or ''.
+ */
+function hamista_main_top_style() {
+	return hamista_title_area_enabled() ? ' style="padding-top:0"' : '';
 }
 
 /**

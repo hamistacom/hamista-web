@@ -245,6 +245,8 @@
 		stethoscope: '<path d="M6 3H5a1 1 0 0 0-1 1v5a5 5 0 0 0 10 0V4a1 1 0 0 0-1-1h-1"/><path d="M9 14v1a5 5 0 0 0 10 0v-3"/><circle cx="19" cy="10" r="2"/>',
 		scissors: '<circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M8.3 15.7 18 4M15.7 15.7 6 4"/>',
 		scale: '<path d="M12 4v16M8 20h8M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0L5 7ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6Z"/>',
+		'align-start': '<path d="M20 6H4M20 10h-9M20 14H4M20 18h-9"/>',
+		'align-center': '<path d="M20 6H4M16.5 10h-9M20 14H4M16.5 18h-9"/>',
 		cup: '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5v2.5M11 3.5v2.5"/>',
 		ball: '<circle cx="12" cy="12" r="8.5"/><path d="M3.6 9.5c3 .8 5.6 3.5 6.4 6.9M20.4 14.5c-3-.8-5.6-3.5-6.4-6.9"/>',
 		car: '<path d="M4 15.5V12l2-5h12l2 5v3.5a1 1 0 0 1-1 1h-1.5M4 15.5a1 1 0 0 0 1 1h1.5M9 16.5h6"/><circle cx="8" cy="16.5" r="1.6"/><circle cx="16" cy="16.5" r="1.6"/><path d="M4.5 12h15"/>',

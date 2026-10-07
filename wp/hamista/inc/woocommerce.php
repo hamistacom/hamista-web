@@ -46,14 +46,23 @@ add_filter( 'woocommerce_show_page_title', '__return_false' );
  * Opening wrapper + shop heading.
  */
 function hamista_woocommerce_wrapper_start() {
-	if ( is_shop() || is_product_taxonomy() ) {
+	if ( ( is_shop() || is_product_taxonomy() ) && ! hamista_title_area_enabled( 'shop' ) ) {
+		echo '<h1 class="screen-reader-text">' . esc_html( is_shop() ? woocommerce_page_title( false ) : single_term_title( '', false ) ) . '</h1>';
+	} elseif ( is_shop() || is_product_taxonomy() ) {
 		$title = is_shop() ? woocommerce_page_title( false ) : single_term_title( '', false );
 		$desc  = is_product_taxonomy() ? term_description() : '';
 		if ( is_shop() ) {
 			$shop_page = get_post( wc_get_page_id( 'shop' ) );
 			$desc      = $shop_page ? $shop_page->post_excerpt : '';
 		}
-		echo '<header class="hm-page-head hm-shop-head"><div class="hm-container">';
+		$classes = 'hm-page-head hm-shop-head';
+		if ( 'center' === hamista_option( 'title_align', 'start' ) ) {
+			$classes .= ' hm-page-head--center';
+		}
+		if ( in_array( hamista_option( 'title_size', 'normal' ), array( 'compact', 'large' ), true ) ) {
+			$classes .= ' hm-page-head--' . hamista_option( 'title_size', 'normal' );
+		}
+		echo '<header class="' . esc_attr( $classes ) . '"><div class="hm-container">';
 		woocommerce_breadcrumb();
 		echo '<h1 class="hm-page-head__title">' . esc_html( $title ) . '</h1>';
 		if ( $desc ) {

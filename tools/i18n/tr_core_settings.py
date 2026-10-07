@@ -303,4 +303,14 @@ T = {
     "A very quiet tick when the pointer reaches a button or card.": "وقتی نشانگر روی دکمه یا کارت می~رود، یک تیک بسیار آرام پخش می~شود.",
     "Always show Hamista in Persian": "هامیستا همیشه فارسی باشد",
     "Keeps the Hamista panel, widgets and theme texts in Persian even if the site or your profile language is set to English.": "پنل هامیستا، ویجت~ها و متن~های قالب را حتی اگر زبان سایت یا پروفایل شما انگلیسی باشد، فارسی نگه می~دارد.",
+
+    # Page title area.
+    "Page title area": "نوار عنوان برگه~ها",
+    "On pages": "در برگه~ها",
+    "The band with the title and breadcrumbs above the content. Pages built with Elementor and the front page never show it; each page can still choose for itself under \"Page options\".": "نوار عنوان و مسیر راهنما بالای محتوا. برگه~های ساخته~شده با المنتور و صفحه~ی اصلی آن را ندارند؛ هر برگه هم می~تواند در «تنظیمات برگه» برای خودش تصمیم بگیرد.",
+    "On blog, archives and search results": "در وبلاگ، بایگانی~ها و نتایج جستجو",
+    "On shop, cart, checkout and account pages": "در فروشگاه، سبد خرید، پرداخت و حساب کاربری",
+    "Right": "راست~چین",
+    "Centre": "وسط~چین",
+    "Other": "سایر",
 }
