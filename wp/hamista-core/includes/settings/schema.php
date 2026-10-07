@@ -74,6 +74,11 @@ return array(
 						'desc'  => __( 'Bold and kinetic, violet with acid lime', 'hamista-core' ),
 						'image' => $img . 'kit-pulse.svg',
 					),
+					'flux'       => array(
+						'label' => __( 'Flux', 'hamista-core' ),
+						'desc'  => __( 'Cinematic dark, frosted glass and amber glow', 'hamista-core' ),
+						'image' => $img . 'kit-flux.svg',
+					),
 					'honey'      => array(
 						'label' => __( 'Honey', 'hamista-core' ),
 						'desc'  => __( 'Warm cream, amber and soft hexagons', 'hamista-core' ),

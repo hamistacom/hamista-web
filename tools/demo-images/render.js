@@ -44,6 +44,16 @@ add('honey', 'apiary', 'honey-apiary', 1600, 1200, { q: 76 });
 for (let v = 1; v <= 6; v++) add('honey', `journal-${v}`, 'honey-journal', 1600, 1000, { v, q: 76 });
 for (let v = 1; v <= 3; v++) add('honey', `process-${v}`, 'honey-process', 1200, 1500, { v, q: 76 });
 
+// Nomad — KOOCH (organic products by Zagros nomadic families).
+for (let v = 1; v <= 6; v++) {
+	add('nomad', `product-${v}`, 'nomad-product', 1000, 1000, { v });
+	add('nomad', `product-${v}-b`, 'nomad-product', 1000, 1000, { v, alt: 1 });
+}
+add('nomad', 'hero', 'nomad-hero', 2000, 1125, { q: 76 });
+add('nomad', 'pattern', 'nomad-pattern', 2400, 600, { q: 76 });
+add('nomad', 'weaving', 'nomad-weaving', 1600, 1200, { q: 76 });
+for (let v = 1; v <= 6; v++) add('nomad', `journal-${v}`, 'nomad-journal', 1600, 1000, { v, q: 76 });
+
 // Shared.
 for (let v = 1; v <= 6; v++) add('shared', `person-${v}`, 'portrait', 800, 1000, { v });
 

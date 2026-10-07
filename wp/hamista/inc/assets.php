@@ -36,6 +36,7 @@ function hamista_kits() {
 			'spark'      => __( 'Spark — editorial', 'hamista' ),
 			'industrial' => __( 'Industrial — tactile', 'hamista' ),
 			'pulse'      => __( 'Pulse — bold agency', 'hamista' ),
+			'flux'       => __( 'Flux — cinematic, glass and glow', 'hamista' ),
 			'honey'      => __( 'Honey — warm and natural', 'hamista' ),
 			'nomad'      => __( 'Nomad — handwoven, earthy', 'hamista' ),
 		)
@@ -210,6 +211,7 @@ function hamista_theme_color_meta() {
 	$colors = array(
 		'industrial' => '#e0e5ec',
 		'pulse'      => '#fafafd',
+		'flux'       => '#f5f1ea',
 		'honey'      => '#fbf6ec',
 		'nomad'      => '#f3ede2',
 	);

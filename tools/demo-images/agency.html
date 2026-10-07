@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Tapesh agency scenes</title>
+<style>
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-arabic.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0600-06FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F; }
+:root { --v: #6a3df5; --vd: #3b1fa8; --vs: #ece7ff; --l: #c6f135; --ink: #0f0e19; --paper: #fafafd; --c: #ff5b3a; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: "Vazirmatn", sans-serif; -webkit-font-smoothing: antialiased; color: var(--ink); }
+#stage { position: relative; overflow: hidden; }
+.abs { position: absolute; }
+.mono { font-family: ui-monospace, Menlo, monospace; direction: ltr; letter-spacing: .1em; }
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.phone { position: absolute; width: 380px; height: 780px; border-radius: 58px; background: #0d0c14; padding: 13px; box-shadow: 0 50px 90px -30px rgba(20, 8, 70, .6), inset 0 0 0 2px #2b2940; }
+.phone .scr { position: relative; width: 100%; height: 100%; border-radius: 46px; overflow: hidden; background: #fff; }
+.phone .isl { position: absolute; top: 14px; left: 50%; width: 110px; height: 32px; margin-left: -55px; border-radius: 20px; background: #0d0c14; z-index: 5; }
+.win { position: absolute; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 50px 100px -40px rgba(20, 8, 70, .55), 0 0 0 1px rgba(15, 14, 25, .06); }
+.win .bar { height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #f3f1fa; direction: ltr; border-bottom: 1px solid #e5e1f2; }
+.win .bar i { width: 11px; height: 11px; border-radius: 50%; background: #d3cde8; }
+.win .bar span { margin: 0 auto; padding: 4px 70px; border-radius: 7px; background: #fff; font: 12px ui-monospace, monospace; color: #9b95b5; }
+.card { border-radius: 20px; background: #fff; padding: 18px; box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 10px 26px -14px rgba(40, 20, 120, .25); }
+.chip { display: inline-flex; padding: 6px 14px; border-radius: 99px; font-size: 14px; font-weight: 700; background: var(--vs); color: var(--vd); }
+.lime { background: var(--l); color: var(--ink); }
+.sk { height: 10px; border-radius: 6px; background: #e9e5f5; }
+.row { display: flex; align-items: center; gap: 12px; }
+.between { justify-content: space-between; }
+</style>
+</head>
+<body>
+<div id="stage" class="grain"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get('w') || 1600, H = +q.get('h') || 1200, V = +q.get('v') || 1, S = q.get('s') || 'work';
+const stage = document.getElementById('stage');
+stage.style.width = W + 'px'; stage.style.height = H + 'px';
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const pick = (a, i) => a[(i - 1 + a.length) % a.length];
+const V1 = '#6a3df5', VD = '#3b1fa8', L = '#c6f135', INK = '#0f0e19', C = '#ff5b3a', P = '#fafafd';
+
+const bgV = (a = V1, b = VD, ang = 150) => `<div class="abs" style="inset:0;background:linear-gradient(${ang}deg, ${a}, ${b})"></div>`;
+const blob = (x, y, r, c, o = 1) => `<div class="abs" style="left:${x - r}px;top:${y - r}px;width:${r * 2}px;height:${r * 2}px;border-radius:50%;background:radial-gradient(circle at 34% 30%, #fff8 0, ${c} 40%, ${c} 100%);opacity:${o}"></div>`;
+const sphere = (x, y, r, c1, c2) => `<div class="abs" style="left:${x - r}px;top:${y - r}px;width:${r * 2}px;height:${r * 2}px;border-radius:50%;background:radial-gradient(circle at 32% 28%, #fff 0, ${c1} 22%, ${c2} 78%);box-shadow: inset -${r * .16}px -${r * .2}px ${r * .4}px rgba(0,0,0,.28), 0 ${r * .5}px ${r * .8}px -${r * .3}px rgba(20,8,70,.5)"></div>`;
+const phone = (x, y, rot, inner, bg = '#fff', s = 1) => `<div class="phone" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg) scale(${s})"><div class="isl"></div><div class="scr" style="background:${bg}">${inner}</div></div>`;
+const win = (x, y, w, h, rot, url, inner) => `<div class="win" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;transform:rotate(${rot}deg)"><div class="bar"><i></i><i></i><i></i><span>${url}</span></div><div style="height:calc(100% - 44px);position:relative">${inner}</div></div>`;
+const sticker = (x, y, t, rot = -8, bg = L, fg = INK, fs = 38) => `<div class="abs" style="left:${x}px;top:${y}px;padding:12px 26px;border-radius:99px;background:${bg};color:${fg};font-weight:900;font-size:${fs}px;transform:rotate(${rot}deg);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)">${t}</div>`;
+
+/* ---- reusable screens ---- */
+const igPost = (c1, c2, label, likes = '۲٫۴k') => `<div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;padding-top:56px">
+	<div class="row" style="padding:12px 18px"><div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,${C},${V1})"></div><b style="font-size:16px">${label[0]}</b></div>
+	<div style="flex:1;margin:0;background:linear-gradient(150deg,${c1},${c2});position:relative"><div class="abs" style="inset:0;display:grid;place-items:center;font-size:70px;font-weight:900;color:#fff;text-align:center;line-height:1.1;padding:30px">${label[1]}</div></div>
+	<div style="padding:16px 18px 24px"><div class="row" style="gap:18px;font-size:30px"><span>♡</span><span>◌</span><span>➤</span></div><b style="display:block;margin-top:10px;font-size:15px">${likes} پسند</b><div class="sk" style="width:80%;margin-top:10px"></div><div class="sk" style="width:55%;margin-top:8px"></div></div></div>`;
+
+const igGrid = (n = 9) => `<div style="position:absolute;inset:0;background:#fff;padding-top:56px">
+	<div class="row" style="padding:14px 18px;gap:16px"><div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,${C},${V1})"></div><div><b style="font-size:20px">cafe.rey</b><div class="row" style="gap:18px;margin-top:8px;font-size:13px"><span><b>۴۲۰</b> پست</span><span><b>۶۸k</b> دنبال‌کننده</span></div></div></div>
+	<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding-top:6px">${['#3b1f10', '#e7b98a', '#c6f135', '#6a3df5', '#f3e0c8', '#2a1608', '#ff5b3a', '#fff1d6', '#7a4a28'].slice(0, n).map((c, i) => `<div style="aspect-ratio:1;background:${c};display:grid;place-items:center;font-size:${i % 2 ? 44 : 30}px;color:${['#e7b98a', '#2a1608', '#0f0e19', '#fff', '#3b1f10', '#e7b98a', '#fff', '#3b1f10', '#fff'][i]}">${['☕', 'Rey', '۴٫۸', '✦', '◉', 'ری', '٪۲۰', '☕', '◐'][i]}</div>`).join('')}</div></div>`;
+
+const barChart = (vals, c = V1, h = 150) => `<div class="row" style="align-items:flex-end;gap:10px;height:${h}px">${vals.map((v, i) => `<i style="flex:1;height:${v}%;border-radius:8px 8px 0 0;background:${i === vals.length - 1 ? L : c};${i === vals.length - 1 ? 'box-shadow:0 0 0 2px ' + INK : ''}"></i>`).join('')}</div>`;
+const lineChart = (pts, c = V1, w = 640, h = 220) => { const p = pts.map((y, i) => `${i ? 'L' : 'M'}${(i * w / (pts.length - 1)).toFixed(1)},${(h - y * h / 100).toFixed(1)}`).join(' '); return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:${h}px" preserveAspectRatio="none"><path d="${p} L${w},${h} L0,${h}Z" fill="${c}" opacity=".12"/><path d="${p}" fill="none" stroke="${c}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${w}" cy="${(h - pts[pts.length - 1] * h / 100).toFixed(1)}" r="9" fill="${L}" stroke="${INK}" stroke-width="3"/></svg>`; };
+
+const dashboardInner = () => `<div style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 200px;background:${P}">
+	<div style="padding:26px;display:grid;gap:16px;align-content:start">
+		<div class="row between"><b style="font-size:26px">گزارش هفتگی</b><span class="chip lime">۷ روز اخیر</span></div>
+		<div class="row" style="gap:14px">${[['نشست‌ها', '۱۲۴٬۸۰۰', '+۱۸٪'], ['نرخ تبدیل', '۳٫۴٪', '+۰٫۸'], ['بازگشت تبلیغات', '۳٫۲×', '+۰٫۴'], ['هزینه‌ی هر سفارش', '۸۹k', '−۱۲٪']].map(k => `<div class="card" style="flex:1;padding:14px"><small style="color:#756f95;font-size:13px">${k[0]}</small><div class="row between" style="margin-top:6px"><b style="font-size:22px">${k[1]}</b><span class="chip" style="font-size:12px;padding:3px 9px">${k[2]}</span></div></div>`).join('')}</div>
+		<div class="card"><div class="row between"><b>فروش روزانه</b><small style="color:#756f95">میلیون تومان</small></div>${lineChart([20, 32, 28, 46, 40, 58, 52, 70, 66, 86])}</div>
+		<div class="row" style="gap:14px;align-items:stretch"><div class="card" style="flex:1"><b>کانال‌ها</b><div style="display:grid;gap:10px;margin-top:12px">${[['سئو', 82], ['تبلیغات کلیکی', 64], ['اینستاگرام', 48], ['ایمیل', 30]].map(c => `<div><div class="row between" style="font-size:13px"><span>${c[0]}</span><b>${fa(c[1])}٪</b></div><div class="sk" style="margin-top:4px;height:8px"><div style="height:100%;width:${c[1]}%;border-radius:6px;background:${V1}"></div></div></div>`).join('')}</div></div>
+		<div class="card" style="flex:1"><b>قیف فروش</b><div style="display:grid;gap:8px;margin-top:12px;justify-items:center">${[100, 72, 44, 22].map((w, i) => `<div style="width:${w}%;height:30px;border-radius:9px;background:${[V1, '#8a63ff', '#a98bff', L][i]};color:${i === 3 ? INK : '#fff'};display:grid;place-items:center;font-size:13px;font-weight:800">${['بازدید', 'افزودن به سبد', 'پرداخت', 'خرید'][i]}</div>`).join('')}</div></div></div>
+	</div>
+	<div style="background:${INK};color:#fff;padding:26px 18px;display:grid;gap:12px;align-content:start"><b style="font-size:22px;color:${L}">تپش</b>${['نمای کلی', 'سئو', 'تبلیغات', 'شبکه‌ها', 'گزارش‌ها', 'تنظیمات'].map((t, i) => `<div style="padding:10px 14px;border-radius:12px;${i === 0 ? 'background:rgba(255,255,255,.14)' : 'opacity:.6'}">${t}</div>`).join('')}</div></div>`;
+
+const adCard = (c1, c2, t, sub, cta) => `<div style="position:absolute;inset:0;background:linear-gradient(150deg,${c1},${c2});color:#fff;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px"><span class="chip lime" style="width:fit-content;font-size:13px">تبلیغ</span><b style="font-size:44px;line-height:1.15">${t}</b><span style="opacity:.85;font-size:18px">${sub}</span><span style="background:#fff;color:${INK};width:fit-content;padding:12px 28px;border-radius:99px;font-weight:900;font-size:18px">${cta}</span></div>`;
+
+const scenes = {
+	showreel: () => bgV('#7d52ff', '#1a0d4d', 140) + blob(W * .15, H * .2, H * .3, '#8a63ff', .5) + blob(W * .88, H * .85, H * .35, C, .35) +
+		phone(W * .08, H * .06, -8, igPost('#ff9d4d', '#ff3d6e', ['سفرنو', 'سفر\nرویایی']), '#fff', 1.15) +
+		phone(W * .66, H * .12, 7, igGrid(), '#fff', 1.1) +
+		win(W * .31, H * .18, W * .34, H * .52, -3, 'tapesh.agency/report', dashboardInner()) +
+		sticker(W * .27, H * .76, '+۸۲٪ فروش', -7) + sticker(W * .56, H * .08, 'ROAS ۳٫۲×', 6, '#fff', INK, 34) +
+		sphere(W * .5, H * .88, H * .06, '#ffd2c8', C),
+	dashboard: () => bgV('#efeaff', '#d9ceff', 160) + win(W * .04, H * .08, W * .92, H * .84, 0, 'tapesh.agency/dashboard', `<div style="position:absolute;top:0;right:0;width:${100 / 1.55}%;height:${100 / 1.55}%;transform:scale(1.55);transform-origin:top right">${dashboardInner()}</div>`),
+	work: () => {
+		const bg = pick(['#fff1e6', '#e9e3ff', '#fff0f4', '#e3f6ff', '#efeaff', '#fff5db'], V);
+		const wrap = inner => `<div class="abs" style="inset:0;background:${bg}"></div>` + inner;
+		switch ((V - 1) % 6) {
+			case 0: return wrap(blob(W * .8, H * .2, 320, '#e7b98a', .5) + phone(W * .33, H * .1, 4, igGrid(), '#fff', 1.18) + phone(W * .08, H * .2, -8, igPost('#2a1608', '#7a4a28', ['cafe.rey', 'قهوه‌ی\nمحله']), '#fff', .98) + sticker(W * .62, H * .6, '۶۸k دنبال‌کننده', -6) + sticker(W * .66, H * .74, '+۳۲٪ فروش آخر هفته', 5, INK, L, 30));
+			case 1: return wrap(bgV('#ffb347', '#ff4d6d', 135).replace('inset:0', 'inset:0;opacity:.0') + phone(W * .1, H * .08, -7, adCard('#ff8a3d', '#ff3d6e', 'سفر رویایی\nاز ۲٫۹ میلیون', 'رزرو آنلاین با بازگشت وجه', 'همین حالا رزرو کن'), '#000', 1.15) + win(W * .42, H * .18, W * .5, H * .5, 3, 'safarno.ir/ads', `<div style="position:absolute;inset:0;padding:30px;display:grid;gap:18px;align-content:start;background:${P}"><b style="font-size:30px">کمپین‌های فعال</b>${[['تور شمال', '۴۱٪−', '۲٫۱k'], ['تور ترکیه', '۳۸٪−', '۱٫۴k'], ['هتل‌های کیش', '۴۴٪−', '۹۸۰']].map(r => `<div class="row between card" style="padding:16px 20px"><b>${r[0]}</b><span class="chip lime">هزینه‌ی هر رزرو ${r[1]}</span><b>${fa(r[2])} رزرو</b></div>`).join('')}</div>`) + sticker(W * .58, H * .76, 'هزینه‌ی هر رزرو ۴۱٪ کمتر', -5, L, INK, 34));
+			case 2: return wrap(win(W * .06, H * .1, W * .88, H * .78, -1.5, 'lian.ir', `<div style="position:absolute;inset:0;padding:30px 40px;background:#fff"><div class="row between" style="margin-bottom:26px"><b style="font-size:34px;letter-spacing:.04em">لیان</b><span class="chip lime" style="font-size:18px;padding:10px 24px">تا ۵۰٪ تخفیف زمستانه</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">${['#e9d8ff', '#ffd9c9', '#d5f0e3', '#fff1b8'].map((c, i) => `<div><div style="aspect-ratio:3/4;border-radius:22px;background:${c};position:relative;overflow:hidden"><div class="abs" style="left:20%;top:12%;width:60%;height:70%;border-radius:100px 100px 20px 20px;background:${['#6a3df5', '#ff5b3a', '#0f9f6e', '#e09b00'][i]};opacity:.85"></div></div><b style="display:block;margin-top:10px;font-size:18px">مانتو ${['کتان', 'پشمی', 'ساده', 'تابستانه'][i]}</b><span style="color:#756f95">${fa([1290, 1890, 990, 1190][i])}٬۰۰۰ تومان</span></div>`).join('')}</div></div>`) + sticker(W * .7, H * .05, 'نرخ تبدیل ۲٫۴٪', 6));
+			case 3: return wrap(win(W * .06, H * .1, W * .56, H * .62, -2, 'google.com/search', `<div style="position:absolute;inset:0;padding:30px 34px;background:#fff;display:grid;gap:18px;align-content:start;direction:rtl"><div class="card" style="padding:16px 26px;border-radius:99px;font-size:24px">لکه‌های پوستی؛ درمان در تهران</div>${[['کلینیک پوست آرا', 'دکتر رضا آرامش · نوبت آنلاین · ۴٫۹ ★'], ['مقاله: درمان ملاسما', 'araclinic.ir/melasma'], ['شعبه‌ی ولیعصر، تهران', 'نقشه، آدرس و ساعت کاری'], ['پرسش‌های پرتکرار درباره‌ی لیزر', 'araclinic.ir/faq/laser'], ['مقاله: مراقبت پوست در زمستان', 'araclinic.ir/winter-care']].map((r, i) => `<div style="padding:12px 10px;${i === 0 ? 'border-radius:16px;background:' + P + ';padding:18px 14px;box-shadow:0 0 0 2px ' + V1 : ''}"><b style="color:#1a0dab;font-size:27px">${r[0]}</b><div style="color:#756f95;margin-top:6px;font-size:19px">${r[1]}</div></div>`).join('')}</div>`) + `<div class="card abs" style="left:${W * .62}px;top:${H * .22}px;width:${W * .32}px;transform:rotate(3deg)"><div class="row between"><b>بازدید ارگانیک</b><span class="chip lime">۳×</span></div>${lineChart([12, 14, 18, 22, 34, 48, 62, 78, 92], V1, 420, 180)}</div>` + sticker(W * .62, H * .7, '۲۱۰ کلمه در صفحه‌ی اول', -5, L, INK, 30));
+			case 4: return wrap(phone(W * .04, H * .12, -6, `<div style="position:absolute;inset:0;background:linear-gradient(170deg,${V1},${VD});color:#fff;padding:90px 28px;display:flex;flex-direction:column;gap:20px"><b style="font-size:46px;line-height:1.2">بیمه‌ی من،\nدر جیب من</b><span style="opacity:.8">بیمه‌ی بدنه و شخص ثالث در دو دقیقه</span><div style="margin-top:auto;background:${L};color:${INK};padding:20px;border-radius:22px;text-align:center;font-weight:900;font-size:22px">استعلام قیمت</div></div>`, '#000', .98) + phone(W * .33, H * .02, 3, `<div style="position:absolute;inset:0;background:#fff;padding:80px 22px;display:grid;gap:14px;align-content:start"><b style="font-size:28px">بیمه‌نامه‌ها</b>${[['بدنه', '۱۴۰۵/۰۸'], ['شخص ثالث', '۱۴۰۶/۰۱'], ['عمر', 'فعال']].map(r => `<div class="card row between" style="padding:18px"><b>${r[0]}</b><span class="chip">${r[1]}</span></div>`).join('')}<div class="card" style="background:${INK};color:#fff"><small style="opacity:.7">تخفیف عدم خسارت</small><b style="display:block;font-size:34px;color:${L}">۶۰٪</b></div></div>`, '#000', 1.05) + phone(W * .62, H * .14, 9, `<div style="position:absolute;inset:0;background:${P};padding:80px 22px;display:grid;gap:14px;align-content:start"><b style="font-size:28px">خسارت</b><div class="card" style="text-align:center;padding:30px"><div style="font-size:60px">✓</div><b>درخواست ثبت شد</b></div><div class="sk"></div><div class="sk" style="width:60%"></div></div>`, '#000', .98) + sticker(W * .62, H * .06, '۱۲۰k نصب در ماه اول', 5));
+			default: return wrap(`<div class="abs" style="left:${W * .06}px;top:${H * .1}px;width:${W * .4}px;height:${H * .55}px;border-radius:30px;background:#f5d9a8;display:grid;place-items:center"><div style="width:62%;aspect-ratio:1;border-radius:50%;background:${INK};display:grid;place-items:center;color:#f5d9a8;font-size:110px;font-weight:900">نان</div></div>
+				<div class="abs" style="left:${W * .5}px;top:${H * .08}px;width:${W * .22}px;height:${H * .42}px;border-radius:24px;background:#c96a2b;transform:rotate(5deg);box-shadow:0 40px 70px -30px rgba(0,0,0,.5);display:grid;place-items:center;color:#fff;font-weight:900;font-size:56px;writing-mode:vertical-rl;letter-spacing:4px">نان‌آور</div>
+				<div class="abs" style="left:${W * .75}px;top:${H * .18}px;width:${W * .2}px;height:${H * .3}px;border-radius:20px;background:${INK};transform:rotate(-6deg);box-shadow:0 40px 70px -30px rgba(0,0,0,.5);display:grid;place-items:center;color:#f5d9a8;font-weight:900;font-size:44px">۱۴ شعبه</div>
+				<div class="abs row" style="left:${W * .06}px;top:${H * .72}px;gap:18px">${['#f5d9a8', '#c96a2b', '#0f0e19', '#6a3df5', '#c6f135'].map(c => `<div style="width:${W * .1}px;height:${W * .1}px;border-radius:50%;background:${c};box-shadow:0 10px 24px -10px rgba(0,0,0,.4)"></div>`).join('')}</div>` + sticker(W * .6, H * .72, 'هویت بصری ۱۴ شعبه', -4));
+		}
+	},
+	social: () => {
+		const k = (V - 1) % 4;
+		const bg = [bgV('#ffe3d6', '#ffc2d4', 160), bgV('#e9e3ff', '#cbbcff', 160), bgV('#dff7e8', '#b8ecce', 160), bgV('#efeaff', '#d9ceff', 160)][k];
+		const screens = [
+			igPost('#6a3df5', '#ff3d6e', ['tapesh.agency', 'نتیجه،\nنه لایک']),
+			`<div style="position:absolute;inset:0;background:linear-gradient(170deg,${VD},${V1});color:#fff;padding:92px 28px;display:flex;flex-direction:column;gap:20px;justify-content:center"><div style="text-align:center;font-size:42px;font-weight:900;line-height:1.3">کدام را بیشتر دوست دارید؟</div><div style="background:#fff;color:${INK};border-radius:22px;padding:14px"><div class="row between" style="padding:14px 16px;border-radius:14px;background:${L};font-weight:800"><span>سئو</span><span>۶۴٪</span></div><div class="row between" style="padding:14px 16px;margin-top:8px;border-radius:14px;background:#f1eeff;font-weight:800"><span>تبلیغات</span><span>۳۶٪</span></div></div></div>`,
+			`<div style="position:absolute;inset:0;background:${P};padding:80px 22px;display:grid;gap:14px;align-content:start"><b style="font-size:28px">عملکرد ریلز</b><div class="card"><small style="color:#756f95">بازدید</small><b style="display:block;font-size:44px;color:${V1}">۱٫۲M</b>${barChart([20, 28, 24, 40, 36, 64, 100])}</div><div class="row" style="gap:12px"><div class="card" style="flex:1"><small style="color:#756f95">ذخیره</small><b style="display:block;font-size:26px">۱۸k</b></div><div class="card" style="flex:1"><small style="color:#756f95">اشتراک</small><b style="display:block;font-size:26px">۹٫۴k</b></div></div></div>`,
+			`<div style="position:absolute;inset:0;background:#fff;padding:80px 22px;display:grid;gap:12px;align-content:start"><b style="font-size:26px">کمپین‌های فعال</b>${[['فروش زمستانه', '۴٫۱×'], ['معرفی محصول', '۳٫۰×'], ['ریتارگتینگ', '۵٫۲×']].map((r, i) => `<div class="card row between" style="padding:16px"><div><b>${r[0]}</b><div class="sk" style="width:90px;margin-top:8px"></div></div><span class="chip ${i === 2 ? 'lime' : ''}">ROAS ${r[1]}</span></div>`).join('')}<div class="card" style="background:${INK};color:#fff"><small style="opacity:.7">هزینه‌ی هر سفارش</small><b style="display:block;font-size:34px;color:${L}">۸۹٬۰۰۰</b></div></div>`,
+		];
+		return bg + blob(W * .8, H * .15, 260, k % 2 ? L : V1, .22) + phone(W / 2 - 190, H * .1, [-4, 3, -3, 4][k], screens[k], '#fff', 1.18) + sticker(W * .1, H * .78, ['+۸۲٪ تعامل', 'پاسخ ۶۴٪', '۱٫۲M بازدید', 'ROAS ۵٫۲×'][k], -7);
+	},
+	product: () => {
+		const items = [['ممیزی کامل سئو', 'گزارش ۴۰ صفحه‌ای', V1, VD], ['مدیریت اینستاگرام', 'ماهانه · ۱۲ پست + ۸ ریلز', C, '#b42b10'], ['راه‌اندازی گوگل ادز', 'ساختار تا ردیابی', '#0f9f6e', '#064d34'], ['کیت هویت بصری', 'لوگو تا راهنمای برند', '#e09b00', '#6e4600'], ['تقویم محتوای ۹۰ روزه', 'گوگل‌شیت و اکسل', '#2b59ff', '#0b1f66'], ['ایمیل مارکتینگ', '۳ جریان خودکار', VD, '#1a0d4d']];
+		const it = pick(items, V);
+		const art = [
+			() => `<div class="card abs" style="left:${W * .14}px;top:${H * .14}px;width:${W * .72}px;transform:rotate(-4deg)"><b>رتبه‌ی کلمات</b>${lineChart([20, 30, 26, 44, 52, 66, 80, 94], it[2], 600, 200)}</div>` + sticker(W * .52, H * .08, 'صفحه‌ی ۱', 6),
+			() => `<div class="abs" style="left:${W * .2}px;top:${H * .08}px;width:${W * .6}px;aspect-ratio:1;border-radius:38px;background:linear-gradient(135deg,#ffb347,${it[2]});transform:rotate(-6deg);display:grid;place-items:center;font-size:${W * .2}px;color:#fff;box-shadow:0 40px 70px -30px rgba(0,0,0,.5)">♥</div>`,
+			() => `<div class="card abs" style="left:${W * .12}px;top:${H * .1}px;width:${W * .76}px;transform:rotate(3deg)"><div class="row between"><b>Google Ads</b><span class="chip lime">ROAS ۳٫۲×</span></div><div style="margin-top:14px">${barChart([30, 44, 38, 60, 54, 78, 100], it[2], 170)}</div></div>`,
+			() => `<div class="row abs" style="left:${W * .1}px;top:${H * .1}px;gap:20px">${[L, INK, '#fff'].map((c, i) => `<div style="width:${W * .26}px;height:${W * .5}px;border-radius:26px;background:${c};transform:rotate(${[-6, 0, 6][i]}deg);display:grid;place-items:center;font-weight:900;font-size:${W * .08}px;color:${i === 1 ? L : INK};box-shadow:0 30px 60px -28px rgba(0,0,0,.5)">${['ت', 'پ', 'ش'][i]}</div>`).join('')}</div>`,
+			() => `<div style="position:absolute;left:${W * .1}px;top:${H * .08}px;width:${W * .8}px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;transform:rotate(-3deg)">${Array.from({ length: 12 }, (_, i) => `<div style="aspect-ratio:1;border-radius:14px;background:${i % 5 === 0 ? L : '#fff'};opacity:${i % 5 === 0 ? 1 : .9};display:grid;place-items:center;font-size:${W * .028}px;font-weight:800;color:${INK}">${fa(i + 1)}</div>`).join('')}</div>`,
+			() => `<div class="card abs" style="left:${W * .15}px;top:${H * .1}px;width:${W * .7}px;transform:rotate(4deg);padding:28px"><b style="font-size:${W * .03}px">خوش‌آمد!</b><div class="sk" style="margin-top:16px"></div><div class="sk" style="width:70%;margin-top:10px"></div><div style="margin-top:20px;padding:16px;border-radius:99px;text-align:center;background:${L};font-weight:900">ادامه‌ی خرید</div></div>`,
+		][(V - 1) % 6]();
+		return bgV(it[2], it[3], 150) + blob(W * .85, H * .12, W * .2, '#fff', .12) + art + `<div class="abs" style="inset-inline:${W * .08}px;bottom:${H * .08}px;color:#fff;display:grid;gap:8px"><b style="font-size:${W * .062}px;line-height:1.2">${it[0]}</b><span style="font-size:${W * .028}px;opacity:.85">${it[1]}</span></div><div class="abs mono" style="left:${W * .08}px;top:${H * .06}px;font-size:${W * .018}px;color:#fff;opacity:.6">TAPESH / ${String(V).padStart(2, '0')}</div>`;
+	},
+	journal: () => {
+		const words = ['سئو', 'محتوا', 'تبلیغ', 'برند', 'داده', 'شبکه'];
+		const bgs = [[V1, VD, '#fff', L], [L, '#a8cc1d', INK, V1], [INK, '#1b1738', '#fff', C], ['#fff1ec', '#ffd9cc', INK, V1], [VD, '#1a0d4d', '#fff', L], [C, '#b42b10', '#fff', INK]];
+		const b = pick(bgs, V), w = pick(words, V);
+		const motif = [
+			`<div class="abs" style="left:${W * .06}px;top:${H * .12}px;width:${W * .4}px">${lineChart([14, 22, 20, 36, 44, 58, 76, 94], b[3], 600, 300)}</div>`,
+			`<div class="abs" style="left:${W * .06}px;top:${H * .12}px;display:grid;gap:14px">${[90, 70, 85, 55].map(x => `<div style="height:30px;width:${x * 5}px;border-radius:15px;background:${b[3]};opacity:.9"></div>`).join('')}</div>`,
+			`<div class="abs" style="left:${W * .06}px;top:${H * .1}px;display:flex;gap:16px;align-items:flex-end;height:${H * .4}px">${[30, 52, 41, 74, 63, 96].map(h => `<i style="width:${W * .045}px;height:${h}%;border-radius:12px 12px 0 0;background:${b[3]}"></i>`).join('')}</div>`,
+			`<div class="abs" style="left:${W * .06}px;top:${H * .1}px;width:${H * .42}px;height:${H * .42}px;border-radius:50%;background:${b[3]}"></div><div class="abs" style="left:${W * .2}px;top:${H * .26}px;width:${H * .3}px;height:${H * .3}px;border-radius:30px;background:${b[2]};opacity:.9;transform:rotate(14deg)"></div>`,
+			`<div class="abs" style="left:${W * .06}px;top:${H * .1}px;display:grid;grid-template-columns:repeat(5,${W * .06}px);gap:12px">${Array.from({ length: 20 }, (_, i) => `<i style="height:${W * .06}px;border-radius:14px;background:${i === 7 ? b[3] : b[2]};opacity:${i === 7 ? 1 : .12}"></i>`).join('')}</div>`,
+			`<div class="abs" style="left:${W * .06}px;top:${H * .12}px;padding:22px 34px;border-radius:99px;background:${b[3]};color:${INK};font-weight:900;font-size:${H * .06}px;transform:rotate(-6deg)">♥ ۲٫۴k</div><div class="abs" style="left:${W * .16}px;top:${H * .32}px;padding:22px 34px;border-radius:99px;background:${b[2]};color:${b[0]};font-weight:900;font-size:${H * .05}px;transform:rotate(5deg)">+۱۸۰ دنبال‌کننده</div>`,
+		][(V - 1) % 6];
+		return `<div class="abs" style="inset:0;background:linear-gradient(150deg,${b[0]},${b[1]})"></div>` + motif + `<div class="abs" style="right:${W * .06}px;bottom:${H * .08}px;font-size:${H * .36}px;font-weight:900;line-height:1;color:${b[2]}">${w}</div><div class="abs mono" style="right:${W * .06}px;top:${H * .09}px;font-size:${H * .022}px;color:${b[2]};opacity:.7">TAPESH NOTES — N°${String(V).padStart(2, '0')}</div>`;
+	},
+};
+
+stage.innerHTML = (scenes[S] || (() => '<h1>unknown</h1>'))();
+document.fonts.ready.then(() => document.body.setAttribute('data-ready', '1'));
+</script>
+</body>
+</html>

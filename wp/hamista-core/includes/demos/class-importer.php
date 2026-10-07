@@ -822,6 +822,9 @@ class Importer {
 		if ( $options && class_exists( '\Hamista\Core\Settings\Settings' ) ) {
 			Settings::save( $options );
 		}
+		if ( ! empty( $this->content['site']['title'] ) ) {
+			update_option( 'blogname', sanitize_text_field( $this->content['site']['title'] ) );
+		}
 		if ( ! empty( $this->content['site']['tagline'] ) ) {
 			update_option( 'blogdescription', sanitize_text_field( $this->content['site']['tagline'] ) );
 		}

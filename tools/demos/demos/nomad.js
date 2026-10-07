@@ -196,7 +196,7 @@ const homeB = [
 /* ---------------- About ---------------- */
 
 const about = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		cols({ widths: [55, 45], align: 'flex-end' }, [
 			[heading({ eyebrow: 'درباره‌ی کوچ', title: 'یک تابستان در\n*ییلاق*', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>کوچ از یک سفر شروع شد. تابستان ۱۴۰۰ چند هفته مهمان یک خانواده‌ی قشقایی در ییلاق سمیرم بودیم. وقت رفتن، روغن و کشکی که برایمان گذاشتند آن‌قدر خوب بود که فکر کردیم این طعم نباید فقط در ییلاق بماند.</p>')],
@@ -243,7 +243,7 @@ const about = [
 /* ---------------- Contact ---------------- */
 
 const contact = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'تماس با کوچ', title: 'سؤال، سفارش عمده\n*یا فقط سلام*', title_tag: 'h1', title_size: 'xl', desc: 'برای سفارش جعبه‌ی فصل، خرید عمده یا سفرهای ییلاق پیام بدهید.' }),
 	]),
 	section({ space: 'md' }, [
@@ -376,7 +376,7 @@ module.exports = {
 		pages: ['خانه', 'خانه — مدل دوم', 'درباره‌ی کوچ', 'تماس', 'دفتر کوچ', 'فروشگاه'],
 	},
 	content: {
-		site: { tagline: 'محصولات ارگانیک عشایری' },
+		site: { title: 'کوچ', tagline: 'محصولات ارگانیک عشایری' },
 		images, alts, terms, posts, products,
 		pages: [
 			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },

@@ -252,7 +252,7 @@ const homeB = [
 /* ---------------- About ---------------- */
 
 const about = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		cols({ widths: [55, 45], align: 'flex-end' }, [
 			[heading({ eyebrow: 'درباره‌ی هامون', title: 'از یک کارگاه\n*تراشکاری* تا کارخانه', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>صنایع هامون سال ۱۳۷۶ با ساخت قطعات یدکی پمپ در یک کارگاه کوچک شروع به کار کرد. امروز با ۱۸۰ نفر در شهرک صنعتی عباس‌آباد، تجهیزات کنترل فرایند را برای بیش از ۹۰۰ پروژه در کشور طراحی و تولید می‌کند.</p>')],
@@ -309,7 +309,7 @@ const about = [
 /* ---------------- Contact ---------------- */
 
 const contact = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'تماس و استعلام قیمت', title: 'پیش‌فاکتور،\n*در همان روز کاری*', title_tag: 'h1', title_size: 'xl', desc: 'سه مرحله‌ی کوتاه را تکمیل کنید یا مستقیم با واحد فروش تماس بگیرید.' }),
 	]),
 	section({ space: 'md' }, [
@@ -449,7 +449,7 @@ module.exports = {
 		pages: ['خانه', 'خانه — مدل دوم', 'درباره‌ی ما', 'تماس و استعلام', 'دانشنامه', 'محصولات'],
 	},
 	content: {
-		site: { tagline: 'تجهیزات کنترل فرایند، ساخت ایران' },
+		site: { title: 'صنایع هامون', tagline: 'تجهیزات کنترل فرایند، ساخت ایران' },
 		images, alts, terms, posts, products,
 		pages: [
 			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },

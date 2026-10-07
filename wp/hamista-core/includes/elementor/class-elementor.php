@@ -27,6 +27,8 @@ class Elementor {
 			'Button',
 			'Text_Scrub',
 			'Scroll_Zoom',
+			'Depth',
+			'Flow',
 			'Hscroll',
 			'Scroll_Path',
 			'Stack',

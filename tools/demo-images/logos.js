@@ -8,7 +8,7 @@ const os = require('os');
 	const b = await chromium.launch();
 	const p = await b.newPage({ deviceScaleFactor: 1, viewport: { width: 900, height: 300 } });
 	const jobs = [];
-	for (const id of ['spark', 'agency', 'industrial', 'honey', 'nomad']) {
+	for (const id of ['spark', 'agency', 'industrial', 'honey', 'nomad', 'flux']) {
 		for (const dark of [0, 1]) {
 			await p.goto('file://' + path.join(__dirname, 'logos.html') + `?id=${id}&dark=${dark}`);
 			await p.waitForSelector('body[data-ready="1"]');

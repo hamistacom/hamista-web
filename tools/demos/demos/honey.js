@@ -216,7 +216,7 @@ const homeB = [
 /* ---------------- About ---------------- */
 
 const about = [
-	section({ space: 'lg', bottom0: true, cls: 'hm-honeycomb' }, [
+	section({ space: 'md', bottom0: true, cls: 'hm-honeycomb' }, [
 		cols({ widths: [55, 45], align: 'flex-end' }, [
 			[heading({ eyebrow: 'داستان شهدینه', title: 'از کندوهای\n*پدربزرگ*', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>پدربزرگ من چهل سال در دامنه‌ی سبلان زنبورداری کرد. هر تابستان چند شیشه عسل برای ما به تهران می‌فرستاد و هر بار که از عسل مغازه‌ها حرف می‌زدیم، فقط می‌خندید. شهدینه از همان خنده شروع شد.</p><p>— نگار صدری، بنیان‌گذار</p>')],
@@ -261,7 +261,7 @@ function anchor(id, el) { el.settings._element_id = id; return el; }
 /* ---------------- Contact ---------------- */
 
 const contact = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'تماس با ما', title: 'سؤالی درباره‌ی\n*عسل* دارید؟', title_tag: 'h1', title_size: 'xl', desc: 'برای راهنمای خرید، سفارش عمده یا پیگیری ارسال پیام بدهید. هر روز از ۹ تا ۲۱ جواب می‌دهیم.' }),
 	]),
 	section({ space: 'md' }, [
@@ -402,7 +402,7 @@ module.exports = {
 		pages: ['خانه', 'خانه — مدل دوم', 'داستان ما', 'تماس با ما', 'دفترچه‌ی عسل', 'فروشگاه'],
 	},
 	content: {
-		site: { tagline: 'عسل طبیعی کوهستان' },
+		site: { title: 'شهدینه', tagline: 'عسل طبیعی کوهستان' },
 		images, alts, terms, posts, products,
 		pages: [
 			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },

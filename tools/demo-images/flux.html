@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Flux scenes</title>
+<style>
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-arabic.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0600-06FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Vazirmatn"; src: url(vazirmatn-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #050507; }
+body { font-family: "Vazirmatn", sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: relative; overflow: hidden; background: #050507; color: #f3efe8; }
+.abs { position: absolute; }
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.glass { position: absolute; border-radius: 28px; background: linear-gradient(140deg, rgba(255,255,255,.16), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(22px) saturate(1.4); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 40px 80px -30px rgba(0,0,0,.7); }
+.mono { font-family: ui-monospace, Menlo, monospace; direction: ltr; letter-spacing: .14em; }
+</style>
+</head>
+<body>
+<div id="stage" class="grain"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get('w') || 1600, H = +q.get('h') || 1000, V = +q.get('v') || 1, S = q.get('s') || 'orb';
+const stage = document.getElementById('stage');
+stage.style.width = W + 'px'; stage.style.height = H + 'px';
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const pick = (a, i) => a[(i - 1 + a.length) % a.length];
+// Seeded random so a variant always renders the same.
+let seed = V * 9301 + S.length * 49297;
+const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+
+const PAL = [
+	{ a: '#ff8a1f', b: '#ff3d6e', c: '#ffd27a', d: '#3a0d2e' },
+	{ a: '#ffb547', b: '#ff6a2b', c: '#fff1c2', d: '#2b0f05' },
+	{ a: '#ff5b8a', b: '#8b5cff', c: '#ffd0e0', d: '#160b33' },
+	{ a: '#ffa53d', b: '#ffdd88', c: '#ffffff', d: '#2a1800' },
+	{ a: '#7c6bff', b: '#38d7ff', c: '#d9e6ff', d: '#071430' },
+	{ a: '#ff7a3d', b: '#ffcf4d', c: '#fff4d6', d: '#1f0a00' },
+];
+
+function orb(cx, cy, r, p, extra = '') {
+	return `<div class="abs" style="left:${cx - r * 1.9}px;top:${cy - r * 1.9}px;width:${r * 3.8}px;height:${r * 3.8}px;border-radius:50%;background:radial-gradient(closest-side, ${p.a}66, ${p.b}22 55%, transparent 72%);filter:blur(${r * .18}px)"></div>
+	<div class="abs" style="left:${cx - r}px;top:${cy - r}px;width:${r * 2}px;height:${r * 2}px;border-radius:50%;
+		background: radial-gradient(circle at 34% 30%, ${p.c} 0%, ${p.a} 22%, ${p.b} 58%, ${p.d} 92%);
+		box-shadow: inset -${r * .18}px -${r * .22}px ${r * .5}px rgba(0,0,0,.55), inset ${r * .08}px ${r * .06}px ${r * .2}px rgba(255,255,255,.35), 0 0 ${r * .9}px ${p.a}55;${extra}"></div>
+	<div class="abs" style="left:${cx - r * .62}px;top:${cy - r * .78}px;width:${r * .7}px;height:${r * .36}px;border-radius:50%;background:radial-gradient(closest-side, rgba(255,255,255,.75), transparent);transform:rotate(-28deg);filter:blur(${r * .04}px)"></div>`;
+}
+
+function rings(cx, cy, r, color, n = 3) {
+	let s = '';
+	for (let i = 0; i < n; i++) {
+		const rx = r * (1.35 + i * .32), ry = rx * (.28 + i * .03), rot = -18 + i * 7;
+		s += `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="${color}" stroke-opacity="${.5 - i * .12}" stroke-width="${2 - i * .4}" transform="rotate(${rot} ${cx} ${cy})"/>`;
+	}
+	return `<svg class="abs" style="inset:0" width="${W}" height="${H}">${s}</svg>`;
+}
+
+function dust(n, color, area = [0, 0, W, H]) {
+	let s = '';
+	for (let i = 0; i < n; i++) {
+		const x = area[0] + rnd() * area[2], y = area[1] + rnd() * area[3], r = .6 + rnd() * 2.2;
+		s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${color}" fill-opacity="${(.25 + rnd() * .7).toFixed(2)}"/>`;
+	}
+	return `<svg class="abs" style="inset:0" width="${W}" height="${H}">${s}</svg>`;
+}
+
+function ribbons(p, n = 46, amp = .22, y0 = .55) {
+	let paths = '';
+	for (let i = 0; i < n; i++) {
+		const t = i / n;
+		const y = H * (y0 + (t - .5) * .5);
+		const a = H * amp * (1 - t * .5);
+		const k = 1 + t * .6;
+		const d = `M${-W * .1},${y} C${W * .25},${y - a * k} ${W * .45},${y + a} ${W * .65},${y - a * .4} S${W * .95},${y + a * .8} ${W * 1.1},${y - a * .2}`;
+		paths += `<path d="${d}" fill="none" stroke="url(#rg)" stroke-width="${(1.4 + (1 - t) * 2).toFixed(2)}" stroke-opacity="${(.35 + t * .65).toFixed(2)}" filter="url(#rgw)"/>`;
+	}
+	return `<svg class="abs" style="inset:0" width="${W}" height="${H}"><defs><filter id="rgw" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="${p.b}" stop-opacity="0"/><stop offset=".35" stop-color="${p.a}"/><stop offset=".7" stop-color="${p.c}"/><stop offset="1" stop-color="${p.b}" stop-opacity="0"/></linearGradient></defs>${paths}</svg>`;
+}
+
+const bg = (p, x = 50, y = 40) => `<div class="abs" style="inset:0;background:radial-gradient(70% 70% at ${x}% ${y}%, ${p.d}, #050507 70%)"></div>`;
+
+const scenes = {
+	/* Glowing sphere with orbit rings and dust. */
+	orb: () => {
+		const p = pick(PAL, V), r = Math.min(W, H) * (.26 + (V % 3) * .03);
+		const cx = W * (V % 2 ? .58 : .42), cy = H * .5;
+		return bg(p, cx / W * 100, 45) + dust(140, p.c) + rings(cx, cy, r, p.c) + orb(cx, cy, r, p) + dust(40, '#fff', [cx - r * 2, cy - r * 1.4, r * 4, r * 2.8]);
+	},
+	/* Glass panels floating over a glow. */
+	glass: () => {
+		const p = pick(PAL, V);
+		let s = bg(p, 40, 60) + orb(W * .38, H * .58, Math.min(W, H) * .24, p, 'filter:blur(6px)');
+		const cards = [[.18, .16, .36, .5, -8], [.42, .3, .38, .48, 6], [.6, .12, .26, .36, -4]];
+		cards.forEach(([x, y, w, h, r], i) => {
+			s += `<div class="glass" style="left:${W * x}px;top:${H * y}px;width:${W * w}px;height:${H * h}px;transform:rotate(${r}deg)">
+				<div class="abs" style="inset:${Math.min(W, H) * .03}px;display:grid;gap:${H * .02}px;align-content:start">
+					<div style="height:${H * .018}px;width:40%;border-radius:9px;background:rgba(255,255,255,.35)"></div>
+					<div style="height:${H * .012}px;width:70%;border-radius:9px;background:rgba(255,255,255,.18)"></div>
+					<div style="height:${H * .012}px;width:55%;border-radius:9px;background:rgba(255,255,255,.18)"></div>
+					${i === 1 ? `<div style="margin-top:${H * .02}px;height:${H * .12}px;border-radius:18px;background:linear-gradient(120deg, ${p.a}, ${p.b})"></div>` : ''}
+				</div></div>`;
+		});
+		return s + dust(80, p.c);
+	},
+	/* Flowing ribbon sheet. */
+	ribbon: () => {
+		const p = pick(PAL, V);
+		return bg(p, 60, 50) + ribbons(p, 52, .2 + (V % 3) * .04, .5) + dust(60, p.c);
+	},
+	/* AI chat card (glass), the studio's assistant. */
+	chat: () => {
+		const p = pick(PAL, V);
+		const msg = (me, t, w) => `<div style="align-self:${me ? 'flex-start' : 'flex-end'};max-width:${w}%;padding:${H * .022}px ${W * .022}px;border-radius:22px;font-size:${H * .028}px;line-height:1.8;${me ? 'background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12)' : `background:linear-gradient(120deg, ${p.a}, ${p.b});color:#160800;font-weight:600`}">${t}</div>`;
+		return bg(p, 50, 30) + orb(W * .8, H * .2, Math.min(W, H) * .14, p) + dust(60, p.c) +
+			`<div class="glass" style="left:${W * .14}px;top:${H * .12}px;width:${W * .62}px;height:${H * .76}px;padding:${H * .04}px;display:flex;flex-direction:column;gap:${H * .022}px">
+				<div style="display:flex;align-items:center;gap:14px;font-size:${H * .028}px"><span style="width:${H * .05}px;height:${H * .05}px;border-radius:50%;background:radial-gradient(circle at 35% 30%, ${p.c}, ${p.a} 40%, ${p.b});box-shadow:0 0 24px ${p.a}"></span><b>دستیار سیال</b><span style="margin-inline-start:auto;opacity:.5" class="mono">LIVE</span></div>
+				${msg(1, 'برای کمپین تابستان یک موشن ده‌ثانیه‌ای می‌خواهم؛ گرم و پرانرژی.', 72)}
+				${msg(0, 'سه ایده دارم: موج نور روی محصول، تایپوگرافی سیال، و زوم از دل لوگو. کدام را ببینیم؟', 78)}
+				${msg(1, 'زوم از دل لوگو را نشانم بده.', 50)}
+				<div style="margin-top:auto;display:flex;gap:12px;align-items:center;padding:${H * .016}px;border-radius:18px;background:rgba(255,255,255,.07)"><div style="flex:1;height:${H * .012}px;border-radius:9px;background:rgba(255,255,255,.18)"></div><div style="width:${H * .06}px;height:${H * .06}px;border-radius:14px;background:${p.a}"></div></div>
+			</div>`;
+	},
+	/* Typographic poster with a glow (blog covers). */
+	type: () => {
+		const words = ['حرکت', 'نور', 'جریان', 'عمق', 'لحظه', 'ریتم'];
+		const p = pick(PAL, V), w = pick(words, V);
+		return bg(p, 30, 60) + ribbons(p, 30, .16, .7) + orb(W * .22, H * .42, Math.min(W, H) * .2, p) +
+			`<div class="abs" style="right:${W * .07}px;bottom:${H * .1}px;font-size:${H * .34}px;font-weight:900;line-height:1;background:linear-gradient(180deg,#fff,${p.c} 60%, ${p.a});-webkit-background-clip:text;color:transparent">${w}</div>
+			<div class="abs mono" style="right:${W * .07}px;top:${H * .1}px;font-size:${H * .022}px;opacity:.6">SAYAL STUDIO — N°${String(V).padStart(2, '0')}</div>`;
+	},
+	/* Product covers for digital products. */
+	product: () => {
+		const items = [
+			['پک انیمیشن رابط کاربری', '۴۸ انیمیشن · لاتی'],
+			['ترنزیشن‌های ویدیویی', '۱۲۰ ترنزیشن · پریمیر'],
+			['کیت موکاپ شیشه‌ای', '۳۶ صحنه · فیگما'],
+			['آیکون‌های متحرک', '۲۴۰ آیکون · SVG'],
+			['قالب ارائه‌ی سه‌بعدی', '۴۰ اسلاید · کی‌نوت'],
+			['دوره‌ی موشن دیزاین', '۱۲ هفته · آنلاین'],
+		];
+		const p = pick(PAL, V), it = pick(items, V);
+		const art = [() => orb(W * .5, H * .4, W * .2, p) + rings(W * .5, H * .4, W * .2, p.c),
+			() => ribbons(p, 40, .18, .4),
+			() => scenes.glass(),
+			() => orb(W * .36, H * .38, W * .12, p) + orb(W * .64, H * .44, W * .16, pick(PAL, V + 2)),
+			() => orb(W * .5, H * .42, W * .22, p, 'border-radius:30%;transform:rotate(18deg)'),
+			() => ribbons(p, 46, .26, .42) + orb(W * .7, H * .3, W * .08, p)][(V - 1) % 6];
+		return bg(p, 50, 35) + dust(80, p.c) + art() +
+			`<div class="abs" style="inset-inline:${W * .08}px;bottom:${H * .08}px;display:grid;gap:10px"><b style="font-size:${W * .062}px;line-height:1.2">${it[0]}</b><span style="font-size:${W * .028}px;opacity:.7">${it[1]}</span></div>
+			<div class="abs mono" style="left:${W * .08}px;top:${H * .07}px;font-size:${W * .018}px;opacity:.55">SAYAL / ${String(V).padStart(2, '0')}</div>`;
+	},
+	/* Wide hero: orb, ribbons and floating glass cards. */
+	hero: () => {
+		const p = PAL[0];
+		return bg(p, 50, 55) + ribbons(p, 56, .2, .62) + rings(W * .5, H * .5, H * .26, p.c, 4) + orb(W * .5, H * .5, H * .26, p) + dust(160, p.c) +
+			`<div class="glass" style="left:${W * .12}px;top:${H * .18}px;width:${W * .16}px;height:${H * .22}px;transform:rotate(-8deg)"></div>
+			<div class="glass" style="left:${W * .74}px;top:${H * .58}px;width:${W * .14}px;height:${H * .2}px;transform:rotate(7deg)"></div>`;
+	},
+};
+
+stage.innerHTML = (scenes[S] || (() => '<h1>unknown</h1>'))();
+document.fonts.ready.then(() => document.body.setAttribute('data-ready', '1'));
+</script>
+</body>
+</html>

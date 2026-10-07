@@ -651,10 +651,14 @@
 		var shade = el.querySelector('.hm-zoom__shade');
 		var startScale = parseFloat(el.getAttribute('data-start')) || 0.42;
 		var radius = parseFloat(el.getAttribute('data-radius')) || 28;
+		// "out" plays the same choreography backwards: the scene starts full-screen,
+		// its message shows first, then it shrinks into a card under the heading.
+		var out = el.getAttribute('data-direction') === 'out';
 		if (!animate) { el.classList.add('is-static'); return; }
 		H.scrub(el, {
 			mode: 'pin',
 			update: function (p) {
+				if (out) { p = 1 - p; }
 				var z = ease.inOut(clamp(p / 0.72, 0, 1));
 				var s = mix(startScale, 1, z);
 				media.style.transform = 'scale(' + s.toFixed(4) + ')';
@@ -752,6 +756,126 @@
 		H.on('resize', function () { build(); });
 		if (!animate) { el.classList.add('is-static'); render(1); return; }
 		H.scrub(el, { mode: 'pin', update: render });
+	});
+
+	/* Depth: scenes fly toward the viewer one after another (zoom tunnel). */
+	H.register('depth', function (el) {
+		var layers = $$('.hm-depth__layer', el);
+		var count = el.querySelector('.hm-depth__now');
+		var bar = el.querySelector('.hm-depth__bar span');
+		var glow = el.querySelector('.hm-depth__glow');
+		var n = layers.length;
+		var current = -1;
+		if (!n) { return; }
+		if (!animate) { el.classList.add('is-static'); return; }
+		layers.forEach(function (layer, i) {
+			layer.style.zIndex = String(n - i);
+			layer.__media = layer.querySelector('.hm-depth__media');
+			layer.__text = layer.querySelector('.hm-depth__text');
+		});
+		H.scrub(el, {
+			mode: 'pin',
+			update: function (p) {
+				// Each scene owns one slice of the track: it arrives from the distance,
+				// holds, then passes through the camera while the next one arrives.
+				var pos = p * (n - 0.35);
+				for (var i = 0; i < n; i++) {
+					var t = pos - i + 0.65;
+					var layer = layers[i];
+					var arrive = clamp(t / 0.65, 0, 1);
+					var leave = i === n - 1 ? 0 : clamp((t - 0.95) / 0.7, 0, 1);
+					var visible = t > -0.05 && leave < 1;
+					layer.style.visibility = visible ? 'visible' : 'hidden';
+					if (!visible) { continue; }
+					var a = ease.out(arrive);
+					var l = ease.inOut(leave);
+					var scale = mix(0.32, 1, a) * mix(1, 3.4, l);
+					var opacity = Math.min(a * 1.4, 1) * (1 - l);
+					var blur = (1 - a) * 10 + l * 8;
+					if (layer.__media) {
+						layer.__media.style.transform = 'translate3d(0,0,0) scale(' + scale.toFixed(4) + ')';
+						layer.__media.style.opacity = opacity.toFixed(3);
+						layer.__media.style.filter = blur > 0.3 ? 'blur(' + blur.toFixed(1) + 'px)' : 'none';
+					}
+					if (layer.__text) {
+						// Text sits closer to the camera: it moves faster and fades sooner.
+						var ts = mix(0.6, 1, a) * mix(1, 1.9, l);
+						layer.__text.style.transform = 'translate3d(0,' + ((1 - a) * 60 - l * 40).toFixed(1) + 'px,0) scale(' + ts.toFixed(4) + ')';
+						layer.__text.style.opacity = (clamp((a - 0.35) / 0.65, 0, 1) * (1 - clamp(l * 1.6, 0, 1))).toFixed(3);
+					}
+				}
+				var idx = Math.min(n - 1, Math.max(0, Math.floor(pos + 0.35)));
+				if (idx !== current) {
+					current = idx;
+					if (count) { count.textContent = (idx < 9 ? formatNumber(0, 0, true) : '') + formatNumber(idx + 1, 0, true); }
+					layers.forEach(function (layer, k) { layer.setAttribute('aria-hidden', k === idx ? 'false' : 'true'); });
+				}
+				if (bar) { bar.style.transform = 'scaleX(' + p.toFixed(4) + ')'; }
+				if (glow) { glow.style.transform = 'translate3d(-50%,-50%,0) scale(' + mix(0.8, 1.6, p).toFixed(3) + ') rotate(' + (p * 120).toFixed(1) + 'deg)'; }
+			}
+		});
+	});
+
+	/* Flow: elements float at different depths, drift with scroll and lean toward the pointer. */
+	H.register('flow', function (el) {
+		var items = $$('.hm-flow__item', el);
+		var mode = el.getAttribute('data-mode') || 'drift';
+		var strength = parseFloat(el.getAttribute('data-strength')) || 1;
+		var mx = 0, my = 0, tx = 0, ty = 0, prog = 0.5;
+		if (!items.length) { return; }
+		var data = items.map(function (item) {
+			return {
+				el: item,
+				depth: parseFloat(item.getAttribute('data-depth')) || 0.5,
+				x: parseFloat(item.getAttribute('data-x')) || 50,
+				y: parseFloat(item.getAttribute('data-y')) || 50,
+				rot: parseFloat(item.getAttribute('data-rot')) || 0
+			};
+		});
+		if (!animate) { el.classList.add('is-static'); return; }
+
+		function paint() {
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				var dx = 0, dy, sc = 1, op = 1, r = d.rot;
+				if (mode === 'converge' || mode === 'disperse') {
+					// converge: scattered and close to the camera → settle into place.
+					var f = mode === 'converge' ? 1 - ease.out(clamp(prog / 0.55, 0, 1)) : ease.inOut(clamp((prog - 0.45) / 0.55, 0, 1));
+					dx = (d.x - 50) * f * 9 * strength;
+					dy = (d.y - 50) * f * 7 * strength;
+					sc = 1 + f * (0.8 + d.depth);
+					op = 1 - f * 0.9;
+					r = d.rot * (1 + f * 3);
+				} else {
+					dy = (0.5 - prog) * d.depth * 520 * strength;
+					sc = 1 + (prog - 0.5) * d.depth * 0.16;
+				}
+				dx += tx * d.depth * 28;
+				dy += ty * d.depth * 22;
+				d.el.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,' + (dy || 0).toFixed(1) + 'px,0) rotate(' + r.toFixed(2) + 'deg) scale(' + sc.toFixed(4) + ')';
+				if (op !== 1) { d.el.style.opacity = Math.max(0, op).toFixed(3); } else if (d.el.style.opacity) { d.el.style.opacity = ''; }
+			}
+		}
+
+		H.scrub(el, { mode: 'through', update: function (p) { prog = p; paint(); } });
+
+		if (finePointer) {
+			var ticker = H.ticker(function () {
+				tx = mix(tx, mx, 0.07);
+				ty = mix(ty, my, 0.07);
+				paint();
+				return Math.abs(tx - mx) > 0.001 || Math.abs(ty - my) > 0.001;
+			});
+			ticker.active = false;
+			el.addEventListener('pointermove', function (e) {
+				var b = el.getBoundingClientRect();
+				mx = ((e.clientX - b.left) / b.width - 0.5) * 2;
+				my = ((e.clientY - b.top) / b.height - 0.5) * 2;
+				ticker.active = true;
+				requestFrame();
+			});
+			el.addEventListener('pointerleave', function () { mx = 0; my = 0; ticker.active = true; requestFrame(); });
+		}
 	});
 
 	/* Stacking cards: each card scales back as the next one arrives. */

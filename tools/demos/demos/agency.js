@@ -284,7 +284,7 @@ const homeB = [
 /* ---------------- Services ---------------- */
 
 const services = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		cols({ widths: [58, 42], align: 'flex-end' }, [
 			[heading({ eyebrow: 'خدمات', title: 'هر کانالی که\n*فروش* می‌سازد', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>می‌توانید یک خدمت را جداگانه بگیرید یا چند کانال را با هم. در هر دو حالت یک مدیر حساب، یک داشبورد و یک هدف مشترک دارید.</p>'), button('ممیزی رایگان', '{{page:contact}}')],
@@ -324,7 +324,7 @@ const services = [
 /* ---------------- Work (case studies index) ---------------- */
 
 const work = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'نمونه‌کارها', title: 'پروژه‌هایی که\n*عدد* دارند', title_tag: 'h1', title_size: 'xl', desc: 'هر پروژه با یک هدف قابل اندازه‌گیری شروع شده و نتیجه‌اش را همان‌طور که بوده گزارش کرده‌ایم.' }),
 	]),
 	L.hscroll({
@@ -352,7 +352,7 @@ const work = [
 /* ---------------- About ---------------- */
 
 const about = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		cols({ widths: [55, 45], align: 'flex-end' }, [
 			[heading({ eyebrow: 'درباره‌ی تپش', title: 'آژانسی که\n*به عدد* قسم می‌خورد', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>تپش را سال ۱۳۹۷ سه نفر راه انداختند که از گزارش‌های پر از لایک و بازدید خسته شده بودند. سؤالشان ساده بود: این کمپین چقدر فروش آورد؟</p>')],
@@ -403,7 +403,7 @@ const about = [
 /* ---------------- Contact ---------------- */
 
 const contact = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'تماس با ما', title: 'ممیزی رایگان،\n*در دو دقیقه*', title_tag: 'h1', title_size: 'xl', desc: 'سه سؤال کوتاه را جواب بدهید؛ تا دو ساعت کاری آینده تماس می‌گیریم. اگر ترجیح می‌دهید، مستقیم زنگ بزنید.' }),
 	]),
 	section({ space: 'md' }, [
@@ -543,7 +543,7 @@ module.exports = {
 		pages: ['خانه', 'خانه — مدل دوم', 'خدمات', 'نمونه‌کارها', 'درباره‌ی ما', 'تماس با ما', 'وبلاگ', 'فروشگاه'],
 	},
 	content: {
-		site: { tagline: 'آژانس دیجیتال مارکتینگ' },
+		site: { title: 'تپش', tagline: 'آژانس دیجیتال مارکتینگ' },
 		images,
 		alts,
 		terms,

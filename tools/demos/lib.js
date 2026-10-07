@@ -111,6 +111,15 @@ const scrollZoom = (s) => bleed(w('hm-scroll-zoom', Object.assign({ title_tag: '
 const hscroll = (s) => bleed(w('hm-hscroll', Object.assign({ title_tag: 'h2', title_size: 'lg', header_align: 'start', title_reveal: 'words', card_size: 'md', card_style: 'caption', length: px(1), progress: 'yes', btn1_style: 'secondary' }, s)));
 const scrollPath = (s) => bleed(w('hm-scroll-path', Object.assign({ title_tag: 'h2', title_size: 'xl', header_align: 'center', title_reveal: 'words', length: px(4.2) }, s)));
 const stack = (items) => w('hm-stack', { items });
+const depth = (s) => bleed(w('hm-depth', Object.assign({ layout: 'card', length: px(1), glow: 'yes', scheme: 'inverse' }, s)));
+/** Floating elements: items are { image?, text?, shape, x, y, size, depth, rot } in plain numbers. */
+const flow = (s) => {
+	const items = (s.items || []).map((i) => ({
+		image: i.image || {}, text: i.text || '', shape: i.shape || 'card', mobile: i.mobile === false ? '' : 'yes',
+		x: px(i.x), y: px(i.y), size: px(i.size || 180), depth: px(i.depth ?? 0.5), rot: px(i.rot || 0),
+	}));
+	return bleed(w('hm-flow', Object.assign({ title_tag: 'h1', title_size: 'xxl', header_align: 'center', title_reveal: 'words', btn1_style: 'primary', mode: 'drift', strength: px(1), float: 'yes' }, s, { items })));
+};
 const imageReveal = (key, s = {}) => w('hm-image-reveal', Object.assign({ image: img(key), ratio: '4-3', reveal: 'clip-up', parallax: px(0.4), frame: '' }, s));
 const counters = (items, s = {}) => w('hm-counters', Object.assign({ items, style: 'plain', duration: 2, grouping: 'yes' }, s));
 const features = (items, s = {}) => w('hm-features', Object.assign({ items, layout: 'grid', style: 'cards', icon_style: 'tile', link_text: '' }, s));
@@ -159,7 +168,7 @@ const pageSettings = (o = {}) => Object.assign({ hm_header: o.header || '', hm_f
 
 module.exports = {
 	reset, uid, img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols,
-	heading, button, buttons, textEditor, spacer, hero, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack,
+	heading, button, buttons, textEditor, spacer, hero, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
 	imageReveal, counters, features, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,
 };

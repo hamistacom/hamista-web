@@ -71,6 +71,19 @@ class Scroll_Zoom extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'direction',
+			array(
+				'label'       => __( 'Direction', 'hamista-core' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'in',
+				'options'     => array(
+					'in'  => __( 'Zoom in: card grows to full screen', 'hamista-core' ),
+					'out' => __( 'Zoom out: full screen shrinks to a card', 'hamista-core' ),
+				),
+				'description' => __( 'With zoom out, the closing message shows first, over the full-screen image.', 'hamista-core' ),
+			)
+		);
+		$this->add_control(
 			'start_scale',
 			array(
 				'label'   => __( 'Starting size', 'hamista-core' ),
@@ -162,10 +175,11 @@ class Scroll_Zoom extends Widget_Base {
 		}
 
 		printf(
-			'<section class="hm-zoom" data-hm-widget="zoom" data-start="%1$s" data-radius="%2$s" style="--hm-zoom-len:%3$svh">',
+			'<section class="hm-zoom hm-zoom--%4$s" data-hm-widget="zoom" data-direction="%4$s" data-start="%1$s" data-radius="%2$s" style="--hm-zoom-len:%3$svh">',
 			esc_attr( $s['start_scale']['size'] ?? 0.42 ),
 			esc_attr( $s['radius']['size'] ?? 28 ),
-			esc_attr( (string) round( $length * 100 ) )
+			esc_attr( (string) round( $length * 100 ) ),
+			'out' === ( $s['direction'] ?? 'in' ) ? 'out' : 'in'
 		);
 		echo '<div class="hm-zoom__sticky">';
 		echo '<div class="hm-zoom__intro hm-container">' . $this->render_header( $s ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

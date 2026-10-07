@@ -242,7 +242,7 @@ const homeB = [
 ];
 
 const about = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		cols({ widths: [55, 45], align: 'flex-end' }, [
 			[heading({ eyebrow: 'درباره‌ی ما', title: 'مدرسه‌ای که با\n*یک سؤال* شروع شد', title_tag: 'h1', title_size: 'xl' })],
 			[L.textEditor('<p>سال ۱۳۹۸ چند طراح و برنامه‌نویس از خودمان پرسیدیم چرا بیشتر کسانی که دوره می‌بینند هیچ‌وقت چیزی نمی‌سازند. جواب ساده بود: کسی منتظر کارشان نبود.</p>')],
@@ -304,7 +304,7 @@ const about = [
 ];
 
 const contact = [
-	section({ space: 'lg', bottom0: true }, [
+	section({ space: 'md', bottom0: true }, [
 		heading({ eyebrow: 'تماس با ما', title: 'درباره‌ی *ایده‌تان*\nحرف بزنیم', title_tag: 'h1', title_size: 'xl', desc: 'برای مشاوره‌ی انتخاب دوره، دوره‌ی تیمی یا هر سؤال دیگری پیام بدهید. در روزهای کاری تا چند ساعت بعد جواب می‌دهیم.' }),
 	]),
 	section({ space: 'md' }, [
@@ -458,7 +458,7 @@ module.exports = {
 	manifest: {
 		id: 'spark',
 		order: 1,
-		title: 'اسپارک',
+		title: 'جرقه',
 		desc: 'مدرسه‌ی آنلاین و استودیوی ساخت محصول؛ تایپوگرافی درشت، موشن نرم و فروش دوره با ووکامرس.',
 		kit: 'spark',
 		thumb: 'thumb.webp',
@@ -468,7 +468,7 @@ module.exports = {
 		pages: ['خانه', 'خانه — مدل دوم', 'درباره‌ی ما', 'تماس با ما', 'مجله', 'فروشگاه'],
 	},
 	content: {
-		site: { tagline: 'مدرسه‌ی ساخت محصول' },
+		site: { title: 'هامیستا', tagline: 'مدرسه‌ی ساخت محصول' },
 		images,
 		alts,
 		terms,
@@ -482,20 +482,20 @@ module.exports = {
 			{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },
 		],
 		templates: [
-			{ key: 'tpl-home', type: 'page', page: 'home', title: 'اسپارک — صفحه‌ی اصلی' },
-			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'اسپارک — صفحه‌ی اصلی، مدل دوم' },
-			{ key: 'tpl-about', type: 'page', page: 'about', title: 'اسپارک — درباره‌ی ما' },
-			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'اسپارک — تماس با ما' },
-			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'اسپارک — هیرو با موزاییک تصاویر' },
-			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 4, title: 'اسپارک — اسکرول افقی نمونه‌کارها' },
-			{ key: 'tpl-zoom', type: 'section', page: 'home', index: 6, title: 'اسپارک — زوم با اسکرول' },
-			{ key: 'tpl-path', type: 'section', page: 'home-2', index: 2, title: 'اسپارک — مسیر اسکرول' },
-			{ key: 'tpl-stack', type: 'section', page: 'home-2', index: 4, title: 'اسپارک — کارت‌های پشته‌ای' },
-			{ key: 'tpl-pricing', type: 'section', page: 'home-2', index: 5, title: 'اسپارک — جدول شهریه' },
+			{ key: 'tpl-home', type: 'page', page: 'home', title: 'جرقه — صفحه‌ی اصلی' },
+			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'جرقه — صفحه‌ی اصلی، مدل دوم' },
+			{ key: 'tpl-about', type: 'page', page: 'about', title: 'جرقه — درباره‌ی ما' },
+			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'جرقه — تماس با ما' },
+			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'جرقه — هیرو با موزاییک تصاویر' },
+			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 4, title: 'جرقه — اسکرول افقی نمونه‌کارها' },
+			{ key: 'tpl-zoom', type: 'section', page: 'home', index: 6, title: 'جرقه — زوم با اسکرول' },
+			{ key: 'tpl-path', type: 'section', page: 'home-2', index: 2, title: 'جرقه — مسیر اسکرول' },
+			{ key: 'tpl-stack', type: 'section', page: 'home-2', index: 4, title: 'جرقه — کارت‌های پشته‌ای' },
+			{ key: 'tpl-pricing', type: 'section', page: 'home-2', index: 5, title: 'جرقه — جدول شهریه' },
 		],
 		menus: [
 			{
-				name: 'اسپارک — منوی اصلی', location: 'primary', items: [
+				name: 'جرقه — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home', children: [{ title: 'خانه — مدل اول', page: 'home' }, { title: 'خانه — مدل دوم', page: 'home-2' }] },
 					{ title: 'دوره‌ها', url: '{{shop}}' },
 					{ title: 'مجله', page: 'blog' },
@@ -504,7 +504,7 @@ module.exports = {
 				],
 			},
 			{
-				name: 'اسپارک — پابرگ', location: 'footer', items: [
+				name: 'جرقه — پابرگ', location: 'footer', items: [
 					{ title: 'دوره‌ها', url: '{{shop}}' },
 					{ title: 'مجله', page: 'blog' },
 					{ title: 'درباره‌ی ما', page: 'about' },

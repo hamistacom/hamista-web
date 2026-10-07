@@ -242,6 +242,18 @@ function hamista_sale_flash( $html, $post, $product ) {
 add_filter( 'woocommerce_sale_flash', 'hamista_sale_flash', 10, 3 );
 
 /**
+ * Prices in Persian digits on Persian sites, matching the rest of the theme
+ * (Hamista → Typography → Persian digits).
+ *
+ * @param string $price Formatted number, without currency.
+ * @return string
+ */
+function hamista_price_digits( $price ) {
+	return is_admin() && ! wp_doing_ajax() ? $price : hamista_digits( $price );
+}
+add_filter( 'formatted_woocommerce_price', 'hamista_price_digits' );
+
+/**
  * Keep the header cart badge in sync after AJAX add-to-cart.
  *
  * @param array $fragments Fragments.

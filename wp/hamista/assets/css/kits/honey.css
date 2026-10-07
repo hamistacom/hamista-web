@@ -147,6 +147,9 @@
 	background: var(--hm-bg); -webkit-mask: var(--hm-drip) center top / 100% 100% no-repeat; mask: var(--hm-drip) center top / 100% 100% no-repeat;
 }
 .hm-kit-honey .hm-footer > :first-child { padding-top: calc(var(--hm-space-section) * .6 + 30px); }
+/* A page that already ends on a dark slab flows straight into the footer. */
+.hm-kit-honey:has(.hm-main .elementor > .e-con:last-child :is(.hm-scheme-inverse, .hm-amber-slab)) .hm-footer::before,
+.hm-kit-honey:has(.hm-main .elementor > .e-con.hm-scheme-inverse:last-child) .hm-footer::before { display: none; }
 .hm-kit-honey .hm-footer__wordmark { color: var(--hm-accent); opacity: .1; }
 [data-hm-theme="dark"] .hm-kit-honey .hm-footer { background: #0c0703; }
 
