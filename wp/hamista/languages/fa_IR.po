@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T06:34:32+00:00\n"
-"PO-Revision-Date: 2026-10-07 07:06+0000\n"
+"POT-Creation-Date: 2026-10-07T07:13:46+00:00\n"
+"PO-Revision-Date: 2026-10-07 07:14+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -43,6 +43,19 @@ msgstr "شاید نشانی را اشتباه وارد کرده‌اید یا ب
 #: 404.php:18
 msgid "Back to home"
 msgstr "بازگشت به خانه"
+
+#: archive-hm_portfolio.php:17
+msgid "Selected work"
+msgstr "نمونه‌کارهای منتخب"
+
+#: archive-hm_portfolio.php:30
+msgid "Project categories"
+msgstr "دسته‌بندی پروژه‌ها"
+
+#: archive-hm_portfolio.php:31
+#: inc/template-tags.php:328
+msgid "All"
+msgstr "همه"
 
 #. translators: %s: number of comments
 #: comments.php:20
@@ -231,8 +244,8 @@ msgstr "خانه"
 #: inc/template-tags.php:168
 #: index.php:15
 #: searchform.php:15
+#: template-parts/header/overlays.php:61
 #: template-parts/header/site-header.php:55
-#: template-parts/header/site-header.php:135
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -265,10 +278,6 @@ msgstr "کپی لینک"
 #: inc/template-tags.php:279
 msgid "Link copied"
 msgstr "لینک کپی شد"
-
-#: inc/template-tags.php:328
-msgid "All"
-msgstr "همه"
 
 #: inc/template-tags.php:354
 msgid "Your comment is awaiting moderation."
@@ -305,8 +314,16 @@ msgid "Journal"
 msgstr "مجله"
 
 #. Template Name of the theme
+msgid "Hamista — Canvas (no header or footer)"
+msgstr "هامیستا — بوم خالی (بدون سربرگ و پابرگ)"
+
+#. Template Name of the theme
 msgid "Hamista — Full width"
 msgstr "هامیستا — تمام‌عرض"
+
+#. Template Name of the theme
+msgid "Hamista — Contained, no title"
+msgstr "هامیستا — داخل کادر، بدون عنوان"
 
 #: searchform.php:13
 msgid "Search for:"
@@ -319,6 +336,18 @@ msgstr "جست‌وجو…"
 #: sidebar.php:15
 msgid "Sidebar"
 msgstr "ستون کناری"
+
+#: single-hm_portfolio.php:67
+msgid "More projects"
+msgstr "پروژه‌های دیگر"
+
+#: single-hm_portfolio.php:72
+msgid "Previous project"
+msgstr "پروژه‌ی قبلی"
+
+#: single-hm_portfolio.php:75
+msgid "Next project"
+msgstr "پروژه‌ی بعدی"
 
 #: single.php:70
 msgid "Share"
@@ -366,6 +395,27 @@ msgstr "گفت‌وگو در واتس‌اپ"
 msgid "© %1$s %2$s. All rights reserved."
 msgstr "© %1$s %2$s. همه‌ی حقوق محفوظ است."
 
+#: template-parts/header/overlays.php:26
+msgid "Menu"
+msgstr "منو"
+
+#: template-parts/header/overlays.php:29
+msgid "Close menu"
+msgstr "بستن منو"
+
+#: template-parts/header/overlays.php:50
+#: template-parts/header/site-header.php:71
+msgid "My account"
+msgstr "حساب کاربری من"
+
+#: template-parts/header/overlays.php:50
+msgid "Log in / Sign up"
+msgstr "ورود / ثبت‌نام"
+
+#: template-parts/header/overlays.php:63
+msgid "Press Esc to close"
+msgstr "برای بستن، Esc را بزنید"
+
 #: template-parts/header/site-header.php:38
 msgid "Primary"
 msgstr "منوی اصلی"
@@ -379,11 +429,6 @@ msgid "Toggle dark mode"
 msgstr "تغییر حالت تاریک"
 
 #: template-parts/header/site-header.php:71
-#: template-parts/header/site-header.php:124
-msgid "My account"
-msgstr "حساب کاربری من"
-
-#: template-parts/header/site-header.php:71
 msgid "Log in"
 msgstr "ورود"
 
@@ -394,22 +439,6 @@ msgstr "سبد خرید"
 #: template-parts/header/site-header.php:93
 msgid "Open menu"
 msgstr "باز کردن منو"
-
-#: template-parts/header/site-header.php:100
-msgid "Menu"
-msgstr "منو"
-
-#: template-parts/header/site-header.php:103
-msgid "Close menu"
-msgstr "بستن منو"
-
-#: template-parts/header/site-header.php:124
-msgid "Log in / Sign up"
-msgstr "ورود / ثبت‌نام"
-
-#: template-parts/header/site-header.php:137
-msgid "Press Esc to close"
-msgstr "برای بستن، Esc را بزنید"
 
 #: template-parts/post/related.php:27
 msgid "Keep reading"

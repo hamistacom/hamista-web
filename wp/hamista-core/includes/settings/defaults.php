@@ -17,6 +17,7 @@ return array(
 	'density'               => 'compact',
 	'section_height'        => 500,
 	'ui_persian'            => true,
+	'portfolio_enabled'     => true,
 	'back_to_top'           => true,
 	'breadcrumbs'           => true,
 	'page_transitions'      => true,

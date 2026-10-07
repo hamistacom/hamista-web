@@ -57,7 +57,7 @@ return ( static function () {
 			'icon'   => 'palette',
 			'desc'   => __( 'The overall look of the site. Style kits change typography, surfaces and details at once.', 'hamista-core' ),
 			'fields' => array(
-				'kit'              => array(
+				'kit'               => array(
 					'type'    => 'cards',
 					'label'   => __( 'Style kit', 'hamista-core' ),
 					'choices' => array(
@@ -93,7 +93,7 @@ return ( static function () {
 						),
 					),
 				),
-				'container_width'  => array(
+				'container_width'   => array(
 					'type'  => 'range',
 					'label' => __( 'Content width', 'hamista-core' ),
 					'desc'  => __( 'Maximum width of page content. 1150px keeps every section comfortable on a 15" laptop; Elementor\'s container width is kept in sync.', 'hamista-core' ),
@@ -102,7 +102,7 @@ return ( static function () {
 					'step'  => 10,
 					'unit'  => 'px',
 				),
-				'density'          => array(
+				'density'           => array(
 					'type'    => 'cards',
 					'label'   => __( 'Density', 'hamista-core' ),
 					'desc'    => __( 'Vertical spacing between and inside sections. Compact shows more on a laptop screen with less scrolling.', 'hamista-core' ),
@@ -121,7 +121,7 @@ return ( static function () {
 						),
 					),
 				),
-				'section_height'   => array(
+				'section_height'    => array(
 					'type'  => 'range',
 					'label' => __( 'Base section height', 'hamista-core' ),
 					'desc'  => __( 'Heroes, sliders and showcase sections are sized from this value so each one fits a laptop screen.', 'hamista-core' ),
@@ -130,16 +130,20 @@ return ( static function () {
 					'step'  => 10,
 					'unit'  => 'px',
 				),
-				'page_transitions' => $on_off + array(
+				'page_transitions'  => $on_off + array(
 					'label' => __( 'Smooth page transitions', 'hamista-core' ),
 					'desc'  => __( 'Cross-fades between pages in supporting browsers. No JavaScript, no delay.', 'hamista-core' ),
 				),
-				'ui_persian'       => $on_off + array(
+				'ui_persian'        => $on_off + array(
 					'label' => __( 'Always show Hamista in Persian', 'hamista-core' ),
 					'desc'  => __( 'Keeps the Hamista panel, widgets and theme texts in Persian even if the site or your profile language is set to English.', 'hamista-core' ),
 				),
-				'back_to_top'      => $on_off + array( 'label' => __( 'Back-to-top button', 'hamista-core' ) ),
-				'breadcrumbs'      => $on_off + array(
+				'portfolio_enabled' => $on_off + array(
+					'label' => __( 'Portfolio', 'hamista-core' ),
+					'desc'  => __( 'A "Portfolio" section in the dashboard for projects, with categories, an archive page and the Portfolio widget.', 'hamista-core' ),
+				),
+				'back_to_top'       => $on_off + array( 'label' => __( 'Back-to-top button', 'hamista-core' ) ),
+				'breadcrumbs'       => $on_off + array(
 					'label' => __( 'Breadcrumbs', 'hamista-core' ),
 					'desc'  => __( 'Uses Yoast SEO or Rank Math breadcrumbs when they are enabled.', 'hamista-core' ),
 				),

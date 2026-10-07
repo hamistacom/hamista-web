@@ -232,6 +232,10 @@ class Layouts {
 		$sticky = get_post_meta( $id, '_hm_layout_sticky', true );
 		$class  = 'hm-header hm-header--custom' . ( $sticky ? ' is-sticky' : '' );
 		echo '<header id="masthead" class="' . esc_attr( $class ) . '" data-hide-on-scroll="' . ( 'hide' === $sticky ? '1' : '0' ) . '">' . self::content( $id ) . '</header>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor output.
+		// Menu drawer and search used by the Header Actions widget.
+		if ( locate_template( 'template-parts/header/overlays.php' ) ) {
+			get_template_part( 'template-parts/header/overlays', null, array( 'search' => true ) );
+		}
 		return true;
 	}
 

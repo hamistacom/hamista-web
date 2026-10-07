@@ -123,4 +123,11 @@ T = {
     "Chat on WhatsApp": "گفت~وگو در واتس~اپ",
     "Flux — cinematic, glass and glow": "سیال — سینمایی، شیشه و درخشش",
     "Interface sounds": "صداهای رابط کاربری",
+    "Selected work": "نمونه~کارهای منتخب",
+    "Project categories": "دسته~بندی پروژه~ها",
+    "Hamista — Canvas (no header or footer)": "هامیستا — بوم خالی (بدون سربرگ و پابرگ)",
+    "Hamista — Contained, no title": "هامیستا — داخل کادر، بدون عنوان",
+    "More projects": "پروژه~های دیگر",
+    "Previous project": "پروژه~ی قبلی",
+    "Next project": "پروژه~ی بعدی",
 }

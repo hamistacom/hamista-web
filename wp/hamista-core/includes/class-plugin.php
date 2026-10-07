@@ -45,6 +45,7 @@ final class Plugin {
 			'Frontend\\Frontend',
 			'Layouts\\Layouts',
 			'Forms\\Forms',
+			'Portfolio\\Portfolio',
 			'Auth\\Auth',
 			'Jalali\\Jalali',
 			'Performance\\Performance',
@@ -96,7 +97,7 @@ final class Plugin {
 	 * Activation: register post types so rewrite rules include them, then flush.
 	 */
 	public static function activate() {
-		foreach ( array( 'Layouts\\Layouts', 'Forms\\Forms' ) as $module ) {
+		foreach ( array( 'Layouts\\Layouts', 'Forms\\Forms', 'Portfolio\\Portfolio' ) as $module ) {
 			$class = __NAMESPACE__ . '\\' . $module;
 			if ( class_exists( $class ) ) {
 				$class::register_post_type();

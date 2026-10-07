@@ -50,7 +50,13 @@ class Elementor {
 			'Posts',
 			'Slider',
 			'Stories',
+			'Site_Logo',
+			'Nav_Menu',
+			'Header_Actions',
 		);
+		if ( post_type_exists( 'hm_portfolio' ) || hamista_core_option( 'portfolio_enabled', true ) ) {
+			$widgets[] = 'Portfolio';
+		}
 		if ( class_exists( 'WooCommerce' ) ) {
 			array_push( $widgets, 'Products', 'Product_Carousel', 'Product_Tabs', 'Product_Deal', 'Product_Categories' );
 		}

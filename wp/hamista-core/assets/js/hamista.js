@@ -1412,6 +1412,28 @@
 		});
 	});
 
+	/* Portfolio filters: show projects of one category without reloading. */
+	H.register('pfilter', function (el) {
+		var chips = $$('[data-filter]', el);
+		var cards = $$('.hm-pfcard', el);
+		chips.forEach(function (chip) {
+			chip.addEventListener('click', function () {
+				var f = chip.getAttribute('data-filter');
+				chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+				cards.forEach(function (card) {
+					var show = !f || (' ' + card.getAttribute('data-terms') + ' ').indexOf(' ' + f + ' ') > -1;
+					card.hidden = !show;
+				});
+				if (!reduce) {
+					cards.forEach(function (card, i) {
+						if (card.hidden) { return; }
+						card.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 420, delay: Math.min(i, 8) * 40, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+					});
+				}
+			});
+		});
+	});
+
 	/* ------------------------------------------------------------------ */
 	/* Boot                                                               */
 	/* ------------------------------------------------------------------ */

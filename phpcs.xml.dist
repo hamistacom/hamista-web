@@ -32,6 +32,11 @@
 		<severity>0</severity>
 	</rule>
 
+	<!-- WordPress template hierarchy needs the post type name, underscores included. -->
+	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>*/wp/hamista/*-hm_portfolio*.php</exclude-pattern>
+	</rule>
+
 	<!-- Hooks are namespaced with a slash, e.g. hamista_core/settings_saved, like Elementor and WooCommerce do. -->
 	<rule ref="WordPress.NamingConventions.ValidHookName">
 		<properties>

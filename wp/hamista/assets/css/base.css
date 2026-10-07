@@ -692,3 +692,29 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 	.product_meta a { padding-block: 8px; display: inline-block; }
 	a.hm-chip, button.hm-chip, .hm-post-card__meta a.hm-chip { min-height: 40px; }
 }
+
+/* ==========================================================================
+   Single project (portfolio)
+   ========================================================================== */
+.hm-project__head { padding-top: clamp(24px, 4vw, 48px); }
+.hm-project__intro { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .6fr); gap: clamp(24px, 4vw, 56px); align-items: end; margin-top: 22px; }
+.hm-project__title { margin: 0; font-size: var(--hm-fs-h1); line-height: 1.2; }
+.hm-project__lead { margin: 14px 0 0; max-width: 60ch; font-size: var(--hm-fs-lead); color: var(--hm-fg-muted); }
+.hm-project__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin: 0; padding: 20px; border: var(--hm-card-border); border-radius: var(--hm-radius-lg); background: var(--hm-card-bg); }
+.hm-project__facts dt { font-size: .78rem; color: var(--hm-fg-muted); }
+.hm-project__facts dd { margin: 2px 0 0; font-weight: 700; }
+.hm-project__facts a { color: var(--hm-accent-ink); }
+.hm-project__cover { margin: var(--hm-space-block) auto 0; }
+.hm-project__cover img { width: 100%; height: auto; max-height: min(78vh, 680px); object-fit: cover; border-radius: var(--hm-radius-xl); display: block; }
+.hm-project__body { padding-block: var(--hm-space-section); }
+.hm-project__body .hm-prose { max-width: 760px; margin-inline: auto; }
+.hm-project__nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: var(--hm-space-section); }
+.hm-project__adj { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border: var(--hm-card-border); border-radius: var(--hm-radius-lg); color: var(--hm-fg); text-decoration: none; transition: border-color var(--hm-dur), box-shadow var(--hm-dur); }
+.hm-project__adj:hover { border-color: var(--hm-border-strong); box-shadow: var(--hm-shadow-md); }
+.hm-project__adj small { color: var(--hm-fg-muted); }
+.hm-project__adj--next { text-align: end; grid-column: 2; }
+@media (max-width: 767px) {
+	.hm-project__intro { grid-template-columns: 1fr; }
+	.hm-project__nav { grid-template-columns: 1fr; }
+	.hm-project__adj--next { grid-column: auto; }
+}

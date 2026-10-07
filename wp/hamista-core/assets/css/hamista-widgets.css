@@ -1412,3 +1412,43 @@
 .hm-slider .hm-carousel__bar { position: absolute; inset: auto 24px 20px; margin: 0; max-width: none; background: rgba(255, 255, 255, .3); }
 .hm-slider .hm-carousel__bar i { background: #fff; }
 @media (max-width: 767px) { .hm-slider { --hm-slider-h: min(70vh, 460px); } .hm-slide { align-items: flex-end; } }
+
+/* ==========================================================================
+   Portfolio cards, grid and filters
+   ========================================================================== */
+.hm-pfgrid { display: grid; grid-template-columns: repeat(var(--hm-cols, 3), minmax(0, 1fr)); gap: var(--hm-gap, 24px) var(--hm-gap, 24px); }
+.hm-pfgrid--masonry { grid-auto-flow: dense; }
+.hm-pfgrid--masonry > :nth-child(6n + 1), .hm-pfgrid--masonry > :nth-child(6n + 5) { grid-column: span 2; }
+.hm-pfgrid--masonry > :nth-child(6n + 1) .hm-pfcard__media, .hm-pfgrid--masonry > :nth-child(6n + 5) .hm-pfcard__media { aspect-ratio: 8 / 2.95; }
+.hm-pfcard { position: relative; display: flex; flex-direction: column; gap: 12px; }
+.hm-pfcard[hidden] { display: none; }
+.hm-pfcard__media { position: relative; display: block; overflow: hidden; border-radius: var(--hm-radius-lg); background: var(--hm-surface-2); aspect-ratio: 4 / 3; }
+.hm-pfcard .hm-pfcard__img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--hm-ease); }
+.hm-pfcard:hover .hm-pfcard__img { transform: scale(1.04); }
+.hm-pfcard__blank { display: block; width: 100%; height: 100%; background: linear-gradient(135deg, var(--hm-surface-2), var(--hm-sunken)); }
+.hm-pfcard__title { margin: 0; font-size: 1.05rem; font-weight: 800; line-height: 1.5; }
+.hm-pfcard__title a { color: inherit; text-decoration: none; }
+.hm-pfcard__meta { display: flex; justify-content: space-between; gap: 12px; margin: 2px 0 0; font-size: .82rem; color: var(--hm-fg-muted); }
+.hm-pfcard--overlay .hm-pfcard__body { position: absolute; inset: auto 12px 12px; padding: 14px 16px; border-radius: var(--hm-radius-md); background: color-mix(in srgb, var(--hm-surface) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); opacity: 0; transform: translateY(10px); transition: opacity var(--hm-dur) var(--hm-ease), transform var(--hm-dur) var(--hm-ease); }
+.hm-pfcard--overlay:hover .hm-pfcard__body, .hm-pfcard--overlay:focus-within .hm-pfcard__body { opacity: 1; transform: none; }
+@media (hover: none) { .hm-pfcard--overlay .hm-pfcard__body { opacity: 1; transform: none; } }
+.hm-pfcard--minimal .hm-pfcard__media { border-radius: var(--hm-radius-sm); }
+.hm-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--hm-space-block); }
+.hm-filters .hm-chip { cursor: pointer; }
+.hm-filters .hm-chip.is-active, .hm-filters .hm-chip[aria-pressed="true"] { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+@media (max-width: 900px) { .hm-pfgrid { --hm-cols: 2; } .hm-pfgrid--masonry > * { grid-column: auto !important; } }
+@media (max-width: 560px) { .hm-pfgrid { --hm-cols: 1; } }
+
+/* ==========================================================================
+   Header builder widgets
+   ========================================================================== */
+.hm-nav--widget .hm-menu { display: flex; flex-wrap: wrap; }
+.hm-nav--pill .hm-menu > li > a { padding-inline: 14px; border-radius: 999px; transition: background-color var(--hm-dur), color var(--hm-dur); }
+.hm-nav--pill .hm-menu > li > a:hover, .hm-nav--pill .hm-menu > .current-menu-item > a { background: var(--hm-surface-2); }
+.hm-nav--pill .hm-menu > .current-menu-item > a::after { display: none; }
+.hm-nav--underline .hm-menu > li > a { position: relative; }
+.hm-nav--underline .hm-menu > li > a::after { content: ""; position: absolute; inset-inline: 0; bottom: 4px; height: 2px; background: var(--hm-accent); transform: scaleX(0); transition: transform var(--hm-dur) var(--hm-ease); }
+.hm-nav--underline .hm-menu > li > a:hover::after, .hm-nav--underline .hm-menu > .current-menu-item > a::after { transform: none; }
+.elementor-widget-hm-header-actions .hm-header__actions { display: flex; align-items: center; gap: 8px; }
+.hm-header-cart--total { display: inline-flex; flex-direction: row; align-items: center; width: auto; padding-inline: 12px 14px; gap: 8px; border-radius: 999px; }
+.hm-header-cart__total { font-size: .85rem; font-weight: 700; font-family: var(--hm-font-num); }
