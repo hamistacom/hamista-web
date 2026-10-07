@@ -47,6 +47,8 @@ function hamista_kits() {
 			'stone'      => __( 'Stone — limestone, charcoal and bronze', 'hamista' ),
 			'counsel'    => __( 'Counsel — ivory, navy and oxblood', 'hamista' ),
 			'clay'       => __( 'Clay — porcelain, sage and terracotta', 'hamista' ),
+			'paper'      => __( 'Paper — off-white, graphite and cobalt', 'hamista' ),
+			'studio'     => __( 'Studio — warm grey, ink and vermilion', 'hamista' ),
 		)
 	);
 }
@@ -258,6 +260,8 @@ function hamista_theme_color_meta() {
 		'stone'      => '#efebe4',
 		'counsel'    => '#f4f1ea',
 		'clay'       => '#f3efe8',
+		'paper'      => '#f3f0ea',
+		'studio'     => '#edebe6',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

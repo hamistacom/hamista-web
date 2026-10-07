@@ -1,37 +1,23 @@
 /**
- * Demo: Tapesh — a digital marketing agency (Pulse kit).
- *
- * The home page follows a conversion brief: outcome-led hero → logo bar →
- * problem / solution → services (tabs) → proof (case studies, numbers,
- * attributed quotes) → process → pricing with real capacity → objection FAQ →
- * a three-step audit request that remembers unfinished answers.
+ * Demo: Tapesh — a brand and growth studio (Studio kit), built as a complete
+ * agency site: two home pages, services, selected work, packages sold online,
+ * a three-step free audit, about, FAQ, contact and notes; six packages.
  */
 'use strict';
 
 const L = require('../lib');
-const { img, link, px, section, cols, heading, button } = L;
+const { img, link, px, w, section, cols, heading, button, fx } = L;
 
-const images = {
-	showreel: 'images/showreel.webp',
-	dashboard: 'images/dashboard.webp',
-};
-for (let i = 1; i <= 6; i++) { images['work-' + i] = 'images/work-' + i + '.webp'; }
+const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp', hero: 'images/hero.webp', showreel: 'images/showreel.webp', dashboard: 'images/dashboard.webp' };
+for (let i = 1; i <= 6; i++) { images['work-' + i] = 'images/work-' + i + '.webp'; images['work-' + i + '-b'] = 'images/work-' + i + '-b.webp'; images['product-' + i] = 'images/product-' + i + '.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; }
 for (let i = 1; i <= 4; i++) { images['social-' + i] = 'images/social-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; }
-for (let i = 1; i <= 6; i++) { images['journal-' + i] = 'images/journal-' + i + '.webp'; }
-
-images.logo = 'images/logo.webp';
-images['logo-dark'] = 'images/logo-dark.webp';
 
 const alts = {
-	showreel: 'کلاژی از کمپین‌های تبلیغاتی و پست‌های شبکه‌های اجتماعی',
-	dashboard: 'داشبورد گزارش هفتگی بازاریابی با نرخ تبدیل و بازگشت تبلیغات',
-	'work-1': 'شبکه‌ی پست‌های اینستاگرام کافه‌ی ری',
-	'work-2': 'کمپین تبلیغاتی سفرنو',
-	'work-3': 'فروشگاه اینترنتی پوشاک لیان',
-	'work-4': 'رشد بازدید ارگانیک کلینیک پوست آرا',
-	'work-5': 'صفحه‌های اپلیکیشن بیمه‌یار',
-	'work-6': 'هویت بصری نانوایی‌های نان‌آور',
+	hero: 'سربرگ، کارت ویزیت و نمونه‌رنگ‌های چند برند روی میز بتنی استودیو',
+	dashboard: 'گزارش هفتگی چاپی با نمودار هزینه‌ی هر سفارش، کنار خودکار و فنجان',
+	showreel: 'سه پوستر برند در کنار هم روی میز بتنی',
+	'work-1': 'هویت بصری کافه‌ی ری: سربرگ، کارت ویزیت و رنگ‌ها', 'work-2': 'هویت بصری سفرنو', 'work-3': 'هویت بصری لیان',
+	'work-4': 'هویت بصری کلینیک آرا', 'work-5': 'هویت بصری بیمه‌یار', 'work-6': 'هویت بصری نان‌آور',
 };
 
 /* ---------------- Shared ---------------- */
@@ -95,337 +81,239 @@ const LEAD = {
 	remember: 'yes', boxed: 'yes', columns: '2',
 };
 
-const anchor = (id, el) => { el.settings._element_id = id; return el; };
+const SERVICE_TABS = [
+	{ title: 'سئو و محتوا', subtitle: 'دیده شدن پایدار', meta: '۰۱', image: img('work-4'), panel_title: 'جایگاه اول، با محتوایی که واقعاً خوانده می‌شود', panel_text: 'سئوی فنی، تحقیق کلمات کلیدی، نوشتن و بهینه‌سازی محتوا و لینک‌سازی سالم. هر ماه گزارش رتبه‌ها و صفحه‌هایی که فروش آورده‌اند.', chips: 'سئوی فنی، محتوا، سئوی محلی', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
+	{ title: 'تبلیغات کلیکی', subtitle: 'نتیجه از هفته‌ی دوم', meta: '۰۲', image: img('work-2'), panel_title: 'هر تومان، قابل پیگیری', panel_text: 'راه‌اندازی و مدیریت کمپین‌های گوگل ادز و شبکه‌های تبلیغاتی ایرانی، با ردیابی تبدیل از کلیک تا سفارش.', chips: 'گوگل ادز، تبلیغات همسان، ریتارگتینگ', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
+	{ title: 'شبکه‌های اجتماعی', subtitle: 'گفت‌وگو، نه فقط پست', meta: '۰۳', image: img('work-1'), panel_title: 'صفحه‌ای که مخاطب منتظرش است', panel_text: 'تقویم محتوای ماهانه، عکاسی و ویدیوی کوتاه، مدیریت دایرکت و همکاری با اینفلوئنسرها.', chips: 'اینستاگرام، ریلز، اینفلوئنسر', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
+	{ title: 'برندینگ', subtitle: 'شخصیتی که به خاطر می‌ماند', meta: '۰۴', image: img('work-6'), panel_title: 'از لوگو تا لحن', panel_text: 'تحقیق بازار، جایگاه‌یابی، طراحی هویت بصری و راهنمای برند؛ تا هر چیزی که منتشر می‌کنید از یک برند واحد بیاید.', chips: 'هویت بصری، لحن برند، بسته‌بندی', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
+];
 
-/* ---------------- Home A: conversion landing ---------------- */
+const CASES = [
+	{ eyebrow: 'کافه‌ی ری · شبکه‌های اجتماعی', title: '۶۸ هزار دنبال‌کننده‌ی واقعی', text: 'به‌جای مسابقه و فالوور خریدنی، روی آدم‌های محله و داستان‌های پشت پیشخوان تمرکز کردیم.', points: 'رشد ۱۶ برابری در هشت ماه\n۳۲٪ فروش آخر هفته از اینستاگرام\nسه همکاری با کافه‌گردهای محلی', image: img('work-1'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-cafe-rey}}'), tone: '' },
+	{ eyebrow: 'سفرنو · تبلیغات کلیکی', title: 'هزینه‌ی هر رزرو ۴۱٪ کمتر', text: 'کمپین‌ها را بر اساس سود هر مسیر سفر بازچینی کردیم و صفحه‌های فرود را برای موبایل از نو ساختیم.', points: 'ردیابی کامل از کلیک تا رزرو\n۱۸ صفحه‌ی فرود اختصاصی\nبودجه‌ی ثابت، رزرو بیشتر', image: img('work-2'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-safarno}}'), tone: 'inverse' },
+	{ eyebrow: 'کلینیک پوست آرا · سئو', title: 'سه برابر مراجعه از گوگل', text: 'محتوای تخصصی با بازبینی پزشک و سئوی محلی برای سه شعبه، بدون یک ریال تبلیغ.', points: '۲۱۰ کلمه‌ی کلیدی در صفحه‌ی اول\nرشد ۳ برابری نوبت آنلاین\nامتیاز ۴٫۹ در نقشه‌ها', image: img('work-4'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-ara-clinic}}'), tone: 'accent' },
+];
 
-const homeA = [
-	L.hero({
-		layout: 'split',
-		eyebrow: 'آژانس دیجیتال مارکتینگ',
-		title: 'رشدی که در\n*گزارش فروش*\nدیده می‌شود.',
-		desc: 'تپش برای برندهای ایرانی سئو، تبلیغات کلیکی، شبکه‌های اجتماعی و محتوا را یکجا اجرا می‌کند؛ با داشبوردی که هر هفته نشان می‌دهد هر تومان کجا خرج شد و چه برگرداند.',
-		btn1_text: 'دریافت ممیزی رایگان', btn1_link: link('#audit'),
-		btn2_text: 'نمونه‌کارها', btn2_link: link('{{page:work}}'),
+const PROCESS = [
+	{ marker: '۰۱', icon: 'search', title: 'ممیزی رایگان', text: 'یک جلسه‌ی ۴۵ دقیقه‌ای و گزارش مکتوب سه فرصت سریع.' },
+	{ marker: '۰۲', icon: 'target', title: 'پیشنهاد مکتوب', text: 'هدف‌ها، کانال‌ها، بودجه و زمان‌بندی، روی یک صفحه.' },
+	{ marker: '۰۳', icon: 'rocket', title: 'راه‌اندازی', text: 'دسترسی‌ها، ردیابی تبدیل و داشبورد در هفته‌ی اول.' },
+	{ marker: '۰۴', icon: 'chart', title: 'گزارش هفتگی', text: 'هر دوشنبه: چه کار کرد، چه نکرد، قدم بعدی.' },
+];
+
+const PLANS = () => L.pricing([
+	{ name: 'شروع', desc: 'یک کانال، برای کسب‌وکارهای کوچک', price: '۱۸٬۰۰۰٬۰۰۰', price_alt: '۱۶٬۲۰۰٬۰۰۰', unit: 'تومان', period: 'ماهانه', features: 'یک کانال به انتخاب شما\nگزارش ماهانه\nجلسه‌ی ماهانه', btn_text: 'شروع با ممیزی', btn_link: link('{{page:audit}}'), featured: '', badge: '' },
+	{ name: 'رشد', desc: 'سه کانال، با گزارش هفتگی', price: '۴۵٬۰۰۰٬۰۰۰', price_alt: '۴۰٬۵۰۰٬۰۰۰', unit: 'تومان', period: 'ماهانه', features: 'سئو، تبلیغات و شبکه‌های اجتماعی\nداشبورد و گزارش هفتگی\nجلسه‌ی هفتگی نیم‌ساعته\nمدیر حساب اختصاصی', btn_text: 'شروع با ممیزی', btn_link: link('{{page:audit}}'), featured: 'yes', badge: 'انتخاب بیشتر برندها' },
+	{ name: 'برند', desc: 'پروژه‌ی هویت بصری', price: 'از ۳۵٬۰۰۰٬۰۰۰', price_alt: 'از ۳۵٬۰۰۰٬۰۰۰', unit: 'تومان', period: 'پروژه‌ای', features: 'جایگاه‌یابی و لحن\nلوگو، رنگ و تایپ\nراهنمای برند', btn_text: 'گفت‌وگو درباره‌ی برند', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
+], { switch_off: 'پرداخت ماهانه', switch_on: 'قرارداد سه‌ماهه', switch_note: '۱۰٪ تخفیف' });
+
+const auditCta = (title = 'نوبت\n*برند شما*ست', desc = 'در جلسه‌ی ممیزی رایگان، سه فرصت رشد سریع را مکتوب تحویل می‌گیرید؛ حتی اگر با ما کار نکنید.') => L.cta({
+	eyebrow: 'ممیزی رایگان', title, desc,
+	btn1_text: 'دریافت ممیزی رایگان', btn1_link: link('{{page:audit}}'), btn2_text: 'نمونه‌کارها', btn2_link: link('{{page:work}}'),
+	look: 'image', image: img('hero'), decor: '', rounded: '', note: '',
+});
+
+/* ---------------- Home ---------------- */
+
+const home = [
+	L.bleed(w('hm-hero', {
+		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
+		eyebrow: 'تپش · استودیوی برند و رشد',
+		title: 'برندهایی که\n*دیده می‌شوند*،\nرشدی که شمرده می‌شود',
+		desc: 'سئو، تبلیغات، شبکه‌های اجتماعی و هویت بصری برای کسب‌وکارهایی که می‌خواهند نتیجه را در گزارش فروش ببینند، نه فقط در تعداد لایک.',
+		btn1_text: 'ممیزی رایگان', btn1_link: link('{{page:audit}}'), btn1_style: 'primary',
+		btn2_text: 'نمونه‌کارها', btn2_link: link('{{page:work}}'), btn2_style: 'secondary',
 		stats: [
-			{ value: '۱۸۰+', label: 'برند همکار' },
+			{ value: '۴۲', label: 'کمپین در یک سال' },
 			{ value: '۳٫۲×', label: 'میانگین بازگشت تبلیغات' },
 			{ value: '۹۴٪', label: 'تمدید قرارداد' },
 		],
-		media_type: 'mosaic',
-		gallery: L.gallery(['social-1', 'work-2', 'dashboard', 'social-3', 'work-4', 'social-2']),
-		height: 'screen',
-		decor: 'grid',
-		hint: 'اسکرول کنید',
-	}),
-	L.marquee(CLIENTS, { look: 'muted', size: 'md', separator: 'slash', speed: px(45) }),
-	section({ space: 'md', width: 1120 }, [
-		L.textScrub('بیشتر کسب‌وکارها بودجه‌ی تبلیغات کم ندارند؛ *نمی‌دانند کدام بخشش کار می‌کند*. ما هر کانال را جدا اندازه می‌گیریم، آنچه نتیجه نمی‌دهد را خاموش می‌کنیم و بودجه را جایی می‌بریم که *فروش* می‌سازد.', { eyebrow: 'مسئله‌ای که حل می‌کنیم', size: 'lg' }),
+		media_type: 'image', image: img('hero'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
+	})),
+	L.marquee(CLIENTS, { look: 'muted', size: 'sm', separator: 'dot', speed: px(40), bordered: 'yes' }),
+	section({ space: 'md', gap: 40 }, [L.tabs(SERVICE_TABS, { autoplay: 7, media_side: 'start' })]),
+	section({ space: 'none', gap: 0, zoom: 'expand', zoomAmount: 0.24, zoomInner: true, zoomRadius: 2 }, [
+		L.imageReveal('showreel', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	section({ space: 'md', top0: true }, [
-		L.features([
-			{ icon: 'eye', title: 'دیده نمی‌شوید', text: 'سایت در گوگل صفحه‌ی سوم است و رقیب‌ها جای شما را گرفته‌اند. با سئوی فنی و محتوای تخصصی برمی‌گردید به صفحه‌ی اول.', meta: 'سئو و محتوا', wide: 'yes' },
-			{ icon: 'target', title: 'تبلیغات گران تمام می‌شود', text: 'کلیک زیاد، فروش کم. کمپین‌ها را بر اساس سود هر محصول بازچینی می‌کنیم.', meta: 'تبلیغات کلیکی' },
-			{ icon: 'instagram', title: 'صفحه‌ی اجتماعی ساکت است', text: 'پست می‌گذارید ولی گفت‌وگویی شکل نمی‌گیرد. تقویم محتوا را با رفتار مخاطب واقعی می‌سازیم.', meta: 'شبکه‌های اجتماعی' },
-			{ icon: 'chart', title: 'عددها پراکنده‌اند', text: 'هر کانال گزارش خودش را دارد و هیچ‌کدام به فروش وصل نیست. همه را در یک داشبورد هفتگی جمع می‌کنیم.', meta: 'گزارش و داده', wide: 'yes' },
-		], { layout: 'bento', style: 'cards', columns: '3', icon_style: 'tile' }),
+	fx(section({ space: 'md', gap: 32, width: 1000 }, [
+		L.textScrub('هر کاری با *یک عدد هدف* شروع می‌شود و هر هفته *همان عدد* را گزارش می‌کنیم: هزینه‌ی هر سفارش، تعداد تماس یا رزرو. اگر عدد تکان نخورد، کار را عوض می‌کنیم، نه گزارش را.', { eyebrow: 'روش ما', size: 'md' }),
+	]), { tone: 'surface' }),
+	section({ space: 'md', gap: 32 }, [
+		heading({ eyebrow: 'نمونه‌کارها', title: 'سه داستان،\n*سه عدد*' }),
+		L.stack(CASES),
 	]),
-	anchor('services', section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: '۰۱ — خدمات', title: 'یک تیم، *همه‌ی کانال‌ها*' })],
-			[L.textEditor('<p>لازم نیست برای هر کانال سراغ یک آژانس بروید. استراتژی، اجرا و گزارش در یک تیم انجام می‌شود و همه به یک عدد پاسخ‌گو هستیم: رشد فروش شما.</p>')],
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64, align: 'center' }, [
+			[heading({ eyebrow: 'در یک سال', title: 'عددهایی که\n*ساختیم*' })],
+			[L.counters([
+				{ value: 42, label: 'کمپین' },
+				{ value: 3.2, suffix: '×', label: 'بازگشت تبلیغات' },
+				{ value: 210, label: 'کلمه در صفحه‌ی اول' },
+				{ value: 94, suffix: '٪', label: 'تمدید قرارداد' },
+			], { style: 'plain', columns: '2' })],
 		]),
-		L.tabs([
-			{ title: 'سئو و محتوا', subtitle: 'دیده شدن پایدار', meta: '۰۱', image: img('work-4'), panel_title: 'جایگاه اول، با محتوایی که واقعاً خوانده می‌شود', panel_text: 'سئوی فنی، تحقیق کلمات کلیدی، نوشتن و بهینه‌سازی محتوا و لینک‌سازی سالم. هر ماه گزارش رتبه‌ها و ورودی‌ها را همراه با صفحه‌هایی که فروش آورده‌اند دریافت می‌کنید.', chips: 'سئوی فنی، محتوا، سئوی محلی', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
-			{ title: 'تبلیغات کلیکی', subtitle: 'نتیجه از هفته‌ی دوم', meta: '۰۲', image: img('work-2'), panel_title: 'هر تومان، قابل پیگیری', panel_text: 'راه‌اندازی و مدیریت کمپین‌های گوگل ادز و شبکه‌های تبلیغاتی ایرانی، با ردیابی تبدیل از کلیک تا سفارش. هر هفته کمپین‌های ضعیف خاموش و بودجه جابه‌جا می‌شود.', chips: 'گوگل ادز، تبلیغات همسان، ریتارگتینگ', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
-			{ title: 'شبکه‌های اجتماعی', subtitle: 'گفت‌وگو، نه فقط پست', meta: '۰۳', image: img('social-1'), panel_title: 'صفحه‌ای که مخاطب منتظرش است', panel_text: 'تقویم محتوای ماهانه، عکاسی و ویدیوی کوتاه، مدیریت دایرکت و همکاری با اینفلوئنسرها؛ با گزارشی که به فروش وصل است، نه فقط به لایک.', chips: 'اینستاگرام، ریلز، اینفلوئنسر', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
-			{ title: 'برندینگ', subtitle: 'شخصیتی که به خاطر می‌ماند', meta: '۰۴', image: img('work-6'), panel_title: 'از لوگو تا لحن', panel_text: 'تحقیق بازار، جایگاه‌یابی، طراحی هویت بصری و راهنمای برند؛ تا هر چیزی که منتشر می‌کنید از یک برند واحد بیاید.', chips: 'هویت بصری، لحن برند، بسته‌بندی', btn_text: 'جزئیات خدمت', btn_link: link('{{page:services}}') },
-		], { autoplay: 7, media_side: 'end' }),
-	])),
-	L.hscroll({
-		eyebrow: '۰۲ — نمونه‌کارها',
-		title: 'عددهایی که\n*ساختیم*',
-		desc: 'هر پروژه با یک هدف قابل اندازه‌گیری شروع شده است.',
-		items: WORK,
-		card_size: 'lg',
-		card_style: 'overlay',
-		btn1_text: 'همه‌ی نمونه‌کارها', btn1_link: link('{{page:work}}'),
-		scheme: 'inverse',
-	}),
-	section({ space: 'md' }, [
-		L.counters([
-			{ value: 180, suffix: '+', label: 'برند همکار', desc: 'از استارتاپ تا فروشگاه زنجیره‌ای' },
-			{ value: 3.2, suffix: '×', label: 'بازگشت تبلیغات', desc: 'میانگین سال ۱۴۰۴' },
-			{ value: 41, suffix: '٪', label: 'کاهش هزینه‌ی جذب', desc: 'در شش ماه اول همکاری' },
-			{ value: 94, suffix: '٪', label: 'تمدید قرارداد', desc: 'مشتری‌هایی که ماندند' },
-		], { style: 'cards', columns: '4' }),
+	]), { tone: 'inverse' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'همکاری', title: 'چهار قدم تا\n*اولین گزارش*', header_align: 'center' }),
+		L.steps(PROCESS, { layout: 'h', cards: 'yes' }),
 	]),
-	L.scrollPath({
-		eyebrow: '۰۳ — روش کار',
-		title: 'از ممیزی تا\n*رشد هفتگی*',
-		hint: 'به اسکرول ادامه دهید',
-		steps: [
-			{ code: 'هفته‌ی ۱', title: 'ممیزی رایگان', text: 'سایت، تبلیغات و صفحه‌های اجتماعی‌تان را بررسی می‌کنیم و سه فرصت سریع را مکتوب تحویل می‌دهیم.' },
-			{ code: 'هفته‌ی ۲', title: 'استراتژی و هدف‌گذاری', text: 'دو یا سه عدد هدف را با هم تعیین می‌کنیم و بودجه را بین کانال‌ها تقسیم می‌کنیم.' },
-			{ code: 'هفته‌ی ۳ به بعد', title: 'اجرا', text: 'کمپین‌ها، محتوا و بهینه‌سازی سایت شروع می‌شوند؛ هر کار با یک فرضیه‌ی روشن.' },
-			{ code: 'هر هفته', title: 'گزارش و بهینه‌سازی', text: 'داشبورد هفتگی و یک جلسه‌ی نیم‌ساعته: چه کار کرد، چه نکرد، قدم بعدی چیست.' },
-		],
-	}),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: '۰۴ — از زبان مشتری‌ها', title: 'نتیجه را *آن‌ها* تعریف می‌کنند', header_align: 'center' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان مشتری‌ها', title: 'نتیجه را *آن‌ها* تعریف می‌کنند', header_align: 'center' }),
 		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
 	]),
-	anchor('pricing', section({ space: 'md' }, [
-		heading({ eyebrow: '۰۵ — تعرفه‌ها', title: 'قیمت روشن، *بدون قرارداد بلندمدت*', header_align: 'center', desc: 'این ماه فقط ظرفیت پذیرش سه برند تازه را داریم تا کیفیت کار برای مشتری‌های فعلی پایین نیاید.' }),
-		L.pricing([
-			{ name: 'پایه', desc: 'برای کسب‌وکارهایی که تازه شروع کرده‌اند', price: '۲۸', price_alt: '۲۵', unit: 'میلیون تومان', period: 'ماهانه', features: 'یک کانال اصلی (سئو یا تبلیغات)\nداشبورد گزارش هفتگی\nجلسه‌ی ماهانه‌ی استراتژی\nپشتیبانی در پیام‌رسان', btn_text: 'شروع با پایه', btn_link: link('#audit'), featured: '', badge: '' },
-			{ name: 'رشد', desc: 'برای برندهایی که آماده‌ی مقیاس‌اند', price: '۵۵', price_alt: '۴۹', unit: 'میلیون تومان', period: 'ماهانه', features: 'سه کانال به انتخاب شما\nمدیر حساب اختصاصی\nجلسه‌ی هفتگی بهینه‌سازی\nتولید محتوای ماهانه\nتست A/B صفحه‌های فرود', btn_text: 'شروع با رشد', btn_link: link('#audit'), featured: 'yes', badge: 'انتخاب بیشتر مشتری‌ها' },
-			{ name: 'مقیاس', desc: 'برای فروشگاه‌ها و برندهای چندشعبه', price: 'توافقی', price_alt: 'توافقی', unit: '', period: '', features: 'همه‌ی کانال‌ها\nتیم اختصاصی\nداشبورد اختصاصی مدیران\nهماهنگی با تیم فروش', btn_text: 'هماهنگی جلسه', btn_link: link('#audit'), featured: '', badge: '' },
-		], { switch_off: 'پرداخت ماهانه', switch_on: 'پرداخت سه‌ماهه', switch_note: '۱۰٪ تخفیف' }),
-	])),
-	section({ space: 'md', top0: true }, [
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'تعرفه‌ها', title: 'قیمت روشن،\n*بدون قرارداد بلندمدت*', header_align: 'center' }),
+		PLANS(),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: '۰۶ — پیش از تصمیم', title: 'سؤال‌هایی که *همه* می‌پرسند', desc: 'اگر سؤال دیگری دارید، در جلسه‌ی ممیزی رایگان بپرسید؛ تعهدی ایجاد نمی‌کند.' }), button('رزرو جلسه‌ی ممیزی', '#audit', 'secondary')],
-			[L.faq(FAQ)],
+			[heading({ eyebrow: 'پیش از تصمیم', title: 'سؤال‌هایی که\n*همه* می‌پرسند' }), button('همه‌ی پرسش‌ها', '{{page:faq}}', 'secondary')],
+			[L.faq(FAQ.slice(0, 4), { style: 'lines' })],
 		]),
 	]),
-	anchor('audit', section({ space: 'md', scheme: 'inverse', cls: 'hm-violet-glow' }, [
-		cols({ widths: [42, 58], gap: 64, align: 'flex-start' }, [
-			[
-				heading({ eyebrow: 'ممیزی رایگان', title: 'در دو دقیقه بگویید\n*کجا ایستاده‌اید*', desc: 'سه سؤال کوتاه بپرسیم، بعد ظرف دو ساعت کاری تماس می‌گیریم. در جلسه‌ی ممیزی سه فرصت رشد سریع را مکتوب تحویل می‌گیرید، حتی اگر با ما کار نکنید.' }),
-				L.textEditor('<ul><li>بدون هزینه و بدون تعهد</li><li>بررسی سایت، تبلیغات و صفحه‌های اجتماعی</li><li>پاسخ تا دو ساعت کاری</li></ul>'),
-			],
-			[L.leadForm(LEAD)],
-		], ),
-	])),
-	section({ space: 'md' }, [
+	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
-			[heading({ eyebrow: '۰۷ — نوشته‌ها', title: 'یادداشت‌های *تیم تپش*' })],
-			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary')],
+			[heading({ eyebrow: 'یادداشت‌ها', title: 'آنچه این هفته\n*یاد گرفتیم*' })],
+			[button('همه‌ی یادداشت‌ها', '{{blog}}', 'secondary', { _flex_align_self: 'flex-end' })],
 		]),
-		L.posts({ count: 3, layout: 'grid', columns: '3' }),
+		L.posts({ count: 3, layout: 'grid', columns: '3', excerpt: 'yes' }),
 	]),
+	auditCta(),
 ];
 
-/* ---------------- Home B: visual studio ---------------- */
+/* ---------------- Home, second version ---------------- */
 
-const homeB = [
-	L.hero({
-		layout: 'center',
-		eyebrow: 'تپش · آژانس دیجیتال مارکتینگ',
-		title: 'برندهایی می‌سازیم که\n*نمی‌شود ندیدشان*.',
-		desc: 'استراتژی، خلاقیت و داده در یک تیم. از اولین پست تا هزارمین سفارش، کنار شما.',
-		btn1_text: 'شروع همکاری', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'دیدن کارها', btn2_link: link('#work'),
-		media_type: 'none',
-		height: 'screen',
-		decor: 'grid',
-		hint: 'اسکرول کنید',
-	}),
-	L.scrollZoom({
-		eyebrow: 'شوریل ۱۴۰۴',
-		title: 'یک سال،\n*۴۲ کمپین*',
-		image: img('showreel'),
-		o_title: 'و هر کدام با یک\n*عدد هدف* شروع شد.',
-		o_desc: 'برای هر کمپین پیش از اجرا می‌نویسیم موفقیت یعنی چه؛ بعد همان را اندازه می‌گیریم.',
-		btn1_text: 'نمونه‌کارها', btn1_link: link('{{page:work}}'), btn1_style: 'inverse',
-	}),
-	L.marquee(['سئو', 'تبلیغات کلیکی', 'شبکه‌های اجتماعی', 'برندینگ', 'تولید محتوا', 'صفحه‌ی فرود', 'ایمیل مارکتینگ'], { look: 'alternate', size: 'xl', separator: 'plus', speed: px(70) }),
-	anchor('work', section({ space: 'md' }, [
-		heading({ eyebrow: 'پروژه‌های منتخب', title: 'سه داستان، *سه عدد*' }),
-		L.stack([
-			{ eyebrow: 'کافه‌ی ری · شبکه‌های اجتماعی', title: '۶۸ هزار دنبال‌کننده‌ی واقعی', text: 'به‌جای مسابقه و فالوور خریدنی، روی آدم‌های محله و داستان‌های پشت پیشخوان تمرکز کردیم.', points: 'رشد ۱۶ برابری در هشت ماه\n۳۲٪ فروش آخر هفته از اینستاگرام\nسه همکاری با کافه‌گردهای محلی', image: img('work-1'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-cafe-rey}}'), tone: '' },
-			{ eyebrow: 'سفرنو · تبلیغات کلیکی', title: 'هزینه‌ی هر رزرو ۴۱٪ کمتر', text: 'کمپین‌ها را بر اساس سود هر مسیر سفر بازچینی کردیم و صفحه‌های فرود را برای موبایل از نو ساختیم.', points: 'ردیابی کامل از کلیک تا رزرو\n۱۸ صفحه‌ی فرود اختصاصی\nبودجه‌ی ثابت، رزرو بیشتر', image: img('work-2'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-safarno}}'), tone: 'inverse' },
-			{ eyebrow: 'کلینیک پوست آرا · سئو', title: 'سه برابر مراجعه از گوگل', text: 'محتوای تخصصی با بازبینی پزشک و سئوی محلی برای سه شعبه، بدون یک ریال تبلیغ.', points: '۲۱۰ کلمه‌ی کلیدی در صفحه‌ی اول\nرشد ۳ برابری نوبت آنلاین\nامتیاز ۴٫۹ در نقشه‌ها', image: img('work-4'), btn_text: 'خواندن داستان', btn_link: link('{{post:case-ara-clinic}}'), tone: 'accent' },
-		]),
-	])),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [50, 50], gap: 64, align: 'center' }, [
-			[L.imageReveal('dashboard', { ratio: '4-3', reveal: 'clip-x', frame: 'mat' })],
-			[
-				heading({ eyebrow: 'گزارش هفتگی', title: 'عددها را *هر هفته*\nمی‌بینید، نه آخر سال', desc: 'داشبورد هر مشتری به حساب‌های تبلیغاتی، آنالیتیکس و فروشگاهش وصل است. هر دوشنبه یک خلاصه‌ی یک‌صفحه‌ای می‌گیرید: چه کار کرد، چه نکرد، قدم بعدی چیست.' }),
-				L.features([
-					{ icon: 'chart', title: 'هزینه‌ی هر سفارش', text: 'به تفکیک کانال و کمپین.' },
-					{ icon: 'trend', title: 'روند هفتگی', text: 'مقایسه با هفته و ماه قبل.' },
-				], { layout: 'list', style: 'plain', columns: '1', icon_style: 'soft' }),
-			],
-		]),
+const home2 = [
+	L.slider([
+		{ image: img('hero'), eyebrow: 'تپش', title: 'برند،\n*بعد رشد*', text: 'استودیوی برند و رشد؛ از هویت بصری تا گزارش هفتگی فروش.', btn_text: 'نمونه‌کارها', url: '{{page:work}}' },
+		{ image: img('dashboard'), eyebrow: 'گزارش هفتگی', title: 'عددها\n*هر دوشنبه*', text: 'یک صفحه: چه کار کرد، چه نکرد، قدم بعدی.', btn_text: 'ممیزی رایگان', url: '{{page:audit}}' },
+		{ image: img('showreel'), eyebrow: 'برندینگ', title: 'از لوگو\n*تا لحن*', text: 'هویت‌هایی که روی میز و روی صفحه، یک صدا دارند.', btn_text: 'خدمات', url: '{{page:services}}' },
 	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'تیم', title: 'آدم‌هایی که *پشت عددها* هستند' }),
-		L.team([
-			{ photo: {}, name: 'لیلا پارسا', role: 'مدیر استراتژی' },
-			{ photo: {}, name: 'امیرحسین راد', role: 'سرپرست تبلیغات کلیکی' },
-			{ photo: {}, name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
-			{ photo: {}, name: 'پویا کریمی', role: 'متخصص سئو' },
-		], { columns: '4' }),
+	L.hscroll({ eyebrow: 'نمونه‌کارها', title: 'پروژه‌هایی که\n*عدد* دارند', desc: '', items: WORK, card_size: 'md', card_style: 'caption', scheme: '' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'خدمات', title: 'یک تیم،\n*همه‌ی کانال‌ها*', header_align: 'center' }),
+		L.features([
+			{ icon: 'search', title: 'سئو و محتوا', text: 'سئوی فنی، محتوای تخصصی و سئوی محلی.', meta: 'ماهانه' },
+			{ icon: 'target', title: 'تبلیغات کلیکی', text: 'گوگل ادز و شبکه‌های نمایشی با ردیابی تبدیل.', meta: 'ماهانه' },
+			{ icon: 'instagram', title: 'شبکه‌های اجتماعی', text: 'تقویم محتوا، ریلز و مدیریت دایرکت.', meta: 'ماهانه' },
+			{ icon: 'palette', title: 'برندینگ', text: 'جایگاه‌یابی، هویت بصری و راهنمای برند.', meta: 'پروژه‌ای' },
+		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'md', gap: 32 }, [
+		L.productCarousel({ eyebrow: 'بسته‌ها', title: 'خرید *آنلاین*', source: 'recent', count: 6, card_ratio: '1-1', card_parts: ['badges', 'hover'], more_text: 'همه‌ی بسته‌ها', more_link: link('{{shop}}') }),
 	]),
-	L.testimonials(QUOTES, { layout: 'marquee' }),
-	section({ space: 'md' }, [
-		cols({ widths: [60, 40], align: 'flex-end' }, [
-			[heading({ eyebrow: 'یادداشت‌ها', title: 'آنچه این هفته *یاد گرفتیم*' })],
-			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary')],
-		]),
-		L.posts({ count: 3, layout: 'grid', columns: '3' }),
-	]),
-	L.cta({
-		eyebrow: 'ظرفیت این ماه: سه برند',
-		title: 'نوبت *برند شما*ست.',
-		desc: 'ممیزی رایگان بگیرید؛ سه فرصت رشد سریع را مکتوب تحویل می‌دهیم، حتی اگر با ما کار نکنید.',
-		btn1_text: 'دریافت ممیزی رایگان', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'تعرفه‌ها', btn2_link: link('{{page:services}}'),
-		look: 'accent',
-		decor: 'grid',
-		note: 'پاسخ تا دو ساعت کاری',
-	}),
+	section({ space: 'md', gap: 40 }, [L.testimonials(QUOTES, { layout: 'grid', columns: '3' })]),
+	auditCta(),
 ];
 
 /* ---------------- Services ---------------- */
 
 const services = [
-	section({ space: 'md', bottom0: true }, [
-		cols({ widths: [58, 42], align: 'flex-end' }, [
-			[heading({ eyebrow: 'خدمات', title: 'هر کانالی که\n*فروش* می‌سازد', title_tag: 'h1', title_size: 'xl' })],
-			[L.textEditor('<p>می‌توانید یک خدمت را جداگانه بگیرید یا چند کانال را با هم. در هر دو حالت یک مدیر حساب، یک داشبورد و یک هدف مشترک دارید.</p>'), button('ممیزی رایگان', '{{page:contact}}')],
-		]),
-	]),
-	section({ space: 'md' }, [
+	L.pageHead('خدمات', 'هر کانالی که\n*فروش* می‌سازد', 'سئو، تبلیغات، شبکه‌های اجتماعی، برندینگ، سایت و ایمیل؛ هر کدام با یک عدد هدف و گزارش هفتگی.'),
+	section({ space: 'md', gap: 40 }, [L.tabs(SERVICE_TABS, { autoplay: 0, media_side: 'start' })]),
+	fx(section({ space: 'md', gap: 40 }, [
 		L.features([
-			{ icon: 'search', image: img('work-4'), title: 'سئو و محتوا', text: 'سئوی فنی، تحقیق کلمات کلیدی، تولید محتوای تخصصی و سئوی محلی برای کسب‌وکارهای چندشعبه.', meta: 'از ۲۸ میلیون تومان در ماه', link: link('#audit'), wide: '' },
-			{ icon: 'target', image: img('work-2'), title: 'تبلیغات کلیکی', text: 'گوگل ادز، تبلیغات همسان و ریتارگتینگ، با ردیابی تبدیل تا مرحله‌ی سفارش.', meta: 'از ۲۲ میلیون تومان در ماه', link: link('#audit') },
-			{ icon: 'instagram', image: img('social-2'), title: 'شبکه‌های اجتماعی', text: 'تقویم محتوا، تولید ریلز، مدیریت دایرکت و همکاری با اینفلوئنسرها.', meta: 'از ۱۸ میلیون تومان در ماه', link: link('#audit') },
-			{ icon: 'palette', image: img('work-6'), title: 'برندینگ', text: 'جایگاه‌یابی، هویت بصری، لحن برند و راهنمای استفاده برای تیم‌ها.', meta: 'پروژه‌ای، از ۳۵ میلیون تومان', link: link('#audit') },
-			{ icon: 'globe', image: img('work-3'), title: 'سایت و صفحه‌ی فرود', text: 'طراحی و ساخت صفحه‌هایی که برای تبدیل ساخته شده‌اند، با تست A/B مداوم.', meta: 'پروژه‌ای', link: link('#audit') },
-			{ icon: 'mail', image: img('social-4'), title: 'ایمیل مارکتینگ', text: 'خبرنامه، ایمیل‌های خودکار سبد خرید و بازگشت مشتری.', meta: 'از ۹ میلیون تومان در ماه', link: link('#audit') },
-		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'soft', link_text: 'درخواست مشاوره' }),
+			{ icon: 'search', title: 'سئو و محتوا', text: 'سئوی فنی، تحقیق کلمات کلیدی، تولید محتوای تخصصی و سئوی محلی.', meta: 'از ۲۸ میلیون تومان در ماه' },
+			{ icon: 'target', title: 'تبلیغات کلیکی', text: 'گوگل ادز، تبلیغات همسان و ریتارگتینگ، با ردیابی تبدیل.', meta: 'از ۲۲ میلیون تومان در ماه' },
+			{ icon: 'instagram', title: 'شبکه‌های اجتماعی', text: 'تقویم محتوا، تولید ریلز، مدیریت دایرکت و همکاری با اینفلوئنسرها.', meta: 'از ۱۸ میلیون تومان در ماه' },
+			{ icon: 'palette', title: 'برندینگ', text: 'جایگاه‌یابی، هویت بصری، لحن برند و راهنمای استفاده.', meta: 'از ۳۵ میلیون تومان' },
+			{ icon: 'globe', title: 'سایت و صفحه‌ی فرود', text: 'صفحه‌هایی که برای تبدیل ساخته شده‌اند، با تست مداوم.', meta: 'پروژه‌ای' },
+			{ icon: 'mail', title: 'ایمیل مارکتینگ', text: 'خبرنامه و ایمیل‌های خودکار سبد خرید و بازگشت مشتری.', meta: 'از ۹ میلیون تومان در ماه' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'همکاری', title: 'چهار قدم تا *اولین گزارش*', header_align: 'center' }),
+		L.steps(PROCESS, { layout: 'h', cards: 'yes' }),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'همکاری چطور شروع می‌شود', title: 'چهار قدم تا *اولین گزارش*', header_align: 'center' }),
-		L.steps([
-			{ marker: '۰۱', icon: 'search', title: 'ممیزی رایگان', text: 'یک جلسه‌ی ۴۵ دقیقه‌ای و گزارش مکتوب سه فرصت سریع.' },
-			{ marker: '۰۲', icon: 'target', title: 'پیشنهاد مکتوب', text: 'هدف‌ها، کانال‌ها، بودجه و زمان‌بندی، روی یک صفحه.' },
-			{ marker: '۰۳', icon: 'rocket', title: 'راه‌اندازی', text: 'دسترسی‌ها، ردیابی تبدیل و داشبورد در هفته‌ی اول آماده می‌شوند.' },
-			{ marker: '۰۴', icon: 'chart', title: 'گزارش هفتگی', text: 'هر دوشنبه: چه کار کرد، چه نکرد، قدم بعدی.' },
-		], { layout: 'h' }),
-	]),
-	anchor('audit', section({ space: 'md', width: 900 }, [
-		heading({ eyebrow: 'ممیزی رایگان', title: 'از *همین‌جا* شروع کنید', header_align: 'center' }),
-		L.leadForm(LEAD),
-	])),
-	section({ space: 'md', top0: true }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *شروع*' })],
-			[L.faq(FAQ)],
+	fx(section({ space: 'md', gap: 48 }, [
+		cols({ widths: [50, 50], gap: 72, align: 'center' }, [
+			[heading({ eyebrow: 'گزارش هفتگی', title: 'عددها را *هر هفته*\nمی‌بینید', desc: 'هر دوشنبه یک خلاصه‌ی یک‌صفحه‌ای: هزینه‌ی هر سفارش به تفکیک کانال، روند هفتگی و قدم بعدی.' })],
+			[fx(L.imageReveal('dashboard', { ratio: '4-3', reveal: 'none', parallax: px(0) }), { zoom: 'in', zoomAmount: 0.1, zoomInner: true })],
 		]),
-	]),
+	]), { tone: 'inverse' }),
+	auditCta(),
 ];
 
-/* ---------------- Work (case studies index) ---------------- */
+/* ---------------- Work ---------------- */
 
-const work = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'نمونه‌کارها', title: 'پروژه‌هایی که\n*عدد* دارند', title_tag: 'h1', title_size: 'xl', desc: 'هر پروژه با یک هدف قابل اندازه‌گیری شروع شده و نتیجه‌اش را همان‌طور که بوده گزارش کرده‌ایم.' }),
-	]),
-	L.hscroll({
-		eyebrow: '',
-		title: '',
-		desc: '',
-		items: WORK,
-		card_size: 'xl',
-		card_style: 'card',
-	}),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'داستان کامل پروژه‌ها', title: 'از *مسئله* تا نتیجه' }),
-		L.posts({ count: 6, layout: 'featured', columns: '3', cats: ['{{term:cat-case}}'] }),
-	]),
-	L.cta({
-		title: 'پروژه‌ی بعدی\n*مال شماست*؟',
-		desc: 'ممیزی رایگان بگیرید و ببینید از کجا می‌شود شروع کرد.',
-		btn1_text: 'دریافت ممیزی رایگان', btn1_link: link('{{page:services}}'),
-		look: 'inverse',
-		decor: 'grid',
-		note: '',
-	}),
+const workPage = [
+	L.pageHead('نمونه‌کارها', 'پروژه‌هایی که\n*عدد* دارند', 'هر پروژه با یک هدف قابل اندازه‌گیری شروع شده و نتیجه‌اش را همان‌طور که بوده گزارش کرده‌ایم.'),
+	section({ space: 'md', gap: 32 }, [L.stack(CASES)]),
+	L.hscroll({ eyebrow: 'همه‌ی پروژه‌ها', title: 'شش برند،\n*شش داستان*', desc: '', items: WORK, card_size: 'md', card_style: 'caption', scheme: '' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [50, 50], gap: 24 }, [
+			[L.imageReveal('work-5-b', { ratio: '1-1', reveal: 'none', parallax: px(0) })],
+			[L.imageReveal('work-6-b', { ratio: '1-1', reveal: 'none', parallax: px(0) })],
+		]),
+	]), { cards: 'spread' }),
+	auditCta(),
 ];
 
-/* ---------------- About ---------------- */
+/* ---------------- Audit ---------------- */
+
+const audit = [
+	L.pageHead('ممیزی رایگان', 'در دو دقیقه بگویید\n*کجا ایستاده‌اید*', 'سه سؤال کوتاه بپرسیم، بعد ظرف دو ساعت کاری تماس می‌گیریم. در جلسه‌ی ممیزی سه فرصت رشد سریع را مکتوب تحویل می‌گیرید، حتی اگر با ما کار نکنید.'),
+	section({ space: 'md', gap: 40, width: 980 }, [L.leadForm(LEAD)]),
+	fx(section({ space: 'md', gap: 40 }, [L.steps(PROCESS, { layout: 'h', cards: 'yes' })]), { tone: 'surface', cards: 'cascade' }),
+];
+
+/* ---------------- About, FAQ, contact ---------------- */
 
 const about = [
-	section({ space: 'md', bottom0: true }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: 'درباره‌ی تپش', title: 'آژانسی که\n*به عدد* قسم می‌خورد', title_tag: 'h1', title_size: 'xl' })],
-			[L.textEditor('<p>تپش را سال ۱۳۹۷ سه نفر راه انداختند که از گزارش‌های پر از لایک و بازدید خسته شده بودند. سؤالشان ساده بود: این کمپین چقدر فروش آورد؟</p>')],
+	L.pageHead('درباره‌ی تپش', 'استودیویی که\n*گزارش فروش* می‌فرستد', 'تپش را ۱۳۹۷ سه نفر راه انداختند که از گزارش‌های پر از لایک و بی‌خبر از فروش خسته شده بودند. امروز چهارده نفریم و هنوز هر کار را با یک عدد شروع می‌کنیم.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 2 }, [
+		L.imageReveal('hero', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'اصول ما', title: 'چهار *قول*' }),
+		L.features([
+			{ icon: 'target', title: 'یک عدد هدف', text: 'هر کار با یک عدد قابل اندازه‌گیری شروع می‌شود.' },
+			{ icon: 'eye', title: 'شفافیت', text: 'حساب‌ها به نام شماست و داشبورد همیشه باز.' },
+			{ icon: 'clock', title: 'گزارش هفتگی', text: 'هر دوشنبه، بدون استثنا.' },
+			{ icon: 'heart', title: 'ظرفیت محدود', text: 'هر ماه فقط سه برند تازه می‌پذیریم.' },
+		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'flip' }),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'تیم', title: 'آدم‌هایی که\n*پشت عددها* هستند' })],
+			[L.features([
+				{ icon: '', title: 'مهسا کریمیان', text: 'هم‌بنیان‌گذار؛ استراتژی' },
+				{ icon: '', title: 'امید فرهادی', text: 'هم‌بنیان‌گذار؛ تبلیغات کلیکی' },
+				{ icon: '', title: 'سپیده نوری', text: 'مدیر هنری' },
+				{ icon: '', title: 'پویا رستمی', text: 'سئو و محتوا' },
+			], { layout: 'grid', style: 'plain', columns: '2', icon_style: 'plain' })],
 		]),
 	]),
-	section({ space: 'md' }, [L.imageReveal('showreel', { ratio: '21-9', reveal: 'clip-up', parallax: px(0.3) })]),
-	section({ space: 'md', width: 1100 }, [
-		L.textScrub('امروز ۳۴ نفریم: استراتژیست، طراح، نویسنده، متخصص تبلیغات و تحلیلگر داده. هنوز همان سؤال را می‌پرسیم و هنوز *هیچ گزارشی بدون عدد فروش* از دفتر ما بیرون نمی‌رود.', { eyebrow: 'امروز', size: 'md' }),
-	]),
-	section({ space: 'sm' }, [
-		L.counters([
-			{ value: 34, label: 'نفر در تیم' },
-			{ value: 180, suffix: '+', label: 'برند همکار' },
-			{ value: 42, label: 'کمپین در سال گذشته' },
-			{ value: 7, label: 'سال تجربه' },
-		], { style: 'plain', columns: '4' }),
-	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'اصول ما', title: 'چهار *قول* به هر مشتری' }),
-		L.features([
-			{ icon: 'chart', title: 'گزارش با عدد فروش', text: 'لایک و بازدید را گزارش می‌کنیم، اما هیچ‌وقت به‌جای فروش.' },
-			{ icon: 'lock', title: 'حساب‌ها مال شماست', text: 'همه‌ی حساب‌های تبلیغاتی و محتوا به نام کسب‌وکار شما ساخته می‌شوند.' },
-			{ icon: 'shield', title: 'صداقت درباره‌ی بودجه', text: 'اگر بودجه با هدف نخواند، همان روز اول می‌گوییم.' },
-			{ icon: 'clock', title: 'پاسخ در همان روز', text: 'هر مشتری یک مدیر حساب دارد که در ساعت کاری همان روز جواب می‌دهد.' },
-		], { layout: 'grid', style: 'plain', columns: '4', icon_style: 'soft' }),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'تیم', title: 'چند نفر از *ما*' }),
-		L.team([
-			{ photo: {}, name: 'لیلا پارسا', role: 'هم‌بنیان‌گذار، مدیر استراتژی' },
-			{ photo: {}, name: 'امیرحسین راد', role: 'هم‌بنیان‌گذار، تبلیغات کلیکی' },
-			{ photo: {}, name: 'هانیه موسوی', role: 'مدیر خلاقیت' },
-			{ photo: {}, name: 'پویا کریمی', role: 'متخصص سئو' },
-			{ photo: {}, name: 'سمانه نوری', role: 'سرپرست محتوا' },
-			{ photo: {}, name: 'مهدی فرهادی', role: 'تحلیلگر داده' },
-		], { columns: '3' }),
-	]),
-	L.cta({
-		title: 'با ما *قهوه* بخورید.',
-		desc: 'دفتر ما در تهران است، اما بیشتر جلسه‌ها آنلاین برگزار می‌شوند. هر کدام راحت‌ترید.',
-		btn1_text: 'هماهنگی جلسه', btn1_link: link('{{page:contact}}'),
-		look: 'inverse',
-		decor: 'grid',
-		note: '',
-	}),
+	auditCta(),
 ];
 
-/* ---------------- Contact ---------------- */
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *شروع*', 'اگر سؤال دیگری دارید، در جلسه‌ی ممیزی رایگان بپرسید؛ تعهدی ایجاد نمی‌کند.'),
+	section({ space: 'md', gap: 56 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'همکاری', title: 'قرارداد و *نتیجه*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+	auditCta(),
+];
 
 const contact = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'تماس با ما', title: 'ممیزی رایگان،\n*در دو دقیقه*', title_tag: 'h1', title_size: 'xl', desc: 'سه سؤال کوتاه را جواب بدهید؛ تا دو ساعت کاری آینده تماس می‌گیریم. اگر ترجیح می‌دهید، مستقیم زنگ بزنید.' }),
-	]),
+	L.pageHead('تماس', 'درباره‌ی برندتان\n*حرف بزنیم*', 'برای همکاری، پروژه‌ی برندینگ یا پرسش درباره‌ی بسته‌ها پیام بدهید.'),
 	section({ space: 'md' }, [
-		cols({ widths: [60, 40], gap: 56 }, [
-			[L.leadForm(LEAD)],
+		cols({ widths: [40, 60], gap: 64 }, [
 			[L.contactInfo([
-				{ icon: 'phone', label: 'تلفن', value: '۰۲۱-۸۸۵۵۴۴۲۰', link: link('tel:+982188554420') },
-				{ icon: 'whatsapp', label: 'واتس‌اپ', value: '۰۹۱۲ ۴۴۰ ۲۲۱۰', link: link('https://wa.me/989124402210', true) },
-				{ icon: 'mail', label: 'ایمیل', value: 'hello@tapesh.agency', link: link('mailto:hello@tapesh.agency') },
-				{ icon: 'pin', label: 'دفتر', value: 'تهران، خیابان شریعتی، بالاتر از میرداماد، ساختمان ۱۸۰، طبقه‌ی ۴', link: link('') },
-				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه، ۹ تا ۱۸', link: link('') },
+				{ icon: 'phone', label: 'تلفن', value: '۰۲۱-۸۸۶۶۰۴۲۰', link: link('tel:+982188660420') },
+				{ icon: 'mail', label: 'ایمیل', value: 'hello@tapesh.studio', link: link('mailto:hello@tapesh.studio') },
+				{ icon: 'pin', label: 'استودیو', value: 'تهران، خیابان ولیعصر، کوچه‌ی بهار، پلاک ۱۲', link: link('') },
+				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه، ۱۰ تا ۱۸', link: link('') },
 			])],
-		], ),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *تماس*' })],
-			[L.faq(FAQ.slice(0, 4))],
+			[L.contactForm({ show_phone: 'yes', label_phone: 'شماره‌ی موبایل', show_subject: 'yes', label_subject: 'موضوع', label_name: 'نام و نام خانوادگی', label_email: 'ایمیل', label_message: 'پیام شما', button: 'ارسال پیام', success: 'پیامتان رسید؛ تا پایان روز کاری جواب می‌دهیم.' })],
 		]),
 	]),
 ];
 
-/* ---------------- Blog ---------------- */
+/* ---------------- Notes ---------------- */
 
 const terms = [
 	{ key: 'cat-case', taxonomy: 'category', name: 'نمونه‌کار', slug: 'case-studies' },
@@ -503,10 +391,10 @@ const posts = [
 	},
 ];
 
-/* ---------------- Shop: packages and digital products ---------------- */
+/* ---------------- Shop: packages ---------------- */
 
 const products = [
-	{ key: 'p-seo-audit', title: 'ممیزی کامل سئو', slug: 'seo-audit', price: 4900000, sku: 'TP-SEO-AUD', image: 'product-1', terms: ['pcat-service'], virtual: true, featured: true,
+	{ key: 'p-seo-audit', title: 'ممیزی کامل سئو', slug: 'seo-audit', price: 4900000, sku: 'TP-SEO-AUD', image: 'product-1', gallery: ['dashboard'], terms: ['pcat-service'], virtual: true, featured: true,
 		excerpt: 'گزارش ۴۰ صفحه‌ای وضعیت فنی، محتوا و رقبا، همراه با فهرست اولویت‌دار کارها.',
 		content: L.productBody(['ممیزی شامل بررسی فنی سایت، سرعت، ساختار محتوا، کلمات کلیدی و مقایسه با سه رقیب اصلی است.', 'گزارش را در یک جلسه‌ی یک‌ساعته با شما مرور می‌کنیم تا بدانید از کجا شروع کنید.'], [['زمان تحویل', '۷ روز کاری'], ['خروجی', 'گزارش PDF و فایل اکسل کارها'], ['جلسه‌ی مرور', 'یک ساعت، آنلاین']]) },
 	{ key: 'p-instagram', title: 'مدیریت اینستاگرام — ماهانه', slug: 'instagram-management', price: 18000000, sku: 'TP-IG-M', image: 'product-2', terms: ['pcat-service'], virtual: true, featured: true,
@@ -515,7 +403,7 @@ const products = [
 	{ key: 'p-google-ads', title: 'راه‌اندازی کمپین گوگل ادز', slug: 'google-ads-setup', price: 12000000, sale_price: 9900000, sku: 'TP-GADS', image: 'product-3', terms: ['pcat-service'], virtual: true, featured: true,
 		excerpt: 'ساختار کمپین، کلمات کلیدی، متن تبلیغ و ردیابی تبدیل؛ آماده‌ی اجرا در یک هفته.',
 		content: L.productBody(['کمپین را از صفر یا بر پایه‌ی حساب فعلی شما می‌سازیم و ردیابی تبدیل را تا مرحله‌ی سفارش راه می‌اندازیم.', 'یک ماه پشتیبانی و بهینه‌سازی پس از راه‌اندازی در قیمت گنجانده شده است.'], [['زمان راه‌اندازی', '۷ روز کاری'], ['پشتیبانی', 'یک ماه'], ['بودجه‌ی تبلیغات', 'جداگانه']]) },
-	{ key: 'p-brand-kit', title: 'کیت هویت بصری', slug: 'brand-identity-kit', price: 35000000, sku: 'TP-BRAND', image: 'product-4', terms: ['pcat-service'], virtual: true,
+	{ key: 'p-brand-kit', title: 'کیت هویت بصری', slug: 'brand-identity-kit', price: 35000000, sku: 'TP-BRAND', image: 'product-4', gallery: ['work-6'], terms: ['pcat-service'], virtual: true,
 		excerpt: 'لوگو، رنگ، تایپوگرافی، لحن برند و راهنمای استفاده در یک بسته.',
 		content: L.productBody(['کیت هویت بصری برای کسب‌وکارهایی است که تازه شروع کرده‌اند یا می‌خواهند برندشان را یکپارچه کنند.', 'سه مرحله بازخورد در فرایند گنجانده شده و همه‌ی فایل‌ها با کیفیت چاپی تحویل می‌شوند.'], [['زمان تحویل', '۴ هفته'], ['دور بازخورد', '۳ مرحله'], ['خروجی', 'فایل‌های لایه‌باز و راهنمای برند']]) },
 	{ key: 'p-calendar', title: 'تقویم محتوای ۹۰ روزه', slug: '90-day-content-calendar', price: 2900000, sku: 'TP-CAL-90', image: 'product-5', terms: ['pcat-digital'], virtual: true,
@@ -528,89 +416,97 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
+const LIGHT = { light: 'start', extra: { hm_page_light_a: '#c9452c', hm_page_light_b: '#a8a49b' } };
+
+const pages = [
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
+	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
+	{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: workPage, settings: L.pageSettings(LIGHT) },
+	{ key: 'audit', title: 'ممیزی رایگان', slug: 'free-audit', elementor: audit, settings: L.pageSettings() },
+	{ key: 'about', title: 'درباره‌ی تپش', slug: 'about', elementor: about, settings: L.pageSettings() },
+	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
+	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
+	{ key: 'blog', title: 'یادداشت‌ها', slug: 'notes', content: '' },
+];
+
 module.exports = {
 	manifest: {
 		id: 'agency',
 		order: 2,
 		title: 'تپش',
-		desc: 'آژانس دیجیتال مارکتینگ؛ صفحه‌ی فرود تبدیل‌محور، فرم ممیزی چندمرحله‌ای، نمونه‌کار با عدد و حالت تاریک کامل.',
-		kit: 'pulse',
+		desc: 'استودیوی برند و رشد؛ سایت کامل آژانس: خدمات، نمونه‌کارها با عدد، بسته‌های خرید آنلاین، ممیزی رایگان سه‌مرحله‌ای، تعرفه‌ها و یادداشت‌ها. خاکستری گرم، مشکی و شنگرفی.',
+		kit: 'studio',
 		thumb: 'thumb.webp',
-		required: ['elementor'],
-		recommended: ['woocommerce'],
-		tags: ['آژانس', 'دیجیتال مارکتینگ', 'خدمات'],
-		pages: ['خانه', 'خانه — مدل دوم', 'خدمات', 'نمونه‌کارها', 'درباره‌ی ما', 'تماس با ما', 'وبلاگ', 'فروشگاه'],
+		required: ['elementor', 'woocommerce'],
+		recommended: [],
+		tags: ['آژانس', 'برندینگ', 'شرکتی'],
+		pages: pages.filter((p) => p.elementor).map((p) => p.title).concat(['بسته‌ها', 'یادداشت‌ها']),
 	},
 	content: {
-		site: { title: 'تپش', tagline: 'آژانس دیجیتال مارکتینگ' },
-		images,
-		alts,
-		terms,
-		posts,
-		products,
-		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
-			{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: work, settings: L.pageSettings() },
-			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
-			{ key: 'contact', title: 'تماس با ما', slug: 'contact', elementor: contact, settings: L.pageSettings() },
-			{ key: 'blog', title: 'وبلاگ', slug: 'blog', content: '' },
-		],
+		site: { title: 'تپش', tagline: 'استودیوی برند و رشد' },
+		images, alts, terms, posts, products, pages,
 		templates: [
-			{ key: 'tpl-home', type: 'page', page: 'home', title: 'تپش — صفحه‌ی فرود' },
-			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'تپش — صفحه‌ی اصلی، مدل دوم' },
+			{ key: 'tpl-home', type: 'page', page: 'home', title: 'تپش — صفحه‌ی اصلی' },
+			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'تپش — صفحه‌ی اصلی، نسخه‌ی دوم' },
 			{ key: 'tpl-services', type: 'page', page: 'services', title: 'تپش — خدمات' },
-			{ key: 'tpl-work', type: 'page', page: 'work', title: 'تپش — نمونه‌کارها' },
-			{ key: 'tpl-about', type: 'page', page: 'about', title: 'تپش — درباره‌ی ما' },
-			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'تپش — تماس با ما' },
-			{ key: 'tpl-bento', type: 'section', page: 'home', index: 3, title: 'تپش — مسئله و راه‌حل (بنتو)' },
-			{ key: 'tpl-tabs', type: 'section', page: 'home', index: 4, title: 'تپش — خدمات با زبانه' },
-			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 5, title: 'تپش — اسکرول افقی نمونه‌کارها' },
-			{ key: 'tpl-path', type: 'section', page: 'home', index: 7, title: 'تپش — مسیر اسکرول روش کار' },
-			{ key: 'tpl-pricing', type: 'section', page: 'home', index: 9, title: 'تپش — تعرفه با ظرفیت محدود' },
-			{ key: 'tpl-audit', type: 'section', page: 'home', index: 11, title: 'تپش — فرم ممیزی چندمرحله‌ای' },
-			{ key: 'tpl-zoom', type: 'section', page: 'home-2', index: 1, title: 'تپش — شوریل با زوم اسکرول' },
-			{ key: 'tpl-stack', type: 'section', page: 'home-2', index: 3, title: 'تپش — کارت‌های پشته‌ای نمونه‌کار' },
+			{ key: 'tpl-audit', type: 'page', page: 'audit', title: 'تپش — ممیزی رایگان' },
+			{ key: 'tpl-cases', type: 'section', page: 'home', index: 5, title: 'تپش — نمونه‌کار با عدد (کارت‌های پشته‌ای)' },
+			{ key: 'tpl-plans', type: 'section', page: 'home', index: 9, title: 'تپش — تعرفه‌ها' },
+			{ key: 'tpl-work', type: 'section', page: 'home-2', index: 1, title: 'تپش — نمونه‌کارها (اسکرول افقی)' },
 		],
 		menus: [
 			{
 				name: 'تپش — منوی اصلی', location: 'primary', items: [
-					{ title: 'خانه', page: 'home', children: [{ title: 'صفحه‌ی فرود', page: 'home' }, { title: 'مدل دوم', page: 'home-2' }] },
+					{ title: 'خانه', page: 'home' },
 					{ title: 'خدمات', page: 'services' },
 					{ title: 'نمونه‌کارها', page: 'work' },
-					{ title: 'فروشگاه', url: '{{shop}}' },
-					{ title: 'وبلاگ', page: 'blog' },
-					{ title: 'درباره‌ی ما', page: 'about' },
+					{ title: 'بسته‌ها', url: '{{shop}}' },
+					{ title: 'یادداشت‌ها', page: 'blog' },
+					{ title: 'استودیو', page: 'about', children: [
+						{ title: 'درباره‌ی تپش', page: 'about' },
+						{ title: 'پرسش‌های متداول', page: 'faq' },
+						{ title: 'تماس', page: 'contact' },
+					] },
 				],
 			},
 			{
 				name: 'تپش — پابرگ', location: 'footer', items: [
 					{ title: 'خدمات', page: 'services' },
 					{ title: 'نمونه‌کارها', page: 'work' },
-					{ title: 'وبلاگ', page: 'blog' },
-					{ title: 'تماس با ما', page: 'contact' },
+					{ title: 'ممیزی رایگان', page: 'audit' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
+					{ title: 'تماس', page: 'contact' },
 				],
 			},
 		],
 		options: {
 			logo: '{{imgid:logo}}',
 			logo_dark: '{{imgid:logo-dark}}',
-			logo_height: 38,
+			logo_height: 34,
 			header_layout: 'split',
+			header_cart: false,
 			header_cta_text: 'ممیزی رایگان',
-			header_cta_url: '{{page:contact}}',
-			footer_about: 'تپش آژانس دیجیتال مارکتینگ است: سئو، تبلیغات کلیکی، شبکه‌های اجتماعی و برندینگ، با گزارشی که هر هفته به عدد فروش وصل است.',
-			footer_copyright: 'تمام حقوق برای آژانس تپش محفوظ است.',
+			header_cta_url: '{{page:audit}}',
+			font_body: 'iransansx',
+			font_heading: 'peyda',
+			font_heading_weight: '700',
+			footer_about: 'تپش استودیوی برند و رشد است؛ هر کار با یک عدد هدف شروع می‌شود و هر هفته همان عدد گزارش می‌شود.',
+			footer_copyright: 'تمام حقوق برای استودیو تپش محفوظ است.',
 			footer_social: [{ network: 'instagram', url: 'https://instagram.com/' }, { network: 'linkedin', url: 'https://linkedin.com/' }, { network: 'telegram', url: 'https://t.me/' }],
 			mobile_bar: true,
 			mobile_bar_text: 'ممیزی رایگان',
-			mobile_bar_url: '{{page:contact}}',
-			mobile_bar_phone: '02188554420',
-			mobile_bar_whatsapp: '09124402210',
-			cursor: false,
+			mobile_bar_url: '{{page:audit}}',
+			mobile_bar_phone: '02188660420',
+			magnetic: true,
+			cursor: 'ring',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'digital',
+			sound_volume: 25,
+			sound_hover: false,
 		},
-		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', pages: { shop: 'فروشگاه', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
+		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', catalog_rows: 3, pages: { shop: 'بسته‌ها', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
 		front_page: 'home',
 		posts_page: 'blog',
 	},

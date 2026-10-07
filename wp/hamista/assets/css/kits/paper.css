@@ -1,0 +1,100 @@
+/*!
+ * Hamista style kit — Paper
+ * Off-white paper, graphite and one cobalt ink: the calm of a well-made
+ * textbook. Thin rules, small corners, light headings and generous measure.
+ */
+.hm-kit-paper {
+	--hm-bg: #f3f0ea;
+	--hm-surface: #faf8f4;
+	--hm-surface-2: #ebe7de;
+	--hm-sunken: #e3ded3;
+	--hm-fg: #1c1d20;
+	--hm-fg-muted: #61636a;
+	--hm-border: rgba(28, 29, 32, .11);
+	--hm-border-strong: rgba(28, 29, 32, .24);
+	--hm-accent: #2b4aa0;
+	--hm-accent-2: #1d3478;
+	--hm-accent-fg: #ffffff;
+	--hm-accent-ink: #2a4699;
+	--hm-accent-soft: rgba(43, 74, 160, .08);
+	--hm-inv-bg: #17181b;
+	--hm-inv-fg: #efece6;
+	--hm-inv-muted: #a6a8ae;
+	--hm-path-deep: #17181b;
+
+	--hm-radius-sm: 2px;
+	--hm-radius-md: 4px;
+	--hm-radius-lg: 6px;
+	--hm-radius-xl: 8px;
+	--hm-radius-btn: 3px;
+	--hm-fw-heading: 500;
+	--hm-fw-monument: 200;
+	--hm-lh-heading: 1.4;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: 0 1px 3px rgba(28, 29, 32, .05);
+	--hm-shadow-lg: 0 24px 48px -30px rgba(28, 29, 32, .3);
+	--hm-card-border: 1px solid var(--hm-border);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 0 20px 40px -28px rgba(28, 29, 32, .32);
+	--hm-input-bg: var(--hm-surface);
+	--hm-ease: cubic-bezier(.22, 1, .36, 1);
+	--hm-focus: 0 0 0 2px var(--hm-bg), 0 0 0 4px var(--hm-accent);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-paper,
+[data-hm-theme="dark"].hm-kit-paper {
+	--hm-bg: #121316;
+	--hm-surface: #191a1e;
+	--hm-surface-2: #202227;
+	--hm-sunken: #0d0e10;
+	--hm-fg: #ecebe6;
+	--hm-fg-muted: #9c9ea6;
+	--hm-border: rgba(236, 235, 230, .1);
+	--hm-border-strong: rgba(236, 235, 230, .22);
+	--hm-accent: #7b97e8;
+	--hm-accent-2: #a7bbf2;
+	--hm-accent-fg: #121316;
+	--hm-accent-ink: #93abf0;
+	--hm-accent-soft: rgba(123, 151, 232, .12);
+	--hm-inv-bg: #0a0b0d;
+	--hm-shadow-lg: 0 24px 48px -30px rgba(0, 0, 0, .8);
+	color-scheme: dark;
+}
+
+.hm-kit-paper ::selection { background: rgba(43, 74, 160, .2); color: inherit; }
+.hm-kit-paper .hm-hl { color: var(--hm-accent-ink); }
+.hm-kit-paper .hm-scheme-inverse .hm-hl { color: #93abf0; }
+.hm-kit-paper .hm-head__desc, .hm-kit-paper .hm-lead { color: var(--hm-fg-muted); }
+
+/* Section labels: a short cobalt rule, like a margin note. */
+.hm-kit-paper .hm-eyebrow { color: var(--hm-fg-muted); font-weight: 500; font-size: .82rem; }
+.hm-kit-paper .hm-eyebrow::before { width: 18px; height: 1px; opacity: 1; background: var(--hm-accent); border-radius: 0; }
+
+.hm-kit-paper .hm-btn { font-weight: 600; }
+.hm-kit-paper .hm-btn--primary, .hm-kit-paper .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+.hm-kit-paper .hm-btn--primary:hover { background: var(--hm-accent); border-color: var(--hm-accent); color: #fff; box-shadow: none; }
+.hm-kit-paper .hm-btn--secondary, .hm-kit-paper .hm-btn--ghost { background: transparent; border-color: var(--hm-border-strong); color: var(--hm-fg); }
+.hm-kit-paper .hm-btn--secondary:hover, .hm-kit-paper .hm-btn--ghost:hover { border-color: var(--hm-fg); color: var(--hm-fg); box-shadow: none; }
+.hm-kit-paper .hm-scheme-inverse .hm-btn--primary { background: var(--hm-inv-fg); color: var(--hm-inv-bg); border-color: var(--hm-inv-fg); }
+
+.hm-kit-paper .hm-icon-btn__badge { background: var(--hm-accent); }
+.hm-kit-paper a.hm-chip:hover, .hm-kit-paper .hm-chip.is-active { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-paper .hm-menu > .current-menu-item > a::after, .hm-kit-paper .hm-menu > .current-menu-ancestor > a::after { height: 1px; border-radius: 0; background: var(--hm-accent); }
+.hm-kit-paper .hm-progress { background: var(--hm-accent); }
+
+.hm-kit-paper .hm-card, .hm-kit-paper .hm-feature--card { box-shadow: none; }
+.hm-kit-paper .hm-feature--card:hover { transform: none; box-shadow: var(--hm-card-shadow-hover); }
+.hm-kit-paper .hm-features--icon-tile .hm-feature__icon, .hm-kit-paper .hm-cinfo__icon { background: transparent; border: 1px solid var(--hm-border-strong); color: var(--hm-fg); border-radius: 50%; }
+.hm-kit-paper .hm-feature__num { color: var(--hm-accent); }
+.hm-kit-paper .hm-post-card__title, .hm-kit-paper .hm-pfcard__title { font-weight: 600; }
+.hm-kit-paper ul.products li.product .woocommerce-loop-product__title, .hm-kit-paper .hm-product__title { font-weight: 600; }
+.hm-kit-paper ul.products li.product .price, .hm-kit-paper .hm-product__price { color: var(--hm-fg); }
+.hm-kit-paper .onsale { background: var(--hm-accent); color: #fff; border-radius: var(--hm-radius-sm); }
+.hm-kit-paper .hm-plan.is-featured { background: var(--hm-inv-bg); color: var(--hm-inv-fg); --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(239, 236, 230, .12); --hm-accent: #93abf0; --hm-accent-fg: #121316; border-color: transparent; }
+.hm-kit-paper .hm-scheme-inverse { --hm-accent: #93abf0; --hm-accent-fg: #121316; --hm-accent-ink: #93abf0; }
+
+.hm-kit-paper .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(239, 236, 230, .1); --hm-border-strong: rgba(239, 236, 230, .22); --hm-surface: rgba(255, 255, 255, .03); --hm-surface-2: rgba(255, 255, 255, .06); --hm-accent-ink: #93abf0; --hm-logo-dark: block; --hm-logo-light: none; }
+.hm-kit-paper .hm-footer__wordmark { color: #93abf0; opacity: .05; }
+.hm-kit-paper .hm-pagination .page-numbers.current { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }

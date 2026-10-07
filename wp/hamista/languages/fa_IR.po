@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T22:04:44+00:00\n"
-"PO-Revision-Date: 2026-10-07 22:04+0000\n"
+"POT-Creation-Date: 2026-10-07T22:20:50+00:00\n"
+"PO-Revision-Date: 2026-10-07 22:20+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -146,7 +146,15 @@ msgstr "وکالت — عاجی، سرمه‌ای و زرشکی"
 msgid "Clay — porcelain, sage and terracotta"
 msgstr "سفال — سفید چینی، سبز مریمی و آجری"
 
-#: inc/assets.php:87
+#: inc/assets.php:50
+msgid "Paper — off-white, graphite and cobalt"
+msgstr "کاغذ — سفید استخوانی، گرافیتی و کبالتی"
+
+#: inc/assets.php:51
+msgid "Studio — warm grey, ink and vermilion"
+msgstr "استودیو — خاکستری گرم، مشکی و شنگرفی"
+
+#: inc/assets.php:89
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 

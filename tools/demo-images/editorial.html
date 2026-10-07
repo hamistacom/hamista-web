@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Hamista editorial prints</title>
+<style>
+@font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-100.woff2) format("woff2"); font-weight: 100; }
+@font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-300.woff2) format("woff2"); font-weight: 300; }
+@font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-500.woff2) format("woff2"); font-weight: 500; }
+@font-face { font-family: "Doran"; src: url(../../wp/hamista-core/assets/fonts/library/doran/doran-700.woff2) format("woff2"); font-weight: 700; }
+@font-face { font-family: "Peyda"; src: url(../../wp/hamista-core/assets/fonts/library/peyda/peyda-300.woff2) format("woff2"); font-weight: 300; }
+@font-face { font-family: "Peyda"; src: url(../../wp/hamista-core/assets/fonts/library/peyda/peyda-700.woff2) format("woff2"); font-weight: 700; }
+@font-face { font-family: "Peyda"; src: url(../../wp/hamista-core/assets/fonts/library/peyda/peyda-900.woff2) format("woff2"); font-weight: 900; }
+@font-face { font-family: "IRANSansX"; src: url(../../wp/hamista-core/assets/fonts/library/iransansx/iransansx-400.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: "IRANSansX"; src: url(../../wp/hamista-core/assets/fonts/library/iransansx/iransansx-700.woff2) format("woff2"); font-weight: 700; }
+@font-face { font-family: "Ravagh"; src: url(../../wp/hamista-core/assets/fonts/library/ravagh/ravagh-400.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: "Pinar"; src: url(../../wp/hamista-core/assets/fonts/library/pinar/pinar-variable.woff2) format("woff2"); font-weight: 300 900; }
+html, body { margin: 0; padding: 0; }
+body { width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--ink); font: 400 22px/1.9 "IRANSansX", sans-serif; }
+* { box-sizing: border-box; }
+.page { position: absolute; inset: 0; }
+.mono { font-family: ui-monospace, Menlo, monospace; direction: ltr; letter-spacing: .12em; }
+
+/* Course cover: a book. */
+.cover { padding: 9% 10% 8%; display: flex; flex-direction: column; }
+.cover .top { display: flex; justify-content: space-between; align-items: baseline; font-size: 2.1vh; letter-spacing: .02em; opacity: .75; }
+.cover .num { font: 100 42vh/0.95 "Doran", serif; margin-top: 6vh; letter-spacing: -.02em; color: var(--accent); }
+.cover .motif { position: absolute; inset-inline-end: 10%; top: 13%; width: 38%; aspect-ratio: 1; opacity: .9; }
+.cover .title { margin-top: auto; font: 500 6.4vh/1.25 "Doran", serif; }
+.cover .sub { margin-top: 1.4vh; font-size: 2.3vh; opacity: .72; }
+.cover .rule { height: 1px; background: currentColor; opacity: .3; margin: 3vh 0 2vh; }
+.cover .foot { display: flex; justify-content: space-between; font-size: 2vh; opacity: .7; }
+
+/* Business card */
+.card { padding: 9% 9%; display: flex; flex-direction: column; justify-content: space-between; }
+.card .mark { width: 15vh; height: 15vh; }
+.card .brand { font-size: 9vh; line-height: 1.2; }
+.card .who { font-size: 4.6vh; line-height: 1.6; }
+.card .who b { display: block; font-weight: 700; font-size: 5.4vh; }
+.card .who span { opacity: .65; }
+.card.back { align-items: center; justify-content: center; gap: 4vh; }
+
+/* Letterhead */
+.letter { padding: 8% 10%; }
+.letter header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2.4vh; border-bottom: 1px solid var(--line); margin-bottom: 5vh; }
+.letter header .mark { width: 6vh; height: 6vh; }
+.letter header .brand { font-size: 3.6vh; }
+.letter p { font-size: 1.55vh; line-height: 2.3; margin: 0 0 2vh; text-align: justify; opacity: .85; }
+.letter h1 { font: 700 2vh/1.6 "IRANSansX"; margin: 0 0 2.4vh; }
+.letter .sign { margin-top: 6vh; font-size: 2.6vh; }
+.letter footer { position: absolute; bottom: 5%; inset-inline: 10%; display: flex; justify-content: space-between; font-size: 1.3vh; opacity: .6; border-top: 1px solid var(--line); padding-top: 1.6vh; }
+
+/* Poster */
+.poster { padding: 8%; display: flex; flex-direction: column; }
+.poster .kicker { font-size: 2.2vh; opacity: .7; }
+.poster .word { margin-top: auto; font-size: 30vh; line-height: 1.1; white-space: nowrap; width: max-content; max-width: none; }
+.poster .caption { margin-top: 3vh; font-size: 2.2vh; max-width: 70%; opacity: .75; line-height: 2; }
+.poster .shape { position: absolute; }
+
+/* Swatch */
+.swatch { display: flex; flex-direction: column; }
+.swatch .chip { flex: 1; background: var(--chip); }
+.swatch .info { padding: 6% 8%; font-size: 3vh; line-height: 1.6; }
+.swatch .info b { display: block; font: 500 5vh "Doran"; }
+.swatch .info .mono { font-size: 2.4vh; opacity: .65; }
+
+/* Report page */
+.report { padding: 8% 9%; }
+.report .kicker { font-size: 1.6vh; opacity: .65; }
+.report h1 { font: 500 4.2vh/1.35 "Doran"; margin: 1.2vh 0 3vh; }
+.report .figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vh; margin-bottom: 4vh; }
+.report .fig b { display: block; font: 300 6vh/1.1 "Doran"; color: var(--accent); }
+.report .fig span { font-size: 1.5vh; opacity: .7; }
+.report svg { width: 100%; height: 38vh; }
+.report p { font-size: 1.5vh; line-height: 2.2; opacity: .8; margin: 2vh 0 0; }
+
+/* Sketch page: dot grid with pencil wireframes. */
+.sketch { background-image: radial-gradient(var(--dot) 1.1px, transparent 1.3px); background-size: 3.2vh 3.2vh; }
+.sketch svg { position: absolute; inset: 6%; width: 88%; height: 88%; }
+.sketch .note { position: absolute; font: 400 2.2vh "IRANSansX"; color: var(--ink); opacity: .55; }
+</style>
+</head>
+<body>
+<div id="root" class="page"></div>
+<script>
+const P = JSON.parse(decodeURIComponent(location.hash.slice(1) || '{}'));
+const root = document.getElementById('root');
+const css = document.documentElement.style;
+css.setProperty('--bg', P.bg || '#f1ece2');
+css.setProperty('--ink', P.ink || '#1d1b18');
+css.setProperty('--accent', P.accent || P.ink || '#1d1b18');
+css.setProperty('--line', P.line || 'rgba(0,0,0,.15)');
+css.setProperty('--dot', P.dot || 'rgba(0,0,0,.18)');
+css.setProperty('--chip', P.chip || '#888');
+const font = (f) => ({ doran: '"Doran", serif', peyda: '"Peyda", sans-serif', ravagh: '"Ravagh", sans-serif', pinar: '"Pinar", sans-serif', sans: '"IRANSansX", sans-serif' }[f] || '"Doran", serif');
+
+// Simple geometric marks and motifs, all in thin strokes.
+const motifs = {
+	circle: (c) => `<svg viewBox="0 0 100 100"><g fill="none" stroke="${c}" stroke-width=".5"><circle cx="50" cy="50" r="48"/><circle cx="50" cy="50" r="34"/><circle cx="50" cy="50" r="20"/><path d="M2 50h96M50 2v96"/></g></svg>`,
+	grid: (c) => `<svg viewBox="0 0 100 100"><g fill="none" stroke="${c}" stroke-width=".5">${Array.from({ length: 11 }, (_, i) => `<path d="M${i * 10} 0v100M0 ${i * 10}h100"/>`).join('')}<rect x="20" y="30" width="40" height="30" stroke-width="1.4"/></g></svg>`,
+	arch: (c) => `<svg viewBox="0 0 100 100"><g fill="none" stroke="${c}" stroke-width=".6"><path d="M15 98V48a35 35 0 0 1 70 0v50"/><path d="M28 98V52a22 22 0 0 1 44 0v46"/><path d="M5 98h90"/></g></svg>`,
+	lines: (c) => `<svg viewBox="0 0 100 100"><g fill="none" stroke="${c}" stroke-width=".5">${Array.from({ length: 14 }, (_, i) => `<path d="M0 ${8 + i * 7}C30 ${i * 7} 60 ${16 + i * 7} 100 ${6 + i * 7}"/>`).join('')}</g></svg>`,
+	bars: (c) => `<svg viewBox="0 0 100 100"><g fill="${c}" opacity=".9">${[30, 46, 38, 62, 54, 80, 92].map((h, i) => `<rect x="${6 + i * 13}" y="${98 - h}" width="7" height="${h}"/>`).join('')}</g><path d="M2 98h96" stroke="${c}" stroke-width=".6"/></svg>`,
+	dots: (c) => `<svg viewBox="0 0 100 100"><g fill="${c}">${Array.from({ length: 64 }, (_, i) => `<circle cx="${6 + (i % 8) * 12.5}" cy="${6 + Math.floor(i / 8) * 12.5}" r="${[1, 1.6, 2.4, 3.2][(i * 7) % 4]}"/>`).join('')}</g></svg>`,
+	brace: (c) => `<svg viewBox="0 0 100 100"><g fill="none" stroke="${c}" stroke-width="1"><path d="M30 10c-10 0-12 6-12 16v12c0 8-4 12-10 12 6 0 10 4 10 12v12c0 10 2 16 12 16M70 10c10 0 12 6 12 16v12c0 8 4 12 10 12-6 0-10 4-10 12v12c0 10-2 16-12 16"/></g></svg>`,
+};
+const marks = {
+	ring: (c, a) => `<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="${c}" stroke-width="5"/><circle cx="30" cy="30" r="9" fill="${a}"/></svg>`,
+	square: (c, a) => `<svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" fill="none" stroke="${c}" stroke-width="5"/><rect x="18" y="18" width="24" height="24" fill="${a}"/></svg>`,
+	arch: (c, a) => `<svg viewBox="0 0 60 60"><path d="M8 56V30a22 22 0 0 1 44 0v26" fill="none" stroke="${c}" stroke-width="5"/><path d="M4 56h52" stroke="${a}" stroke-width="5"/></svg>`,
+	leaf: (c, a) => `<svg viewBox="0 0 60 60"><path d="M10 50C10 24 26 8 52 8c0 26-16 42-42 42Z" fill="${a}"/><path d="M10 50 40 20" stroke="${c}" stroke-width="4"/></svg>`,
+	wave: (c, a) => `<svg viewBox="0 0 60 60"><path d="M4 24c10-10 16 10 26 0s16 10 26 0M4 38c10-10 16 10 26 0s16 10 26 0" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/><circle cx="48" cy="12" r="5" fill="${a}"/></svg>`,
+	bean: (c, a) => `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="18" ry="25" fill="${a}" transform="rotate(-25 30 30)"/><path d="M22 10c10 14-6 26 4 40" fill="none" stroke="${c}" stroke-width="3.5"/></svg>`,
+	shield: (c, a) => `<svg viewBox="0 0 60 60"><path d="M30 4 52 12v18c0 14-10 22-22 26C18 52 8 44 8 30V12Z" fill="none" stroke="${c}" stroke-width="5"/><path d="M20 30l8 8 14-16" fill="none" stroke="${a}" stroke-width="5"/></svg>`,
+	bread: (c, a) => `<svg viewBox="0 0 60 60"><path d="M6 36c0-14 12-24 24-24s24 10 24 24v10H6Z" fill="${a}"/><path d="M18 22l4 8M30 18v10M42 22l-4 8" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/></svg>`,
+};
+const mk = (name) => (marks[name] || marks.ring)(P.ink || '#1d1b18', P.accent || '#888');
+
+// Pencil sketches: wireframes drawn with slightly wobbling strokes.
+function sketchSvg(kind) {
+	let seed = P.seed || 7;
+	const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+	const j = (v) => (v + (rnd() - 0.5) * 0.6).toFixed(2);
+	const line = (x1, y1, x2, y2, w = 0.35) => `<path d="M${j(x1)} ${j(y1)} L${j(x2)} ${j(y2)}" stroke-width="${w}"/>`;
+	const rect = (x, y, w, h, s = 0.35) => line(x, y, x + w, y, s) + line(x + w, y, x + w, y + h, s) + line(x + w, y + h, x, y + h, s) + line(x, y + h, x, y, s);
+	const lines = (x, y, w, n, gap = 2.4) => Array.from({ length: n }, (_, i) => line(x, y + i * gap, x + w * (i === n - 1 ? 0.6 : 0.95 - rnd() * 0.15), y + i * gap, 0.25)).join('');
+	let g = '';
+	if (kind === 'phone') {
+		[[8, 10], [40, 10], [72, 10]].forEach(([x, y], k) => {
+			g += rect(x, y, 22, 44, 0.45) + line(x + 8, y + 2, x + 14, y + 2, 0.4);
+			g += rect(x + 2, y + 6, 18, 10) + lines(x + 2, y + 20, 18, 4) + rect(x + 2, y + 32, 8, 4) + rect(x + 12, y + 32, 8, 4);
+			if (k < 2) g += `<path d="M${x + 23} ${y + 22} q4 -6 9 0" stroke-width=".35"/><path d="M${x + 30} ${y + 20} l2 2 -2.6 1" stroke-width=".35"/>`;
+		});
+		g += lines(8, 64, 80, 5, 3);
+	} else if (kind === 'web') {
+		g += rect(6, 8, 88, 58, 0.45) + line(6, 13, 94, 13, 0.3);
+		g += rect(10, 18, 44, 22) + lines(58, 20, 32, 5) + rect(58, 34, 12, 4, 0.5);
+		[10, 39, 68].forEach((x) => { g += rect(x, 46, 26, 16) + lines(x + 2, 49, 20, 3, 2.2); });
+		g += lines(6, 74, 60, 4, 3.2);
+	} else if (kind === 'flow') {
+		const box = (x, y, t) => rect(x, y, 22, 10, 0.45);
+		g += box(6, 10) + box(39, 10) + box(72, 10) + box(39, 36) + box(72, 36) + box(6, 62);
+		g += line(28, 15, 39, 15) + line(61, 15, 72, 15) + line(50, 20, 50, 36) + line(61, 41, 72, 41) + line(39, 41, 17, 62);
+		g += lines(6, 80, 70, 3, 3);
+	} else {
+		g += line(8, 60, 92, 60, 0.4) + line(8, 60, 8, 10, 0.4);
+		let px = 8, py = 52;
+		for (let i = 1; i <= 8; i++) { const nx = 8 + i * 10.5; const ny = 52 - i * 4.6 + (rnd() - 0.5) * 8; g += line(px, py, nx, ny, 0.5); px = nx; py = ny; }
+		g += lines(8, 70, 70, 5, 3);
+	}
+	return `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><g fill="none" stroke="${P.pencil || '#4a4a4a'}" stroke-linecap="round" stroke-linejoin="round" opacity=".82">${g}</g></svg>`;
+}
+
+const t = P.t || 'cover';
+if (t === 'cover') {
+	root.className = 'page cover';
+	root.innerHTML = `<div class="top"><span>${P.kicker || ''}</span><span>${P.edition || ''}</span></div>
+	${P.motif ? `<div class="motif">${motifs[P.motif](P.motifColor || P.ink)}</div>` : ''}
+	<div class="num">${P.num || ''}</div>
+	<div class="title" style="font-family:${font(P.font)}">${(P.title || '').replace(/\n/g, '<br>')}</div>
+	<div class="sub">${P.sub || ''}</div><div class="rule"></div>
+	<div class="foot"><span>${P.footA || ''}</span><span>${P.footB || ''}</span></div>`;
+} else if (t === 'card') {
+	root.className = 'page card' + (P.back ? ' back' : '');
+	root.innerHTML = P.back
+		? `<div class="mark">${mk(P.mark)}</div><div class="brand" style="font-family:${font(P.font)}">${P.brand || ''}</div>`
+		: `<div class="mark" style="width:9vh;height:9vh">${mk(P.mark)}</div><div class="who"><b>${P.name || ''}</b><span>${P.role || ''}</span><br>${P.phone || ''}</div>`;
+} else if (t === 'letter') {
+	root.className = 'page letter';
+	root.innerHTML = `<header><div class="brand" style="font-family:${font(P.font)}">${P.brand || ''}</div><div class="mark">${mk(P.mark)}</div></header>
+	<h1>${P.subject || ''}</h1>${(P.paras || []).map((p) => `<p>${p}</p>`).join('')}<div class="sign" style="font-family:${font(P.font)}">${P.sign || ''}</div>
+	<footer><span>${P.address || ''}</span><span>${P.web || ''}</span></footer>`;
+} else if (t === 'poster') {
+	root.className = 'page poster';
+	root.innerHTML = `${P.motif ? `<div class="motif" style="position:absolute;inset-inline-end:8%;top:10%;width:44%;aspect-ratio:1">${motifs[P.motif](P.motifColor || P.accent)}</div>` : ''}
+	<div class="kicker">${P.kicker || ''}</div><div class="word" style="font-family:${font(P.font)};font-weight:${P.weight || 300}">${P.word || ''}</div><div class="caption">${P.caption || ''}</div>`;
+} else if (t === 'swatch') {
+	root.className = 'page swatch';
+	root.innerHTML = `<div class="chip"></div><div class="info"><b>${P.name || ''}</b><span class="mono">${P.code || ''}</span></div>`;
+} else if (t === 'report') {
+	root.className = 'page report';
+	const vals = P.values || [32, 41, 38, 52, 49, 63, 71, 78];
+	const max = Math.max(...vals) * 1.1;
+	const pts = vals.map((v, i) => `${(i / (vals.length - 1)) * 100},${100 - (v / max) * 100}`).join(' ');
+	root.innerHTML = `<div class="kicker">${P.kicker || ''}</div><h1>${P.title || ''}</h1>
+	<div class="figs">${(P.figs || []).map(([b, s]) => `<div class="fig"><b>${b}</b><span>${s}</span></div>`).join('')}</div>
+	<svg viewBox="0 -4 100 108" preserveAspectRatio="none"><g stroke="${P.line || 'rgba(0,0,0,.12)'}" stroke-width=".25">${[0, 25, 50, 75, 100].map((y) => `<path d="M0 ${y}H100"/>`).join('')}</g>
+	<polyline points="${pts}" fill="none" stroke="${P.accent}" stroke-width=".9" vector-effect="non-scaling-stroke" style="stroke-width:2.4px"/>
+	${vals.map((v, i) => `<circle cx="${(i / (vals.length - 1)) * 100}" cy="${100 - (v / max) * 100}" r=".9" fill="${P.accent}"/>`).join('')}</svg>
+	<p>${P.note || ''}</p>`;
+} else if (t === 'sketch') {
+	root.className = 'page sketch';
+	root.innerHTML = sketchSvg(P.kind || 'phone') + (P.note ? `<div class="note" style="${P.notePos || 'bottom:6%;right:8%'}">${P.note}</div>` : '');
+}
+// Fit poster words to the sheet once the fonts are in.
+document.fonts.ready.then(() => {
+	const word = document.querySelector('.poster .word');
+	if (word) {
+		let size = innerHeight * 0.3;
+		word.style.fontSize = size + 'px';
+		const room = word.parentElement.clientWidth * 0.84;
+		while (word.scrollWidth > room && size > 20) { size *= 0.94; word.style.fontSize = size + 'px'; }
+	}
+	document.body.dataset.ready = '1';
+});
+</script>
+</body>
+</html>

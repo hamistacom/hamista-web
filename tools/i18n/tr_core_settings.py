@@ -82,6 +82,10 @@ T = {
     "Cream paper, comb brown and deep honey amber": "کاغذ کرم، قهوه~ای موم و کهربایی عسلی",
     "Nomad": "ایلیاتی",
     "Undyed wool, madder and indigo, with a thin kilim seam": "پشم خام، روناسی و نیلی، با نوار باریک گلیم",
+    "Paper": "کاغذ",
+    "Off-white paper, graphite and cobalt ink": "کاغذ سفید استخوانی، گرافیتی و جوهر کبالتی",
+    "Studio": "استودیو",
+    "Warm grey, black ink and vermilion": "خاکستری گرم، جوهر مشکی و شنگرفی",
     "Maximum width of page content. 1320px suits 15\" laptops; Elementor's container width is kept in sync.":
         "حداکثر عرض محتوای صفحه. ۱۳۲۰ پیکسل برای لپ~تاپ~های ۱۵ اینچی مناسب است؛ عرض کانتینر المنتور هم خودکار با آن هماهنگ می~شود.",
     "Smooth page transitions": "انتقال نرم بین برگه~ها",

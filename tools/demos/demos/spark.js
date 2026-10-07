@@ -1,38 +1,30 @@
 /**
- * Demo: Spark — a project-based product school (courses as WooCommerce products).
+ * Demo: Spark Academy — a project-based school for product design and
+ * building (Paper kit), built as a complete site: two home pages, courses,
+ * learning paths, admissions and fees, mentors, student work, team courses,
+ * about, FAQ, contact and the journal; six courses sold as WooCommerce
+ * products.
  */
 'use strict';
 
 const L = require('../lib');
-const { img, link, px, section, cols, heading, button } = L;
+const { img, link, px, w, section, cols, heading, button, fx } = L;
 
-const images = {};
-['ui-1', 'ui-2', 'ui-3', 'ui-4', 'ui-5', 'ui-6', 'ui-7', 'studio', 'workspace', 'community'].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
-for (const i of [1, 3, 4, 5, 6, 8]) { images['journal-' + i] = 'images/journal-' + i + '.webp'; }
+const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp' };
+['hero', 'studio', 'workspace', 'community'].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
+for (let i = 1; i <= 8; i++) { images['ui-' + i] = 'images/ui-' + i + '.webp'; images['journal-' + i] = 'images/journal-' + i + '.webp'; }
 for (let i = 1; i <= 6; i++) { images['course-' + i] = 'images/course-' + i + '.webp'; images['course-' + i + '-b'] = 'images/course-' + i + '-b.webp'; }
 
-images.logo = 'images/logo.webp';
-images['logo-dark'] = 'images/logo-dark.webp';
-
 const alts = {
-	'ui-1': 'صفحه‌ی نوبت‌های امروز در اپلیکیشن نوبت‌یار',
-	'ui-2': 'داشبورد فروش یک فروشگاه اینترنتی',
-	'ui-3': 'گفت‌وگو با دستیار نوشتن نشان',
-	'ui-4': 'صفحه‌ی پیشرفت روزانه در اپ عادت‌ساز گام',
-	'ui-5': 'نمای موجودی ماهانه در اپ پیمانه',
-	'ui-6': 'صفحه‌ی فرود محصول سکو',
-	studio: 'کلاژی از محصولاتی که در استودیو ساخته شده‌اند',
-	workspace: 'میز کار تیم‌های دانشجویی',
-	community: 'جامعه‌ی دانش‌آموختگان هامیستا',
+	hero: 'جلد دوره‌های آکادمی جرقه، طرح مدادی یک اپ و مداد روی میز بلوط',
+	studio: 'نور پنجره روی دیوار گچی استودیوی آکادمی',
+	workspace: 'دو برگه طرح مدادی روی میز گردو',
+	community: 'اتاق آرام استودیو با نیمکت و نور بعدازظهر',
 };
 
-/* ---------------- Shared content ---------------- */
+const shopUrl = '{{shop}}';
 
-const STATS = [
-	{ value: '۱٬۲۰۰+', suffix: '', label: 'دانش‌آموخته' },
-	{ value: '۳۴۰', suffix: '', label: 'محصول منتشرشده' },
-	{ value: '۴٫۸', suffix: '', label: 'امتیاز دانشجوها از ۵' },
-];
+/* ---------------- Shared content ---------------- */
 
 const SHIPPED = [
 	{ image: img('ui-1'), label: 'اپلیکیشن · ۱۴۰۴', title: 'نوبت‌یار', text: 'نوبت‌دهی آنلاین برای آرایشگاه‌ها؛ حالا هر روز بیش از دو هزار نوبت با آن ثبت می‌شود.', link: link('{{post:report-nobatyar}}') },
@@ -44,7 +36,7 @@ const SHIPPED = [
 ];
 
 const QUOTES = [
-	{ quote: 'قبل از هامیستا سه دوره‌ی آنلاین را نیمه‌کاره رها کرده بودم. اینجا کسی منتظر پروژه‌ات است و همین فرق اصلی است.', name: 'مریم صالحی', role: 'طراح محصول در یک استارتاپ پرداخت' },
+	{ quote: 'قبل از جرقه سه دوره‌ی آنلاین را نیمه‌کاره رها کرده بودم. اینجا کسی منتظر پروژه‌ات است و همین فرق اصلی است.', name: 'مریم صالحی', role: 'طراح محصول در یک استارتاپ پرداخت' },
 	{ quote: 'بهترین بخش دوره، جلسه‌های بازبینی با منتور بود. یاد گرفتم برای تصمیم‌هایم دلیل بیاورم، نه سلیقه.', name: 'آرش نیک‌فر', role: 'دانش‌آموخته‌ی مسیر طراحی محصول' },
 	{ quote: 'برای تیم‌مان دوره‌ی تیمی گرفتیم. شش هفته بعد اولین نسخه‌ی اپ داخلی شرکت روی گوشی همه بود.', name: 'نیلوفر کاظمی', role: 'مدیر محصول، شرکت پخش' },
 ];
@@ -57,286 +49,337 @@ const FAQ = [
 	['بعد از پایان دوره چه می‌شود؟', 'پروژه‌ی شما در صفحه‌ی دانش‌آموختگان منتشر می‌شود، به گروه هم‌دوره‌ای‌ها می‌پیوندید و تا شش ماه برای بازبینی رزومه و تمرین مصاحبه کنار شما هستیم.'],
 ];
 
-/* ---------------- Pages ---------------- */
+const WHY = [
+	{ icon: 'cube', title: 'پروژه‌محور از روز اول', text: 'از جلسه‌ی دوم روی ایده‌ی خودتان کار می‌کنید؛ تمرین‌ها همان قطعه‌های محصول شما هستند.', meta: '۶ تا ۱۴ هفته' },
+	{ icon: 'users', title: 'کلاس‌های دوازده‌نفره', text: 'گروه کوچک یعنی وقت کافی برای بازبینی کار تک‌تک شما.', meta: 'حداکثر ۱۲ نفر' },
+	{ icon: 'compass', title: 'منتور همراه', text: 'هر هفته یک جلسه‌ی خصوصی با منتوری که در تیم‌های محصول ایران کار کرده است.', meta: 'جلسه‌ی هفتگی' },
+	{ icon: 'rocket', title: 'روز انتشار', text: 'محصول نهایی را جلوی کارفرماها و هم‌دوره‌ای‌ها ارائه می‌کنید.', meta: 'روز ارائه' },
+];
 
-const homeA = [
-	L.hero({
-		layout: 'split',
-		eyebrow: 'ثبت‌نام فصل پاییز باز است',
-		title: 'یاد بگیر، بساز،\n*منتشر کن*.',
-		desc: 'هامیستا مدرسه‌ی ساخت محصول است. به‌جای مدرک، هر دوره با یک محصول واقعی تمام می‌شود که آدم‌های واقعی از آن استفاده می‌کنند.',
-		btn1_text: 'دوره‌های این فصل', btn1_link: link('{{shop}}'),
-		btn2_text: 'چطور کار می‌کنیم', btn2_link: link('#how'),
-		stats: STATS,
-		media_type: 'mosaic',
-		gallery: L.gallery(['ui-1', 'ui-5', 'ui-3', 'ui-4', 'ui-6', 'ui-2']),
-		height: 'screen',
-		decor: 'grid',
-		hint: 'اسکرول کنید',
-	}),
-	L.marquee(['طراحی محصول', 'توسعه‌ی وب', 'هوش مصنوعی کاربردی', 'دیزاین سیستم', 'تحلیل داده', 'کسب‌وکار دیجیتال'], { look: 'alternate', size: 'lg' }),
-	section({ space: 'md', width: 1100 }, [
-		L.textScrub('سریع‌ترین راه یاد گرفتن، *ساختن چیزی واقعی* برای *آدم‌های واقعی* است. برای همین هیچ‌کدام از دوره‌های ما امتحان پایانی ندارد؛ پایان هر دوره، روز انتشار محصول شماست.', { eyebrow: 'باور ما', size: 'lg' }),
-	]),
-	section({ space: 'md' }, [
-		cols({ widths: [40, 60], align: 'flex-end', gap: 48 }, [
-			[heading({ eyebrow: '۰۱ — چرا هامیستا', title: 'کلاس کمتر،\n*کار واقعی* بیشتر' })],
-			[L.textEditor('<p>دوره‌ها کوتاه و فشرده‌اند و هر جلسه به یک خروجی مشخص ختم می‌شود. کنار شما منتوری است که خودش محصول ساخته و می‌داند گیر کار کجاست.</p>')],
+const SEASON = [
+	{ marker: '۰۱', icon: 'target', title: 'انتخاب مسیر', text: 'در یک جلسه‌ی مشاوره‌ی رایگان، هدف و سطح شما را می‌سنجیم و دوره‌ی مناسب را پیشنهاد می‌کنیم.' },
+	{ marker: '۰۲', icon: 'book', title: 'کلاس و تمرین', text: 'دو جلسه‌ی زنده در هفته و تمرین‌هایی که مستقیم به محصول شما وصل‌اند.' },
+	{ marker: '۰۳', icon: 'users', title: 'ساختن در تیم', text: 'از هفته‌ی ششم با طراح‌ها و برنامه‌نویس‌های دوره‌های دیگر تیم می‌شوید.' },
+	{ marker: '۰۴', icon: 'rocket', title: 'انتشار', text: 'محصول را منتشر می‌کنید و نتیجه را در روز ارائه نشان می‌دهید.' },
+];
+
+const PATHS = [
+	{ title: 'طراحی محصول', subtitle: '۱۰ هفته · از صفر', meta: '۰۱', image: img('course-1'), panel_title: 'از مسئله تا نمونه‌ی قابل تست', panel_text: 'تحقیق کاربر، معماری اطلاعات، طراحی رابط و تست کاربردپذیری. در پایان یک نمونه‌ی کامل دارید که با کاربر واقعی آزموده شده.', chips: 'فیگما، تحقیق کاربر، نمونه‌سازی', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-design}}') },
+	{ title: 'توسعه‌ی وب', subtitle: '۱۴ هفته · مقدماتی تا پیشرفته', meta: '۰۲', image: img('course-2'), panel_title: 'سایتی که واقعاً بالا می‌آید', panel_text: 'HTML و CSS تا جاوااسکریپت، ری‌اکت و اتصال به API. پروژه‌ی پایانی روی دامنه‌ی خودتان منتشر می‌شود.', chips: 'جاوااسکریپت، ری‌اکت، Git', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-web}}') },
+	{ title: 'هوش مصنوعی کاربردی', subtitle: '۸ هفته · متوسط', meta: '۰۳', image: img('course-3'), panel_title: 'هوش مصنوعی در خدمت محصول', panel_text: 'کجا مدل زبانی به کار محصول می‌آید و کجا نه؛ طراحی تجربه، ارزیابی خروجی و ساخت یک قابلیت واقعی.', chips: 'مدل زبانی، ارزیابی، طراحی تجربه', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-ai}}') },
+	{ title: 'تحلیل داده', subtitle: '۸ هفته · متوسط', meta: '۰۴', image: img('course-6'), panel_title: 'تصمیم با عدد، نه با حدس', panel_text: 'SQL، داشبوردسازی و طراحی آزمایش با داده‌ی واقعی یک کسب‌وکار.', chips: 'SQL، داشبورد، آزمون A/B', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-data}}') },
+];
+
+const AUDIENCE = [
+	{ eyebrow: '۰۱', title: 'تازه شروع کرده‌اید', text: 'دانشجو هستید یا تازه فارغ‌التحصیل شده‌اید و می‌خواهید اولین نمونه‌کار جدی‌تان را بسازید.', points: 'دوره‌های «از صفر»\nمسیر آمادگی دوهفته‌ای\nکمک در ساخت نمونه‌کار', image: img('course-1-b'), btn_text: 'دوره‌های مقدماتی', btn_link: link(shopUrl), tone: '' },
+	{ eyebrow: '۰۲', title: 'می‌خواهید مسیر شغلی‌تان را عوض کنید', text: 'در حوزه‌ی دیگری کار کرده‌اید و حالا می‌خواهید وارد تیم‌های محصول شوید.', points: 'کلاس‌های عصر و آخر هفته\nمنتور از همان صنعت\nتمرین مصاحبه', image: img('workspace'), btn_text: 'مشاوره‌ی تغییر مسیر', btn_link: link('{{page:admissions}}'), tone: 'inverse' },
+	{ eyebrow: '۰۳', title: 'تیم دارید', text: 'تیم شما باید سریع‌تر محصول بسازد. دوره را با پروژه‌ی واقعی شرکت خودتان برگزار می‌کنیم.', points: 'دوره‌ی اختصاصی تیمی\nکار روی پروژه‌ی خود شرکت\nگزارش پیشرفت برای مدیران', image: img('course-5-b'), btn_text: 'دوره‌ی تیمی', btn_link: link('{{page:teams}}'), tone: 'accent' },
+];
+
+const PRICING = () => L.pricing([
+	{ name: 'تک‌دوره', desc: 'یک دوره به انتخاب شما', price: 'از ۶٬۹۰۰٬۰۰۰', price_alt: 'از ۲٬۳۰۰٬۰۰۰', unit: 'تومان', period: '', features: 'جلسه‌های زنده و ضبط‌شده\nبازبینی هفتگی تمرین‌ها\nگواهی پایان دوره', btn_text: 'دیدن دوره‌ها', btn_link: link(shopUrl), featured: '', badge: '' },
+	{ name: 'مسیر کامل', desc: 'دو دوره‌ی مکمل با تخفیف', price: '۲۱٬۵۰۰٬۰۰۰', price_alt: '۷٬۲۰۰٬۰۰۰', unit: 'تومان', period: '', features: 'هر آنچه در تک‌دوره هست\nجلسه‌ی خصوصی هفتگی با منتور\nشش ماه همراهی شغلی\nحضور در روز ارائه', btn_text: 'شروع مسیر', btn_link: link('{{page:admissions}}'), featured: 'yes', badge: 'انتخاب بیشتر دانشجوها' },
+	{ name: 'تیمی', desc: 'برای ۵ تا ۱۵ نفر از یک شرکت', price: 'توافقی', price_alt: 'توافقی', unit: '', period: '', features: 'برنامه‌ی اختصاصی\nکار روی پروژه‌ی شرکت\nگزارش پیشرفت ماهانه', btn_text: 'هماهنگی جلسه', btn_link: link('{{page:teams}}'), featured: '', badge: '' },
+], { switch_off: 'پرداخت یکجا', switch_on: 'پرداخت در سه قسط', switch_note: 'بدون کارمزد' });
+
+const MENTORS = [
+	{ icon: '', title: 'آرمان شریفی', text: 'هم‌بنیان‌گذار؛ منتور طراحی محصول' },
+	{ icon: '', title: 'سارا رحیمی', text: 'هم‌بنیان‌گذار؛ منتور توسعه‌ی وب' },
+	{ icon: '', title: 'بهراد مقدم', text: 'سرپرست آموزش داده' },
+	{ icon: '', title: 'ترانه افشار', text: 'منتور کسب‌وکار دیجیتال' },
+	{ icon: '', title: 'کاوه بهرامی', text: 'منتور هوش مصنوعی' },
+	{ icon: '', title: 'نگار امینی', text: 'هماهنگ‌کننده‌ی دوره‌های تیمی' },
+];
+
+const newsletter = (title = 'هر ماه\n*یک ایمیل خوب*', desc = 'زمان شروع دوره‌های تازه، کارگاه‌های رایگان و بهترین نوشته‌های مجله؛ ماهی یک بار، نه بیشتر.') => L.cta({
+	eyebrow: 'خبرنامه', title, desc,
+	action: 'email', email_placeholder: 'ایمیل شما', email_button: 'عضویت', note: 'هر وقت بخواهید با یک کلیک لغو می‌شود.',
+	look: 'image', image: img('studio'), decor: '', rounded: '',
+});
+
+const CONSULT_FORM = {
+	need_label: 'مسیر', need_title: 'به کدام مسیر فکر می‌کنید؟', need_desc: 'اگر مطمئن نیستید، گزینه‌ی آخر را بزنید.',
+	choices: [
+		{ label: 'طراحی محصول', note: 'تحقیق، رابط، نمونه‌سازی', icon: 'pen' },
+		{ label: 'توسعه‌ی وب', note: 'از HTML تا ری‌اکت', icon: 'code' },
+		{ label: 'هوش مصنوعی کاربردی', note: 'برای محصول، نه تحقیق', icon: 'cpu' },
+		{ label: 'تحلیل داده', note: 'SQL و داشبورد', icon: 'chart' },
+		{ label: 'هنوز نمی‌دانم', note: 'با هم انتخاب می‌کنیم', icon: 'compass' },
+	],
+	multi: '',
+	budget_on: 'yes', budget_label: 'سطح', budget_title: 'الان کجای کار هستید؟',
+	budgets: 'از صفر شروع می‌کنم\nکمی تجربه دارم\nدر همین حوزه کار می‌کنم',
+	timeline_on: 'yes', timeline_title: 'از کی می‌خواهید شروع کنید؟',
+	timelines: 'همین فصل\nفصل بعد\nفقط می‌خواهم بدانم',
+	contact_label: 'تماس', contact_title: 'جلسه‌ی مشاوره را با چه کسی هماهنگ کنیم؟',
+	show_name: 'yes', label_name: 'نام و نام خانوادگی',
+	show_phone: 'yes', label_phone: 'شماره‌ی موبایل',
+	show_email: 'yes', label_email: 'ایمیل', req_email: '',
+	show_company: '', show_message: 'yes', label_message: 'هر چیزی که بخواهید بدانیم', req_message: '', consent: '',
+	next_text: 'مرحله‌ی بعد', back_text: 'قبلی', submit_text: 'رزرو جلسه‌ی مشاوره',
+	done_title: 'درخواستتان ثبت شد',
+	done_text: 'تا پایان روز کاری بعد تماس می‌گیریم تا زمان جلسه‌ی بیست‌دقیقه‌ای را هماهنگ کنیم.',
+	done_btn_text: 'دیدن دوره‌ها', done_btn_link: link(shopUrl), done_btn_style: 'secondary',
+	remember: 'yes', boxed: 'yes', columns: '2',
+};
+
+/* ---------------- Home ---------------- */
+
+const home = [
+	L.bleed(w('hm-hero', {
+		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
+		eyebrow: 'آکادمی جرقه · مدرسه‌ی ساخت محصول',
+		title: 'یاد بگیر، بساز،\n*منتشر کن*',
+		desc: 'جرقه مدرسه‌ی ساخت محصول است. به‌جای مدرک، هر دوره با یک محصول واقعی تمام می‌شود که آدم‌ها از آن استفاده می‌کنند.',
+		btn1_text: 'دوره‌های این فصل', btn1_link: link(shopUrl), btn1_style: 'primary',
+		btn2_text: 'مشاوره‌ی رایگان', btn2_link: link('{{page:admissions}}'), btn2_style: 'secondary',
+		stats: [
+			{ value: '۱٬۲۰۰+', label: 'دانش‌آموخته' },
+			{ value: '۳۴۰', label: 'محصول منتشرشده' },
+			{ value: '۴٫۸', label: 'امتیاز دانشجوها از ۵' },
+		],
+		media_type: 'image', image: img('hero'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
+	})),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'چرا جرقه', title: 'کلاس کمتر،\n*کار واقعی* بیشتر' })],
+			[L.features(WHY, { layout: 'grid', style: 'plain', columns: '2', icon_style: 'tile' })],
 		]),
-		L.features([
-			{ icon: 'cube', title: 'پروژه‌محور از روز اول', text: 'از جلسه‌ی دوم روی ایده‌ی خودتان کار می‌کنید؛ تمرین‌ها همان قطعه‌های محصول شما هستند.', meta: '۶ تا ۱۴ هفته' },
-			{ icon: 'users', title: 'کلاس‌های دوازده‌نفره', text: 'گروه کوچک یعنی وقت کافی برای بازبینی کار تک‌تک شما، نه فقط پرسش و پاسخ آخر جلسه.', meta: 'حداکثر ۱۲ نفر' },
-			{ icon: 'compass', title: 'منتور همراه', text: 'هر هفته یک جلسه‌ی خصوصی با منتوری که در تیم‌های محصول ایران کار کرده است.', meta: 'جلسه‌ی هفتگی' },
-			{ icon: 'rocket', title: 'روز انتشار', text: 'محصول نهایی را جلوی سرمایه‌گذارها، کارفرماها و هم‌دوره‌ای‌ها ارائه می‌کنید.', meta: 'دمو دی' },
-		], { layout: 'grid', style: 'cards', columns: '4' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'md', gap: 32 }, [
+		L.productCarousel({ eyebrow: 'دوره‌ها', title: 'دوره‌های *این فصل*', source: 'recent', card_ratio: '3-4', card_parts: ['badges', 'hover'], more_text: 'همه‌ی دوره‌ها', more_link: link(shopUrl) }),
 	]),
-	L.hscroll({
-		eyebrow: '۰۲ — کار دانشجوها',
-		title: 'محصولاتی که دانشجوها\n*منتشر کرده‌اند*',
-		desc: 'به اسکرول ادامه دهید؛ ردیف با شما حرکت می‌کند.',
-		items: SHIPPED,
-		card_size: 'md',
-		card_style: 'caption',
-		btn1_text: 'همه‌ی پروژه‌ها', btn1_link: link('{{blog}}'),
-	}),
-	con('how', section({ space: 'md' }, [
-		heading({ eyebrow: '۰۳ — مسیر یک فصل', title: 'از ثبت‌نام تا *روز انتشار*', header_align: 'center', desc: 'هر فصل چهارده هفته است و در چهار مرحله پیش می‌رود.' }),
-		L.steps([
-			{ marker: '۰۱', icon: 'target', title: 'انتخاب مسیر', text: 'در یک جلسه‌ی مشاوره‌ی رایگان، هدف و سطح شما را می‌سنجیم و دوره‌ی مناسب را پیشنهاد می‌کنیم.' },
-			{ marker: '۰۲', icon: 'book', title: 'کلاس و تمرین', text: 'دو جلسه‌ی زنده در هفته، تمرین‌هایی که مستقیم به محصول شما وصل‌اند و بازخورد مکتوب.' },
-			{ marker: '۰۳', icon: 'users', title: 'ساختن در تیم', text: 'از هفته‌ی ششم با طراح‌ها و برنامه‌نویس‌های دوره‌های دیگر تیم می‌شوید.' },
-			{ marker: '۰۴', icon: 'rocket', title: 'انتشار', text: 'محصول را منتشر می‌کنید، اولین کاربرها را می‌گیرید و نتیجه را در روز ارائه نشان می‌دهید.' },
-		], { layout: 'h' }),
-	])),
-	L.scrollZoom({
-		eyebrow: 'داخل استودیو',
-		title: 'همه‌چیز از یک\n*اتاق کوچک* شروع شد',
-		image: img('studio'),
-		o_title: 'حالا هر فصل *صدها نفر*\nبا ما می‌سازند.',
-		o_desc: 'استودیوی ما در تهران هفت روز هفته باز است؛ برای کار، برای رفع اشکال، یا فقط برای یک چای و گپ درباره‌ی ایده‌تان.',
-		btn1_text: 'درباره‌ی ما', btn1_link: link('{{page:about}}'), btn1_style: 'inverse',
-	}),
-	section({ space: 'md' }, [
-		cols({ widths: [60, 40], align: 'flex-end' }, [
-			[heading({ eyebrow: '۰۴ — دوره‌ها', title: 'دوره‌های *این فصل*' })],
-			[button('همه‌ی دوره‌ها', '{{shop}}', 'secondary', { _flex_align_self: 'flex-end' })],
-		]),
-		L.products({ source: 'featured', count: 3, columns: '3' }),
+	section({ space: 'none', gap: 0, zoom: 'expand', zoomAmount: 0.24, zoomInner: true, zoomRadius: 6 }, [
+		L.imageReveal('studio', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: '۰۵ — از زبان دانشجوها', title: 'آنچه *دانش‌آموخته‌ها* می‌گویند', header_align: 'center' }),
+	fx(section({ space: 'md', gap: 32, width: 1000 }, [
+		L.textScrub('سال ۱۳۹۸ از خودمان پرسیدیم چرا بیشتر کسانی که دوره می‌بینند *هیچ‌وقت چیزی نمی‌سازند*. جواب ساده بود: کسی منتظر کارشان نبود. در جرقه، یک قانون هیچ‌وقت عوض نشده: *هیچ دوره‌ای بدون انتشار تمام نمی‌شود*.', { eyebrow: 'آنچه هستیم', size: 'md' }),
+	]), { tone: 'surface' }),
+	section({ space: 'md', gap: 32 }, [
+		heading({ eyebrow: 'برای چه کسانی', title: 'سه نقطه‌ی\n*شروع*' }),
+		L.stack(AUDIENCE),
+	]),
+	L.hscroll({ eyebrow: 'ساخته‌ی دانشجوها', title: 'محصولاتی که\n*منتشر شده‌اند*', desc: 'هر کدام با یک طرح مدادی شروع شد.', items: SHIPPED, card_size: 'md', card_style: 'caption', scheme: '' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'مسیر یک فصل', title: 'از ثبت‌نام تا\n*روز انتشار*', header_align: 'center', desc: 'هر فصل چهارده هفته است و در چهار مرحله پیش می‌رود.' }),
+		L.steps(SEASON, { layout: 'h', cards: 'yes' }),
+	]), { tone: 'inverse' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان دانشجوها', title: 'آنچه *دانش‌آموخته‌ها* می‌گویند', header_align: 'center' }),
 		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
 	]),
-	section({ space: 'md' }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: '۰۶ — پرسش‌ها', title: 'پیش از *ثبت‌نام*', desc: 'جواب سؤالتان اینجا نیست؟ یک پیام بفرستید؛ معمولاً همان روز جواب می‌دهیم.' }), button('پرسیدن سؤال', '{{page:contact}}', 'secondary')],
-			[L.faq(FAQ)],
-		], ),
-	]),
-	section({ space: 'md', top0: true }, [
+	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
-			[heading({ eyebrow: '۰۷ — مجله', title: 'تازه‌ها از *مجله‌ی هامیستا*' })],
-			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary')],
+			[heading({ eyebrow: 'مجله', title: 'تازه‌ها از *مجله‌ی جرقه*' })],
+			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary', { _flex_align_self: 'flex-end' })],
 		]),
-		L.posts({ count: 3, layout: 'grid', columns: '3' }),
+		L.posts({ count: 3, layout: 'grid', columns: '3', excerpt: 'yes' }),
 	]),
-	L.cta({
-		eyebrow: 'فصل بعد از مهر شروع می‌شود',
-		title: 'محصول بعدی را\n*با ما بسازید*.',
-		desc: 'یک جلسه‌ی مشاوره‌ی رایگان بگیرید تا با هم بهترین مسیر را برای شما پیدا کنیم.',
-		btn1_text: 'رزرو مشاوره‌ی رایگان', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'دیدن دوره‌ها', btn2_link: link('{{shop}}'),
-		note: 'رایگان · بدون تعهد · پاسخ تا ۲۴ ساعت',
-		look: 'inverse',
-		decor: 'grid',
-	}),
+	newsletter(),
 ];
 
-/** Give a container an HTML id (for in-page links such as #how). */
-function con(anchor, container) {
-	container.settings._element_id = anchor;
-	return container;
-}
+/* ---------------- Home, second version ---------------- */
 
-const homeB = [
-	L.hero({
-		layout: 'editorial',
-		eyebrow: 'مدرسه‌ی ساخت محصول',
-		title: 'ما به آدم‌ها یاد می‌دهیم\n*محصول* بسازند.',
-		desc: 'از طراحی و برنامه‌نویسی تا داده و کسب‌وکار؛ با پروژه‌ی واقعی، منتور همراه و تیمی که کنار شما می‌ماند.',
-		btn1_text: 'شروع از اینجا', btn1_link: link('{{shop}}'),
-		btn2_text: 'داستان ما', btn2_link: link('{{page:about}}'),
-		media_type: 'image',
-		image: img('workspace'),
-		media_ratio: 'landscape',
-		height: 'auto',
-		decor: 'rule',
-		stats: STATS,
-	}),
-	section({ space: 'sm' }, [
-		L.counters([
-			{ value: 1200, suffix: '+', label: 'دانش‌آموخته', desc: 'از ۱۳۹۸ تا امروز' },
-			{ value: 340, label: 'محصول منتشرشده', desc: 'اپ، سایت و ابزار داخلی' },
-			{ value: 68, suffix: '٪', label: 'جذب بازار کار', desc: 'تا شش ماه پس از دوره' },
-			{ value: 24, label: 'منتور فعال', desc: 'از تیم‌های محصول ایران' },
-		], { style: 'cards', columns: '4' }),
+const home2 = [
+	L.slider([
+		{ image: img('studio'), eyebrow: 'آکادمی جرقه', title: 'هر محصول با یک\n*جرقه* شروع می‌شود', text: 'مدرسه‌ی ساخت محصول؛ کلاس‌های کوچک، منتور همراه و روز انتشار.', btn_text: 'دوره‌ها', url: shopUrl },
+		{ image: img('workspace'), eyebrow: 'روش ما', title: 'اول *کاغذ*،\nبعد کد', text: 'هر ایده با یک طرح مدادی شروع می‌شود و با کاربر واقعی آزموده.', btn_text: 'مسیرهای آموزشی', url: '{{page:paths}}' },
+		{ image: img('hero'), eyebrow: 'فصل پاییز', title: 'ثبت‌نام\n*باز است*', text: 'شش دوره، دوازده نفر در هر کلاس.', btn_text: 'ثبت‌نام و شهریه', url: '{{page:admissions}}' },
 	]),
-	L.scrollPath({
-		eyebrow: 'زندگی یک ایده',
-		title: 'هر محصول با یک\n*جرقه* شروع می‌شود.',
-		hint: 'به اسکرول ادامه دهید',
-		steps: [
-			{ code: '۰۱', title: 'مسئله را پیدا کن', text: 'هفته‌ی اول را با آدم‌هایی می‌گذرانید که قرار است از محصولتان استفاده کنند.' },
-			{ code: '۰۲', title: 'ساده‌ترین نسخه را طراحی کن', text: 'یک نمونه‌ی کاغذی، بعد یک نمونه‌ی قابل کلیک؛ و تست با پنج کاربر.' },
-			{ code: '۰۳', title: 'بساز و منتشر کن', text: 'نسخه‌ی اول را کوچک نگه می‌داریم تا زودتر به دست کاربر برسد.' },
-			{ code: '۰۴', title: 'یاد بگیر و تکرار کن', text: 'داده‌ها و بازخوردها تعیین می‌کنند قدم بعدی چه باشد، نه حدس ما.' },
-		],
-	}),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'مسیرهای آموزشی', title: 'مسیرت را *انتخاب کن*', header_align: 'center' }),
-		L.tabs([
-			{ title: 'طراحی محصول', subtitle: '۱۰ هفته · از صفر', meta: '۰۱', image: img('course-1'), panel_title: 'از مسئله تا نمونه‌ی قابل تست', panel_text: 'تحقیق کاربر، معماری اطلاعات، طراحی رابط و تست کاربردپذیری. در پایان یک نمونه‌ی کامل در فیگما دارید که با کاربر واقعی آزموده شده.', chips: 'فیگما، تحقیق کاربر، نمونه‌سازی', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-design}}') },
-			{ title: 'توسعه‌ی وب', subtitle: '۱۴ هفته · مقدماتی تا پیشرفته', meta: '۰۲', image: img('course-2'), panel_title: 'سایتی که واقعاً بالا می‌آید', panel_text: 'HTML و CSS تا جاوااسکریپت، ری‌اکت و اتصال به API. پروژه‌ی پایانی روی دامنه‌ی خودتان منتشر می‌شود.', chips: 'جاوااسکریپت، ری‌اکت، Git', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-web}}') },
-			{ title: 'هوش مصنوعی کاربردی', subtitle: '۸ هفته · متوسط', meta: '۰۳', image: img('course-3'), panel_title: 'هوش مصنوعی در خدمت محصول', panel_text: 'کجا مدل زبانی به کار محصول می‌آید و کجا نه؛ طراحی تجربه، ارزیابی خروجی و ساخت یک قابلیت واقعی با API.', chips: 'مدل زبانی، ارزیابی، طراحی تجربه', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-ai}}') },
-			{ title: 'تحلیل داده', subtitle: '۸ هفته · متوسط', meta: '۰۴', image: img('course-6'), panel_title: 'تصمیم با عدد، نه با حدس', panel_text: 'SQL، داشبوردسازی و طراحی آزمایش. با داده‌ی واقعی یک کسب‌وکار کار می‌کنید و گزارشتان را به مدیرانش ارائه می‌دهید.', chips: 'SQL، داشبورد، آزمون A/B', btn_text: 'جزئیات دوره', btn_link: link('{{product:course-data}}') },
-		], { autoplay: 7, media_side: 'end' }),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'برای چه کسانی', title: 'سه نقطه‌ی *شروع*', header_align: 'center' }),
-		L.stack([
-			{ eyebrow: '۰۱', title: 'تازه شروع کرده‌اید', text: 'دانشجو هستید یا تازه فارغ‌التحصیل شده‌اید و می‌خواهید اولین نمونه‌کار جدی‌تان را بسازید.', points: 'دوره‌های «از صفر»\nمسیر آمادگی دوهفته‌ای\nکمک در ساخت پورتفولیو', image: img('ui-4'), btn_text: 'دوره‌های مقدماتی', btn_link: link('{{shop}}'), tone: '' },
-			{ eyebrow: '۰۲', title: 'می‌خواهید مسیر شغلی‌تان را عوض کنید', text: 'در حوزه‌ی دیگری کار کرده‌اید و حالا می‌خواهید وارد تیم‌های محصول شوید، بدون اینکه از صفر شروع کنید.', points: 'کلاس‌های عصر و آخر هفته\nمنتور از همان صنعت\nتمرین مصاحبه', image: img('ui-2'), btn_text: 'مشاوره‌ی تغییر مسیر', btn_link: link('{{page:contact}}'), tone: 'inverse' },
-			{ eyebrow: '۰۳', title: 'تیم دارید', text: 'تیم شما باید سریع‌تر محصول بسازد. دوره را با پروژه‌ی واقعی شرکت خودتان برگزار می‌کنیم.', points: 'دوره‌ی اختصاصی تیمی\nکار روی پروژه‌ی خود شرکت\nگزارش پیشرفت برای مدیران', image: img('ui-6'), btn_text: 'درخواست دوره‌ی تیمی', btn_link: link('{{page:contact}}'), tone: 'accent' },
-		]),
-	]),
-	section({ space: 'md' }, [
+	section({ space: 'md', gap: 40 }, [L.tabs(PATHS, { autoplay: 7, media_side: 'start' })]),
+	fx(section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'شهریه', title: 'ساده و *شفاف*', header_align: 'center', desc: 'همه‌ی دوره‌ها را می‌توانید در سه قسط بدون کارمزد بپردازید.' }),
-		L.pricing([
-			{ name: 'تک‌دوره', desc: 'یک مسیر، از ابتدا تا انتشار', price: '۱۲٬۸۰۰٬۰۰۰', price_alt: '۴٬۳۰۰٬۰۰۰', unit: 'تومان', period: '', features: 'کلاس‌های زنده و ضبط‌شده\nبازبینی هفتگی پروژه\nگواهی پایان دوره', btn_text: 'انتخاب دوره', btn_link: link('{{shop}}'), featured: '', badge: '' },
-			{ name: 'مسیر کامل', desc: 'دو دوره‌ی مکمل با تخفیف', price: '۲۱٬۵۰۰٬۰۰۰', price_alt: '۷٬۲۰۰٬۰۰۰', unit: 'تومان', period: '', features: 'هر آنچه در تک‌دوره هست\nجلسه‌ی خصوصی هفتگی با منتور\nشش ماه همراهی شغلی\nحضور در روز ارائه', btn_text: 'شروع مسیر', btn_link: link('{{page:contact}}'), featured: 'yes', badge: 'انتخاب بیشتر دانشجوها' },
-			{ name: 'تیمی', desc: 'برای ۵ تا ۱۵ نفر از یک شرکت', price: 'توافقی', price_alt: 'توافقی', unit: '', period: '', features: 'برنامه‌ی اختصاصی\nکار روی پروژه‌ی شرکت\nگزارش پیشرفت ماهانه', btn_text: 'هماهنگی جلسه', btn_link: link('{{page:contact}}'), featured: '', badge: '' },
-		], { switch_off: 'پرداخت یکجا', switch_on: 'پرداخت در سه قسط', switch_note: 'بدون کارمزد' }),
+		PRICING(),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'منتورها', title: 'کسانی که\n*کنارتان* هستند' }), button('همه‌ی منتورها', '{{page:mentors}}', 'secondary')],
+			[L.features(MENTORS.slice(0, 4), { layout: 'grid', style: 'plain', columns: '2', icon_style: 'plain' })],
+		]),
 	]),
-	section({ space: 'md', top0: true }, [
-		heading({ eyebrow: 'منتورها', title: 'کسانی که *کنارتان* هستند' }),
-		L.team([
-			{ photo: {}, name: 'آرمان شریفی', role: 'منتور طراحی محصول' },
-			{ photo: {}, name: 'سارا رحیمی', role: 'منتور توسعه‌ی وب' },
-			{ photo: {}, name: 'بهراد مقدم', role: 'منتور تحلیل داده' },
-			{ photo: {}, name: 'ترانه افشار', role: 'منتور کسب‌وکار دیجیتال' },
-		], { columns: '4' }),
-	]),
-	L.testimonials(QUOTES, { layout: 'marquee' }),
-	L.cta({
-		eyebrow: 'خبرنامه',
-		title: 'هر ماه یک *ایمیل خوب*.',
-		desc: 'زمان شروع دوره‌های تازه، کارگاه‌های رایگان و بهترین نوشته‌های مجله؛ ماهی یک بار، نه بیشتر.',
-		action: 'email',
-		email_placeholder: 'ایمیل شما',
-		email_button: 'عضویت',
-		note: 'هر وقت بخواهید با یک کلیک لغو می‌شود.',
-		look: 'surface',
-		decor: '',
-	}),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *ثبت‌نام*' }), button('همه‌ی پرسش‌ها', '{{page:faq}}', 'secondary')],
+			[L.faq(FAQ.slice(0, 4), { style: 'lines' })],
+		]),
+	]), { tone: 'surface' }),
+	newsletter(),
 ];
+
+/* ---------------- Courses and paths ---------------- */
+
+const courses = [
+	L.pageHead('دوره‌ها', 'شش دوره،\n*یک قانون*', 'هر دوره با یک محصول منتشرشده تمام می‌شود. کلاس‌ها آنلاین و زنده‌اند و جمعه‌ها استودیو برای کار گروهی باز است.'),
+	section({ space: 'md', gap: 32 }, [
+		L.productTabs([
+			{ label: 'همه', source: 'recent', category: [], count: 6 },
+			{ label: 'طراحی', source: 'recent', category: ['design-courses'], count: 6 },
+			{ label: 'برنامه‌نویسی', source: 'recent', category: ['development-courses'], count: 6 },
+			{ label: 'کسب‌وکار و داده', source: 'recent', category: ['business-courses'], count: 6 },
+		], { title: '', card_ratio: '3-4', card_parts: ['badges', 'hover'], columns: '3' }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'در همه‌ی دوره‌ها', title: 'آنچه *همیشه* هست', header_align: 'center' }),
+		L.features(WHY, { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	newsletter(),
+];
+
+const paths = [
+	L.pageHead('مسیرهای آموزشی', 'مسیرت را\n*انتخاب کن*', 'چهار مسیر اصلی؛ هر کدام با یک دوره‌ی پایه و یک دوره‌ی تکمیلی. اگر بین دو مسیر مانده‌اید، جلسه‌ی مشاوره رایگان است.'),
+	section({ space: 'md', gap: 40 }, [L.tabs(PATHS, { autoplay: 0, media_side: 'start' })]),
+	section({ space: 'md', gap: 32 }, [
+		heading({ eyebrow: 'برای چه کسانی', title: 'سه نقطه‌ی *شروع*' }),
+		L.stack(AUDIENCE),
+	]),
+	fx(section({ space: 'md', gap: 40, width: 980 }, [
+		heading({ eyebrow: 'مشاوره‌ی رایگان', title: 'مسیرتان را\n*با هم پیدا کنیم*', header_align: 'center' }),
+		L.leadForm(CONSULT_FORM),
+	]), { tone: 'surface' }),
+];
+
+/* ---------------- Admissions ---------------- */
+
+const admissions = [
+	L.pageHead('ثبت‌نام و شهریه', 'از ثبت‌نام\n*تا روز انتشار*', 'هر فصل چهارده هفته است. ثبت‌نام با یک جلسه‌ی مشاوره‌ی بیست‌دقیقه‌ای شروع می‌شود؛ رایگان و بی‌تعهد.'),
+	fx(section({ space: 'md', gap: 40 }, [L.steps(SEASON, { layout: 'h', cards: 'yes' })]), { cards: 'cascade' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'شهریه', title: 'ساده و *شفاف*', header_align: 'center', desc: 'همه‌ی دوره‌ها را می‌توانید در سه قسط بدون کارمزد بپردازید.' }),
+		PRICING(),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40, width: 980 }, [
+		heading({ eyebrow: 'مشاوره‌ی رایگان', title: 'جلسه‌ی *مشاوره* را رزرو کنید', header_align: 'center' }),
+		L.leadForm(CONSULT_FORM),
+	]),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *ثبت‌نام*' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+];
+
+/* ---------------- Mentors and student work ---------------- */
+
+const mentors = [
+	L.pageHead('منتورها', 'کسانی که\n*کنارتان* هستند', 'همه‌ی منتورهای جرقه خودشان محصول ساخته‌اند و هنوز در تیم‌های محصول کار می‌کنند. هر هفته یک جلسه‌ی خصوصی با منتورتان دارید.'),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [L.features(MENTORS, { layout: 'grid', style: 'plain', columns: '3', icon_style: 'plain' })]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان دانشجوها', title: 'جلسه‌های *بازبینی*', header_align: 'center' }),
+		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
+	]), { tone: 'surface' }),
+	newsletter('منتور\n*می‌شوید*؟', 'اگر در تیم محصول کار می‌کنید و دوست دارید هفته‌ای چند ساعت کنار دانشجوها باشید، در خبرنامه‌ی همکاران عضو شوید.'),
+];
+
+const work = [
+	L.pageHead('ساخته‌ی دانشجوها', 'محصولاتی که\n*منتشر شده‌اند*', 'هر فصل ده‌ها محصول در روز ارائه معرفی می‌شوند. چند نمونه از پروژه‌های فصل‌های اخیر:'),
+	L.hscroll({ eyebrow: '', title: '', desc: '', items: SHIPPED, card_size: 'lg', card_style: 'caption', scheme: '' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features(SHIPPED.map((s) => ({ icon: '', title: s.title, text: s.text, meta: s.label })), { layout: 'grid', style: 'plain', columns: '3', icon_style: 'plain' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'sm', gap: 0 }, [
+		L.con({ content_width: 'full', css_classes: 'hm-scheme-inverse', padding: L.pad(48, 48, 40) }, [
+			L.counters([
+				{ value: 340, label: 'محصول منتشرشده' },
+				{ value: 1200, suffix: '+', label: 'دانش‌آموخته' },
+				{ value: 71, suffix: '٪', label: 'جذب در شش ماه' },
+				{ value: 14, label: 'فصل برگزارشده' },
+			], { style: 'plain', columns: '4' }),
+		], true),
+	]),
+	newsletter(),
+];
+
+/* ---------------- Teams ---------------- */
+
+const TEAM_FORM = Object.assign({}, CONSULT_FORM, {
+	need_label: 'نیاز', need_title: 'تیمتان به چه چیزی نیاز دارد؟', multi: 'yes',
+	budget_title: 'چند نفر هستند؟', budget_label: 'اندازه', budgets: '۵ تا ۸ نفر\n۹ تا ۱۵ نفر\nبیش از ۱۵ نفر',
+	show_company: 'yes', label_company: 'نام شرکت', req_company: 'yes',
+	submit_text: 'درخواست دوره‌ی تیمی', done_text: 'ظرف دو روز کاری تماس می‌گیریم تا جلسه‌ی آشنایی با تیم را هماهنگ کنیم.',
+});
+
+const teams = [
+	L.pageHead('دوره‌ی تیمی', 'تیمتان را\n*سریع‌تر* کنید', 'دوره‌های اختصاصی برای تیم‌های محصول شرکت‌ها؛ با پروژه‌ی واقعی خود شرکت و گزارش پیشرفت برای مدیران.'),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [
+		L.features([
+			{ icon: 'target', title: 'پروژه‌ی خود شرکت', text: 'تمرین‌ها روی محصولی است که تیم واقعاً می‌سازد.', meta: 'اختصاصی' },
+			{ icon: 'clock', title: 'زمان‌بندی منعطف', text: 'جلسه‌ها در ساعت کاری، حضوری یا آنلاین.', meta: '۶ تا ۱۰ هفته' },
+			{ icon: 'chart', title: 'گزارش پیشرفت', text: 'هر ماه یک گزارش مکتوب برای مدیران.', meta: 'ماهانه' },
+			{ icon: 'shield', title: 'محرمانگی', text: 'قرارداد عدم افشا پیش از شروع.', meta: 'NDA' },
+		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]),
+	section({ space: 'md', gap: 40, width: 980 }, [
+		heading({ eyebrow: 'درخواست', title: 'دوره‌ی تیمی را *شروع کنیم*', header_align: 'center' }),
+		L.leadForm(TEAM_FORM),
+	]),
+];
+
+/* ---------------- About, FAQ, contact ---------------- */
 
 const about = [
-	section({ space: 'md', bottom0: true }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: 'درباره‌ی ما', title: 'مدرسه‌ای که با\n*یک سؤال* شروع شد', title_tag: 'h1', title_size: 'xl' })],
-			[L.textEditor('<p>سال ۱۳۹۸ چند طراح و برنامه‌نویس از خودمان پرسیدیم چرا بیشتر کسانی که دوره می‌بینند هیچ‌وقت چیزی نمی‌سازند. جواب ساده بود: کسی منتظر کارشان نبود.</p>')],
-		]),
+	L.pageHead('درباره‌ی جرقه', 'مدرسه‌ای که با\n*یک سؤال* شروع شد', 'سال ۱۳۹۸ چند طراح و برنامه‌نویس از خودمان پرسیدیم چرا بیشتر کسانی که دوره می‌بینند هیچ‌وقت چیزی نمی‌سازند. جواب ساده بود: کسی منتظر کارشان نبود.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 6 }, [
+		L.imageReveal('community', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	section({ space: 'md' }, [L.imageReveal('workspace', { ratio: '21-9', reveal: 'clip-up', parallax: px(0.35) })]),
-	section({ space: 'md', width: 1100 }, [
-		L.textScrub('امروز هامیستا *مدرسه‌ی ساخت محصول* است: کلاس‌های کوچک، منتورهایی که خودشان محصول ساخته‌اند، و یک قانون که هیچ‌وقت عوض نشده؛ *هیچ دوره‌ای بدون انتشار تمام نمی‌شود*.', { eyebrow: 'آنچه هستیم', size: 'md' }),
-	]),
-	section({ space: 'sm' }, [
-		L.counters([
-			{ value: 1398, label: 'سال شروع', desc: 'با هشت دانشجو', grouping: '' },
-			{ value: 1200, suffix: '+', label: 'دانش‌آموخته' },
-			{ value: 24, label: 'منتور فعال' },
-			{ value: 14, label: 'فصل برگزارشده' },
-		], { style: 'plain', columns: '4', grouping: '' }),
-	]),
-	section({ space: 'md' }, [
+	fx(section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'چیزهایی که برایمان مهم است', title: 'چهار *اصل* ساده' }),
 		L.features([
-			{ icon: 'target', title: 'خروجی، نه حضور', text: 'ساعت حضور در کلاس را نمی‌شماریم؛ چیزی را می‌شماریم که ساخته‌اید.' },
-			{ icon: 'users', title: 'گروه کوچک', text: 'هیچ کلاسی بیشتر از دوازده نفر ندارد، حتی وقتی صف انتظار طولانی است.' },
-			{ icon: 'shield', title: 'صداقت درباره‌ی بازار کار', text: 'آمار جذب را همان‌طور که هست منتشر می‌کنیم، حتی وقتی خوب نیست.' },
-			{ icon: 'heart', title: 'جامعه بعد از دوره', text: 'دانش‌آموخته‌ها هنوز در جلسه‌های بازبینی شرکت می‌کنند و به تازه‌واردها کمک می‌کنند.' },
-		], { layout: 'grid', style: 'plain', columns: '4', icon_style: 'soft' }),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [40, 60], gap: 64 }, [
-			[heading({ eyebrow: 'مسیر ما', title: 'از هشت نفر تا *یک جامعه*' })],
+			{ icon: 'target', title: 'خروجی، نه حضور', text: 'ساعت حضور را نمی‌شماریم؛ چیزی را می‌شماریم که ساخته‌اید.' },
+			{ icon: 'users', title: 'گروه کوچک', text: 'هیچ کلاسی بیشتر از دوازده نفر ندارد.' },
+			{ icon: 'shield', title: 'صداقت درباره‌ی بازار کار', text: 'آمار جذب را همان‌طور که هست منتشر می‌کنیم.' },
+			{ icon: 'heart', title: 'جامعه بعد از دوره', text: 'دانش‌آموخته‌ها هنوز به تازه‌واردها کمک می‌کنند.' },
+		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'flip' }),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'مسیر ما', title: 'از هشت نفر\n*تا یک جامعه*' })],
 			[L.steps([
 				{ marker: '۱۳۹۸', title: 'اولین فصل', text: 'هشت دانشجو، یک اتاق کرایه‌ای و سه پروژه که هر سه منتشر شدند.' },
-				{ marker: '۱۴۰۰', title: 'کلاس‌های آنلاین', text: 'دوره‌ها آنلاین شدند و دانشجوهایی از ۲۲ شهر به ما پیوستند.' },
-				{ marker: '۱۴۰۲', title: 'استودیوی تازه', text: 'استودیوی فعلی را راه انداختیم؛ هفت روز هفته باز برای کار گروهی.' },
-				{ marker: '۱۴۰۴', title: 'دوره‌های تیمی', text: 'اولین دوره‌های اختصاصی را برای تیم‌های محصول شرکت‌ها برگزار کردیم.' },
+				{ marker: '۱۴۰۰', title: 'کلاس‌های آنلاین', text: 'دانشجوهایی از ۲۲ شهر به ما پیوستند.' },
+				{ marker: '۱۴۰۲', title: 'استودیوی تازه', text: 'هفت روز هفته باز برای کار گروهی.' },
+				{ marker: '۱۴۰۴', title: 'دوره‌های تیمی', text: 'اولین دوره‌های اختصاصی برای تیم‌های محصول.' },
 			], { layout: 'v', cards: '' })],
 		]),
 	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'تیم', title: 'آدم‌های *هامیستا*' }),
-		L.team([
-			{ photo: {}, name: 'آرمان شریفی', role: 'هم‌بنیان‌گذار، طراحی محصول' },
-			{ photo: {}, name: 'سارا رحیمی', role: 'هم‌بنیان‌گذار، توسعه‌ی وب' },
-			{ photo: {}, name: 'بهراد مقدم', role: 'سرپرست آموزش داده' },
-			{ photo: {}, name: 'ترانه افشار', role: 'مدیر تجربه‌ی دانشجو' },
-			{ photo: {}, name: 'کاوه بهرامی', role: 'منتور هوش مصنوعی' },
-			{ photo: {}, name: 'نگار امینی', role: 'هماهنگ‌کننده‌ی دوره‌های تیمی' },
-		], { columns: '3' }),
+	newsletter('بیایید\n*آشنا شویم*', 'یک سر به استودیو بزنید یا از خبرهای آکادمی باخبر شوید.'),
+];
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *ثبت‌نام*', 'جواب سؤالتان این‌جا نیست؟ یک پیام بفرستید؛ معمولاً همان روز جواب می‌دهیم.'),
+	section({ space: 'md', gap: 56 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'دوره‌ها', title: 'ثبت‌نام و *پرداخت*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
 	]),
-	section({ space: 'md', top0: true }, [L.imageReveal('community', { ratio: '16-9', reveal: 'clip-x', caption: 'جمعه‌ها استودیو برای همه‌ی دانش‌آموخته‌ها باز است.' })]),
-	L.cta({
-		title: 'بیایید *آشنا شویم*.',
-		desc: 'یک سر به استودیو بزنید یا جلسه‌ی آنلاین رزرو کنید؛ چای با ما.',
-		btn1_text: 'رزرو جلسه', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'دیدن دوره‌ها', btn2_link: link('{{shop}}'),
-		look: 'accent',
-		decor: 'grid',
-		note: '',
-	}),
 ];
 
 const contact = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'تماس با ما', title: 'درباره‌ی *ایده‌تان*\nحرف بزنیم', title_tag: 'h1', title_size: 'xl', desc: 'برای مشاوره‌ی انتخاب دوره، دوره‌ی تیمی یا هر سؤال دیگری پیام بدهید. در روزهای کاری تا چند ساعت بعد جواب می‌دهیم.' }),
-	]),
+	L.pageHead('تماس', 'درباره‌ی *ایده‌تان*\nحرف بزنیم', 'برای مشاوره‌ی انتخاب دوره، دوره‌ی تیمی یا هر سؤال دیگری پیام بدهید.'),
 	section({ space: 'md' }, [
-		cols({ widths: [40, 60], gap: 56 }, [
+		cols({ widths: [40, 60], gap: 64 }, [
 			[L.contactInfo([
-				{ icon: 'pin', label: 'استودیو', value: 'تهران، خیابان ولیعصر، بالاتر از پارک ساعی، کوچه‌ی نیلوفر، پلاک ۱۲', link: link('#') },
+				{ icon: 'pin', label: 'استودیو', value: 'تهران، خیابان ولیعصر، بالاتر از پارک ساعی، کوچه‌ی نیلوفر، پلاک ۱۲', link: link('') },
 				{ icon: 'phone', label: 'تلفن', value: '۰۲۱-۹۱۰۰۴۵۶۰', link: link('tel:+982191004560') },
-				{ icon: 'mail', label: 'ایمیل', value: 'hello@hamista.ir', link: link('mailto:hello@hamista.ir') },
-				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه، ۹ تا ۱۸\nپنجشنبه‌ها تا ۱۴', link: link('') },
+				{ icon: 'mail', label: 'ایمیل', value: 'hello@jaraghe.academy', link: link('mailto:hello@jaraghe.academy') },
+				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه ۹ تا ۱۸، پنج‌شنبه‌ها تا ۱۴', link: link('') },
 			])],
-			[L.contactForm({ show_phone: 'yes', label_phone: 'شماره‌ی موبایل', show_subject: 'yes', label_subject: 'موضوع', label_name: 'نام و نام خانوادگی', label_email: 'ایمیل', label_message: 'پیام شما', button: 'ارسال پیام', success: 'پیامتان رسید. در روزهای کاری تا چند ساعت بعد جواب می‌دهیم.', consent: '' })],
-		]),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: 'پرسش‌های پرتکرار', title: 'شاید جوابتان *اینجا* باشد' })],
-			[L.faq(FAQ.slice(0, 4))],
+			[L.contactForm({ show_phone: 'yes', label_phone: 'شماره‌ی موبایل', show_subject: 'yes', label_subject: 'موضوع', label_name: 'نام و نام خانوادگی', label_email: 'ایمیل', label_message: 'پیام شما', button: 'ارسال پیام', success: 'پیامتان رسید. در روزهای کاری تا چند ساعت بعد جواب می‌دهیم.' })],
 		]),
 	]),
 ];
 
-
-
-/* ---------------- Blog ---------------- */
+/* ---------------- Journal ---------------- */
 
 const terms = [
 	{ key: 'cat-design', taxonomy: 'category', name: 'طراحی', slug: 'design' },
 	{ key: 'cat-dev', taxonomy: 'category', name: 'توسعه', slug: 'development' },
 	{ key: 'cat-career', taxonomy: 'category', name: 'مسیر شغلی', slug: 'career' },
 	{ key: 'cat-report', taxonomy: 'category', name: 'گزارش پروژه', slug: 'project-report' },
-	{ key: 'pcat-design', taxonomy: 'product_cat', name: 'طراحی', slug: 'design-courses' },
-	{ key: 'pcat-dev', taxonomy: 'product_cat', name: 'برنامه‌نویسی', slug: 'development-courses' },
-	{ key: 'pcat-business', taxonomy: 'product_cat', name: 'کسب‌وکار و داده', slug: 'business-courses' },
+	{ key: 'pcat-design', taxonomy: 'product_cat', name: 'طراحی', slug: 'design-courses', image: 'course-1', description: 'طراحی محصول و دیزاین سیستم.' },
+	{ key: 'pcat-dev', taxonomy: 'product_cat', name: 'برنامه‌نویسی', slug: 'development-courses', image: 'course-2', description: 'توسعه‌ی وب و هوش مصنوعی کاربردی.' },
+	{ key: 'pcat-business', taxonomy: 'product_cat', name: 'کسب‌وکار و داده', slug: 'business-courses', image: 'course-6', description: 'کسب‌وکار دیجیتال و تحلیل داده.' },
 ];
 
 const posts = [
@@ -440,7 +483,7 @@ const products = [
 	{ key: 'course-ai', title: 'دوره‌ی هوش مصنوعی کاربردی', slug: 'applied-ai-course', price: 9800000, sku: 'HS-AI-03', image: 'course-3', gallery: ['course-3-b', 'ui-3'], terms: ['pcat-dev'], virtual: true, featured: true,
 		excerpt: 'کجا مدل‌های زبانی به کار محصول می‌آیند و کجا نه؛ با ساخت یک قابلیت واقعی.',
 		content: L.productBody(['این دوره برای طراح‌ها، برنامه‌نویس‌ها و مدیران محصولی است که می‌خواهند هوش مصنوعی را درست و به‌جا در محصولشان به کار ببرند.', 'یاد می‌گیرید خروجی مدل را ارزیابی کنید، تجربه‌ی کاربر را برای خطاهای احتمالی طراحی کنید و هزینه را کنترل کنید.'], COURSE_SPECS('۸', 'متوسط', '۱۶ جلسه‌ی زنده')) },
-	{ key: 'course-business', title: 'دوره‌ی کسب‌وکار دیجیتال', slug: 'digital-business-course', price: 6900000, sku: 'HS-DB-04', image: 'course-4', gallery: ['course-4-b'], terms: ['pcat-business'], virtual: true,
+	{ key: 'course-business', title: 'دوره‌ی کسب‌وکار دیجیتال', slug: 'digital-business-course', price: 6900000, sku: 'HS-DB-04', image: 'course-4', gallery: ['course-4-b', 'ui-5'], terms: ['pcat-business'], virtual: true,
 		excerpt: 'مدل درآمد، قیمت‌گذاری و جذب اولین مشتری‌ها برای محصولات دیجیتال.',
 		content: L.productBody(['برای کسانی که محصول دارند یا در حال ساختن‌اند و می‌خواهند بدانند چطور از آن درآمد داشته باشند.', 'در شش هفته مدل کسب‌وکار، قیمت‌گذاری و برنامه‌ی جذب صد مشتری اول را برای محصول خودتان می‌نویسید.'], COURSE_SPECS('۶', 'از صفر', '۱۲ جلسه‌ی زنده')) },
 	{ key: 'course-system', title: 'دوره‌ی دیزاین سیستم', slug: 'design-system-course', price: 8400000, sku: 'HS-DS-05', image: 'course-5', gallery: ['course-5-b', 'ui-7'], terms: ['pcat-design'], virtual: true,
@@ -453,81 +496,105 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
+const LIGHT = { light: 'start', extra: { hm_page_light_a: '#2b4aa0', hm_page_light_b: '#9aa6c8' } };
+
+const pages = [
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
+	{ key: 'courses', title: 'دوره‌ها', slug: 'courses', elementor: courses, settings: L.pageSettings() },
+	{ key: 'paths', title: 'مسیرهای آموزشی', slug: 'learning-paths', elementor: paths, settings: L.pageSettings() },
+	{ key: 'admissions', title: 'ثبت‌نام و شهریه', slug: 'admissions', elementor: admissions, settings: L.pageSettings(LIGHT) },
+	{ key: 'mentors', title: 'منتورها', slug: 'mentors', elementor: mentors, settings: L.pageSettings() },
+	{ key: 'work', title: 'ساخته‌ی دانشجوها', slug: 'student-work', elementor: work, settings: L.pageSettings() },
+	{ key: 'teams', title: 'دوره‌ی تیمی', slug: 'for-teams', elementor: teams, settings: L.pageSettings() },
+	{ key: 'about', title: 'درباره‌ی جرقه', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
+	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
+	{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },
+];
+
 module.exports = {
 	manifest: {
 		id: 'spark',
 		order: 1,
 		title: 'جرقه',
-		desc: 'مدرسه‌ی آنلاین و استودیوی ساخت محصول؛ تایپوگرافی درشت، موشن نرم و فروش دوره با ووکامرس.',
-		kit: 'spark',
+		desc: 'آکادمی آنلاین ساخت محصول؛ سایت کامل با فروش دوره: دوره‌ها، مسیرهای آموزشی، ثبت‌نام و شهریه با فرم مشاوره، منتورها، ساخته‌ی دانشجوها، دوره‌ی تیمی و مجله. کاغذی، گرافیتی و کبالتی.',
+		kit: 'paper',
 		thumb: 'thumb.webp',
-		required: ['elementor'],
-		recommended: ['woocommerce'],
-		tags: ['آموزش', 'استارتاپ', 'فروشگاه دوره'],
-		pages: ['خانه', 'خانه — مدل دوم', 'درباره‌ی ما', 'تماس با ما', 'مجله', 'فروشگاه'],
+		required: ['elementor', 'woocommerce'],
+		recommended: [],
+		tags: ['آموزشی', 'فروش دوره', 'آکادمی'],
+		pages: pages.filter((p) => p.elementor).map((p) => p.title).concat(['دوره‌ها (فروشگاه)', 'مجله']),
 	},
 	content: {
-		site: { title: 'هامیستا', tagline: 'مدرسه‌ی ساخت محصول' },
-		images,
-		alts,
-		terms,
-		posts,
-		products,
-		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
-			{ key: 'contact', title: 'تماس با ما', slug: 'contact', elementor: contact, settings: L.pageSettings() },
-			{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },
-		],
+		site: { title: 'جرقه', tagline: 'مدرسه‌ی ساخت محصول' },
+		images, alts, terms, posts, products, pages,
 		templates: [
 			{ key: 'tpl-home', type: 'page', page: 'home', title: 'جرقه — صفحه‌ی اصلی' },
-			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'جرقه — صفحه‌ی اصلی، مدل دوم' },
-			{ key: 'tpl-about', type: 'page', page: 'about', title: 'جرقه — درباره‌ی ما' },
-			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'جرقه — تماس با ما' },
-			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'جرقه — هیرو با موزاییک تصاویر' },
-			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 4, title: 'جرقه — اسکرول افقی نمونه‌کارها' },
-			{ key: 'tpl-zoom', type: 'section', page: 'home', index: 6, title: 'جرقه — زوم با اسکرول' },
-			{ key: 'tpl-path', type: 'section', page: 'home-2', index: 2, title: 'جرقه — مسیر اسکرول' },
-			{ key: 'tpl-stack', type: 'section', page: 'home-2', index: 4, title: 'جرقه — کارت‌های پشته‌ای' },
-			{ key: 'tpl-pricing', type: 'section', page: 'home-2', index: 5, title: 'جرقه — جدول شهریه' },
+			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'جرقه — صفحه‌ی اصلی، نسخه‌ی دوم' },
+			{ key: 'tpl-admissions', type: 'page', page: 'admissions', title: 'جرقه — ثبت‌نام و شهریه' },
+			{ key: 'tpl-paths', type: 'page', page: 'paths', title: 'جرقه — مسیرهای آموزشی' },
+			{ key: 'tpl-stack', type: 'section', page: 'home', index: 6, title: 'جرقه — مخاطبان (کارت‌های پشته‌ای)' },
+			{ key: 'tpl-season', type: 'section', page: 'home', index: 8, title: 'جرقه — مسیر یک فصل' },
+			{ key: 'tpl-pricing', type: 'section', page: 'home-2', index: 2, title: 'جرقه — شهریه با پرداخت قسطی' },
 		],
 		menus: [
 			{
 				name: 'جرقه — منوی اصلی', location: 'primary', items: [
-					{ title: 'خانه', page: 'home', children: [{ title: 'خانه — مدل اول', page: 'home' }, { title: 'خانه — مدل دوم', page: 'home-2' }] },
-					{ title: 'دوره‌ها', url: '{{shop}}' },
+					{ title: 'خانه', page: 'home' },
+					{ title: 'دوره‌ها', page: 'courses', children: [
+						{ title: 'همه‌ی دوره‌ها', url: '{{shop}}' },
+						{ title: 'مسیرهای آموزشی', page: 'paths' },
+						{ title: 'دوره‌ی تیمی', page: 'teams' },
+					] },
+					{ title: 'ثبت‌نام', page: 'admissions' },
+					{ title: 'منتورها', page: 'mentors' },
+					{ title: 'پروژه‌ها', page: 'work' },
 					{ title: 'مجله', page: 'blog' },
-					{ title: 'درباره‌ی ما', page: 'about' },
-					{ title: 'تماس با ما', page: 'contact' },
+					{ title: 'آکادمی', page: 'about', children: [
+						{ title: 'درباره‌ی جرقه', page: 'about' },
+						{ title: 'پرسش‌های متداول', page: 'faq' },
+						{ title: 'تماس', page: 'contact' },
+					] },
 				],
 			},
 			{
 				name: 'جرقه — پابرگ', location: 'footer', items: [
-					{ title: 'دوره‌ها', url: '{{shop}}' },
-					{ title: 'مجله', page: 'blog' },
-					{ title: 'درباره‌ی ما', page: 'about' },
-					{ title: 'تماس با ما', page: 'contact' },
+					{ title: 'دوره‌ها', page: 'courses' },
+					{ title: 'ثبت‌نام و شهریه', page: 'admissions' },
+					{ title: 'دوره‌ی تیمی', page: 'teams' },
+					{ title: 'پرسش‌های متداول', page: 'faq' },
+					{ title: 'تماس', page: 'contact' },
 				],
 			},
 		],
 		options: {
 			logo: '{{imgid:logo}}',
 			logo_dark: '{{imgid:logo-dark}}',
-			logo_height: 38,
-			container_width: 1320,
+			logo_height: 36,
 			header_layout: 'split',
+			header_cart: true,
 			header_cta_text: 'مشاوره‌ی رایگان',
-			header_cta_url: '{{page:contact}}',
-			footer_about: 'هامیستا مدرسه‌ی ساخت محصول است؛ کلاس‌های کوچک، منتور همراه و دوره‌هایی که با انتشار یک محصول واقعی تمام می‌شوند.',
-			footer_copyright: 'تمام حقوق برای مدرسه‌ی هامیستا محفوظ است.',
+			header_cta_url: '{{page:admissions}}',
+			font_body: 'iranyekan',
+			font_heading: 'doran',
+			font_heading_weight: '500',
+			footer_about: 'جرقه مدرسه‌ی ساخت محصول است؛ کلاس‌های کوچک، منتور همراه و دوره‌هایی که با انتشار یک محصول واقعی تمام می‌شوند.',
+			footer_copyright: 'تمام حقوق برای آکادمی جرقه محفوظ است.',
 			footer_social: [{ network: 'instagram', url: 'https://instagram.com/' }, { network: 'telegram', url: 'https://t.me/' }, { network: 'linkedin', url: 'https://linkedin.com/' }],
 			mobile_bar: true,
-			mobile_bar_text: 'مشاوره‌ی رایگان',
-			mobile_bar_url: '{{page:contact}}',
+			mobile_bar_text: 'دوره‌ها',
+			mobile_bar_url: '{{shop}}',
 			mobile_bar_phone: '02191004560',
+			magnetic: true,
+			cursor: 'dot',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'soft',
+			sound_volume: 30,
+			sound_hover: false,
 		},
-		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', pages: { shop: 'دوره‌ها', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
+		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', catalog_rows: 3, pages: { shop: 'همه‌ی دوره‌ها', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
 		front_page: 'home',
 		posts_page: 'blog',
 	},

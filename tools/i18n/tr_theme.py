@@ -26,6 +26,8 @@ T = {
     # Style kits.
     "Spark — editorial": "جرقه — مجله~ای",
     "Industrial — steel and graphite": "صنعتی — فولادی و گرافیتی",
+    "Paper — off-white, graphite and cobalt": "کاغذ — سفید استخوانی، گرافیتی و کبالتی",
+    "Studio — warm grey, ink and vermilion": "استودیو — خاکستری گرم، مشکی و شنگرفی",
     "Pulse — bold agency": "تپش — جسور و آژانسی",
     "Honey — warm and natural": "عسل — گرم و طبیعی",
     "Nomad — handwoven, earthy": "ایلیاتی — دست~بافت و خاکی",

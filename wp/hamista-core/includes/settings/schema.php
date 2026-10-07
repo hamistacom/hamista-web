@@ -152,6 +152,16 @@ return ( static function () {
 							'desc'  => __( 'Porcelain, sage and terracotta', 'hamista-core' ),
 							'image' => $img . 'kit-clay.svg',
 						),
+						'paper'      => array(
+							'label' => __( 'Paper', 'hamista-core' ),
+							'desc'  => __( 'Off-white paper, graphite and cobalt ink', 'hamista-core' ),
+							'image' => $img . 'kit-paper.svg',
+						),
+						'studio'     => array(
+							'label' => __( 'Studio', 'hamista-core' ),
+							'desc'  => __( 'Warm grey, black ink and vermilion', 'hamista-core' ),
+							'image' => $img . 'kit-studio.svg',
+						),
 					),
 				),
 				'container_width'   => array(
