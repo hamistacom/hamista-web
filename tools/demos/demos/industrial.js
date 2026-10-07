@@ -1,32 +1,36 @@
 /**
- * Demo: Hamoon Industries — maker of process-control equipment (Industrial kit).
+ * Demo: Hamoon Industries — process-control equipment (Industrial kit), built
+ * as a complete corporate site with a catalogue: two home pages, product
+ * families, services, industries, quality and certificates, about, careers,
+ * FAQ, a three-step quote request and a knowledge base; six products in four
+ * families.
  */
 'use strict';
 
 const L = require('../lib');
-const { img, link, px, section, cols, heading, button } = L;
+const { img, link, px, w, section, cols, heading, button, fx } = L;
 
-const images = { hero: 'images/hero.webp', plant: 'images/plant.webp', workbench: 'images/workbench.webp' };
+const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp', hall: 'images/hall.webp', plant: 'images/plant.webp', workbench: 'images/workbench.webp' };
 for (let i = 1; i <= 6; i++) { images['product-' + i] = 'images/product-' + i + '.webp'; images['product-' + i + '-b'] = 'images/product-' + i + '-b.webp'; images['drawing-' + i] = 'images/drawing-' + i + '.webp'; }
 
-images.logo = 'images/logo.webp';
-images['logo-dark'] = 'images/logo-dark.webp';
-
 const alts = {
-	hero: 'پنل کنترل، گیج فشار و شیر توپی صنایع هامون',
-	plant: 'خط فرایند با مخزن، پمپ، شیر و تابلوی کنترل',
-	workbench: 'میز آزمون کیفیت در کارخانه‌ی هامون',
-	'product-1': 'پنل کنترل لمسی HCP-7', 'product-2': 'گیج فشار PG-160', 'product-3': 'شیر توپی فلنج‌دار BV-50',
-	'product-4': 'پمپ سانتریفیوژ CP-15', 'product-5': 'کنترلر PLC-X8', 'product-6': 'دبی‌سنج الکترومغناطیسی FM-200',
+	hall: 'سالن تولید کارخانه‌ی هامون در نور صبح، با ستون‌های فولادی و خرپاهای سقف',
+	plant: 'نور صبح از پنجره‌های بلند روی کف بتنی سالن مونتاژ',
+	workbench: 'سالن آزمون در شیفت شب، زیر چراغ‌های سقفی',
+	'product-1': 'پنل کنترل لمسی HCP-7', 'product-2': 'گیج فشار PG-160', 'product-3': 'شیر توپی BV-50',
+	'product-4': 'پمپ سانتریفیوژ CP-15', 'product-5': 'کنترلر PLC-X8', 'product-6': 'دبی‌سنج FM-200',
 };
+
+const shopUrl = '{{shop}}';
+const rfqUrl = '{{page:contact}}';
 
 const LINES = [
 	{ image: img('product-1'), label: 'اتوماسیون', title: 'پنل کنترل HCP-7', text: 'نمایشگر لمسی ۷ اینچ صنعتی با نمودار زنده‌ی فشار و دکمه‌ی توقف اضطراری.', link: link('{{product:hcp-7}}') },
 	{ image: img('product-2'), label: 'ابزار دقیق', title: 'گیج فشار PG-160', text: 'قاب استیل، شیشه‌ی ایمنی و دقت کلاس ۱٫۰ برای خطوط تا ۱۶ بار.', link: link('{{product:pg-160}}') },
-	{ image: img('product-3'), label: 'شیرآلات', title: 'شیر توپی BV-50', text: 'بدنه‌ی چدن داکتیل، فلنج استاندارد و آب‌بندی PTFE برای کار بی‌دردسر.', link: link('{{product:bv-50}}') },
+	{ image: img('product-3'), label: 'شیرآلات', title: 'شیر توپی BV-50', text: 'بدنه‌ی چدن داکتیل، فلنج استاندارد و آب‌بندی PTFE.', link: link('{{product:bv-50}}') },
 	{ image: img('product-4'), label: 'پمپ', title: 'پمپ سانتریفیوژ CP-15', text: 'الکتروموتور ۱۵ کیلووات، پروانه‌ی بالانس‌شده و شاسی یکپارچه.', link: link('{{product:cp-15}}') },
-	{ image: img('product-5'), label: 'اتوماسیون', title: 'کنترلر PLC-X8', text: 'هشت ماژول ورودی و خروجی روی ریل DIN با نشانگر وضعیت برای هر کانال.', link: link('{{product:plc-x8}}') },
-	{ image: img('product-6'), label: 'ابزار دقیق', title: 'دبی‌سنج FM-200', text: 'اندازه‌گیری الکترومغناطیسی دبی با نمایشگر محلی و خروجی ۴ تا ۲۰ میلی‌آمپر.', link: link('{{product:fm-200}}') },
+	{ image: img('product-5'), label: 'اتوماسیون', title: 'کنترلر PLC-X8', text: 'هشت ماژول ورودی و خروجی روی ریل DIN با نشانگر وضعیت هر کانال.', link: link('{{product:plc-x8}}') },
+	{ image: img('product-6'), label: 'ابزار دقیق', title: 'دبی‌سنج FM-200', text: 'اندازه‌گیری الکترومغناطیسی دبی با خروجی ۴ تا ۲۰ میلی‌آمپر.', link: link('{{product:fm-200}}') },
 ];
 
 const QUOTES = [
@@ -77,270 +81,309 @@ const RFQ = {
 	remember: 'yes', boxed: 'yes', columns: '2',
 };
 
-/* ---------------- Home A ---------------- */
+/* ---------------- Shared blocks ---------------- */
 
-const homeA = [
-	L.hero({
-		layout: 'split',
+const SERVICES = [
+	{ icon: 'compass', title: 'مشاوره و طراحی', text: 'انتخاب تجهیزات بر اساس سیال، فشار، دما و استانداردهای پروژه.', meta: 'ENG' },
+	{ icon: 'factory', title: 'ساخت سفارشی', text: 'پنل‌ها و تابلوهای کنترل بر اساس نقشه و منطق کنترلی خط شما.', meta: 'FAB' },
+	{ icon: 'wrench', title: 'نصب و راه‌اندازی', text: 'اعزام تیم به سراسر کشور و آموزش اپراتورها در محل.', meta: 'SITE' },
+	{ icon: 'gauge', title: 'کالیبراسیون', text: 'کالیبراسیون دوره‌ای ابزار دقیق با گواهی قابل ردیابی.', meta: 'CAL' },
+	{ icon: 'shield', title: 'گارانتی ۱۸ ماهه', text: 'گارانتی ساخت برای همه‌ی محصولات و ۲۴ ماه با نصب توسط ما.', meta: 'WAR' },
+	{ icon: 'truck', title: 'قطعه‌ی یدکی', text: 'انبار قطعات پرمصرف و ارسال ۴۸ ساعته برای خطوط تحت قرارداد.', meta: 'PART' },
+];
+
+const STEPS = [
+	{ marker: '۰۱', icon: 'search', title: 'بازدید و نیازسنجی', text: 'کارشناس ما شرایط خط را بررسی و مشخصات فنی را مستند می‌کند.' },
+	{ marker: '۰۲', icon: 'pen', title: 'پیشنهاد فنی و مالی', text: 'نقشه‌ها، فهرست تجهیزات و زمان‌بندی را برای تأیید ارسال می‌کنیم.' },
+	{ marker: '۰۳', icon: 'factory', title: 'ساخت و آزمون', text: 'ساخت در کارخانه و آزمون کامل پیش از ارسال، با حضور ناظر شما.' },
+	{ marker: '۰۴', icon: 'bolt', title: 'نصب و تحویل', text: 'نصب، راه‌اندازی، آموزش و تحویل مستندات کامل.' },
+];
+
+const LAYERS = [
+	{ eyebrow: 'LAYER 01 · FIELD', title: 'ابزار دقیق و شیرآلات', text: 'لایه‌ای که مستقیماً با سیال در تماس است: اندازه می‌گیرد و جریان را کنترل می‌کند.', points: 'گیج فشار PG-160\nدبی‌سنج FM-200\nشیر توپی BV-50', image: img('product-2'), btn_text: 'ابزار دقیق', btn_link: link('{{termlink:pcat-instrument}}'), tone: '' },
+	{ eyebrow: 'LAYER 02 · POWER', title: 'پمپ و محرکه', text: 'قلب خط: پمپ‌های سانتریفیوژ و الکتروموتورهایی که برای کار مداوم ساخته شده‌اند.', points: 'پمپ CP-15\nشاسی یکپارچه\nپروانه‌ی بالانس‌شده', image: img('product-4-b'), btn_text: 'مشخصات CP-15', btn_link: link('{{product:cp-15}}'), tone: 'inverse' },
+	{ eyebrow: 'LAYER 03 · CONTROL', title: 'کنترل و نمایش', text: 'مغز خط: کنترلرها و پنل‌هایی که همه‌چیز را هماهنگ می‌کنند و به اپراتور نشان می‌دهند.', points: 'کنترلر PLC-X8\nپنل لمسی HCP-7\nهشدار پیش از توقف', image: img('product-1'), btn_text: 'کنترل و اتوماسیون', btn_link: link('{{termlink:pcat-control}}'), tone: 'accent' },
+];
+
+const INDUSTRIES = [
+	{ title: 'آب و فاضلاب', subtitle: 'ایستگاه‌های پمپاژ و تصفیه', meta: '۰۱', image: img('drawing-5'), panel_title: 'پمپاژ پایدار، شبانه‌روز', panel_text: 'پمپ‌های سانتریفیوژ، شیرهای توپی و دبی‌سنج‌های الکترومغناطیسی برای ایستگاه‌های پمپاژ و تصفیه‌خانه‌ها، با پنل کنترل از راه دور.', chips: 'CP-15، BV-50، FM-200', btn_text: 'مشاوره برای پروژه', btn_link: link(rfqUrl) },
+	{ title: 'صنایع غذایی', subtitle: 'بهداشتی و قابل شست‌وشو', meta: '۰۲', image: img('drawing-6'), panel_title: 'استیل، دقیق، قابل ردیابی', panel_text: 'ابزار دقیق با قطعات در تماس از جنس استیل ۳۱۶ و گواهی کالیبراسیون، برای خطوط لبنیات، نوشیدنی و کنسرو.', chips: 'PG-160، FM-200', btn_text: 'مشاوره برای پروژه', btn_link: link(rfqUrl) },
+	{ title: 'پتروشیمی', subtitle: 'فشار و دمای بالا', meta: '۰۳', image: img('drawing-3'), panel_title: 'برای سخت‌ترین شرایط', panel_text: 'شیرآلات و ابزار دقیق مناسب سیالات خورنده و محیط‌های پرخطر، با مستندات کامل برای بازرسی.', chips: 'BV-50، PG-160', btn_text: 'مشاوره برای پروژه', btn_link: link(rfqUrl) },
+	{ title: 'سیمان و معدن', subtitle: 'گرد و غبار و لرزش', meta: '۰۴', image: img('drawing-4'), panel_title: 'مقاوم در برابر محیط', panel_text: 'تابلوها و کنترلرهایی با درجه‌ی حفاظت بالا و طراحی مقاوم در برابر لرزش، برای کار مداوم در خطوط سنگین.', chips: 'PLC-X8، HCP-7', btn_text: 'مشاوره برای پروژه', btn_link: link(rfqUrl) },
+];
+
+const figures = (style = 'plain') => L.counters([
+	{ value: 28, label: 'سال ساخت', desc: 'از کارگاه کوچک تا کارخانه' },
+	{ value: 900, suffix: '+', label: 'پروژه', desc: 'در ۲۶ استان' },
+	{ value: 1.0, label: 'کلاس دقت', desc: 'ابزار دقیق کالیبره‌شده' },
+	{ value: 48, suffix: ' ساعت', label: 'ارسال قطعه', desc: 'برای خطوط تحت قرارداد' },
+], { style, columns: '4' });
+
+const rfqCta = (title = 'مشخصات خط را بفرستید،\n*پیش‌فاکتور* بگیرید', desc = 'در همان روز کاری پاسخ می‌دهیم؛ با فهرست تجهیزات، زمان تحویل و قیمت.') => L.cta({
+	eyebrow: 'استعلام قیمت', title, desc,
+	btn1_text: 'درخواست پیش‌فاکتور', btn1_link: link(rfqUrl), btn2_text: 'تماس با فروش', btn2_link: link('tel:+982144009280'),
+	look: 'image', image: img('workbench'), decor: '', rounded: '', note: '',
+});
+
+/* ---------------- Home ---------------- */
+
+const home = [
+	L.bleed(w('hm-hero', {
+		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
 		eyebrow: 'صنایع هامون · از ۱۳۷۶',
-		title: 'تجهیزات کنترل فرایند،\n*ساخت ایران*.',
+		title: 'تجهیزات کنترل فرایند،\n*ساخت ایران*',
 		desc: 'پنل‌های کنترل، ابزار دقیق، شیرآلات و پمپ‌های صنعتی برای خطوطی که نباید از کار بیفتند؛ طراحی و ساخت در کارخانه‌ی خودمان، با پشتیبانی شبانه‌روزی.',
-		btn1_text: 'درخواست پیش‌فاکتور', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'کاتالوگ محصولات', btn2_link: link('{{shop}}'),
+		btn1_text: 'درخواست پیش‌فاکتور', btn1_link: link(rfqUrl), btn1_style: 'primary',
+		btn2_text: 'کاتالوگ محصولات', btn2_link: link(shopUrl), btn2_style: 'secondary',
 		stats: [
 			{ value: '۲۸', label: 'سال تجربه' },
 			{ value: '۹۰۰+', label: 'پروژه‌ی اجراشده' },
 			{ value: '۲۴/۷', label: 'پشتیبانی فنی' },
 		],
-		media_type: 'image',
-		image: img('hero'),
-		media_ratio: 'landscape',
-		height: 'screen',
-		decor: 'grid',
-		hint: 'اسکرول کنید',
-	}),
-	L.marquee(['پتروشیمی', 'نفت و گاز', 'آب و فاضلاب', 'صنایع غذایی', 'سیمان', 'نیروگاه', 'داروسازی'], { look: 'muted', size: 'md', separator: 'plus', speed: px(45) }),
-	section({ space: 'md' }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: 'SYS-01 · محصولات', title: 'شش خانواده‌ی *محصول*\nبرای یک خط کامل' })],
-			[button('همه‌ی محصولات', '{{shop}}', 'secondary')],
+		media_type: 'image', image: img('hall'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
+	})),
+	L.marquee(['پتروشیمی', 'نفت و گاز', 'آب و فاضلاب', 'صنایع غذایی', 'سیمان', 'نیروگاه', 'داروسازی'], { look: 'muted', size: 'sm', separator: 'dot', speed: px(40), bordered: 'yes' }),
+	section({ space: 'md', gap: 32, cards: 'cascade' }, [
+		L.productCategories(['control-automation', 'instrumentation', 'valves', 'pumps'], { eyebrow: 'خانواده‌های محصول', title: 'چهار خانواده،\n*یک خط کامل*', more_text: 'همه‌ی محصولات', more_link: link(shopUrl) }),
+	]),
+	section({ space: 'md', gap: 32 }, [
+		L.productCarousel({ eyebrow: 'پرفروش‌ها', title: 'از انبار، *آماده‌ی ارسال*', source: 'featured', card_parts: ['badges', 'hover'], more_text: 'کاتالوگ کامل', more_link: link(shopUrl) }),
+	]),
+	section({ space: 'none', gap: 0, zoom: 'expand', zoomAmount: 0.24, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('plant', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 32, width: 1000 }, [
+		L.textScrub('خطی که می‌خوابد، هر ساعتش هزینه دارد. برای همین تجهیزاتی می‌سازیم که *سال‌ها بی‌صدا کار کنند*، و تیمی داریم که اگر روزی صدایشان درآمد، *در همان شیفت* برسد.', { eyebrow: 'اصل ما', size: 'md' }),
+	]), { tone: 'surface' }),
+	section({ space: 'md', gap: 32 }, [
+		heading({ eyebrow: 'سه لایه‌ی یک خط', title: 'از سیال\n*تا صفحه‌ی اپراتور*' }),
+		L.stack(LAYERS),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'خدمات', title: 'فقط فروش نیست؛ *همراهی* است', header_align: 'center' }),
+		L.features(SERVICES, { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { cards: 'cascade' }),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64, align: 'center' }, [
+			[heading({ eyebrow: 'در یک نگاه', title: 'بیست‌وهشت سال\n*ساختن*' }), button('درباره‌ی هامون', '{{page:about}}', 'secondary')],
+			[figures('plain')],
 		]),
-		L.products({ source: 'featured', count: 3, columns: '3' }),
+	]), { tone: 'inverse' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'روند پروژه', title: 'چهار مرحله تا *خط آماده*' }),
+		L.steps(STEPS, { layout: 'h', cards: 'yes' }),
 	]),
-	section({ space: 'md', width: 1100 }, [
-		L.textScrub('خطی که می‌خوابد، هر ساعتش هزینه دارد. برای همین تجهیزاتی می‌سازیم که *سال‌ها بی‌صدا کار کنند*، و تیمی داریم که اگر روزی صدایشان درآمد، *در همان شیفت* برسد.', { eyebrow: 'SYS-02 · اصل ما', size: 'lg' }),
-	]),
-	L.hscroll({
-		eyebrow: 'SYS-03 · خطوط تولید',
-		title: 'از *ابزار دقیق*\nتا اتوماسیون',
-		desc: 'هر محصول را می‌توانید جداگانه یا به‌عنوان بخشی از یک پروژه‌ی کامل سفارش دهید.',
-		items: LINES,
-		card_size: 'md',
-		card_style: 'card',
-		btn1_text: 'کاتالوگ کامل', btn1_link: link('{{shop}}'),
-	}),
-	section({ space: 'md' }, [
-		L.counters([
-			{ value: 28, label: 'سال ساخت', desc: 'از کارگاه کوچک تا کارخانه' },
-			{ value: 900, suffix: '+', label: 'پروژه', desc: 'در ۲۶ استان' },
-			{ value: 1.0, label: 'کلاس دقت', desc: 'ابزار دقیق کالیبره‌شده' },
-			{ value: 48, suffix: 'h', label: 'ارسال قطعه', desc: 'برای خطوط تحت قرارداد' },
-		], { style: 'lcd', columns: '4' }),
-	]),
-	L.scrollZoom({
-		eyebrow: 'داخل کارخانه',
-		title: 'از نقشه تا راه‌اندازی،\n*زیر یک سقف*',
-		image: img('plant'),
-		o_title: 'هر دستگاه پیش از ارسال\n*روی خط آزمون* کار می‌کند.',
-		o_desc: 'آزمون فشار، کالیبراسیون و تست عملکرد در شرایط واقعی؛ با گزارشی که همراه بار برایتان ارسال می‌شود.',
-		btn1_text: 'درباره‌ی کارخانه', btn1_link: link('{{page:about}}'), btn1_style: 'inverse',
-	}),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'SYS-04 · خدمات', title: 'فقط فروش نیست؛ *همراهی* است', header_align: 'center' }),
-		L.features([
-			{ icon: 'compass', title: 'مشاوره و طراحی', text: 'انتخاب تجهیزات بر اساس سیال، فشار، دما و استانداردهای پروژه.', meta: 'ENG' },
-			{ icon: 'factory', title: 'ساخت سفارشی', text: 'پنل‌ها و تابلوهای کنترل بر اساس نقشه و منطق کنترلی خط شما.', meta: 'FAB' },
-			{ icon: 'wrench', title: 'نصب و راه‌اندازی', text: 'اعزام تیم به سراسر کشور و آموزش اپراتورها در محل.', meta: 'SITE' },
-			{ icon: 'gauge', title: 'کالیبراسیون', text: 'کالیبراسیون دوره‌ای ابزار دقیق با گواهی قابل ردیابی.', meta: 'CAL' },
-			{ icon: 'shield', title: 'گارانتی ۱۸ ماهه', text: 'گارانتی ساخت برای همه‌ی محصولات و ۲۴ ماه با نصب توسط ما.', meta: 'WAR' },
-			{ icon: 'truck', title: 'قطعه‌ی یدکی', text: 'انبار قطعات پرمصرف و ارسال ۴۸ ساعته برای خطوط تحت قرارداد.', meta: 'PART' },
-		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'SYS-05 · روند پروژه', title: 'چهار مرحله تا *خط آماده*' }),
-		L.steps([
-			{ marker: '01', icon: 'search', title: 'بازدید و نیازسنجی', text: 'کارشناس ما شرایط خط را بررسی و مشخصات فنی را مستند می‌کند.' },
-			{ marker: '02', icon: 'pen', title: 'پیشنهاد فنی و مالی', text: 'نقشه‌ها، فهرست تجهیزات و زمان‌بندی را برای تأیید ارسال می‌کنیم.' },
-			{ marker: '03', icon: 'factory', title: 'ساخت و آزمون', text: 'ساخت در کارخانه و آزمون کامل پیش از ارسال، با حضور ناظر شما.' },
-			{ marker: '04', icon: 'bolt', title: 'نصب و تحویل', text: 'نصب، راه‌اندازی، آموزش و تحویل مستندات کامل.' },
-		], { layout: 'h' }),
-	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'SYS-06 · از زبان مشتریان', title: 'خطوطی که *کار می‌کنند*', header_align: 'center' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان مشتریان', title: 'خطوطی که *کار می‌کنند*', header_align: 'center' }),
 		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
 	]),
-	section({ space: 'md', top0: true }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: 'SYS-07 · پرسش‌ها', title: 'پیش از *سفارش*' }), button('تماس با کارشناس فروش', '{{page:contact}}', 'secondary')],
-			[L.faq(FAQ)],
-		]),
-	]),
-	L.cta({
-		eyebrow: 'پاسخ در همان روز کاری',
-		title: 'مشخصات خط را بفرستید،\n*پیش‌فاکتور* بگیرید.',
-		desc: 'نقشه، برگه‌ی مشخصات یا حتی یک عکس از تجهیزات فعلی کافی است.',
-		btn1_text: 'درخواست پیش‌فاکتور', btn1_link: link('{{page:contact}}'),
-		btn2_text: 'تماس: ۰۲۱-۴۴۰۰۹۲۸۰', btn2_link: link('tel:+982144009280'),
-		look: 'inverse',
-		decor: 'grill',
-		note: '',
-	}),
-];
-
-/* ---------------- Home B ---------------- */
-
-const homeB = [
-	L.hero({
-		layout: 'split',
-		eyebrow: 'HAMOON · HCP SERIES',
-		title: 'کنترل کامل خط،\n*روی یک صفحه*.',
-		desc: 'پنل‌های کنترل سری HCP فشار، دما و دبی خط را زنده نمایش می‌دهند، هشدارها را پیش از توقف خبر می‌دهند و با هر PLC استانداردی کار می‌کنند.',
-		btn1_text: 'مشخصات HCP-7', btn1_link: link('{{product:hcp-7}}'),
-		btn2_text: 'درخواست دمو در محل', btn2_link: link('{{page:contact}}'),
-		media_type: 'device',
-		device_variant: 'monitor',
-		device_label: 'LINE 04 · ONLINE',
-		height: 'screen',
-		decor: 'grid',
-	}),
-	section({ space: 'sm' }, [
-		L.counters([
-			{ value: 6.42, suffix: 'bar', label: 'فشار خط', desc: 'نمایش زنده' },
-			{ value: 78.3, suffix: '°C', label: 'دمای سیال', desc: 'با هشدار آستانه' },
-			{ value: 42.7, suffix: 'm³/h', label: 'دبی', desc: 'خروجی ۴–۲۰mA' },
-			{ value: 99.6, suffix: '%', label: 'زمان کارکرد', desc: 'میانگین سال گذشته' },
-		], { style: 'lcd', columns: '4' }),
-	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'صنایعی که با آن‌ها کار می‌کنیم', title: 'هر صنعت، *مشخصات خودش*', header_align: 'center' }),
-		L.tabs([
-			{ title: 'آب و فاضلاب', subtitle: 'ایستگاه‌های پمپاژ و تصفیه', meta: 'W', image: img('drawing-5'), panel_title: 'پمپاژ پایدار، شبانه‌روز', panel_text: 'پمپ‌های سانتریفیوژ، شیرهای توپی و دبی‌سنج‌های الکترومغناطیسی برای ایستگاه‌های پمپاژ و تصفیه‌خانه‌ها، با پنل کنترل از راه دور.', chips: 'CP-15، BV-50، FM-200', btn_text: 'مشاوره برای پروژه', btn_link: link('{{page:contact}}') },
-			{ title: 'صنایع غذایی', subtitle: 'بهداشتی و قابل شست‌وشو', meta: 'F', image: img('drawing-6'), panel_title: 'استیل، دقیق، قابل ردیابی', panel_text: 'ابزار دقیق با قطعات در تماس از جنس استیل ۳۱۶ و گواهی کالیبراسیون، برای خطوط لبنیات، نوشیدنی و کنسرو.', chips: 'PG-160، FM-200', btn_text: 'مشاوره برای پروژه', btn_link: link('{{page:contact}}') },
-			{ title: 'پتروشیمی', subtitle: 'فشار و دمای بالا', meta: 'P', image: img('drawing-3'), panel_title: 'برای سخت‌ترین شرایط', panel_text: 'شیرآلات و ابزار دقیق مناسب سیالات خورنده و محیط‌های پرخطر، با مستندات کامل برای بازرسی.', chips: 'BV-50، PG-160', btn_text: 'مشاوره برای پروژه', btn_link: link('{{page:contact}}') },
-			{ title: 'سیمان و معدن', subtitle: 'گرد و غبار و لرزش', meta: 'C', image: img('drawing-4'), panel_title: 'مقاوم در برابر محیط', panel_text: 'تابلوها و کنترلرهایی با درجه‌ی حفاظت بالا و طراحی مقاوم در برابر لرزش، برای کار مداوم در خطوط سنگین.', chips: 'PLC-X8، HCP-7', btn_text: 'مشاوره برای پروژه', btn_link: link('{{page:contact}}') },
-		], { autoplay: 7, media_side: 'end' }),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		heading({ eyebrow: 'خانواده‌های محصول', title: 'سه لایه‌ی *یک خط*', header_align: 'center' }),
-		L.stack([
-			{ eyebrow: 'LAYER 01 · FIELD', title: 'ابزار دقیق و شیرآلات', text: 'لایه‌ای که مستقیماً با سیال در تماس است: اندازه می‌گیرد و جریان را کنترل می‌کند.', points: 'گیج فشار PG-160\nدبی‌سنج FM-200\nشیر توپی BV-50', image: img('product-2'), btn_text: 'دیدن محصولات', btn_link: link('{{shop}}'), tone: '' },
-			{ eyebrow: 'LAYER 02 · POWER', title: 'پمپ و محرکه', text: 'قلب خط: پمپ‌های سانتریفیوژ و الکتروموتورهایی که برای کار مداوم ساخته شده‌اند.', points: 'پمپ CP-15\nشاسی یکپارچه\nپروانه‌ی بالانس‌شده', image: img('product-4'), btn_text: 'مشخصات CP-15', btn_link: link('{{product:cp-15}}'), tone: 'inverse' },
-			{ eyebrow: 'LAYER 03 · CONTROL', title: 'کنترل و نمایش', text: 'مغز خط: کنترلرها و پنل‌هایی که همه‌چیز را هماهنگ می‌کنند و به اپراتور نشان می‌دهند.', points: 'کنترلر PLC-X8\nپنل لمسی HCP-7\nهشدار پیش از توقف', image: img('product-1'), btn_text: 'مشخصات HCP-7', btn_link: link('{{product:hcp-7}}'), tone: 'accent' },
-		]),
-	]),
-	section({ space: 'md' }, [
-		cols({ widths: [50, 50], gap: 64, align: 'center' }, [
-			[L.imageReveal('workbench', { ratio: '4-3', reveal: 'clip-x', frame: 'bezel' })],
-			[
-				heading({ eyebrow: 'کنترل کیفیت', title: 'هیچ دستگاهی *بدون آزمون*\nاز در کارخانه بیرون نمی‌رود' }),
-				L.features([
-					{ icon: 'gauge', title: 'آزمون فشار', text: '۱٫۵ برابر فشار کاری، برای همه‌ی شیرها و پمپ‌ها.' },
-					{ icon: 'check', title: 'کالیبراسیون', text: 'با مرجع قابل ردیابی و گواهی همراه بار.' },
-					{ icon: 'clock', title: 'تست ۴۸ ساعته', text: 'برای پنل‌های کنترل، پیش از ارسال.' },
-				], { layout: 'list', style: 'plain', columns: '1', icon_style: 'tile' }),
-			],
-		]),
-	]),
-	section({ space: 'md', top0: true }, [
+	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
-			[heading({ eyebrow: 'دانشنامه‌ی فنی', title: 'نوشته‌های *تیم مهندسی*' })],
-			[button('همه‌ی مقاله‌ها', '{{blog}}', 'secondary')],
+			[heading({ eyebrow: 'دانشنامه', title: 'نوشته‌های *تیم مهندسی*' })],
+			[button('همه‌ی نوشته‌ها', '{{blog}}', 'secondary', { _flex_align_self: 'flex-end' })],
 		]),
-		L.posts({ count: 3, layout: 'grid', columns: '3' }),
+		L.posts({ count: 3, layout: 'grid', columns: '3', excerpt: 'yes' }),
 	]),
-	L.cta({
-		title: 'یک خط، یک *هم‌صحبت فنی*.',
-		desc: 'از انتخاب یک گیج تا تجهیز کامل یک واحد، کارشناسان ما کنار شما هستند.',
-		btn1_text: 'درخواست پیش‌فاکتور', btn1_link: link('{{page:contact}}'),
-		look: 'accent',
-		decor: 'grill',
-		note: '',
-	}),
+	rfqCta(),
 ];
 
-/* ---------------- About ---------------- */
+/* ---------------- Home, second version ---------------- */
 
-const about = [
-	section({ space: 'md', bottom0: true }, [
-		cols({ widths: [55, 45], align: 'flex-end' }, [
-			[heading({ eyebrow: 'درباره‌ی هامون', title: 'از یک کارگاه\n*تراشکاری* تا کارخانه', title_tag: 'h1', title_size: 'xl' })],
-			[L.textEditor('<p>صنایع هامون سال ۱۳۷۶ با ساخت قطعات یدکی پمپ در یک کارگاه کوچک شروع به کار کرد. امروز با ۱۸۰ نفر در شهرک صنعتی عباس‌آباد، تجهیزات کنترل فرایند را برای بیش از ۹۰۰ پروژه در کشور طراحی و تولید می‌کند.</p>')],
+const home2 = [
+	L.slider([
+		{ image: img('hall'), eyebrow: 'صنایع هامون', title: 'کنترل کامل خط،\n*ساخت ایران*', text: 'از ابزار دقیق تا پنل کنترل؛ طراحی، ساخت، نصب و پشتیبانی زیر یک سقف.', btn_text: 'کاتالوگ محصولات', url: shopUrl },
+		{ image: img('plant'), eyebrow: 'کارخانه', title: 'دوازده هزار متر،\n*یک خط آزمون*', text: 'هر دستگاه پیش از ارسال، روی خط آزمون کار می‌کند.', btn_text: 'کیفیت و گواهی‌ها', url: '{{page:quality}}' },
+		{ image: img('workbench'), eyebrow: 'پشتیبانی', title: 'در همان *شیفت*', text: 'تیم فنی شبانه‌روزی و ارسال ۴۸ ساعته‌ی قطعه.', btn_text: 'خدمات', url: '{{page:services}}' },
+	]),
+	section({ space: 'md', gap: 40 }, [L.tabs(INDUSTRIES, { autoplay: 7, media_side: 'start' })]),
+	section({ space: 'sm', gap: 0 }, [
+		L.con({ content_width: 'full', css_classes: 'hm-scheme-inverse', padding: L.pad(48, 48, 40) }, [figures('plain')], true),
+	]),
+	section({ space: 'md', gap: 32 }, [
+		L.productCarousel({ eyebrow: 'کاتالوگ', title: 'همه‌ی *محصولات*', layout: 'grid', columns: '3', count: 6, card_parts: ['badges', 'hover'], more_text: 'فروشگاه', more_link: link(shopUrl) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *سفارش*' }), button('همه‌ی پرسش‌ها', '{{page:faq}}', 'secondary')],
+			[L.faq(FAQ.slice(0, 4), { style: 'lines' })],
+		]),
+	]), { tone: 'surface' }),
+	rfqCta(),
+];
+
+/* ---------------- Products overview ---------------- */
+
+const families = [
+	L.pageHead('خانواده‌های محصول', 'از ابزار دقیق\n*تا اتوماسیون*', 'هر محصول را می‌توانید جداگانه یا به‌عنوان بخشی از یک پروژه‌ی کامل سفارش دهید. برگه‌ی مشخصات و نقشه‌ی هر محصول در صفحه‌ی همان محصول است.'),
+	L.hscroll({ eyebrow: 'خطوط محصول', title: 'شش محصول،\n*یک کاتالوگ*', desc: '', items: LINES, card_size: 'md', card_style: 'card', btn1_text: 'کاتالوگ کامل', btn1_link: link(shopUrl), scheme: '' }),
+	...[['کنترل و اتوماسیون', 'control-automation', 'پنل‌ها و کنترلرهایی که خط را هماهنگ می‌کنند.'], ['ابزار دقیق', 'instrumentation', 'گیج‌ها و دبی‌سنج‌هایی که اندازه می‌گیرند.'], ['شیرآلات', 'valves', 'شیرهایی که جریان را قطع و وصل می‌کنند.'], ['پمپ', 'pumps', 'پمپ‌هایی که برای کار مداوم ساخته شده‌اند.']].map(([t, slug, d], i) => fx(section({ space: 'md', gap: 32 }, [
+		L.productCarousel({ eyebrow: 'خانواده', title: t, desc: d, category: [slug], layout: 'grid', columns: '3', card_parts: ['badges', 'hover'], more_text: 'همه‌ی ' + t, more_link: link(shopUrl + '?product_cat=' + slug) }),
+	]), i % 2 ? { tone: 'surface' } : {})),
+	rfqCta(),
+];
+
+/* ---------------- Services ---------------- */
+
+const services = [
+	L.pageHead('خدمات', 'از نقشه\n*تا راه‌اندازی*', 'خدمات مهندسی، ساخت سفارشی، نصب، کالیبراسیون و پشتیبانی؛ برای خطوطی که هامون ساخته و خطوطی که نساخته.'),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [L.features(SERVICES, { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' })]),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('workbench', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'روند پروژه', title: 'چهار مرحله تا *خط آماده*', header_align: 'center' }),
+		L.steps(STEPS, { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface' }),
+	section({ space: 'md', gap: 40 }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'قرارداد پشتیبانی', title: 'برای خطوطی که\n*نباید بخوابند*' })],
+			[L.features([
+				{ icon: '', title: 'پاسخ تلفنی شبانه‌روزی', text: 'با مهندس، نه با منشی.', meta: '۲۴/۷' },
+				{ icon: '', title: 'اعزام تیم', text: 'در تهران و استان‌های همجوار.', meta: '۲۴ ساعت' },
+				{ icon: '', title: 'ارسال قطعه از انبار', text: 'قطعات پرمصرف خط شما، رزروشده.', meta: '۴۸ ساعت' },
+				{ icon: '', title: 'بازدید پیشگیرانه', text: 'هر فصل یک بار، با گزارش مکتوب.', meta: 'فصلی' },
+			], { layout: 'list', style: 'plain', numbered: '', icon_style: 'plain' })],
 		]),
 	]),
-	section({ space: 'md' }, [L.imageReveal('plant', { ratio: '21-9', reveal: 'clip-up', parallax: px(0.3), frame: 'bezel' })]),
-	section({ space: 'sm' }, [
-		L.counters([
-			{ value: 1376, label: 'سال تأسیس' },
-			{ value: 180, label: 'نفر نیروی متخصص' },
-			{ value: 12000, label: 'متر مربع فضای تولید' },
-			{ value: 26, label: 'استان زیر پوشش' },
-		], { style: 'lcd', columns: '4', grouping: '' }),
+	rfqCta('خدمات را برای خط شما\n*برآورد کنیم*'),
+];
+
+/* ---------------- Industries ---------------- */
+
+const industries = [
+	L.pageHead('صنایع', 'هر صنعت،\n*مشخصات خودش*', 'نُهصد پروژه در بیست‌وشش استان؛ از ایستگاه پمپاژ آب تا خط لبنیات و کارخانه‌ی سیمان.'),
+	section({ space: 'md', gap: 40 }, [L.tabs(INDUSTRIES, { autoplay: 0, media_side: 'start' })]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'نمونه‌پروژه‌ها', title: 'چند خط که *ساختیم*', header_align: 'center' }),
+		L.features([
+			{ icon: 'drop', title: 'تصفیه‌خانه‌ی آب، اصفهان', text: 'شش پمپ CP-15، دبی‌سنج‌ها و پنل کنترل از راه دور.', meta: '۱۴۰۲' },
+			{ icon: 'box', title: 'خط لبنیات، قزوین', text: 'ابزار دقیق استیل ۳۱۶ و کالیبراسیون فصلی.', meta: '۱۴۰۱' },
+			{ icon: 'fire', title: 'واحد پتروشیمی، عسلویه', text: 'شیرآلات و گیج‌ها با مستندات بازرسی.', meta: '۱۴۰۰' },
+			{ icon: 'cube', title: 'کارخانه‌ی سیمان، کرمان', text: 'تابلوهای کنترل ضدگرد و PLC-X8.', meta: '۱۳۹۹' },
+		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'از زبان مشتریان', title: 'خطوطی که *کار می‌کنند*', header_align: 'center' }),
+		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
 	]),
-	section({ space: 'md' }, [
-		cols({ widths: [40, 60], gap: 64 }, [
-			[heading({ eyebrow: 'مسیر ما', title: 'بیست‌وهشت سال\n*ساختن*' })],
-			[L.steps([
-				{ marker: '1376', title: 'کارگاه قطعات پمپ', text: 'ساخت قطعات یدکی برای پمپ‌های وارداتی در کارگاهی ۲۰۰ متری.' },
-				{ marker: '1385', title: 'اولین پمپ کامل', text: 'طراحی و ساخت اولین پمپ سانتریفیوژ با نشان هامون.' },
-				{ marker: '1394', title: 'واحد اتوماسیون', text: 'راه‌اندازی واحد طراحی و ساخت پنل‌ها و تابلوهای کنترل.' },
-				{ marker: '1402', title: 'کارخانه‌ی جدید', text: 'انتقال به کارخانه‌ی ۱۲ هزار متری و راه‌اندازی آزمایشگاه کالیبراسیون.' },
-			], { layout: 'v', cards: 'yes' })],
-		]),
+	rfqCta(),
+];
+
+/* ---------------- Quality ---------------- */
+
+const quality = [
+	L.pageHead('کیفیت و گواهی‌ها', 'هیچ دستگاهی\n*بدون آزمون* بیرون نمی‌رود', 'آزمون فشار، کالیبراسیون و تست عملکرد در شرایط واقعی؛ با گزارشی که همراه بار برایتان ارسال می‌شود.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.2, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('plant', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	section({ space: 'md', scheme: 'surface' }, [
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'gauge', title: 'آزمون فشار', text: '۱٫۵ برابر فشار کاری، برای همه‌ی شیرها و پمپ‌ها.', meta: '۱۰۰٪' },
+			{ icon: 'check', title: 'کالیبراسیون', text: 'با مرجع قابل ردیابی و گواهی همراه بار.', meta: 'CAL' },
+			{ icon: 'clock', title: 'تست ۴۸ ساعته', text: 'برای پنل‌های کنترل، پیش از ارسال.', meta: '۴۸h' },
+		], { layout: 'grid', style: 'cards', columns: '3', icon_style: 'tile' }),
+	]), { cards: 'flip' }),
+	fx(section({ space: 'md', gap: 40 }, [
 		heading({ eyebrow: 'گواهی‌ها و استانداردها', title: 'آنچه *ضمانت* می‌کنیم' }),
 		L.features([
 			{ icon: 'award', title: 'سیستم مدیریت کیفیت', text: 'فرایندهای طراحی، ساخت و خدمات بر اساس ایزو ۹۰۰۱.', meta: 'ISO 9001' },
 			{ icon: 'shield', title: 'استاندارد ملی', text: 'محصولات مشمول، دارای پروانه‌ی کاربرد نشان استاندارد.', meta: 'INSO' },
 			{ icon: 'gauge', title: 'آزمایشگاه کالیبراسیون', text: 'کالیبراسیون ابزار دقیق با مرجع قابل ردیابی.', meta: 'CAL LAB' },
 			{ icon: 'leaf', title: 'مسئولیت محیط زیستی', text: 'بازیافت ضایعات فلزی و کاهش مصرف انرژی در تولید.', meta: 'ENV' },
-		], { layout: 'grid', style: 'cards', columns: '4', icon_style: 'tile' }),
+		], { layout: 'grid', style: 'plain', columns: '4', icon_style: 'tile' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'sm', gap: 0 }, [
+		L.con({ content_width: 'full', css_classes: 'hm-scheme-inverse', padding: L.pad(48, 48, 40) }, [figures('plain')], true),
 	]),
-	section({ space: 'md' }, [
-		heading({ eyebrow: 'مدیران', title: 'تیم *فنی و مدیریت*' }),
-		L.team([
-			{ photo: {}, name: 'مهندس جمشید هامونی', role: 'مدیرعامل و بنیان‌گذار' },
-			{ photo: {}, name: 'مهندس فرزانه راستین', role: 'مدیر فنی' },
-			{ photo: {}, name: 'مهندس کیوان ستاری', role: 'مدیر واحد اتوماسیون' },
-			{ photo: {}, name: 'مهندس الهام نیکزاد', role: 'مدیر کنترل کیفیت' },
-		], { columns: '4', mono: 'yes' }),
-	]),
-	L.cta({
-		title: 'از کارخانه *بازدید* کنید.',
-		desc: 'بازدید از خط تولید و آزمایشگاه کالیبراسیون، با هماهنگی قبلی، برای کارفرمایان و مشاوران آزاد است.',
-		btn1_text: 'هماهنگی بازدید', btn1_link: link('{{page:contact}}'),
-		look: 'inverse',
-		decor: 'grill',
-		note: '',
-	}),
+	rfqCta('از کارخانه\n*بازدید* کنید', 'هر چهارشنبه، با هماهنگی قبلی؛ خط آزمون را از نزدیک ببینید.'),
 ];
 
-/* ---------------- Contact ---------------- */
+/* ---------------- About ---------------- */
+
+const about = [
+	L.pageHead('درباره‌ی هامون', 'از یک کارگاه\n*تراشکاری* تا کارخانه', 'هامون در ۱۳۷۶ با ساخت قطعات یدکی پمپ در کارگاهی دویست‌متری شروع شد. امروز در کارخانه‌ای دوازده‌هزارمتری، تجهیزات کنترل فرایند را طراحی و می‌سازیم.'),
+	section({ space: 'sm', zoom: 'expand', zoomAmount: 0.18, zoomInner: true, zoomRadius: 4 }, [
+		L.imageReveal('hall', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
+	]),
+	fx(section({ space: 'md', gap: 40 }, [
+		heading({ eyebrow: 'مسیر ما', title: 'بیست‌وهشت سال\n*ساختن*' }),
+		L.steps([
+			{ marker: '۱۳۷۶', title: 'کارگاه قطعات پمپ', text: 'ساخت قطعات یدکی برای پمپ‌های وارداتی.' },
+			{ marker: '۱۳۸۵', title: 'اولین پمپ کامل', text: 'طراحی و ساخت اولین پمپ سانتریفیوژ با نشان هامون.' },
+			{ marker: '۱۳۹۴', title: 'واحد اتوماسیون', text: 'طراحی و ساخت پنل‌ها و تابلوهای کنترل.' },
+			{ marker: '۱۴۰۲', title: 'کارخانه‌ی جدید', text: 'کارخانه‌ی ۱۲ هزار متری و آزمایشگاه کالیبراسیون.' },
+		], { layout: 'h', cards: 'yes' }),
+	]), { tone: 'surface', cards: 'cascade' }),
+	section({ space: 'md', gap: 40, cards: 'cascade' }, [
+		cols({ widths: [36, 64], gap: 64 }, [
+			[heading({ eyebrow: 'مدیران', title: 'تیم *فنی و مدیریت*' })],
+			[L.features([
+				{ icon: '', title: 'مهندس جمشید هامونی', text: 'مدیرعامل و بنیان‌گذار' },
+				{ icon: '', title: 'مهندس فرزانه راستین', text: 'مدیر فنی' },
+				{ icon: '', title: 'مهندس کیوان ستاری', text: 'مدیر واحد اتوماسیون' },
+				{ icon: '', title: 'مهندس الهام نیکزاد', text: 'مدیر کنترل کیفیت' },
+			], { layout: 'grid', style: 'plain', columns: '2', icon_style: 'plain' })],
+		]),
+	]),
+	rfqCta('از کارخانه\n*بازدید* کنید', 'هر چهارشنبه، با هماهنگی قبلی.'),
+];
+
+/* ---------------- Careers ---------------- */
+
+const careers = [
+	L.pageHead('فرصت‌های شغلی', 'با ما\n*بسازید*', 'به مهندسان و تکنسین‌هایی نیاز داریم که دوست دارند کارشان روی خط تولید دیده شود.'),
+	fx(section({ space: 'md', gap: 40 }, [
+		L.features([
+			{ icon: 'cpu', title: 'مهندس اتوماسیون', text: 'برنامه‌نویسی PLC و طراحی صفحه‌ی HMI؛ دو سال سابقه.', meta: 'تهران · تمام‌وقت' },
+			{ icon: 'gauge', title: 'تکنسین کالیبراسیون', text: 'کار با مرجع‌های فشار و دبی؛ آشنایی با ISO 17025.', meta: 'تهران · تمام‌وقت' },
+			{ icon: 'wrench', title: 'کارشناس نصب و راه‌اندازی', text: 'سفرهای کاری کوتاه به سراسر کشور.', meta: 'سیار · تمام‌وقت' },
+			{ icon: 'chart', title: 'کارشناس فروش فنی', text: 'آشنایی با ابزار دقیق و صنایع فرایندی.', meta: 'تهران · تمام‌وقت' },
+		], { layout: 'list', style: 'plain', numbered: '', icon_style: 'tile' }),
+	]), { cards: 'cascade' }),
+	section({ space: 'md', gap: 40, width: 860 }, [
+		heading({ eyebrow: 'درخواست همکاری', title: 'رزومه‌تان را *بفرستید*', header_align: 'center' }),
+		L.contactForm({ show_phone: 'yes', label_phone: 'شماره‌ی موبایل', show_subject: 'yes', label_subject: 'عنوان شغلی', label_name: 'نام و نام خانوادگی', label_email: 'ایمیل', label_message: 'درباره‌ی خودتان و لینک رزومه', button: 'ارسال درخواست', success: 'درخواستتان رسید؛ ظرف یک هفته پاسخ می‌دهیم.' }),
+	]),
+];
+
+/* ---------------- FAQ and contact ---------------- */
+
+const faqPage = [
+	L.pageHead('پرسش‌های متداول', 'پیش از *سفارش*', 'پاسخ پرسش‌هایی که بیشتر از همه می‌شنویم. اگر پرسشتان این‌جا نیست، با واحد فروش تماس بگیرید.'),
+	section({ space: 'md', gap: 56 }, [
+		cols({ widths: [30, 70], gap: 64 }, [
+			[heading({ eyebrow: 'سفارش', title: 'تحویل و *گارانتی*', title_size: 'md' })],
+			[L.faq(FAQ, { style: 'lines' })],
+		]),
+	]),
+	rfqCta(),
+];
 
 const contact = [
-	section({ space: 'md', bottom0: true }, [
-		heading({ eyebrow: 'تماس و استعلام قیمت', title: 'پیش‌فاکتور،\n*در همان روز کاری*', title_tag: 'h1', title_size: 'xl', desc: 'سه مرحله‌ی کوتاه را تکمیل کنید یا مستقیم با واحد فروش تماس بگیرید.' }),
-	]),
-	section({ space: 'md' }, [
-		cols({ widths: [60, 40], gap: 56 }, [
-			[L.leadForm(RFQ)],
+	L.pageHead('تماس و استعلام قیمت', 'پیش‌فاکتور،\n*در همان روز کاری*', 'سه مرحله‌ی کوتاه را تکمیل کنید یا مستقیم با واحد فروش تماس بگیرید.'),
+	section({ space: 'md', gap: 48 }, [
+		cols({ widths: [36, 64], gap: 56 }, [
 			[L.contactInfo([
 				{ icon: 'phone', label: 'واحد فروش', value: '۰۲۱-۴۴۰۰۹۲۸۰', link: link('tel:+982144009280') },
-				{ icon: 'wrench', label: 'پشتیبانی فنی ۲۴ ساعته', value: '۰۹۱۲ ۷۷۰ ۴۴۰۰', link: link('tel:+989127704400') },
 				{ icon: 'mail', label: 'ایمیل فروش', value: 'sales@hamoon-ind.ir', link: link('mailto:sales@hamoon-ind.ir') },
-				{ icon: 'factory', label: 'کارخانه', value: 'شهرک صنعتی عباس‌آباد، خیابان صنعت ۷، پلاک ۴۲', link: link('') },
-				{ icon: 'pin', label: 'دفتر مرکزی', value: 'تهران، بزرگراه ستاری، خیابان پیامبر، ساختمان هامون', link: link('') },
+				{ icon: 'pin', label: 'دفتر مرکزی و کارخانه', value: 'تهران، شهرک صنعتی شمس‌آباد، خیابان نهم، پلاک ۲۲', link: link('') },
+				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه ۸ تا ۱۷، پنج‌شنبه ۸ تا ۱۳', link: link('') },
 			])],
-		]),
-	]),
-	section({ space: 'md', scheme: 'surface' }, [
-		cols({ widths: [36, 64], gap: 64 }, [
-			[heading({ eyebrow: 'پرسش‌ها', title: 'پیش از *سفارش*' })],
-			[L.faq(FAQ)],
+			[L.leadForm(RFQ)],
 		]),
 	]),
 ];
 
-/* ---------------- Blog ---------------- */
+/* ---------------- Knowledge base ---------------- */
 
 const terms = [
 	{ key: 'cat-guide', taxonomy: 'category', name: 'راهنمای انتخاب', slug: 'selection-guides' },
 	{ key: 'cat-maint', taxonomy: 'category', name: 'نگهداری و تعمیرات', slug: 'maintenance' },
 	{ key: 'cat-auto', taxonomy: 'category', name: 'اتوماسیون', slug: 'automation' },
-	{ key: 'pcat-control', taxonomy: 'product_cat', name: 'کنترل و اتوماسیون', slug: 'control-automation' },
-	{ key: 'pcat-instrument', taxonomy: 'product_cat', name: 'ابزار دقیق', slug: 'instrumentation' },
-	{ key: 'pcat-valve', taxonomy: 'product_cat', name: 'شیرآلات', slug: 'valves' },
-	{ key: 'pcat-pump', taxonomy: 'product_cat', name: 'پمپ', slug: 'pumps' },
+	{ key: 'pcat-control', taxonomy: 'product_cat', name: 'کنترل و اتوماسیون', slug: 'control-automation', image: 'product-1', description: 'پنل‌های لمسی و کنترلرهای ماژولار.' },
+	{ key: 'pcat-instrument', taxonomy: 'product_cat', name: 'ابزار دقیق', slug: 'instrumentation', image: 'product-2', description: 'گیج‌های فشار و دبی‌سنج‌ها.' },
+	{ key: 'pcat-valve', taxonomy: 'product_cat', name: 'شیرآلات', slug: 'valves', image: 'product-3', description: 'شیرهای توپی و کشویی فلنج‌دار.' },
+	{ key: 'pcat-pump', taxonomy: 'product_cat', name: 'پمپ', slug: 'pumps', image: 'product-4', description: 'پمپ‌های سانتریفیوژ صنعتی.' },
 ];
 
 const posts = [
@@ -434,60 +477,81 @@ const products = [
 		content: L.productBody(['FM-200 بدون قطعه‌ی متحرک و بدون افت فشار، دبی سیالات رسانا مثل آب و فاضلاب را اندازه می‌گیرد.', 'نمایشگر محلی دبی لحظه‌ای و حجم کل را نشان می‌دهد.'], [['لاینر', 'PTFE'], ['الکترود', 'استیل ۳۱۶'], ['درجه‌ی حفاظت', 'IP67']]) },
 ];
 
+/* ---------------- Package ---------------- */
+
+const LIGHT = { light: 'start', extra: { hm_page_light_a: '#c3262f', hm_page_light_b: '#8a96a3' } };
+
+const pages = [
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
+	{ key: 'families', title: 'خانواده‌های محصول', slug: 'product-families', elementor: families, settings: L.pageSettings() },
+	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings(LIGHT) },
+	{ key: 'industries', title: 'صنایع', slug: 'industries', elementor: industries, settings: L.pageSettings() },
+	{ key: 'quality', title: 'کیفیت و گواهی‌ها', slug: 'quality', elementor: quality, settings: L.pageSettings() },
+	{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'careers', parent: 'about', title: 'فرصت‌های شغلی', slug: 'careers', elementor: careers, settings: L.pageSettings() },
+	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
+	{ key: 'contact', title: 'تماس و استعلام قیمت', slug: 'contact', elementor: contact, settings: L.pageSettings() },
+	{ key: 'blog', title: 'دانشنامه', slug: 'knowledge', content: '' },
+];
+
 module.exports = {
 	manifest: {
 		id: 'industrial',
 		order: 3,
 		title: 'صنایع هامون',
-		desc: 'شرکت صنعتی و فروش تجهیزات؛ طراحی اسکیومورفیک با کلیدهای فیزیکی، نمایشگرهای LCD و فرم استعلام قیمت.',
+		desc: 'شرکت صنعتی و فروش تجهیزات؛ سایت شرکتی کامل با کاتالوگ: خانواده‌های محصول، خدمات، صنایع، کیفیت و گواهی‌ها، فرصت‌های شغلی، استعلام قیمت سه‌مرحله‌ای و دانشنامه. فولاد، گرافیت و قرمز هشدار.',
 		kit: 'industrial',
 		thumb: 'thumb.webp',
-		required: ['elementor'],
-		recommended: ['woocommerce'],
-		tags: ['صنعتی', 'تولیدی', 'فروشگاه تجهیزات'],
-		pages: ['خانه', 'خانه — مدل دوم', 'درباره‌ی ما', 'تماس و استعلام', 'دانشنامه', 'محصولات'],
+		required: ['elementor', 'woocommerce'],
+		recommended: [],
+		tags: ['صنعتی', 'شرکتی', 'فروشگاه تجهیزات'],
+		pages: pages.filter((p) => p.elementor).map((p) => p.title).concat(['محصولات', 'دانشنامه']),
 	},
 	content: {
 		site: { title: 'صنایع هامون', tagline: 'تجهیزات کنترل فرایند، ساخت ایران' },
-		images, alts, terms, posts, products,
-		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: homeA, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'home-2', title: 'خانه — مدل دوم', slug: 'home-2', elementor: homeB, settings: L.pageSettings({ header: 'transparent' }) },
-			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
-			{ key: 'contact', title: 'تماس و استعلام قیمت', slug: 'contact', elementor: contact, settings: L.pageSettings() },
-			{ key: 'blog', title: 'دانشنامه', slug: 'knowledge', content: '' },
-		],
+		images, alts, terms, posts, products, pages,
 		templates: [
 			{ key: 'tpl-home', type: 'page', page: 'home', title: 'هامون — صفحه‌ی اصلی' },
-			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'هامون — صفحه‌ی اصلی، مدل دوم' },
-			{ key: 'tpl-about', type: 'page', page: 'about', title: 'هامون — درباره‌ی ما' },
-			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'هامون — تماس و استعلام' },
-			{ key: 'tpl-hscroll', type: 'section', page: 'home', index: 4, title: 'هامون — اسکرول افقی خطوط محصول' },
-			{ key: 'tpl-lcd', type: 'section', page: 'home', index: 5, title: 'هامون — شمارنده‌های LCD' },
-			{ key: 'tpl-zoom', type: 'section', page: 'home', index: 6, title: 'هامون — زوم با اسکرول کارخانه' },
-			{ key: 'tpl-device-hero', type: 'section', page: 'home-2', index: 0, title: 'هامون — هیرو با موکاپ دستگاه' },
-			{ key: 'tpl-stack', type: 'section', page: 'home-2', index: 3, title: 'هامون — کارت‌های پشته‌ای' },
+			{ key: 'tpl-home-2', type: 'page', page: 'home-2', title: 'هامون — صفحه‌ی اصلی، نسخه‌ی دوم' },
+			{ key: 'tpl-services', type: 'page', page: 'services', title: 'هامون — خدمات' },
+			{ key: 'tpl-quality', type: 'page', page: 'quality', title: 'هامون — کیفیت و گواهی‌ها' },
+			{ key: 'tpl-contact', type: 'page', page: 'contact', title: 'هامون — استعلام قیمت' },
+			{ key: 'tpl-stack', type: 'section', page: 'home', index: 6, title: 'هامون — سه لایه‌ی خط (کارت‌های پشته‌ای)' },
+			{ key: 'tpl-figures', type: 'section', page: 'home', index: 8, title: 'هامون — اعداد روی زمینه‌ی تیره' },
+			{ key: 'tpl-tabs', type: 'section', page: 'home-2', index: 1, title: 'هامون — صنایع با زبانه' },
 		],
 		menus: [
 			{
 				name: 'هامون — منوی اصلی', location: 'primary', items: [
-					{ title: 'خانه', page: 'home', children: [{ title: 'خانه — مدل اول', page: 'home' }, { title: 'خانه — مدل دوم', page: 'home-2' }] },
+					{ title: 'خانه', page: 'home' },
 					{ title: 'محصولات', url: '{{shop}}', children: [
+						{ title: 'خانواده‌های محصول', page: 'families' },
 						{ title: 'کنترل و اتوماسیون', term: 'pcat-control' },
 						{ title: 'ابزار دقیق', term: 'pcat-instrument' },
 						{ title: 'شیرآلات', term: 'pcat-valve' },
 						{ title: 'پمپ', term: 'pcat-pump' },
 					] },
+					{ title: 'خدمات', page: 'services' },
+					{ title: 'صنایع', page: 'industries' },
+					{ title: 'کیفیت', page: 'quality' },
 					{ title: 'دانشنامه', page: 'blog' },
-					{ title: 'درباره‌ی ما', page: 'about' },
-					{ title: 'تماس', page: 'contact' },
+					{
+						title: 'شرکت', page: 'about', children: [
+							{ title: 'درباره‌ی ما', page: 'about' },
+							{ title: 'فرصت‌های شغلی', page: 'careers' },
+							{ title: 'پرسش‌های متداول', page: 'faq' },
+							{ title: 'تماس', page: 'contact' },
+						],
+					},
 				],
 			},
 			{
 				name: 'هامون — پابرگ', location: 'footer', items: [
 					{ title: 'محصولات', url: '{{shop}}' },
-					{ title: 'دانشنامه', page: 'blog' },
-					{ title: 'درباره‌ی ما', page: 'about' },
+					{ title: 'خدمات', page: 'services' },
+					{ title: 'کیفیت و گواهی‌ها', page: 'quality' },
+					{ title: 'فرصت‌های شغلی', page: 'careers' },
 					{ title: 'استعلام قیمت', page: 'contact' },
 				],
 			},
@@ -497,8 +561,12 @@ module.exports = {
 			logo_dark: '{{imgid:logo-dark}}',
 			logo_height: 38,
 			header_layout: 'split',
+			header_cart: false,
 			header_cta_text: 'استعلام قیمت',
 			header_cta_url: '{{page:contact}}',
+			font_body: 'iransansx',
+			font_heading: 'peyda',
+			font_heading_weight: '700',
 			footer_about: 'صنایع هامون از ۱۳۷۶ تجهیزات کنترل فرایند، ابزار دقیق، شیرآلات و پمپ‌های صنعتی را در ایران طراحی و تولید می‌کند.',
 			footer_copyright: 'تمام حقوق برای صنایع هامون محفوظ است.',
 			footer_social: [{ network: 'linkedin', url: 'https://linkedin.com/' }, { network: 'instagram', url: 'https://instagram.com/' }, { network: 'aparat', url: 'https://aparat.com/' }],
@@ -506,8 +574,15 @@ module.exports = {
 			mobile_bar_text: 'استعلام قیمت',
 			mobile_bar_url: '{{page:contact}}',
 			mobile_bar_phone: '02144009280',
+			magnetic: true,
+			cursor: 'ring',
+			sound_enabled: true,
+			sound_default: true,
+			sound_theme: 'mechanical',
+			sound_volume: 30,
+			sound_hover: false,
 		},
-		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', pages: { shop: 'محصولات', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
+		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', catalog_rows: 4, pages: { shop: 'محصولات', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
 		front_page: 'home',
 		posts_page: 'blog',
 	},
