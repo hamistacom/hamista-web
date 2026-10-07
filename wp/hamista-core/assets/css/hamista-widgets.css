@@ -1326,7 +1326,7 @@
 .hm-qexpand .hm-qexpand__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--hm-ease); }
 .hm-qexpand__photo--blank { background: linear-gradient(160deg, color-mix(in srgb, var(--hm-accent) 70%, #000), #111); }
 .hm-qexpand__item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, .78)); pointer-events: none; }
-.hm-qexpand__name { position: absolute; z-index: 2; inset-inline: 0; bottom: 22px; margin-inline: auto; width: 1.6em; writing-mode: vertical-rl; font-weight: 800; white-space: nowrap; transition: opacity .3s; }
+.hm-qexpand__name { position: absolute; z-index: 2; left: 0; right: 0; bottom: 22px; margin: 0 auto; width: 1.6em; writing-mode: vertical-rl; font-weight: 800; white-space: nowrap; transition: opacity .3s; }
 .hm-qexpand__body { position: absolute; z-index: 2; inset: auto 0 0; padding: clamp(18px, 3vw, 32px); opacity: 0; transform: translateY(14px); transition: opacity .4s var(--hm-ease), transform .5s var(--hm-ease); pointer-events: none; }
 .hm-qexpand__body blockquote { margin: 8px 0 14px; max-width: 46ch; font-size: clamp(1rem, .95rem + .3vw, 1.15rem); font-weight: 600; line-height: 1.9; }
 .hm-qexpand__body figcaption b { display: block; }
