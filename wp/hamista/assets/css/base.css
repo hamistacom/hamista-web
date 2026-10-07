@@ -250,6 +250,26 @@
 .hm-btn--ghost:hover { color: var(--hm-accent-ink); background: var(--hm-accent-soft); box-shadow: none; }
 .hm-btn--inverse { background: var(--hm-inv-fg); color: var(--hm-inv-bg); }
 .hm-btn--inverse:hover { color: var(--hm-inv-bg); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .5); }
+/* Orb: a round button with a metallic ring that turns on hover. Tinted by --hm-orb-ink and --hm-orb-core. */
+.hm-btn--orb {
+	--hm-orb: 128px;
+	/* A fixed circle: button rows that stretch their buttons on phones must not turn it into an oval. */
+	width: var(--hm-orb) !important; height: var(--hm-orb); min-height: 0; flex: none; padding: 18px; flex-direction: column; gap: 4px;
+	border: 0; border-radius: 50%; overflow: visible; white-space: normal; text-align: center; line-height: 1.5; font-size: .82rem; font-weight: 600;
+	color: var(--hm-orb-ink, #f1dca4); background: var(--hm-orb-core, #0a0a0a);
+}
+.hm-btn--orb::before {
+	content: ""; position: absolute; inset: 0; z-index: -1; padding: 1.5px; border-radius: 50%;
+	background: conic-gradient(from 200deg, #6f5424, #f6e3ad, #9c7a36, #fff4d2, #7d5f27, #e9cf8f, #6f5424);
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+	transition: transform 1.4s var(--hm-ease);
+}
+.hm-btn--orb::after { content: ""; position: absolute; inset: 9px; z-index: -1; border: 1px solid rgba(241, 220, 164, .16); border-radius: 50%; }
+.hm-btn--orb:hover { color: #fff4d2; transform: none; box-shadow: 0 0 70px -14px rgba(233, 207, 143, .5); }
+.hm-btn--orb:hover::before { transform: rotate(200deg); }
+.hm-btn--orb .hm-i-arrow { transform: rotate(45deg); }
+.hm-btn--orb:hover .hm-i-arrow { transform: rotate(45deg) translateX(-3px); }
+[dir="ltr"] .hm-btn--orb .hm-i-arrow { transform: scaleX(-1) rotate(45deg); }
 .hm-btn--sm { --hm-btn-h: 42px; padding-inline: 1.1em; font-size: .875rem; }
 .hm-btn--lg { --hm-btn-h: 58px; padding-inline: 2em; font-size: 1rem; }
 .hm-btn--block { width: 100%; }

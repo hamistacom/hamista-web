@@ -319,4 +319,6 @@ T = {
     "Cloud white, navy and royal blue": "سفید ابری، سرمه~ای و آبی سلطنتی",
     "Ink": "مرکب",
     "Manuscript blue, parchment and gilt": "آبی نسخه~های خطی، کاغذ کهنه و طلاکاری",
+    "Aurum": "زر",
+    "Black, ivory and brushed gold": "سیاه، عاجی و طلای مات",
 }

@@ -127,6 +127,11 @@ return ( static function () {
 							'desc'  => __( 'Manuscript blue, parchment and gilt', 'hamista-core' ),
 							'image' => $img . 'kit-ink.svg',
 						),
+						'aurum'      => array(
+							'label' => __( 'Aurum', 'hamista-core' ),
+							'desc'  => __( 'Black, ivory and brushed gold', 'hamista-core' ),
+							'image' => $img . 'kit-aurum.svg',
+						),
 					),
 				),
 				'container_width'   => array(

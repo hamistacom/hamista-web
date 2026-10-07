@@ -42,6 +42,7 @@ function hamista_kits() {
 			'voyage'     => __( 'Voyage — cinematic travel, turquoise', 'hamista' ),
 			'azure'      => __( 'Azure — navy and royal blue, frosted panels', 'hamista' ),
 			'ink'        => __( 'Ink — manuscript blue, parchment and gilt', 'hamista' ),
+			'aurum'      => __( 'Aurum — black, ivory and brushed gold', 'hamista' ),
 		)
 	);
 }
@@ -248,6 +249,7 @@ function hamista_theme_color_meta() {
 		'voyage'     => '#f4f2ee',
 		'azure'      => '#f5f7fb',
 		'ink'        => '#0b1220',
+		'aurum'      => '#070707',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

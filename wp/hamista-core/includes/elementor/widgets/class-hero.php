@@ -142,6 +142,16 @@ class Hero extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'title_stagger',
+			array(
+				'label'        => __( 'Stagger the title lines', 'hamista-core' ),
+				'description'  => __( 'Each line of the title gets its own row: the first starts at one edge, the last ends at the other. Thin, very large type.', 'hamista-core' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'condition'    => array( 'layout' => array( 'full', 'monument', 'editorial' ) ),
+			)
+		);
+		$this->add_control(
 			'object_turn',
 			array(
 				'label'        => __( 'Turn the object slowly', 'hamista-core' ),
@@ -298,6 +308,19 @@ class Hero extends Widget_Base {
 		}
 		if ( 'center' === ( $s['header_align'] ?? '' ) ) {
 			$classes[] = 'hm-hero--centered';
+		}
+		if ( 'yes' === ( $s['title_stagger'] ?? '' ) && in_array( $layout, array( 'full', 'monument', 'editorial' ), true ) ) {
+			$classes[]       = 'hm-hero--stagger';
+			$lines           = array_filter( array_map( 'trim', explode( "\n", (string) $s['title'] ) ), 'strlen' );
+			$s['title_html'] = implode(
+				'',
+				array_map(
+					static function ( $line ) {
+						return '<span class="hm-hero__line">' . hamista_core_highlight( $line ) . '</span>';
+					},
+					$lines
+				)
+			);
 		}
 		if ( 'full' === $layout ) {
 			$s['title_size'] = $s['title_size'] ? $s['title_size'] : 'xl';

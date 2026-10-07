@@ -275,6 +275,22 @@
 .hm-hero--monument .hm-hero__stats { justify-content: center; }
 @media (prefers-reduced-motion: reduce) { .hm-hero__object.is-turning .hm-hero__object-in { animation: none; } }
 
+/* Staggered title: thin and very large, the first line at one edge, the last at the other. */
+.hm-hero--stagger .hm-hero__text, .hm-hero--stagger .hm-hero__stage { justify-items: stretch; width: 100%; }
+.hm-hero--stagger .hm-hero__head { width: 100%; max-width: none; justify-items: stretch; }
+.hm-hero--stagger .hm-head__title { display: grid; width: 100%; font-size: clamp(3.2rem, 1rem + 7.6vw, 8.6rem); font-weight: var(--hm-fw-monument, 200); line-height: 1.12; }
+/* The round button and the figures share the last row. */
+.hm-hero--stagger .hm-hero__text { grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: clamp(24px, 4vw, 64px); }
+.hm-hero--stagger .hm-hero__head, .hm-hero--stagger .hm-hero__text > :only-child { grid-column: 1 / -1; }
+.hm-hero--stagger .hm-hero__stats { margin: 0; padding-top: 0; border-top: 0; justify-content: flex-end; }
+@media (max-width: 600px) {
+	.hm-hero--stagger .hm-hero__text { grid-template-columns: minmax(0, 1fr); row-gap: 28px; }
+	.hm-hero--stagger .hm-hero__stats { justify-content: space-between; }
+}
+.hm-hero__line { display: block; text-align: start; }
+.hm-hero__line:last-child:not(:first-child) { text-align: end; }
+.hm-hero--stagger.hm-hero--full .hm-hero__inner { display: block; }
+
 /* Full-bleed */
 .hm-hero--full { min-height: calc(var(--hm-hero-h) + var(--hm-header-h)); color: #fff; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .78); --hm-border: rgba(255, 255, 255, .2); --hm-accent-ink: #fff; padding-top: calc(var(--hm-header-h) + 48px); }
 .hm-hero--full.hm-hero--h-screen { align-items: flex-end; }
@@ -303,7 +319,7 @@
    ========================================================================== */
 .hm-scrubtext { display: grid; gap: 20px; }
 .hm-scrubtext .hm-eyebrow { margin: 0; }
-.hm-scrubtext__text { margin: 0; font-family: var(--hm-font-heading); font-weight: 800; line-height: 1.35; text-wrap: pretty; }
+.hm-scrubtext__text { margin: 0; font-family: var(--hm-font-heading); font-weight: var(--hm-fw-scrub, 800); line-height: 1.35; text-wrap: pretty; }
 .hm-scrubtext--md .hm-scrubtext__text { font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.4rem); }
 .hm-scrubtext--lg .hm-scrubtext__text { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.6rem); line-height: 1.3; }
 .hm-scrubtext--xl .hm-scrubtext__text { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.6rem); line-height: 1.22; }

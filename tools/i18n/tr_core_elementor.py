@@ -673,4 +673,7 @@ T = {
     "Monument: one giant word, an object in front of it": "یادمانی: یک واژه~ی بزرگ و شیئی در برابر آن",
     "Turn the object slowly": "چرخش آرام شیء",
     "One full turn every three minutes; suits round objects such as an astrolabe or a plate. Stops for visitors who prefer less motion.": "هر سه دقیقه یک دور کامل؛ مناسب اشیای گرد مثل اسطرلاب یا بشقاب. برای بازدیدکنندگانی که حرکت کمتر را ترجیح می~دهند متوقف می~شود.",
+    "Round, metallic ring": "گرد، با حلقه~ی فلزی",
+    "Stagger the title lines": "پلکانی کردن سطرهای تیتر",
+    "Each line of the title gets its own row: the first starts at one edge, the last ends at the other. Thin, very large type.": "هر سطر تیتر در ردیف خودش می~نشیند: سطر اول از یک لبه شروع می~شود و سطر آخر در لبه~ی دیگر تمام می~شود. با حروف نازک و بسیار درشت.",
 }

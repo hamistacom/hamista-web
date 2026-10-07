@@ -311,7 +311,7 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 				$tag,
 				esc_attr( $size ),
 				'none' === $reveal ? '' : ' data-hm-reveal="' . esc_attr( $reveal ) . '" data-hm-delay="0.05"',
-				hamista_core_highlight( $s['title'] )
+				isset( $s['title_html'] ) ? $s['title_html'] : hamista_core_highlight( $s['title'] )
 			);
 		}
 		if ( ! empty( $s['desc'] ) ) {
@@ -386,6 +386,7 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 			'secondary' => __( 'Secondary', 'hamista-core' ),
 			'ghost'     => __( 'Ghost', 'hamista-core' ),
 			'inverse'   => __( 'Inverse', 'hamista-core' ),
+			'orb'       => __( 'Round, metallic ring', 'hamista-core' ),
 			'link'      => __( 'Text link', 'hamista-core' ),
 		);
 	}
