@@ -742,12 +742,11 @@ const contact = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#2f6b5c', hm_page_light_b: '#a8834f' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent' }) },
-	{ key: 'departments', title: 'بخش‌ها', slug: 'departments', elementor: departments, settings: L.pageSettings(LIGHT) },
+	{ key: 'departments', title: 'بخش‌ها', slug: 'departments', elementor: departments, settings: L.pageSettings() },
 	{ key: 'dept-skin', parent: 'departments', title: 'پوست و مو', slug: 'dermatology', elementor: deptSkin, settings: L.pageSettings() },
 	{ key: 'dept-dental', parent: 'departments', title: 'دندان‌پزشکی', slug: 'dentistry', elementor: deptDental, settings: L.pageSettings() },
 	{ key: 'dept-eye', parent: 'departments', title: 'چشم‌پزشکی', slug: 'ophthalmology', elementor: deptEye, settings: L.pageSettings() },
@@ -758,7 +757,7 @@ const pages = [
 	{ key: 'booking', title: 'نوبت‌دهی', slug: 'book-an-appointment', elementor: booking, settings: L.pageSettings() },
 	{ key: 'checkup', title: 'چکاپ و تعرفه‌ها', slug: 'checkups-and-fees', elementor: checkup, settings: L.pageSettings() },
 	{ key: 'guide', title: 'راهنمای بیماران', slug: 'patient-guide', elementor: guide, settings: L.pageSettings() },
-	{ key: 'about', title: 'درباره‌ی سپیدار', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'about', title: 'درباره‌ی سپیدار', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 	{ key: 'blog', title: 'مجله‌ی سلامت', slug: 'journal', content: '' },

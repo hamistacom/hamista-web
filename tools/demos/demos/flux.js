@@ -520,15 +520,14 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#e2622b', hm_page_light_b: '#f2efe9' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(Object.assign({ header: 'transparent-light' }, LIGHT)) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
-	{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: workPage, settings: L.pageSettings(LIGHT) },
+	{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: workPage, settings: L.pageSettings() },
 	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
 	{ key: 'brief', title: 'شروع پروژه', slug: 'start-a-project', elementor: brief, settings: L.pageSettings() },
-	{ key: 'about', title: 'درباره‌ی سیال', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'about', title: 'درباره‌ی سیال', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 	{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-07T23:06:09+00:00\n"
-"PO-Revision-Date: 2026-10-07 23:06+0000\n"
+"POT-Creation-Date: 2026-10-08T21:31:23+00:00\n"
+"PO-Revision-Date: 2026-10-08 21:31+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -3663,27 +3663,31 @@ msgstr "در حاشیه‌ی ابتدای سطر"
 msgid "Along the end margin"
 msgstr "در حاشیه‌ی انتهای سطر"
 
-#: includes/elementor/class-motion.php:361
+#: includes/elementor/class-motion.php:347
+msgid "Curve between sections, in each section's colour"
+msgstr "منحنی میان بخش‌ها، به رنگ هر بخش"
+
+#: includes/elementor/class-motion.php:362
 msgid "First colour"
 msgstr "رنگ اول"
 
-#: includes/elementor/class-motion.php:369
+#: includes/elementor/class-motion.php:370
 msgid "Second colour"
 msgstr "رنگ دوم"
 
-#: includes/elementor/class-motion.php:370
+#: includes/elementor/class-motion.php:371
 msgid "The line shifts from the first colour to the second down the page. Empty: the accent colours."
 msgstr "رنگ خط از بالا به پایین صفحه از رنگ اول به رنگ دوم می‌رسد. اگر خالی بماند، رنگ‌های اصلی قالب به کار می‌رود."
 
-#: includes/elementor/class-motion.php:378
+#: includes/elementor/class-motion.php:379
 msgid "Thickness (px)"
 msgstr "ضخامت (پیکسل)"
 
-#: includes/elementor/class-motion.php:397
+#: includes/elementor/class-motion.php:398
 msgid "Show the path ahead faintly"
 msgstr "نمایش کم‌رنگ مسیر پیش رو"
 
-#: includes/elementor/class-motion.php:407
+#: includes/elementor/class-motion.php:408
 #: includes/elementor/widgets/class-flow.php:117
 msgid "Show on phones"
 msgstr "نمایش در گوشی"

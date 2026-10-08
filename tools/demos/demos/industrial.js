@@ -479,16 +479,15 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#c3262f', hm_page_light_b: '#8a96a3' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'families', title: 'خانواده‌های محصول', slug: 'product-families', elementor: families, settings: L.pageSettings() },
-	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings(LIGHT) },
+	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
 	{ key: 'industries', title: 'صنایع', slug: 'industries', elementor: industries, settings: L.pageSettings() },
 	{ key: 'quality', title: 'کیفیت و گواهی‌ها', slug: 'quality', elementor: quality, settings: L.pageSettings() },
-	{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'careers', parent: 'about', title: 'فرصت‌های شغلی', slug: 'careers', elementor: careers, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 	{ key: 'contact', title: 'تماس و استعلام قیمت', slug: 'contact', elementor: contact, settings: L.pageSettings() },

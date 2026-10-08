@@ -344,6 +344,7 @@ class Motion {
 			'weave' => __( 'Weave from margin to margin', 'hamista-core' ),
 			'start' => __( 'Along the start margin', 'hamista-core' ),
 			'end'   => __( 'Along the end margin', 'hamista-core' ),
+			'curve' => __( 'Curve between sections, in each section\'s colour', 'hamista-core' ),
 		);
 	}
 

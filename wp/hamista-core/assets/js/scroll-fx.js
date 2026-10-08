@@ -67,6 +67,9 @@
 		el.__hmLight = true;
 		var o = json(el.getAttribute('data-hm-light'));
 		var mode = o.mode || 'weave';
+		// Curve: a quiet thread that crosses the page between sections, each run in its section's colour.
+		var curve = mode === 'curve';
+		var secColors = [];
 		var width = clamp(parseFloat(o.w) || 2, 1, 6);
 		var TAIL = 180;
 		var palette = [o.a || 'var(--hm-accent)', o.b || 'color-mix(in srgb, var(--hm-accent) 45%, var(--hm-fg))'];
@@ -74,7 +77,7 @@
 
 		if (win.getComputedStyle(el).position === 'static') { el.style.position = 'relative'; }
 		var layer = doc.createElement('div');
-		layer.className = 'hm-light' + (o.track === false ? '' : ' has-track');
+		layer.className = 'hm-light' + (o.track === false ? '' : ' has-track') + (curve ? ' hm-light--curve' : '');
 		layer.setAttribute('aria-hidden', 'true');
 		layer.style.setProperty('--hm-light-w', width + 'px');
 		var head = doc.createElement('div');
@@ -106,9 +109,29 @@
 
 		function resolvePalette() {
 			colors = palette.map(function (c) { return resolveColor(c, el); });
+			if (curve) {
+				// Each section lends the thread its own accent, so tinted sections show through.
+				secColors = sections().map(function (sec) {
+					var inner = sec.querySelector('[class*="hm-scheme-"], .e-con') || sec;
+					return resolveColor('var(--hm-accent)', inner);
+				});
+				if (o.a) { secColors[0] = colors[0]; }
+			}
 		}
 
 		function paintStops() {
+			if (curve) {
+				segs.forEach(function (s, i) {
+					var stops = s.grad.children;
+					var c0 = rgb(secColors[Math.max(0, i - 1)] || [128, 128, 128, 1], 1);
+					var c1 = rgb(secColors[i] || [128, 128, 128, 1], 1);
+					stops[0].setAttribute('stop-color', i ? c0 : c1);
+					stops[1].setAttribute('stop-color', c1);
+					stops[2].setAttribute('stop-color', c1);
+					if (s.node) { s.node.setAttribute('fill', c1); }
+				});
+				return;
+			}
 			var span = Math.max(1, segs.length ? segs[segs.length - 1].y1 - segs[0].y0 : 1);
 			var y0 = segs.length ? segs[0].y0 : 0;
 			segs.forEach(function (s) {
@@ -146,9 +169,9 @@
 			var inset = narrow ? 9 : clamp(margin / 2, 28, 140);
 			var startX = H.rtl ? W - inset : inset;
 			var endX = W - startX;
-			var amp = narrow ? 0 : Math.min(inset * 0.3, 16);
-			var k = Math.min(110, vh() * 0.12);
-			var weave = mode === 'weave' && !narrow;
+			var amp = narrow || curve ? 0 : Math.min(inset * 0.3, 16);
+			var k = curve ? Math.min(150, vh() * 0.17) : Math.min(110, vh() * 0.12);
+			var weave = (mode === 'weave' || curve) && !narrow;
 
 			// One run per section; a weave crosses to the other margin at each boundary.
 			var runs = list.map(function (sec, i) {
@@ -168,6 +191,7 @@
 				} else {
 					d = 'M' + r.x.toFixed(1) + ' 0';
 				}
+				var crossD = cross ? d : '';
 				// A gentle wave down the margin, one bend every ~520px.
 				var from = cross ? 2 * k : 0;
 				var run = (b - a) - from;
@@ -186,8 +210,9 @@
 				var svg = svgEl('svg', { class: 'hm-light__seg', width: W, height: h.toFixed(0), viewBox: '0 0 ' + W + ' ' + h.toFixed(1), fill: 'none' });
 				svg.style.top = a.toFixed(1) + 'px';
 				var grad = svgEl('linearGradient', { id: id, gradientUnits: 'userSpaceOnUse', x1: 0, y1: 0, x2: 0, y2: h.toFixed(1) });
+				var mid = curve && cross ? Math.min(0.9, (2 * k) / h).toFixed(3) : '.5';
 				grad.appendChild(svgEl('stop', { offset: '0' }));
-				grad.appendChild(svgEl('stop', { offset: '.5' }));
+				grad.appendChild(svgEl('stop', { offset: mid }));
 				grad.appendChild(svgEl('stop', { offset: '1' }));
 				var defs = svgEl('defs');
 				defs.appendChild(grad);
@@ -197,14 +222,27 @@
 				var line = svgEl('path', { d: d, class: 'hm-light__line', stroke: 'url(#' + id + ')' });
 				var tail = svgEl('path', { d: d, class: 'hm-light__tail', stroke: 'url(#' + id + ')' });
 				svg.appendChild(track);
-				svg.appendChild(glow);
+				if (!curve) { svg.appendChild(glow); }
 				svg.appendChild(line);
-				svg.appendChild(tail);
+				if (!curve) { svg.appendChild(tail); }
+				var node = null;
+				if (curve) {
+					// A small node where the thread settles into each section.
+					node = svgEl('circle', { cx: r.x.toFixed(1), cy: (cross ? 2 * k : 0).toFixed(1), r: 3.5, class: 'hm-light__node' });
+					svg.appendChild(node);
+				}
 				layer.insertBefore(svg, head);
 				var len = line.getTotalLength();
+				var crossLen = 0;
+				if (curve && crossD) {
+					var probe = svgEl('path', { d: crossD });
+					svg.appendChild(probe);
+					crossLen = probe.getTotalLength();
+					svg.removeChild(probe);
+				}
 				line.style.strokeDasharray = glow.style.strokeDasharray = len + ' ' + (len + 2);
 				tail.style.strokeDasharray = TAIL + ' ' + (len + TAIL * 2);
-				var seg = { svg: svg, grad: grad, glow: glow, line: line, tail: tail, y0: a, y1: b, l0: total, len: len, drawn: -1, tailAt: null };
+				var seg = { svg: svg, grad: grad, glow: glow, line: line, tail: tail, node: node, nodeAt: crossLen, y0: a, y1: b, l0: total, len: len, drawn: -1, tailAt: null };
 				segs.push(seg);
 				for (var l = 0; l <= len; l += 12) {
 					var pt = line.getPointAtLength(l);
@@ -252,7 +290,9 @@
 					var off = (s.len - local).toFixed(1);
 					s.line.style.strokeDashoffset = off;
 					s.glow.style.strokeDashoffset = off;
+					if (s.node) { s.node.classList.toggle('is-on', local >= s.nodeAt); }
 				}
+				if (curve) { continue; }
 				var raw = L - s.l0;
 				var tailOn = H.animate && raw > -TAIL && raw < s.len + TAIL;
 				if (tailOn || s.tailAt !== null) {
@@ -260,7 +300,7 @@
 					s.tailAt = tailOn ? raw : null;
 				}
 			}
-			if (p && L > 0 && L < total) {
+			if (!curve && p && L > 0 && L < total) {
 				var span = Math.max(1, segs[segs.length - 1].y1 - segs[0].y0);
 				head.style.transform = 'translate3d(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px,0)';
 				head.style.color = rgb(colorAt((p.y - segs[0].y0) / span), 1);

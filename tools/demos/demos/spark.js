@@ -496,18 +496,17 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#2b4aa0', hm_page_light_b: '#9aa6c8' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'courses', title: 'دوره‌ها', slug: 'courses', elementor: courses, settings: L.pageSettings() },
 	{ key: 'paths', title: 'مسیرهای آموزشی', slug: 'learning-paths', elementor: paths, settings: L.pageSettings() },
-	{ key: 'admissions', title: 'ثبت‌نام و شهریه', slug: 'admissions', elementor: admissions, settings: L.pageSettings(LIGHT) },
+	{ key: 'admissions', title: 'ثبت‌نام و شهریه', slug: 'admissions', elementor: admissions, settings: L.pageSettings() },
 	{ key: 'mentors', title: 'منتورها', slug: 'mentors', elementor: mentors, settings: L.pageSettings() },
 	{ key: 'work', title: 'ساخته‌ی دانشجوها', slug: 'student-work', elementor: work, settings: L.pageSettings() },
 	{ key: 'teams', title: 'دوره‌ی تیمی', slug: 'for-teams', elementor: teams, settings: L.pageSettings() },
-	{ key: 'about', title: 'درباره‌ی جرقه', slug: 'about', elementor: about, settings: L.pageSettings(LIGHT) },
+	{ key: 'about', title: 'درباره‌ی جرقه', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },
 	{ key: 'blog', title: 'مجله', slug: 'journal', content: '' },

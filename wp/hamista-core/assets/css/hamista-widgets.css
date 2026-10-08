@@ -1596,6 +1596,12 @@
 .hm-light__head::before { width: calc(var(--hm-light-w, 2px) * 3 + 6px); height: calc(var(--hm-light-w, 2px) * 3 + 6px); background: radial-gradient(circle, #fff 0 28%, currentColor 58%, transparent 72%); }
 .hm-light__head::after { width: 180px; height: 180px; background: radial-gradient(circle, currentColor, transparent 66%); opacity: .22; }
 @media (prefers-reduced-motion: reduce) { .hm-light__tail, .hm-light__head { display: none; } }
+/* Curve mode: a thin thread with a node per section; no glow and no head. */
+.hm-light--curve .hm-light__line { stroke-width: var(--hm-light-w, 1.5px); }
+.hm-light--curve.has-track .hm-light__track { opacity: .12; stroke-dasharray: 2 6; }
+.hm-light--curve .hm-light__head { display: none; }
+.hm-light__node { opacity: .25; transform-box: fill-box; transform-origin: center; transform: scale(.7); transition: opacity .5s var(--hm-ease), transform .5s var(--hm-ease); }
+.hm-light__node.is-on { opacity: 1; transform: scale(1); }
 
 /* Scroll colour: a fixed backdrop takes the blended colour; sections inside
    the page read the colour that holds the middle of the screen. */

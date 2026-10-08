@@ -290,7 +290,7 @@ module.exports = {
 		site: { title: 'پروازیار', tagline: 'بلیت هواپیما، آسوده' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#2459ff', hm_page_light_b: '#9fb4ff' } }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
 			{ key: 'deals', title: 'پیشنهادها', slug: 'deals', elementor: deals, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'guide', title: 'راهنمای سفر', slug: 'travel-guide', elementor: guide, settings: L.pageSettings() },

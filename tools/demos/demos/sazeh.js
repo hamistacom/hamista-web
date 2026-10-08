@@ -715,9 +715,9 @@ const contact = [
 /* ---------------- Package ---------------- */
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ light: 'start' }) },
-	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light', light: 'weave' }) },
-	{ key: 'studio', title: 'استودیو', slug: 'studio', elementor: studio, settings: L.pageSettings({ light: 'start' }) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ light: 'curve' }) },
+	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
+	{ key: 'studio', title: 'استودیو', slug: 'studio', elementor: studio, settings: L.pageSettings() },
 	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
 	{ key: 'service-architecture', parent: 'services', title: 'طراحی معماری', slug: 'architecture', elementor: serviceArchitecture, settings: L.pageSettings() },
 	{ key: 'service-interior', parent: 'services', title: 'طراحی داخلی', slug: 'interior-design', elementor: serviceInterior, settings: L.pageSettings() },

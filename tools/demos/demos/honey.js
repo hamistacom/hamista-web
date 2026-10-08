@@ -517,13 +517,12 @@ const contact = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#b0701a', hm_page_light_b: '#e9c46a' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'about', title: 'داستان ما', slug: 'about', elementor: about, settings: L.pageSettings() },
-	{ key: 'beekeepers', title: 'زنبوردارها', slug: 'beekeepers', elementor: beekeepers, settings: L.pageSettings(LIGHT) },
+	{ key: 'beekeepers', title: 'زنبوردارها', slug: 'beekeepers', elementor: beekeepers, settings: L.pageSettings() },
 	{ key: 'guide', title: 'کدام عسل؟', slug: 'honey-guide', elementor: guide, settings: L.pageSettings() },
 	{ key: 'subscription', title: 'اشتراک', slug: 'subscription', elementor: subscription, settings: L.pageSettings() },
 	{ key: 'gifts', title: 'هدیه‌ی سازمانی', slug: 'corporate-gifts', elementor: gifts, settings: L.pageSettings() },

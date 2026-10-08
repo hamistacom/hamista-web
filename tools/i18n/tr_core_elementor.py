@@ -711,6 +711,7 @@ T = {
     "Weave from margin to margin": "رفت~وبرگشت میان دو حاشیه",
     "Along the start margin": "در حاشیه~ی ابتدای سطر",
     "Along the end margin": "در حاشیه~ی انتهای سطر",
+    "Curve between sections, in each section\'s colour": "منحنی میان بخش‌ها، به رنگ هر بخش",
     "First colour": "رنگ اول",
     "Second colour": "رنگ دوم",
     "The line shifts from the first colour to the second down the page. Empty: the accent colours.": "رنگ خط از بالا به پایین صفحه از رنگ اول به رنگ دوم می~رسد. اگر خالی بماند، رنگ~های اصلی قالب به کار می~رود.",

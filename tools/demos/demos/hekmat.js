@@ -264,7 +264,7 @@ module.exports = {
 		site: { title: 'خانه‌ی حکمت', tagline: 'حلقه‌های خوانش ادبیات و حکمت ایرانی' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent', light: 'start', extra: { hm_page_light_a: '#d8b46c', hm_page_light_b: '#8a6a2f' } }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent' }) },
 			{ key: 'circles', title: 'حلقه‌ها', slug: 'circles', elementor: circles, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی خانه', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'program', title: 'برنامه‌ی فصل', slug: 'season', elementor: program, settings: L.pageSettings() },

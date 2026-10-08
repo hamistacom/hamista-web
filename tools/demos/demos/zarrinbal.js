@@ -243,7 +243,7 @@ module.exports = {
 		site: { title: 'زرین‌بال', tagline: 'هواپیمایی خصوصی' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#d8b46c', hm_page_light_b: '#f3dfa8' } }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
 			{ key: 'fleet', title: 'ناوگان', slug: 'fleet', elementor: fleet, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },

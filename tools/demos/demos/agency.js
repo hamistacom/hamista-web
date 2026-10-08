@@ -416,13 +416,12 @@ const products = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#c9452c', hm_page_light_b: '#a8a49b' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
-	{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: workPage, settings: L.pageSettings(LIGHT) },
+	{ key: 'work', title: 'نمونه‌کارها', slug: 'work', elementor: workPage, settings: L.pageSettings() },
 	{ key: 'audit', title: 'ممیزی رایگان', slug: 'free-audit', elementor: audit, settings: L.pageSettings() },
 	{ key: 'about', title: 'درباره‌ی تپش', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },

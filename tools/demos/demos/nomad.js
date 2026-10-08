@@ -593,16 +593,15 @@ const contact = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#8e2f25', hm_page_light_b: '#c99a3e' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
-	{ key: 'families', title: 'خانواده‌ها', slug: 'families', elementor: families, settings: L.pageSettings(LIGHT) },
+	{ key: 'families', title: 'خانواده‌ها', slug: 'families', elementor: families, settings: L.pageSettings() },
 	{ key: 'about', title: 'داستان کوچ', slug: 'about', elementor: story, settings: L.pageSettings() },
 	{ key: 'box', title: 'جعبه‌ی فصل', slug: 'season-box-subscription', elementor: box, settings: L.pageSettings() },
 	{ key: 'wholesale', title: 'خرید عمده', slug: 'wholesale', elementor: wholesale, settings: L.pageSettings() },
-	{ key: 'trips', title: 'سفر ییلاق', slug: 'summer-trips', elementor: trips, settings: L.pageSettings(LIGHT) },
+	{ key: 'trips', title: 'سفر ییلاق', slug: 'summer-trips', elementor: trips, settings: L.pageSettings() },
 	{ key: 'care', parent: 'faq', title: 'نگهداری', slug: 'care', elementor: care, settings: L.pageSettings() },
 	{ key: 'shipping', parent: 'faq', title: 'ارسال و مرجوعی', slug: 'shipping-and-returns', elementor: shipping, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },

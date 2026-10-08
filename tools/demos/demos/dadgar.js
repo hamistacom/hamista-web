@@ -684,11 +684,10 @@ const contact = [
 
 /* ---------------- Package ---------------- */
 
-const gold = { hm_page_light_a: '#b08d57', hm_page_light_b: '#7b2d26' };
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ light: 'start', extra: gold }) },
-	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light', light: 'weave', extra: gold }) },
-	{ key: 'about', title: 'درباره‌ی موسسه', slug: 'about', elementor: about, settings: L.pageSettings({ light: 'start', extra: gold }) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
+	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
+	{ key: 'about', title: 'درباره‌ی موسسه', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'practice', title: 'حوزه‌های کاری', slug: 'practice-areas', elementor: practice, settings: L.pageSettings() },
 	{ key: 'practice-corporate', parent: 'practice', title: 'شرکت‌ها و قراردادها', slug: 'corporate', elementor: practiceCorporate, settings: L.pageSettings() },
 	{ key: 'practice-realestate', parent: 'practice', title: 'املاک و ساخت‌وساز', slug: 'real-estate', elementor: practiceRealestate, settings: L.pageSettings() },

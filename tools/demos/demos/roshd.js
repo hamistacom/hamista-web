@@ -302,13 +302,12 @@ const posts = [
 
 /* ---------------- Package ---------------- */
 
-const LIGHT = { light: 'start', extra: { hm_page_light_a: '#1d7a6c', hm_page_light_b: '#e46f55' } };
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings(LIGHT) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'services', title: 'خدمات', slug: 'services', elementor: services, settings: L.pageSettings() },
 	{ key: 'plans', title: 'برنامه‌ها', slug: 'plans', elementor: plans, settings: L.pageSettings() },
-	{ key: 'cases', title: 'نمونه‌ها', slug: 'case-studies', elementor: cases, settings: L.pageSettings(LIGHT) },
+	{ key: 'cases', title: 'نمونه‌ها', slug: 'case-studies', elementor: cases, settings: L.pageSettings() },
 	{ key: 'about', title: 'درباره‌ی رشد', slug: 'about', elementor: about, settings: L.pageSettings() },
 	{ key: 'faq', title: 'پرسش‌های متداول', slug: 'faq', elementor: faqPage, settings: L.pageSettings() },
 	{ key: 'contact', title: 'تماس', slug: 'contact', elementor: contact, settings: L.pageSettings() },

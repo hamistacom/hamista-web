@@ -350,7 +350,7 @@ module.exports = {
 		site: { title: 'ره‌نورد', tagline: 'سفرهای آهسته در ایران' },
 		images, alts, terms, posts,
 		pages: [
-			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light', light: 'start', extra: { hm_page_light_a: '#2bb3c4', hm_page_light_b: '#d9a066' } }) },
+			{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ header: 'transparent-light' }) },
 			{ key: 'tours', title: 'تورها', slug: 'tours', elementor: tours, settings: L.pageSettings() },
 			{ key: 'about', title: 'درباره‌ی ما', slug: 'about', elementor: about, settings: L.pageSettings() },
 			{ key: 'custom', title: 'سفر اختصاصی', slug: 'private-journeys', elementor: custom, settings: L.pageSettings() },

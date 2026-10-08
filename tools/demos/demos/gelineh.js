@@ -487,10 +487,10 @@ const contact = [
 /* ---------------- Package ---------------- */
 
 const pages = [
-	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings({ light: 'start', extra: { hm_page_light_a: '#a85a3c', hm_page_light_b: '#5f7464' } }) },
+	{ key: 'home', title: 'خانه', slug: 'home', elementor: home, settings: L.pageSettings() },
 	{ key: 'home-2', title: 'خانه — نسخه‌ی دوم', slug: 'home-2', elementor: home2, settings: L.pageSettings({ header: 'transparent-light' }) },
 	{ key: 'collections', title: 'مجموعه‌ها', slug: 'collections', elementor: collections, settings: L.pageSettings() },
-	{ key: 'atelier', title: 'کارگاه', slug: 'atelier', elementor: atelier, settings: L.pageSettings({ light: 'start' }) },
+	{ key: 'atelier', title: 'کارگاه', slug: 'atelier', elementor: atelier, settings: L.pageSettings() },
 	{ key: 'custom', title: 'سفارش ویژه', slug: 'custom-orders', elementor: custom, settings: L.pageSettings() },
 	{ key: 'care', parent: 'faq', title: 'نگهداری', slug: 'care', elementor: care, settings: L.pageSettings() },
 	{ key: 'shipping', parent: 'faq', title: 'ارسال و مرجوعی', slug: 'shipping-and-returns', elementor: shipping, settings: L.pageSettings() },
