@@ -167,6 +167,11 @@ return ( static function () {
 							'desc'  => __( 'Porcelain white, deep green and a eucalyptus accent', 'hamista-core' ),
 							'image' => $img . 'kit-care.svg',
 						),
+						'nova'       => array(
+							'label' => __( 'Nova', 'hamista-core' ),
+							'desc'  => __( 'Green-black, electric lime and frosted glass cards', 'hamista-core' ),
+							'image' => $img . 'kit-nova.svg',
+						),
 					),
 				),
 				'container_width'   => array(
@@ -433,6 +438,11 @@ return ( static function () {
 						'header_template' => 0,
 						'header_sticky'   => true,
 					),
+				),
+				'header_glass'          => $on_off + array(
+					'label'   => __( 'Floating glass bar', 'hamista-core' ),
+					'desc'    => __( 'The header floats a little below the top as a rounded bar of frosted glass, over the page.', 'hamista-core' ),
+					'show_if' => array( 'header_template' => 0 ),
 				),
 				'header_search'         => $on_off + array(
 					'label'   => __( 'Search button', 'hamista-core' ),

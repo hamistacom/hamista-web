@@ -1,0 +1,125 @@
+/*!
+ * Hamista style kit — Nova
+ * Deep green-black and one electric lime, with frosted glass panels: made for
+ * digital art, collections and studios that show their work on cards.
+ * Dark first; the light mode keeps the lime for buttons and a darker olive for text.
+ */
+.hm-kit-nova {
+	--hm-bg: #f2f5f1;
+	--hm-surface: #fbfcfa;
+	--hm-surface-2: #e8ede6;
+	--hm-sunken: #e0e6dd;
+	--hm-fg: #0e1a17;
+	--hm-fg-muted: #56645f;
+	--hm-border: rgba(14, 26, 23, .11);
+	--hm-border-strong: rgba(14, 26, 23, .24);
+	--hm-accent: #b8e62b;
+	--hm-accent-2: #0e1a17;
+	--hm-accent-fg: #0e1a17;
+	--hm-accent-ink: #4d6d00;
+	--hm-accent-soft: rgba(184, 230, 43, .16);
+	--hm-inv-bg: #0f1b18;
+	--hm-inv-fg: #eef3ef;
+	--hm-inv-muted: #9aaba5;
+	--hm-path-deep: #0f1b18;
+
+	--hm-radius-sm: 6px;
+	--hm-radius-md: 10px;
+	--hm-radius-lg: 14px;
+	--hm-radius-xl: 20px;
+	--hm-radius-btn: 999px;
+	--hm-fw-heading: 500;
+	--hm-fw-monument: 300;
+	--hm-lh-heading: 1.4;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: 0 1px 3px rgba(14, 26, 23, .05);
+	--hm-shadow-lg: 0 24px 48px -30px rgba(14, 26, 23, .3);
+	--hm-card-border: 1px solid var(--hm-border);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 0 20px 40px -28px rgba(14, 26, 23, .32);
+	--hm-input-bg: var(--hm-surface);
+	--hm-ease: cubic-bezier(.22, 1, .36, 1);
+	--hm-focus: 0 0 0 2px var(--hm-bg), 0 0 0 4px var(--hm-accent);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-nova,
+[data-hm-theme="dark"].hm-kit-nova {
+	--hm-bg: #0f1b18;
+	--hm-surface: #15241f;
+	--hm-surface-2: #1b2d27;
+	--hm-sunken: #0a1310;
+	--hm-fg: #eef3ef;
+	--hm-fg-muted: #9aaba5;
+	--hm-border: rgba(233, 236, 232, .1);
+	--hm-border-strong: rgba(233, 236, 232, .22);
+	--hm-accent: #c6f432;
+	--hm-accent-2: #eef3ef;
+	--hm-accent-fg: #0f1b18;
+	--hm-accent-ink: #c6f432;
+	--hm-accent-soft: rgba(198, 244, 50, .12);
+	--hm-inv-bg: #08100d;
+	--hm-shadow-lg: 0 24px 48px -30px rgba(0, 0, 0, .8);
+	color-scheme: dark;
+}
+
+.hm-kit-nova ::selection { background: rgba(198, 244, 50, .28); color: inherit; }
+.hm-kit-nova .hm-hl { color: var(--hm-accent-ink); }
+.hm-kit-nova .hm-scheme-inverse .hm-hl { color: #c6f432; }
+.hm-kit-nova .hm-head__desc, .hm-kit-nova .hm-lead { color: var(--hm-fg-muted); }
+
+/* Section labels: a short lime rule. */
+.hm-kit-nova .hm-eyebrow { color: var(--hm-fg-muted); font-weight: 500; font-size: .82rem; }
+.hm-kit-nova .hm-eyebrow::before { width: 18px; height: 1px; opacity: 1; background: var(--hm-accent); border-radius: 0; }
+
+.hm-kit-nova .hm-btn { font-weight: 600; }
+.hm-kit-nova .hm-btn--primary, .hm-kit-nova .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+.hm-kit-nova .hm-btn--primary:hover { background: var(--hm-accent); border-color: var(--hm-accent); color: #fff; box-shadow: none; }
+.hm-kit-nova .hm-btn--secondary, .hm-kit-nova .hm-btn--ghost { background: transparent; border-color: var(--hm-border-strong); color: var(--hm-fg); }
+.hm-kit-nova .hm-btn--secondary:hover, .hm-kit-nova .hm-btn--ghost:hover { border-color: var(--hm-fg); color: var(--hm-fg); box-shadow: none; }
+.hm-kit-nova .hm-scheme-inverse .hm-btn--primary { background: var(--hm-inv-fg); color: var(--hm-inv-bg); border-color: var(--hm-inv-fg); }
+
+.hm-kit-nova .hm-icon-btn__badge { background: var(--hm-accent); }
+.hm-kit-nova a.hm-chip:hover, .hm-kit-nova .hm-chip.is-active { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-nova .hm-menu > .current-menu-item > a::after, .hm-kit-nova .hm-menu > .current-menu-ancestor > a::after { height: 1px; border-radius: 0; background: var(--hm-accent); }
+.hm-kit-nova .hm-progress { background: var(--hm-accent); }
+
+.hm-kit-nova .hm-card, .hm-kit-nova .hm-feature--card { box-shadow: none; }
+.hm-kit-nova .hm-feature--card:hover { transform: none; box-shadow: var(--hm-card-shadow-hover); }
+.hm-kit-nova .hm-features--icon-tile .hm-feature__icon, .hm-kit-nova .hm-cinfo__icon { background: transparent; border: 1px solid var(--hm-border-strong); color: var(--hm-fg); border-radius: 50%; }
+.hm-kit-nova .hm-feature__num { color: var(--hm-accent); }
+.hm-kit-nova .hm-post-card__title, .hm-kit-nova .hm-pfcard__title { font-weight: 600; }
+.hm-kit-nova ul.products li.product .woocommerce-loop-product__title, .hm-kit-nova .hm-product__title { font-weight: 600; }
+.hm-kit-nova ul.products li.product .price, .hm-kit-nova .hm-product__price { color: var(--hm-fg); }
+.hm-kit-nova .onsale { background: var(--hm-accent); color: #fff; border-radius: var(--hm-radius-sm); }
+.hm-kit-nova .hm-plan.is-featured { background: var(--hm-inv-bg); color: var(--hm-inv-fg); --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(238, 240, 236, .12); --hm-accent: #c6f432; --hm-accent-fg: #0f1b18; border-color: transparent; }
+.hm-kit-nova .hm-scheme-inverse { --hm-accent: #c6f432; --hm-accent-fg: #0f1b18; --hm-accent-ink: #c6f432; }
+
+.hm-kit-nova .hm-footer { background: var(--hm-inv-bg); color: var(--hm-inv-fg); border-top: 0; --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(238, 240, 236, .1); --hm-border-strong: rgba(238, 240, 236, .22); --hm-surface: rgba(255, 255, 255, .03); --hm-surface-2: rgba(255, 255, 255, .06); --hm-accent-ink: #c6f432; --hm-logo-dark: block; --hm-logo-light: none; }
+.hm-kit-nova .hm-footer__wordmark { color: #c6f432; opacity: .05; }
+.hm-kit-nova .hm-pagination .page-numbers.current { background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); }
+
+/* Buttons: lime pills with dark text; ghost buttons are hairline glass. */
+.hm-kit-nova .hm-btn--primary, .hm-kit-nova .hm-btn:not([class*="hm-btn--"]) { background: var(--hm-accent); border-color: var(--hm-accent); color: var(--hm-accent-fg); }
+.hm-kit-nova .hm-btn--primary:hover { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-nova .hm-btn--secondary, .hm-kit-nova .hm-btn--ghost { background: color-mix(in srgb, var(--hm-surface) 40%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* Glass panels for cards and features. */
+.hm-kit-nova .hm-feature--card, .hm-kit-nova .hm-plan, .hm-kit-nova .hm-quote, .hm-kit-nova .hm-acc__item {
+	background: color-mix(in srgb, var(--hm-surface) 52%, transparent); border-color: color-mix(in srgb, var(--hm-fg) 11%, transparent);
+	backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3);
+}
+.hm-kit-nova .hm-feature__num { color: var(--hm-accent-ink); }
+.hm-kit-nova .hm-plan.is-featured .hm-plan__badge { background: var(--hm-accent); color: var(--hm-accent-fg); }
+
+/* Line contours behind a section, like a topographic print: add the class hm-contours. */
+.hm-kit-nova .hm-contours { position: relative; isolation: isolate; }
+.hm-kit-nova .hm-contours::before {
+	content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .55;
+	background:
+		repeating-radial-gradient(ellipse 120% 90% at 105% 115%, transparent 0 26px, color-mix(in srgb, var(--hm-accent) 12%, transparent) 26px 27px),
+		repeating-radial-gradient(ellipse 110% 80% at -10% -20%, transparent 0 30px, color-mix(in srgb, var(--hm-fg) 6%, transparent) 30px 31px);
+	-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, #000 75%); mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, #000 75%);
+}
+.hm-kit-nova .hm-path { --hm-path-bg: #0a1310; --hm-path-mid: rgba(198, 244, 50, .1); --hm-path-deep: #0f1b18; }

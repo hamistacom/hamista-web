@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-07T23:06:10+00:00\n"
-"PO-Revision-Date: 2026-10-08 21:31+0000\n"
+"POT-Creation-Date: 2026-10-08T21:40:08+00:00\n"
+"PO-Revision-Date: 2026-10-08 21:40+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -158,7 +158,11 @@ msgstr "استودیو — خاکستری گرم، مشکی و شنگرفی"
 msgid "Care — porcelain, deep green and eucalyptus"
 msgstr "مراقبت — سفید چینی، سبز تیره و اکالیپتوسی"
 
-#: inc/assets.php:90
+#: inc/assets.php:53
+msgid "Nova — green-black, lime and frosted glass"
+msgstr "نوا — سبز سیاه، لیمویی و شیشه‌ی مات"
+
+#: inc/assets.php:91
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 
@@ -302,7 +306,7 @@ msgstr "خانه"
 #: index.php:15
 #: searchform.php:15
 #: template-parts/header/overlays.php:61
-#: template-parts/header/site-header.php:55
+#: template-parts/header/site-header.php:58
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -600,7 +604,7 @@ msgid "Close menu"
 msgstr "بستن منو"
 
 #: template-parts/header/overlays.php:50
-#: template-parts/header/site-header.php:71
+#: template-parts/header/site-header.php:74
 msgid "My account"
 msgstr "حساب کاربری من"
 
@@ -612,27 +616,27 @@ msgstr "ورود / ثبت‌نام"
 msgid "Press Esc to close"
 msgstr "برای بستن، Esc را بزنید"
 
-#: template-parts/header/site-header.php:38
+#: template-parts/header/site-header.php:41
 msgid "Primary"
 msgstr "منوی اصلی"
 
-#: template-parts/header/site-header.php:59
+#: template-parts/header/site-header.php:62
 msgid "Interface sounds"
 msgstr "صداهای رابط کاربری"
 
-#: template-parts/header/site-header.php:62
+#: template-parts/header/site-header.php:65
 msgid "Toggle dark mode"
 msgstr "تغییر حالت تاریک"
 
-#: template-parts/header/site-header.php:71
+#: template-parts/header/site-header.php:74
 msgid "Log in"
 msgstr "ورود"
 
-#: template-parts/header/site-header.php:81
+#: template-parts/header/site-header.php:84
 msgid "Cart"
 msgstr "سبد خرید"
 
-#: template-parts/header/site-header.php:93
+#: template-parts/header/site-header.php:96
 msgid "Open menu"
 msgstr "باز کردن منو"
 

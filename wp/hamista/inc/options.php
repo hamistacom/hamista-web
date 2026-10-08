@@ -53,6 +53,7 @@ function hamista_option_defaults() {
 				'header_layout'         => 'split',
 				'header_sticky'         => true,
 				'header_hide_on_scroll' => true,
+				'header_glass'          => false,
 				'header_search'         => true,
 				'header_account'        => true,
 				'header_cart'           => true,

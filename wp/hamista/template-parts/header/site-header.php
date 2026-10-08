@@ -25,6 +25,9 @@ if ( $hamista_state['transparent'] ) {
 if ( $hamista_state['light'] ) {
 	$hamista_classes[] = 'is-light';
 }
+if ( hamista_option( 'header_glass' ) ) {
+	$hamista_classes[] = 'is-glass';
+}
 
 $hamista_cta_text = hamista_option( 'header_cta_text' );
 $hamista_cta_url  = hamista_option( 'header_cta_url' );

@@ -32,6 +32,7 @@ class Elementor {
 			'Hscroll',
 			'Scroll_Path',
 			'Stack',
+			'Card_Stack',
 			'Marquee',
 			'Image_Reveal',
 			'Counters',

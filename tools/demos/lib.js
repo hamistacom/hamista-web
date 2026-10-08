@@ -204,6 +204,11 @@ const slider = (slides, s = {}) => bleed(w('hm-slider', Object.assign({
 	slides: slides.map(({ url = '', ...sl }) => Object.assign({ image_mobile: {}, tone: 'dark', position: 'start' }, sl, { link: link(url) })),
 	height: { unit: 'vh', size: 86, sizes: [] }, boxed: '', arrows: 'sides', dots: 'bar', autoplay: '6',
 }, s)));
+/** Card deck: fanned glass cards with arrows; items { image, label, title, text, avatar, person, meta, tag_label, tag, url }. */
+const cardStack = (items, s = {}) => w('hm-card-stack', Object.assign({
+	items: items.map(({ url = '', ...it }) => Object.assign({ avatar: {}, person: '', meta: '', tag_label: '', tag: '', text: '' }, it, { link: link(url) })),
+	arrows: 'yes', counter: 'yes', typing: 'yes', autoplay: 6, look: 'glass',
+}, s));
 /** The opening of an inner page: eyebrow, h1 and a short lead. */
 const pageHead = (eyebrow, title, desc, extra = {}) => section(Object.assign({ space: 'md', bottom0: true }, extra), [
 	heading({ eyebrow, title, desc, title_tag: 'h1', title_size: 'xl' }),
@@ -243,5 +248,5 @@ module.exports = {
 	heading, button, buttons, textEditor, spacer, hero, showcase, marquee, textScrub, scrollZoom, hscroll, scrollPath, stack, depth, flow,
 	imageReveal, counters, features, searchBox, steps, tabs, faq, testimonials, pricing, team, cta, contactForm, leadForm,
 	contactInfo, posts, products, device, article, productBody, pageSettings,
-	productCarousel, productCategories, productTabs, productDeal, slider, pageHead,
+	productCarousel, productCategories, productTabs, productDeal, slider, pageHead, cardStack,
 };
