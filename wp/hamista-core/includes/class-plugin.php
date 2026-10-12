@@ -52,6 +52,7 @@ final class Plugin {
 			'Auth\\Auth',
 			'Jalali\\Jalali',
 			'Performance\\Performance',
+			'Seo\\Seo',
 			'Admin\\Admin',
 			'Demos\\Importer',
 		);

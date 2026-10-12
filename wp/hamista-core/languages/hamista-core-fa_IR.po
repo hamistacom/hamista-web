@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-12T05:05:46+00:00\n"
-"PO-Revision-Date: 2026-10-12 05:05+0000\n"
+"POT-Creation-Date: 2026-10-12T05:11:45+00:00\n"
+"PO-Revision-Date: 2026-10-12 05:12+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -136,6 +136,7 @@ msgstr "پاکت نامه"
 #: includes/account/class-panel.php:81
 #: includes/elementor/widgets/class-contact-info.php:94
 #: includes/elementor/widgets/class-device.php:46
+#: includes/settings/schema.php:1457
 msgid "Phone"
 msgstr "تلفن"
 
@@ -1069,7 +1070,7 @@ msgid "Remove demo content"
 msgstr "حذف محتوای دمو"
 
 #: includes/admin/class-admin.php:701
-#: includes/settings/schema.php:1396
+#: includes/settings/schema.php:1660
 msgid "Tools"
 msgstr "ابزارها"
 
@@ -1683,6 +1684,7 @@ msgstr "عکس از «تصویر شاخص» و بیوگرافی از ویرای�
 #: includes/booking/class-admin.php:150
 #: includes/booking/class-view.php:323
 #: includes/booking/class-view.php:337
+#: includes/settings/schema.php:1550
 msgid "Day"
 msgstr "روز"
 
@@ -1863,30 +1865,37 @@ msgstr[0] "%s نوبت به‌روز شد."
 msgstr[1] "%s نوبت به‌روز شد."
 
 #: includes/booking/class-booking.php:61
+#: includes/settings/schema.php:1552
 msgid "Saturday"
 msgstr "شنبه"
 
 #: includes/booking/class-booking.php:62
+#: includes/settings/schema.php:1553
 msgid "Sunday"
 msgstr "یکشنبه"
 
 #: includes/booking/class-booking.php:63
+#: includes/settings/schema.php:1554
 msgid "Monday"
 msgstr "دوشنبه"
 
 #: includes/booking/class-booking.php:64
+#: includes/settings/schema.php:1555
 msgid "Tuesday"
 msgstr "سه‌شنبه"
 
 #: includes/booking/class-booking.php:65
+#: includes/settings/schema.php:1556
 msgid "Wednesday"
 msgstr "چهارشنبه"
 
 #: includes/booking/class-booking.php:66
+#: includes/settings/schema.php:1557
 msgid "Thursday"
 msgstr "پنجشنبه"
 
 #: includes/booking/class-booking.php:67
+#: includes/settings/schema.php:1558
 msgid "Friday"
 msgstr "جمعه"
 
@@ -1974,6 +1983,7 @@ msgid "Medical council number"
 msgstr "شماره‌ی نظام پزشکی"
 
 #: includes/booking/class-booking.php:117
+#: includes/seo/class-schema.php:35
 #: includes/settings/schema.php:769
 msgid "Beauty salon"
 msgstr "سالن زیبایی"
@@ -1993,6 +2003,7 @@ msgid "Price"
 msgstr "قیمت"
 
 #: includes/booking/class-booking.php:129
+#: includes/seo/class-schema.php:36
 #: includes/settings/schema.php:773
 msgid "Law firm"
 msgstr "دفتر حقوقی"
@@ -2149,6 +2160,7 @@ msgid "Space types"
 msgstr "انواع فضا"
 
 #: includes/booking/class-booking.php:201
+#: includes/seo/class-schema.php:40
 #: includes/settings/schema.php:797
 msgid "Car service"
 msgstr "خدمات خودرو"
@@ -4358,6 +4370,7 @@ msgstr "نام شما"
 #: includes/elementor/widgets/class-contact-info.php:99
 #: includes/elementor/widgets/class-lead-form.php:59
 #: includes/forms/class-forms.php:306
+#: includes/settings/schema.php:1467
 msgid "Email"
 msgstr "ایمیل"
 
@@ -5088,6 +5101,7 @@ msgstr "دکمه‌های سربرگ"
 #: includes/elementor/widgets/class-header-actions.php:55
 #: includes/elementor/widgets/class-header-actions.php:144
 #: includes/elementor/widgets/class-search-box.php:217
+#: includes/seo/class-schema.php:369
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -5858,6 +5872,7 @@ msgstr "*پروژه‌های* اخیر"
 
 #: includes/elementor/widgets/class-portfolio.php:78
 #: includes/elementor/widgets/class-portfolio.php:210
+#: includes/seo/class-seo.php:697
 msgid "Projects"
 msgstr "پروژه‌ها"
 
@@ -6082,6 +6097,7 @@ msgstr "پرفروش‌های این هفته"
 #: includes/elementor/widgets/class-product-deal.php:107
 #: includes/elementor/widgets/class-products.php:27
 #: includes/elementor/widgets/class-products.php:58
+#: includes/seo/class-seo.php:691
 msgid "Products"
 msgstr "محصولات"
 
@@ -7418,6 +7434,119 @@ msgstr "همه‌ی دسته‌ها"
 msgid "Project details"
 msgstr "جزئیات پروژه"
 
+#: includes/seo/class-meta-box.php:83
+msgid "Search results (SEO)"
+msgstr "نتایج جست‌وجو (سئو)"
+
+#: includes/seo/class-meta-box.php:105
+msgid "Without a description, search engines pick a sentence from the page."
+msgstr "اگر توضیحی ننویسید، موتور جست‌وجو جمله‌ای از خود صفحه برمی‌دارد."
+
+#: includes/seo/class-meta-box.php:108
+msgid "Title in search results"
+msgstr "عنوان در نتایج جست‌وجو"
+
+#: includes/seo/class-meta-box.php:110
+msgid "Unique per page, about 50–60 characters. Leave empty to use the page title and site name."
+msgstr "برای هر صفحه یکتا و حدود ۵۰ تا ۶۰ نویسه. اگر خالی بماند، عنوان صفحه و نام سایت به کار می‌رود."
+
+#: includes/seo/class-meta-box.php:113
+#: includes/seo/class-meta-box.php:202
+msgid "Meta description"
+msgstr "توضیحات متا"
+
+#: includes/seo/class-meta-box.php:115
+msgid "One or two sentences, about 120–155 characters. Leave empty to use the excerpt or the start of the page."
+msgstr "یکی دو جمله، حدود ۱۲۰ تا ۱۵۵ نویسه. اگر خالی بماند، از خلاصه یا ابتدای صفحه استفاده می‌شود."
+
+#: includes/seo/class-meta-box.php:118
+msgid "Canonical address"
+msgstr "نشانی کنونیکال"
+
+#: includes/seo/class-meta-box.php:120
+msgid "Only when this page copies another one; otherwise leave empty."
+msgstr "فقط وقتی این صفحه رونوشت صفحه‌ی دیگری است؛ در غیر این صورت خالی بگذارید."
+
+#: includes/seo/class-meta-box.php:123
+msgid "Hide this page from search engines (noindex) and from the sitemap"
+msgstr "این صفحه را از موتورهای جست‌وجو (noindex) و نقشه‌ی سایت پنهان کن"
+
+#: includes/seo/class-meta-box.php:205
+msgid "Shown under the title in search results. Leave empty to use the description above."
+msgstr "زیر عنوان در نتایج جست‌وجو نمایش داده می‌شود. اگر خالی بماند، توضیح بالا به کار می‌رود."
+
+#: includes/seo/class-schema.php:28
+msgid "Company or organisation (no walk-in address)"
+msgstr "شرکت یا سازمان (بدون محل مراجعه‌ی حضوری)"
+
+#: includes/seo/class-schema.php:29
+msgid "Local business"
+msgstr "کسب‌وکار محلی"
+
+#: includes/seo/class-schema.php:30
+msgid "Professional services, agency or studio"
+msgstr "خدمات تخصصی، آژانس یا استودیو"
+
+#: includes/seo/class-schema.php:31
+#: includes/settings/schema.php:627
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: includes/seo/class-schema.php:32
+msgid "Restaurant or café"
+msgstr "رستوران یا کافه"
+
+#: includes/seo/class-schema.php:33
+msgid "Clinic"
+msgstr "کلینیک"
+
+#: includes/seo/class-schema.php:34
+msgid "Dental practice"
+msgstr "دندان‌پزشکی"
+
+#: includes/seo/class-schema.php:37
+msgid "School or academy"
+msgstr "مدرسه یا آموزشگاه"
+
+#: includes/seo/class-schema.php:38
+msgid "Travel agency"
+msgstr "آژانس مسافرتی"
+
+#: includes/seo/class-schema.php:39
+msgid "Real estate agency"
+msgstr "مشاور املاک"
+
+#: includes/seo/class-schema.php:41
+msgid "Gym or sports venue"
+msgstr "باشگاه یا مجموعه‌ی ورزشی"
+
+#: includes/seo/class-schema.php:42
+msgid "Hotel or guesthouse"
+msgstr "هتل یا اقامتگاه"
+
+#: includes/seo/class-schema.php:322
+msgid "Home"
+msgstr "خانه"
+
+#: includes/seo/class-schema.php:366
+#: includes/settings/schema.php:583
+msgid "Blog"
+msgstr "وبلاگ"
+
+#. translators: %s: search terms.
+#: includes/seo/class-seo.php:141
+#, php-format
+msgid "Search results for “%s”"
+msgstr "نتایج جست‌وجو برای «%s»"
+
+#: includes/seo/class-seo.php:679
+msgid "Pages"
+msgstr "صفحه‌ها"
+
+#: includes/seo/class-seo.php:685
+msgid "Articles"
+msgstr "مقاله‌ها"
+
 #. translators: %s: font name
 #: includes/settings/class-settings.php:153
 #, php-format
@@ -8032,10 +8161,6 @@ msgstr "© {year} نام برند شما. همه‌ی حقوق محفوظ است
 msgid "Large wordmark at the bottom"
 msgstr "لوگوتایپ بزرگ در انتهای پابرگ"
 
-#: includes/settings/schema.php:583
-msgid "Blog"
-msgstr "وبلاگ"
-
 #: includes/settings/schema.php:588
 msgid "Archive layout"
 msgstr "چیدمان آرشیو"
@@ -8079,10 +8204,6 @@ msgstr "نوشته‌ی قبلی / بعدی"
 #: includes/settings/schema.php:623
 msgid "Related posts"
 msgstr "نوشته‌های مرتبط"
-
-#: includes/settings/schema.php:627
-msgid "Shop"
-msgstr "فروشگاه"
 
 #: includes/settings/schema.php:633
 msgid "Products per row"
@@ -8707,86 +8828,286 @@ msgid "Add mobile login to wp-login.php"
 msgstr "افزودن ورود با موبایل به wp-login.php"
 
 #: includes/settings/schema.php:1338
+msgid "SEO"
+msgstr "سئو"
+
+#: includes/settings/schema.php:1340
+msgid "Titles, descriptions, canonical links, structured data, robots.txt, the sitemap and llms.txt, built in and light. When Yoast, Rank Math or another SEO plugin is active, Hamista leaves these tags to it."
+msgstr "عنوان، توضیحات متا، کنونیکال، داده‌ی ساختاریافته، robots.txt، نقشه‌ی سایت و llms.txt؛ درون قالب و سبک. اگر یواست، رنک‌مث یا افزونه‌ی سئوی دیگری فعال باشد، هامیستا این تگ‌ها را به آن می‌سپارد."
+
+#: includes/settings/schema.php:1343
+msgid "Hamista SEO"
+msgstr "سئوی هامیستا"
+
+#: includes/settings/schema.php:1344
+msgid "Titles and descriptions"
+msgstr "عنوان و توضیحات"
+
+#: includes/settings/schema.php:1345
+msgid "Another SEO plugin is active, so it handles these tags; favicon, alt text and llms.txt still work."
+msgstr "افزونه‌ی سئوی دیگری فعال است و این تگ‌ها را خودش می‌سازد؛ آیکون سایت، متن جایگزین تصاویر و llms.txt همچنان کار می‌کنند."
+
+#: includes/settings/schema.php:1345
+msgid "Each page also gets a \"Search results\" box for its own title, description and indexing."
+msgstr "هر صفحه هم کادر «نتایج جست‌وجو» دارد تا عنوان، توضیحات و وضعیت ایندکس خودش را داشته باشد."
+
+#: includes/settings/schema.php:1349
+msgid "Title separator"
+msgstr "جداکننده‌ی عنوان"
+
+#: includes/settings/schema.php:1363
+msgid "Tagline in the home page title"
+msgstr "معرفی کوتاه در عنوان صفحه‌ی اصلی"
+
+#: includes/settings/schema.php:1369
+msgid "Home page title"
+msgstr "عنوان صفحه‌ی اصلی"
+
+#: includes/settings/schema.php:1370
+msgid "Optional. You can use %%sitename%%, %%tagline%% and %%sep%%."
+msgstr "اختیاری. می‌توانید از %%sitename%% و %%tagline%% و %%sep%% استفاده کنید."
+
+#: includes/settings/schema.php:1376
+msgid "Home page description"
+msgstr "توضیحات صفحه‌ی اصلی"
+
+#: includes/settings/schema.php:1377
+msgid "About 120–155 characters. Leave empty to use the site tagline."
+msgstr "حدود ۱۲۰ تا ۱۵۵ نویسه. اگر خالی بماند، معرفی کوتاه سایت به کار می‌رود."
+
+#: includes/settings/schema.php:1381
+msgid "Link previews (Open Graph)"
+msgstr "پیش‌نمایش پیوند (Open Graph)"
+
+#: includes/settings/schema.php:1382
+msgid "Sharing and indexing"
+msgstr "اشتراک‌گذاری و ایندکس"
+
+#: includes/settings/schema.php:1383
+msgid "Title, description and picture when a page is shared in Telegram, WhatsApp, X or LinkedIn."
+msgstr "عنوان، توضیح و تصویر هنگام اشتراک صفحه در تلگرام، واتس‌اپ، ایکس یا لینکدین."
+
+#: includes/settings/schema.php:1388
+msgid "Default share picture"
+msgstr "تصویر پیش‌فرض اشتراک"
+
+#: includes/settings/schema.php:1389
+msgid "Used when a page has no featured image. 1200×630 pixels works everywhere."
+msgstr "برای صفحه‌هایی که تصویر شاخص ندارند. اندازه‌ی ۱۲۰۰ در ۶۳۰ پیکسل همه‌جا درست نمایش داده می‌شود."
+
+#: includes/settings/schema.php:1397
+msgid "Keep tag archives out of search results"
+msgstr "برچسب‌ها در نتایج جست‌وجو نیایند"
+
+#: includes/settings/schema.php:1402
+msgid "Keep author archives out of search results"
+msgstr "صفحه‌ی نویسندگان در نتایج جست‌وجو نیاید"
+
+#: includes/settings/schema.php:1403
+msgid "Recommended for sites with a single author."
+msgstr "برای سایت‌هایی که یک نویسنده دارند پیشنهاد می‌شود."
+
+#: includes/settings/schema.php:1410
+msgid "Extra robots.txt rules"
+msgstr "قانون‌های بیشتر برای robots.txt"
+
+#: includes/settings/schema.php:1411
+msgid "robots.txt already keeps crawlers out of the admin, cart, account and search pages and lists the sitemap. Add lines here only if you need more."
+msgstr "robots.txt خودش خزنده‌ها را از پیشخوان، سبد خرید، حساب کاربری و صفحه‌ی جست‌وجو دور نگه می‌دارد و نقشه‌ی سایت را معرفی می‌کند. فقط اگر قانون دیگری لازم دارید اینجا بنویسید."
+
+#: includes/settings/schema.php:1416
+msgid "Google Search Console code"
+msgstr "کد گوگل سرچ کنسول"
+
+#: includes/settings/schema.php:1417
+msgid "Only the content value of the verification tag."
+msgstr "فقط مقدار content در تگ تأیید."
+
+#: includes/settings/schema.php:1424
+msgid "Bing Webmaster code"
+msgstr "کد بینگ وبمستر"
+
+#: includes/settings/schema.php:1430
+msgid "Structured data"
+msgstr "داده‌ی ساختاریافته"
+
+#: includes/settings/schema.php:1431
+msgid "Business details (structured data)"
+msgstr "مشخصات کسب‌وکار (داده‌ی ساختاریافته)"
+
+#: includes/settings/schema.php:1432
+msgid "Tells search engines who runs the site, with breadcrumbs and article details. A local business with an address and hours can show on maps and in local results."
+msgstr "به موتورهای جست‌وجو می‌گوید سایت متعلق به کیست و مسیر صفحه و مشخصات مقاله‌ها را هم می‌فرستد. کسب‌وکار محلی با نشانی و ساعت کاری می‌تواند در نقشه و نتایج محلی دیده شود."
+
+#: includes/settings/schema.php:1437
+msgid "Type of business"
+msgstr "نوع کسب‌وکار"
+
+#: includes/settings/schema.php:1447
+msgid "Business name"
+msgstr "نام کسب‌وکار"
+
+#: includes/settings/schema.php:1477
+msgid "Street address"
+msgstr "نشانی"
+
+#: includes/settings/schema.php:1485
+msgid "City"
+msgstr "شهر"
+
+#: includes/settings/schema.php:1494
+msgid "Province"
+msgstr "استان"
+
+#: includes/settings/schema.php:1503
+msgid "Postcode"
+msgstr "کد پستی"
+
+#: includes/settings/schema.php:1513
+msgid "Price range"
+msgstr "بازه‌ی قیمت"
+
+#: includes/settings/schema.php:1523
+msgid "Latitude"
+msgstr "عرض جغرافیایی"
+
+#: includes/settings/schema.php:1534
+msgid "Longitude"
+msgstr "طول جغرافیایی"
+
+#: includes/settings/schema.php:1545
+msgid "Opening hours"
+msgstr "ساعت کاری"
+
+#: includes/settings/schema.php:1546
+msgid "Add a day"
+msgstr "افزودن روز"
+
+#: includes/settings/schema.php:1563
+msgid "Opens"
+msgstr "شروع"
+
+#: includes/settings/schema.php:1568
+msgid "Closes"
+msgstr "پایان"
+
+#: includes/settings/schema.php:1579
+msgid "Site icon (favicon)"
+msgstr "آیکون سایت (فاوآیکون)"
+
+#: includes/settings/schema.php:1580
+msgid "Site icon and files"
+msgstr "آیکون سایت و فایل‌ها"
+
+#: includes/settings/schema.php:1581
+msgid "A square picture, at least 512×512 pixels. WordPress makes every size browsers and phones need."
+msgstr "تصویری مربعی، دست‌کم ۵۱۲ در ۵۱۲ پیکسل. وردپرس همه‌ی اندازه‌هایی را که مرورگر و موبایل لازم دارند می‌سازد."
+
+#: includes/settings/schema.php:1585
+msgid "Lettered icon until one is chosen"
+msgstr "آیکون حرفی تا وقتی آیکونی انتخاب نشده"
+
+#: includes/settings/schema.php:1586
+msgid "Shows the first letter of the site name in the accent colour."
+msgstr "حرف اول نام سایت را با رنگ اصلی نشان می‌دهد."
+
+#: includes/settings/schema.php:1590
+msgid "llms.txt for AI assistants"
+msgstr "فایل llms.txt برای دستیارهای هوش مصنوعی"
+
+#: includes/settings/schema.php:1591
+msgid "A short map of the site at /llms.txt, so AI search and assistants describe your business correctly. Updates itself when you publish."
+msgstr "نقشه‌ای کوتاه از سایت در نشانی ‎/llms.txt تا جست‌وجوی هوشمند و دستیارها کسب‌وکارتان را درست معرفی کنند. با هر انتشار خودش به‌روز می‌شود."
+
+#: includes/settings/schema.php:1595
+msgid "Summary at the top of llms.txt"
+msgstr "معرفی بالای llms.txt"
+
+#: includes/settings/schema.php:1596
+msgid "Who you are and what you offer, in one or two sentences."
+msgstr "در یکی دو جمله بگویید که هستید و چه ارائه می‌دهید."
+
+#: includes/settings/schema.php:1602
 msgid "Performance"
 msgstr "سرعت و بهینه‌سازی"
 
-#: includes/settings/schema.php:1340
+#: includes/settings/schema.php:1604
 msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
 msgstr "کلیدهایی بی‌خطر برای حذف قابلیت‌هایی از وردپرس که بیشتر سایت‌ها هرگز به کارشان نمی‌برند. هر کدام چند درخواست یا چند کیلوبایت از بار صفحه کم می‌کند."
 
-#: includes/settings/schema.php:1343
+#: includes/settings/schema.php:1607
 msgid "Block Google Fonts"
 msgstr "مسدود کردن گوگل فونت"
 
-#: includes/settings/schema.php:1344
+#: includes/settings/schema.php:1608
 msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
 msgstr "جلوی بارگذاری فونت از گوگل را در المنتور و قالب می‌گیرد (که در ایران اغلب کند یا مسدود است). فونت‌های هامیستا روی سایت خودتان میزبانی می‌شوند."
 
-#: includes/settings/schema.php:1346
+#: includes/settings/schema.php:1610
 msgid "Remove emoji script"
 msgstr "حذف اسکریپت ایموجی"
 
-#: includes/settings/schema.php:1347
+#: includes/settings/schema.php:1611
 msgid "Remove oEmbed discovery script"
 msgstr "حذف اسکریپت شناسایی oEmbed"
 
-#: includes/settings/schema.php:1348
+#: includes/settings/schema.php:1612
 msgid "Skip Dashicons for visitors"
 msgstr "عدم بارگذاری Dashicons برای بازدیدکنندگان"
 
-#: includes/settings/schema.php:1350
+#: includes/settings/schema.php:1614
 msgid "Skip block-editor CSS on Elementor pages"
 msgstr "عدم بارگذاری CSS ویرایشگر بلوک در برگه‌های المنتوری"
 
-#: includes/settings/schema.php:1353
+#: includes/settings/schema.php:1617
 msgid "Load WooCommerce cart scripts only where needed"
 msgstr "بارگذاری اسکریپت‌های سبد خرید ووکامرس فقط در جای لازم"
 
-#: includes/settings/schema.php:1357
+#: includes/settings/schema.php:1621
 msgid "Prioritise the hero image"
 msgstr "بارگذاری فوری تصویر هیرو"
 
-#: includes/settings/schema.php:1358
+#: includes/settings/schema.php:1622
 msgid "Loads the first large image of each page eagerly with high priority."
 msgstr "نخستین تصویر بزرگ هر برگه بدون تأخیر و با اولویت بالا بارگذاری می‌شود."
 
-#: includes/settings/schema.php:1361
+#: includes/settings/schema.php:1625
 msgid "Remove jQuery Migrate"
 msgstr "حذف jQuery Migrate"
 
-#: includes/settings/schema.php:1362
+#: includes/settings/schema.php:1626
 msgid "Only if your plugins are up to date."
 msgstr "فقط اگر افزونه‌هایتان به‌روز هستند."
 
-#: includes/settings/schema.php:1365
+#: includes/settings/schema.php:1629
 msgid "Slow down the Heartbeat API"
 msgstr "کاهش تناوب Heartbeat API"
 
-#: includes/settings/schema.php:1368
+#: includes/settings/schema.php:1632
 msgid "Disable XML-RPC"
 msgstr "غیرفعال کردن XML-RPC"
 
-#: includes/settings/schema.php:1369
+#: includes/settings/schema.php:1633
 msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
 msgstr "امنیت را بیشتر می‌کند. اگر از جت‌پک یا اپلیکیشن موبایل وردپرس استفاده می‌کنید، این گزینه را خاموش نگه دارید."
 
-#: includes/settings/schema.php:1374
+#: includes/settings/schema.php:1638
 msgid "Custom code"
 msgstr "کد سفارشی"
 
-#: includes/settings/schema.php:1380
+#: includes/settings/schema.php:1644
 msgid "Custom CSS"
 msgstr "CSS سفارشی"
 
-#: includes/settings/schema.php:1385
+#: includes/settings/schema.php:1649
 msgid "Code in <head>"
 msgstr "کد در <head>"
 
-#: includes/settings/schema.php:1386
+#: includes/settings/schema.php:1650
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr "کدهای آمار و تگ‌های تأیید مالکیت. به مجوز unfiltered_html نیاز دارد."
 
-#: includes/settings/schema.php:1391
+#: includes/settings/schema.php:1655
 msgid "Code before </body>"
 msgstr "کد پیش از </body>"
 
