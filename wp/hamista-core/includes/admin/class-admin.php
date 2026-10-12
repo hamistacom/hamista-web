@@ -301,6 +301,7 @@ class Admin {
 			'demos'       => array(),
 			'plugins'     => self::plugins(),
 			'fontLibrary' => \Hamista\Core\Fonts\Library::admin_data(),
+			'fontFaces'   => self::font_faces(),
 			'system'      => self::system(),
 			'links'       => self::links(),
 			'rtl'         => is_rtl(),
@@ -436,6 +437,35 @@ class Admin {
 	}
 
 	/**
+	 * CSS family name and one preview file for every font in the menus, so the
+	 * font picker can show each family in its own face.
+	 *
+	 * @return array slug => [ family, url ]
+	 */
+	private static function font_faces() {
+		$out = array();
+		if ( ! function_exists( 'hamista_font_families' ) ) {
+			return $out;
+		}
+		foreach ( hamista_font_families() as $slug => $family ) {
+			$url = '';
+			foreach ( (array) ( $family['faces'] ?? array() ) as $face ) {
+				if ( ! empty( $face['src']['woff2'] ) && empty( $face['unicode'] ) ) {
+					$url = $face['src']['woff2'];
+					if ( false !== strpos( (string) $face['weight'], '400' ) ) {
+						break;
+					}
+				}
+			}
+			$out[ $slug ] = array(
+				'family' => $family['family'],
+				'url'    => $url ? esc_url_raw( $url ) : '',
+			);
+		}
+		return $out;
+	}
+
+	/**
 	 * UI strings used by admin.js.
 	 *
 	 * @return array
@@ -557,6 +587,10 @@ class Admin {
 			'libLastWeight'    => __( 'Keep at least one weight on.', 'hamista-core' ),
 			/* translators: %s: font name. */
 			'libOffChoice'     => __( '%s (switched off)', 'hamista-core' ),
+			'pickSearch'       => __( 'Find a font', 'hamista-core' ),
+			'pickNone'         => __( 'No font matches.', 'hamista-core' ),
+			'pickOther'        => __( 'Theme and your own fonts', 'hamista-core' ),
+			'pickSample'       => 'زیبایی در سادگی است ۱۲۳۴',
 			/* translators: %s: weight name. */
 			'libNearest'       => __( '%s: not in this font, the nearest weight shows', 'hamista-core' ),
 			'w100'             => _x( 'Thin', 'font weight', 'hamista-core' ),

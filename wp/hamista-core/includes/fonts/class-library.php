@@ -73,12 +73,62 @@ class Library {
 				'use'     => 'text',
 				'weights' => array( '400', '700', '900' ),
 			),
+			'yekanbakh'  => array(
+				'label'   => __( 'Yekan Bakh', 'hamista-core' ),
+				'family'  => 'Yekan Bakh',
+				'desc'    => __( 'Calm and very legible, eight weights; a dependable choice for text and interfaces.', 'hamista-core' ),
+				'use'     => 'text',
+				'weights' => array( '100', '300', '400', '600', '700', '800', '900', '950' ),
+			),
+			'dana'       => array(
+				'label'   => __( 'Dana', 'hamista-core' ),
+				'family'  => 'Dana',
+				'desc'    => __( 'Clean with round joins, ten weights from thin to extra black; suits corporate and product sites.', 'hamista-core' ),
+				'use'     => 'text',
+				'weights' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '950' ),
+			),
+			'kalameh'    => array(
+				'label'   => __( 'Kalameh', 'hamista-core' ),
+				'family'  => 'Kalameh',
+				'desc'    => __( 'Contemporary and well balanced, nine weights; works for long text and headings alike.', 'hamista-core' ),
+				'use'     => 'text',
+				'weights' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
+			),
+			'estedad'    => array(
+				'label'    => __( 'Estedad', 'hamista-core' ),
+				'family'   => 'Estedad',
+				'desc'     => __( 'Open licence and variable; one file covers every weight.', 'hamista-core' ),
+				'use'      => 'text',
+				'weights'  => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
+				'variable' => '100 900',
+			),
 			'peyda'      => array(
 				'label'   => __( 'Peyda', 'hamista-core' ),
 				'family'  => 'Peyda',
 				'desc'    => __( 'Modern and clean; works for brands and shops.', 'hamista-core' ),
 				'use'     => 'text',
-				'weights' => array( '300', '700', '900' ),
+				'weights' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
+			),
+			'anjoman'    => array(
+				'label'   => __( 'Anjoman', 'hamista-core' ),
+				'family'  => 'Anjoman',
+				'desc'    => __( 'Geometric and confident; for headings, figures and buttons.', 'hamista-core' ),
+				'use'     => 'heading',
+				'weights' => array( '100', '200', '300', '400', '500', '700', '800', '900' ),
+			),
+			'dibaj'      => array(
+				'label'   => __( 'Dibaj', 'hamista-core' ),
+				'family'  => 'Dibaj',
+				'desc'    => __( 'Calligraphic contrast for luxury and cultural brands; headings only. Larger files (about 75 KB a weight).', 'hamista-core' ),
+				'use'     => 'heading',
+				'weights' => array( '200', '300', '400', '500', '600', '700', '800', '900' ),
+			),
+			'rooznameh'  => array(
+				'label'   => __( 'Rooznameh', 'hamista-core' ),
+				'family'  => 'Rooznameh',
+				'desc'    => __( 'Newspaper headline style, one weight; for short, striking titles.', 'hamista-core' ),
+				'use'     => 'heading',
+				'weights' => array( '400' ),
 			),
 			'pinar'      => array(
 				'label'    => __( 'Pinar', 'hamista-core' ),
@@ -242,7 +292,16 @@ class Library {
 			if ( empty( $state[ $slug ]['on'] ) || isset( $families[ $slug ] ) ) {
 				continue;
 			}
-			$families[ $slug ] = array(
+			// The theme keeps an empty drop-in slot for some families (Yekan Bakh);
+			// the bundled files fill that slot instead of listing the family twice.
+			$key = $slug;
+			foreach ( $families as $theme_slug => $theme_family ) {
+				if ( isset( $theme_family['family'] ) && $theme_family['family'] === $font['family'] && empty( $theme_family['faces'] ) ) {
+					$key = $theme_slug;
+					break;
+				}
+			}
+			$families[ $key ] = array(
 				'label'    => $font['label'],
 				'family'   => $font['family'],
 				'fallback' => '"Vazirmatn", Tahoma, system-ui, sans-serif',

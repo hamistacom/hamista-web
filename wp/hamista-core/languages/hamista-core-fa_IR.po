@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-08T21:40:07+00:00\n"
-"PO-Revision-Date: 2026-10-08 21:40+0000\n"
+"POT-Creation-Date: 2026-10-12T05:05:46+00:00\n"
+"PO-Revision-Date: 2026-10-12 05:05+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -35,7 +35,7 @@ msgstr "ویجت‌های المنتور، موتور انیمیشن بدون و
 #: hamista-core.php
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
-#: includes/admin/class-admin.php:446
+#: includes/admin/class-admin.php:476
 #: includes/elementor/class-elementor.php:99
 msgid "Hamista"
 msgstr "هامیستا"
@@ -178,13 +178,13 @@ msgid "Hamista settings"
 msgstr "تنظیمات هامیستا"
 
 #: includes/admin/class-admin.php:69
-#: includes/admin/class-admin.php:448
+#: includes/admin/class-admin.php:478
 msgid "Settings"
 msgstr "تنظیمات"
 
 #: includes/admin/class-admin.php:78
 #: includes/admin/class-admin.php:79
-#: includes/admin/class-admin.php:629
+#: includes/admin/class-admin.php:663
 #: includes/settings/schema.php:72
 msgid "Demo import"
 msgstr "نصب دمو"
@@ -196,7 +196,7 @@ msgid "Templates"
 msgstr "تمپلیت‌ها"
 
 #: includes/admin/class-admin.php:91
-#: includes/admin/class-admin.php:623
+#: includes/admin/class-admin.php:657
 #: includes/forms/class-forms.php:42
 #: includes/forms/class-forms.php:44
 msgid "Form messages"
@@ -210,252 +210,252 @@ msgstr "تنظیمات هامیستا به جاوااسکریپت نیاز دا�
 msgid "Please enable JavaScript in your browser, then reload this page."
 msgstr "جاوااسکریپت مرورگرتان را فعال کنید و این صفحه را دوباره بارگذاری کنید."
 
-#: includes/admin/class-admin.php:346
+#: includes/admin/class-admin.php:347
 #: includes/booking/class-rest.php:457
 msgid "Yes"
 msgstr "بله"
 
-#: includes/admin/class-admin.php:347
+#: includes/admin/class-admin.php:348
 msgid "No"
 msgstr "خیر"
 
-#: includes/admin/class-admin.php:361
+#: includes/admin/class-admin.php:362
 msgid "PHP version"
 msgstr "نسخه‌ی PHP"
 
-#: includes/admin/class-admin.php:366
+#: includes/admin/class-admin.php:367
 msgid "WordPress version"
 msgstr "نسخه‌ی وردپرس"
 
-#: includes/admin/class-admin.php:371
+#: includes/admin/class-admin.php:372
 msgid "Memory limit"
 msgstr "محدودیت حافظه"
 
-#: includes/admin/class-admin.php:372
+#: includes/admin/class-admin.php:373
 msgid "Unlimited"
 msgstr "نامحدود"
 
-#: includes/admin/class-admin.php:376
+#: includes/admin/class-admin.php:377
 msgid "Max upload size"
 msgstr "حداکثر حجم بارگذاری"
 
-#: includes/admin/class-admin.php:381
+#: includes/admin/class-admin.php:382
 msgid "Elementor"
 msgstr "المنتور"
 
-#: includes/admin/class-admin.php:382
+#: includes/admin/class-admin.php:383
 msgid "Not active"
 msgstr "غیرفعال"
 
-#: includes/admin/class-admin.php:386
+#: includes/admin/class-admin.php:387
 msgid "WooCommerce"
 msgstr "ووکامرس"
 
-#: includes/admin/class-admin.php:387
+#: includes/admin/class-admin.php:388
 msgid "Not active (optional)"
 msgstr "غیرفعال (اختیاری)"
 
-#: includes/admin/class-admin.php:391
+#: includes/admin/class-admin.php:392
 msgid "Hamista theme active"
 msgstr "قالب هامیستا فعال است"
 
-#: includes/admin/class-admin.php:396
+#: includes/admin/class-admin.php:397
 msgid "Child theme active"
 msgstr "قالب فرزند فعال است"
 
-#: includes/admin/class-admin.php:397
+#: includes/admin/class-admin.php:398
 msgid "No — recommended for custom code"
 msgstr "خیر؛ برای کد سفارشی پیشنهاد می‌شود"
 
-#: includes/admin/class-admin.php:401
+#: includes/admin/class-admin.php:402
 msgid "Pretty permalinks"
 msgstr "پیوند یکتای خوانا"
 
-#: includes/admin/class-admin.php:406
+#: includes/admin/class-admin.php:407
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: includes/admin/class-admin.php:411
+#: includes/admin/class-admin.php:412
 msgid "Hamista Core version"
 msgstr "نسخه‌ی هسته‌ی هامیستا"
 
-#: includes/admin/class-admin.php:447
+#: includes/admin/class-admin.php:477
 msgid "Settings sections"
 msgstr "بخش‌های تنظیمات"
 
-#: includes/admin/class-admin.php:449
+#: includes/admin/class-admin.php:479
 msgid "Search settings"
 msgstr "جست‌وجو در تنظیمات"
 
-#: includes/admin/class-admin.php:450
+#: includes/admin/class-admin.php:480
 msgid "Clear search"
 msgstr "پاک کردن جست‌وجو"
 
 #. translators: %s: the search term.
-#: includes/admin/class-admin.php:452
+#: includes/admin/class-admin.php:482
 #, php-format
 msgid "Results for “%s”"
 msgstr "نتایج برای «%s»"
 
 #. translators: %s: the search term.
-#: includes/admin/class-admin.php:454
+#: includes/admin/class-admin.php:484
 #, php-format
 msgid "No settings match “%s”."
 msgstr "تنظیمی با «%s» پیدا نشد."
 
-#: includes/admin/class-admin.php:455
+#: includes/admin/class-admin.php:485
 msgid "Try a shorter word, or browse the sections on the side."
 msgstr "واژه‌ی کوتاه‌تری را امتحان کنید یا بخش‌های کناری را مرور کنید."
 
-#: includes/admin/class-admin.php:456
+#: includes/admin/class-admin.php:486
 msgid "1 setting"
 msgstr "یک تنظیم"
 
 #. translators: %d: number of settings.
-#: includes/admin/class-admin.php:458
+#: includes/admin/class-admin.php:488
 #, php-format
 msgid "%d settings"
 msgstr "%d تنظیم"
 
-#: includes/admin/class-admin.php:459
+#: includes/admin/class-admin.php:489
 msgid "Open section"
 msgstr "رفتن به بخش"
 
 #. translators: %s: label of the setting this one depends on.
-#: includes/admin/class-admin.php:461
+#: includes/admin/class-admin.php:491
 #, php-format
 msgid "Applies when: %s"
 msgstr "وابسته به: %s"
 
-#: includes/admin/class-admin.php:462
+#: includes/admin/class-admin.php:492
 msgid "Documentation"
 msgstr "مستندات"
 
-#: includes/admin/class-admin.php:463
+#: includes/admin/class-admin.php:493
 msgid "View site"
 msgstr "مشاهده‌ی سایت"
 
-#: includes/admin/class-admin.php:464
+#: includes/admin/class-admin.php:494
 msgid "(opens in a new tab)"
 msgstr "(در زبانه‌ی جدید باز می‌شود)"
 
-#: includes/admin/class-admin.php:465
+#: includes/admin/class-admin.php:495
 msgid "Has unsaved changes"
 msgstr "تغییرات ذخیره‌نشده دارد"
 
-#: includes/admin/class-admin.php:466
+#: includes/admin/class-admin.php:496
 #: includes/forms/class-forms.php:248
 msgctxt "list separator"
 msgid ", "
 msgstr "، "
 
-#: includes/admin/class-admin.php:469
+#: includes/admin/class-admin.php:499
 msgid "Unsaved changes"
 msgstr "تغییرات ذخیره‌نشده"
 
 #. translators: %d: number of unsaved changes.
-#: includes/admin/class-admin.php:471
+#: includes/admin/class-admin.php:501
 #, php-format
 msgid "%d unsaved changes"
 msgstr "%d تغییر ذخیره‌نشده"
 
-#: includes/admin/class-admin.php:472
+#: includes/admin/class-admin.php:502
 msgid "All changes saved"
 msgstr "همه‌ی تغییرات ذخیره شد"
 
-#: includes/admin/class-admin.php:473
+#: includes/admin/class-admin.php:503
 #: templates/auth/account.php:74
 msgid "Save changes"
 msgstr "ذخیره‌ی تغییرات"
 
-#: includes/admin/class-admin.php:474
+#: includes/admin/class-admin.php:504
 msgid "Saving…"
 msgstr "در حال ذخیره…"
 
-#: includes/admin/class-admin.php:475
+#: includes/admin/class-admin.php:505
 #: includes/settings/class-settings.php:437
 msgid "Settings saved."
 msgstr "تنظیمات ذخیره شد."
 
-#: includes/admin/class-admin.php:476
+#: includes/admin/class-admin.php:506
 msgid "Discard"
 msgstr "لغو تغییرات"
 
-#: includes/admin/class-admin.php:477
+#: includes/admin/class-admin.php:507
 msgid "Changes discarded."
 msgstr "تغییرات لغو شد."
 
-#: includes/admin/class-admin.php:478
+#: includes/admin/class-admin.php:508
 msgid "Ctrl + S"
 msgstr "Ctrl + S"
 
-#: includes/admin/class-admin.php:479
+#: includes/admin/class-admin.php:509
 msgid "⌘ S"
 msgstr "⌘ S"
 
-#: includes/admin/class-admin.php:480
+#: includes/admin/class-admin.php:510
 msgid "You have unsaved changes. Leave anyway?"
 msgstr "تغییرات ذخیره‌نشده دارید. باز هم از این صفحه خارج می‌شوید؟"
 
-#: includes/admin/class-admin.php:483
+#: includes/admin/class-admin.php:513
 msgid "Reset section"
 msgstr "بازنشانی بخش"
 
 #. translators: %s: section name.
-#: includes/admin/class-admin.php:485
+#: includes/admin/class-admin.php:515
 #, php-format
 msgid "Reset “%s”?"
 msgstr "بخش «%s» بازنشانی شود؟"
 
-#: includes/admin/class-admin.php:486
+#: includes/admin/class-admin.php:516
 msgid "Every setting in this section goes back to its default. Other sections are not affected."
 msgstr "همه‌ی تنظیمات این بخش به حالت پیش‌فرض برمی‌گردند. بخش‌های دیگر تغییری نمی‌کنند."
 
-#: includes/admin/class-admin.php:487
+#: includes/admin/class-admin.php:517
 msgid "Reset"
 msgstr "بازنشانی"
 
-#: includes/admin/class-admin.php:488
+#: includes/admin/class-admin.php:518
 msgid "Section reset to defaults."
 msgstr "تنظیمات بخش به حالت پیش‌فرض برگشت."
 
-#: includes/admin/class-admin.php:489
+#: includes/admin/class-admin.php:519
 msgid "Cancel"
 msgstr "انصراف"
 
-#: includes/admin/class-admin.php:490
+#: includes/admin/class-admin.php:520
 #: includes/auth/class-account.php:406
 #: includes/elementor/widgets/class-showcase.php:449
 msgid "Close"
 msgstr "بستن"
 
-#: includes/admin/class-admin.php:491
+#: includes/admin/class-admin.php:521
 #: includes/booking/class-admin.php:670
 #: includes/booking/class-admin.php:720
 msgid "Confirm"
 msgstr "تأیید"
 
-#: includes/admin/class-admin.php:494
+#: includes/admin/class-admin.php:524
 msgid "Style kit default"
 msgstr "پیش‌فرض سبک طراحی"
 
-#: includes/admin/class-admin.php:495
+#: includes/admin/class-admin.php:525
 msgid "Pick a color"
 msgstr "انتخاب رنگ"
 
-#: includes/admin/class-admin.php:496
+#: includes/admin/class-admin.php:526
 msgid "Suggested colors"
 msgstr "رنگ‌های پیشنهادی"
 
-#: includes/admin/class-admin.php:497
+#: includes/admin/class-admin.php:527
 msgid "Use default"
 msgstr "استفاده از پیش‌فرض"
 
-#: includes/admin/class-admin.php:498
+#: includes/admin/class-admin.php:528
 msgid "Use a hex color like #0052FF."
 msgstr "یک کد رنگ هگز مثل #0052FF وارد کنید."
 
-#: includes/admin/class-admin.php:499
+#: includes/admin/class-admin.php:529
 #: includes/elementor/widgets/class-login.php:96
 #: includes/elementor/widgets/class-products.php:74
 #: includes/shop/class-product-card.php:71
@@ -463,134 +463,134 @@ msgstr "یک کد رنگ هگز مثل #0052FF وارد کنید."
 msgid "Show"
 msgstr "نمایش"
 
-#: includes/admin/class-admin.php:500
+#: includes/admin/class-admin.php:530
 #: includes/elementor/widgets/class-login.php:97
 #: includes/elementor/widgets/class-testimonials.php:89
 msgid "Hide"
 msgstr "پنهان"
 
-#: includes/admin/class-admin.php:501
+#: includes/admin/class-admin.php:531
 msgid "Choose image"
 msgstr "انتخاب تصویر"
 
-#: includes/admin/class-admin.php:502
+#: includes/admin/class-admin.php:532
 msgid "Replace"
 msgstr "جایگزینی"
 
-#: includes/admin/class-admin.php:503
-#: includes/admin/class-admin.php:512
+#: includes/admin/class-admin.php:533
+#: includes/admin/class-admin.php:542
 msgid "Remove"
 msgstr "حذف"
 
-#: includes/admin/class-admin.php:504
+#: includes/admin/class-admin.php:534
 msgid "Select an image"
 msgstr "انتخاب تصویر"
 
-#: includes/admin/class-admin.php:505
+#: includes/admin/class-admin.php:535
 msgid "Use this image"
 msgstr "استفاده از این تصویر"
 
-#: includes/admin/class-admin.php:506
+#: includes/admin/class-admin.php:536
 msgid "No image selected"
 msgstr "بدون تصویر"
 
-#: includes/admin/class-admin.php:507
+#: includes/admin/class-admin.php:537
 msgid "The media library could not be loaded. Reload the page and try again."
 msgstr "کتابخانه‌ی رسانه بارگذاری نشد. صفحه را دوباره بارگذاری کنید و باز امتحان کنید."
 
-#: includes/admin/class-admin.php:508
+#: includes/admin/class-admin.php:538
 msgid "Add item"
 msgstr "افزودن مورد"
 
-#: includes/admin/class-admin.php:509
+#: includes/admin/class-admin.php:539
 msgid "Nothing here yet."
 msgstr "هنوز موردی اضافه نشده است."
 
-#: includes/admin/class-admin.php:510
+#: includes/admin/class-admin.php:540
 msgid "Move up"
 msgstr "انتقال به بالا"
 
-#: includes/admin/class-admin.php:511
+#: includes/admin/class-admin.php:541
 msgid "Move down"
 msgstr "انتقال به پایین"
 
 #. translators: %d: item number in a repeating list.
-#: includes/admin/class-admin.php:514
+#: includes/admin/class-admin.php:544
 #, php-format
 msgid "Item %d"
 msgstr "مورد %d"
 
-#: includes/admin/class-admin.php:515
+#: includes/admin/class-admin.php:545
 msgid "Syntax highlighting is off in your profile, so this is a plain text box."
 msgstr "برجسته‌سازی نحوی کد در شناسنامه‌ی شما خاموش است؛ برای همین اینجا یک کادر متنی ساده می‌بینید."
 
-#: includes/admin/class-admin.php:518
+#: includes/admin/class-admin.php:548
 msgid "Add family"
 msgstr "افزودن خانواده‌ی فونت"
 
-#: includes/admin/class-admin.php:519
+#: includes/admin/class-admin.php:549
 msgid "Family name"
 msgstr "نام خانواده‌ی فونت"
 
-#: includes/admin/class-admin.php:520
+#: includes/admin/class-admin.php:550
 msgid "e.g. Yekan Bakh"
 msgstr "مثلاً Yekan Bakh"
 
-#: includes/admin/class-admin.php:521
+#: includes/admin/class-admin.php:551
 msgid "A family with this name already exists."
 msgstr "خانواده‌ای با این نام از قبل وجود دارد."
 
-#: includes/admin/class-admin.php:522
+#: includes/admin/class-admin.php:552
 msgid "Enter a family name first."
 msgstr "اول نام خانواده‌ی فونت را وارد کنید."
 
-#: includes/admin/class-admin.php:523
+#: includes/admin/class-admin.php:553
 msgid "Upload font files"
 msgstr "بارگذاری فایل‌های فونت"
 
 #. translators: %s: font family name.
-#: includes/admin/class-admin.php:525
+#: includes/admin/class-admin.php:555
 #, php-format
 msgid "Font files for “%s”"
 msgstr "فایل‌های فونت «%s»"
 
-#: includes/admin/class-admin.php:526
+#: includes/admin/class-admin.php:556
 msgid "Add to family"
 msgstr "افزودن به خانواده"
 
-#: includes/admin/class-admin.php:527
+#: includes/admin/class-admin.php:557
 msgid "Remove family"
 msgstr "حذف خانواده"
 
-#: includes/admin/class-admin.php:528
+#: includes/admin/class-admin.php:558
 msgid "Remove file"
 msgstr "حذف فایل"
 
-#: includes/admin/class-admin.php:529
+#: includes/admin/class-admin.php:559
 msgid "No files yet. Upload woff2, woff, ttf or otf files."
 msgstr "هنوز فایلی ندارد. فایل‌های woff2، woff، ttf یا otf بارگذاری کنید."
 
 #. translators: %d: number of skipped files.
-#: includes/admin/class-admin.php:531
+#: includes/admin/class-admin.php:561
 #, php-format
 msgid "Skipped %d file(s) that are not fonts."
 msgstr "%d فایل که فونت نبود، نادیده گرفته شد."
 
 #. translators: %d: number of font files.
-#: includes/admin/class-admin.php:533
+#: includes/admin/class-admin.php:563
 #, php-format
 msgid "%d files"
 msgstr "%d فایل"
 
-#: includes/admin/class-admin.php:534
+#: includes/admin/class-admin.php:564
 msgid "1 file"
 msgstr "یک فایل"
 
-#: includes/admin/class-admin.php:535
+#: includes/admin/class-admin.php:565
 msgid "Weight"
 msgstr "وزن"
 
-#: includes/admin/class-admin.php:536
+#: includes/admin/class-admin.php:566
 #: includes/elementor/class-widget-base.php:369
 #: includes/elementor/widgets/class-accordion.php:107
 #: includes/elementor/widgets/class-counters.php:115
@@ -599,580 +599,592 @@ msgstr "وزن"
 msgid "Style"
 msgstr "سبک"
 
-#: includes/admin/class-admin.php:537
+#: includes/admin/class-admin.php:567
 #: includes/settings/schema.php:255
 msgid "Normal"
 msgstr "معمولی"
 
-#: includes/admin/class-admin.php:538
+#: includes/admin/class-admin.php:568
 msgid "Italic"
 msgstr "ایتالیک"
 
-#: includes/admin/class-admin.php:539
+#: includes/admin/class-admin.php:569
 msgid "Variable (100–900)"
 msgstr "متغیر (۱۰۰ تا ۹۰۰)"
 
-#: includes/admin/class-admin.php:542
+#: includes/admin/class-admin.php:572
 msgid "No custom fonts yet. Add a family, then upload its files."
 msgstr "هنوز فونت سفارشی ندارید. یک خانواده‌ی فونت بسازید و فایل‌هایش را بارگذاری کنید."
 
-#: includes/admin/class-admin.php:543
+#: includes/admin/class-admin.php:573
 msgid "New families appear in the font menus below after you save and reload."
 msgstr "خانواده‌های جدید پس از ذخیره و بارگذاری دوباره‌ی صفحه، در فهرست‌های فونت پایین ظاهر می‌شوند."
 
 #. translators: 1: switched-on families, 2: all families.
-#: includes/admin/class-admin.php:547
+#: includes/admin/class-admin.php:577
 #, php-format
 msgid "%1$s of %2$s fonts on"
 msgstr "%1$s فونت از %2$s روشن است"
 
-#: includes/admin/class-admin.php:548
+#: includes/admin/class-admin.php:578
 msgid "Switch all on"
 msgstr "روشن کردن همه"
 
-#: includes/admin/class-admin.php:549
+#: includes/admin/class-admin.php:579
 msgid "Switch all off"
 msgstr "خاموش کردن همه"
 
 #. translators: %s: font name.
-#: includes/admin/class-admin.php:551
+#: includes/admin/class-admin.php:581
 #, php-format
 msgid "Use %s"
 msgstr "استفاده از %s"
 
-#: includes/admin/class-admin.php:552
+#: includes/admin/class-admin.php:582
 msgid "Weights"
 msgstr "وزن‌ها"
 
-#: includes/admin/class-admin.php:553
+#: includes/admin/class-admin.php:583
 msgid "Text and headings"
 msgstr "متن و تیتر"
 
-#: includes/admin/class-admin.php:554
+#: includes/admin/class-admin.php:584
 msgid "Headings"
 msgstr "تیتر"
 
 #. translators: 1: lightest weight name, 2: heaviest weight name.
-#: includes/admin/class-admin.php:556
+#: includes/admin/class-admin.php:586
 #, php-format
 msgid "Variable: every weight from %1$s to %2$s"
 msgstr "متغیر؛ هر وزنی از %1$s تا %2$s"
 
-#: includes/admin/class-admin.php:557
+#: includes/admin/class-admin.php:587
 msgid "Keep at least one weight on."
 msgstr "دست‌کم یک وزن باید روشن بماند."
 
 #. translators: %s: font name.
-#: includes/admin/class-admin.php:559
+#: includes/admin/class-admin.php:589
 #, php-format
 msgid "%s (switched off)"
 msgstr "%s (خاموش)"
 
+#: includes/admin/class-admin.php:590
+msgid "Find a font"
+msgstr "جست‌وجوی فونت"
+
+#: includes/admin/class-admin.php:591
+msgid "No font matches."
+msgstr "فونتی پیدا نشد."
+
+#: includes/admin/class-admin.php:592
+msgid "Theme and your own fonts"
+msgstr "فونت‌های قالب و فونت‌های شما"
+
 #. translators: %s: weight name.
-#: includes/admin/class-admin.php:561
+#: includes/admin/class-admin.php:595
 #, php-format
 msgid "%s: not in this font, the nearest weight shows"
 msgstr "%s؛ در این فونت نیست و نزدیک‌ترین وزن نمایش داده می‌شود"
 
-#: includes/admin/class-admin.php:562
-#: includes/fonts/class-library.php:150
+#: includes/admin/class-admin.php:596
+#: includes/fonts/class-library.php:200
 msgctxt "font weight"
 msgid "Thin"
 msgstr "نازک"
 
-#: includes/admin/class-admin.php:563
-#: includes/fonts/class-library.php:151
+#: includes/admin/class-admin.php:597
+#: includes/fonts/class-library.php:201
 msgctxt "font weight"
 msgid "Extra light"
 msgstr "خیلی سبک"
 
-#: includes/admin/class-admin.php:564
-#: includes/fonts/class-library.php:152
+#: includes/admin/class-admin.php:598
+#: includes/fonts/class-library.php:202
 msgctxt "font weight"
 msgid "Light"
 msgstr "سبک"
 
-#: includes/admin/class-admin.php:565
-#: includes/fonts/class-library.php:153
+#: includes/admin/class-admin.php:599
+#: includes/fonts/class-library.php:203
 msgctxt "font weight"
 msgid "Regular"
 msgstr "معمولی"
 
-#: includes/admin/class-admin.php:566
-#: includes/fonts/class-library.php:154
+#: includes/admin/class-admin.php:600
+#: includes/fonts/class-library.php:204
 msgctxt "font weight"
 msgid "Medium"
 msgstr "متوسط"
 
-#: includes/admin/class-admin.php:567
-#: includes/fonts/class-library.php:155
+#: includes/admin/class-admin.php:601
+#: includes/fonts/class-library.php:205
 msgctxt "font weight"
 msgid "Semi bold"
 msgstr "نیمه‌ضخیم"
 
-#: includes/admin/class-admin.php:568
-#: includes/fonts/class-library.php:156
+#: includes/admin/class-admin.php:602
+#: includes/fonts/class-library.php:206
 msgctxt "font weight"
 msgid "Bold"
 msgstr "ضخیم"
 
-#: includes/admin/class-admin.php:569
-#: includes/fonts/class-library.php:157
+#: includes/admin/class-admin.php:603
+#: includes/fonts/class-library.php:207
 msgctxt "font weight"
 msgid "Extra bold"
 msgstr "خیلی ضخیم"
 
-#: includes/admin/class-admin.php:570
-#: includes/fonts/class-library.php:158
+#: includes/admin/class-admin.php:604
+#: includes/fonts/class-library.php:208
 msgctxt "font weight"
 msgid "Black"
 msgstr "سنگین"
 
-#: includes/admin/class-admin.php:571
-#: includes/fonts/class-library.php:159
+#: includes/admin/class-admin.php:605
+#: includes/fonts/class-library.php:209
 msgctxt "font weight"
 msgid "Extra black"
 msgstr "خیلی سنگین"
 
-#: includes/admin/class-admin.php:574
+#: includes/admin/class-admin.php:608
 msgid "Save your changes in this section first."
 msgstr "اول تغییرات این بخش را ذخیره کنید."
 
-#: includes/admin/class-admin.php:575
+#: includes/admin/class-admin.php:609
 msgid "Sending…"
 msgstr "در حال ارسال…"
 
-#: includes/admin/class-admin.php:576
+#: includes/admin/class-admin.php:610
 msgid "Enter a value first."
 msgstr "اول یک مقدار وارد کنید."
 
 #. translators: %s: the one-time code.
-#: includes/admin/class-admin.php:578
+#: includes/admin/class-admin.php:612
 #, php-format
 msgid "Last test code: %s"
 msgstr "آخرین کد آزمایشی: %s"
 
-#: includes/admin/class-admin.php:581
+#: includes/admin/class-admin.php:615
 #: includes/auth/class-account.php:114
 #: includes/booking/class-rest.php:276
 #: includes/booking/class-view.php:77
 msgid "Something went wrong. Please try again."
 msgstr "مشکلی پیش آمد. لطفاً دوباره تلاش کنید."
 
-#: includes/admin/class-admin.php:582
+#: includes/admin/class-admin.php:616
 msgid "Your session has expired. Reload the page and try again."
 msgstr "نشست شما منقضی شده است. صفحه را دوباره بارگذاری کنید و باز تلاش کنید."
 
-#: includes/admin/class-admin.php:583
+#: includes/admin/class-admin.php:617
 msgid "Could not reach the server. Check your connection."
 msgstr "ارتباط با سرور برقرار نشد. اتصال اینترنت را بررسی کنید."
 
-#: includes/admin/class-admin.php:586
+#: includes/admin/class-admin.php:620
 msgid "Welcome to Hamista"
 msgstr "به هامیستا خوش آمدید"
 
-#: includes/admin/class-admin.php:587
+#: includes/admin/class-admin.php:621
 msgid "Style, header, login, motion and more — everything that shapes your site lives here. A few steps get you from a fresh install to a finished site."
 msgstr "سبک طراحی، سربرگ، ورود، انیمیشن و خیلی چیزهای دیگر؛ هر چیزی که به سایتتان شکل می‌دهد همین‌جاست. با چند قدم ساده، از یک نصب تازه به سایتی آماده می‌رسید."
 
 #. translators: %s: version number.
-#: includes/admin/class-admin.php:589
+#: includes/admin/class-admin.php:623
 #, php-format
 msgid "Version %s"
 msgstr "نسخه‌ی %s"
 
-#: includes/admin/class-admin.php:590
+#: includes/admin/class-admin.php:624
 #: includes/elementor/widgets/class-button.php:40
 msgid "Get started"
 msgstr "شروع کنید"
 
 #. translators: 1: number of finished steps, 2: total number of steps.
-#: includes/admin/class-admin.php:592
+#: includes/admin/class-admin.php:626
 #, php-format
 msgid "%1$d of %2$d done"
 msgstr "%1$d از %2$d انجام شد"
 
-#: includes/admin/class-admin.php:593
+#: includes/admin/class-admin.php:627
 msgid "Import a demo"
 msgstr "نصب یک دمو"
 
-#: includes/admin/class-admin.php:594
+#: includes/admin/class-admin.php:628
 msgid "Start from finished pages, menus and a style kit."
 msgstr "با برگه‌ها، فهرست‌ها و سبک طراحی آماده شروع کنید."
 
-#: includes/admin/class-admin.php:595
+#: includes/admin/class-admin.php:629
 msgid "Upload your logo"
 msgstr "بارگذاری لوگو"
 
-#: includes/admin/class-admin.php:596
+#: includes/admin/class-admin.php:630
 msgid "Shown in the header, with an optional dark-mode version."
 msgstr "در سربرگ نمایش داده می‌شود؛ می‌توانید نسخه‌ای هم برای حالت تاریک بگذارید."
 
-#: includes/admin/class-admin.php:597
+#: includes/admin/class-admin.php:631
 msgid "Pick your colors"
 msgstr "انتخاب رنگ‌ها"
 
-#: includes/admin/class-admin.php:598
+#: includes/admin/class-admin.php:632
 msgid "Set the accent used for buttons, links and highlights."
 msgstr "رنگ اصلی دکمه‌ها، لینک‌ها و بخش‌های برجسته را تعیین کنید."
 
-#: includes/admin/class-admin.php:599
+#: includes/admin/class-admin.php:633
 msgid "Set up mobile login"
 msgstr "راه‌اندازی ورود با موبایل"
 
-#: includes/admin/class-admin.php:600
+#: includes/admin/class-admin.php:634
 msgid "Let customers sign in with a one-time SMS code."
 msgstr "مشتری‌ها با کد تأیید پیامکی وارد سایت شوند."
 
-#: includes/admin/class-admin.php:601
+#: includes/admin/class-admin.php:635
 msgid "Done"
 msgstr "انجام شد"
 
-#: includes/admin/class-admin.php:602
+#: includes/admin/class-admin.php:636
 msgid "Open"
 msgstr "باز کردن"
 
-#: includes/admin/class-admin.php:603
-#: includes/admin/class-admin.php:641
+#: includes/admin/class-admin.php:637
+#: includes/admin/class-admin.php:675
 msgid "Plugins"
 msgstr "افزونه‌ها"
 
-#: includes/admin/class-admin.php:604
+#: includes/admin/class-admin.php:638
 msgid "Manage"
 msgstr "مدیریت"
 
-#: includes/admin/class-admin.php:605
+#: includes/admin/class-admin.php:639
 msgid "Active"
 msgstr "فعال"
 
-#: includes/admin/class-admin.php:606
+#: includes/admin/class-admin.php:640
 msgid "Installed, not active"
 msgstr "نصب‌شده، غیرفعال"
 
-#: includes/admin/class-admin.php:607
+#: includes/admin/class-admin.php:641
 msgid "Not installed"
 msgstr "نصب نشده"
 
-#: includes/admin/class-admin.php:608
+#: includes/admin/class-admin.php:642
 #: includes/elementor/widgets/class-contact-form.php:86
 #: includes/elementor/widgets/class-lead-form.php:312
 #: includes/settings/schema.php:900
 msgid "Required"
 msgstr "الزامی"
 
-#: includes/admin/class-admin.php:609
+#: includes/admin/class-admin.php:643
 msgid "Recommended"
 msgstr "پیشنهادی"
 
-#: includes/admin/class-admin.php:610
+#: includes/admin/class-admin.php:644
 msgid "Install & activate"
 msgstr "نصب و فعال‌سازی"
 
-#: includes/admin/class-admin.php:611
+#: includes/admin/class-admin.php:645
 msgid "Activate"
 msgstr "فعال‌سازی"
 
-#: includes/admin/class-admin.php:612
+#: includes/admin/class-admin.php:646
 msgid "Installing…"
 msgstr "در حال نصب…"
 
 #. translators: %s: plugin name.
-#: includes/admin/class-admin.php:614
+#: includes/admin/class-admin.php:648
 #, php-format
 msgid "%s is active."
 msgstr "%s فعال شد."
 
-#: includes/admin/class-admin.php:615
+#: includes/admin/class-admin.php:649
 msgid "Page builder for every Hamista widget and template."
 msgstr "صفحه‌ساز همه‌ی ویجت‌ها و تمپلیت‌های هامیستا."
 
-#: includes/admin/class-admin.php:616
+#: includes/admin/class-admin.php:650
 msgid "Shop, cart, checkout and customer accounts."
 msgstr "فروشگاه، سبد خرید، تسویه حساب و حساب کاربری مشتریان."
 
-#: includes/admin/class-admin.php:617
+#: includes/admin/class-admin.php:651
 msgid "System status"
 msgstr "وضعیت سیستم"
 
-#: includes/admin/class-admin.php:618
+#: includes/admin/class-admin.php:652
 msgid "OK"
 msgstr "سالم"
 
-#: includes/admin/class-admin.php:619
+#: includes/admin/class-admin.php:653
 msgid "Needs attention"
 msgstr "نیاز به بررسی"
 
-#: includes/admin/class-admin.php:620
+#: includes/admin/class-admin.php:654
 msgid "Info"
 msgstr "اطلاعات"
 
-#: includes/admin/class-admin.php:621
+#: includes/admin/class-admin.php:655
 msgid "Quick links"
 msgstr "دسترسی سریع"
 
-#: includes/admin/class-admin.php:622
+#: includes/admin/class-admin.php:656
 msgid "Header & footer templates"
 msgstr "تمپلیت‌های سربرگ و پابرگ"
 
-#: includes/admin/class-admin.php:624
-#: includes/admin/class-admin.php:646
+#: includes/admin/class-admin.php:658
+#: includes/admin/class-admin.php:680
 msgid "Menus"
 msgstr "فهرست‌ها"
 
-#: includes/admin/class-admin.php:625
+#: includes/admin/class-admin.php:659
 msgid "Widgets"
 msgstr "ابزارک‌ها"
 
-#: includes/admin/class-admin.php:626
+#: includes/admin/class-admin.php:660
 msgid "Customizer"
 msgstr "سفارشی‌سازی"
 
-#: includes/admin/class-admin.php:630
+#: includes/admin/class-admin.php:664
 msgid "Start from a finished site. Pages, menus and the style kit are imported in one go; your existing content is kept."
 msgstr "از یک سایت آماده شروع کنید. برگه‌ها، فهرست‌ها و سبک طراحی یک‌جا نصب می‌شوند و محتوای فعلی‌تان سر جایش می‌ماند."
 
-#: includes/admin/class-admin.php:631
+#: includes/admin/class-admin.php:665
 msgid "No demos available yet"
 msgstr "هنوز دمویی در دسترس نیست"
 
-#: includes/admin/class-admin.php:632
+#: includes/admin/class-admin.php:666
 msgid "Demo sites ship with Hamista Core updates. Check back after updating the plugin."
 msgstr "دموها همراه به‌روزرسانی‌های هسته‌ی هامیستا منتشر می‌شوند. بعد از به‌روزرسانی افزونه دوباره سر بزنید."
 
-#: includes/admin/class-admin.php:633
+#: includes/admin/class-admin.php:667
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: includes/admin/class-admin.php:634
+#: includes/admin/class-admin.php:668
 msgid "Import"
 msgstr "نصب"
 
 #. translators: %s: demo name.
-#: includes/admin/class-admin.php:636
+#: includes/admin/class-admin.php:670
 #, php-format
 msgid "Import “%s”"
 msgstr "نصب «%s»"
 
 #. translators: %d: number of pages.
-#: includes/admin/class-admin.php:638
+#: includes/admin/class-admin.php:672
 #, php-format
 msgid "%d pages"
 msgstr "%d برگه"
 
 #. translators: %s: style kit name.
-#: includes/admin/class-admin.php:640
+#: includes/admin/class-admin.php:674
 #, php-format
 msgid "Style kit: %s"
 msgstr "سبک طراحی: %s"
 
-#: includes/admin/class-admin.php:642
+#: includes/admin/class-admin.php:676
 msgid "Activate the required plugins to continue."
 msgstr "برای ادامه، افزونه‌های الزامی را فعال کنید."
 
-#: includes/admin/class-admin.php:643
+#: includes/admin/class-admin.php:677
 msgid "What to import"
 msgstr "چه چیزهایی نصب شود؟"
 
-#: includes/admin/class-admin.php:644
+#: includes/admin/class-admin.php:678
 #: includes/elementor/widgets/class-cta.php:44
 #: includes/elementor/widgets/class-hero.php:46
 #: includes/settings/schema.php:700
 msgid "Content"
 msgstr "محتوا"
 
-#: includes/admin/class-admin.php:645
+#: includes/admin/class-admin.php:679
 msgid "Pages, posts and products with their images."
 msgstr "برگه‌ها، نوشته‌ها و محصولات به همراه تصاویرشان."
 
-#: includes/admin/class-admin.php:647
+#: includes/admin/class-admin.php:681
 msgid "Header and footer navigation."
 msgstr "منوهای سربرگ و پابرگ."
 
-#: includes/admin/class-admin.php:648
+#: includes/admin/class-admin.php:682
 msgid "Settings & style kit"
 msgstr "تنظیمات و سبک طراحی"
 
-#: includes/admin/class-admin.php:649
+#: includes/admin/class-admin.php:683
 msgid "Hamista settings, colors and Elementor kit."
 msgstr "تنظیمات هامیستا، رنگ‌ها و کیت المنتور."
 
-#: includes/admin/class-admin.php:650
+#: includes/admin/class-admin.php:684
 msgid "Set as front page"
 msgstr "تنظیم به‌عنوان صفحه‌ی اصلی"
 
-#: includes/admin/class-admin.php:651
+#: includes/admin/class-admin.php:685
 msgid "Use the demo home page as your site's front page."
 msgstr "برگه‌ی خانه‌ی دمو، صفحه‌ی اصلی سایتتان شود."
 
-#: includes/admin/class-admin.php:652
+#: includes/admin/class-admin.php:686
 msgid "Your existing pages, posts and products are kept. Imported items are tagged, so you can remove them later with “Uninstall demo content”."
 msgstr "برگه‌ها، نوشته‌ها و محصولات فعلی‌تان حفظ می‌شوند. موارد نصب‌شده علامت‌گذاری می‌شوند تا بعداً بتوانید با «حذف محتوای دمو» پاکشان کنید."
 
-#: includes/admin/class-admin.php:653
+#: includes/admin/class-admin.php:687
 msgid "Start import"
 msgstr "شروع نصب"
 
-#: includes/admin/class-admin.php:654
+#: includes/admin/class-admin.php:688
 msgid "Preparing…"
 msgstr "در حال آماده‌سازی…"
 
-#: includes/admin/class-admin.php:655
+#: includes/admin/class-admin.php:689
 msgid "Importing — keep this window open."
 msgstr "در حال نصب؛ این پنجره را نبندید."
 
-#: includes/admin/class-admin.php:656
+#: includes/admin/class-admin.php:690
 msgid "Your demo is ready"
 msgstr "دموی شما آماده است"
 
-#: includes/admin/class-admin.php:657
+#: includes/admin/class-admin.php:691
 msgid "Everything was imported. Take a look, then make it yours."
 msgstr "همه‌چیز نصب شد. نگاهی بیندازید و آن را مال خودتان کنید."
 
-#: includes/admin/class-admin.php:658
+#: includes/admin/class-admin.php:692
 msgid "Edit home page with Elementor"
 msgstr "ویرایش صفحه‌ی اصلی با المنتور"
 
-#: includes/admin/class-admin.php:659
+#: includes/admin/class-admin.php:693
 msgid "The import stopped"
 msgstr "نصب متوقف شد"
 
-#: includes/admin/class-admin.php:660
+#: includes/admin/class-admin.php:694
 msgid "Retry"
 msgstr "تلاش دوباره"
 
-#: includes/admin/class-admin.php:661
+#: includes/admin/class-admin.php:695
 msgid "Uninstall demo content"
 msgstr "حذف محتوای دمو"
 
-#: includes/admin/class-admin.php:662
+#: includes/admin/class-admin.php:696
 msgid "Remove imported demo content?"
 msgstr "محتوای دمو حذف شود؟"
 
-#: includes/admin/class-admin.php:663
+#: includes/admin/class-admin.php:697
 msgid "Pages, posts, products, menus and images that came from a demo are deleted. Content you created yourself is not touched."
 msgstr "برگه‌ها، نوشته‌ها، محصولات، فهرست‌ها و تصاویری که از دمو آمده‌اند حذف می‌شوند. به محتوایی که خودتان ساخته‌اید دست زده نمی‌شود."
 
-#: includes/admin/class-admin.php:664
+#: includes/admin/class-admin.php:698
 msgid "Remove demo content"
 msgstr "حذف محتوای دمو"
 
-#: includes/admin/class-admin.php:667
+#: includes/admin/class-admin.php:701
 #: includes/settings/schema.php:1396
 msgid "Tools"
 msgstr "ابزارها"
 
-#: includes/admin/class-admin.php:668
+#: includes/admin/class-admin.php:702
 msgid "Back up, move and reset your settings, and clear generated files."
 msgstr "پشتیبان‌گیری، انتقال و بازنشانی تنظیمات، و پاک‌سازی فایل‌های ساخته‌شده."
 
-#: includes/admin/class-admin.php:669
+#: includes/admin/class-admin.php:703
 msgid "Export settings"
 msgstr "برون‌بری تنظیمات"
 
-#: includes/admin/class-admin.php:670
+#: includes/admin/class-admin.php:704
 msgid "Download every Hamista setting as a JSON file — for backups or to copy them to another site."
 msgstr "همه‌ی تنظیمات هامیستا را به‌صورت یک فایل JSON دانلود کنید؛ برای پشتیبان‌گیری یا انتقال به سایتی دیگر."
 
-#: includes/admin/class-admin.php:671
+#: includes/admin/class-admin.php:705
 msgid "Download .json"
 msgstr "دانلود فایل JSON"
 
-#: includes/admin/class-admin.php:672
+#: includes/admin/class-admin.php:706
 msgid "Settings file downloaded."
 msgstr "فایل تنظیمات دانلود شد."
 
-#: includes/admin/class-admin.php:673
-#: includes/admin/class-admin.php:679
+#: includes/admin/class-admin.php:707
+#: includes/admin/class-admin.php:713
 msgid "Import settings"
 msgstr "درون‌ریزی تنظیمات"
 
-#: includes/admin/class-admin.php:674
+#: includes/admin/class-admin.php:708
 msgid "Load a file exported from Hamista. Settings in the file replace the current ones."
 msgstr "فایلی را که از هامیستا برون‌بری شده انتخاب کنید. تنظیمات فایل جایگزین تنظیمات فعلی می‌شوند."
 
-#: includes/admin/class-admin.php:675
+#: includes/admin/class-admin.php:709
 msgid "Choose file…"
 msgstr "انتخاب فایل…"
 
 #. translators: %s: file name.
-#: includes/admin/class-admin.php:677
+#: includes/admin/class-admin.php:711
 #, php-format
 msgid "Import “%s”?"
 msgstr "فایل «%s» درون‌ریزی شود؟"
 
-#: includes/admin/class-admin.php:678
+#: includes/admin/class-admin.php:712
 msgid "Settings in this file replace your current ones. Consider exporting a backup first."
 msgstr "تنظیمات این فایل جایگزین تنظیمات فعلی‌تان می‌شوند. بهتر است اول یک نسخه‌ی پشتیبان برون‌بری کنید."
 
-#: includes/admin/class-admin.php:680
+#: includes/admin/class-admin.php:714
 msgid "This file could not be read as JSON."
 msgstr "محتوای این فایل JSON معتبر نیست."
 
-#: includes/admin/class-admin.php:681
+#: includes/admin/class-admin.php:715
 msgid "Regenerate Elementor CSS"
 msgstr "بازسازی CSS المنتور"
 
-#: includes/admin/class-admin.php:682
+#: includes/admin/class-admin.php:716
 msgid "Clears Elementor's generated CSS files. Use it after changing colors, fonts or the content width if a page still looks old."
 msgstr "فایل‌های CSS ساخته‌شده‌ی المنتور را پاک می‌کند. اگر بعد از تغییر رنگ‌ها، فونت‌ها یا عرض محتوا هنوز ظاهر قبلی را می‌بینید، از این گزینه استفاده کنید."
 
-#: includes/admin/class-admin.php:683
+#: includes/admin/class-admin.php:717
 msgid "Regenerate"
 msgstr "بازسازی"
 
-#: includes/admin/class-admin.php:684
+#: includes/admin/class-admin.php:718
 #: includes/admin/class-tools.php:67
 msgid "Elementor is not active."
 msgstr "المنتور فعال نیست."
 
-#: includes/admin/class-admin.php:685
+#: includes/admin/class-admin.php:719
 msgid "Clear font cache"
 msgstr "پاک‌سازی کش فونت"
 
-#: includes/admin/class-admin.php:686
+#: includes/admin/class-admin.php:720
 msgid "Re-scans the font folders. Use it after adding or replacing font files in the theme."
 msgstr "پوشه‌های فونت را دوباره بررسی می‌کند. بعد از افزودن یا جایگزین کردن فایل‌های فونت در قالب از آن استفاده کنید."
 
-#: includes/admin/class-admin.php:687
+#: includes/admin/class-admin.php:721
 msgid "Clear cache"
 msgstr "پاک‌سازی کش"
 
-#: includes/admin/class-admin.php:688
+#: includes/admin/class-admin.php:722
 msgid "Danger zone"
 msgstr "منطقه‌ی خطر"
 
-#: includes/admin/class-admin.php:689
+#: includes/admin/class-admin.php:723
 msgid "Reset all settings"
 msgstr "بازنشانی همه‌ی تنظیمات"
 
-#: includes/admin/class-admin.php:690
+#: includes/admin/class-admin.php:724
 msgid "Every Hamista setting goes back to its default. Your content, menus and templates are not touched."
 msgstr "همه‌ی تنظیمات هامیستا به حالت پیش‌فرض برمی‌گردند. به محتوا، فهرست‌ها و تمپلیت‌هایتان دست زده نمی‌شود."
 
-#: includes/admin/class-admin.php:691
+#: includes/admin/class-admin.php:725
 msgid "Reset everything"
 msgstr "بازنشانی همه‌چیز"
 
-#: includes/admin/class-admin.php:692
+#: includes/admin/class-admin.php:726
 msgid "Reset all Hamista settings?"
 msgstr "همه‌ی تنظیمات هامیستا بازنشانی شود؟"
 
-#: includes/admin/class-admin.php:693
+#: includes/admin/class-admin.php:727
 msgid "This cannot be undone. Export your settings first if you might need them again."
 msgstr "این کار برگشت‌پذیر نیست. اگر ممکن است دوباره به تنظیمات فعلی نیاز پیدا کنید، اول از آن‌ها برون‌بری بگیرید."
 
 #. translators: %s: the word the user must type.
-#: includes/admin/class-admin.php:695
+#: includes/admin/class-admin.php:729
 #, php-format
 msgid "Type %s to confirm"
 msgstr "برای تأیید، %s را تایپ کنید"
 
-#: includes/admin/class-admin.php:696
+#: includes/admin/class-admin.php:730
 msgctxt "word typed to confirm resetting all settings"
 msgid "reset"
 msgstr "بازنشانی"
 
-#: includes/admin/class-admin.php:697
+#: includes/admin/class-admin.php:731
 msgid "All settings were reset."
 msgstr "همه‌ی تنظیمات بازنشانی شد."
 
@@ -7031,66 +7043,122 @@ msgid "Neutral and clear; suits text, forms and dashboards."
 msgstr "خنثی و روشن؛ مناسب متن، فرم و پنل کاربری."
 
 #: includes/fonts/class-library.php:77
+msgid "Yekan Bakh"
+msgstr "یکان بخ"
+
+#: includes/fonts/class-library.php:79
+msgid "Calm and very legible, eight weights; a dependable choice for text and interfaces."
+msgstr "آرام و بسیار خوانا، با هشت وزن؛ انتخابی مطمئن برای متن و رابط کاربری."
+
+#: includes/fonts/class-library.php:84
+msgid "Dana"
+msgstr "دانا"
+
+#: includes/fonts/class-library.php:86
+msgid "Clean with round joins, ten weights from thin to extra black; suits corporate and product sites."
+msgstr "تمیز با اتصال‌های نرم، ده وزن از نازک تا خیلی سیاه؛ مناسب سایت‌های شرکتی و محصول."
+
+#: includes/fonts/class-library.php:91
+msgid "Kalameh"
+msgstr "کلمه"
+
+#: includes/fonts/class-library.php:93
+msgid "Contemporary and well balanced, nine weights; works for long text and headings alike."
+msgstr "امروزی و متعادل، با نه وزن؛ هم برای متن بلند خوب است هم برای تیتر."
+
+#: includes/fonts/class-library.php:98
+msgid "Estedad"
+msgstr "استعداد"
+
+#: includes/fonts/class-library.php:100
+msgid "Open licence and variable; one file covers every weight."
+msgstr "با مجوز آزاد و متغیر؛ یک فایل همه‌ی وزن‌ها را پوشش می‌دهد."
+
+#: includes/fonts/class-library.php:106
 msgid "Peyda"
 msgstr "پیدا"
 
-#: includes/fonts/class-library.php:79
+#: includes/fonts/class-library.php:108
 msgid "Modern and clean; works for brands and shops."
 msgstr "مدرن و تمیز؛ برای برندها و فروشگاه‌ها."
 
-#: includes/fonts/class-library.php:84
+#: includes/fonts/class-library.php:113
+msgid "Anjoman"
+msgstr "انجمن"
+
+#: includes/fonts/class-library.php:115
+msgid "Geometric and confident; for headings, figures and buttons."
+msgstr "هندسی و استوار؛ برای تیتر، عدد و دکمه."
+
+#: includes/fonts/class-library.php:120
+msgid "Dibaj"
+msgstr "دیباج"
+
+#: includes/fonts/class-library.php:122
+msgid "Calligraphic contrast for luxury and cultural brands; headings only. Larger files (about 75 KB a weight)."
+msgstr "کنتراست خوشنویسانه برای برندهای لوکس و فرهنگی؛ فقط برای تیتر. حجم فایل‌ها بیشتر است (حدود ۷۵ کیلوبایت برای هر وزن)."
+
+#: includes/fonts/class-library.php:127
+msgid "Rooznameh"
+msgstr "روزنامه"
+
+#: includes/fonts/class-library.php:129
+msgid "Newspaper headline style, one weight; for short, striking titles."
+msgstr "به سبک تیتر روزنامه، تک‌وزن؛ برای عنوان‌های کوتاه و چشمگیر."
+
+#: includes/fonts/class-library.php:134
 msgid "Pinar"
 msgstr "پینار"
 
-#: includes/fonts/class-library.php:86
+#: includes/fonts/class-library.php:136
 msgid "Modern and soft; one file covers text and headings."
 msgstr "مدرن و نرم؛ یک فایل برای متن و تیتر."
 
-#: includes/fonts/class-library.php:92
+#: includes/fonts/class-library.php:142
 msgid "Doran"
 msgstr "دوران"
 
-#: includes/fonts/class-library.php:94
+#: includes/fonts/class-library.php:144
 msgid "Bookish, high-contrast strokes; for refined and editorial sites."
 msgstr "کتابی با ضخامت‌های پرتضاد؛ برای سایت‌های فاخر و روایی."
 
-#: includes/fonts/class-library.php:99
+#: includes/fonts/class-library.php:149
 msgid "Ravagh"
 msgstr "رواق"
 
-#: includes/fonts/class-library.php:101
+#: includes/fonts/class-library.php:151
 msgid "Tall and slender; suits corporate and luxury sites."
 msgstr "کشیده و ظریف؛ مناسب سایت‌های شرکتی و لوکس."
 
-#: includes/fonts/class-library.php:106
+#: includes/fonts/class-library.php:156
 msgid "Lahzeh"
 msgstr "لحظه"
 
-#: includes/fonts/class-library.php:108
+#: includes/fonts/class-library.php:158
 msgid "Wide and geometric; for modern headings."
 msgstr "پهن و هندسی؛ برای تیترهای مدرن."
 
-#: includes/fonts/class-library.php:113
+#: includes/fonts/class-library.php:163
 msgid "Modam"
 msgstr "مدام"
 
-#: includes/fonts/class-library.php:115
+#: includes/fonts/class-library.php:165
 msgid "Geometric and firm, from medium upwards; for headings and buttons."
 msgstr "هندسی و محکم، از وزن متوسط به بالا؛ برای تیتر و دکمه."
 
-#: includes/fonts/class-library.php:120
+#: includes/fonts/class-library.php:170
 msgid "Hamrah"
 msgstr "همراه"
 
-#: includes/fonts/class-library.php:122
+#: includes/fonts/class-library.php:172
 msgid "Condensed and heavy, one weight; for short, bold headings."
 msgstr "فشرده و سنگین، تک‌وزن؛ برای تیترهای کوتاه و پررنگ."
 
-#: includes/fonts/class-library.php:127
+#: includes/fonts/class-library.php:177
 msgid "Gramophone"
 msgstr "گرامافون"
 
-#: includes/fonts/class-library.php:129
+#: includes/fonts/class-library.php:179
 msgid "Display face with a worn texture, one weight; short headings only. A large file (600 KB)."
 msgstr "نمایشی با بافت فرسوده، تک‌وزن؛ فقط برای تیترهای کوتاه. حجم فایلش زیاد است (۶۰۰ کیلوبایت)."
 

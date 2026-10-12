@@ -681,6 +681,81 @@ html.hm-modal-open { overflow: hidden; }
 	outline: none;
 }
 
+/* Font picker: each family shown in its own face */
+.hm-admin .hm-pick { position: relative; width: 100%; }
+/* Let the open menu spill over the card edge. */
+.hm-admin .hm-fields:has(.hm-pick.is-open) { overflow: visible; }
+.hm-admin .hm-field:has(.hm-pick.is-open) { position: relative; z-index: 20; }
+.hm-admin .hm-pick__btn {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	min-height: 52px;
+	padding-block: 8px;
+	padding-inline: 14px 12px;
+	font: inherit;
+	color: var(--hm-a-ink);
+	text-align: start;
+	background: var(--hm-a-surface);
+	border: 1px solid var(--hm-a-line-2);
+	border-radius: var(--hm-a-radius-sm);
+	box-shadow: 0 1px 1px rgba(13, 14, 18, .03);
+	cursor: pointer;
+	transition: border-color .15s, box-shadow .15s;
+}
+.hm-admin .hm-pick__btn:hover { border-color: var(--hm-a-line-3); }
+.hm-admin .hm-pick__btn:focus-visible, .hm-admin .hm-pick.is-open .hm-pick__btn { border-color: var(--hm-a-accent); box-shadow: var(--hm-a-ring); outline: none; }
+.hm-admin .hm-pick__current { font-size: 17px; font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.hm-admin .hm-pick__hint { min-width: 0; overflow: hidden; font-size: 13px; color: var(--hm-a-muted); white-space: nowrap; text-overflow: ellipsis; }
+.hm-admin .hm-pick__btn .hm-ico { color: var(--hm-a-muted); transition: transform .2s var(--hm-a-ease); }
+.hm-admin .hm-pick.is-open .hm-pick__btn .hm-ico { transform: rotate(180deg); }
+.hm-admin .hm-pick__pop {
+	position: absolute;
+	inset-inline: 0;
+	top: calc(100% + 6px);
+	z-index: 50;
+	display: flex;
+	flex-direction: column;
+	max-height: min(420px, 60vh);
+	padding: 8px;
+	background: var(--hm-a-surface);
+	border: 1px solid var(--hm-a-line-2);
+	border-radius: var(--hm-a-radius);
+	box-shadow: var(--hm-a-shadow-lg);
+	transform-origin: top center;
+	animation: hm-pick-in .16s var(--hm-a-ease);
+}
+.hm-admin .hm-pick__pop[hidden] { display: none; }
+@keyframes hm-pick-in { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+.hm-admin .hm-pick__search { flex: none; max-width: none; margin-bottom: 6px; }
+.hm-admin .hm-pick__list { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-inline-end: 2px; }
+.hm-admin .hm-pick__group { margin: 10px 8px 4px; font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--hm-a-faint); }
+.hm-admin .hm-pick__group:first-child { margin-top: 2px; }
+.hm-admin .hm-pick__opt {
+	display: grid;
+	grid-template-columns: minmax(96px, auto) 1fr 18px;
+	align-items: center;
+	gap: 14px;
+	padding: 9px 10px;
+	border-radius: var(--hm-a-radius-sm);
+	cursor: pointer;
+	transition: background-color .12s;
+}
+.hm-admin .hm-pick__opt.is-active { background: var(--hm-a-sunken); }
+.hm-admin .hm-pick__opt.is-selected { background: var(--hm-a-accent-soft); }
+.hm-admin .hm-pick__opt[hidden] { display: none; }
+.hm-admin .hm-pick__name { font-size: 16px; font-weight: 600; line-height: 1.35; color: var(--hm-a-ink); white-space: nowrap; }
+.hm-admin .hm-pick__sample { min-width: 0; overflow: hidden; font-size: 14px; color: var(--hm-a-muted); white-space: nowrap; text-overflow: ellipsis; }
+.hm-admin .hm-pick__check { display: grid; place-items: center; color: var(--hm-a-accent); opacity: 0; }
+.hm-admin .hm-pick__opt.is-selected .hm-pick__check { opacity: 1; }
+.hm-admin .hm-pick__empty { margin: 14px 8px; color: var(--hm-a-muted); }
+@media (prefers-reduced-motion: reduce) {
+	.hm-admin .hm-pick__pop { animation: none; }
+	.hm-admin .hm-pick__btn .hm-ico { transition: none; }
+}
+
 /* Switch */
 .hm-admin .hm-switch { position: relative; display: inline-flex; flex: none; }
 .hm-admin .hm-switch__input {

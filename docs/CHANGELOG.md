@@ -3,6 +3,9 @@
 ## Unreleased
 
 **Hamista Core**
+- Demos: every demo except Kooch (کوچ) is removed, ahead of a new set.
+- Font library: Yekan Bakh, Dana, Kalameh, Estedad, Anjoman, Dibaj and Rooznameh added, and Peyda now has all nine weights. Every bundled file is the Farsi-numeral build, trimmed to the characters a Persian site uses and saved as woff2 (10–35% smaller). Yekan Bakh fills the theme's own Yekan Bakh slot.
+- Settings: the body, heading and numbers font menus open a picker that shows each family in its own face with a Persian sample, grouped for text and for headings, with search and keyboard control.
 - Booking module for any business that works by appointment. A business type (general, clinic, beauty salon, law firm, consulting, or your own wording) sets every label and URL. Includes a weekly schedule with morning and evening shifts, free time slots, double-booking protection, rate limits, email to the reception, confirm/done/cancel in the dashboard with a pending count, "My appointments" with online cancellation, and the `[hamista_booking]` and `[hamista_appointments]` shortcodes.
 - New widgets: Booking: list, Booking: form, Before & after.
 - Booking works for anything booked by time: people (doctor, teacher, consultant) or places (dining area, court, studio). New business types: education, restaurant, sports venue, space rental, car service. Per-item capacity, a guest-count field, your own booking questions (text, number, list, tick box), items listed without online booking, and "booking" instead of "appointment" wording for places.

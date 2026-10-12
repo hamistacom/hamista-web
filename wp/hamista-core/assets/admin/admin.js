@@ -942,6 +942,211 @@
 		},
 	};
 
+	/* ------------------------------------------------------------------ *
+	 * Font picker: a menu that shows every family in its own face
+	 * ------------------------------------------------------------------ */
+
+	const FACES = data.fontFaces || {};
+
+	/** CSS stack that previews a family in the admin. */
+	function pickFace( slug ) {
+		if ( LIBRARY[ slug ] ) {
+			return '"hm-lib-' + slug + '", var(--hm-a-font)';
+		}
+		if ( 'system' === slug ) {
+			return 'system-ui, sans-serif';
+		}
+		return FACES[ slug ] ? '"hm-pick-' + slug + '", var(--hm-a-font)' : 'var(--hm-a-font)';
+	}
+
+	/** Declare the theme's own and uploaded families once (library families come from libraryFaces). */
+	function pickFaces() {
+		libraryFaces();
+		if ( document.getElementById( 'hm-pick-faces' ) ) {
+			return;
+		}
+		let css = '';
+		Object.keys( FACES ).forEach( function ( slug ) {
+			if ( ! LIBRARY[ slug ] && FACES[ slug ].url ) {
+				css += '@font-face{font-family:"hm-pick-' + slug + '";src:url(' + cssString( FACES[ slug ].url ) + ');font-display:swap}';
+			}
+		} );
+		document.head.appendChild( h( 'style', { id: 'hm-pick-faces', text: css } ) );
+	}
+
+	function fontPicker( ctx, choices, cur ) {
+		pickFaces();
+		const groups = { text: [], heading: [], other: [] };
+		eachChoice( choices, function ( value, label ) {
+			const lib = LIBRARY[ value ];
+			groups[ lib ? ( 'heading' === lib.use ? 'heading' : 'text' ) : 'other' ].push( { value: String( value ), label: isObj( label ) ? label.label : label } );
+		} );
+		const listId = ctx.id + '-list';
+		const current = String( scalar( cur ) );
+		let curLabel = current;
+		const list = h( 'div', { class: 'hm-pick__list', id: listId, role: 'listbox', tabindex: '-1', 'aria-label': ctx.def.label } );
+		[ [ 'text', t( 'libForText' ) ], [ 'heading', t( 'libForHeadings' ) ], [ 'other', t( 'pickOther' ) ] ].forEach( function ( g ) {
+			if ( ! groups[ g[ 0 ] ].length ) {
+				return;
+			}
+			list.appendChild( h( 'p', { class: 'hm-pick__group', role: 'presentation', text: g[ 1 ] } ) );
+			groups[ g[ 0 ] ].forEach( function ( o ) {
+				const selected = o.value === current;
+				if ( selected ) {
+					curLabel = o.label;
+				}
+				const lib = LIBRARY[ o.value ];
+				list.appendChild( h( 'div', {
+					class: 'hm-pick__opt' + ( selected ? ' is-selected' : '' ),
+					role: 'option',
+					id: listId + '-' + o.value,
+					'data-value': o.value,
+					'data-search': ( o.label + ' ' + ( lib ? lib.family : ( FACES[ o.value ] ? FACES[ o.value ].family : '' ) ) ).toLowerCase(),
+					'aria-selected': String( selected ),
+				}, [
+					h( 'span', { class: 'hm-pick__name', style: { 'font-family': pickFace( o.value ) }, text: o.label } ),
+					h( 'span', { class: 'hm-pick__sample', lang: 'fa', dir: 'rtl', style: { 'font-family': pickFace( o.value ) }, text: t( 'pickSample' ) } ),
+					h( 'span', { class: 'hm-pick__check', 'aria-hidden': 'true' }, icon( 'check', 14 ) ),
+				] ) );
+			} );
+		} );
+		const search = h( 'input', { type: 'search', class: 'hm-input hm-pick__search', placeholder: t( 'pickSearch' ), 'aria-label': t( 'pickSearch' ), 'aria-controls': listId, autocomplete: 'off' } );
+		const empty = h( 'p', { class: 'hm-pick__empty', hidden: true, text: t( 'pickNone' ) } );
+		return h( 'div', { class: 'hm-pick', 'data-pick': ctx.key }, [
+			h( 'button', { type: 'button', id: ctx.id, class: 'hm-pick__btn', 'aria-haspopup': 'listbox', 'aria-expanded': 'false', 'aria-controls': listId, 'aria-describedby': describedBy( ctx ) }, [
+				h( 'span', { class: 'hm-pick__current', style: { 'font-family': pickFace( current ) }, text: curLabel } ),
+				h( 'span', { class: 'hm-pick__hint', lang: 'fa', dir: 'rtl', style: { 'font-family': pickFace( current ) }, text: t( 'pickSample' ) } ),
+				icon( 'chevron', 16 ),
+			] ),
+			h( 'div', { class: 'hm-pick__pop', hidden: true }, [ search, list, empty ] ),
+		] );
+	}
+
+	/** Open, filter, move through and choose in a font picker. */
+	function mountPicker( ctx ) {
+		const root = ctx.control.querySelector( '.hm-pick' );
+		if ( ! root ) {
+			return;
+		}
+		const btn = root.querySelector( '.hm-pick__btn' );
+		const pop = root.querySelector( '.hm-pick__pop' );
+		const search = root.querySelector( '.hm-pick__search' );
+		const empty = root.querySelector( '.hm-pick__empty' );
+		const opts = function () {
+			return Array.prototype.filter.call( root.querySelectorAll( '.hm-pick__opt' ), function ( o ) {
+				return ! o.hidden;
+			} );
+		};
+		let active = null;
+		function activate( o ) {
+			if ( active ) {
+				active.classList.remove( 'is-active' );
+			}
+			active = o;
+			if ( o ) {
+				o.classList.add( 'is-active' );
+				search.setAttribute( 'aria-activedescendant', o.id );
+				o.scrollIntoView( { block: 'nearest' } );
+			}
+		}
+		function open() {
+			pop.hidden = false;
+			btn.setAttribute( 'aria-expanded', 'true' );
+			root.classList.add( 'is-open' );
+			activate( root.querySelector( '.hm-pick__opt.is-selected' ) || opts()[ 0 ] );
+			search.focus();
+			document.addEventListener( 'pointerdown', outside, true );
+		}
+		function close( refocus ) {
+			pop.hidden = true;
+			btn.setAttribute( 'aria-expanded', 'false' );
+			root.classList.remove( 'is-open' );
+			document.removeEventListener( 'pointerdown', outside, true );
+			if ( refocus ) {
+				btn.focus();
+			}
+		}
+		function outside( e ) {
+			if ( ! root.contains( e.target ) ) {
+				close( false );
+			}
+		}
+		function choose( o ) {
+			if ( ! o ) {
+				return;
+			}
+			set( ctx.key, cast( ctx.key, o.getAttribute( 'data-value' ) ) );
+			close( false );
+			rerenderControl( ctx );
+			focusLater( ctx.control.querySelector( '.hm-pick__btn' ) );
+		}
+		btn.addEventListener( 'click', function () {
+			if ( pop.hidden ) {
+				open();
+			} else {
+				close( true );
+			}
+		} );
+		btn.addEventListener( 'keydown', function ( e ) {
+			if ( 'ArrowDown' === e.key || 'ArrowUp' === e.key ) {
+				e.preventDefault();
+				open();
+			}
+		} );
+		search.addEventListener( 'input', function () {
+			const q = search.value.trim().toLowerCase();
+			let shown = 0;
+			root.querySelectorAll( '.hm-pick__opt' ).forEach( function ( o ) {
+				o.hidden = !! q && -1 === o.getAttribute( 'data-search' ).indexOf( q );
+				shown += o.hidden ? 0 : 1;
+			} );
+			root.querySelectorAll( '.hm-pick__group' ).forEach( function ( g ) {
+				let n = g.nextElementSibling;
+				let any = false;
+				while ( n && n.classList.contains( 'hm-pick__opt' ) ) {
+					any = any || ! n.hidden;
+					n = n.nextElementSibling;
+				}
+				g.hidden = ! any;
+			} );
+			empty.hidden = shown > 0;
+			activate( opts()[ 0 ] || null );
+		} );
+		search.addEventListener( 'keydown', function ( e ) {
+			const list = opts();
+			const i = list.indexOf( active );
+			if ( 'ArrowDown' === e.key ) {
+				activate( list[ Math.min( list.length - 1, i + 1 ) ] );
+			} else if ( 'ArrowUp' === e.key ) {
+				activate( list[ Math.max( 0, i - 1 ) ] );
+			} else if ( 'Home' === e.key ) {
+				activate( list[ 0 ] );
+			} else if ( 'End' === e.key ) {
+				activate( list[ list.length - 1 ] );
+			} else if ( 'Enter' === e.key ) {
+				choose( active );
+			} else if ( 'Escape' === e.key ) {
+				close( true );
+			} else if ( 'Tab' === e.key ) {
+				close( false );
+				return;
+			} else {
+				return;
+			}
+			e.preventDefault();
+			e.stopPropagation();
+		} );
+		root.querySelector( '.hm-pick__list' ).addEventListener( 'click', function ( e ) {
+			choose( e.target.closest( '.hm-pick__opt' ) );
+		} );
+		root.querySelector( '.hm-pick__list' ).addEventListener( 'pointermove', function ( e ) {
+			const o = e.target.closest( '.hm-pick__opt' );
+			if ( o && o !== active ) {
+				activate( o );
+			}
+		} );
+	}
+
 	const controls = {
 		toggle: {
 			render( ctx ) {
@@ -961,7 +1166,7 @@
 				const sel = h( 'select', { id: ctx.id, class: 'hm-select__el', 'aria-describedby': describedBy( ctx ) } );
 				let choices = ctx.def.choices;
 				if ( ctx.def.fonts ) {
-					choices = fontChoices( choices, scalar( cur ) );
+					return fontPicker( ctx, fontChoices( choices, scalar( cur ) ), cur );
 				} else if ( ctx.def.weights_of ) {
 					choices = weightChoices( ctx.def, scalar( cur ) );
 				}
@@ -970,7 +1175,15 @@
 				} );
 				return selectWrap( sel );
 			},
+			mount( ctx ) {
+				if ( ctx.def.fonts ) {
+					mountPicker( ctx );
+				}
+			},
 			input( ctx, e ) {
+				if ( ctx.def.fonts ) {
+					return; // The picker sets its own value; ignore its search box.
+				}
 				set( ctx.key, cast( ctx.key, e.target.value ) );
 			},
 		},
