@@ -84,6 +84,17 @@ class Frontend {
 		);
 
 		wp_register_script(
+			'hamista-agency',
+			self::asset( 'js/agency.js' ),
+			array( 'hamista-motion' ),
+			HAMISTA_CORE_VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		wp_register_script(
 			'hamista-lead-form',
 			self::asset( 'js/lead-form.js' ),
 			array( 'hamista-motion' ),
@@ -111,6 +122,7 @@ class Frontend {
 		wp_register_style( 'hamista-widgets', self::asset( 'css/hamista-widgets.css' ), array(), HAMISTA_CORE_VERSION );
 		wp_register_style( 'hamista-showcase', self::asset( 'css/showcase.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
 		wp_register_style( 'hamista-card-stack', self::asset( 'css/card-stack.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
+		wp_register_style( 'hamista-agency', self::asset( 'css/agency.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
 
 		$custom_css = trim( (string) hamista_core_option( 'custom_css' ) );
 		if ( $custom_css ) {

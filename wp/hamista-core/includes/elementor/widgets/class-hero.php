@@ -386,7 +386,7 @@ class Hero extends Widget_Base {
 		echo '<section class="' . esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) ) . '">';
 		echo '<div class="hm-container hm-hero__inner">';
 		if ( ! empty( $s['eyebrow'] ) ) {
-			echo '<p class="hm-eyebrow" data-hm-reveal="up">' . esc_html( $s['eyebrow'] ) . '</p>';
+			echo '<p class="hm-eyebrow" data-hm-reveal="up">' . hamista_core_highlight( $s['eyebrow'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by the highlighter.
 		}
 		echo '<div class="hm-hero__stage">' . $head; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in render_header().
 		if ( $img ) {

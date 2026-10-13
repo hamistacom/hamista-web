@@ -1,0 +1,122 @@
+/*!
+ * Hamista style kit — Ember
+ * Fog grey, deep black and one burning orange: a confident studio look with
+ * large rounded panels, black feature sections and buttons that carry their
+ * arrow in an accent square. Light by default; dark mode turns the fog to
+ * graphite and keeps the ember.
+ */
+.hm-kit-ember {
+	--hm-bg: #efefef;
+	--hm-surface: #ffffff;
+	--hm-surface-2: #f4f4f4;
+	--hm-sunken: #e6e6e6;
+	--hm-fg: #0b0b0c;
+	--hm-fg-muted: #5f6066;
+	--hm-border: rgba(11, 11, 12, .09);
+	--hm-border-strong: rgba(11, 11, 12, .2);
+	--hm-accent: #ff4a17;
+	--hm-accent-2: #0b0b0c;
+	--hm-accent-fg: #ffffff;
+	--hm-accent-ink: #e23d0c;
+	--hm-accent-soft: rgba(255, 74, 23, .1);
+	--hm-inv-bg: #000000;
+	--hm-inv-fg: #ffffff;
+	--hm-inv-muted: rgba(255, 255, 255, .62);
+
+	--hm-radius-sm: 8px;
+	--hm-radius-md: 14px;
+	--hm-radius-lg: 20px;
+	--hm-radius-xl: 28px;
+	--hm-radius-btn: 9px;
+	--hm-fw-heading: 700;
+	--hm-fw-giant: 900;
+	--hm-lh-heading: 1.35;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: 0 1px 3px rgba(0, 0, 0, .05);
+	--hm-shadow-lg: 0 30px 60px -36px rgba(0, 0, 0, .35);
+	--hm-card-border: 1px solid var(--hm-border);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 0 24px 50px -32px rgba(0, 0, 0, .35);
+	--hm-input-bg: var(--hm-surface);
+	--hm-ease: cubic-bezier(.22, 1, .36, 1);
+	--hm-focus: 0 0 0 2px var(--hm-bg), 0 0 0 4px var(--hm-accent);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-ember,
+[data-hm-theme="dark"].hm-kit-ember {
+	--hm-bg: #0c0c0d;
+	--hm-surface: #17171a;
+	--hm-surface-2: #1f1f23;
+	--hm-sunken: #08080a;
+	--hm-fg: #f1f1ef;
+	--hm-fg-muted: #a1a1a8;
+	--hm-border: rgba(255, 255, 255, .09);
+	--hm-border-strong: rgba(255, 255, 255, .2);
+	--hm-accent: #ff5a24;
+	--hm-accent-2: #f1f1ef;
+	--hm-accent-ink: #ff6a38;
+	--hm-accent-soft: rgba(255, 90, 36, .12);
+	--hm-inv-bg: #000000;
+	--hm-shadow-lg: 0 30px 60px -36px rgba(0, 0, 0, .9);
+	color-scheme: dark;
+}
+
+.hm-kit-ember ::selection { background: rgba(255, 74, 23, .25); color: inherit; }
+.hm-kit-ember .hm-hl { color: var(--hm-accent); }
+.hm-kit-ember .hm-head__desc, .hm-kit-ember .hm-lead { color: var(--hm-fg-muted); }
+
+/* Section labels read "{ 01 } # About us": the number in the accent, no rule. */
+.hm-kit-ember .hm-eyebrow { font-size: .9rem; font-weight: 500; letter-spacing: 0; color: var(--hm-fg); }
+.hm-kit-ember .hm-eyebrow::before { display: none; }
+.hm-kit-ember .hm-scheme-inverse .hm-eyebrow { color: var(--hm-inv-fg); }
+
+/* Buttons: a solid bar with the arrow sitting in an accent square at the start. */
+.hm-kit-ember .hm-btn {
+	--hm-btn-h: 48px;
+	gap: 12px; padding-inline: 5px 18px; border-radius: var(--hm-radius-btn);
+	background: var(--hm-fg); color: var(--hm-bg); border-color: var(--hm-fg); font-weight: 600;
+}
+.hm-kit-ember .hm-btn .hm-i-arrow { order: -1; width: 38px; height: 38px; padding: 10px; border-radius: 7px; background: var(--hm-accent); color: #fff; }
+.hm-kit-ember .hm-btn:hover { color: var(--hm-bg); box-shadow: none; transform: none; }
+.hm-kit-ember .hm-btn:hover .hm-i-arrow { transform: none; animation: hm-ember-nudge .6s var(--hm-ease); }
+@keyframes hm-ember-nudge { 40% { translate: -4px 0; } 100% { translate: 0 0; } }
+[dir="ltr"] .hm-kit-ember .hm-btn:hover .hm-i-arrow { animation-name: hm-ember-nudge-ltr; }
+@keyframes hm-ember-nudge-ltr { 40% { translate: 4px 0; } 100% { translate: 0 0; } }
+.hm-kit-ember .hm-btn--sm { --hm-btn-h: 42px; padding-inline: 4px 14px; }
+.hm-kit-ember .hm-btn--sm .hm-i-arrow { width: 34px; height: 34px; padding: 9px; }
+.hm-kit-ember .hm-btn--secondary, .hm-kit-ember .hm-btn--inverse, .hm-kit-ember .hm-scheme-inverse .hm-btn, .hm-kit-ember .hm-ag-dark .hm-btn, .hm-kit-ember .hm-ah .hm-btn { background: #fff; color: #0b0b0c; border-color: #fff; }
+.hm-kit-ember .hm-btn--secondary:hover, .hm-kit-ember .hm-btn--inverse:hover, .hm-kit-ember .hm-scheme-inverse .hm-btn:hover { color: #0b0b0c; }
+.hm-kit-ember .hm-btn--ghost { background: transparent; color: var(--hm-fg); border-color: var(--hm-border-strong); }
+.hm-kit-ember .hm-link-btn { color: var(--hm-fg); }
+
+.hm-kit-ember .hm-icon-btn__badge { background: var(--hm-accent); }
+.hm-kit-ember a.hm-chip:hover, .hm-kit-ember .hm-chip.is-active { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-ember .hm-menu > .current-menu-item > a::after, .hm-kit-ember .hm-menu > .current-menu-ancestor > a::after { height: 2px; border-radius: 2px; background: var(--hm-accent); }
+.hm-kit-ember .hm-progress { background: var(--hm-accent); }
+
+.hm-kit-ember .hm-card, .hm-kit-ember .hm-feature--card { box-shadow: none; border-radius: var(--hm-radius-xl); }
+.hm-kit-ember .hm-feature__num { color: var(--hm-accent); }
+.hm-kit-ember .onsale { background: var(--hm-accent); color: #fff; border-radius: var(--hm-radius-sm); }
+.hm-kit-ember ul.products li.product .price, .hm-kit-ember .hm-product__price { color: var(--hm-fg); }
+.hm-kit-ember .hm-plan.is-featured { background: var(--hm-inv-bg); color: var(--hm-inv-fg); --hm-fg: var(--hm-inv-fg); --hm-fg-muted: var(--hm-inv-muted); --hm-border: rgba(255, 255, 255, .12); --hm-surface: #141416; }
+.hm-kit-ember .hm-acc__item { border-radius: 14px; background: var(--hm-surface); border-color: transparent; }
+.hm-kit-ember .hm-pagination .page-numbers.current { background: var(--hm-accent); color: #fff; border-color: var(--hm-accent); }
+
+/* Black sections and the footer. */
+.hm-kit-ember .hm-scheme-inverse { --hm-surface: #141416; --hm-surface-2: #1c1c1f; --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .22); }
+.hm-kit-ember .hm-footer { background: #050505; color: #fff; border-top: 0; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .6); --hm-border: rgba(255, 255, 255, .1); }
+.hm-kit-ember .hm-footer__wordmark { color: #fff; opacity: .9; }
+
+/* Large rounded light panel used to group a section (add class hm-panel). */
+.hm-kit-ember .hm-panel { border-radius: clamp(28px, 4vw, 56px); background: var(--hm-surface); }
+/* Concentric arcs above a call to action (add class hm-arcs to the section). */
+.hm-kit-ember .hm-arcs { position: relative; isolation: isolate; }
+.hm-kit-ember .hm-arcs::before {
+	content: ""; position: absolute; z-index: -1; left: 50%; top: 40px; width: min(560px, 90vw); aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; pointer-events: none;
+	background: repeating-radial-gradient(circle at 50% 50%, transparent 0 46px, color-mix(in srgb, var(--hm-accent) 55%, transparent) 46px 47px);
+	-webkit-mask: linear-gradient(180deg, #000 0 30%, transparent 62%); mask: linear-gradient(180deg, #000 0 30%, transparent 62%);
+}
+/* Dark crowd backdrop for the testimonial wall (add class hm-dim-photo to a section with a background picture). */
+.hm-kit-ember .hm-dim-photo { background-color: #121214 !important; background-blend-mode: luminosity; }

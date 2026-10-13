@@ -188,4 +188,5 @@ T = {
     "social network\x04GitHub": "گیت~هاب",
     "social network\x04Dribbble": "دریبل",
     "social network\x04Behance": "بیهنس",
+    "Ember — fog grey, black and burning orange": "اخگر — خاکستری مه~آلود، مشکی و نارنجی آتشین",
 }

@@ -416,4 +416,6 @@ T = {
     "A short map of the site at /llms.txt, so AI search and assistants describe your business correctly. Updates itself when you publish.": "نقشه~ای کوتاه از سایت در نشانی ‎/llms.txt تا جست~وجوی هوشمند و دستیارها کسب~وکارتان را درست معرفی کنند. با هر انتشار خودش به~روز می~شود.",
     "Summary at the top of llms.txt": "معرفی بالای llms.txt",
     "Who you are and what you offer, in one or two sentences.": "در یکی دو جمله بگویید که هستید و چه ارائه می~دهید.",
+    "Ember": "اخگر",
+    "Fog grey, deep black and burning orange; large rounded panels": "خاکستری مه~آلود، مشکی عمیق و نارنجی آتشین؛ پنل~های بزرگ با گوشه~های گرد",
 }

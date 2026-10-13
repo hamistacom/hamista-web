@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-08T21:40:08+00:00\n"
-"PO-Revision-Date: 2026-10-12 05:12+0000\n"
+"POT-Creation-Date: 2026-10-13T21:59:47+00:00\n"
+"PO-Revision-Date: 2026-10-13 22:00+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -162,7 +162,11 @@ msgstr "مراقبت — سفید چینی، سبز تیره و اکالیپتو
 msgid "Nova — green-black, lime and frosted glass"
 msgstr "نوا — سبز سیاه، لیمویی و شیشه‌ی مات"
 
-#: inc/assets.php:91
+#: inc/assets.php:54
+msgid "Ember — fog grey, black and burning orange"
+msgstr "اخگر — خاکستری مه‌آلود، مشکی و نارنجی آتشین"
+
+#: inc/assets.php:92
 msgid "Toggle submenu"
 msgstr "باز و بسته کردن زیرمنو"
 

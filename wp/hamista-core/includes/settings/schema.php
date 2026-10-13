@@ -172,6 +172,11 @@ return ( static function () {
 							'desc'  => __( 'Green-black, electric lime and frosted glass cards', 'hamista-core' ),
 							'image' => $img . 'kit-nova.svg',
 						),
+						'ember'      => array(
+							'label' => __( 'Ember', 'hamista-core' ),
+							'desc'  => __( 'Fog grey, deep black and burning orange; large rounded panels', 'hamista-core' ),
+							'image' => $img . 'kit-ember.svg',
+						),
 					),
 				),
 				'container_width'   => array(

@@ -303,7 +303,7 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 		$html   = '<header class="hm-head hm-head--' . esc_attr( $align ) . ' ' . esc_attr( $class ) . '">';
 
 		if ( ! empty( $s['eyebrow'] ) ) {
-			$html .= '<p class="hm-eyebrow" data-hm-reveal="up">' . esc_html( $s['eyebrow'] ) . '</p>';
+			$html .= '<p class="hm-eyebrow" data-hm-reveal="up">' . hamista_core_highlight( $s['eyebrow'] ) . '</p>';
 		}
 		if ( ! empty( $s['title'] ) ) {
 			$html .= sprintf(

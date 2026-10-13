@@ -142,7 +142,7 @@ class Text_Scrub extends Widget_Base {
 		$s = $this->get_settings_for_display();
 		echo '<div class="hm-scrubtext hm-scrubtext--' . esc_attr( $s['size'] ) . '" data-hm-widget="scrubtext">';
 		if ( $s['eyebrow'] ) {
-			echo '<p class="hm-eyebrow">' . esc_html( $s['eyebrow'] ) . '</p>';
+			echo '<p class="hm-eyebrow">' . hamista_core_highlight( $s['eyebrow'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by the highlighter.
 		}
 		echo '<p class="hm-scrubtext__text">' . hamista_core_highlight( $s['text'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';

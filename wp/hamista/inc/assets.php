@@ -51,6 +51,7 @@ function hamista_kits() {
 			'studio'     => __( 'Studio — warm grey, ink and vermilion', 'hamista' ),
 			'care'       => __( 'Care — porcelain, deep green and eucalyptus', 'hamista' ),
 			'nova'       => __( 'Nova — green-black, lime and frosted glass', 'hamista' ),
+			'ember'      => __( 'Ember — fog grey, black and burning orange', 'hamista' ),
 		)
 	);
 }
@@ -266,6 +267,7 @@ function hamista_theme_color_meta() {
 		'studio'     => '#edebe6',
 		'care'       => '#f5f4f0',
 		'nova'       => '#0f1b18',
+		'ember'      => '#efefef',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );
