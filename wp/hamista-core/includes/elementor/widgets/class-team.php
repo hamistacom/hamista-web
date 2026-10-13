@@ -107,6 +107,7 @@ class Team extends Widget_Base {
 				'options' => array(
 					'grid'     => __( 'Grid', 'hamista-core' ),
 					'carousel' => __( 'Carousel', 'hamista-core' ),
+					'strip'    => __( 'Strip of portraits that widen on hover', 'hamista-core' ),
 				),
 			)
 		);
@@ -157,7 +158,7 @@ class Team extends Widget_Base {
 		$people   = array();
 		foreach ( $s['people'] as $person ) {
 			ob_start();
-			echo '<figure class="hm-person"' . ( $carousel ? '' : ' data-hm-reveal="up"' ) . '>';
+			echo '<figure class="hm-person"' . ( $carousel ? '' : ' data-hm-reveal="up"' ) . ( 'strip' === ( $s['layout'] ?? 'grid' ) ? ' tabindex="0"' : '' ) . '>';
 			$photo = hamista_core_image(
 				$person['photo'],
 				'medium_large',
@@ -184,6 +185,7 @@ class Team extends Widget_Base {
 			echo '<div class="hm-team-carousel' . esc_attr( $mono ) . '">' . $this->carousel_head( $s, '' ) . $this->carousel_wrap( $s, $people, __( 'Team', 'hamista-core' ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			return;
 		}
-		echo '<div class="hm-team' . esc_attr( $mono ) . '" data-hm-stagger="0.08">' . implode( '', $people ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$strip = 'strip' === ( $s['layout'] ?? 'grid' ) ? ' hm-team--strip' : '';
+		echo '<div class="hm-team' . esc_attr( $mono . $strip ) . '" data-hm-stagger="0.08">' . implode( '', $people ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

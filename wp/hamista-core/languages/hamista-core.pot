@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T21:59:46+00:00\n"
+"POT-Creation-Date: 2026-10-13T22:25:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -1751,7 +1751,7 @@ msgstr ""
 
 #: includes/booking/class-admin.php:289
 #: includes/elementor/widgets/class-team.php:53
-#: includes/elementor/widgets/class-testimonial-wall.php:89
+#: includes/elementor/widgets/class-testimonial-wall.php:91
 #: includes/elementor/widgets/class-testimonials.php:78
 msgid "Photo"
 msgstr ""
@@ -1789,7 +1789,7 @@ msgstr ""
 #: includes/elementor/widgets/class-about-intro.php:251
 #: includes/elementor/widgets/class-service-list.php:67
 #: includes/elementor/widgets/class-team.php:60
-#: includes/elementor/widgets/class-testimonial-wall.php:73
+#: includes/elementor/widgets/class-testimonial-wall.php:75
 #: includes/elementor/widgets/class-testimonials.php:62
 #: includes/forms/class-forms.php:305
 msgid "Name"
@@ -3312,7 +3312,7 @@ msgstr ""
 #: includes/elementor/widgets/class-portfolio.php:141
 #: includes/elementor/widgets/class-posts.php:134
 #: includes/elementor/widgets/class-products.php:109
-#: includes/elementor/widgets/class-team.php:116
+#: includes/elementor/widgets/class-team.php:117
 #: includes/elementor/widgets/class-testimonials.php:127
 msgid "Columns"
 msgstr ""
@@ -3414,12 +3414,14 @@ msgid "Pauses while the pointer is over it, while it is off screen and for visit
 msgstr ""
 
 #: includes/elementor/class-carousel.php:192
+#: includes/elementor/widgets/class-testimonial-wall.php:230
 msgid "Previous"
 msgstr ""
 
 #: includes/elementor/class-carousel.php:193
 #: includes/elementor/widgets/class-lead-form.php:339
 #: includes/elementor/widgets/class-lead-form.php:492
+#: includes/elementor/widgets/class-testimonial-wall.php:234
 msgid "Next"
 msgstr ""
 
@@ -3644,7 +3646,7 @@ msgstr ""
 #: includes/elementor/widgets/class-bento.php:150
 #: includes/elementor/widgets/class-features.php:122
 #: includes/elementor/widgets/class-stack.php:110
-#: includes/elementor/widgets/class-testimonial-wall.php:109
+#: includes/elementor/widgets/class-testimonial-wall.php:111
 #: includes/settings/schema.php:287
 msgid "Dark"
 msgstr ""
@@ -4041,7 +4043,7 @@ msgstr ""
 #: includes/elementor/widgets/class-bento.php:151
 #: includes/elementor/widgets/class-cta.php:106
 #: includes/elementor/widgets/class-stack.php:111
-#: includes/elementor/widgets/class-testimonial-wall.php:110
+#: includes/elementor/widgets/class-testimonial-wall.php:112
 msgid "Accent"
 msgstr ""
 
@@ -4248,7 +4250,7 @@ msgstr ""
 #: includes/elementor/widgets/class-about-intro.php:259
 #: includes/elementor/widgets/class-proof.php:127
 #: includes/elementor/widgets/class-team.php:68
-#: includes/elementor/widgets/class-testimonial-wall.php:81
+#: includes/elementor/widgets/class-testimonial-wall.php:83
 #: includes/elementor/widgets/class-testimonials.php:70
 msgid "Role"
 msgstr ""
@@ -4902,12 +4904,12 @@ msgid "Button text"
 msgstr ""
 
 #: includes/elementor/widgets/class-bento.php:145
-#: includes/elementor/widgets/class-testimonial-wall.php:104
+#: includes/elementor/widgets/class-testimonial-wall.php:106
 msgid "Tone"
 msgstr ""
 
 #: includes/elementor/widgets/class-bento.php:149
-#: includes/elementor/widgets/class-testimonial-wall.php:108
+#: includes/elementor/widgets/class-testimonial-wall.php:110
 #: includes/settings/schema.php:283
 msgid "Light"
 msgstr ""
@@ -6222,7 +6224,7 @@ msgid "Inner parallax"
 msgstr ""
 
 #: includes/elementor/widgets/class-image-reveal.php:103
-#: includes/elementor/widgets/class-team.php:142
+#: includes/elementor/widgets/class-team.php:143
 msgid "Black & white until hover"
 msgstr ""
 
@@ -6863,7 +6865,7 @@ msgstr ""
 
 #: includes/elementor/widgets/class-pricing.php:146
 #: includes/elementor/widgets/class-team.php:31
-#: includes/elementor/widgets/class-team.php:184
+#: includes/elementor/widgets/class-team.php:185
 msgid "Team"
 msgstr ""
 
@@ -7964,59 +7966,91 @@ msgstr ""
 msgid "Mentor"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:32
+#: includes/elementor/widgets/class-team.php:110
+msgid "Strip of portraits that widen on hover"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:34
 msgid "Testimonial Wall"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:59
-#: includes/elementor/widgets/class-testimonial-wall.php:145
+#: includes/elementor/widgets/class-testimonial-wall.php:61
+#: includes/elementor/widgets/class-testimonial-wall.php:148
 #: includes/elementor/widgets/class-testimonials.php:31
 #: includes/elementor/widgets/class-testimonials.php:48
 #: includes/elementor/widgets/class-testimonials.php:204
 msgid "Testimonials"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:64
+#: includes/elementor/widgets/class-testimonial-wall.php:66
 #: includes/elementor/widgets/class-testimonials.php:53
 msgid "Quote"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:67
+#: includes/elementor/widgets/class-testimonial-wall.php:69
 msgid "They understood what we wanted quickly, and the results showed in the first month."
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:75
+#: includes/elementor/widgets/class-testimonial-wall.php:77
 msgid "Maryam Karimi"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:83
+#: includes/elementor/widgets/class-testimonial-wall.php:85
 msgid "Marketing manager"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:96
-#: includes/elementor/widgets/class-testimonial-wall.php:154
+#: includes/elementor/widgets/class-testimonial-wall.php:98
+#: includes/elementor/widgets/class-testimonial-wall.php:183
 #: includes/shop/class-product-card.php:78
 msgid "Rating"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:131
+#: includes/elementor/widgets/class-testimonial-wall.php:133
 msgid "Arrangement"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:135
+#: includes/elementor/widgets/class-testimonial-wall.php:137
 msgid "Spread over a giant word"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:136
+#: includes/elementor/widgets/class-testimonial-wall.php:138
 msgid "Two columns moving apart"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:143
+#: includes/elementor/widgets/class-testimonial-wall.php:139
+msgid "One client at a time, picked from a row of faces"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:146
 msgid "Giant word behind"
 msgstr ""
 
-#: includes/elementor/widgets/class-testimonial-wall.php:152
+#: includes/elementor/widgets/class-testimonial-wall.php:155
+msgid "Rating summary"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:157
+msgid "Rated 4.9/5 by 1,200+ happy clients"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:164
+msgid "Brand logos"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:172
+msgid "Line before the logos"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:174
+msgid "Trusted by:"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:181
 msgid "Rating label"
+msgstr ""
+
+#: includes/elementor/widgets/class-testimonial-wall.php:230
+msgid "Clients"
 msgstr ""
 
 #: includes/elementor/widgets/class-testimonials.php:56

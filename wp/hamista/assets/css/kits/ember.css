@@ -86,8 +86,8 @@
 @keyframes hm-ember-nudge-ltr { 40% { translate: 4px 0; } 100% { translate: 0 0; } }
 .hm-kit-ember .hm-btn--sm { --hm-btn-h: 42px; padding-inline: 4px 14px; }
 .hm-kit-ember .hm-btn--sm .hm-i-arrow { width: 34px; height: 34px; padding: 9px; }
-.hm-kit-ember .hm-btn--secondary, .hm-kit-ember .hm-btn--inverse, .hm-kit-ember .hm-scheme-inverse .hm-btn, .hm-kit-ember .hm-ag-dark .hm-btn, .hm-kit-ember .hm-ah .hm-btn { background: #fff; color: #0b0b0c; border-color: #fff; }
-.hm-kit-ember .hm-btn--secondary:hover, .hm-kit-ember .hm-btn--inverse:hover, .hm-kit-ember .hm-scheme-inverse .hm-btn:hover { color: #0b0b0c; }
+.hm-kit-ember .hm-btn--secondary, .hm-kit-ember .hm-btn--inverse, .hm-kit-ember .hm-scheme-inverse .hm-btn, .hm-kit-ember .hm-ag-dark .hm-btn, .hm-kit-ember .hm-ah .hm-btn, .hm-kit-ember .hm-plan.is-featured .hm-btn { background: #fff; color: #0b0b0c; border-color: #fff; }
+.hm-kit-ember .hm-btn--secondary:hover, .hm-kit-ember .hm-btn--inverse:hover, .hm-kit-ember .hm-scheme-inverse .hm-btn:hover, .hm-kit-ember .hm-plan.is-featured .hm-btn:hover { color: #0b0b0c; }
 .hm-kit-ember .hm-btn--ghost { background: transparent; color: var(--hm-fg); border-color: var(--hm-border-strong); }
 .hm-kit-ember .hm-link-btn { color: var(--hm-fg); }
 
@@ -107,7 +107,7 @@
 /* Black sections and the footer. */
 .hm-kit-ember .hm-scheme-inverse { --hm-surface: #141416; --hm-surface-2: #1c1c1f; --hm-border: rgba(255, 255, 255, .1); --hm-border-strong: rgba(255, 255, 255, .22); }
 .hm-kit-ember .hm-footer { background: #050505; color: #fff; border-top: 0; --hm-fg: #fff; --hm-fg-muted: rgba(255, 255, 255, .6); --hm-border: rgba(255, 255, 255, .1); }
-.hm-kit-ember .hm-footer__wordmark { color: #fff; opacity: .9; }
+.hm-kit-ember .hm-footer__wordmark { color: #fff; opacity: .9; margin-block: -.2em 0; padding-bottom: .16em; }
 
 /* Large rounded light panel used to group a section (add class hm-panel). */
 .hm-kit-ember .hm-panel { border-radius: clamp(28px, 4vw, 56px); background: var(--hm-surface); }

@@ -1625,3 +1625,17 @@ html.hm-toned {
 }
 .hm-toned.hm-tone-ac .hm-main { --hm-accent: var(--hm-tone-accent); --hm-accent-ink: var(--hm-tone-accent); --hm-accent-fg: var(--hm-tone-bg); --hm-accent-soft: color-mix(in srgb, var(--hm-tone-accent) 12%, transparent); }
 .hm-toned [data-hm-tone] { background-color: transparent !important; }
+
+/* Team strip: portraits side by side; the one under the pointer widens and shows its name. */
+.hm-team--strip { display: flex; gap: 10px; height: clamp(320px, 34vw, 440px); }
+.hm-team--strip .hm-person { position: relative; flex: 1 1 0; min-width: 0; margin: 0; overflow: hidden; border-radius: var(--hm-radius-lg); transition: flex-grow .7s var(--hm-ease); outline: none; }
+.hm-team--strip .hm-person:hover, .hm-team--strip .hm-person:focus-visible, .hm-team--strip .hm-person:first-child:not(:has(~ .hm-person:hover)) { flex-grow: 2.4; }
+.hm-team--strip:has(.hm-person:hover) .hm-person:first-child:not(:hover) { flex-grow: 1; }
+.hm-team--strip .hm-person__photo { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; border-radius: 0; }
+.hm-team--strip .hm-person__photo img { width: 100%; height: 100%; object-fit: cover; }
+.hm-team--strip figcaption { position: absolute; inset-inline: 0; bottom: 0; padding: 60px 20px 20px; color: #fff; background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .7)); opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .5s var(--hm-ease); }
+.hm-team--strip .hm-person:hover figcaption, .hm-team--strip .hm-person:focus-visible figcaption, .hm-team--strip .hm-person:first-child:not(:has(~ .hm-person:hover)) figcaption { opacity: 1; transform: none; }
+.hm-team--strip:has(.hm-person:hover) .hm-person:first-child:not(:hover) figcaption { opacity: 0; }
+.hm-team--strip figcaption b { display: block; font-size: 1.1rem; text-transform: uppercase; }
+.hm-team--strip figcaption span { color: rgba(255, 255, 255, .75); }
+@media (max-width: 760px) { .hm-team--strip { height: auto; flex-direction: column; } .hm-team--strip .hm-person { height: 90px; } .hm-team--strip .hm-person:hover, .hm-team--strip .hm-person:first-child { height: 340px; } }

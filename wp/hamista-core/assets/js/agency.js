@@ -213,8 +213,34 @@
 		});
 	}
 
+	/* Spotlight: pick a client from the faces; turns on by itself while on screen. */
+	function spotlight(el) {
+		var faces = $$('.hm-tw__face', el);
+		var n = faces.length;
+		if (n < 2) { return; }
+		var at = 0, timer = null, seen = true;
+		function show(i) {
+			at = (i + n) % n;
+			['.hm-tw__photo', '.hm-tw__quote', '.hm-tw__face'].forEach(function (sel) {
+				$$(sel, el).forEach(function (x) { x.classList.toggle('is-active', +x.getAttribute('data-i') === at); });
+			});
+			faces.forEach(function (f, k) { f.setAttribute('aria-selected', k === at ? 'true' : 'false'); });
+		}
+		function play() { clearInterval(timer); if (!reduce && seen) { timer = setInterval(function () { show(at + 1); }, 7000); } }
+		faces.forEach(function (f) { f.addEventListener('click', function () { show(+f.getAttribute('data-i')); play(); }); });
+		$$('.hm-tw__nav', el).forEach(function (b) {
+			b.addEventListener('click', function () { show(at + (+b.getAttribute('data-step')) * (rtl ? -1 : 1)); play(); });
+		});
+		if ('IntersectionObserver' in win) {
+			new IntersectionObserver(function (e) { seen = e[0].isIntersecting; play(); }).observe(el);
+		}
+		el.addEventListener('pointerenter', function () { clearInterval(timer); });
+		el.addEventListener('pointerleave', play);
+	}
+
 	/* Testimonials drift at different speeds as the wall passes. */
 	function wall(el) {
+		if (el.classList.contains('hm-tw--spotlight')) { spotlight(el); return; }
 		if (reduce) { return; }
 		var items = $$('.hm-tw__item', el);
 		var cols = el.classList.contains('hm-tw--columns');

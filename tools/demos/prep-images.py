@@ -98,7 +98,111 @@ for i, name in enumerate(['sp23', 'sp24', 'sp25', 'sp26', 'sp27', 'sp28', 'sp29'
     AKHGAR['logo-w-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'alpha')
     AKHGAR['logo-k-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'ink')
 
-DEMOS = {'akhgar': AKHGAR}
+SEPEHR = {
+    # Hero: two round portraits, the card picture and a backdrop
+    'orb-a': ('03/hr2.webp', 260, 'photo'),
+    'orb-b': ('03/hr4.webp', 200, 'photo'),
+    'hero-bg': ('04/ftr-bg.webp', 1920, 'photo'),
+    # Services
+    'ser-1': ('04/ser7.webp', 560, 'photo'),
+    'ser-2': ('04/ser8.webp', 560, 'photo'),
+    'ser-3': ('04/ser9.webp', 560, 'photo'),
+    # Who we are
+    'laptop': ('03/pro7.webp', 700, 'photo'),
+    # Projects
+    'pro-1': ('04/pro10.webp', 1280, 'photo'),
+    'pro-2': ('04/pro11.webp', 850, 'photo'),
+    'pro-3': ('04/pro13.webp', 850, 'photo'),
+    'pro-4': ('04/pro8.webp', 850, 'photo'),
+    'pro-5': ('04/pro9.webp', 440, 'photo'),
+    'pro-6': ('04/pro12.webp', 440, 'photo'),
+    # Smart solutions
+    'chain': ('04/shape11.png', 280, 'alpha'),
+    'support': ('04/wc6.png', 220, 'alpha'),
+    # Team and reviewers
+    'tm-1': ('04/tm6.webp', 330, 'photo'),
+    'tm-2': ('04/tm7.webp', 330, 'photo'),
+    'tm-3': ('04/tm8.webp', 330, 'photo'),
+    'tm-4': ('04/tm9.webp', 330, 'photo'),
+    'av-1': ('04/tst_1.webp', 120, 'photo'),
+    'av-2': ('04/tst_2.webp', 120, 'photo'),
+    'av-3': ('04/tst_3.webp', 120, 'photo'),
+    'av-4': ('04/tst_4.webp', 120, 'photo'),
+    'av-5': ('04/cl11.jpg', 120, 'photo'),
+    # Contact, blog, footer
+    'touch': ('04/ft-bg2.webp', 1920, 'photo'),
+    'blog-1': ('04/in1.webp', 1200, 'photo'),
+    'blog-2': ('04/in2.webp', 1200, 'photo'),
+    'blog-3': ('04/in3.webp', 1200, 'photo'),
+    'blog-4': ('04/in4.webp', 1200, 'photo'),
+    'blog-5': ('03/blg4.webp', 1200, 'photo'),
+    'blog-6': ('03/blg5.webp', 1200, 'photo'),
+    'office-1': ('04/o3-img-2.webp', 1600, 'photo'),
+    'office-2': ('04/o3-img-4.webp', 1600, 'photo'),
+    'work-1': ('04/hw1.webp', 900, 'photo'),
+    'work-2': ('04/hw2.webp', 900, 'photo'),
+    'work-3': ('04/hw3.webp', 900, 'photo'),
+}
+for i, name in enumerate(['sp23', 'sp24', 'sp25', 'sp26', 'sp27', 'sp28', 'sp29']):
+    SEPEHR['logo-w-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'alpha')
+for i in range(1, 8):
+    SEPEHR['app-%d' % i] = ('04/wci%d.png' % i, 64, 'alpha')
+
+ARGHAVAN = {
+    # Hero: large portrait, a floating sphere
+    'hero': ('04/hr2-1.webp', 1020, 'alpha'),
+    'ball': ('04/ball.png', 160, 'alpha'),
+    # About
+    'about': ('04/Image-16.png', 320, 'alpha'),
+    'about-2': ('04/Image-18.png', 320, 'alpha'),
+    # Process stages and services
+    'stage-1': ('04/hw1.webp', 450, 'photo'),
+    'stage-2': ('04/hw2.webp', 450, 'photo'),
+    'stage-3': ('04/hw3.webp', 450, 'photo'),
+    'ser-1': ('04/ser7.webp', 560, 'photo'),
+    'ser-2': ('04/ser8.webp', 560, 'photo'),
+    'ser-3': ('04/ser9.webp', 560, 'photo'),
+    'ser-4': ('03/ser6.webp', 560, 'photo'),
+    # Projects
+    'pro-1': ('04/pro8.webp', 850, 'photo'),
+    'pro-2': ('04/pro9.webp', 440, 'photo'),
+    'pro-3': ('04/pro10.webp', 1280, 'photo'),
+    'pro-4': ('04/pro11.webp', 850, 'photo'),
+    'pro-5': ('04/pro12.webp', 440, 'photo'),
+    'pro-6': ('04/pro13.webp', 850, 'photo'),
+    # Testimonials
+    'tst-1': ('04/tst6.webp', 450, 'photo'),
+    'tst-2': ('04/tst7.webp', 390, 'photo'),
+    'tst-3': ('04/tm6.webp', 330, 'photo'),
+    'tst-4': ('04/tm9.webp', 330, 'photo'),
+    'tst-5': ('04/tm7.webp', 330, 'photo'),
+    'av-1': ('04/tst_1.webp', 120, 'photo'),
+    'av-2': ('04/tst_2.webp', 120, 'photo'),
+    'av-3': ('04/tst_3.webp', 120, 'photo'),
+    'av-4': ('04/tst_4.webp', 120, 'photo'),
+    # Team strip
+    'tm-1': ('04/tm10.webp', 350, 'photo'),
+    'tm-2': ('04/tm11.webp', 350, 'photo'),
+    'tm-3': ('04/tm12.webp', 350, 'photo'),
+    'tm-4': ('04/tm13.webp', 350, 'photo'),
+    'tm-5': ('04/tm14.webp', 350, 'photo'),
+    # Contact, blog, footer
+    'dark-bg': ('04/tst-tm-bg.webp', 1920, 'photo'),
+    'blog-1': ('04/in1.webp', 1200, 'photo'),
+    'blog-2': ('04/in2.webp', 1200, 'photo'),
+    'blog-3': ('04/in3.webp', 1200, 'photo'),
+    'blog-4': ('04/in4.webp', 1200, 'photo'),
+    'blog-5': ('03/blg1.webp', 900, 'photo'),
+    'blog-6': ('03/blg2.webp', 900, 'photo'),
+    'office-1': ('04/o3-img-2.webp', 1600, 'photo'),
+    'office-2': ('04/o3-img-4.webp', 1600, 'photo'),
+}
+for i, name in enumerate(['sp23', 'sp24', 'sp25', 'sp26', 'sp27', 'sp28', 'sp29']):
+    if i < 6:
+        ARGHAVAN['logo-w-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'alpha')
+    ARGHAVAN['logo-k-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'ink')
+
+DEMOS = {'akhgar': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):
@@ -114,6 +218,21 @@ def convert(src, dest, width, mode):
     im.save(dest, 'WEBP', quality=80 if not has_alpha else 88, method=6)
 
 
+def arc(out):
+    """Lays the seven app icons on a shallow arc, for the 'trusted by' card."""
+    import math
+    sheet = Image.new('RGBA', (560, 220), (0, 0, 0, 0))
+    for i in range(7):
+        icon = Image.open(os.path.join(out, 'app-%d.webp' % (i + 1))).convert('RGBA').resize((64, 64), Image.LANCZOS)
+        a = math.radians(200 + i * 140 / 6)
+        x = 280 + math.cos(a) * 240 - 32
+        y = 230 + math.sin(a) * 190 - 32
+        sheet.alpha_composite(icon, (round(x), round(y)))
+    sheet.save(os.path.join(out, 'apps.webp'), 'WEBP', quality=88, method=6)
+    for i in range(7):
+        os.remove(os.path.join(out, 'app-%d.webp' % (i + 1)))
+
+
 if __name__ == '__main__':
     demo, root = sys.argv[1], sys.argv[2]
     out = os.path.join(ROOT, demo, 'images')
@@ -127,4 +246,6 @@ if __name__ == '__main__':
         dest = os.path.join(out, key + '.webp')
         convert(src, dest, width, mode)
         total += os.path.getsize(dest)
+    if demo == 'sepehr':
+        arc(out)
     print(demo, len(DEMOS[demo]), 'images', total // 1024, 'KB')

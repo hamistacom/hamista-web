@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-13T21:59:46+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:00+0000\n"
+"POT-Creation-Date: 2026-10-13T22:25:57+00:00\n"
+"PO-Revision-Date: 2026-10-13 22:26+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -1752,7 +1752,7 @@ msgstr "مراجعه‌کنندگان می‌توانند هر زمان خالی
 
 #: includes/booking/class-admin.php:289
 #: includes/elementor/widgets/class-team.php:53
-#: includes/elementor/widgets/class-testimonial-wall.php:89
+#: includes/elementor/widgets/class-testimonial-wall.php:91
 #: includes/elementor/widgets/class-testimonials.php:78
 msgid "Photo"
 msgstr "عکس"
@@ -1790,7 +1790,7 @@ msgstr "ساعت"
 #: includes/elementor/widgets/class-about-intro.php:251
 #: includes/elementor/widgets/class-service-list.php:67
 #: includes/elementor/widgets/class-team.php:60
-#: includes/elementor/widgets/class-testimonial-wall.php:73
+#: includes/elementor/widgets/class-testimonial-wall.php:75
 #: includes/elementor/widgets/class-testimonials.php:62
 #: includes/forms/class-forms.php:305
 msgid "Name"
@@ -3313,7 +3313,7 @@ msgstr "اسلایدر"
 #: includes/elementor/widgets/class-portfolio.php:141
 #: includes/elementor/widgets/class-posts.php:134
 #: includes/elementor/widgets/class-products.php:109
-#: includes/elementor/widgets/class-team.php:116
+#: includes/elementor/widgets/class-team.php:117
 #: includes/elementor/widgets/class-testimonials.php:127
 msgid "Columns"
 msgstr "ستون‌ها"
@@ -3415,12 +3415,14 @@ msgid "Pauses while the pointer is over it, while it is off screen and for visit
 msgstr "وقتی نشانگر ماوس رویش است، وقتی در صفحه دیده نمی‌شود و برای کسانی که «کاهش حرکت» را در سیستم‌شان روشن کرده‌اند، متوقف می‌ماند."
 
 #: includes/elementor/class-carousel.php:192
+#: includes/elementor/widgets/class-testimonial-wall.php:230
 msgid "Previous"
 msgstr "قبلی"
 
 #: includes/elementor/class-carousel.php:193
 #: includes/elementor/widgets/class-lead-form.php:339
 #: includes/elementor/widgets/class-lead-form.php:492
+#: includes/elementor/widgets/class-testimonial-wall.php:234
 msgid "Next"
 msgstr "بعدی"
 
@@ -3645,7 +3647,7 @@ msgstr "ته‌رنگ رنگ اصلی"
 #: includes/elementor/widgets/class-bento.php:150
 #: includes/elementor/widgets/class-features.php:122
 #: includes/elementor/widgets/class-stack.php:110
-#: includes/elementor/widgets/class-testimonial-wall.php:109
+#: includes/elementor/widgets/class-testimonial-wall.php:111
 #: includes/settings/schema.php:287
 msgid "Dark"
 msgstr "تاریک"
@@ -4042,7 +4044,7 @@ msgstr "معکوس (زمینه‌ی تیره)"
 #: includes/elementor/widgets/class-bento.php:151
 #: includes/elementor/widgets/class-cta.php:106
 #: includes/elementor/widgets/class-stack.php:111
-#: includes/elementor/widgets/class-testimonial-wall.php:110
+#: includes/elementor/widgets/class-testimonial-wall.php:112
 msgid "Accent"
 msgstr "رنگ اصلی"
 
@@ -4253,7 +4255,7 @@ msgstr "سارا احمدی"
 #: includes/elementor/widgets/class-about-intro.php:259
 #: includes/elementor/widgets/class-proof.php:127
 #: includes/elementor/widgets/class-team.php:68
-#: includes/elementor/widgets/class-testimonial-wall.php:81
+#: includes/elementor/widgets/class-testimonial-wall.php:83
 #: includes/elementor/widgets/class-testimonials.php:70
 msgid "Role"
 msgstr "سمت"
@@ -4909,12 +4911,12 @@ msgid "Button text"
 msgstr "متن دکمه"
 
 #: includes/elementor/widgets/class-bento.php:145
-#: includes/elementor/widgets/class-testimonial-wall.php:104
+#: includes/elementor/widgets/class-testimonial-wall.php:106
 msgid "Tone"
 msgstr "رنگ‌مایه"
 
 #: includes/elementor/widgets/class-bento.php:149
-#: includes/elementor/widgets/class-testimonial-wall.php:108
+#: includes/elementor/widgets/class-testimonial-wall.php:110
 #: includes/settings/schema.php:283
 msgid "Light"
 msgstr "روشن"
@@ -6235,7 +6237,7 @@ msgid "Inner parallax"
 msgstr "پارالاکس درونی"
 
 #: includes/elementor/widgets/class-image-reveal.php:103
-#: includes/elementor/widgets/class-team.php:142
+#: includes/elementor/widgets/class-team.php:143
 msgid "Black & white until hover"
 msgstr "سیاه‌وسفید؛ رنگی با رفتن ماوس"
 
@@ -6879,7 +6881,7 @@ msgstr "محبوب‌ترین"
 
 #: includes/elementor/widgets/class-pricing.php:146
 #: includes/elementor/widgets/class-team.php:31
-#: includes/elementor/widgets/class-team.php:184
+#: includes/elementor/widgets/class-team.php:185
 msgid "Team"
 msgstr "تیم"
 
@@ -7986,60 +7988,92 @@ msgstr "اعضا"
 msgid "Mentor"
 msgstr "منتور"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:32
+#: includes/elementor/widgets/class-team.php:110
+msgid "Strip of portraits that widen on hover"
+msgstr "نوار چهره‌ها که با رفتن نشانگر پهن می‌شوند"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:34
 msgid "Testimonial Wall"
 msgstr "دیوار نظرها"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:59
-#: includes/elementor/widgets/class-testimonial-wall.php:145
+#: includes/elementor/widgets/class-testimonial-wall.php:61
+#: includes/elementor/widgets/class-testimonial-wall.php:148
 #: includes/elementor/widgets/class-testimonials.php:31
 #: includes/elementor/widgets/class-testimonials.php:48
 #: includes/elementor/widgets/class-testimonials.php:204
 msgid "Testimonials"
 msgstr "نظرات مشتریان"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:64
+#: includes/elementor/widgets/class-testimonial-wall.php:66
 #: includes/elementor/widgets/class-testimonials.php:53
 msgid "Quote"
 msgstr "نقل‌قول"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:67
+#: includes/elementor/widgets/class-testimonial-wall.php:69
 msgid "They understood what we wanted quickly, and the results showed in the first month."
 msgstr "خیلی زود فهمیدند چه می‌خواهیم و نتیجه از همان ماه اول پیدا بود."
 
-#: includes/elementor/widgets/class-testimonial-wall.php:75
+#: includes/elementor/widgets/class-testimonial-wall.php:77
 msgid "Maryam Karimi"
 msgstr "مریم کریمی"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:83
+#: includes/elementor/widgets/class-testimonial-wall.php:85
 msgid "Marketing manager"
 msgstr "مدیر بازاریابی"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:96
-#: includes/elementor/widgets/class-testimonial-wall.php:154
+#: includes/elementor/widgets/class-testimonial-wall.php:98
+#: includes/elementor/widgets/class-testimonial-wall.php:183
 #: includes/shop/class-product-card.php:78
 msgid "Rating"
 msgstr "امتیاز"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:131
+#: includes/elementor/widgets/class-testimonial-wall.php:133
 msgid "Arrangement"
 msgstr "چیدمان"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:135
+#: includes/elementor/widgets/class-testimonial-wall.php:137
 msgid "Spread over a giant word"
 msgstr "پراکنده روی یک واژه‌ی بزرگ"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:136
+#: includes/elementor/widgets/class-testimonial-wall.php:138
 msgid "Two columns moving apart"
 msgstr "دو ستون با حرکت مخالف"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:143
+#: includes/elementor/widgets/class-testimonial-wall.php:139
+msgid "One client at a time, picked from a row of faces"
+msgstr "هر بار یک مشتری، با انتخاب از ردیف چهره‌ها"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:146
 msgid "Giant word behind"
 msgstr "واژه‌ی بزرگ پشت کارت‌ها"
 
-#: includes/elementor/widgets/class-testimonial-wall.php:152
+#: includes/elementor/widgets/class-testimonial-wall.php:155
+msgid "Rating summary"
+msgstr "خلاصه‌ی امتیاز"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:157
+msgid "Rated 4.9/5 by 1,200+ happy clients"
+msgstr "امتیاز ۴٫۹ از ۵ از سوی +۱۲۰۰ مشتری راضی"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:164
+msgid "Brand logos"
+msgstr "لوگوی برندها"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:172
+msgid "Line before the logos"
+msgstr "جمله‌ی پیش از لوگوها"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:174
+msgid "Trusted by:"
+msgstr "مورد اعتماد:"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:181
 msgid "Rating label"
 msgstr "برچسب امتیاز"
+
+#: includes/elementor/widgets/class-testimonial-wall.php:230
+msgid "Clients"
+msgstr "مشتری‌ها"
 
 #: includes/elementor/widgets/class-testimonials.php:56
 msgid "I finished the course with a product people actually use. Nothing else I tried did that."

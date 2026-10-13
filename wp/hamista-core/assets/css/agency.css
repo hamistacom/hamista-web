@@ -52,7 +52,7 @@ a.hm-avatars__plus:hover { transform: rotate(90deg); }
 .hm-ring[style*="--hm-ring-turn:0s"] .hm-ring__track { animation: none; }
 @keyframes hm-ring-turn { to { rotate: 360deg; } }
 .hm-ring__text { width: 100%; height: 100%; overflow: visible; }
-.hm-ring__text text { font-family: var(--hm-font-heading); font-size: 15px; font-weight: 600; letter-spacing: .08em; fill: currentColor; }
+.hm-ring__text text { direction: ltr; font-family: var(--hm-font-heading); font-size: 15px; font-weight: 600; letter-spacing: .08em; fill: currentColor; }
 .hm-ring--accent { color: var(--hm-fg); }
 .hm-ring--accent::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--hm-border-strong); }
 .hm-ring--outline::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px dashed var(--hm-border-strong); }
@@ -175,14 +175,16 @@ a.hm-avatars__plus:hover { transform: rotate(90deg); }
 .hm-ah__rate b { font-size: clamp(2.2rem, 3.4vw, 3rem); line-height: 1; font-weight: 600; }
 
 /* Wordmark */
-.hm-ah--wordmark { min-height: min(900px, 100svh); padding: calc(var(--hm-header-h, 80px) + 70px) clamp(20px, 3vw, 48px) 0; background: var(--hm-inv-bg); color: var(--hm-inv-fg); display: flex; flex-direction: column; }
-.hm-ah--wordmark .hm-ah__status { border-radius: 0 0 4px 4px; }
+.hm-ah--wordmark { min-height: min(900px, 100svh); padding: calc(var(--hm-header-h, 80px) + 68px) clamp(20px, 3vw, 48px) 0; background: var(--hm-inv-bg); color: var(--hm-inv-fg); display: flex; flex-direction: column; }
+/* Below the header, which often lies over these two heroes. */
+.hm-ah--wordmark .hm-ah__status, .hm-ah--marquee .hm-ah__status { inset-block-start: calc(var(--hm-header-h, 68px) + 8px); border-radius: 999px; }
+.hm-ah--wordmark .hm-ah__status { background: rgba(255, 255, 255, .08); }
 .hm-ah__top { display: grid; grid-template-columns: 1.1fr 1fr .5fr; align-items: start; gap: clamp(20px, 3vw, 48px); }
-.hm-ah--wordmark .hm-ah__intro { gap: 26px; }
+.hm-ah--wordmark .hm-ah__intro { gap: 22px; }
 .hm-ah--wordmark .hm-ah__title { font-size: clamp(2.6rem, 5vw, 4.4rem); }
 .hm-ah--wordmark .hm-ah__title .hm-hl { color: rgba(255, 255, 255, .5); }
 .hm-ah--wordmark .hm-ah__desc { color: rgba(255, 255, 255, .78); }
-.hm-ah__orbs { position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.hm-ah__orbs { position: relative; display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .hm-ah__orbs > .hm-ah__orb { position: relative; width: clamp(150px, 16vw, 232px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #26262a; }
 .hm-ah__orb img { width: 100%; height: 100%; object-fit: cover; }
 .hm-ah__orb--a { z-index: 2; border: 6px solid var(--hm-inv-bg); box-shadow: 0 0 0 1px rgba(255, 255, 255, .15); margin-inline-end: 34%; }
@@ -197,17 +199,19 @@ a.hm-avatars__plus:hover { transform: rotate(90deg); }
 .hm-ah__ticker .hm-ah__logo-img { height: 20px; max-width: 34px; }
 .hm-ah__top > .hm-ah__film { margin-top: 30px; border-radius: 18px; }
 .hm-ah__bottom { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-top: auto; padding-top: 40px; border-bottom: 2px solid var(--hm-accent); }
-.hm-ah__mark { margin: 0 0 -.12em; font-family: var(--hm-font-heading); font-size: clamp(5rem, 17vw, 16rem); line-height: .9; font-weight: 900; letter-spacing: -.04em; color: #fff; white-space: nowrap; }
+.hm-ah__mark { margin: 0 0 -.12em; font-family: var(--hm-font-heading); font-size: clamp(5rem, 15vw, 14rem); line-height: .9; font-weight: 900; letter-spacing: -.04em; color: #fff; white-space: nowrap; }
 .hm-ah__mark .hm-hl { color: var(--hm-accent); }
-.hm-ah__aside { display: flex; flex-direction: column; gap: 12px; width: min(420px, 34%); margin-bottom: 12px; }
+/* Persian letters hang below the line and the faces carry a tall ascent: give the descenders room, take back the empty top. */
+[dir="rtl"] .hm-ah__mark { line-height: 1.3; margin-block: -.32em .02em; letter-spacing: 0; }
+.hm-ah__aside { display: flex; flex-direction: column; gap: 10px; width: min(400px, 32%); margin-bottom: 12px; }
 .hm-ah__card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 6px; padding: 6px; border-radius: 20px; background: rgba(255, 255, 255, .85); }
 .hm-ah__card-body { padding: 22px; border-radius: 16px; background: var(--hm-accent); color: var(--hm-accent-fg); }
 .hm-ah__card-body h2 { margin: 0 0 8px; font-size: 1.35rem; font-weight: 700; color: inherit; }
-.hm-ah__card-body p { margin: 0 0 22px; font-size: .92rem; opacity: .85; line-height: 1.7; }
+.hm-ah__card-body p { margin: 0 0 16px; font-size: .92rem; opacity: .85; line-height: 1.7; }
 .hm-ah__card-btn { display: block; padding: 11px; border-radius: 10px; text-align: center; color: #111; background: rgba(255, 255, 255, .78); transition: background-color .3s; }
 .hm-ah__card-btn:hover { background: #fff; color: #111; }
 .hm-ah__card-img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-.hm-ah__liked { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0; padding: 14px 22px; border-radius: 18px; background: rgba(255, 255, 255, .78); color: #111; font-weight: 500; --hm-ag-ring: #e6e6e6; }
+.hm-ah__liked { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0; padding: 10px 18px; border-radius: 18px; background: rgba(255, 255, 255, .78); color: #111; font-weight: 500; --hm-ag-ring: #e6e6e6; }
 
 /* Marquee */
 .hm-ah--marquee { min-height: min(900px, 100svh); background: var(--hm-bg); color: var(--hm-fg); }
@@ -219,7 +223,7 @@ a.hm-avatars__plus:hover { transform: rotate(90deg); }
 .hm-ah--marquee .hm-ah__intro { grid-column: 1; grid-row: 1; z-index: 2; padding-inline-start: 12px; gap: 18px; }
 .hm-ah--marquee .hm-ah__title { font-size: clamp(1.4rem, 2vw, 1.9rem); }
 .hm-ah--marquee .hm-ah__desc { color: var(--hm-fg-muted); font-size: 1.05rem; }
-.hm-ah__tilt { position: absolute; top: 12%; inset-inline-start: 0; width: 110px; transform: translate3d(0, var(--hm-py, 0px), 0) rotate(-24deg); border-radius: 6px; overflow: hidden; box-shadow: var(--hm-shadow-lg); }
+.hm-ah__tilt { position: absolute; top: 12%; inset-inline-start: 0; width: 110px; transform: translate3d(0, var(--hm-py, 0px), 0) rotate(-24deg); border-radius: 6px; overflow: hidden; filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .2)); }
 .hm-ah__tilt img { width: 100%; height: auto; display: block; }
 .hm-ah__film--float { grid-column: 2 / 4; grid-row: 1; justify-self: end; z-index: 2; width: min(270px, 22vw); margin-inline-end: 6%; border: 4px solid #fff; border-radius: 28px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .5); }
 .hm-ah__band { position: absolute; inset-inline: 0; bottom: 4%; z-index: 3; overflow: hidden; mix-blend-mode: difference; pointer-events: none; }
@@ -568,3 +572,42 @@ a.hm-sl__name:hover { color: var(--hm-accent); }
 	.hm-tw--columns .hm-tw__item { margin-top: 0 !important; }
 }
 @media (prefers-reduced-motion: reduce) { .hm-tw__word span { animation: none; } }
+
+/* Testimonial spotlight */
+.hm-tw--spotlight { display: grid; grid-template-columns: minmax(220px, .8fr) 2fr; gap: clamp(20px, 3vw, 44px); padding: 14px; border-radius: 28px; background: linear-gradient(160deg, #222226, #121214); color: #fff; }
+.hm-tw__photos { position: relative; min-height: 340px; border-radius: 22px; overflow: hidden; }
+.hm-tw__photo { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.04); transition: opacity .6s, transform 1s var(--hm-ease); }
+.hm-tw__photo.is-active { opacity: 1; transform: none; }
+.hm-tw__photo img { width: 100%; height: 100%; object-fit: cover; }
+.hm-tw__photo::after { content: ""; position: absolute; inset: 18px; border: 2px solid rgba(255, 255, 255, .85); border-radius: 16px; pointer-events: none; }
+.hm-tw__photo figcaption { position: absolute; inset-inline: 32px; bottom: 30px; display: grid; grid-template-columns: 1fr auto; align-items: end; }
+.hm-tw__photo figcaption small { grid-column: 1; opacity: .8; font-size: .8rem; }
+.hm-tw__chip { grid-row: 1 / 3; grid-column: 2; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 99px; background: #fff; color: #111; font-weight: 700; }
+.hm-tw__chip svg { width: 14px; height: 14px; color: #f5b301; fill: currentColor; stroke: none; }
+.hm-tw__body { display: flex; flex-direction: column; gap: 26px; padding: 24px 6px; }
+.hm-tw__summary { display: flex; flex-direction: column; gap: 6px; margin: 0; font-size: .8rem; text-transform: uppercase; opacity: .85; }
+.hm-tw__summary .hm-stars { color: #fff; }
+.hm-tw__faces { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.hm-tw__face { width: 44px; height: 44px; padding: 0; border-radius: 50%; overflow: hidden; border: 2px solid transparent; background: none; cursor: pointer; opacity: .6; transition: opacity .3s, transform .4s var(--hm-ease), border-color .3s; }
+.hm-tw__face img { width: 100%; height: 100%; object-fit: cover; }
+.hm-tw__face.is-active { opacity: 1; border-color: var(--hm-accent); transform: scale(1.18); }
+.hm-tw__nav { display: grid; place-items: center; width: 38px; height: 38px; margin-inline: 8px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); background: none; color: #fff; cursor: pointer; }
+.hm-tw__nav svg { width: 16px; height: 16px; }
+.hm-tw__quotes { display: grid; }
+.hm-tw__quote { grid-area: 1 / 1; margin: 0; text-align: center; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .6s var(--hm-ease); pointer-events: none; }
+.hm-tw__quote.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.hm-tw__quote p { margin: 0; font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.9; }
+.hm-tw__brands { display: flex; align-items: center; gap: 22px; margin-top: auto; overflow: hidden; }
+.hm-tw__brands > span { flex: none; font-size: .78rem; opacity: .7; }
+.hm-tw__brands-run { display: flex; gap: 26px; align-items: center; -webkit-mask: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent); mask: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent); }
+.hm-tw .hm-tw__brand { height: 22px; width: auto; max-width: 90px; object-fit: contain; opacity: .7; }
+@media (max-width: 800px) { .hm-tw--spotlight { grid-template-columns: 1fr; } }
+
+/* Crossed ribbons: two tilted marquee bands over each other with a badge in the middle (add class hm-ribbons to a container). */
+.hm-ribbons { display: grid !important; place-items: center; overflow: hidden; padding-block: 60px; }
+.hm-ribbons > * { grid-area: 1 / 1; width: 110% !important; max-width: none !important; }
+.hm-ribbons > .elementor-widget-hm-badge-ring { z-index: 2; width: auto !important; }
+.hm-ribbons .hm-marquee { border: 0; }
+
+/* Persian is a joined script: tracking pulls its letters apart, so headlines keep normal spacing in RTL. */
+[dir="rtl"] :is(.hm-giant__word, .hm-giant__pair, .hm-giant__band, .hm-ah__title, .hm-ah__band span, .hm-ab__fig b, .hm-ab__card-title, .hm-sl__name, .hm-tw__word span) { letter-spacing: 0; }

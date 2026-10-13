@@ -1065,4 +1065,12 @@ T = {
     "Card with play button": "کارت با دکمه~ی پخش",
     "Round play button only": "فقط دکمه~ی گرد پخش",
     "Card shape": "شکل کارت",
+    "Strip of portraits that widen on hover": "نوار چهره~ها که با رفتن نشانگر پهن می~شوند",
+    "One client at a time, picked from a row of faces": "هر بار یک مشتری، با انتخاب از ردیف چهره~ها",
+    "Rating summary": "خلاصه~ی امتیاز",
+    "Rated 4.9/5 by 1,200+ happy clients": "امتیاز ۴٫۹ از ۵ از سوی +۱۲۰۰ مشتری راضی",
+    "Brand logos": "لوگوی برندها",
+    "Line before the logos": "جمله~ی پیش از لوگوها",
+    "Trusted by:": "مورد اعتماد:",
+    "Clients": "مشتری~ها",
 }
