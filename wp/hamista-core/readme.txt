@@ -14,13 +14,15 @@ Elementor widgets, motion engine, settings panel, mobile OTP login and demo impo
 
 Hamista Core is the feature plugin behind the Hamista theme.
 
-* 28 Elementor widgets with a dependency-free scroll motion engine
+* More than 50 Elementor widgets with a dependency-free scroll motion engine
+* Mega menu, preloader and cursor styles
 * A single settings panel under "Hamista" (saved over the REST API)
-* Mobile OTP login and registration (Kavenegar, Melipayamak, SMS.ir, IPPanel, Ghasedak, custom API)
-* Stepwise, removable demo importer with six complete demos
+* Mobile OTP, password and Google login (Kavenegar, Melipayamak, SMS.ir, IPPanel/Farazsms, Ghasedak, Asanak, Parsgreen, Amoot SMS, Limo SMS, 0098 SMS, custom API), captcha and SMS log
+* WooCommerce: order and stock SMS, back-in-stock alerts, quick buy
+* Stepwise, removable demo importer with ten demos and a light/dark preview
 * Contact, multi-step and newsletter forms with an admin inbox
 
-The plugin makes no external requests: fonts, scripts and demo images are all served from your site.
+Out of the box the plugin makes no external requests: fonts, scripts and demo images are all served from your site. SMS providers, Google sign-in and Turnstile or reCAPTCHA contact their own services only when you switch them on.
 
 == Installation ==
 

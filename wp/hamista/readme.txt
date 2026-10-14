@@ -8,17 +8,18 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, translation-ready, custom-logo, custom-menu, featured-images, full-width-template, threaded-comments, e-commerce, blog
 
-A fast, Persian-first (RTL) multipurpose theme for Elementor with six style kits, light and dark modes, smooth scroll motion and one-click demos.
+A fast, Persian-first (RTL) multipurpose theme for Elementor with twenty style kits, light and dark modes, smooth scroll motion and one-click demos.
 
 == Description ==
 
 Hamista is a Persian-first theme built for Elementor. The theme only handles presentation; the companion plugin Hamista Core (bundled, installed with one click) adds the Elementor widgets, the settings panel, mobile OTP login and the demo importer.
 
-* Six style kits, each with light and dark mode
-* 28 Elementor widgets: scroll zoom, horizontal scroll, depth and floating elements, stacking cards and more
+* Twenty style kits, each with light and dark mode
+* More than 50 Elementor widgets: scroll zoom, horizontal scroll, depth and floating elements, stacking cards, agency sections, news, price calculator and more
 * Dependency-free motion engine; honours reduced-motion preferences
-* Six importable demos: home in two models, about, contact, blog, post, shop and product
-* Mobile OTP login with Iranian SMS providers
+* Ten importable demos with preview: three agencies, an AI company, a nomadic goods store, a newspaper, a résumé and three one-page service sites
+* Mobile OTP, password and Google login, ten Iranian SMS providers, captcha and shop SMS
+* Mega menu from sub-items or an Elementor template
 * WooCommerce styling, Persian digits and Jalali dates
 * Self-hosted fonts: drop in Yekan Bakh and Digits, with Vazirmatn bundled as a fallback
 * Child theme included
@@ -43,7 +44,7 @@ Hamista, Copyright 2026 Hamista, distributed under the GNU GPL v2 or later.
 
 Vazirmatn font, Copyright The Vazirmatn Project Authors, SIL Open Font License 1.1 (assets/fonts/vazirmatn/OFL.txt).
 
-Demo images and logos are original works created for this theme and are licensed under the GPL like the rest of the package.
+Demo images are included only to preview the demos; replace them with your own pictures on a live site.
 
 == Changelog ==
 

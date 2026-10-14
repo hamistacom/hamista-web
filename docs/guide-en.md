@@ -33,27 +33,22 @@ A full Persian guide is in `guide-fa.md`. This page is the short English version
 
 | Demo | Id / style kit | Character |
 |---|---|---|
-| سپیدار (Sepidar) | `clinic` / `care` | specialty clinic with online appointments; complete site, 17 pages, 6 departments, 8 doctors |
-| دادگر (Dadgar) | `dadgar` / `counsel` | law firm with online consultation booking; complete site, 16 pages, 6 lawyers |
-| سازه (Sazeh) | `sazeh` / `stone` | architecture and interior studio; complete site, 14 pages, 8 portfolio projects |
-| صنایع هامون (Hamoon) | `industrial` / `industrial` | industrial manufacturer; complete site, 11 pages |
-| تپش (Tapesh) | `agency` / `studio` | brand and growth studio; complete site, 9 pages, online packages |
-| جرقه (Spark) | `spark` / `paper` | product academy; complete site, 12 pages, 6 courses |
-| سیال (Sayal) | `flux` / `flux` | motion studio; complete site, 9 pages, motion packs shop |
-| رشد (Roshd) | `roshd` / `coral` | management consulting; 8 pages, 3 case studies |
-| گلینه (Gelineh) | `gelineh` / `clay` | ceramics shop; complete store, 10 products (needs WooCommerce) |
-| شهدینه (Shahdineh) | `honey` / `honey` | honey shop; complete store, 12 pages (needs WooCommerce) |
-| کوچ (Kooch) | `nomad` / `nomad` | nomadic goods shop; complete store, 12 pages (needs WooCommerce) |
-| ره‌نورد (Rahnavard) | `rahnavard` / `voyage` | travel agency and private journeys; 7 pages |
-| پروازیار (Parvazyar) | `parvazyar` / `azure` | flight tickets and a travel guide; 7 pages |
-| خانه‌ی حکمت (Hekmat) | `hekmat` / `ink` | reading circles with seasonal membership; 7 pages |
-| زرین‌بال (Zarrinbal) | `zarrinbal` / `aurum` | private aviation, black and gold; 7 pages |
+| حامی (Hami) | `hami` / `ember` | creative studio and digital agency; complete site, 14 pages, consultation booking, shop of digital products |
+| سپهر (Sepehr) | `sepehr` / `ember` | web, product and growth agency, dark; complete site, 14 pages, consultation booking, shop |
+| ارغوان (Arghavan) | `arghavan` / `ember` | marketing agency in purple, light; complete site, 14 pages, consultation booking, shop |
+| هوشمند (Hooshmand) | `hooshmand` / `azure` | applied-AI company; complete site, 13 pages, demo booking, plans shop |
+| کوچ (Kooch) | `nomad` / `nomad` | nomadic goods; complete store, 13 pages (needs WooCommerce) |
+| روزنامه (Rooznameh) | `press` / `press` | newspaper and news magazine; 10 pages |
+| رزومه (Resume) | `cv` / `studio` | personal portfolio and résumé; 7 pages, file shop |
+| پرواز (Parvaz) | `fly` / `azure` | one-page flight, hotel and tour booking |
+| پرداخت ارزی (Pardakht-e Arzi) | `pay` / `nova` | one-page dollar payments and AI subscriptions, with a price calculator |
+| شبکه‌های اجتماعی (Social) | `social` / `pulse` | one-page social media management |
 
 Each demo is built with Elementor and Hamista widgets, with light and dark modes. The complete-site demos also ship a page per service or practice area, portfolio projects or bookable profiles, FAQ, careers and contact. Imagery is original and bundled; nothing is fetched from the internet.
 
 ## Fonts
 
-Ten Persian families are bundled: IRANYekan, IRANSansX, Peyda, Pinar, Doran, Ravagh, Lahzeh, Modam, Hamrah and Gramophone. In **Hamista → Typography → Font library** switch any family or weight on or off; a family that is off leaves every font menu, Elementor's included, and is never downloaded. Pages load only the families and weights they use.
+Seventeen Persian families are bundled, all with Persian digits: IRANYekan, IRANSansX, Yekan Bakh, Dana, Kalameh, Estedad, Peyda, Anjoman, Dibaj, Rooznameh, Pinar, Doran, Ravagh, Lahzeh, Modam, Hamrah and Gramophone. In **Hamista → Typography → Font library** switch any family or weight on or off; a family that is off leaves every font menu, Elementor's included, and is never downloaded. Pages load only the families and weights they use.
 
 Your own fonts: upload them under **Hamista → Typography → Your own fonts**. For Yekan Bakh and Digits you can also drop `.woff2` files into `wp-content/themes/hamista-child/assets/fonts/yekan-bakh/` or `…/digits/`; the weight is read from each file name. Nothing is loaded from Google.
 
@@ -61,10 +56,11 @@ Your own fonts: upload them under **Hamista → Typography → Your own fonts**.
 
 One panel, saved over REST without a page reload: style kit and content width (default 1320 px), colours and dark mode, typography, header (including the mobile quick-action bar), footer, blog, shop, motion, login & SMS, performance, custom code, and tools (export/import, regenerate Elementor CSS, clear font cache).
 
-## Widgets (28)
+## Widgets (50+)
 
 **Motion**: Scroll Zoom (in and out), Horizontal Scroll, Depth Scroll, Floating Elements, Scroll Text Reveal, Scroll Path Story, Stacking Cards, Image Reveal, Marquee.
 **Content**: Hero, Heading, Buttons, Features, Counters, Steps / Timeline, Tabs Showcase, FAQ / Accordion, Pricing Plans, Testimonials, Team, Device Mockup, Call to Action, Posts, Products.
+**Agency, news & sales**: Agency Hero, Bento, Service List, Project Showcase, Process, Testimonial Wall, Giant Text, Ring Badge, News, Masthead, Rows, Price Calculator, Search Box, Booking, Experts, product widgets.
 **Forms & users**: Contact Form, Multi-step Form, Contact Info & Map, Mobile Login (OTP).
 
 The motion engine (`window.Hamista`) is dependency-free: one `requestAnimationFrame` loop, `IntersectionObserver` reveals, no GSAP or jQuery. It honours `prefers-reduced-motion`, can be toned down on phones (**Hamista → Motion**), and each widget loads its script and styles only on pages that use it.
@@ -82,11 +78,15 @@ The code for these effects loads only on pages that use them.
 
 ## Mobile login (OTP) and the user panel
 
-**Hamista → Login & SMS**: switch on mobile login, pick a provider (Kavenegar, Melipayamak, SMS.ir, IPPanel, Ghasedak, or a custom HTTP API), enter the credentials and send a test code. Until a provider is chosen the module runs in *test mode*: nothing is sent and the latest code is visible to administrators only.
+**Hamista → Login & SMS**: switch on mobile login, pick a provider (Kavenegar, Melipayamak, SMS.ir, IPPanel/Farazsms, Ghasedak, Asanak, Parsgreen, Amoot SMS, Limo SMS, 0098 SMS, or a custom HTTP API), enter the credentials and send a test code. Until a provider is chosen the module runs in *test mode*: nothing is sent and the latest code is visible to administrators only.
 
 Codes are stored hashed, single-use and short-lived; requests are rate-limited per number and per IP, with a honeypot field. Behind a CDN or proxy, supply the real address through the `hamista_core/otp_client_ip` filter. WooCommerce's *My Account* and checkout use the same form. On sites without WooCommerce, create a page containing `[hamista_account]` and select it as the login page.
 
 Shortcodes: `[hamista_login]`, `[hamista_account]`.
+
+Also in this section: Google sign-in (enter the OAuth client ID), a security check (built-in Persian arithmetic, Cloudflare Turnstile or reCAPTCHA v3; optionally on wp-login.php and the WooCommerce forms), an SMS log, and shop SMS (order status to the customer; new order and low or no stock to the manager; sent in the background). Under **Hamista → Shop**: "Notify me" for out-of-stock products and one-step quick buy.
+
+**Mega menu**: in Appearance → Menus, each top-level item of the primary menu has a "Mega menu" box: columns built from its sub-items, or a block template from Hamista → Templates, at content or full width.
 
 ## Child theme
 
