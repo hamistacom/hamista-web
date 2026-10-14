@@ -254,7 +254,7 @@ const home = [
 			{ image: img('face-2'), shape: 'circle', x: 9, y: 74, size: 130, depth: 0.35 },
 			{ image: img('light-2'), shape: 'card', x: 32, y: 88, size: 170, depth: 0.7, rot: 3, mobile: false },
 			{ text: 'پاسخ در ۲ ثانیه', shape: 'pill', x: 70, y: 90, size: 190, depth: 0.45 },
-			{ text: 'فارسی را می‌فهمد', shape: 'pill', x: 26, y: 9, size: 200, depth: 0.6, mobile: false },
+			{ text: 'فارسی را می‌فهمد', shape: 'pill', x: 30, y: 17, size: 200, depth: 0.6, mobile: false },
 		],
 	}),
 	L.marquee(['دستیار هوشمند', 'پیش‌بینی فروش', 'خواندن اسناد', 'گزارش خودکار', 'پردازش زبان فارسی', 'داشبورد مدیریتی'], { look: 'muted', size: 'md', separator: 'dot', speed: px(38) }),
