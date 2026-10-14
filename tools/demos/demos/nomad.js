@@ -155,6 +155,7 @@ const QUOTES = [
 	{ quote: 'روغن حیوانی‌اش همان بوی خانه‌ی مادربزرگم در فارس را می‌دهد. سال‌ها بود چنین روغنی پیدا نکرده بودم.', name: 'منیژه بهادری', role: 'تهران' },
 	{ quote: 'گبه را برای اتاق بچه گرفتیم. پشت فرش اسم بافنده‌اش دوخته شده؛ این برای ما خیلی ارزش داشت.', name: 'پیمان افشار', role: 'کرج' },
 	{ quote: 'کشک و قره‌قروت را برای رستورانمان می‌گیریم. کیفیتش ثابت است و همیشه به موقع می‌رسد.', name: 'سحر نادری', role: 'سرآشپز، شیراز' },
+	{ quote: 'آویشن کوهی‌اش عطری دارد که در هیچ عطاری پیدا نکردم. جعبه‌ی فصل حالا هدیه‌ی همیشگی ماست.', name: 'رضا کامرانی', role: 'اصفهان' },
 ];
 
 const FAQ_SHOP = [
@@ -194,46 +195,88 @@ const SEASONS = [
 
 /* ---------------- Home ---------------- */
 
+const ribbon = (items, tilt, bg, color, reverse) => w('hm-marquee', {
+	items: items.map((text) => ({ text })), separator: 'plus', size: 'md', look: 'solid', speed: px(46), follow: 'yes', bordered: '',
+	reverse: reverse ? 'yes' : '', tilt: { unit: 'deg', size: tilt, sizes: [] }, band_bg: bg, color,
+});
+const RIBBON = ['روغن حیوانی', 'کشک گلوله‌ای', 'آویشن کوهی', 'گبه‌ی دستباف', 'قره‌قروت', 'کلاف رنگ گیاهی'];
+
 const home = [
-	L.bleed(w('hm-hero', {
-		layout: 'split', title_tag: 'h1', title_size: 'xl', header_align: 'start', title_reveal: 'words',
-		eyebrow: 'کوچ · از ییلاق تا خانه‌ی شما',
+	L.bleed(w('hm-agency-hero', {
+		style: 'marquee', status: 'برداشت تازه‌ی ییلاق رسید',
 		title: 'آنچه عشایر\n*برای سفره‌ی خودشان*\nمی‌سازند',
-		desc: 'روغن حیوانی، کشک، گیاهان کوهی و دست‌بافته‌های چهارده خانواده‌ی قشقایی و بختیاری؛ بی‌واسطه، با قیمتی که خودشان تعیین می‌کنند.',
-		btn1_text: 'خرید محصولات', btn1_link: link(shopUrl), btn1_style: 'primary',
-		btn2_text: 'خانواده‌ها', btn2_link: link('{{page:families}}'), btn2_style: 'secondary',
-		stats: [
-			{ value: '۱۴', label: 'خانواده‌ی همکار' },
-			{ value: '۲', label: 'ایل: قشقایی و بختیاری' },
-			{ value: '۱۰۰٪', label: 'پرداخت پیش از برداشت' },
-		],
-		media_type: 'image', image: img('hero'), media_ratio: 'landscape', height: 'auto', decor: '', hint: '',
+		desc: 'روغن حیوانی، کشک، گیاهان کوهی و دست‌بافته‌های چهارده خانواده‌ی قشقایی و بختیاری؛ بی‌واسطه و با قیمتی که خودشان تعیین می‌کنند.',
+		btn_text: 'خرید محصولات', btn_link: link(shopUrl), btn_style: 'primary',
+		image: img('hero'), image2: img('p-gabbeh'), poster: img('camp'), film: 'https://www.aparat.com/v/hamista',
+		big: 'کوچ · از *ییلاق* تا خانه‌ی شما ·', height: 'screen',
 	})),
 	section({ space: 'sm', gap: 0 }, [perks()]),
+
+	section({ space: 'lg', gap: 0 }, [
+		w('hm-about-intro', {
+			style: 'mission', eyebrow: '*{ ۰۱ }* # چرا کوچ',
+			statement: 'عشایر هیچ‌وقت برای بازار نساختند؛ برای *چادر خودشان* ساختند. ما فقط راهی پیدا کردیم که همان‌ها *به شهر هم برسد*.',
+			image: img('weaving'),
+			btn_text: 'داستان کوچ', btn_link: link('{{page:about}}'), btn_style: 'primary',
+			figures: [
+				{ label: 'خانواده‌ی همکار', value: '۱۴', text: 'از دو ایل قشقایی و بختیاری، با نام روی هر بسته.' },
+				{ label: 'پرداخت پیش از برداشت', value: '۱۰۰٪', text: 'قیمت را خانواده‌ها تعیین می‌کنند، نه ما.' },
+			],
+			cards: [
+				{ icon: 'tent', title: 'از چادر تا خانه', text: 'هر محصول همان چیزی است که خانواده برای سفره‌ی خودش می‌سازد؛ بی‌افزودنی و با دستور قدیمی.', points: 'روغن و کشک در مشک\nگیاهان چیده در ییلاق\nپشم رنگ‌شده با گیاه\nارسال در بسته‌ی عایق' },
+				{ icon: 'leaf', title: 'تجارت منصفانه', text: 'هر سال گزارش خریدها و سهم هر خانواده را منتشر می‌کنیم.', points: 'قیمت‌گذاری با خانواده\nگزارش سالانه' },
+			],
+			avatars: L.gallery(['p-ghee', 'p-thyme', 'p-yarn']), person: 'خانواده‌ی کشکولی', role: 'ایل قشقایی · فیروزآباد',
+		}),
+	]),
+
 	section({ space: 'md', gap: 32, cards: 'cascade' }, [
-		L.productCategories(['nomad-food', 'mountain-herbs', 'handwoven', 'season-box'], { eyebrow: 'دسته‌ها', title: 'از *چادر* تا آشپزخانه' }),
+		L.productCategories(['nomad-food', 'mountain-herbs', 'handwoven', 'season-box'], { eyebrow: '*{ ۰۲ }* # دسته‌ها', title: 'از *چادر* تا آشپزخانه' }),
 	]),
-	section({ space: 'md', gap: 32 }, [
-		L.productCarousel({ eyebrow: 'محصولات فصل', title: 'تازه از *ییلاق*', source: 'featured', more_text: 'همه‌ی محصولات', more_link: link(shopUrl) }),
+
+	section({ space: 'md', gap: 24 }, [
+		w('hm-giant-text', { text: 'تازه از', second: 'ییلاق', motion: 'part', look: 'solid', size: { unit: 'vw', size: 9, sizes: [] }, align: 'center', tag: 'p' }),
+		L.productCarousel({ eyebrow: '', title: '', source: 'featured', more_text: 'همه‌ی محصولات', more_link: link(shopUrl) }),
 	]),
+
 	section({ space: 'none', gap: 0, zoom: 'expand', zoomAmount: 0.24, zoomInner: true, zoomRadius: 6 }, [
 		L.imageReveal('camp', { ratio: '21-9', reveal: 'none', parallax: px(0) }),
 	]),
-	fx(section({ space: 'md', gap: 32, width: 1000 }, [
-		L.textScrub('عشایر هیچ‌وقت برای بازار نساختند؛ برای *چادر خودشان* ساختند. ما فقط راهی پیدا کردیم که آنچه برای خودشان می‌سازند *به شهر هم برسد*، با قیمتی که خودشان تعیین می‌کنند.', { eyebrow: 'چرا کوچ', size: 'md' }),
-	]), { tone: 'surface' }),
+
+	section({ space: 'lg', gap: 40 }, [
+		heading({ eyebrow: '*{ ۰۳ }* # چرا از ما بخرید', title: 'خرید مستقیم،\n*بی‌واسطه* و مطمئن', header_align: 'center', title_size: 'lg' }),
+		w('hm-bento', {
+			columns: '9', columns_tablet: '2', columns_mobile: '1', row_height: px(290),
+			cards: [
+				{ kind: 'text', kicker: 'جعبه‌ی فصل', title: 'هر فصل، یک جعبه\nاز ییلاق', text: 'روغن، کشک، گیاهان و یک دست‌بافته‌ی کوچک؛ چهار بار در سال.', btn_text: 'اشتراک جعبه', btn_link: link('{{page:box}}'), image: img('p-box'), image_place: 'bottom', tone: 'light', cols: '3', rows: '2' },
+				{ kind: 'rating', title: 'رضایت +۳٬۲۰۰ خریدار', value: '4.9/5', image: img('cat-food'), image_place: 'end', tone: 'light', cols: '3', rows: '1' },
+				{ kind: 'figure', title: 'ارسال رایگان', text: 'برای خرید بالای ۲ میلیون تومان، به همه‌ی شهرها.', value: '۴۸ ساعت', tone: 'dark', cols: '3', rows: '1' },
+				{ kind: 'image', title: 'گبه‌ها،\nهر کدام یکتا', image: img('p-gabbeh-indigo-b'), image_place: 'fill', tone: 'dark', cols: '3', rows: '1' },
+				{ kind: 'list', title: 'بدون هیچ افزودنی', text: 'بدون نگهدارنده\nبدون رنگ مصنوعی\nبا دستور قدیمی ایل', tone: 'accent', cols: '3', rows: '1' },
+			],
+		}),
+	]),
+
 	section({ space: 'md', gap: 32 }, [
-		heading({ eyebrow: 'خانواده‌ها', title: 'سه خانواده،\n*سه ییلاق*' }),
+		heading({ eyebrow: '*{ ۰۴ }* # خانواده‌ها', title: 'سه خانواده،\n*سه ییلاق*' }),
 		L.stack(FAMILIES),
 	]),
+
+	L.con({ content_width: 'full', css_classes: 'hm-ribbons', flex_gap: L.gap(0) }, [
+		ribbon(RIBBON, -4, '#8e2f25', '#ffffff', false),
+		ribbon(RIBBON.slice().reverse(), 4, '#1f1b17', '#f2ece2', true),
+		w('hm-badge-ring', { mode: 'text', text: 'خرید مستقیم از عشایر • از ییلاق تا خانه • ', center: 'arrow', link: link(shopUrl), look: 'accent', size: px(170), speed: 20 }),
+	]),
+
 	section({ space: 'md', gap: 32 }, [
 		L.productTabs([
 			{ label: 'پرفروش‌ها', source: 'featured', category: [], count: 8 },
 			{ label: 'خوراکی‌ها', source: 'recent', category: ['nomad-food'], count: 8 },
 			{ label: 'دست‌بافته‌ها', source: 'recent', category: ['handwoven'], count: 8 },
 			{ label: 'حراج', source: 'sale', category: [], count: 8 },
-		], { eyebrow: 'فروشگاه', title: 'برای *خانه و سفره*' }),
+		], { eyebrow: '*{ ۰۵ }* # فروشگاه', title: 'برای *خانه و سفره*' }),
 	]),
+
 	fx(section({ space: 'md', gap: 48 }, [
 		cols({ widths: [50, 50], gap: 72, align: 'center' }, [
 			[
@@ -243,14 +286,34 @@ const home = [
 			[fx(L.imageReveal('weaving', { ratio: '4-3', reveal: 'none', parallax: px(0) }), { zoom: 'in', zoomAmount: 0.12, zoomInner: true })],
 		]),
 	]), { tone: 'inverse' }),
+
+	section({ space: 'md', gap: 0, cls: 'hm-space-bottom-0' }, [
+		w('hm-process', {
+			eyebrow: '*{ ۰۶ }* # از چادر تا خانه', title: 'هر بسته،\nچهار گام', desc: 'از ییلاق تا آشپزخانه‌ی شما، هر محصول این مسیر کوتاه و روشن را طی می‌کند.',
+			title_tag: 'h2', title_size: 'md', header_align: 'start', title_reveal: 'words', look: 'tabs', more: 'بیشتر',
+			steps: [
+				{ icon: 'tent', title: 'ساخت در ایل', text: 'روغن و کشک در مشک، گیاهان در سایه و گبه روی دار؛ همان روش همیشگی.', link: link('{{page:families}}') },
+				{ icon: 'card', title: 'خرید منصفانه', text: 'پیش از برداشت و با قیمتی که خود خانواده تعیین می‌کند، پرداخت می‌کنیم.', link: link('{{page:about}}') },
+				{ icon: 'box', title: 'بسته‌بندی', text: 'خوراکی‌ها در بسته‌ی عایق و گبه‌ها لوله‌شده در کیسه‌ی پارچه‌ای.', link: link('{{page:care}}') },
+				{ icon: 'truck', title: 'ارسال', text: 'به همه‌ی شهرها، معمولاً در دو روز کاری.', link: link('{{page:shipping}}') },
+			],
+		}),
+		w('hm-giant-text', { text: 'کوچ', motion: 'slide', look: 'accent', size: { unit: 'vw', size: 22, sizes: [] }, crop: 'yes', align: 'start', tag: 'p' }),
+	]),
+
 	L.hscroll({
 		eyebrow: 'یک سال با ایل', title: 'هر فصل،\n*یک محصول*', desc: 'زندگی عشایر با فصل‌ها جابه‌جا می‌شود؛ محصولات کوچ هم.',
 		items: SEASONS, card_size: 'md', card_style: 'caption', scheme: '',
 	}),
-	section({ space: 'md', gap: 40 }, [
-		heading({ eyebrow: 'از زبان خریداران', title: 'طعمی که *آشناست*', header_align: 'center' }),
-		L.testimonials(QUOTES, { layout: 'grid', columns: '3' }),
+
+	section({ space: 'lg', gap: 40 }, [
+		L.textScrub('طعمی که *آشناست*', { eyebrow: '*{ ۰۷ }* # از زبان خریداران', size: 'md', align: 'center' }),
+		w('hm-testimonial-wall', {
+			look: 'columns', rating_label: 'امتیاز',
+			items: QUOTES.map((q, i) => ({ quote: q.quote, name: q.name, role: q.role, avatar: img(['p-ghee', 'p-gabbeh', 'p-kashk', 'p-thyme'][i % 4]), rating: '4.9', tone: ['light', 'dark', 'accent', 'light'][i % 4] })),
+		}),
 	]),
+
 	section({ space: 'md', gap: 40 }, [
 		cols({ widths: [60, 40], align: 'flex-end' }, [
 			[heading({ eyebrow: 'دفتر کوچ', title: 'روایت‌هایی از *ییلاق*' })],
@@ -690,7 +753,8 @@ module.exports = {
 			mobile_bar_url: '{{shop}}',
 			mobile_bar_whatsapp: '09172206400',
 			magnetic: true,
-			cursor: 'dot',
+			cursor: 'frame',
+			preloader: 'logo',
 			sound_enabled: true,
 			sound_default: true,
 			sound_theme: 'soft',
