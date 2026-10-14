@@ -220,7 +220,31 @@ CV = {
     'av-4': ('04/tst_4.webp', 120, 'photo'),
 }
 
-DEMOS = {'cv': CV, 'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
+# One-page services: flights, currency and AI subscriptions, social growth.
+FLY = {
+    'hero': ('old/parvazyar/hero.webp', 2000, 'photo'), 'sky': ('old/parvazyar/sky.webp', 1920, 'photo'),
+    'night': ('old/parvazyar/night.webp', 1600, 'photo'), 'card-1': ('old/parvazyar/card-1.webp', 1000, 'photo'),
+    'card-2': ('old/parvazyar/card-2.webp', 1000, 'photo'),
+}
+for i in range(1, 8):
+    FLY['dest-%d' % i] = ('old/rahnavard/dest-%d.webp' % i, 700, 'photo')
+PAY = {
+    'hero': ('old/zarrinbal/silk-hero.webp', 2000, 'photo'), 'wide': ('old/zarrinbal/silk-wide.webp', 1920, 'photo'),
+    'tall': ('old/zarrinbal/silk-tall.webp', 900, 'photo'),
+    'card-1': ('old/zarrinbal/silk-card-1.webp', 900, 'photo'), 'card-2': ('old/zarrinbal/silk-card-2.webp', 900, 'photo'),
+    'card-3': ('old/zarrinbal/silk-card-3.webp', 900, 'photo'),
+}
+SOCIAL = {
+    'crew': ('04/ser1.jpg', 520, 'photo'), 'apps': ('old/apps.webp', 560, 'alpha'),
+    'team': ('04/Image-16.png', 320, 'photo'), 'desk': ('04/ab4.webp', 470, 'photo'),
+}
+for i, n in enumerate(['tm10', 'tm11', 'tm12', 'tm13', 'tm14']):
+    SOCIAL['creator-%d' % (i + 1)] = ('04/%s.webp' % n, 350, 'photo')
+for i in range(1, 5):
+    for d in (PAY, SOCIAL, FLY):
+        d['av-%d' % i] = ('04/tst_%d.webp' % i, 120, 'photo')
+
+DEMOS = {'fly': FLY, 'pay': PAY, 'social': SOCIAL, 'cv': CV, 'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):

@@ -61,6 +61,7 @@ class Image_Reveal extends Widget_Base {
 					'1-1'  => '1:1',
 					'4-3'  => '4:3',
 					'3-4'  => '3:4',
+					'4-5'  => '4:5',
 					'16-9' => '16:9',
 					'21-9' => '21:9',
 					'arch' => __( 'Arch', 'hamista-core' ),

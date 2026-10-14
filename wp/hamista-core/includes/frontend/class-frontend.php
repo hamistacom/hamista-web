@@ -113,6 +113,17 @@ class Frontend {
 		);
 
 		wp_register_script(
+			'hamista-calculator',
+			self::asset( 'js/calculator.js' ),
+			array(),
+			HAMISTA_CORE_VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		wp_register_script(
 			'hamista-lead-form',
 			self::asset( 'js/lead-form.js' ),
 			array( 'hamista-motion' ),

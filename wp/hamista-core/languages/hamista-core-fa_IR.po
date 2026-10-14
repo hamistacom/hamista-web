@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-14T04:22:22+00:00\n"
-"PO-Revision-Date: 2026-10-14 04:22+0000\n"
+"POT-Creation-Date: 2026-10-14T04:33:54+00:00\n"
+"PO-Revision-Date: 2026-10-14 04:34+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -36,7 +36,7 @@ msgstr "ویجت‌های المنتور، موتور انیمیشن بدون و
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:476
-#: includes/elementor/class-elementor.php:114
+#: includes/elementor/class-elementor.php:115
 msgid "Hamista"
 msgstr "هامیستا"
 
@@ -159,7 +159,7 @@ msgstr "برچسب"
 #: includes/elementor/widgets/class-contact-info.php:76
 #: includes/elementor/widgets/class-features.php:91
 #: includes/elementor/widgets/class-hscroll.php:96
-#: includes/elementor/widgets/class-image-reveal.php:131
+#: includes/elementor/widgets/class-image-reveal.php:132
 #: includes/elementor/widgets/class-news.php:201
 #: includes/elementor/widgets/class-process.php:104
 #: includes/elementor/widgets/class-project-show.php:121
@@ -1994,6 +1994,8 @@ msgstr "متخصصان"
 #: includes/booking/class-booking.php:96
 #: includes/booking/class-booking.php:120
 #: includes/booking/class-booking.php:204
+#: includes/elementor/widgets/class-calculator.php:71
+#: includes/elementor/widgets/class-calculator.php:195
 #: includes/elementor/widgets/class-card-stack.php:71
 msgid "Service"
 msgstr "خدمت"
@@ -2001,6 +2003,7 @@ msgstr "خدمت"
 #: includes/booking/class-booking.php:97
 #: includes/booking/class-booking.php:121
 #: includes/booking/class-booking.php:205
+#: includes/elementor/widgets/class-calculator.php:126
 #: includes/elementor/widgets/class-lead-form.php:107
 #: includes/elementor/widgets/class-service-list.php:62
 #: includes/portfolio/class-portfolio.php:32
@@ -3421,8 +3424,8 @@ msgstr "نشانگر پیشرفت"
 #: includes/elementor/widgets/class-cta.php:127
 #: includes/elementor/widgets/class-hero.php:131
 #: includes/elementor/widgets/class-hero.php:250
-#: includes/elementor/widgets/class-image-reveal.php:81
-#: includes/elementor/widgets/class-image-reveal.php:115
+#: includes/elementor/widgets/class-image-reveal.php:82
+#: includes/elementor/widgets/class-image-reveal.php:116
 #: includes/elementor/widgets/class-marquee.php:89
 #: includes/elementor/widgets/class-slider.php:191
 msgid "None"
@@ -3519,7 +3522,7 @@ msgstr "لغزش از سمت پایان"
 
 #: includes/elementor/class-motion.php:65
 #: includes/elementor/class-widget-base.php:199
-#: includes/elementor/widgets/class-image-reveal.php:80
+#: includes/elementor/widgets/class-image-reveal.php:81
 msgid "Fade"
 msgstr "محوشدن"
 
@@ -3878,6 +3881,7 @@ msgstr "روتیتر"
 #: includes/elementor/widgets/class-agency-hero.php:103
 #: includes/elementor/widgets/class-bento.php:85
 #: includes/elementor/widgets/class-booking-form.php:92
+#: includes/elementor/widgets/class-calculator.php:62
 #: includes/elementor/widgets/class-card-stack.php:77
 #: includes/elementor/widgets/class-depth.php:66
 #: includes/elementor/widgets/class-features.php:67
@@ -4845,7 +4849,7 @@ msgid "\"After\" label"
 msgstr "برچسب «بعد»"
 
 #: includes/elementor/widgets/class-before-after.php:93
-#: includes/elementor/widgets/class-image-reveal.php:124
+#: includes/elementor/widgets/class-image-reveal.php:125
 #: includes/elementor/widgets/class-stories.php:83
 msgid "Caption"
 msgstr "زیرنویس"
@@ -4863,7 +4867,7 @@ msgid "Aspect ratio"
 msgstr "نسبت ابعاد"
 
 #: includes/elementor/widgets/class-before-after.php:135
-#: includes/elementor/widgets/class-image-reveal.php:138
+#: includes/elementor/widgets/class-image-reveal.php:139
 msgid "Corner radius"
 msgstr "گردی گوشه‌ها"
 
@@ -4946,6 +4950,7 @@ msgid "In the middle (logo)"
 msgstr "وسط کارت (لوگو)"
 
 #: includes/elementor/widgets/class-bento.php:131
+#: includes/elementor/widgets/class-calculator.php:152
 #: includes/elementor/widgets/class-contact-form.php:100
 #: includes/elementor/widgets/class-header-actions.php:84
 #: includes/elementor/widgets/class-pricing.php:106
@@ -5087,6 +5092,98 @@ msgstr "دکمه‌ی دوم"
 #: includes/elementor/widgets/class-button.php:88
 msgid "Full width on phones"
 msgstr "تمام‌عرض در موبایل"
+
+#: includes/elementor/widgets/class-calculator.php:31
+msgid "Price calculator"
+msgstr "ماشین‌حساب قیمت"
+
+#: includes/elementor/widgets/class-calculator.php:58
+msgid "Calculator"
+msgstr "ماشین‌حساب"
+
+#: includes/elementor/widgets/class-calculator.php:64
+msgid "How much will it cost?"
+msgstr "چقدر هزینه دارد؟"
+
+#: includes/elementor/widgets/class-calculator.php:73
+#: includes/elementor/widgets/class-calculator.php:132
+msgid "Dollar payment"
+msgstr "پرداخت دلاری"
+
+#: includes/elementor/widgets/class-calculator.php:79
+#: includes/elementor/widgets/class-pricing.php:81
+msgid "Unit"
+msgstr "واحد"
+
+#: includes/elementor/widgets/class-calculator.php:81
+#: includes/elementor/widgets/class-calculator.php:133
+msgid "dollars"
+msgstr "دلار"
+
+#: includes/elementor/widgets/class-calculator.php:87
+msgid "Price of one unit (tomans)"
+msgstr "قیمت هر واحد (تومان)"
+
+#: includes/elementor/widgets/class-calculator.php:91
+msgid "Update it whenever the rate changes."
+msgstr "هر وقت نرخ تغییر کرد، این عدد را به‌روز کنید."
+
+#: includes/elementor/widgets/class-calculator.php:97
+msgid "Service fee (%)"
+msgstr "کارمزد (درصد)"
+
+#: includes/elementor/widgets/class-calculator.php:108
+msgid "Smallest amount"
+msgstr "کمترین مقدار"
+
+#: includes/elementor/widgets/class-calculator.php:117
+msgid "Amount shown first"
+msgstr "مقدار پیش‌فرض"
+
+#: includes/elementor/widgets/class-calculator.php:144
+msgid "Line under the total"
+msgstr "توضیح زیر مبلغ نهایی"
+
+#: includes/elementor/widgets/class-calculator.php:146
+msgid "Rates are updated every hour."
+msgstr "نرخ‌ها هر ساعت به‌روز می‌شوند."
+
+#: includes/elementor/widgets/class-calculator.php:154
+msgid "Place the order"
+msgstr "ثبت سفارش"
+
+#: includes/elementor/widgets/class-calculator.php:160
+#: includes/elementor/widgets/class-header-actions.php:93
+#: includes/elementor/widgets/class-logo-grid.php:101
+#: includes/elementor/widgets/class-masthead.php:141
+#: includes/elementor/widgets/class-pricing.php:114
+#: includes/elementor/widgets/class-showcase.php:185
+#: includes/elementor/widgets/class-stack.php:98
+#: includes/elementor/widgets/class-stories.php:98
+#: includes/elementor/widgets/class-tabs.php:112
+#: includes/settings/schema.php:479
+msgid "Button link"
+msgstr "لینک دکمه"
+
+#: includes/elementor/widgets/class-calculator.php:162
+msgid "The chosen service, amount and total are added to the link (service, amount, total), so a form or chat can pick them up."
+msgstr "خدمت انتخاب‌شده، مقدار و مبلغ نهایی به انتهای پیوند اضافه می‌شوند (service، amount و total) تا فرم یا گفت‌وگوی آنلاین بتواند آن‌ها را بخواند."
+
+#: includes/elementor/widgets/class-calculator.php:208
+msgid "Amount"
+msgstr "مقدار"
+
+#: includes/elementor/widgets/class-calculator.php:211
+msgid "Rate"
+msgstr "نرخ"
+
+#: includes/elementor/widgets/class-calculator.php:212
+msgid "Service fee"
+msgstr "کارمزد"
+
+#: includes/elementor/widgets/class-calculator.php:214
+msgid "You pay"
+msgstr "مبلغ قابل پرداخت"
 
 #: includes/elementor/widgets/class-card-stack.php:29
 msgid "Card Deck"
@@ -5992,18 +6089,6 @@ msgstr "نمایش، به همین ترتیب"
 msgid "Get in touch"
 msgstr "تماس با ما"
 
-#: includes/elementor/widgets/class-header-actions.php:93
-#: includes/elementor/widgets/class-logo-grid.php:101
-#: includes/elementor/widgets/class-masthead.php:141
-#: includes/elementor/widgets/class-pricing.php:114
-#: includes/elementor/widgets/class-showcase.php:185
-#: includes/elementor/widgets/class-stack.php:98
-#: includes/elementor/widgets/class-stories.php:98
-#: includes/elementor/widgets/class-tabs.php:112
-#: includes/settings/schema.php:479
-msgid "Button link"
-msgstr "لینک دکمه"
-
 #: includes/elementor/widgets/class-header-actions.php:104
 msgid "Icon with count"
 msgstr "آیکون با تعداد"
@@ -6136,7 +6221,7 @@ msgid "Plays muted and looped; paused for visitors who prefer reduced motion."
 msgstr "بی‌صدا و تکرارشونده پخش می‌شود؛ برای بازدیدکنندگانی که «کاهش حرکت» را فعال کرده‌اند، متوقف می‌ماند."
 
 #: includes/elementor/widgets/class-hero.php:210
-#: includes/elementor/widgets/class-image-reveal.php:66
+#: includes/elementor/widgets/class-image-reveal.php:67
 msgid "Arch"
 msgstr "طاقی"
 
@@ -6263,40 +6348,40 @@ msgstr "نمایش تصویر"
 msgid "Original"
 msgstr "نسبت اصلی"
 
-#: includes/elementor/widgets/class-image-reveal.php:73
+#: includes/elementor/widgets/class-image-reveal.php:74
 msgid "Reveal"
 msgstr "انیمیشن نمایش"
 
-#: includes/elementor/widgets/class-image-reveal.php:77
+#: includes/elementor/widgets/class-image-reveal.php:78
 msgid "Wipe up"
 msgstr "آشکارشدن رو به بالا"
 
-#: includes/elementor/widgets/class-image-reveal.php:78
+#: includes/elementor/widgets/class-image-reveal.php:79
 msgid "Wipe sideways"
 msgstr "آشکارشدن افقی"
 
-#: includes/elementor/widgets/class-image-reveal.php:79
+#: includes/elementor/widgets/class-image-reveal.php:80
 msgid "Scale in"
 msgstr "بزرگ‌نمایی"
 
-#: includes/elementor/widgets/class-image-reveal.php:88
+#: includes/elementor/widgets/class-image-reveal.php:89
 msgid "Inner parallax"
 msgstr "پارالاکس درونی"
 
-#: includes/elementor/widgets/class-image-reveal.php:103
+#: includes/elementor/widgets/class-image-reveal.php:104
 #: includes/elementor/widgets/class-team.php:143
 msgid "Black & white until hover"
 msgstr "سیاه‌وسفید؛ رنگی با رفتن ماوس"
 
-#: includes/elementor/widgets/class-image-reveal.php:111
+#: includes/elementor/widgets/class-image-reveal.php:112
 msgid "Frame"
 msgstr "قاب"
 
-#: includes/elementor/widgets/class-image-reveal.php:116
+#: includes/elementor/widgets/class-image-reveal.php:117
 msgid "Device bezel"
 msgstr "قاب دستگاه"
 
-#: includes/elementor/widgets/class-image-reveal.php:117
+#: includes/elementor/widgets/class-image-reveal.php:118
 msgid "Paper mat"
 msgstr "پاسپارتوی کاغذی"
 
@@ -7030,10 +7115,6 @@ msgstr "قیمت در حالت روشن کلید"
 #: includes/elementor/widgets/class-pricing.php:75
 msgid "Shown when visitors flip the switch (e.g. yearly or installment price)."
 msgstr "وقتی بازدیدکننده کلید را بزند نمایش داده می‌شود (مثلاً قیمت سالانه یا اقساطی)."
-
-#: includes/elementor/widgets/class-pricing.php:81
-msgid "Unit"
-msgstr "واحد"
 
 #: includes/elementor/widgets/class-pricing.php:83
 msgid "Toman"
@@ -8618,31 +8699,31 @@ msgstr "درخواست پروژه"
 msgid "Page"
 msgstr "برگه"
 
-#: includes/frontend/class-frontend.php:129
+#: includes/frontend/class-frontend.php:140
 msgid "Choose at least one option."
 msgstr "دست‌کم یک گزینه را انتخاب کنید."
 
-#: includes/frontend/class-frontend.php:130
+#: includes/frontend/class-frontend.php:141
 msgid "Choose an option."
 msgstr "یک گزینه را انتخاب کنید."
 
-#: includes/frontend/class-frontend.php:131
+#: includes/frontend/class-frontend.php:142
 msgid "This field is required."
 msgstr "پر کردن این فیلد الزامی است."
 
-#: includes/frontend/class-frontend.php:132
+#: includes/frontend/class-frontend.php:143
 msgid "Enter a valid mobile number, e.g. 0912 345 6789."
 msgstr "شماره موبایل معتبری وارد کنید؛ مثلاً ۰۹۱۲ ۳۴۵ ۶۷۸۹."
 
-#: includes/frontend/class-frontend.php:133
+#: includes/frontend/class-frontend.php:144
 msgid "Enter a valid email address."
 msgstr "نشانی ایمیل معتبری وارد کنید."
 
-#: includes/frontend/class-frontend.php:134
+#: includes/frontend/class-frontend.php:145
 msgid "Please accept to continue."
 msgstr "برای ادامه، لطفاً این گزینه را تأیید کنید."
 
-#: includes/frontend/class-frontend.php:182
+#: includes/frontend/class-frontend.php:193
 msgid "Could not connect. Please try again."
 msgstr "اتصال برقرار نشد. دوباره تلاش کنید."
 

@@ -380,7 +380,7 @@ input[type="number"], input[type="tel"], input[type="date"], select, textarea) {
 .hm-brand { display: inline-flex; align-items: center; gap: .6em; text-decoration: none; color: inherit; flex: none; }
 .hm-brand:hover { color: inherit; }
 .hm-brand img, .hm-brand .custom-logo { max-height: var(--hm-logo-h, 40px); width: auto; display: block; }
-.hm-brand__text { font-family: var(--hm-font-heading); font-size: 1.45rem; font-weight: 900; line-height: 1; letter-spacing: 0; }
+.hm-brand__text { font-family: var(--hm-font-heading); font-size: 1.45rem; font-weight: 900; line-height: 1; letter-spacing: 0; white-space: nowrap; }
 .hm-brand__mark { width: 34px; height: 34px; flex: none; color: var(--hm-accent); }
 /* Logo pair: anything dark (dark mode, a transparent header over a photo, a dark footer) flips the two variables. */
 .hm-brand .hm-logo-dark { display: var(--hm-logo-dark, none); }

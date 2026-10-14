@@ -48,6 +48,7 @@ class Elementor {
 			'News',
 			'Masthead',
 			'Rows',
+			'Calculator',
 			'Marquee',
 			'Image_Reveal',
 			'Counters',

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-14T04:22:22+00:00\n"
+"POT-Creation-Date: 2026-10-14T04:33:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:476
-#: includes/elementor/class-elementor.php:114
+#: includes/elementor/class-elementor.php:115
 msgid "Hamista"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 #: includes/elementor/widgets/class-contact-info.php:76
 #: includes/elementor/widgets/class-features.php:91
 #: includes/elementor/widgets/class-hscroll.php:96
-#: includes/elementor/widgets/class-image-reveal.php:131
+#: includes/elementor/widgets/class-image-reveal.php:132
 #: includes/elementor/widgets/class-news.php:201
 #: includes/elementor/widgets/class-process.php:104
 #: includes/elementor/widgets/class-project-show.php:121
@@ -1993,6 +1993,8 @@ msgstr ""
 #: includes/booking/class-booking.php:96
 #: includes/booking/class-booking.php:120
 #: includes/booking/class-booking.php:204
+#: includes/elementor/widgets/class-calculator.php:71
+#: includes/elementor/widgets/class-calculator.php:195
 #: includes/elementor/widgets/class-card-stack.php:71
 msgid "Service"
 msgstr ""
@@ -2000,6 +2002,7 @@ msgstr ""
 #: includes/booking/class-booking.php:97
 #: includes/booking/class-booking.php:121
 #: includes/booking/class-booking.php:205
+#: includes/elementor/widgets/class-calculator.php:126
 #: includes/elementor/widgets/class-lead-form.php:107
 #: includes/elementor/widgets/class-service-list.php:62
 #: includes/portfolio/class-portfolio.php:32
@@ -3420,8 +3423,8 @@ msgstr ""
 #: includes/elementor/widgets/class-cta.php:127
 #: includes/elementor/widgets/class-hero.php:131
 #: includes/elementor/widgets/class-hero.php:250
-#: includes/elementor/widgets/class-image-reveal.php:81
-#: includes/elementor/widgets/class-image-reveal.php:115
+#: includes/elementor/widgets/class-image-reveal.php:82
+#: includes/elementor/widgets/class-image-reveal.php:116
 #: includes/elementor/widgets/class-marquee.php:89
 #: includes/elementor/widgets/class-slider.php:191
 msgid "None"
@@ -3518,7 +3521,7 @@ msgstr ""
 
 #: includes/elementor/class-motion.php:65
 #: includes/elementor/class-widget-base.php:199
-#: includes/elementor/widgets/class-image-reveal.php:80
+#: includes/elementor/widgets/class-image-reveal.php:81
 msgid "Fade"
 msgstr ""
 
@@ -3877,6 +3880,7 @@ msgstr ""
 #: includes/elementor/widgets/class-agency-hero.php:103
 #: includes/elementor/widgets/class-bento.php:85
 #: includes/elementor/widgets/class-booking-form.php:92
+#: includes/elementor/widgets/class-calculator.php:62
 #: includes/elementor/widgets/class-card-stack.php:77
 #: includes/elementor/widgets/class-depth.php:66
 #: includes/elementor/widgets/class-features.php:67
@@ -4838,7 +4842,7 @@ msgid "\"After\" label"
 msgstr ""
 
 #: includes/elementor/widgets/class-before-after.php:93
-#: includes/elementor/widgets/class-image-reveal.php:124
+#: includes/elementor/widgets/class-image-reveal.php:125
 #: includes/elementor/widgets/class-stories.php:83
 msgid "Caption"
 msgstr ""
@@ -4856,7 +4860,7 @@ msgid "Aspect ratio"
 msgstr ""
 
 #: includes/elementor/widgets/class-before-after.php:135
-#: includes/elementor/widgets/class-image-reveal.php:138
+#: includes/elementor/widgets/class-image-reveal.php:139
 msgid "Corner radius"
 msgstr ""
 
@@ -4939,6 +4943,7 @@ msgid "In the middle (logo)"
 msgstr ""
 
 #: includes/elementor/widgets/class-bento.php:131
+#: includes/elementor/widgets/class-calculator.php:152
 #: includes/elementor/widgets/class-contact-form.php:100
 #: includes/elementor/widgets/class-header-actions.php:84
 #: includes/elementor/widgets/class-pricing.php:106
@@ -5079,6 +5084,98 @@ msgstr ""
 
 #: includes/elementor/widgets/class-button.php:88
 msgid "Full width on phones"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:31
+msgid "Price calculator"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:58
+msgid "Calculator"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:64
+msgid "How much will it cost?"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:73
+#: includes/elementor/widgets/class-calculator.php:132
+msgid "Dollar payment"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:79
+#: includes/elementor/widgets/class-pricing.php:81
+msgid "Unit"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:81
+#: includes/elementor/widgets/class-calculator.php:133
+msgid "dollars"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:87
+msgid "Price of one unit (tomans)"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:91
+msgid "Update it whenever the rate changes."
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:97
+msgid "Service fee (%)"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:108
+msgid "Smallest amount"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:117
+msgid "Amount shown first"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:144
+msgid "Line under the total"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:146
+msgid "Rates are updated every hour."
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:154
+msgid "Place the order"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:160
+#: includes/elementor/widgets/class-header-actions.php:93
+#: includes/elementor/widgets/class-logo-grid.php:101
+#: includes/elementor/widgets/class-masthead.php:141
+#: includes/elementor/widgets/class-pricing.php:114
+#: includes/elementor/widgets/class-showcase.php:185
+#: includes/elementor/widgets/class-stack.php:98
+#: includes/elementor/widgets/class-stories.php:98
+#: includes/elementor/widgets/class-tabs.php:112
+#: includes/settings/schema.php:479
+msgid "Button link"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:162
+msgid "The chosen service, amount and total are added to the link (service, amount, total), so a form or chat can pick them up."
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:208
+msgid "Amount"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:211
+msgid "Rate"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:212
+msgid "Service fee"
+msgstr ""
+
+#: includes/elementor/widgets/class-calculator.php:214
+msgid "You pay"
 msgstr ""
 
 #: includes/elementor/widgets/class-card-stack.php:29
@@ -5983,18 +6080,6 @@ msgstr ""
 msgid "Get in touch"
 msgstr ""
 
-#: includes/elementor/widgets/class-header-actions.php:93
-#: includes/elementor/widgets/class-logo-grid.php:101
-#: includes/elementor/widgets/class-masthead.php:141
-#: includes/elementor/widgets/class-pricing.php:114
-#: includes/elementor/widgets/class-showcase.php:185
-#: includes/elementor/widgets/class-stack.php:98
-#: includes/elementor/widgets/class-stories.php:98
-#: includes/elementor/widgets/class-tabs.php:112
-#: includes/settings/schema.php:479
-msgid "Button link"
-msgstr ""
-
 #: includes/elementor/widgets/class-header-actions.php:104
 msgid "Icon with count"
 msgstr ""
@@ -6125,7 +6210,7 @@ msgid "Plays muted and looped; paused for visitors who prefer reduced motion."
 msgstr ""
 
 #: includes/elementor/widgets/class-hero.php:210
-#: includes/elementor/widgets/class-image-reveal.php:66
+#: includes/elementor/widgets/class-image-reveal.php:67
 msgid "Arch"
 msgstr ""
 
@@ -6250,40 +6335,40 @@ msgstr ""
 msgid "Original"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:73
+#: includes/elementor/widgets/class-image-reveal.php:74
 msgid "Reveal"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:77
+#: includes/elementor/widgets/class-image-reveal.php:78
 msgid "Wipe up"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:78
+#: includes/elementor/widgets/class-image-reveal.php:79
 msgid "Wipe sideways"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:79
+#: includes/elementor/widgets/class-image-reveal.php:80
 msgid "Scale in"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:88
+#: includes/elementor/widgets/class-image-reveal.php:89
 msgid "Inner parallax"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:103
+#: includes/elementor/widgets/class-image-reveal.php:104
 #: includes/elementor/widgets/class-team.php:143
 msgid "Black & white until hover"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:111
+#: includes/elementor/widgets/class-image-reveal.php:112
 msgid "Frame"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:116
+#: includes/elementor/widgets/class-image-reveal.php:117
 msgid "Device bezel"
 msgstr ""
 
-#: includes/elementor/widgets/class-image-reveal.php:117
+#: includes/elementor/widgets/class-image-reveal.php:118
 msgid "Paper mat"
 msgstr ""
 
@@ -7016,10 +7101,6 @@ msgstr ""
 
 #: includes/elementor/widgets/class-pricing.php:75
 msgid "Shown when visitors flip the switch (e.g. yearly or installment price)."
-msgstr ""
-
-#: includes/elementor/widgets/class-pricing.php:81
-msgid "Unit"
 msgstr ""
 
 #: includes/elementor/widgets/class-pricing.php:83
@@ -8596,31 +8677,31 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: includes/frontend/class-frontend.php:129
+#: includes/frontend/class-frontend.php:140
 msgid "Choose at least one option."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:130
+#: includes/frontend/class-frontend.php:141
 msgid "Choose an option."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:131
+#: includes/frontend/class-frontend.php:142
 msgid "This field is required."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:132
+#: includes/frontend/class-frontend.php:143
 msgid "Enter a valid mobile number, e.g. 0912 345 6789."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:133
+#: includes/frontend/class-frontend.php:144
 msgid "Enter a valid email address."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:134
+#: includes/frontend/class-frontend.php:145
 msgid "Please accept to continue."
 msgstr ""
 
-#: includes/frontend/class-frontend.php:182
+#: includes/frontend/class-frontend.php:193
 msgid "Could not connect. Please try again."
 msgstr ""
 

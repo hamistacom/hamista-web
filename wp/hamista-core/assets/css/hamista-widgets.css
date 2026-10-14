@@ -556,6 +556,7 @@ html.hm-spot-on body::after { content: ""; position: fixed; inset: 0; z-index: 9
 .hm-imgr--1-1 .hm-imgr__frame { aspect-ratio: 1; }
 .hm-imgr--4-3 .hm-imgr__frame { aspect-ratio: 4 / 3; }
 .hm-imgr--3-4 .hm-imgr__frame { aspect-ratio: 3 / 4; }
+.hm-imgr--4-5 .hm-imgr__frame { aspect-ratio: 4 / 5; }
 .hm-imgr--16-9 .hm-imgr__frame { aspect-ratio: 16 / 9; }
 .hm-imgr--21-9 .hm-imgr__frame { aspect-ratio: 21 / 9; }
 .hm-imgr--arch .hm-imgr__frame { aspect-ratio: 3 / 4; border-radius: 999px 999px var(--hm-radius-xl) var(--hm-radius-xl); }
@@ -1696,3 +1697,27 @@ a.hm-rows__row:hover .hm-rows__go { transform: none; }
 	.hm-rows__row { grid-template-columns: 4rem 1fr 24px; row-gap: 2px; }
 	.hm-rows__detail { grid-column: 2; grid-row: 2; }
 }
+
+/* ==========================================================================
+   Price calculator
+   ========================================================================== */
+.hm-calc { display: grid; gap: 16px; padding: clamp(20px, 3vw, 30px); border: 1px solid var(--hm-border); border-radius: var(--hm-radius-xl, 20px); background: color-mix(in srgb, var(--hm-surface) 86%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--hm-shadow-lg); }
+.hm-calc__title { margin: 0; font-family: var(--hm-font-heading); font-size: 1.2rem; font-weight: var(--hm-fw-heading, 700); }
+.hm-calc__tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.hm-calc__tab input { position: absolute; opacity: 0; pointer-events: none; }
+.hm-calc__tab span { display: inline-flex; padding: 8px 14px; border: 1px solid var(--hm-border); border-radius: 99px; font-size: .88rem; font-weight: 600; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s; }
+.hm-calc__tab input:checked + span { color: var(--hm-accent-fg); background: var(--hm-accent); border-color: var(--hm-accent); }
+.hm-calc__tab input:focus-visible + span { box-shadow: var(--hm-focus); }
+.hm-calc__field { display: grid; gap: 6px; }
+.hm-calc__label { font-size: .85rem; color: var(--hm-fg-muted); }
+.hm-calc__input { display: flex; align-items: center; border: 1px solid var(--hm-border-strong); border-radius: var(--hm-radius-md, 12px); background: var(--hm-input-bg, var(--hm-bg)); overflow: hidden; }
+.hm-calc__input:focus-within { border-color: var(--hm-accent); box-shadow: 0 0 0 3px var(--hm-accent-soft); }
+.hm-calc__input input { flex: 1; min-width: 0; padding: 14px 16px; border: 0; background: none; font: inherit; font-size: 1.35rem; font-weight: 700; color: var(--hm-fg); text-align: right; outline: none; }
+.hm-calc__unit { padding-inline: 16px; font-size: .9rem; color: var(--hm-fg-muted); white-space: nowrap; }
+.hm-calc__lines { display: grid; gap: 6px; }
+.hm-calc__lines p, .hm-calc__total { display: flex; justify-content: space-between; gap: 12px; margin: 0; font-size: .9rem; color: var(--hm-fg-muted); }
+.hm-calc__lines b { font-weight: 600; color: var(--hm-fg); }
+.hm-calc__total { padding-top: 12px; border-top: 1px dashed var(--hm-border-strong); align-items: baseline; color: var(--hm-fg); }
+.hm-calc__total output { font-family: var(--hm-font-heading); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800; color: var(--hm-accent); }
+.hm-calc__note { margin: 0; font-size: .78rem; color: var(--hm-fg-muted); }
+.hm-calc__go { width: 100%; justify-content: center; }
