@@ -357,4 +357,12 @@ T = {
     "Light": "روشن",
     "Dark": "تیره",
     "Open the live demo": "باز کردن دموی زنده",
+    "Mega menu": "مگامنو",
+    "Panel": "پنل",
+    "Off (normal dropdown)": "خاموش (زیرمنوی معمولی)",
+    "Columns from the sub-items": "ستون~ها از زیرمنوها",
+    "Elementor template": "قالب المنتور",
+    "— Choose a block template —": "— یک قالب «بلوک» انتخاب کنید —",
+    "Build it under Hamista → Templates as a \"Block\".": "آن را در هامیستا ← قالب~ها از نوع «بلوک» بسازید.",
+    "Width": "عرض",
 }

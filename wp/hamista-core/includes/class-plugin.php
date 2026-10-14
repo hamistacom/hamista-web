@@ -46,6 +46,7 @@ final class Plugin {
 			'Frontend\\Frontend',
 			'Frontend\\Preloader',
 			'Layouts\\Layouts',
+			'Layouts\\Mega_Menu',
 			'Forms\\Forms',
 			'Portfolio\\Portfolio',
 			'Booking\\Booking',

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-14T04:33:54+00:00\n"
-"PO-Revision-Date: 2026-10-14 04:34+0000\n"
+"POT-Creation-Date: 2026-10-14T04:41:34+00:00\n"
+"PO-Revision-Date: 2026-10-14 04:41+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -3372,6 +3372,7 @@ msgstr "اسلایدر"
 #: includes/elementor/widgets/class-products.php:109
 #: includes/elementor/widgets/class-team.php:117
 #: includes/elementor/widgets/class-testimonials.php:127
+#: includes/layouts/class-mega-menu.php:120
 msgid "Columns"
 msgstr "ستون‌ها"
 
@@ -4106,6 +4107,7 @@ msgid "Vertical spacing"
 msgstr "فاصله‌ی عمودی"
 
 #: includes/elementor/class-widget-base.php:512
+#: includes/layouts/class-mega-menu.php:142
 #: includes/settings/schema.php:189
 msgid "Content width"
 msgstr "عرض محتوا"
@@ -4119,6 +4121,7 @@ msgid "Narrow"
 msgstr "باریک"
 
 #: includes/elementor/class-widget-base.php:518
+#: includes/layouts/class-mega-menu.php:143
 msgid "Full width"
 msgstr "تمام‌عرض"
 
@@ -8728,6 +8731,7 @@ msgid "Could not connect. Please try again."
 msgstr "اتصال برقرار نشد. دوباره تلاش کنید."
 
 #: includes/layouts/class-layouts.php:53
+#: includes/layouts/class-mega-menu.php:129
 msgid "Template"
 msgstr "تمپلیت"
 
@@ -8807,6 +8811,38 @@ msgstr "کد کوتاه:"
 #: includes/layouts/class-layouts.php:348
 msgid "Shows on"
 msgstr "محل نمایش"
+
+#: includes/layouts/class-mega-menu.php:109
+msgid "Mega menu"
+msgstr "مگامنو"
+
+#: includes/layouts/class-mega-menu.php:111
+msgid "Panel"
+msgstr "پنل"
+
+#: includes/layouts/class-mega-menu.php:113
+msgid "Off (normal dropdown)"
+msgstr "خاموش (زیرمنوی معمولی)"
+
+#: includes/layouts/class-mega-menu.php:114
+msgid "Columns from the sub-items"
+msgstr "ستون‌ها از زیرمنوها"
+
+#: includes/layouts/class-mega-menu.php:115
+msgid "Elementor template"
+msgstr "قالب المنتور"
+
+#: includes/layouts/class-mega-menu.php:131
+msgid "— Choose a block template —"
+msgstr "— یک قالب «بلوک» انتخاب کنید —"
+
+#: includes/layouts/class-mega-menu.php:137
+msgid "Build it under Hamista → Templates as a \"Block\"."
+msgstr "آن را در هامیستا ← قالب‌ها از نوع «بلوک» بسازید."
+
+#: includes/layouts/class-mega-menu.php:140
+msgid "Width"
+msgstr "عرض"
 
 #: includes/portfolio/class-portfolio.php:30
 msgid "Client"

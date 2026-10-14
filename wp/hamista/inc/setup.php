@@ -152,7 +152,14 @@ function hamista_nav_menu_item_title( $title, $item, $args, $depth ) {
 	if ( $depth > 0 && ! empty( $item->description ) ) {
 		$title .= '<span class="menu-item-description">' . esc_html( $item->description ) . '</span>';
 	}
-	if ( in_array( 'menu-item-has-children', (array) $item->classes, true ) ) {
+	/**
+	 * Whether a menu item opens a panel of its own (a mega menu template) without sub-items.
+	 *
+	 * @param bool     $has_panel Has a panel.
+	 * @param WP_Post  $item      Menu item.
+	 * @param stdClass $args      wp_nav_menu() arguments.
+	 */
+	if ( in_array( 'menu-item-has-children', (array) $item->classes, true ) || ( 0 === $depth && apply_filters( 'hamista/menu_item_has_panel', false, $item, $args ) ) ) {
 		$title .= hamista_get_icon( 'chevron', array( 'class' => 'hm-caret' ) );
 	}
 	return $title;
