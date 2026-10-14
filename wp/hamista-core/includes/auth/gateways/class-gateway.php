@@ -2,9 +2,10 @@
 /**
  * Base class for SMS gateways.
  *
- * A gateway sends one verification code to one number. Add a provider by
- * extending this class and registering it on the `hamista_core/sms_gateways`
- * filter (slug => class name).
+ * A gateway sends a verification code (send()) and, when the provider has a
+ * plain send method, a text message (send_text()) to one number. Add a
+ * provider by extending this class and registering it on the
+ * `hamista_core/sms_gateways` filter (slug => class name).
  *
  * @package Hamista\Core
  */
@@ -36,6 +37,38 @@ abstract class Gateway {
 	 * @return true|\WP_Error
 	 */
 	abstract public function send( $mobile, $code );
+
+	/**
+	 * Send a text message (order updates, stock alerts).
+	 *
+	 * @param string $mobile Normalised mobile (09XXXXXXXXX).
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- Providers with a text line override this.
+		return new \WP_Error(
+			'hamista_sms_no_text',
+			/* translators: %s: provider name */
+			sprintf( __( '%s only sends verification codes. To send text messages, set a sender line or choose a provider that has one.', 'hamista-core' ), $this->label() )
+		);
+	}
+
+	/**
+	 * Verification message for providers used without a pattern: the
+	 * `sms_otp_text` setting, which always ends up containing the code.
+	 *
+	 * @param string $code Code.
+	 * @return string
+	 */
+	protected function code_text( $code ) {
+		$template = (string) hamista_core_option( 'sms_otp_text', '' );
+		if ( '' === trim( $template ) ) {
+			$template = __( "{site}\nYour verification code: {code}", 'hamista-core' );
+		} elseif ( false === strpos( $template, '{code}' ) ) {
+			$template .= "\n{code}";
+		}
+		return \Hamista\Core\Auth\Sms::render( $template, array( '{code}' => (string) $code ) );
+	}
 
 	/**
 	 * A setting value (trimmed string).

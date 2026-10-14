@@ -1,6 +1,6 @@
 # Demo images — where each one appears
 
-Pictures in the Hami, Sepehr and Arghavan demos come from the Noryx package you supplied, converted to WebP. They live in `wp/hamista-core/demos/<demo>/images/` under the names below. Replace a file with your own picture of the same name and roughly the same shape, then re-import the demo; nothing else needs to change.
+Pictures in the Hami, Sepehr, Arghavan and Hooshmand demos come from the Noryx package you supplied, converted to WebP. They live in `wp/hamista-core/demos/<demo>/images/` under the names below. Replace a file with your own picture of the same name and roughly the same shape, then re-import the demo; nothing else needs to change.
 
 Pictures marked ✱ carry English text inside the picture (device mock-ups, a ring of English words); those are the first to replace for a fully Persian site.
 
@@ -57,3 +57,21 @@ Pictures marked ✱ carry English text inside the picture (device mock-ups, a ri
 | crowd, tst-1 … tst-5, av-1 … av-6 | Testimonial wall | mixed |
 | touch, faq-face, blog-1 … blog-6, footer-bg | Contact, FAQ, journal, footer | mixed |
 | office-1, office-2, work-1 … work-6 | About and service pages | landscape |
+
+## Hooshmand (هوشمند)
+
+The light-wave pictures come from the Flux images of earlier Hamista versions; the rest from the Noryx package.
+
+| File | Where | Shape |
+|---|---|---|
+| light-1 … light-5 | Floating cards in the hero, solution rows, products in depth, bento, shop products, case-study details | square |
+| face-1, face-2 | Round portraits floating in the hero | square |
+| face-3 | About page, beside the office picture | 4:5 |
+| wave | "AI assistant" page banner | 1920 wide |
+| reel | Home picture that opens with the scroll; "automation" page banner | 1920 wide |
+| silk | "Start today" band | 1920 wide |
+| silk-2 | "Analytics" page banner | 1920 wide |
+| office-1 … office-4 | Case-study covers, about page, process stages | landscape |
+| tm-1 … tm-4 | Team strip and demo-booking profiles | 3:4 |
+| av-1 … av-4 | Review avatars | square |
+| blog-1 … blog-4 | Journal posts | landscape |

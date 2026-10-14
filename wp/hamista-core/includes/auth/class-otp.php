@@ -181,6 +181,11 @@ class OTP {
 			'smsir'       => Gateways\Smsir::class,
 			'ippanel'     => Gateways\Ippanel::class,
 			'ghasedak'    => Gateways\Ghasedak::class,
+			'asanak'      => Gateways\Asanak::class,
+			'parsgreen'   => Gateways\Parsgreen::class,
+			'amoot'       => Gateways\Amoot::class,
+			'limosms'     => Gateways\Limosms::class,
+			'sms0098'     => Gateways\Sms0098::class,
 			'custom'      => Gateways\Custom::class,
 		);
 		/**
@@ -193,13 +198,22 @@ class OTP {
 	}
 
 	/**
+	 * Slug of the selected gateway.
+	 *
+	 * @return string
+	 */
+	public static function gateway_slug() {
+		return (string) hamista_core_option( 'otp_gateway', 'test' );
+	}
+
+	/**
 	 * Gateway instance.
 	 *
 	 * @param string|null $slug Gateway slug (default: the `otp_gateway` setting).
 	 * @return Gateway|\WP_Error
 	 */
 	public static function gateway( $slug = null ) {
-		$slug = $slug ? $slug : (string) hamista_core_option( 'otp_gateway', 'test' );
+		$slug = $slug ? $slug : self::gateway_slug();
 		$map  = self::gateways();
 		if ( empty( $map[ $slug ] ) || ! class_exists( $map[ $slug ] ) || ! is_subclass_of( $map[ $slug ], Gateway::class ) ) {
 			return new \WP_Error( 'hamista_sms_no_gateway', __( 'The selected SMS provider is not available.', 'hamista-core' ) );
@@ -213,7 +227,7 @@ class OTP {
 	 * @return bool
 	 */
 	public static function is_test_mode() {
-		return 'test' === hamista_core_option( 'otp_gateway', 'test' );
+		return 'test' === self::gateway_slug();
 	}
 
 	/* ---------------------------------------------------------------------
@@ -284,9 +298,11 @@ class OTP {
 		self::hit( $ip_key );
 		self::hit( $mobile_key );
 
-		$gateway = self::gateway();
+		$slug    = self::gateway_slug();
+		$gateway = self::gateway( $slug );
 		if ( is_wp_error( $gateway ) ) {
 			self::log( $gateway );
+			Sms::log( $mobile, 'otp', $slug, $gateway );
 			return self::send_failed();
 		}
 
@@ -304,6 +320,7 @@ class OTP {
 		if ( null === $sent ) {
 			$sent = $gateway->send( $mobile, $code );
 		}
+		Sms::log( $mobile, 'otp', $slug, $sent );
 		if ( true !== $sent ) {
 			self::log( is_wp_error( $sent ) ? $sent : new \WP_Error( 'hamista_sms_failed', 'Gateway returned a non-true value.' ) );
 			return self::send_failed();

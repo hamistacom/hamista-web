@@ -437,7 +437,6 @@ T = {
     "Bullet points (one per line)": "نکته~ها (هر کدام در یک خط)",
     "Card tone": "رنگ کارت",
     "Surface": "ملایم",
-    "Dark": "تاریک",
     "Distance from top": "فاصله از بالا",
 
     # Steps.

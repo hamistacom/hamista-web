@@ -1,9 +1,11 @@
 <?php
 /**
- * SMS.ir — verify (template) API v1.
+ * SMS.ir — verify (template) API v1, bulk send for text.
  *
  * POST https://api.sms.ir/v1/send/verify, header x-api-key
  * JSON: { mobile, templateId, parameters: [ { name, value } ] }
+ * POST https://api.sms.ir/v1/send/bulk, header x-api-key
+ * JSON: { lineNumber, messageText, mobiles: [ ... ] }
  * Response: { "status": 1, "message": "...", "data": { "messageId": 0, "cost": 1 } }
  *
  * @package Hamista\Core
@@ -63,6 +65,50 @@ class Smsir extends Gateway {
 				),
 			)
 		);
+		return $this->result( $response );
+	}
+
+	/**
+	 * Send a text message from the account's line.
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$missing = $this->require_settings( array( 'smsir_api_key', 'smsir_line' ) );
+		if ( $missing ) {
+			return $missing;
+		}
+
+		return $this->result(
+			$this->request(
+				'https://api.sms.ir/v1/send/bulk',
+				array(
+					'method'  => 'POST',
+					'headers' => array(
+						'Content-Type' => 'application/json',
+						'x-api-key'    => $this->opt( 'smsir_api_key' ),
+					),
+					'body'    => wp_json_encode(
+						array(
+							'lineNumber'  => (int) preg_replace( '/\D+/', '', $this->opt( 'smsir_line' ) ),
+							'messageText' => $text,
+							'mobiles'     => array( $mobile ),
+						)
+					),
+				)
+			)
+		);
+	}
+
+	/**
+	 * Read a response.
+	 *
+	 * @param array|\WP_Error $response Response from request().
+	 * @return true|\WP_Error
+	 */
+	private function result( $response ) {
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		}

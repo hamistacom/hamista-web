@@ -1,8 +1,9 @@
 <?php
 /**
- * Kavenegar — verify/lookup API.
+ * Kavenegar — verify/lookup API for codes, sms/send for text.
  *
- * GET https://api.kavenegar.com/v1/{API-KEY}/verify/lookup.json?receptor=&token=&template=
+ * GET  https://api.kavenegar.com/v1/{API-KEY}/verify/lookup.json?receptor=&token=&template=
+ * POST https://api.kavenegar.com/v1/{API-KEY}/sms/send.json form: receptor, message, sender (optional)
  * Response: { "return": { "status": 200, "message": "..." }, "entries": [...] }
  *
  * @package Hamista\Core
@@ -48,7 +49,48 @@ class Kavenegar extends Gateway {
 			'https://api.kavenegar.com/v1/' . rawurlencode( $this->opt( 'kavenegar_api_key' ) ) . '/verify/lookup.json'
 		);
 
-		$response = $this->request( $url );
+		return $this->result( $this->request( $url ) );
+	}
+
+	/**
+	 * Send a text message (from the account's default line unless a sender is set).
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$missing = $this->require_settings( array( 'kavenegar_api_key' ) );
+		if ( $missing ) {
+			return $missing;
+		}
+
+		$body = array(
+			'receptor' => $mobile,
+			'message'  => $text,
+		);
+		if ( '' !== $this->opt( 'kavenegar_sender' ) ) {
+			$body['sender'] = $this->opt( 'kavenegar_sender' );
+		}
+
+		return $this->result(
+			$this->request(
+				'https://api.kavenegar.com/v1/' . rawurlencode( $this->opt( 'kavenegar_api_key' ) ) . '/sms/send.json',
+				array(
+					'method' => 'POST',
+					'body'   => $body,
+				)
+			)
+		);
+	}
+
+	/**
+	 * Read a response.
+	 *
+	 * @param array|\WP_Error $response Response from request().
+	 * @return true|\WP_Error
+	 */
+	private function result( $response ) {
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		}

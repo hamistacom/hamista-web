@@ -116,7 +116,6 @@ T = {
     # Form template.
     "Leave this field empty": "این فیلد را خالی بگذارید",
     "Sign-in method": "روش ورود",
-    "One-time code": "کد یک~بار مصرف",
     "Password": "رمز عبور",
     "0912 345 6789": "۰۹۱۲ ۳۴۵ ۶۷۸۹",
     "Send code": "ارسال کد",
@@ -128,7 +127,6 @@ T = {
     "Your number is verified. What should we call you?": "شماره~تان تأیید شد. شما را به چه نامی صدا کنیم؟",
     "Create my account": "ساخت حساب کاربری",
     "Mobile, email or username": "موبایل، ایمیل یا نام کاربری",
-    "Forgot your password?": "رمز عبورتان را فراموش کرده~اید؟",
     "You’re signed in": "وارد شدید",
     "Taking you there…": "در حال انتقال…",
     "Test mode: codes are not sent by SMS; an administrator can see them in Hamista → Login & SMS.":
@@ -141,4 +139,172 @@ T = {
     "Welcome back": "خوش برگشتید",
     "Log in to use your saved details. New here? Just continue to billing below.":
         "وارد شوید تا اطلاعات ذخیره~شده~تان استفاده شود. تازه~وارد هستید؟ کافی است در بخش جزئیات صورت~حساب پایین ادامه دهید.",
+
+    # SMS gateways (text messages).
+    "%s only sends verification codes. To send text messages, set a sender line or choose a provider that has one.":
+        "%s فقط کد تأیید می~فرستد. برای ارسال پیامک متنی، خط فرستنده را وارد کنید یا سامانه~ای را انتخاب کنید که خط ارسال دارد.",
+    "{site}\nYour verification code: {code}": "{site}\nکد تأیید شما: {code}",
+    "Asanak": "آسانک",
+    "Parsgreen": "پارس~گرین",
+    "Amoot SMS": "آموت اس~ام~اس",
+    "Limo SMS": "لیمو اس~ام~اس",
+    "0098 SMS": "۰۰۹۸ اس~ام~اس",
+
+    # SMS log.
+    "Login code": "کد ورود",
+    "Order update": "وضعیت سفارش",
+    "New order (admin)": "سفارش جدید (مدیر)",
+    "Stock alert": "هشدار موجودی",
+    "Test": "آزمایشی",
+    "Sent": "ارسال شد",
+    "Failed": "ناموفق",
+    "The SMS log was cleared.": "گزارش پیامک~ها پاک شد.",
+
+    # Shop SMS.
+    "Hi {name}, we received order {order} ({total}) and are getting it ready.\n{site}":
+        "سلام {name}، سفارش {order} به مبلغ {total} را دریافت کردیم و در حال آماده~سازی آن هستیم.\n{site}",
+    "Hi {name}, order {order} is complete. Thank you for shopping with us.\n{site}":
+        "سلام {name}، سفارش {order} تکمیل شد. از خریدتان سپاسگزاریم.\n{site}",
+    "Hi {name}, order {order} is on hold until we confirm your payment.\n{site}":
+        "سلام {name}، سفارش {order} تا تأیید پرداخت شما در انتظار بررسی می~ماند.\n{site}",
+    "Hi {name}, order {order} was cancelled. Contact us if you have any questions.\n{site}":
+        "سلام {name}، سفارش {order} لغو شد. اگر سؤالی دارید با ما در تماس باشید.\n{site}",
+    "New order {order} from {name}: {total} ({status})\n{site}": "سفارش جدید {order} از {name}: {total} ({status})\n{site}",
+    "Low stock: {product}, {stock} left.\n{site}": "موجودی رو به اتمام: {product}، فقط {stock} عدد مانده است.\n{site}",
+    "Out of stock: {product}\n{site}": "ناموجود شد: {product}\n{site}",
+    "dear customer": "مشتری گرامی",
+
+    # Login & SMS settings: providers, shop SMS, log.
+    "Used for login codes and for shop notifications.": "برای کدهای ورود و پیامک~های فروشگاه استفاده می~شود.",
+    "Sender line (optional)": "خط فرستنده (اختیاری)",
+    "Sender line": "خط فرستنده",
+    "For text messages such as order updates. Leave empty to use your account’s default line.":
+        "برای پیامک~های متنی مثل اطلاع~رسانی سفارش. خالی بگذارید تا از خط پیش~فرض حسابتان استفاده شود.",
+    "Only needed for text messages such as order updates.": "فقط برای پیامک~های متنی مثل اطلاع~رسانی سفارش لازم است.",
+    "Leave empty to send codes as a text message from the sender line.": "خالی بگذارید تا کد به~صورت پیامک متنی از خط فرستنده ارسال شود.",
+    "Code template number": "شماره~ی قالب کد",
+    "One of Parsgreen’s built-in code templates, 0 to 6. Leave empty to send codes as a text message.":
+        "یکی از قالب~های آماده~ی کد در پارس~گرین، از ۰ تا ۶. خالی بگذارید تا کد به~صورت پیامک متنی ارسال شود.",
+    "Token": "توکن",
+    "Pattern ID": "شناسه~ی پترن",
+    "A pattern whose only variable is the code. Leave empty to send codes as a text message.":
+        "پترنی که تنها متغیرش کد است. خالی بگذارید تا کد به~صورت پیامک متنی ارسال شود.",
+    "Pattern ID (OtpId)": "شناسه~ی پترن (OtpId)",
+    "Panel number": "شماره~ی پنل",
+    "0098 SMS sends plain text only, so codes use the message below.": "۰۰۹۸ اس~ام~اس فقط پیامک متنی می~فرستد؛ برای همین کدها با متن زیر ارسال می~شوند.",
+    "Placeholders {mobile}, {code} and {text} (the full message) work in the URL, headers and body. Text messages need {text}.":
+        "متغیرهای {mobile}، {code} و {text} (متن کامل پیام) در نشانی، هدرها و بدنه~ی درخواست کار می~کنند. پیامک~های متنی به {text} نیاز دارند.",
+    "Code message": "متن پیامک کد",
+    "Sent when codes go out as a text message. {code} is the code and {site} your site name.":
+        "وقتی کد به~صورت پیامک متنی ارسال می~شود، این متن فرستاده می~شود. {code} همان کد است و {site} نام سایت شما.",
+    "Admin mobile numbers": "شماره~های موبایل مدیر",
+    "Numbers that get new-order and stock messages. Separate several with commas.":
+        "پیامک سفارش~های جدید و هشدارهای موجودی به این شماره~ها می~رسد. چند شماره را با ویرگول جدا کنید.",
+    "Shop SMS": "پیامک~های فروشگاه",
+    "Text messages to customers and to you, sent through the SMS provider above. Each one is off until you switch it on. Placeholders: {name}, {order}, {total}, {status} and {site}.":
+        "پیامک به مشتری~ها و خودتان، از طریق سامانه~ی پیامکی که بالاتر انتخاب کرده~اید. هر کدام تا روشنش نکنید خاموش می~ماند. متغیرها: {name}، {order}، {total}، {status} و {site}.",
+    "Text the customer when an order is processing": "پیامک به مشتری وقتی سفارش در حال انجام است",
+    "Text the customer when an order is completed": "پیامک به مشتری وقتی سفارش تکمیل شد",
+    "Text the customer when an order is on hold": "پیامک به مشتری وقتی سفارش در انتظار بررسی است",
+    "Text the customer when an order is cancelled": "پیامک به مشتری وقتی سفارش لغو شد",
+    "Customer message": "متن پیامک مشتری",
+    "Text me about new orders": "سفارش~های جدید را برایم پیامک کن",
+    "New order message": "متن پیامک سفارش جدید",
+    "Text me when stock runs low or out": "کم شدن یا تمام شدن موجودی را برایم پیامک کن",
+    "Uses the low-stock threshold in WooCommerce → Settings → Products → Inventory.":
+        "از آستانه~ی کمبود موجودی در ووکامرس ← پیکربندی ← محصولات ← موجودی انبار استفاده می~کند.",
+    "Low stock message": "متن پیامک کمبود موجودی",
+    "{product} is the product name and {stock} the quantity left.": "{product} نام محصول است و {stock} تعداد باقی~مانده.",
+    "Out of stock message": "متن پیامک اتمام موجودی",
+    "SMS log": "گزارش پیامک~ها",
+    "The last 500 messages, newest first. Numbers are masked; codes and message text are not stored.":
+        "۵۰۰ پیامک آخر، جدیدترین در بالا. شماره~ها نیمه~پنهان نمایش داده می~شوند و کدها و متن پیام~ها ذخیره نمی~شوند.",
+    "Clear log": "پاک کردن گزارش",
+    "Delete every entry in the SMS log?": "همه~ی موارد گزارش پیامک~ها پاک شود؟",
+    "Provider": "سامانه",
+    "Result": "نتیجه",
+
+    # Login form: methods.
+    "Log in with code": "ورود با کد",
+    "Log in with password": "ورود با رمز",
+    "Forgot your password? Log in with a code": "رمز را فراموش کرده~اید؟ با کد وارد شوید",
+    "Reset password": "بازیابی رمز عبور",
+
+    # Captcha.
+    "Please answer the security question.": "به سؤال امنیتی پاسخ دهید.",
+    "Please complete the security check.": "بررسی امنیتی را کامل کنید.",
+    "Security question: what is %s?": "سؤال امنیتی: حاصل %s چند می~شود؟",
+    "The security check failed. Please try again.": "بررسی امنیتی ناموفق بود. دوباره تلاش کنید.",
+    "The security question expired. Please answer the new one.": "اعتبار سؤال امنیتی تمام شد. به سؤال جدید پاسخ دهید.",
+    "The security check is unavailable right now. Please try again in a moment.": "بررسی امنیتی فعلاً در دسترس نیست. چند لحظه~ی دیگر دوباره تلاش کنید.",
+
+    # Google sign-in.
+    "Google sign-in isn’t available right now. Please use another way to sign in.": "ورود با گوگل فعلاً در دسترس نیست. از روش دیگری وارد شوید.",
+    "or": "یا",
+    "Continue with Google": "ادامه با گوگل",
+    "We couldn’t confirm your Google account. Please try again.": "تأیید حساب گوگل شما ممکن نشد. دوباره تلاش کنید.",
+    "No account uses this Google address. Please sign in another way or contact us.": "حسابی با این نشانی گوگل ثبت نشده است. از راه دیگری وارد شوید یا با ما تماس بگیرید.",
+
+    # Settings: Google, captcha.
+    "Sign in with Google": "ورود با گوگل",
+    "Adds a \"Continue with Google\" button under the login form.": "دکمه~ی «ادامه با گوگل» را زیر فرم ورود اضافه می~کند.",
+    "Google sign-in": "ورود با گوگل",
+    "Client ID": "شناسه~ی کلاینت (Client ID)",
+    "In Google Cloud Console → APIs & Services → Credentials, create an OAuth client ID of type \"Web application\" and add %s to its authorised JavaScript origins.":
+        "در Google Cloud Console ← APIs & Services ← Credentials یک OAuth client ID از نوع «Web application» بسازید و %s را به Authorized JavaScript origins آن اضافه کنید.",
+    "Captcha": "کپچا",
+    "Keeps bots away from sending codes, password login and quick buy.": "ربات~ها را از ارسال کد، ورود با رمز و خرید سریع دور نگه می~دارد.",
+    "Built-in math question (no external service)": "سؤال ریاضی داخلی (بدون سرویس خارجی)",
+    "Cloudflare Turnstile": "Cloudflare Turnstile",
+    "Google reCAPTCHA v3": "Google reCAPTCHA v3",
+    "Site key": "کلید سایت (Site key)",
+    "Secret key": "کلید محرمانه (Secret key)",
+    "Also protect wp-login.php and the WooCommerce login and registration forms": "از wp-login.php و فرم~های ورود و ثبت~نام ووکامرس هم محافظت شود",
+    "Check that you can still log in from a private window before you log out.": "پیش از خروج، در یک پنجره~ی خصوصی مطمئن شوید که هنوز می~توانید وارد شوید.",
+
+    # Settings: back in stock, quick buy.
+    "Back-in-stock alerts": "اطلاع~رسانی موجود شدن",
+    "Out-of-stock products get a \"Notify me\" form, and everyone on the list hears from you when the product is back. The Products screen shows how many people are waiting.":
+        "محصولات ناموجود فرم «خبرم کن» می~گیرند و وقتی دوباره موجود شدند، به همه~ی کسانی که در فهرست هستند خبر داده می~شود. صفحه~ی محصولات نشان می~دهد چند نفر منتظرند.",
+    "Back in stock": "موجود شدن محصول",
+    "Ask for": "اطلاعات تماس درخواستی",
+    "Text messages go through the SMS provider set in Login & SMS.": "پیامک~ها با سامانه~ی پیامکی تنظیم~شده در «ورود و پیامک» ارسال می~شوند.",
+    "Mobile number (SMS)": "شماره موبایل (پیامک)",
+    "Mobile number or email": "شماره موبایل یا ایمیل",
+    "Placeholders: {product}, {link} and {site}. Leave empty for the default text.": "متغیرها: {product}، {link} و {site}. برای متن پیش~فرض خالی بگذارید.",
+    "{product} is back in stock at {site}. Order now: {link}": "{product} در {site} دوباره موجود شد. همین حالا سفارش دهید: {link}",
+    "Quick buy button": "دکمه~ی خرید سریع",
+    "A button next to Add to cart that places the order with just a name and a mobile number.": "دکمه~ای کنار «افزودن به سبد خرید» که سفارش را فقط با نام و شماره موبایل ثبت می~کند.",
+    "Quick buy": "خرید سریع",
+    "After ordering": "پس از ثبت سفارش",
+    "Put the order on hold and call the customer": "سفارش در انتظار بماند و با مشتری تماس گرفته شود",
+    "Send the customer to the payment page": "مشتری به صفحه~ی پرداخت برود",
+
+    # Quick buy.
+    "Please choose the product options first.": "ابتدا ویژگی~های محصول را انتخاب کنید.",
+    "Order and pay": "ثبت سفارش و پرداخت",
+    "Place order": "ثبت سفارش",
+    "You’ll go straight to the payment page.": "مستقیم به صفحه~ی پرداخت می~روید.",
+    "We’ll call you to confirm the order and arrange delivery.": "برای تأیید سفارش و هماهنگی ارسال با شما تماس می~گیریم.",
+    "Order placed": "سفارش ثبت شد",
+    "Your order could not be placed. Please try again or add the product to your cart.": "ثبت سفارش انجام نشد. دوباره تلاش کنید یا محصول را به سبد خرید اضافه کنید.",
+    "Too many requests. Please try again later.": "درخواست~ها بیش از حد مجاز است. کمی بعد دوباره تلاش کنید.",
+    "Order %s is ready. Taking you to the payment page…": "سفارش %s آماده است. در حال انتقال به صفحه~ی پرداخت…",
+    "Thank you! Your order number is %s. We’ll call you shortly to confirm it.": "ممنون! شماره~ی سفارش شما %s است. به~زودی برای تأیید آن با شما تماس می~گیریم.",
+    "This product can’t be ordered right now.": "فعلاً امکان سفارش این محصول نیست.",
+    "Quick buy (we call the customer)": "خرید سریع (تماس با مشتری)",
+    "Quick buy order. Call the customer to confirm it.": "سفارش خرید سریع. برای تأیید با مشتری تماس بگیرید.",
+
+    # Back in stock.
+    "Enter your mobile number or email.": "شماره موبایل یا ایمیلتان را وارد کنید.",
+    "name@example.com": "name@example.com",
+    "Let me know when it’s back in stock": "وقتی موجود شد خبرم کن",
+    "Notify me": "خبرم کن",
+    "This product is not available.": "این محصول در دسترس نیست.",
+    "Good news: this product is already in stock.": "خبر خوب: این محصول همین حالا موجود است.",
+    "You’re already on the list. We’ll let you know as soon as it’s back.": "قبلاً در فهرست ثبت شده~اید. به محض موجود شدن خبرتان می~کنیم.",
+    "Done! We’ll let you know as soon as it’s back in stock.": "ثبت شد! به محض موجود شدن خبرتان می~کنیم.",
+    "%1$s is back in stock at %2$s": "%1$s در %2$s دوباره موجود شد",
+    "Waiting": "منتظران",
+    "%s person is waiting for this product": ["%s نفر منتظر این محصول است", "%s نفر منتظر این محصول هستند"],
 }

@@ -49,8 +49,8 @@ $hamista_honeypot = static function () use ( $hamista_hp ) {
 
 	<?php if ( $hamista_tabs ) : ?>
 		<div class="hm-auth__tabs" role="tablist" aria-label="<?php esc_attr_e( 'Sign-in method', 'hamista-core' ); ?>">
-			<button type="button" class="hm-auth__tab is-active" role="tab" id="<?php echo esc_attr( $hamista_id ); ?>-tab-otp" aria-controls="<?php echo esc_attr( $hamista_id ); ?>-otp" aria-selected="true" data-hm-tab="otp"><?php $hamista_icon( 'mobile' ); ?><span><?php esc_html_e( 'One-time code', 'hamista-core' ); ?></span></button>
-			<button type="button" class="hm-auth__tab" role="tab" id="<?php echo esc_attr( $hamista_id ); ?>-tab-password" aria-controls="<?php echo esc_attr( $hamista_id ); ?>-password" aria-selected="false" tabindex="-1" data-hm-tab="password"><?php $hamista_icon( 'lock' ); ?><span><?php esc_html_e( 'Password', 'hamista-core' ); ?></span></button>
+			<button type="button" class="hm-auth__tab is-active" role="tab" id="<?php echo esc_attr( $hamista_id ); ?>-tab-otp" aria-controls="<?php echo esc_attr( $hamista_id ); ?>-otp" aria-selected="true" data-hm-tab="otp"><?php $hamista_icon( 'mobile' ); ?><span><?php esc_html_e( 'Log in with code', 'hamista-core' ); ?></span></button>
+			<button type="button" class="hm-auth__tab" role="tab" id="<?php echo esc_attr( $hamista_id ); ?>-tab-password" aria-controls="<?php echo esc_attr( $hamista_id ); ?>-password" aria-selected="false" tabindex="-1" data-hm-tab="password"><?php $hamista_icon( 'lock' ); ?><span><?php esc_html_e( 'Log in with password', 'hamista-core' ); ?></span></button>
 		</div>
 	<?php endif; ?>
 
@@ -63,6 +63,7 @@ $hamista_honeypot = static function () use ( $hamista_hp ) {
 				<input class="hm-auth__input hm-auth__input--tel" id="<?php echo esc_attr( $hamista_id ); ?>-mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" maxlength="24" placeholder="<?php esc_attr_e( '0912 345 6789', 'hamista-core' ); ?>" required aria-describedby="<?php echo esc_attr( $hamista_id ); ?>-mobile-error">
 			</div>
 			<?php $hamista_honeypot(); ?>
+			<?php echo \Hamista\Core\Auth\Captcha::field(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in Captcha::field(). ?>
 			<p class="hm-auth__msg" id="<?php echo esc_attr( $hamista_id ); ?>-mobile-error" role="alert" data-hm-msg></p>
 			<button type="submit" class="hm-btn hm-btn--block hm-auth__submit"><span><?php esc_html_e( 'Send code', 'hamista-core' ); ?></span><?php $hamista_icon( 'arrow' ); ?></button>
 		</form>
@@ -108,12 +109,18 @@ $hamista_honeypot = static function () use ( $hamista_hp ) {
 					</button>
 				</div>
 				<?php $hamista_honeypot(); ?>
+				<?php echo \Hamista\Core\Auth\Captcha::field(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in Captcha::field(). ?>
 				<p class="hm-auth__msg" role="alert" data-hm-msg></p>
 				<button type="submit" class="hm-btn hm-btn--block hm-auth__submit"><span><?php esc_html_e( 'Log in', 'hamista-core' ); ?></span><?php $hamista_icon( 'arrow' ); ?></button>
-				<p class="hm-auth__row"><a class="hm-auth__link" href="<?php echo esc_url( $args['lost_url'] ); ?>"><?php esc_html_e( 'Forgot your password?', 'hamista-core' ); ?></a></p>
+				<p class="hm-auth__row">
+					<button type="button" class="hm-auth__link" data-hm-switch="otp"><?php esc_html_e( 'Forgot your password? Log in with a code', 'hamista-core' ); ?></button>
+					<a class="hm-auth__link" href="<?php echo esc_url( $args['lost_url'] ); ?>"><?php esc_html_e( 'Reset password', 'hamista-core' ); ?></a>
+				</p>
 			</form>
 		</div>
 	<?php endif; ?>
+
+	<?php echo \Hamista\Core\Auth\Google::button(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in Google::button(). ?>
 
 	<div class="hm-auth__done" data-hm-step="done" hidden>
 		<span class="hm-auth__check" aria-hidden="true"><?php $hamista_icon( 'check' ); ?></span>

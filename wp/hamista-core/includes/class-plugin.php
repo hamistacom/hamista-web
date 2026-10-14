@@ -52,6 +52,8 @@ final class Plugin {
 			'Booking\\Booking',
 			'Account\\Panel',
 			'Auth\\Auth',
+			'Shop\\Stock_Notify',
+			'Shop\\Quick_Buy',
 			'Jalali\\Jalali',
 			'Performance\\Performance',
 			'Seo\\Seo',

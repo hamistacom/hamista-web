@@ -1,7 +1,8 @@
 <?php
 /**
  * Test mode — sends nothing. The latest code is stored for administrators
- * (Hamista → Login & SMS) and is never shown to visitors.
+ * (Hamista → Login & SMS) and is never shown to visitors; text messages only
+ * appear in the SMS log.
  *
  * @package Hamista\Core
  */
@@ -45,6 +46,17 @@ class Test extends Gateway {
 			),
 			false
 		);
+		return true;
+	}
+
+	/**
+	 * "Send" a text message: nothing leaves the site; the SMS log records it.
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true
+	 */
+	public function send_text( $mobile, $text ) {
 		return true;
 	}
 

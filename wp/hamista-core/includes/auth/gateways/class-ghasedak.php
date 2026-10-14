@@ -1,9 +1,11 @@
 <?php
 /**
- * Ghasedak — simple verification (template) API v2.
+ * Ghasedak — simple verification (template) API v2, simple send for text.
  *
  * POST https://api.ghasedak.me/v2/verification/send/simple, header apikey
  * form: receptor, type (1 = SMS), template, param1
+ * POST https://api.ghasedak.me/v2/sms/send/simple, header apikey
+ * form: receptor, message, linenumber (optional)
  * Response: { "result": { "code": 200, "message": "success" }, "items": [ ... ] }
  *
  * @package Hamista\Core
@@ -56,6 +58,52 @@ class Ghasedak extends Gateway {
 				),
 			)
 		);
+		return $this->result( $response );
+	}
+
+	/**
+	 * Send a text message (from the account's default line unless one is set).
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$missing = $this->require_settings( array( 'ghasedak_api_key' ) );
+		if ( $missing ) {
+			return $missing;
+		}
+
+		$body = array(
+			'receptor' => $mobile,
+			'message'  => $text,
+		);
+		if ( '' !== $this->opt( 'ghasedak_line' ) ) {
+			$body['linenumber'] = $this->opt( 'ghasedak_line' );
+		}
+
+		return $this->result(
+			$this->request(
+				'https://api.ghasedak.me/v2/sms/send/simple',
+				array(
+					'method'  => 'POST',
+					'headers' => array(
+						'Content-Type' => 'application/x-www-form-urlencoded',
+						'apikey'       => $this->opt( 'ghasedak_api_key' ),
+					),
+					'body'    => $body,
+				)
+			)
+		);
+	}
+
+	/**
+	 * Read a response.
+	 *
+	 * @param array|\WP_Error $response Response from request().
+	 * @return true|\WP_Error
+	 */
+	private function result( $response ) {
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		}

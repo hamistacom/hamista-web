@@ -1517,6 +1517,12 @@ html.hm-modal-open { overflow: hidden; }
 .hm-admin .hm-table th { width: 38%; font-weight: 500; color: var(--hm-a-ink-2); }
 .hm-admin .hm-table__value { font-variant-numeric: tabular-nums; }
 .hm-admin .hm-table__status { width: 1%; text-align: end; white-space: nowrap; }
+.hm-admin .hm-log__scroll { max-height: 420px; overflow: auto; margin-bottom: 12px; border: 1px solid var(--hm-a-line); border-radius: 8px; }
+.hm-admin .hm-table--log { font-size: 12.5px; }
+.hm-admin .hm-table--log th,
+.hm-admin .hm-table--log td { width: auto; padding: 7px 12px; white-space: nowrap; vertical-align: top; }
+.hm-admin .hm-table--log thead th { position: sticky; top: 0; border-top: 0; background: var(--hm-a-surface); }
+.hm-admin .hm-log__error { margin-top: 4px; white-space: normal; color: var(--hm-a-ink-2); min-width: 180px; }
 
 /* ------------------------------------------------------------------ *
  * Demos

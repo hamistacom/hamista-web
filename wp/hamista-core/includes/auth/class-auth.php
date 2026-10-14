@@ -3,8 +3,9 @@
  * Mobile OTP login module bootstrap.
  *
  * Idle (no front-end output, no public routes) while `otp_enabled` is off; the
- * admin-only test endpoint and the admin data hook always register so the
- * provider can be checked before going live.
+ * admin-only test and SMS log endpoints, the admin data hook and the shop
+ * notifications always register so the provider can be checked before going
+ * live and used for WooCommerce messages on its own.
  *
  * @package Hamista\Core
  */
@@ -25,14 +26,22 @@ class Auth {
 	 */
 	public static function init() {
 		add_action( 'rest_api_init', array( Rest::class, 'register' ) );
+		add_action( 'rest_api_init', array( Sms::class, 'register_routes' ) );
 		add_filter( 'hamista_core/admin_data', array( __CLASS__, 'admin_data' ) );
 		Account::register_shortcodes();
+
+		// Shop notifications work with or without mobile login.
+		if ( class_exists( 'WooCommerce' ) ) {
+			Shop_Sms::init();
+		}
+		Captcha::init();
 
 		if ( ! self::enabled() ) {
 			return;
 		}
 
 		Account::init();
+		Google::init();
 
 		if ( class_exists( 'WooCommerce' ) && hamista_core_option( 'otp_woocommerce', true ) ) {
 			WooCommerce::init();

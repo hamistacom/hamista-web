@@ -2,8 +2,8 @@
 /**
  * Custom HTTP API — any provider with a URL, method, headers and body.
  *
- * Placeholders: {mobile} (09XXXXXXXXX), {mobile_intl} (989XXXXXXXXX) and {code}.
- * They are URL-encoded in the URL, JSON-escaped in a JSON body and inserted
+ * Placeholders: {mobile} (09XXXXXXXXX), {mobile_intl} (989XXXXXXXXX), {code}
+ * and {text} (the message; text messages need it). They are URL-encoded in the URL, JSON-escaped in a JSON body and inserted
  * as-is elsewhere. Any 2xx response counts as success.
  *
  * @package Hamista\Core
@@ -35,6 +35,33 @@ class Custom extends Gateway {
 	 * @return true|\WP_Error
 	 */
 	public function send( $mobile, $code ) {
+		return $this->call( $mobile, (string) $code, $this->code_text( $code ) );
+	}
+
+	/**
+	 * Send a text message (when the URL or body uses {text}).
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$template = $this->opt( 'custom_sms_url' ) . (string) hamista_core_option( 'custom_sms_body', '' );
+		if ( false === strpos( $template, '{text}' ) ) {
+			return parent::send_text( $mobile, $text );
+		}
+		return $this->call( $mobile, '', $text );
+	}
+
+	/**
+	 * Perform the configured request.
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $code   Code ('' for text messages).
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	private function call( $mobile, $code, $text ) {
 		$missing = $this->require_settings( array( 'custom_sms_url' ) );
 		if ( $missing ) {
 			return $missing;
@@ -43,10 +70,11 @@ class Custom extends Gateway {
 		$vars = array(
 			'{mobile}'      => $mobile,
 			'{mobile_intl}' => $this->international( $mobile ),
-			'{code}'        => (string) $code,
+			'{code}'        => $code,
+			'{text}'        => $text,
 		);
 
-		$url   = strtr( $this->opt( 'custom_sms_url' ), array_map( 'rawurlencode', $vars ) );
+		$url   = esc_url_raw( strtr( $this->opt( 'custom_sms_url' ), array_map( 'rawurlencode', $vars ) ) );
 		$parts = wp_parse_url( $url );
 		if ( empty( $parts['host'] ) || empty( $parts['scheme'] ) || ! in_array( strtolower( $parts['scheme'] ), array( 'http', 'https' ), true ) ) {
 			return $this->fail( __( 'The custom endpoint URL is invalid.', 'hamista-core' ), null, 'hamista_sms_config' );

@@ -46,12 +46,9 @@ class Rest {
 			)
 		);
 
-		if ( ! Auth::enabled() ) {
-			return;
-		}
-
 		$public = '__return_true';
 
+		// Also used by quick buy and stock alerts, which work without mobile login.
 		register_rest_route(
 			self::NS,
 			'/auth/nonce',
@@ -61,6 +58,11 @@ class Rest {
 				'permission_callback' => $public,
 			)
 		);
+
+		if ( ! Auth::enabled() ) {
+			return;
+		}
+
 		register_rest_route(
 			self::NS,
 			'/auth/send',
@@ -90,6 +92,17 @@ class Rest {
 				)
 			);
 		}
+		if ( Google::enabled() ) {
+			register_rest_route(
+				self::NS,
+				'/auth/google',
+				array(
+					'methods'             => \WP_REST_Server::CREATABLE,
+					'callback'            => array( __CLASS__, 'google' ),
+					'permission_callback' => $public,
+				)
+			);
+		}
 		register_rest_route(
 			self::NS,
 			'/auth/profile',
@@ -106,12 +119,17 @@ class Rest {
 	 * ------------------------------------------------------------------ */
 
 	/**
-	 * GET /auth/nonce — a fresh nonce for pages served from cache.
+	 * GET /auth/nonce — a fresh nonce (and built-in captcha question) for pages
+	 * served from cache.
 	 *
 	 * @return \WP_REST_Response
 	 */
 	public static function nonce() {
-		return self::ok( array( 'nonce' => wp_create_nonce( self::NONCE ) ) );
+		$data = array( 'nonce' => wp_create_nonce( self::NONCE ) );
+		if ( 'builtin' === Captcha::provider() ) {
+			$data['captcha'] = Captcha::challenge();
+		}
+		return self::ok( $data );
 	}
 
 	/**
@@ -129,6 +147,12 @@ class Rest {
 		$mobile = OTP::normalize_mobile( $request->get_param( 'mobile' ) );
 		if ( '' === $mobile ) {
 			return self::error( OTP::invalid_mobile() );
+		}
+
+		// Solving it once also covers "resend code" for this number.
+		$captcha = Captcha::check_request( $request, 'send|' . $mobile );
+		if ( is_wp_error( $captcha ) ) {
+			return self::error( $captcha );
 		}
 
 		// Bots that fill the honeypot get a convincing answer and nothing is sent.
@@ -265,6 +289,11 @@ class Rest {
 			return self::error( new \WP_Error( 'hamista_login_empty', __( 'Please enter your login and password.', 'hamista-core' ), array( 'status' => 400 ) ) );
 		}
 
+		$captcha = Captcha::check_request( $request );
+		if ( is_wp_error( $captcha ) ) {
+			return self::error( $captcha );
+		}
+
 		// A mobile number works as a login name too.
 		$mobile = OTP::normalize_mobile( $login );
 		if ( $mobile ) {
@@ -292,6 +321,55 @@ class Rest {
 			array(
 				'message'  => __( 'You’re signed in.', 'hamista-core' ),
 				'redirect' => self::redirect_for( $request, $user, false ),
+			)
+		);
+	}
+
+	/**
+	 * POST /auth/google { credential, redirect?, nonce } — Google ID token.
+	 *
+	 * @param \WP_REST_Request $request Request.
+	 * @return \WP_REST_Response
+	 */
+	public static function google( \WP_REST_Request $request ) {
+		$guard = self::guard( $request );
+		if ( $guard ) {
+			return $guard;
+		}
+
+		$retry = OTP::throttle( 'google', 10 );
+		if ( $retry ) {
+			$minutes = max( 1, (int) ceil( $retry / 60 ) );
+			return self::error(
+				new \WP_Error(
+					'hamista_otp_rate_limited',
+					/* translators: %s: minutes */
+					sprintf( _n( 'Too many attempts. Please try again in %s minute.', 'Too many attempts. Please try again in %s minutes.', $minutes, 'hamista-core' ), number_format_i18n( $minutes ) ),
+					array( 'status' => 429 )
+				)
+			);
+		}
+
+		$claims = Google::verify( $request->get_param( 'credential' ) );
+		if ( is_wp_error( $claims ) ) {
+			return self::error( $claims );
+		}
+		$found = Google::user( $claims );
+		if ( is_wp_error( $found ) ) {
+			return self::error( $found );
+		}
+
+		$user = $found['user'];
+		if ( is_multisite() && ( ! empty( $user->spam ) || is_user_spammy( $user ) ) ) {
+			return self::error( new \WP_Error( 'hamista_login_failed', __( 'The login details you entered are incorrect.', 'hamista-core' ), array( 'status' => 403 ) ) );
+		}
+		self::login( $user );
+
+		return self::ok(
+			array(
+				'message'  => $found['is_new'] ? __( 'Welcome! Your account is ready.', 'hamista-core' ) : __( 'You’re signed in.', 'hamista-core' ),
+				'redirect' => self::redirect_for( $request, $user, $found['is_new'] ),
+				'is_new'   => $found['is_new'],
 			)
 		);
 	}
@@ -361,6 +439,7 @@ class Rest {
 
 		$code = OTP::generate();
 		$sent = $gateway->send( $mobile, $code );
+		Sms::log( $mobile, 'test', OTP::gateway_slug(), $sent );
 		if ( is_wp_error( $sent ) ) {
 			return self::error( $sent );
 		}
@@ -392,7 +471,7 @@ class Rest {
 	 * @param \WP_REST_Request $request Request.
 	 * @return \WP_REST_Response|null Error response, or null when valid.
 	 */
-	private static function guard( \WP_REST_Request $request ) {
+	public static function guard( \WP_REST_Request $request ) {
 		$nonce = (string) $request->get_param( 'nonce' );
 		if ( '' === $nonce ) {
 			$nonce = (string) $request->get_header( 'x_hamista_nonce' );
@@ -409,7 +488,7 @@ class Rest {
 	 * @param \WP_REST_Request $request Request.
 	 * @return bool
 	 */
-	private static function is_bot( \WP_REST_Request $request ) {
+	public static function is_bot( \WP_REST_Request $request ) {
 		$value = $request->get_param( self::HONEYPOT );
 		return is_scalar( $value ) && '' !== trim( (string) $value );
 	}
@@ -517,7 +596,7 @@ class Rest {
 	 * @param mixed $value Raw.
 	 * @return string
 	 */
-	private static function clean_name( $value ) {
+	public static function clean_name( $value ) {
 		if ( ! is_scalar( $value ) ) {
 			return '';
 		}
@@ -531,7 +610,7 @@ class Rest {
 	 * @param array $data Data.
 	 * @return \WP_REST_Response
 	 */
-	private static function ok( array $data = array() ) {
+	public static function ok( array $data = array() ) {
 		$response = new \WP_REST_Response(
 			array_merge(
 				array(
@@ -553,7 +632,7 @@ class Rest {
 	 * @param array     $extra Extra fields.
 	 * @return \WP_REST_Response
 	 */
-	private static function error( \WP_Error $error, array $extra = array() ) {
+	public static function error( \WP_Error $error, array $extra = array() ) {
 		$data   = $error->get_error_data();
 		$data   = is_array( $data ) ? $data : array();
 		$status = isset( $data['status'] ) ? (int) $data['status'] : 400;

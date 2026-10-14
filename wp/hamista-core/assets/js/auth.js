@@ -1,7 +1,8 @@
 /*!
  * Hamista Core — mobile OTP login.
  * Dependency-free. Drives every [data-hm-auth] form on the page, the header
- * login modal, the account panel and the wp-login.php switch.
+ * login modal, the account panel, the wp-login.php switch, captcha widgets,
+ * Google sign-in, quick buy and the back-in-stock form.
  * Public API: window.HamistaAuth = { init(scope), open(trigger), close(), normalize(value) }.
  */
 (function () {
@@ -64,6 +65,20 @@
 		void el.offsetWidth; // Restart the animation.
 		el.classList.add(cls);
 	}
+	var scripts = {};
+	function loadScript(src) {
+		if (!scripts[src]) {
+			scripts[src] = new Promise(function (resolve, reject) {
+				var s = doc.createElement('script');
+				s.src = src;
+				s.async = true;
+				s.onload = resolve;
+				s.onerror = function () { delete scripts[src]; reject(); };
+				doc.head.appendChild(s);
+			});
+		}
+		return scripts[src];
+	}
 	function focusFirst(scope) {
 		var el = scope && ($('input:not([type="hidden"]):not([tabindex="-1"]):not([disabled]):not([readonly])', scope) || $('button:not([disabled])', scope));
 		if (el) { win.setTimeout(function () { try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); } }, reduce ? 0 : 60); }
@@ -112,6 +127,148 @@
 			});
 	}
 
+	/* ---------- Captcha ---------- */
+	var cap = cfg.captcha || {};
+
+	function capBox(scope) { return cap.provider && scope ? $('[data-hm-captcha]', scope) : null; }
+	function capType(box) { return box.getAttribute('data-hm-captcha'); }
+	function capField(box) { return $('input[name="hm_captcha"]', box); }
+
+	// Render on-screen widgets (Turnstile), warm up reCAPTCHA, renew stale questions.
+	function capPrepare(scope) {
+		if (!cap.provider) { return; }
+		$$('[data-hm-captcha]', scope).forEach(function (box) {
+			if (box.__hmCap || box.parentNode.closest('[hidden]')) { return; }
+			box.__hmCap = true;
+			var type = capType(box);
+			if (type === 'builtin') {
+				var exp = parseInt(box.getAttribute('data-expires'), 10) || 0;
+				if (exp && Date.now() / 1000 > exp - 60) { capReset(box); }
+			} else if (type === 'turnstile') {
+				loadScript(cap.src).then(function () {
+					box.__hmId = win.turnstile.render(box, { sitekey: cap.siteKey, 'response-field-name': 'hm_captcha', size: 'flexible' });
+				}, function () { box.__hmCap = false; });
+			} else {
+				loadScript(cap.src).then(null, function () { box.__hmCap = false; });
+			}
+		});
+	}
+
+	// What the visitor still has to do, as a message ('' when nothing).
+	function capMissing(box) {
+		if (!box) { return ''; }
+		var type = capType(box);
+		if (type === 'builtin' && !latin($('.hm-captcha__input', box).value).trim()) { return t('captchaAnswer', 'Please answer the security question.'); }
+		if (type === 'turnstile' && !(capField(box) || {}).value) { return t('captchaPending', 'Please complete the security check.'); }
+		return '';
+	}
+	function capFocus(box) {
+		var input = box && $('.hm-captcha__input', box);
+		if (input) { input.focus(); }
+	}
+
+	// Request fields: { captcha, captcha_answer }.
+	function capValue(box, action) {
+		if (!box) { return Promise.resolve({}); }
+		var type = capType(box);
+		var field = capField(box);
+		if (type === 'builtin') { return Promise.resolve({ captcha: field ? field.value : '', captcha_answer: latin($('.hm-captcha__input', box).value).trim() }); }
+		if (type === 'turnstile') { return Promise.resolve({ captcha: field ? field.value : '' }); }
+		return loadScript(cap.src).then(function () {
+			return new Promise(function (resolve) {
+				win.grecaptcha.ready(function () {
+					win.grecaptcha.execute(cap.siteKey, { action: action || 'submit' }).then(function (token) { resolve({ captcha: token }); }, function () { resolve({ captcha: '' }); });
+				});
+			});
+		}, function () { return { captcha: '' }; });
+	}
+
+	// Tokens are single-use: get a fresh one after every request that carried one.
+	function capReset(box) {
+		if (!box) { return; }
+		var type = capType(box);
+		if (type === 'turnstile' && win.turnstile && box.__hmId !== undefined) {
+			try { win.turnstile.reset(box.__hmId); } catch (e) { /* Widget gone. */ }
+		}
+		if (type !== 'builtin') { return; }
+		$('.hm-captcha__input', box).value = '';
+		fetch(restRoot + 'auth/nonce', { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
+			.then(function (r) { return r.json(); })
+			.then(function (d) {
+				if (d && d.nonce) { nonce = d.nonce; }
+				if (d && d.captcha) {
+					$('[data-hm-captcha-q]', box).textContent = d.captcha.question;
+					$('[data-hm-captcha-token]', box).value = d.captcha.token;
+					box.setAttribute('data-expires', d.captcha.expires);
+				}
+			}, function () { /* Keep the old question. */ });
+	}
+
+	// Classic forms (wp-login.php, WooCommerce) with reCAPTCHA: fetch a token, then submit.
+	function capClassic(scope) {
+		if (cap.provider !== 'recaptcha') { return; }
+		$$('[data-hm-captcha="recaptcha"]', scope).forEach(function (box) {
+			var form = box.closest('form');
+			if (!form || form.__hmCap || box.closest('[data-hm-auth], [data-hm-quick]')) { return; }
+			form.__hmCap = true;
+			form.addEventListener('submit', function (e) {
+				if (form.__hmPass) { form.__hmPass = false; return; }
+				e.preventDefault();
+				var submitter = e.submitter || null;
+				capValue(box, 'login').then(function (d) {
+					capField(box).value = d.captcha || '';
+					form.__hmPass = true;
+					if (form.requestSubmit) { form.requestSubmit(submitter); } else { HTMLFormElement.prototype.submit.call(form); }
+				});
+			});
+		});
+	}
+
+	/* ---------- Google ---------- */
+	var gcfg = cfg.google || null;
+	var gsiReady = null;
+	var googleOwner = null;
+
+	function gsi() {
+		if (!gsiReady) {
+			gsiReady = loadScript(gcfg.src).then(function () {
+				win.google.accounts.id.initialize({
+					client_id: gcfg.clientId,
+					ux_mode: 'popup',
+					context: 'signin',
+					itp_support: true,
+					callback: function (res) {
+						var root = googleOwner || $('[data-hm-auth] [data-hm-google].is-ready');
+						var inst = root && root.closest('[data-hm-auth]').__hmAuth;
+						if (inst && res && res.credential) { inst.google(res.credential); }
+					}
+				});
+			}, function () { gsiReady = null; throw new Error('gsi'); });
+		}
+		return gsiReady;
+	}
+
+	// Google's button is laid invisibly over ours, so it gets the click and the focus.
+	function googlePrepare(scope) {
+		if (!gcfg) { return; }
+		$$('[data-hm-google]', scope).forEach(function (box) {
+			if (box.__hmG || box.closest('[hidden]') || !box.offsetWidth) { return; }
+			box.__hmG = true;
+			box.addEventListener('mouseenter', function () { googleOwner = box; });
+			box.addEventListener('focusin', function () { googleOwner = box; });
+			gsi().then(function () {
+				win.google.accounts.id.renderButton($('[data-hm-gsi]', box), {
+					type: 'standard', theme: 'outline', size: 'large', text: 'continue_with', shape: 'rectangular',
+					logo_alignment: 'center', width: Math.max(200, Math.min(400, box.offsetWidth)), locale: gcfg.locale
+				});
+				box.classList.add('is-ready');
+				var own = $('[data-hm-google-btn]', box);
+				own.tabIndex = -1;
+				own.setAttribute('aria-hidden', 'true');
+			}, function () { box.__hmG = false; });
+		});
+	}
+
 	/* ---------- Login form ---------- */
 	function Auth(root) {
 		var self = this;
@@ -127,6 +284,7 @@
 		$$('[data-hm-step]', root).forEach(function (el) { self.steps[el.getAttribute('data-hm-step')] = el; });
 		this.codeBox = $('[data-hm-code]', root);
 		this.pwForm = $('[data-hm-form="password"]', root);
+		this.gWrap = $('[data-hm-google-wrap]', root);
 		this.bind();
 	}
 
@@ -163,12 +321,14 @@
 		}
 
 		this.root.addEventListener('click', function (e) {
-			var el = e.target.closest('[data-hm-edit], [data-hm-resend], [data-hm-tab], [data-hm-reveal]');
+			var el = e.target.closest('[data-hm-edit], [data-hm-resend], [data-hm-tab], [data-hm-reveal], [data-hm-switch], [data-hm-google-btn]');
 			if (!el || !self.root.contains(el)) { return; }
 			if (el.hasAttribute('data-hm-edit')) { self.edit(); }
 			else if (el.hasAttribute('data-hm-resend')) { self.send(true); }
 			else if (el.hasAttribute('data-hm-tab')) { self.tab(el.getAttribute('data-hm-tab'), true); }
 			else if (el.hasAttribute('data-hm-reveal')) { self.reveal(el); }
+			else if (el.hasAttribute('data-hm-switch')) { self.switchTo(el.getAttribute('data-hm-switch')); }
+			else if (el.hasAttribute('data-hm-google-btn')) { self.googlePrompt(el); }
 		});
 
 		var tablist = $('[role="tablist"]', this.root);
@@ -189,7 +349,7 @@
 	};
 
 	Auth.prototype.msg = function (where, text, type) {
-		var host = where === 'password' ? this.pwForm : this.steps[where];
+		var host = where === 'password' ? this.pwForm : (where === 'google' ? this.gWrap : this.steps[where]);
 		var el = host && $('[data-hm-msg]', host);
 		if (!el) { return; }
 		el.textContent = text || '';
@@ -229,6 +389,7 @@
 			var on = panel.getAttribute('data-hm-panel') === name;
 			panel.hidden = !on;
 			if (on) {
+				capPrepare(panel);
 				replay(panel, 'is-entering');
 				if (focus) {
 					var active = name === 'otp' ? self.steps[self.current || 'mobile'] : panel;
@@ -245,6 +406,37 @@
 		input.type = show ? 'text' : 'password';
 		btn.setAttribute('aria-pressed', show ? 'true' : 'false');
 		btn.setAttribute('aria-label', show ? t('hidePassword', 'Hide password') : t('showPassword', 'Show password'));
+	};
+
+	// "Forgot your password? Log in with a code": carry a typed mobile number over.
+	Auth.prototype.switchTo = function (name) {
+		var mobile = name === 'otp' && this.pwForm ? normalizeMobile(this.pwForm.elements.login.value) : '';
+		if (mobile && this.steps.mobile) { this.steps.mobile.elements.mobile.value = mobile; }
+		this.tab(name, true);
+	};
+
+	// Our own button only gets clicks before Google's script is in (or on its edges).
+	Auth.prototype.googlePrompt = function (btn) {
+		var self = this;
+		googleOwner = btn.parentNode;
+		if (!gcfg) { return; }
+		gsi().then(function () { win.google.accounts.id.prompt(); }, function () {
+			self.msg('google', t('googleUnavailable', 'Google sign-in isn’t available right now.'));
+		});
+	};
+
+	Auth.prototype.google = function (credential) {
+		var self = this;
+		if (this.busy) { return; }
+		this.busy = true;
+		this.msg('google', '');
+		this.root.setAttribute('aria-busy', 'true');
+		api('auth/google', { credential: credential, redirect: this.redirect }).then(function (res) {
+			self.busy = false;
+			self.root.removeAttribute('aria-busy');
+			if (res.ok) { self.success(res); return; }
+			self.msg('google', res.message || t('error', 'Something went wrong.'));
+		});
 	};
 
 	/* Code boxes */
@@ -418,14 +610,25 @@
 			tel.focus();
 			return;
 		}
+		// A solved captcha also covers "resend" for the same number (server side).
+		var box = isResend ? null : capBox(form);
+		var missing = capMissing(box);
+		if (missing) {
+			this.msg('mobile', missing);
+			capFocus(box);
+			return;
+		}
 		if (this.busy) { return; }
 		this.busy = true;
 		var btn = isResend ? $('[data-hm-resend]', this.steps.code) : $('.hm-auth__submit', form);
 		loading(btn, true);
 
-		api('auth/send', { mobile: mobile, website: this.hp(form) }).then(function (res) {
+		capValue(box, 'otp').then(function (extra) {
+			return api('auth/send', extend({ mobile: mobile, website: self.hp(form) }, extra));
+		}).then(function (res) {
 			self.busy = false;
 			loading(btn, false);
+			capReset(box);
 			var cooldown = res.code === 'hamista_otp_cooldown';
 			if (!res.ok && !cooldown) {
 				self.msg(isResend ? 'code' : 'mobile', res.message || t('error', 'Something went wrong.'));
@@ -509,13 +712,23 @@
 			(login ? form.elements.password : form.elements.login).focus();
 			return;
 		}
+		var box = capBox(form);
+		var missing = capMissing(box);
+		if (missing) {
+			this.msg('password', missing);
+			capFocus(box);
+			return;
+		}
 		if (this.busy) { return; }
 		this.busy = true;
 		var btn = $('.hm-auth__submit', form);
 		loading(btn, true);
-		api('auth/password', { login: latin(login), password: pass, redirect: this.redirect, website: this.hp(form) }).then(function (res) {
+		capValue(box, 'login').then(function (extra) {
+			return api('auth/password', extend({ login: latin(login), password: pass, redirect: self.redirect, website: self.hp(form) }, extra));
+		}).then(function (res) {
 			self.busy = false;
 			loading(btn, false);
+			capReset(box);
 			if (res.ok) { self.success(res); return; }
 			self.msg('password', res.message || t('error', 'Something went wrong.'));
 			replay($('.hm-auth__field--password', form), 'is-shake');
@@ -567,13 +780,15 @@
 
 	/* ---------- Modal ---------- */
 	var lastFocus = null;
-	var closeTimer = null;
-	function modal() { return doc.getElementById('hm-auth-modal'); }
+	var openEl = null;
+	function modal() { return openEl || doc.getElementById('hm-auth-modal'); }
 
-	function openModal(trigger) {
-		var m = modal();
+	function openModal(trigger, el) {
+		var m = el || doc.getElementById('hm-auth-modal');
 		if (!m) { return false; }
-		win.clearTimeout(closeTimer);
+		if (openEl && openEl !== m) { closeModal(); }
+		openEl = m;
+		win.clearTimeout(m.__hmClose);
 		lastFocus = trigger || doc.activeElement;
 		m.hidden = false;
 		void m.offsetWidth;
@@ -584,16 +799,19 @@
 		var form = $('[data-hm-auth]', m);
 		var inst = form && form.__hmAuth;
 		focusFirst(inst ? (inst.steps[inst.current || 'mobile'] || form) : m);
+		capPrepare(m);
+		googlePrepare(m);
 		return true;
 	}
 
 	function closeModal() {
 		var m = modal();
 		if (!m || !m.classList.contains('is-open')) { return; }
+		openEl = null;
 		m.classList.remove('is-open');
 		m.setAttribute('aria-hidden', 'true');
 		doc.documentElement.style.overflow = '';
-		closeTimer = win.setTimeout(function () { m.hidden = true; }, reduce ? 0 : 320);
+		m.__hmClose = win.setTimeout(function () { m.hidden = true; }, reduce ? 0 : 320);
 		if (lastFocus && lastFocus.focus) {
 			if (lastFocus.setAttribute) { lastFocus.setAttribute('aria-expanded', 'false'); }
 			try { lastFocus.focus({ preventScroll: true }); } catch (e) { lastFocus.focus(); }
@@ -613,6 +831,19 @@
 		if (target.closest('[data-hm-auth-close]')) {
 			e.preventDefault();
 			closeModal();
+			return;
+		}
+
+		var quick = target.closest('[data-hm-quick-open]');
+		if (quick) {
+			e.preventDefault();
+			quickOpen(quick);
+			return;
+		}
+		var notify = target.closest('[data-hm-notify-submit]');
+		if (notify) {
+			e.preventDefault();
+			notifySubmit(notify.closest('[data-hm-notify]'));
 			return;
 		}
 
@@ -652,6 +883,134 @@
 		}
 	});
 
+	/* ---------- Quick buy ---------- */
+	var quickCtx = null;
+
+	function quickOpen(btn) {
+		var m = doc.getElementById('hm-quick-modal');
+		if (!m) { return; }
+		var box = $('[data-hm-quick]', m);
+		var form = $('[data-hm-quick-form]', box);
+		var cart = btn.closest('form');
+		var qty = cart && cart.elements.quantity ? Math.max(1, parseInt(latin(cart.elements.quantity.value), 10) || 1) : 1;
+		var title = $('.product_title');
+		quickCtx = { product: btn.getAttribute('data-product'), cart: cart, quantity: qty };
+
+		$('[data-hm-quick-product]', box).textContent = (title ? title.textContent.trim() : '') + ' × ' + num(qty);
+		$('[data-hm-quick-done]', box).hidden = true;
+		form.hidden = false;
+		$('[data-hm-msg]', form).textContent = '';
+		if (!form.__hmQuick) {
+			form.__hmQuick = true;
+			form.addEventListener('submit', function (e) { e.preventDefault(); quickSubmit(form); });
+			form.elements.mobile.addEventListener('input', function () { form.elements.mobile.removeAttribute('aria-invalid'); });
+		}
+		openModal(btn, m);
+		if (cart && cart.elements.variation_id && !(parseInt(cart.elements.variation_id.value, 10) > 0)) {
+			$('[data-hm-msg]', form).textContent = t('chooseOptions', 'Please choose the product options first.');
+		}
+	}
+
+	function quickSubmit(form) {
+		var box = form.closest('[data-hm-quick]');
+		var msg = $('[data-hm-msg]', form);
+		var ctx = quickCtx || {};
+		var cart = ctx.cart;
+		var name = form.elements.name.value.replace(/\s+/g, ' ').trim();
+		var mobile = normalizeMobile(form.elements.mobile.value);
+		var data = { product_id: ctx.product, quantity: ctx.quantity, name: name, mobile: mobile, website: ($('.hm-auth__hp input', form) || {}).value || '' };
+		msg.textContent = '';
+		if (name.length < 2) { msg.textContent = t('nameRequired', 'Please enter your name.'); form.elements.name.focus(); return; }
+		if (!mobile) {
+			msg.textContent = t('invalidMobile', 'Please enter a valid mobile number.');
+			form.elements.mobile.setAttribute('aria-invalid', 'true');
+			form.elements.mobile.focus();
+			return;
+		}
+		if (cart && cart.elements.variation_id) {
+			data.variation_id = parseInt(cart.elements.variation_id.value, 10) || 0;
+			if (!data.variation_id) { msg.textContent = t('chooseOptions', 'Please choose the product options first.'); return; }
+			data.attributes = {};
+			$$('[name^="attribute_"]', cart).forEach(function (el) { data.attributes[el.name] = el.value; });
+		}
+		var cbox = capBox(form);
+		var missing = capMissing(cbox);
+		if (missing) { msg.textContent = missing; capFocus(cbox); return; }
+		if (form.__hmBusy) { return; }
+		form.__hmBusy = true;
+		var btn = $('.hm-auth__submit', form);
+		loading(btn, true);
+
+		capValue(cbox, 'quickbuy').then(function (extra) {
+			return api('shop/quick-buy', extend(data, extra));
+		}).then(function (res) {
+			form.__hmBusy = false;
+			loading(btn, false);
+			capReset(cbox);
+			if (!res.ok) { msg.textContent = res.message || t('error', 'Something went wrong.'); return; }
+			var done = $('[data-hm-quick-done]', box);
+			$('[data-hm-quick-message]', box).textContent = res.message || '';
+			form.hidden = true;
+			done.hidden = false;
+			replay(done, 'is-entering');
+			done.focus();
+			if (res.redirect) { win.setTimeout(function () { win.location.assign(res.redirect); }, reduce ? 300 : 1400); }
+		});
+	}
+
+	/* ---------- Back in stock ---------- */
+	function notifySubmit(box) {
+		if (!box || box.__hmBusy) { return; }
+		var tel = $('[data-hm-notify-mobile]', box);
+		var mail = $('[data-hm-notify-email]', box);
+		var msg = $('[data-hm-msg]', box);
+		var mobile = tel ? normalizeMobile(tel.value) : '';
+		var email = mail ? mail.value.trim() : '';
+		var error = '';
+		var field = null;
+		function say(text, ok) {
+			msg.setAttribute('role', ok ? 'status' : 'alert');
+			msg.classList.toggle('is-error', !ok);
+			msg.textContent = text || '';
+		}
+		[tel, mail].forEach(function (el) { if (el) { el.removeAttribute('aria-invalid'); } });
+
+		if (tel && !mobile && (tel.value.trim() || !mail)) { error = t('invalidMobile', 'Please enter a valid mobile number.'); field = tel; }
+		else if (mail && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { error = t('invalidEmail', 'Please enter a valid email address.'); field = mail; }
+		else if (mail && !tel && !email) { error = t('invalidEmail', 'Please enter a valid email address.'); field = mail; }
+		else if (!mobile && !email) { error = t('notifyContact', 'Enter your mobile number or email.'); field = tel || mail; }
+		if (error) {
+			say(error, false);
+			if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+			return;
+		}
+
+		box.__hmBusy = true;
+		var btn = $('[data-hm-notify-submit]', box);
+		loading(btn, true);
+		api('shop/notify', { product_id: box.getAttribute('data-hm-notify'), mobile: mobile, email: email }).then(function (res) {
+			box.__hmBusy = false;
+			loading(btn, false);
+			say(res.message || t('error', 'Something went wrong.'), !!res.ok);
+			if (res.ok) {
+				box.classList.add('is-done');
+				$('.hm-notify__row', box).hidden = true;
+				msg.tabIndex = -1;
+				msg.focus();
+			}
+		});
+	}
+
+	doc.addEventListener('keydown', function (e) {
+		if (e.key !== 'Enter' || !e.target.closest) { return; }
+		var box = e.target.closest('[data-hm-notify]');
+		if (box && e.target.tagName === 'INPUT') {
+			// Inside a variable product the fields sit in the add-to-cart form.
+			e.preventDefault();
+			notifySubmit(box);
+		}
+	});
+
 	/* ---------- Boot ---------- */
 	function init(scope) {
 		scope = scope || doc;
@@ -660,6 +1019,9 @@
 		});
 		if (scope.matches && scope.matches('[data-hm-auth]') && !scope.__hmAuth) { scope.__hmAuth = new Auth(scope); }
 		$$('[data-hm-profile]', scope).forEach(bindProfile);
+		capPrepare(scope);
+		capClassic(scope);
+		googlePrepare(scope);
 		if (doc.body && $('.hm-auth-wplogin')) { doc.body.classList.add('hm-auth-js'); }
 	}
 

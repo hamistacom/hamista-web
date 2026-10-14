@@ -1795,7 +1795,58 @@
 				busy( btn, false );
 			},
 		},
+
+		/** Read-only SMS log from GET sms-log; labels come from the schema field. */
+		log: {
+			render( ctx ) {
+				return [
+					h( 'div', { class: 'hm-log', 'data-part': 'log', 'aria-live': 'polite' } ),
+					h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet hm-btn--sm', 'data-act': 'clear-log', id: ctx.id, hidden: true }, ctx.def.button ),
+				];
+			},
+			async mount( ctx ) {
+				try {
+					logRows( ctx, ( await api( 'sms-log', null, 'GET' ) ).rows );
+				} catch ( err ) {
+					ctx.control.querySelector( '[data-part="log"]' ).replaceChildren( h( 'p', { class: 'hm-field__hint', text: err.message } ) );
+				}
+			},
+			async click( ctx, act, btn ) {
+				if ( 'clear-log' !== act || ! await confirmDialog( { title: ctx.def.button, message: ctx.def.confirm, confirm: ctx.def.button, danger: true } ) ) {
+					return;
+				}
+				busy( btn, true );
+				try {
+					const res = await api( 'sms-log', {}, 'DELETE' );
+					logRows( ctx, res.rows );
+					toast( res.message, 'success' );
+				} catch ( err ) {
+					toast( err.message, 'error' );
+				}
+				busy( btn, false );
+			},
+		},
 	};
+
+	/** Fill the SMS log: rows are { time, mobile, type, provider, ok, status, error }, newest first. */
+	function logRows( ctx, rows ) {
+		const cols = ctx.def.columns || {};
+		const list = rows || [];
+		ctx.control.querySelector( '[data-act="clear-log"]' ).hidden = ! list.length;
+		ctx.control.querySelector( '[data-part="log"]' ).replaceChildren( list.length ? h( 'div', { class: 'hm-log__scroll' }, h( 'table', { class: 'hm-table hm-table--log' }, [
+			h( 'thead', null, h( 'tr', null, Object.keys( cols ).map( function ( key ) {
+				return h( 'th', { scope: 'col', text: cols[ key ] } );
+			} ) ) ),
+			h( 'tbody', null, list.map( function ( row ) {
+				return h( 'tr', null, Object.keys( cols ).map( function ( key ) {
+					if ( 'status' === key ) {
+						return h( 'td', null, [ statusChip( row.ok, row.status ), row.error ? h( 'div', { class: 'hm-log__error', text: row.error } ) : null ] );
+					}
+					return h( 'td', null, 'mobile' === key ? h( 'bdi', { dir: 'ltr', text: row[ key ] } ) : row[ key ] );
+				} ) );
+			} ) ),
+		] ) ) : h( 'p', { class: 'hm-field__hint', text: ctx.def.empty } ) );
+	}
 
 	/** Test-mode code from the auth module: { code, mobile, time } or a plain string. */
 	function lastTestCode( last ) {

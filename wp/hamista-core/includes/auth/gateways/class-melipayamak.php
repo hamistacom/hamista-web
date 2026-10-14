@@ -1,9 +1,11 @@
 <?php
 /**
- * Melipayamak — shared service line (pattern) REST API.
+ * Melipayamak — shared service line (pattern) REST API, SendSMS for text.
  *
  * POST https://rest.payamak-panel.com/api/SendSMS/BaseServiceNumber
  * form: username, password, text (pattern variables separated by ";"), to, bodyId
+ * POST https://rest.payamak-panel.com/api/SendSMS/SendSMS
+ * form: username, password, to, from, text, isflash
  * Response: { "Value": "<recId or error code>", "RetStatus": 1, "StrRetStatus": "Ok" }
  *
  * @package Hamista\Core
@@ -54,6 +56,48 @@ class Melipayamak extends Gateway {
 				),
 			)
 		);
+		return $this->result( $response );
+	}
+
+	/**
+	 * Send a text message from the account's own line.
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$missing = $this->require_settings( array( 'melipayamak_username', 'melipayamak_password', 'melipayamak_from' ) );
+		if ( $missing ) {
+			return $missing;
+		}
+
+		return $this->result(
+			$this->request(
+				'https://rest.payamak-panel.com/api/SendSMS/SendSMS',
+				array(
+					'method'  => 'POST',
+					'headers' => array( 'Content-Type' => 'application/x-www-form-urlencoded' ),
+					'body'    => array(
+						'username' => $this->opt( 'melipayamak_username' ),
+						'password' => $this->opt( 'melipayamak_password' ),
+						'to'       => $mobile,
+						'from'     => $this->opt( 'melipayamak_from' ),
+						'text'     => $text,
+						'isflash'  => 'false',
+					),
+				)
+			)
+		);
+	}
+
+	/**
+	 * Read a response.
+	 *
+	 * @param array|\WP_Error $response Response from request().
+	 * @return true|\WP_Error
+	 */
+	private function result( $response ) {
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		}

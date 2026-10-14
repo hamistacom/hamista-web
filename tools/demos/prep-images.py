@@ -244,7 +244,22 @@ for i in range(1, 5):
     for d in (PAY, SOCIAL, FLY):
         d['av-%d' % i] = ('04/tst_%d.webp' % i, 120, 'photo')
 
-DEMOS = {'fly': FLY, 'pay': PAY, 'social': SOCIAL, 'cv': CV, 'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
+HOOSHMAND = {
+    'light-1': ('old/flux/product-4.webp', 900, 'photo'), 'light-2': ('old/flux/product-3.webp', 900, 'photo'),
+    'light-3': ('old/flux/product-5.webp', 900, 'photo'), 'light-4': ('old/flux/product-2.webp', 900, 'photo'),
+    'light-5': ('old/flux/product-6.webp', 900, 'photo'), 'wave': ('old/flux/hero.webp', 1920, 'photo'),
+    'reel': ('old/flux/reel.webp', 1920, 'photo'), 'silk': ('03/hero-2.webp', 1920, 'photo'), 'silk-2': ('04/why-c-bg.webp', 1920, 'photo'),
+    'face-1': ('03/gt7.webp', 420, 'photo'), 'face-2': ('03/hr1.webp', 420, 'photo'), 'face-3': ('03/gt2.webp', 700, 'photo'),
+    'office-1': ('04/hw1.webp', 1400, 'photo'), 'office-2': ('04/in2.webp', 1000, 'photo'), 'office-3': ('04/ser5.jpg', 1000, 'photo'),
+    'office-4': ('04/ser9.webp', 1000, 'photo'),
+    'blog-1': ('03/blg1.webp', 900, 'photo'), 'blog-2': ('03/blg2.webp', 900, 'photo'), 'blog-3': ('03/blg3.webp', 900, 'photo'),
+    'blog-4': ('03/blg4.webp', 900, 'photo'),
+}
+for i in range(1, 5):
+    HOOSHMAND['tm-%d' % i] = ('03/tm%d.jpg' % i, 420, 'photo')
+    HOOSHMAND['av-%d' % i] = ('04/tst_%d.webp' % i, 120, 'photo')
+
+DEMOS = {'hooshmand': HOOSHMAND, 'fly': FLY, 'pay': PAY, 'social': SOCIAL, 'cv': CV, 'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):

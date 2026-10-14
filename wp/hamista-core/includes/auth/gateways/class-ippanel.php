@@ -7,6 +7,8 @@
  *
  * POST https://api2.ippanel.com/api/v1/sms/pattern/normal/send, header apikey
  * JSON: { code, sender, recipient, variable: { <name>: <code> } }
+ * POST https://api2.ippanel.com/api/v1/sms/send/webservice/single, header apikey
+ * JSON: { recipient: [ ... ], sender, message }
  * Response: { "status": "OK", "code": "200", "error_message": "", "data": { "message_id": 123 } }
  *
  * @package Hamista\Core
@@ -62,6 +64,50 @@ class Ippanel extends Gateway {
 				),
 			)
 		);
+		return $this->result( $response );
+	}
+
+	/**
+	 * Send a text message from the sender number.
+	 *
+	 * @param string $mobile Mobile.
+	 * @param string $text   Message.
+	 * @return true|\WP_Error
+	 */
+	public function send_text( $mobile, $text ) {
+		$missing = $this->require_settings( array( 'ippanel_api_key', 'ippanel_sender' ) );
+		if ( $missing ) {
+			return $missing;
+		}
+
+		return $this->result(
+			$this->request(
+				'https://api2.ippanel.com/api/v1/sms/send/webservice/single',
+				array(
+					'method'  => 'POST',
+					'headers' => array(
+						'Content-Type' => 'application/json',
+						'apikey'       => $this->opt( 'ippanel_api_key' ),
+					),
+					'body'    => wp_json_encode(
+						array(
+							'recipient' => array( $mobile ),
+							'sender'    => $this->opt( 'ippanel_sender' ),
+							'message'   => $text,
+						)
+					),
+				)
+			)
+		);
+	}
+
+	/**
+	 * Read a response.
+	 *
+	 * @param array|\WP_Error $response Response from request().
+	 * @return true|\WP_Error
+	 */
+	private function result( $response ) {
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		}
