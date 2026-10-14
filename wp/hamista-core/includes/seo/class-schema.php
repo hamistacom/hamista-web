@@ -40,6 +40,7 @@ class Schema {
 			'AutoRepair'              => __( 'Car service', 'hamista-core' ),
 			'SportsActivityLocation'  => __( 'Gym or sports venue', 'hamista-core' ),
 			'LodgingBusiness'         => __( 'Hotel or guesthouse', 'hamista-core' ),
+			'NewsMediaOrganization'   => __( 'Newspaper, magazine or news site', 'hamista-core' ),
 		);
 	}
 
@@ -164,7 +165,7 @@ class Schema {
 			$node['sameAs'] = array_values( array_unique( $same ) );
 		}
 
-		if ( 'Organization' !== $type && 'EducationalOrganization' !== $type ) {
+		if ( ! in_array( $type, array( 'Organization', 'EducationalOrganization', 'NewsMediaOrganization' ), true ) ) {
 			$address = array_filter(
 				array(
 					'@type'           => 'PostalAddress',
@@ -384,7 +385,7 @@ class Schema {
 		$url    = Seo::canonical();
 		$author = (int) get_post_field( 'post_author', $id );
 		$node   = array(
-			'@type'            => 'BlogPosting',
+			'@type'            => 'NewsMediaOrganization' === hamista_core_option( 'seo_business_type' ) ? 'NewsArticle' : 'BlogPosting',
 			'@id'              => $url . '#article',
 			'headline'         => mb_substr( wp_strip_all_tags( get_the_title( $id ) ), 0, 110 ),
 			'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),

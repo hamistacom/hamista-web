@@ -45,6 +45,8 @@ class Elementor {
 			'Project_Show',
 			'Process',
 			'Testimonial_Wall',
+			'News',
+			'Masthead',
 			'Marquee',
 			'Image_Reveal',
 			'Counters',

@@ -189,4 +189,5 @@ T = {
     "social network\x04Dribbble": "دریبل",
     "social network\x04Behance": "بیهنس",
     "Ember — fog grey, black and burning orange": "شعله — خاکستری مه~آلود، مشکی و نارنجی آتشین",
+    "Press — newsprint, ink and one red": "روزنامه — کاغذ کاهی، مرکب و یک قرمز",
 }

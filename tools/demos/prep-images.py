@@ -189,7 +189,17 @@ for i, name in enumerate(['sp23', 'sp24', 'sp25', 'sp26', 'sp27', 'sp28', 'sp29'
         ARGHAVAN['logo-w-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'alpha')
     ARGHAVAN['logo-k-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'ink')
 
-DEMOS = {'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
+# Newspaper: the Gazette package pictures (attachment/2026/03).
+PRESS = {}
+for key, name in [
+    ('wave', '1-1.jpg'), ('cafe', '1.jpg'), ('coast', '2-1.jpg'), ('camera', '2.jpg'), ('valley', '3-1.jpg'), ('ridge', '3.jpg'),
+    ('hiker', '4-1.jpg'), ('dusk', '4.jpg'), ('harvest', '5.jpg'), ('clouds', '6-1.jpg'), ('daisies', '6.jpg'), ('fog', '7.jpg'),
+    ('room', '8.jpg'), ('forest', 'Faces_1.jpg'), ('station', 'Faces_2.jpg'), ('leaf', 'Faces_3.jpg'),
+    ('bridge', 'Faces_5.jpg'), ('lake', 'Untitled.jpg'),
+]:
+    PRESS[key] = ('gazette/' + name, 900, 'photo')
+
+DEMOS = {'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):

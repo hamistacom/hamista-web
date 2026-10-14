@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T22:25:58+00:00\n"
+"POT-Creation-Date: 2026-10-14T04:16:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -165,7 +165,11 @@ msgstr ""
 msgid "Ember — fog grey, black and burning orange"
 msgstr ""
 
-#: inc/assets.php:92
+#: inc/assets.php:55
+msgid "Press — newsprint, ink and one red"
+msgstr ""
+
+#: inc/assets.php:93
 msgid "Toggle submenu"
 msgstr ""
 

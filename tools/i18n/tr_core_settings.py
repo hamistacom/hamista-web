@@ -440,4 +440,6 @@ T = {
     "Loader background": "پس~زمینه~ی بارگذار",
     "Same as the site (light or dark)": "هماهنگ با سایت (روشن یا تیره)",
     "Only on the first page of a visit": "فقط در اولین صفحه~ی هر بازدید",
+    "Press": "روزنامه",
+    "Newsprint, ink and one red; ruled columns and photographs in black and white": "کاغذ کاهی، مرکب و یک قرمز؛ ستون~های خط~کشی~شده و عکس~های سیاه~وسفید",
 }

@@ -27,6 +27,24 @@ class Frontend {
 		add_action( 'wp_head', array( __CLASS__, 'head_motion_flag' ), 1 );
 		add_action( 'wp_head', array( __CLASS__, 'head_code' ), 99 );
 		add_action( 'wp_footer', array( __CLASS__, 'footer_code' ), 99 );
+		add_filter( 'the_author', array( __CLASS__, 'byline' ) );
+	}
+
+	/**
+	 * A story's own byline (post meta _hm_byline) in place of the account name.
+	 *
+	 * @param string $name Author name.
+	 * @return string
+	 */
+	public static function byline( $name ) {
+		$id = get_the_ID();
+		if ( $id && ! is_admin() ) {
+			$byline = (string) get_post_meta( $id, '_hm_byline', true );
+			if ( '' !== $byline ) {
+				return $byline;
+			}
+		}
+		return $name;
 	}
 
 	/**
@@ -123,6 +141,7 @@ class Frontend {
 		wp_register_style( 'hamista-showcase', self::asset( 'css/showcase.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
 		wp_register_style( 'hamista-card-stack', self::asset( 'css/card-stack.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
 		wp_register_style( 'hamista-agency', self::asset( 'css/agency.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
+		wp_register_style( 'hamista-news', self::asset( 'css/news.css' ), array( 'hamista-widgets' ), HAMISTA_CORE_VERSION );
 
 		$custom_css = trim( (string) hamista_core_option( 'custom_css' ) );
 		if ( $custom_css ) {

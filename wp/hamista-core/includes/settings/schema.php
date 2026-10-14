@@ -177,6 +177,11 @@ return ( static function () {
 							'desc'  => __( 'Fog grey, deep black and burning orange; large rounded panels', 'hamista-core' ),
 							'image' => $img . 'kit-ember.svg',
 						),
+						'press'      => array(
+							'label' => __( 'Press', 'hamista-core' ),
+							'desc'  => __( 'Newsprint, ink and one red; ruled columns and photographs in black and white', 'hamista-core' ),
+							'image' => $img . 'kit-press.svg',
+						),
 					),
 				),
 				'container_width'   => array(

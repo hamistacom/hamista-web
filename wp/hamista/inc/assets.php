@@ -52,6 +52,7 @@ function hamista_kits() {
 			'care'       => __( 'Care — porcelain, deep green and eucalyptus', 'hamista' ),
 			'nova'       => __( 'Nova — green-black, lime and frosted glass', 'hamista' ),
 			'ember'      => __( 'Ember — fog grey, black and burning orange', 'hamista' ),
+			'press'      => __( 'Press — newsprint, ink and one red', 'hamista' ),
 		)
 	);
 }
@@ -268,6 +269,7 @@ function hamista_theme_color_meta() {
 		'care'       => '#f5f4f0',
 		'nova'       => '#0f1b18',
 		'ember'      => '#efefef',
+		'press'      => '#f1ede4',
 	);
 	$color  = $colors[ hamista_option( 'kit' ) ] ?? '#f6f6f3';
 	printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( apply_filters( 'hamista/theme_color', $color ) ) );

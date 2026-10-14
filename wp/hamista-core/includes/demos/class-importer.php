@@ -544,6 +544,12 @@ class Importer {
 			if ( ! empty( $post['image'] ) && $this->media_id( $post['image'] ) ) {
 				set_post_thumbnail( $id, $this->media_id( $post['image'] ) );
 			}
+			if ( ! empty( $post['byline'] ) ) {
+				update_post_meta( $id, '_hm_byline', sanitize_text_field( $post['byline'] ) );
+			}
+			if ( ! empty( $post['caption'] ) ) {
+				update_post_meta( $id, '_hm_caption', sanitize_text_field( $post['caption'] ) );
+			}
 			$by_tax = array();
 			foreach ( (array) ( $post['terms'] ?? array() ) as $term_key ) {
 				foreach ( (array) ( $this->content['terms'] ?? array() ) as $term ) {

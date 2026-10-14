@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-14T04:01:36+00:00\n"
-"PO-Revision-Date: 2026-10-14 04:01+0000\n"
+"POT-Creation-Date: 2026-10-14T04:16:32+00:00\n"
+"PO-Revision-Date: 2026-10-14 04:16+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -36,13 +36,13 @@ msgstr "ویجت‌های المنتور، موتور انیمیشن بدون و
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:476
-#: includes/elementor/class-elementor.php:111
+#: includes/elementor/class-elementor.php:113
 msgid "Hamista"
 msgstr "هامیستا"
 
 #: includes/account/class-panel.php:51
 #: includes/settings/schema.php:67
-#: includes/settings/schema.php:724
+#: includes/settings/schema.php:729
 msgid "Dashboard"
 msgstr "پیشخوان"
 
@@ -89,7 +89,7 @@ msgstr "خودکار"
 #: includes/elementor/widgets/class-posts.php:123
 #: includes/elementor/widgets/class-team.php:108
 #: includes/elementor/widgets/class-testimonials.php:116
-#: includes/settings/schema.php:596
+#: includes/settings/schema.php:601
 msgid "Grid"
 msgstr "شبکه‌ای"
 
@@ -137,7 +137,7 @@ msgstr "پاکت نامه"
 #: includes/elementor/widgets/class-badge-ring.php:89
 #: includes/elementor/widgets/class-contact-info.php:94
 #: includes/elementor/widgets/class-device.php:46
-#: includes/settings/schema.php:1550
+#: includes/settings/schema.php:1555
 msgid "Phone"
 msgstr "تلفن"
 
@@ -160,12 +160,13 @@ msgstr "برچسب"
 #: includes/elementor/widgets/class-features.php:91
 #: includes/elementor/widgets/class-hscroll.php:96
 #: includes/elementor/widgets/class-image-reveal.php:131
+#: includes/elementor/widgets/class-news.php:201
 #: includes/elementor/widgets/class-process.php:104
 #: includes/elementor/widgets/class-project-show.php:121
 #: includes/elementor/widgets/class-service-list.php:122
 #: includes/elementor/widgets/class-showcase.php:232
 #: includes/elementor/widgets/class-slider.php:102
-#: includes/settings/schema.php:689
+#: includes/settings/schema.php:694
 msgid "Link"
 msgstr "لینک"
 
@@ -609,7 +610,7 @@ msgid "Style"
 msgstr "سبک"
 
 #: includes/admin/class-admin.php:567
-#: includes/settings/schema.php:260
+#: includes/settings/schema.php:265
 msgid "Normal"
 msgstr "معمولی"
 
@@ -878,7 +879,7 @@ msgstr "نصب نشده"
 #: includes/admin/class-admin.php:642
 #: includes/elementor/widgets/class-contact-form.php:86
 #: includes/elementor/widgets/class-lead-form.php:312
-#: includes/settings/schema.php:905
+#: includes/settings/schema.php:910
 msgid "Required"
 msgstr "الزامی"
 
@@ -996,7 +997,7 @@ msgstr "حالت رنگ"
 #: includes/admin/class-admin.php:677
 #: includes/elementor/widgets/class-bento.php:149
 #: includes/elementor/widgets/class-testimonial-wall.php:110
-#: includes/settings/schema.php:283
+#: includes/settings/schema.php:288
 msgid "Light"
 msgstr "روشن"
 
@@ -1006,7 +1007,7 @@ msgstr "روشن"
 #: includes/elementor/widgets/class-features.php:122
 #: includes/elementor/widgets/class-stack.php:110
 #: includes/elementor/widgets/class-testimonial-wall.php:111
-#: includes/settings/schema.php:287
+#: includes/settings/schema.php:292
 msgid "Dark"
 msgstr "تاریک"
 
@@ -1047,7 +1048,7 @@ msgstr "چه چیزهایی نصب شود؟"
 #: includes/admin/class-admin.php:690
 #: includes/elementor/widgets/class-cta.php:44
 #: includes/elementor/widgets/class-hero.php:46
-#: includes/settings/schema.php:705
+#: includes/settings/schema.php:710
 msgid "Content"
 msgstr "محتوا"
 
@@ -1128,7 +1129,7 @@ msgid "Remove demo content"
 msgstr "حذف محتوای دمو"
 
 #: includes/admin/class-admin.php:713
-#: includes/settings/schema.php:1753
+#: includes/settings/schema.php:1758
 msgid "Tools"
 msgstr "ابزارها"
 
@@ -1462,7 +1463,7 @@ msgstr "ورود با این شماره ممکن نشد. لطفاً با ما ت
 #: includes/auth/class-woocommerce.php:91
 #: includes/booking/class-view.php:354
 #: includes/elementor/widgets/class-lead-form.php:58
-#: includes/settings/schema.php:1356
+#: includes/settings/schema.php:1361
 #: templates/auth/account.php:66
 #: templates/auth/form.php:60
 msgid "Mobile number"
@@ -1571,7 +1572,7 @@ msgid "The provider had an internal error. Try again shortly."
 msgstr "سامانه‌ی پیامک با خطای داخلی روبه‌رو شد. کمی بعد دوباره تلاش کنید."
 
 #: includes/auth/gateways/class-ghasedak.php:27
-#: includes/settings/schema.php:1185
+#: includes/settings/schema.php:1190
 msgid "Ghasedak"
 msgstr "قاصدک"
 
@@ -1593,7 +1594,7 @@ msgid "IPPanel"
 msgstr "آی‌پی‌پنل"
 
 #: includes/auth/gateways/class-kavenegar.php:26
-#: includes/settings/schema.php:1181
+#: includes/settings/schema.php:1186
 msgid "Kavenegar"
 msgstr "کاوه‌نگار"
 
@@ -1630,7 +1631,7 @@ msgid "The template tag name is invalid."
 msgstr "نام تگ پترن نامعتبر است."
 
 #: includes/auth/gateways/class-melipayamak.php:27
-#: includes/settings/schema.php:1182
+#: includes/settings/schema.php:1187
 msgid "Melipayamak"
 msgstr "ملی‌پیامک"
 
@@ -1680,7 +1681,7 @@ msgid "The number is on the telecom blacklist."
 msgstr "این شماره در فهرست سیاه مخابرات قرار دارد."
 
 #: includes/auth/gateways/class-smsir.php:27
-#: includes/settings/schema.php:1183
+#: includes/settings/schema.php:1188
 msgid "SMS.ir"
 msgstr "SMS.ir"
 
@@ -1705,7 +1706,7 @@ msgid "Profile"
 msgstr "مشخصات"
 
 #: includes/booking/class-admin.php:98
-#: includes/settings/schema.php:963
+#: includes/settings/schema.php:968
 msgid "Weekly hours"
 msgstr "ساعت‌های کاری هفته"
 
@@ -1742,7 +1743,7 @@ msgstr "عکس از «تصویر شاخص» و بیوگرافی از ویرای�
 #: includes/booking/class-admin.php:150
 #: includes/booking/class-view.php:323
 #: includes/booking/class-view.php:337
-#: includes/settings/schema.php:1643
+#: includes/settings/schema.php:1648
 msgid "Day"
 msgstr "روز"
 
@@ -1838,6 +1839,7 @@ msgstr "ساعت"
 #: includes/booking/class-admin.php:450
 #: includes/booking/class-rest.php:504
 #: includes/elementor/widgets/class-about-intro.php:251
+#: includes/elementor/widgets/class-masthead.php:65
 #: includes/elementor/widgets/class-service-list.php:67
 #: includes/elementor/widgets/class-team.php:60
 #: includes/elementor/widgets/class-testimonial-wall.php:75
@@ -1851,7 +1853,7 @@ msgstr "نام"
 #: includes/booking/class-rest.php:505
 #: includes/elementor/widgets/class-contact-form.php:51
 #: includes/forms/class-forms.php:307
-#: includes/settings/schema.php:482
+#: includes/settings/schema.php:487
 msgid "Mobile"
 msgstr "موبایل"
 
@@ -1927,37 +1929,37 @@ msgstr[0] "%s نوبت به‌روز شد."
 msgstr[1] "%s نوبت به‌روز شد."
 
 #: includes/booking/class-booking.php:61
-#: includes/settings/schema.php:1645
+#: includes/settings/schema.php:1650
 msgid "Saturday"
 msgstr "شنبه"
 
 #: includes/booking/class-booking.php:62
-#: includes/settings/schema.php:1646
+#: includes/settings/schema.php:1651
 msgid "Sunday"
 msgstr "یکشنبه"
 
 #: includes/booking/class-booking.php:63
-#: includes/settings/schema.php:1647
+#: includes/settings/schema.php:1652
 msgid "Monday"
 msgstr "دوشنبه"
 
 #: includes/booking/class-booking.php:64
-#: includes/settings/schema.php:1648
+#: includes/settings/schema.php:1653
 msgid "Tuesday"
 msgstr "سه‌شنبه"
 
 #: includes/booking/class-booking.php:65
-#: includes/settings/schema.php:1649
+#: includes/settings/schema.php:1654
 msgid "Wednesday"
 msgstr "چهارشنبه"
 
 #: includes/booking/class-booking.php:66
-#: includes/settings/schema.php:1650
+#: includes/settings/schema.php:1655
 msgid "Thursday"
 msgstr "پنجشنبه"
 
 #: includes/booking/class-booking.php:67
-#: includes/settings/schema.php:1651
+#: includes/settings/schema.php:1656
 msgid "Friday"
 msgstr "جمعه"
 
@@ -1976,7 +1978,7 @@ msgid "Cancelled"
 msgstr "لغوشده"
 
 #: includes/booking/class-booking.php:93
-#: includes/settings/schema.php:766
+#: includes/settings/schema.php:771
 msgid "General services"
 msgstr "خدمات عمومی"
 
@@ -2017,7 +2019,7 @@ msgid "Licence number"
 msgstr "شماره‌ی پروانه"
 
 #: includes/booking/class-booking.php:105
-#: includes/settings/schema.php:770
+#: includes/settings/schema.php:775
 msgid "Clinic and medical"
 msgstr "کلینیک و پزشکی"
 
@@ -2047,7 +2049,7 @@ msgstr "شماره‌ی نظام پزشکی"
 
 #: includes/booking/class-booking.php:117
 #: includes/seo/class-schema.php:35
-#: includes/settings/schema.php:774
+#: includes/settings/schema.php:779
 msgid "Beauty salon"
 msgstr "سالن زیبایی"
 
@@ -2067,7 +2069,7 @@ msgstr "قیمت"
 
 #: includes/booking/class-booking.php:129
 #: includes/seo/class-schema.php:36
-#: includes/settings/schema.php:778
+#: includes/settings/schema.php:783
 msgid "Law firm"
 msgstr "دفتر حقوقی"
 
@@ -2096,7 +2098,7 @@ msgid "Bar licence number"
 msgstr "شماره‌ی پروانه‌ی وکالت"
 
 #: includes/booking/class-booking.php:141
-#: includes/settings/schema.php:782
+#: includes/settings/schema.php:787
 msgid "Consulting and coaching"
 msgstr "مشاوره و کوچینگ"
 
@@ -2123,7 +2125,7 @@ msgid "Session fee"
 msgstr "هزینه‌ی جلسه"
 
 #: includes/booking/class-booking.php:153
-#: includes/settings/schema.php:786
+#: includes/settings/schema.php:791
 msgid "Education and tutoring"
 msgstr "آموزش و تدریس"
 
@@ -2149,7 +2151,7 @@ msgid "Fee per session"
 msgstr "شهریه‌ی هر جلسه"
 
 #: includes/booking/class-booking.php:165
-#: includes/settings/schema.php:790
+#: includes/settings/schema.php:795
 msgid "Restaurant and café"
 msgstr "رستوران و کافه"
 
@@ -2176,7 +2178,7 @@ msgid "Deposit"
 msgstr "پیش‌پرداخت"
 
 #: includes/booking/class-booking.php:177
-#: includes/settings/schema.php:794
+#: includes/settings/schema.php:799
 msgid "Sports venue"
 msgstr "مجموعه‌ی ورزشی"
 
@@ -2202,7 +2204,7 @@ msgid "Price per session"
 msgstr "اجاره‌ی هر سانس"
 
 #: includes/booking/class-booking.php:189
-#: includes/settings/schema.php:798
+#: includes/settings/schema.php:803
 msgid "Studio and space rental"
 msgstr "اجاره‌ی استودیو و فضا"
 
@@ -2224,7 +2226,7 @@ msgstr "انواع فضا"
 
 #: includes/booking/class-booking.php:201
 #: includes/seo/class-schema.php:40
-#: includes/settings/schema.php:802
+#: includes/settings/schema.php:807
 msgid "Car service"
 msgstr "خدمات خودرو"
 
@@ -2512,7 +2514,7 @@ msgid "Your appointment with %1$s on %2$s at %3$s is booked. We will confirm it 
 msgstr "نوبت شما با %1$s برای %2$s ساعت %3$s ثبت شد. تأیید نهایی با تماس یا پیامک اطلاع داده می‌شود."
 
 #: includes/booking/class-rest.php:414
-#: includes/settings/schema.php:858
+#: includes/settings/schema.php:863
 msgid "Number of people"
 msgstr "تعداد نفرات"
 
@@ -3319,7 +3321,7 @@ msgstr "تنظیم صفحه‌ی اصلی…"
 msgid "Finishing up…"
 msgstr "در حال جمع‌بندی…"
 
-#: includes/demos/class-importer.php:1184
+#: includes/demos/class-importer.php:1190
 msgid "Demo content removed. Your own content was not touched."
 msgstr "محتوای دمو حذف شد. به محتوای خودتان دست نخورد."
 
@@ -3341,8 +3343,8 @@ msgstr "محتوای دمو حذف شد. به محتوای خودتان دست �
 #: includes/elementor/widgets/class-steps.php:96
 #: includes/elementor/widgets/class-team.php:104
 #: includes/elementor/widgets/class-testimonials.php:112
-#: includes/settings/schema.php:417
-#: includes/settings/schema.php:663
+#: includes/settings/schema.php:422
+#: includes/settings/schema.php:668
 msgid "Layout"
 msgstr "چیدمان"
 
@@ -3360,6 +3362,7 @@ msgstr "اسلایدر"
 #: includes/elementor/widgets/class-experts.php:178
 #: includes/elementor/widgets/class-features.php:187
 #: includes/elementor/widgets/class-logo-grid.php:61
+#: includes/elementor/widgets/class-news.php:136
 #: includes/elementor/widgets/class-portfolio.php:141
 #: includes/elementor/widgets/class-posts.php:134
 #: includes/elementor/widgets/class-products.php:109
@@ -3695,7 +3698,7 @@ msgstr "ته‌رنگ رنگ اصلی"
 
 #: includes/elementor/class-motion.php:292
 #: includes/elementor/widgets/class-giant-text.php:100
-#: includes/settings/schema.php:1123
+#: includes/settings/schema.php:1128
 msgid "Accent colour"
 msgstr "رنگ اصلی"
 
@@ -3797,7 +3800,7 @@ msgstr "چیدمان هامیستا"
 
 #: includes/elementor/class-page-settings.php:69
 #: includes/layouts/class-layouts.php:120
-#: includes/settings/schema.php:388
+#: includes/settings/schema.php:393
 msgid "Header"
 msgstr "سربرگ"
 
@@ -3817,7 +3820,7 @@ msgstr "شفاف با متن روشن (برای هیروی تیره)"
 
 #: includes/elementor/class-page-settings.php:83
 #: includes/layouts/class-layouts.php:121
-#: includes/settings/schema.php:515
+#: includes/settings/schema.php:520
 msgid "Footer"
 msgstr "پابرگ"
 
@@ -3834,7 +3837,7 @@ msgid "Always light"
 msgstr "همیشه روشن"
 
 #: includes/elementor/class-page-settings.php:101
-#: includes/settings/schema.php:1122
+#: includes/settings/schema.php:1127
 msgid "Always dark"
 msgstr "همیشه تاریک"
 
@@ -3925,7 +3928,7 @@ msgstr "نمایشی"
 #: includes/elementor/widgets/class-marquee.php:105
 #: includes/elementor/widgets/class-stories.php:125
 #: includes/elementor/widgets/class-text-scrub.php:71
-#: includes/settings/schema.php:261
+#: includes/settings/schema.php:266
 msgid "Large"
 msgstr "بزرگ"
 
@@ -3955,7 +3958,7 @@ msgstr "کوچک"
 #: includes/elementor/widgets/class-proof.php:135
 #: includes/elementor/widgets/class-stories.php:132
 #: includes/elementor/widgets/class-text-scrub.php:79
-#: includes/settings/schema.php:243
+#: includes/settings/schema.php:248
 msgid "Alignment"
 msgstr "چینش"
 
@@ -4096,7 +4099,7 @@ msgid "Vertical spacing"
 msgstr "فاصله‌ی عمودی"
 
 #: includes/elementor/class-widget-base.php:512
-#: includes/settings/schema.php:184
+#: includes/settings/schema.php:189
 msgid "Content width"
 msgstr "عرض محتوا"
 
@@ -4115,7 +4118,7 @@ msgstr "تمام‌عرض"
 #: includes/elementor/class-widget-base.php:525
 #: includes/elementor/widgets/class-hero.php:285
 #: includes/elementor/widgets/class-lead-form.php:441
-#: includes/settings/schema.php:302
+#: includes/settings/schema.php:307
 msgid "Accent color"
 msgstr "رنگ اصلی"
 
@@ -4201,6 +4204,7 @@ msgstr "آمارها"
 #: includes/elementor/widgets/class-hero.php:101
 #: includes/elementor/widgets/class-hscroll.php:72
 #: includes/elementor/widgets/class-lead-form.php:302
+#: includes/elementor/widgets/class-news.php:184
 #: includes/elementor/widgets/class-search-box.php:81
 #: includes/elementor/widgets/class-showcase.php:205
 #: includes/elementor/widgets/class-showcase.php:224
@@ -4241,7 +4245,7 @@ msgstr "کارت‌های بازشونده"
 #: includes/elementor/widgets/class-search-box.php:152
 #: includes/elementor/widgets/class-service-list.php:92
 #: includes/elementor/widgets/class-steps.php:58
-#: includes/settings/schema.php:700
+#: includes/settings/schema.php:705
 msgid "Icon"
 msgstr "آیکون"
 
@@ -4333,7 +4337,7 @@ msgstr "سؤال‌ها"
 #: includes/elementor/widgets/class-lead-form.php:113
 #: includes/elementor/widgets/class-lead-form.php:212
 #: includes/elementor/widgets/class-lead-form.php:281
-#: includes/settings/schema.php:884
+#: includes/settings/schema.php:889
 msgid "Question"
 msgstr "سؤال"
 
@@ -4439,7 +4443,7 @@ msgstr "واژه‌های میان *ستاره* یکی‌یکی و درخشان 
 
 #: includes/elementor/widgets/class-agency-hero.php:113
 #: includes/elementor/widgets/class-card-stack.php:86
-#: includes/settings/schema.php:890
+#: includes/settings/schema.php:895
 msgid "Short text"
 msgstr "متن کوتاه"
 
@@ -4512,7 +4516,7 @@ msgid "Branding"
 msgstr "برندینگ"
 
 #: includes/elementor/widgets/class-agency-hero.php:200
-#: includes/settings/schema.php:1431
+#: includes/settings/schema.php:1436
 msgid "SEO"
 msgstr "سئو"
 
@@ -4522,7 +4526,7 @@ msgstr "توسعه"
 
 #: includes/elementor/widgets/class-agency-hero.php:210
 #: includes/elementor/widgets/class-badge-ring.php:78
-#: includes/settings/schema.php:549
+#: includes/settings/schema.php:554
 msgid "Network"
 msgstr "شبکه"
 
@@ -4530,38 +4534,38 @@ msgstr "شبکه"
 #: includes/elementor/widgets/class-badge-ring.php:82
 #: includes/elementor/widgets/class-showcase.php:226
 #: includes/elementor/widgets/class-team.php:83
-#: includes/settings/schema.php:551
+#: includes/settings/schema.php:556
 msgid "Instagram"
 msgstr "اینستاگرام"
 
 #: includes/elementor/widgets/class-agency-hero.php:215
 #: includes/elementor/widgets/class-badge-ring.php:83
-#: includes/settings/schema.php:552
+#: includes/settings/schema.php:557
 msgid "Telegram"
 msgstr "تلگرام"
 
 #: includes/elementor/widgets/class-agency-hero.php:216
 #: includes/elementor/widgets/class-badge-ring.php:84
-#: includes/settings/schema.php:553
+#: includes/settings/schema.php:558
 msgid "WhatsApp"
 msgstr "واتس‌اپ"
 
 #: includes/elementor/widgets/class-agency-hero.php:217
 #: includes/elementor/widgets/class-badge-ring.php:85
 #: includes/elementor/widgets/class-team.php:76
-#: includes/settings/schema.php:554
+#: includes/settings/schema.php:559
 msgid "LinkedIn"
 msgstr "لینکدین"
 
 #: includes/elementor/widgets/class-agency-hero.php:218
 #: includes/elementor/widgets/class-badge-ring.php:86
-#: includes/settings/schema.php:555
+#: includes/settings/schema.php:560
 msgid "X"
 msgstr "ایکس"
 
 #: includes/elementor/widgets/class-agency-hero.php:219
 #: includes/elementor/widgets/class-badge-ring.php:87
-#: includes/settings/schema.php:556
+#: includes/settings/schema.php:561
 msgid "YouTube"
 msgstr "یوتیوب"
 
@@ -4663,8 +4667,8 @@ msgid "Full screen"
 msgstr "تمام‌صفحه"
 
 #: includes/elementor/widgets/class-agency-hero.php:353
-#: includes/settings/schema.php:197
-#: includes/settings/schema.php:259
+#: includes/settings/schema.php:202
+#: includes/settings/schema.php:264
 msgid "Compact"
 msgstr "جمع‌وجور"
 
@@ -4695,7 +4699,7 @@ msgid "Text along the circle"
 msgstr "متن روی دایره"
 
 #: includes/elementor/widgets/class-badge-ring.php:61
-#: includes/settings/schema.php:544
+#: includes/settings/schema.php:549
 msgid "Social links"
 msgstr "شبکه‌های اجتماعی"
 
@@ -4712,12 +4716,12 @@ msgstr "استودیوی خلاق • از ۱۳۹۵ • تهران •"
 #: includes/elementor/widgets/class-contact-info.php:99
 #: includes/elementor/widgets/class-lead-form.php:59
 #: includes/forms/class-forms.php:306
-#: includes/settings/schema.php:1560
+#: includes/settings/schema.php:1565
 msgid "Email"
 msgstr "ایمیل"
 
 #: includes/elementor/widgets/class-badge-ring.php:119
-#: includes/settings/schema.php:250
+#: includes/settings/schema.php:255
 msgid "Centre"
 msgstr "وسط‌چین"
 
@@ -4794,7 +4798,7 @@ msgstr "شیشه‌ی مات"
 #: includes/elementor/widgets/class-marquee.php:99
 #: includes/elementor/widgets/class-stories.php:119
 #: includes/elementor/widgets/class-text-scrub.php:66
-#: includes/settings/schema.php:257
+#: includes/settings/schema.php:262
 msgid "Size"
 msgstr "اندازه"
 
@@ -4949,7 +4953,7 @@ msgstr "وسط کارت (لوگو)"
 #: includes/elementor/widgets/class-stories.php:91
 #: includes/elementor/widgets/class-tabs.php:105
 #: includes/elementor/widgets/class-video-button.php:86
-#: includes/settings/schema.php:467
+#: includes/settings/schema.php:472
 msgid "Button text"
 msgstr "متن دکمه"
 
@@ -5007,7 +5011,7 @@ msgid "Reliable and ready for what comes next"
 msgstr "پایدار و آماده‌ی آینده"
 
 #: includes/elementor/widgets/class-bento.php:241
-#: includes/settings/schema.php:607
+#: includes/settings/schema.php:612
 msgid "Grid columns"
 msgstr "تعداد ستون‌ها"
 
@@ -5293,7 +5297,7 @@ msgstr "اعداد"
 #: includes/elementor/widgets/class-counters.php:50
 #: includes/elementor/widgets/class-hero.php:86
 #: includes/elementor/widgets/class-showcase.php:197
-#: includes/settings/schema.php:892
+#: includes/settings/schema.php:897
 msgid "Number"
 msgstr "عدد"
 
@@ -5842,7 +5846,7 @@ msgstr "عناصر"
 #: includes/elementor/widgets/class-flow.php:146
 #: includes/elementor/widgets/class-flow.php:150
 #: includes/elementor/widgets/class-giant-text.php:80
-#: includes/settings/schema.php:989
+#: includes/settings/schema.php:994
 msgid "Motion"
 msgstr "انیمیشن"
 
@@ -5945,7 +5949,7 @@ msgstr "دکمه‌های سربرگ"
 #: includes/elementor/widgets/class-header-actions.php:55
 #: includes/elementor/widgets/class-header-actions.php:144
 #: includes/elementor/widgets/class-search-box.php:217
-#: includes/seo/class-schema.php:369
+#: includes/seo/class-schema.php:370
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -5985,12 +5989,13 @@ msgstr "تماس با ما"
 
 #: includes/elementor/widgets/class-header-actions.php:93
 #: includes/elementor/widgets/class-logo-grid.php:101
+#: includes/elementor/widgets/class-masthead.php:141
 #: includes/elementor/widgets/class-pricing.php:114
 #: includes/elementor/widgets/class-showcase.php:185
 #: includes/elementor/widgets/class-stack.php:98
 #: includes/elementor/widgets/class-stories.php:98
 #: includes/elementor/widgets/class-tabs.php:112
-#: includes/settings/schema.php:474
+#: includes/settings/schema.php:479
 msgid "Button link"
 msgstr "لینک دکمه"
 
@@ -6003,7 +6008,7 @@ msgid "Icon with total"
 msgstr "آیکون با جمع مبلغ"
 
 #: includes/elementor/widgets/class-header-actions.php:147
-#: includes/settings/schema.php:1133
+#: includes/settings/schema.php:1138
 msgid "Interface sounds"
 msgstr "صداهای رابط کاربری"
 
@@ -6334,7 +6339,7 @@ msgid "Short note"
 msgstr "توضیح کوتاه"
 
 #: includes/elementor/widgets/class-lead-form.php:155
-#: includes/settings/schema.php:899
+#: includes/settings/schema.php:904
 msgid "Options"
 msgstr "گزینه‌ها"
 
@@ -6686,11 +6691,84 @@ msgstr "رنگ"
 msgid "Band background"
 msgstr "پس‌زمینه‌ی نوار"
 
+#: includes/elementor/widgets/class-masthead.php:30
+#: includes/elementor/widgets/class-masthead.php:61
+msgid "Masthead"
+msgstr "سرتیتر روزنامه"
+
+#: includes/elementor/widgets/class-masthead.php:73
+msgid "Motto"
+msgstr "شعار"
+
+#: includes/elementor/widgets/class-masthead.php:81
+msgid "Top line, start"
+msgstr "خط بالا، ابتدا"
+
+#: includes/elementor/widgets/class-masthead.php:83
+msgid "Year {year} · Issue {issue}"
+msgstr "سال {year} · شماره‌ی {issue}"
+
+#: includes/elementor/widgets/class-masthead.php:84
+msgid "{issue} becomes the issue number and {year} the year of publication."
+msgstr "به جای {issue} شماره‌ی روز و به جای {year} سال انتشار نوشته می‌شود."
+
+#: includes/elementor/widgets/class-masthead.php:90
+msgid "Top line, middle"
+msgstr "خط بالا، وسط"
+
+#: includes/elementor/widgets/class-masthead.php:92
+msgid "Morning daily"
+msgstr "روزنامه‌ی صبح"
+
+#: includes/elementor/widgets/class-masthead.php:98
+msgid "Top line, end"
+msgstr "خط بالا، انتها"
+
+#: includes/elementor/widgets/class-masthead.php:100
+msgid "Founded {founded}"
+msgstr "تأسیس {founded}"
+
+#: includes/elementor/widgets/class-masthead.php:106
+msgid "First issue"
+msgstr "نخستین شماره"
+
+#: includes/elementor/widgets/class-masthead.php:110
+msgid "Counts the issue number (one a day) and the year of publication."
+msgstr "شماره‌ی روز (هر روز یک شماره) و سال انتشار از این تاریخ شمرده می‌شود."
+
+#: includes/elementor/widgets/class-masthead.php:116
+msgid "Place"
+msgstr "محل انتشار"
+
+#: includes/elementor/widgets/class-masthead.php:118
+msgid "Tehran"
+msgstr "تهران"
+
+#: includes/elementor/widgets/class-masthead.php:124
+msgid "Round stamp"
+msgstr "مهر گرد"
+
+#: includes/elementor/widgets/class-masthead.php:126
+msgid "Special edition"
+msgstr "ویژه‌نامه"
+
+#: includes/elementor/widgets/class-masthead.php:127
+msgid "Leave empty to hide it."
+msgstr "برای پنهان کردن، خالی بگذارید."
+
+#: includes/elementor/widgets/class-masthead.php:133
+msgid "Dateline button"
+msgstr "دکمه‌ی کنار تاریخ"
+
+#: includes/elementor/widgets/class-masthead.php:135
+msgid "Print edition"
+msgstr "نسخه‌ی چاپی"
+
 #: includes/elementor/widgets/class-nav-menu.php:29
 #: includes/elementor/widgets/class-nav-menu.php:56
 #: includes/elementor/widgets/class-nav-menu.php:60
-#: includes/settings/schema.php:677
-#: includes/settings/schema.php:680
+#: includes/settings/schema.php:682
+#: includes/settings/schema.php:685
 msgid "Menu"
 msgstr "منو"
 
@@ -6716,10 +6794,122 @@ msgstr "کپسول نرم"
 msgid "Underline"
 msgstr "خط زیرین"
 
+#: includes/elementor/widgets/class-news.php:34
+msgid "News"
+msgstr "خبرها"
+
+#: includes/elementor/widgets/class-news.php:70
+#: includes/elementor/widgets/class-stories.php:30
+#: includes/elementor/widgets/class-stories.php:47
+msgid "Stories"
+msgstr "استوری‌ها"
+
+#: includes/elementor/widgets/class-news.php:74
+msgid "Set as"
+msgstr "چیدمان"
+
+#: includes/elementor/widgets/class-news.php:78
+msgid "Top story"
+msgstr "خبر اول"
+
+#: includes/elementor/widgets/class-news.php:79
+msgid "Columns with rules"
+msgstr "ستون‌های خط‌کشی‌شده"
+
+#: includes/elementor/widgets/class-news.php:80
+msgid "Picture beside the headline"
+msgstr "تصویر کنار تیتر"
+
+#: includes/elementor/widgets/class-news.php:81
+msgid "Numbered list"
+msgstr "فهرست شماره‌دار"
+
+#: includes/elementor/widgets/class-news.php:82
+msgid "Running headlines"
+msgstr "تیترهای روان"
+
+#: includes/elementor/widgets/class-news.php:93
+#: includes/elementor/widgets/class-portfolio.php:92
+#: includes/elementor/widgets/class-posts.php:75
+#: includes/elementor/widgets/class-product-categories.php:64
+#: includes/elementor/widgets/class-product-categories.php:68
+#: includes/elementor/widgets/class-products.php:89
+#: includes/shop/class-product-query.php:98
+msgid "Categories"
+msgstr "دسته‌بندی‌ها"
+
+#: includes/elementor/widgets/class-news.php:103
+msgid "Number of stories"
+msgstr "تعداد خبر"
+
+#: includes/elementor/widgets/class-news.php:114
+#: includes/elementor/widgets/class-posts.php:99
+msgid "Skip first"
+msgstr "رد کردن موارد اول"
+
+#: includes/elementor/widgets/class-news.php:123
+#: includes/elementor/widgets/class-posts.php:85
+msgid "Order"
+msgstr "ترتیب"
+
+#: includes/elementor/widgets/class-news.php:127
+#: includes/elementor/widgets/class-posts.php:89
+msgid "Newest first"
+msgstr "جدیدترین‌ها اول"
+
+#: includes/elementor/widgets/class-news.php:128
+#: includes/elementor/widgets/class-posts.php:90
+msgid "Most discussed"
+msgstr "پربحث‌ترین‌ها"
+
+#: includes/elementor/widgets/class-news.php:129
+#: includes/elementor/widgets/class-posts.php:91
+#: includes/shop/class-product-query.php:31
+msgid "Random"
+msgstr "تصادفی"
+
+#: includes/elementor/widgets/class-news.php:154
+msgid "First story wider, with its picture"
+msgstr "خبر نخست پهن‌تر و با تصویر"
+
+#: includes/elementor/widgets/class-news.php:164
+msgid "Pictures"
+msgstr "تصویرها"
+
+#: includes/elementor/widgets/class-news.php:174
+msgid "Summary"
+msgstr "خلاصه"
+
+#: includes/elementor/widgets/class-news.php:186
+msgid "Latest news"
+msgstr "تازه‌ترین خبرها"
+
+#: includes/elementor/widgets/class-news.php:187
+msgid "The bar above the stories, or the tag at the start of the running line. Leave empty to hide it."
+msgstr "عنوان بالای خبرها، یا برچسب ابتدای تیترهای روان. برای پنهان کردن، خالی بگذارید."
+
+#: includes/elementor/widgets/class-news.php:193
+msgid "Link beside the label"
+msgstr "پیوند کنار عنوان"
+
+#: includes/elementor/widgets/class-news.php:209
+msgid "One pass takes (seconds)"
+msgstr "مدت هر دور (ثانیه)"
+
+#: includes/elementor/widgets/class-news.php:252
+msgid "No posts yet. Publish a few and they will appear here."
+msgstr "هنوز نوشته‌ای نیست. چند نوشته منتشر کنید تا اینجا نمایش داده شوند."
+
+#. translators: %s: minutes
+#: includes/elementor/widgets/class-news.php:369
+#, php-format
+msgid "%s min read"
+msgstr "%s دقیقه مطالعه"
+
 #: includes/elementor/widgets/class-portfolio.php:32
 #: includes/portfolio/class-portfolio.php:59
 #: includes/portfolio/class-portfolio.php:70
-#: includes/settings/schema.php:228
+#: includes/settings/schema.php:233
 msgid "Portfolio"
 msgstr "نمونه‌کارها"
 
@@ -6737,15 +6927,6 @@ msgstr "پروژه‌ها"
 #: includes/elementor/widgets/class-portfolio.php:82
 msgid "Number of projects"
 msgstr "تعداد پروژه‌ها"
-
-#: includes/elementor/widgets/class-portfolio.php:92
-#: includes/elementor/widgets/class-posts.php:75
-#: includes/elementor/widgets/class-product-categories.php:64
-#: includes/elementor/widgets/class-product-categories.php:68
-#: includes/elementor/widgets/class-products.php:89
-#: includes/shop/class-product-query.php:98
-msgid "Categories"
-msgstr "دسته‌بندی‌ها"
 
 #: includes/elementor/widgets/class-portfolio.php:102
 msgid "Category filters"
@@ -6789,27 +6970,6 @@ msgstr "انتخاب نوشته‌ها"
 msgid "Number of posts"
 msgstr "تعداد نوشته‌ها"
 
-#: includes/elementor/widgets/class-posts.php:85
-msgid "Order"
-msgstr "ترتیب"
-
-#: includes/elementor/widgets/class-posts.php:89
-msgid "Newest first"
-msgstr "جدیدترین‌ها اول"
-
-#: includes/elementor/widgets/class-posts.php:90
-msgid "Most discussed"
-msgstr "پربحث‌ترین‌ها"
-
-#: includes/elementor/widgets/class-posts.php:91
-#: includes/shop/class-product-query.php:31
-msgid "Random"
-msgstr "تصادفی"
-
-#: includes/elementor/widgets/class-posts.php:99
-msgid "Skip first"
-msgstr "رد کردن موارد اول"
-
 #: includes/elementor/widgets/class-posts.php:108
 msgid "Page numbers"
 msgstr "شماره‌ی صفحات"
@@ -6820,7 +6980,7 @@ msgstr "اولی برجسته + شبکه‌ای"
 
 #: includes/elementor/widgets/class-posts.php:126
 #: includes/elementor/widgets/class-search-box.php:103
-#: includes/settings/schema.php:600
+#: includes/settings/schema.php:605
 msgid "List"
 msgstr "فهرستی"
 
@@ -7511,7 +7671,7 @@ msgid "From"
 msgstr "مبدأ"
 
 #: includes/elementor/widgets/class-search-box.php:89
-#: includes/settings/schema.php:1253
+#: includes/settings/schema.php:1258
 msgid "Parameter name"
 msgstr "نام پارامتر"
 
@@ -7804,8 +7964,8 @@ msgid "Site Logo"
 msgstr "لوگوی سایت"
 
 #: includes/elementor/widgets/class-site-logo.php:50
-#: includes/settings/schema.php:399
-#: includes/settings/schema.php:400
+#: includes/settings/schema.php:404
+#: includes/settings/schema.php:405
 msgid "Logo"
 msgstr "لوگو"
 
@@ -7922,11 +8082,6 @@ msgstr "خط زمانی عمودی"
 #: includes/elementor/widgets/class-steps.php:108
 msgid "Show as cards"
 msgstr "نمایش به‌صورت کارت"
-
-#: includes/elementor/widgets/class-stories.php:30
-#: includes/elementor/widgets/class-stories.php:47
-msgid "Stories"
-msgstr "استوری‌ها"
 
 #: includes/elementor/widgets/class-stories.php:54
 #: includes/elementor/widgets/class-stories.php:109
@@ -8419,31 +8574,31 @@ msgstr "درخواست پروژه"
 msgid "Page"
 msgstr "برگه"
 
-#: includes/frontend/class-frontend.php:111
+#: includes/frontend/class-frontend.php:129
 msgid "Choose at least one option."
 msgstr "دست‌کم یک گزینه را انتخاب کنید."
 
-#: includes/frontend/class-frontend.php:112
+#: includes/frontend/class-frontend.php:130
 msgid "Choose an option."
 msgstr "یک گزینه را انتخاب کنید."
 
-#: includes/frontend/class-frontend.php:113
+#: includes/frontend/class-frontend.php:131
 msgid "This field is required."
 msgstr "پر کردن این فیلد الزامی است."
 
-#: includes/frontend/class-frontend.php:114
+#: includes/frontend/class-frontend.php:132
 msgid "Enter a valid mobile number, e.g. 0912 345 6789."
 msgstr "شماره موبایل معتبری وارد کنید؛ مثلاً ۰۹۱۲ ۳۴۵ ۶۷۸۹."
 
-#: includes/frontend/class-frontend.php:115
+#: includes/frontend/class-frontend.php:133
 msgid "Enter a valid email address."
 msgstr "نشانی ایمیل معتبری وارد کنید."
 
-#: includes/frontend/class-frontend.php:116
+#: includes/frontend/class-frontend.php:134
 msgid "Please accept to continue."
 msgstr "برای ادامه، لطفاً این گزینه را تأیید کنید."
 
-#: includes/frontend/class-frontend.php:163
+#: includes/frontend/class-frontend.php:182
 msgid "Could not connect. Please try again."
 msgstr "اتصال برقرار نشد. دوباره تلاش کنید."
 
@@ -8646,7 +8801,7 @@ msgid "Professional services, agency or studio"
 msgstr "خدمات تخصصی، آژانس یا استودیو"
 
 #: includes/seo/class-schema.php:31
-#: includes/settings/schema.php:632
+#: includes/settings/schema.php:637
 msgid "Shop"
 msgstr "فروشگاه"
 
@@ -8682,12 +8837,16 @@ msgstr "باشگاه یا مجموعه‌ی ورزشی"
 msgid "Hotel or guesthouse"
 msgstr "هتل یا اقامتگاه"
 
-#: includes/seo/class-schema.php:322
+#: includes/seo/class-schema.php:43
+msgid "Newspaper, magazine or news site"
+msgstr "روزنامه، مجله یا سایت خبری"
+
+#: includes/seo/class-schema.php:323
 msgid "Home"
 msgstr "خانه"
 
-#: includes/seo/class-schema.php:366
-#: includes/settings/schema.php:588
+#: includes/seo/class-schema.php:367
+#: includes/settings/schema.php:593
 msgid "Blog"
 msgstr "وبلاگ"
 
@@ -8921,1403 +9080,1411 @@ msgstr "شعله"
 msgid "Fog grey, deep black and burning orange; large rounded panels"
 msgstr "خاکستری مه‌آلود، مشکی عمیق و نارنجی آتشین؛ پنل‌های بزرگ با گوشه‌های گرد"
 
-#: includes/settings/schema.php:185
+#: includes/settings/schema.php:181
+msgid "Press"
+msgstr "روزنامه"
+
+#: includes/settings/schema.php:182
+msgid "Newsprint, ink and one red; ruled columns and photographs in black and white"
+msgstr "کاغذ کاهی، مرکب و یک قرمز؛ ستون‌های خط‌کشی‌شده و عکس‌های سیاه‌وسفید"
+
+#: includes/settings/schema.php:190
 msgid "Maximum width of page content. 1150px keeps every section comfortable on a 15\" laptop; Elementor's container width is kept in sync."
 msgstr "بیشترین عرض محتوای برگه‌ها. عرض ۱۱۵۰ پیکسل همه‌ی بخش‌ها را روی لپ‌تاپ ۱۵ اینچی جمع‌وجور و خوانا نگه می‌دارد. عرض کانتینرهای المنتور هم هم‌زمان با همین مقدار تنظیم می‌شود."
 
-#: includes/settings/schema.php:193
+#: includes/settings/schema.php:198
 msgid "Density"
 msgstr "تراکم"
 
-#: includes/settings/schema.php:194
+#: includes/settings/schema.php:199
 msgid "Vertical spacing between and inside sections. Compact shows more on a laptop screen with less scrolling."
 msgstr "فاصله‌ی عمودی میان بخش‌ها و درون آن‌ها. حالت «جمع‌وجور» محتوای بیشتری را با اسکرول کمتر روی صفحه‌ی لپ‌تاپ نشان می‌دهد."
 
-#: includes/settings/schema.php:201
+#: includes/settings/schema.php:206
 msgid "Balanced"
 msgstr "متعادل"
 
-#: includes/settings/schema.php:205
+#: includes/settings/schema.php:210
 msgid "Spacious"
 msgstr "جادار"
 
-#: includes/settings/schema.php:212
+#: includes/settings/schema.php:217
 msgid "Base section height"
 msgstr "ارتفاع پایه‌ی بخش‌ها"
 
-#: includes/settings/schema.php:213
+#: includes/settings/schema.php:218
 msgid "Heroes, sliders and showcase sections are sized from this value so each one fits a laptop screen."
 msgstr "ارتفاع هیروها، اسلایدرها و بخش‌های نمایشی از همین عدد محاسبه می‌شود تا هر کدام در یک صفحه‌ی لپ‌تاپ جا شود."
 
-#: includes/settings/schema.php:220
+#: includes/settings/schema.php:225
 msgid "Smooth page transitions"
 msgstr "انتقال نرم بین برگه‌ها"
 
-#: includes/settings/schema.php:221
+#: includes/settings/schema.php:226
 msgid "Cross-fades between pages in supporting browsers. No JavaScript, no delay."
 msgstr "در مرورگرهایی که پشتیبانی می‌کنند، برگه‌ها با محوشدن نرم جای هم را می‌گیرند؛ بدون جاوااسکریپت و بدون تأخیر."
 
-#: includes/settings/schema.php:224
+#: includes/settings/schema.php:229
 msgid "Always show Hamista in Persian"
 msgstr "هامیستا همیشه فارسی باشد"
 
-#: includes/settings/schema.php:225
+#: includes/settings/schema.php:230
 msgid "Keeps the Hamista panel, widgets and theme texts in Persian even if the site or your profile language is set to English."
 msgstr "پنل هامیستا، ویجت‌ها و متن‌های قالب را حتی اگر زبان سایت یا پروفایل شما انگلیسی باشد، فارسی نگه می‌دارد."
 
-#: includes/settings/schema.php:229
+#: includes/settings/schema.php:234
 msgid "A \"Portfolio\" section in the dashboard for projects, with categories, an archive page and the Portfolio widget."
 msgstr "بخش «نمونه‌کارها» در پیشخوان برای پروژه‌ها، همراه با دسته‌بندی، برگه‌ی بایگانی و ویجت نمونه‌کار."
 
-#: includes/settings/schema.php:232
+#: includes/settings/schema.php:237
 msgid "On pages"
 msgstr "در برگه‌ها"
 
-#: includes/settings/schema.php:233
+#: includes/settings/schema.php:238
 msgid "Page title area"
 msgstr "نوار عنوان برگه‌ها"
 
-#: includes/settings/schema.php:234
+#: includes/settings/schema.php:239
 msgid "The band with the title and breadcrumbs above the content. Pages built with Elementor and the front page never show it; each page can still choose for itself under \"Page options\"."
 msgstr "نوار عنوان و مسیر راهنما بالای محتوا. برگه‌های ساخته‌شده با المنتور و صفحه‌ی اصلی آن را ندارند؛ هر برگه هم می‌تواند در «تنظیمات برگه» برای خودش تصمیم بگیرد."
 
-#: includes/settings/schema.php:236
+#: includes/settings/schema.php:241
 msgid "On blog, archives and search results"
 msgstr "در وبلاگ، بایگانی‌ها و نتایج جستجو"
 
-#: includes/settings/schema.php:238
+#: includes/settings/schema.php:243
 msgid "On shop, cart, checkout and account pages"
 msgstr "در فروشگاه، سبد خرید، پرداخت و حساب کاربری"
 
-#: includes/settings/schema.php:246
+#: includes/settings/schema.php:251
 msgid "Right"
 msgstr "راست‌چین"
 
-#: includes/settings/schema.php:265
+#: includes/settings/schema.php:270
 msgid "Back-to-top button"
 msgstr "دکمه‌ی بازگشت به بالا"
 
-#: includes/settings/schema.php:266
+#: includes/settings/schema.php:271
 msgid "Other"
 msgstr "سایر"
 
-#: includes/settings/schema.php:269
+#: includes/settings/schema.php:274
 msgid "Breadcrumbs"
 msgstr "مسیر راهنما"
 
-#: includes/settings/schema.php:270
+#: includes/settings/schema.php:275
 msgid "Uses Yoast SEO or Rank Math breadcrumbs when they are enabled."
 msgstr "اگر مسیر راهنمای یوآست سئو یا رنک مث فعال باشد، از همان استفاده می‌شود."
 
-#: includes/settings/schema.php:275
+#: includes/settings/schema.php:280
 msgid "Colors & dark mode"
 msgstr "رنگ‌ها و حالت تاریک"
 
-#: includes/settings/schema.php:280
+#: includes/settings/schema.php:285
 msgid "Default color scheme"
 msgstr "حالت رنگ پیش‌فرض"
 
-#: includes/settings/schema.php:291
+#: includes/settings/schema.php:296
 msgid "Follow device"
 msgstr "مطابق دستگاه"
 
-#: includes/settings/schema.php:297
+#: includes/settings/schema.php:302
 msgid "Let visitors switch light/dark"
 msgstr "امکان تغییر حالت روشن/تاریک برای بازدیدکنندگان"
 
-#: includes/settings/schema.php:298
+#: includes/settings/schema.php:303
 msgid "Shows the toggle in the header and remembers each visitor's choice."
 msgstr "کلید تغییر حالت در سربرگ نمایش داده می‌شود و انتخاب هر بازدیدکننده به خاطر سپرده می‌شود."
 
-#: includes/settings/schema.php:303
+#: includes/settings/schema.php:308
 msgid "Buttons, links and highlights. Leave empty to use the style kit's color."
 msgstr "برای دکمه‌ها، لینک‌ها و بخش‌های برجسته. خالی بگذارید تا رنگ سبک طراحی استفاده شود."
 
-#: includes/settings/schema.php:309
+#: includes/settings/schema.php:314
 msgid "Accent in dark mode"
 msgstr "رنگ اصلی در حالت تاریک"
 
-#: includes/settings/schema.php:310
+#: includes/settings/schema.php:315
 msgid "Optional. A slightly brighter tone usually reads better on dark."
 msgstr "اختیاری. معمولاً رنگی کمی روشن‌تر روی زمینه‌ی تیره بهتر دیده می‌شود."
 
-#: includes/settings/schema.php:317
+#: includes/settings/schema.php:322
 msgid "Typography"
 msgstr "تایپوگرافی"
 
-#: includes/settings/schema.php:319
+#: includes/settings/schema.php:324
 msgid "All fonts are served from your own site — nothing loads from Google."
 msgstr "همه‌ی فونت‌ها از سایت خودتان بارگذاری می‌شوند؛ هیچ چیزی از گوگل دریافت نمی‌شود."
 
-#: includes/settings/schema.php:323
-#: includes/settings/schema.php:324
+#: includes/settings/schema.php:328
+#: includes/settings/schema.php:329
 msgid "Font library"
 msgstr "کتابخانه‌ی فونت"
 
-#: includes/settings/schema.php:325
+#: includes/settings/schema.php:330
 msgid "Licensed Persian fonts that come with Hamista. Switch off the ones you do not want in the menus and in Elementor, and the weights you do not need. A page only downloads the fonts and weights it uses."
 msgstr "فونت‌های فارسی دارای مجوز که همراه هامیستا آمده‌اند. هر فونتی را که در منوها و المنتور لازم ندارید خاموش کنید و وزن‌های اضافه را هم بردارید. هر صفحه فقط فونت‌ها و وزن‌هایی را دریافت می‌کند که واقعاً به کار برده است."
 
-#: includes/settings/schema.php:329
+#: includes/settings/schema.php:334
 msgid "Site fonts"
 msgstr "فونت‌های سایت"
 
-#: includes/settings/schema.php:330
+#: includes/settings/schema.php:335
 msgid "Body font"
 msgstr "فونت متن"
 
-#: includes/settings/schema.php:336
+#: includes/settings/schema.php:341
 msgid "Body text weight"
 msgstr "وزن متن"
 
-#: includes/settings/schema.php:343
+#: includes/settings/schema.php:348
 msgid "Heading font"
 msgstr "فونت تیترها"
 
-#: includes/settings/schema.php:349
+#: includes/settings/schema.php:354
 msgid "Heading weight"
 msgstr "وزن تیترها"
 
-#: includes/settings/schema.php:356
+#: includes/settings/schema.php:361
 msgid "Your own fonts"
 msgstr "فونت‌های خودتان"
 
-#: includes/settings/schema.php:357
+#: includes/settings/schema.php:362
 msgid "Font files"
 msgstr "فایل‌های فونت"
 
-#: includes/settings/schema.php:358
+#: includes/settings/schema.php:363
 msgid "Upload your licensed font files (woff2 recommended). The weight is detected from each file name, e.g. YekanBakhFaNum-Bold.woff2 → 700. Use the family names \"Yekan Bakh\" and \"Digits\" to replace the theme defaults."
 msgstr "فایل‌های فونتی را که مجوز استفاده‌شان را دارید بارگذاری کنید (فرمت woff2 پیشنهاد می‌شود). وزن هر فایل از نامش تشخیص داده می‌شود؛ مثلاً YekanBakhFaNum-Bold.woff2 وزن ۷۰۰ است. برای جایگزین کردن فونت‌های پیش‌فرض قالب، از نام‌های خانواده‌ی «Yekan Bakh» و «Digits» استفاده کنید."
 
-#: includes/settings/schema.php:362
+#: includes/settings/schema.php:367
 msgid "Numbers, size and dates"
 msgstr "اعداد، اندازه و تاریخ"
 
-#: includes/settings/schema.php:363
+#: includes/settings/schema.php:368
 msgid "Numbers font"
 msgstr "فونت اعداد"
 
-#: includes/settings/schema.php:364
+#: includes/settings/schema.php:369
 msgid "Used for counters, prices, dates and codes."
 msgstr "برای شمارنده‌ها، قیمت‌ها، تاریخ‌ها و کدها."
 
-#: includes/settings/schema.php:370
+#: includes/settings/schema.php:375
 msgid "Base font size"
 msgstr "اندازه‌ی پایه‌ی فونت"
 
-#: includes/settings/schema.php:378
+#: includes/settings/schema.php:383
 msgid "Persian digits"
 msgstr "اعداد فارسی"
 
-#: includes/settings/schema.php:379
+#: includes/settings/schema.php:384
 msgid "Prefer FaNum font files and show numbers as ۱۲۳ in theme output."
 msgstr "فایل‌های فونت FaNum در اولویت قرار می‌گیرند و اعداد در خروجی قالب به شکل ۱۲۳ نمایش داده می‌شوند."
 
-#: includes/settings/schema.php:382
+#: includes/settings/schema.php:387
 msgid "Solar Hijri (Jalali) dates"
 msgstr "تاریخ شمسی"
 
-#: includes/settings/schema.php:383
+#: includes/settings/schema.php:388
 msgid "Shows post and comment dates in the Persian calendar on Persian sites. Skipped automatically if WP-Parsidate is active."
 msgstr "تاریخ نوشته‌ها و دیدگاه‌ها در سایت‌های فارسی به تقویم شمسی نمایش داده می‌شود. اگر افزونه‌ی پارسی‌دیت (WP-Parsidate) فعال باشد، این گزینه خودبه‌خود کنار می‌رود."
 
-#: includes/settings/schema.php:393
+#: includes/settings/schema.php:398
 msgid "Header source"
 msgstr "منبع سربرگ"
 
-#: includes/settings/schema.php:394
+#: includes/settings/schema.php:399
 msgid "Design your own header with Elementor in Hamista → Templates, then pick it here."
 msgstr "سربرگ دلخواهتان را در هامیستا ← تمپلیت‌ها با المنتور طراحی کنید و اینجا انتخابش کنید."
 
-#: includes/settings/schema.php:405
+#: includes/settings/schema.php:410
 msgid "Logo for dark mode"
 msgstr "لوگوی حالت تاریک"
 
-#: includes/settings/schema.php:410
+#: includes/settings/schema.php:415
 msgid "Logo height"
 msgstr "ارتفاع لوگو"
 
-#: includes/settings/schema.php:418
+#: includes/settings/schema.php:423
 msgid "Built-in header"
 msgstr "سربرگ پیش‌فرض"
 
-#: includes/settings/schema.php:421
+#: includes/settings/schema.php:426
 msgid "Menu in the middle"
 msgstr "منو در وسط"
 
-#: includes/settings/schema.php:425
+#: includes/settings/schema.php:430
 msgid "Menu beside the logo"
 msgstr "منو کنار لوگو"
 
-#: includes/settings/schema.php:429
+#: includes/settings/schema.php:434
 msgid "Centered logo"
 msgstr "لوگو در وسط"
 
-#: includes/settings/schema.php:436
+#: includes/settings/schema.php:441
 msgid "Sticky header"
 msgstr "سربرگ چسبان"
 
-#: includes/settings/schema.php:440
+#: includes/settings/schema.php:445
 msgid "Hide while scrolling down"
 msgstr "پنهان شدن هنگام اسکرول به پایین"
 
-#: includes/settings/schema.php:441
+#: includes/settings/schema.php:446
 msgid "Gives content more room; reappears as soon as visitors scroll up."
 msgstr "فضای بیشتری به محتوا می‌دهد و با اسکرول به بالا دوباره ظاهر می‌شود."
 
-#: includes/settings/schema.php:448
+#: includes/settings/schema.php:453
 msgid "Floating glass bar"
 msgstr "نوار شیشه‌ای شناور"
 
-#: includes/settings/schema.php:449
+#: includes/settings/schema.php:454
 msgid "The header floats a little below the top as a rounded bar of frosted glass, over the page."
 msgstr "سربرگ کمی پایین‌تر از لبه‌ی بالا، به شکل نواری گرد از شیشه‌ی مات روی صفحه شناور می‌شود."
 
-#: includes/settings/schema.php:453
+#: includes/settings/schema.php:458
 msgid "Search button"
 msgstr "دکمه‌ی جست‌وجو"
 
-#: includes/settings/schema.php:457
+#: includes/settings/schema.php:462
 msgid "Account button"
 msgstr "دکمه‌ی حساب کاربری"
 
-#: includes/settings/schema.php:461
+#: includes/settings/schema.php:466
 msgid "Cart button"
 msgstr "دکمه‌ی سبد خرید"
 
-#: includes/settings/schema.php:468
+#: includes/settings/schema.php:473
 msgid "e.g. Get started"
 msgstr "مثلاً: شروع کنید"
 
-#: includes/settings/schema.php:480
+#: includes/settings/schema.php:485
 msgid "Mobile action bar"
 msgstr "نوار اقدام سریع موبایل"
 
-#: includes/settings/schema.php:481
+#: includes/settings/schema.php:486
 msgid "A bar fixed to the bottom of phone screens, within thumb reach: one main button plus call and WhatsApp shortcuts."
 msgstr "نواری ثابت در پایین صفحه‌ی گوشی، در دسترس انگشت شست: یک دکمه‌ی اصلی به‌همراه میان‌بُر تماس و واتس‌اپ."
 
-#: includes/settings/schema.php:486
+#: includes/settings/schema.php:491
 msgid "Main button text"
 msgstr "متن دکمه‌ی اصلی"
 
-#: includes/settings/schema.php:487
+#: includes/settings/schema.php:492
 msgid "e.g. Free consultation"
 msgstr "مثلاً: مشاوره‌ی رایگان"
 
-#: includes/settings/schema.php:493
+#: includes/settings/schema.php:498
 msgid "Main button link"
 msgstr "لینک دکمه‌ی اصلی"
 
-#: includes/settings/schema.php:500
+#: includes/settings/schema.php:505
 msgid "Phone number"
 msgstr "شماره‌ی تلفن"
 
-#: includes/settings/schema.php:507
+#: includes/settings/schema.php:512
 msgid "WhatsApp number"
 msgstr "شماره‌ی واتس‌اپ"
 
-#: includes/settings/schema.php:520
+#: includes/settings/schema.php:525
 msgid "Footer source"
 msgstr "منبع پابرگ"
 
-#: includes/settings/schema.php:521
+#: includes/settings/schema.php:526
 msgid "Design your own footer with Elementor in Hamista → Templates, then pick it here."
 msgstr "پابرگ دلخواهتان را در هامیستا ← تمپلیت‌ها با المنتور طراحی کنید و اینجا انتخابش کنید."
 
-#: includes/settings/schema.php:526
+#: includes/settings/schema.php:531
 msgid "About text"
 msgstr "متن درباره‌ی ما"
 
-#: includes/settings/schema.php:531
+#: includes/settings/schema.php:536
 msgid "Widget columns"
 msgstr "ستون‌های ویجت"
 
-#: includes/settings/schema.php:532
+#: includes/settings/schema.php:537
 msgid "Fill them in Appearance → Widgets (Footer column 1–4)."
 msgstr "محتوای ستون‌ها را از نمایش ← ابزارک‌ها پر کنید (ستون پابرگ ۱ تا ۴)."
 
-#: includes/settings/schema.php:545
+#: includes/settings/schema.php:550
 msgid "Add link"
 msgstr "افزودن لینک"
 
-#: includes/settings/schema.php:557
+#: includes/settings/schema.php:562
 msgid "Aparat"
 msgstr "آپارات"
 
-#: includes/settings/schema.php:558
+#: includes/settings/schema.php:563
 msgid "Eitaa"
 msgstr "ایتا"
 
-#: includes/settings/schema.php:559
+#: includes/settings/schema.php:564
 msgid "Bale"
 msgstr "بله"
 
-#: includes/settings/schema.php:560
+#: includes/settings/schema.php:565
 msgid "Rubika"
 msgstr "روبیکا"
 
-#: includes/settings/schema.php:561
+#: includes/settings/schema.php:566
 msgid "GitHub"
 msgstr "گیت‌هاب"
 
-#: includes/settings/schema.php:562
+#: includes/settings/schema.php:567
 msgid "Dribbble"
 msgstr "دریبل"
 
-#: includes/settings/schema.php:563
+#: includes/settings/schema.php:568
 msgid "Behance"
 msgstr "بیهنس"
 
-#: includes/settings/schema.php:568
+#: includes/settings/schema.php:573
 msgid "Profile URL"
 msgstr "نشانی پروفایل"
 
-#: includes/settings/schema.php:576
+#: includes/settings/schema.php:581
 msgid "Copyright line"
 msgstr "متن کپی‌رایت"
 
-#: includes/settings/schema.php:577
+#: includes/settings/schema.php:582
 msgid "Use {year} for the current year."
 msgstr "برای سال جاری از {year} استفاده کنید."
 
-#: includes/settings/schema.php:578
+#: includes/settings/schema.php:583
 msgid "© {year} Your brand. All rights reserved."
 msgstr "© {year} نام برند شما. همه‌ی حقوق محفوظ است."
 
-#: includes/settings/schema.php:582
+#: includes/settings/schema.php:587
 msgid "Large wordmark at the bottom"
 msgstr "لوگوتایپ بزرگ در انتهای پابرگ"
 
-#: includes/settings/schema.php:593
+#: includes/settings/schema.php:598
 msgid "Archive layout"
 msgstr "چیدمان آرشیو"
 
-#: includes/settings/schema.php:616
+#: includes/settings/schema.php:621
 msgid "Feature the newest post"
 msgstr "برجسته کردن تازه‌ترین نوشته"
 
-#: includes/settings/schema.php:619
+#: includes/settings/schema.php:624
 msgid "Sidebar on archives"
 msgstr "ستون کناری در آرشیوها"
 
-#: includes/settings/schema.php:621
+#: includes/settings/schema.php:626
 msgid "Reading time"
 msgstr "زمان مطالعه"
 
-#: includes/settings/schema.php:622
+#: includes/settings/schema.php:627
 msgid "Single post"
 msgstr "نوشته‌ی تکی"
 
-#: includes/settings/schema.php:624
+#: includes/settings/schema.php:629
 msgid "Reading progress bar"
 msgstr "نوار پیشرفت مطالعه"
 
-#: includes/settings/schema.php:625
+#: includes/settings/schema.php:630
 msgid "Share buttons"
 msgstr "دکمه‌های اشتراک‌گذاری"
 
-#: includes/settings/schema.php:626
+#: includes/settings/schema.php:631
 msgid "Author box"
 msgstr "معرفی نویسنده"
 
-#: includes/settings/schema.php:627
+#: includes/settings/schema.php:632
 msgid "Previous / next post"
 msgstr "نوشته‌ی قبلی / بعدی"
 
-#: includes/settings/schema.php:628
+#: includes/settings/schema.php:633
 msgid "Related posts"
 msgstr "نوشته‌های مرتبط"
 
-#: includes/settings/schema.php:638
+#: includes/settings/schema.php:643
 msgid "Products per row"
 msgstr "تعداد محصول در هر ردیف"
 
-#: includes/settings/schema.php:647
+#: includes/settings/schema.php:652
 msgid "Shop sidebar"
 msgstr "ستون کناری فروشگاه"
 
-#: includes/settings/schema.php:648
+#: includes/settings/schema.php:653
 msgid "Add filters in Appearance → Widgets → Shop sidebar."
 msgstr "فیلترها را از نمایش ← ابزارک‌ها ← ستون کناری فروشگاه اضافه کنید."
 
-#: includes/settings/schema.php:651
+#: includes/settings/schema.php:656
 msgid "Show second image on hover"
 msgstr "نمایش تصویر دوم با رفتن ماوس روی محصول"
 
-#: includes/settings/schema.php:656
+#: includes/settings/schema.php:661
 msgid "Account area"
 msgstr "حساب کاربری"
 
-#: includes/settings/schema.php:659
+#: includes/settings/schema.php:664
 msgid "The customer's account pages: menu items, your own tabs and what the dashboard shows. Tabs can show any page or a Hamista block designed with Elementor."
 msgstr "صفحه‌های حساب مشتری: آیتم‌های منو، زبانه‌های دلخواه و آنچه پیشخوان نشان می‌دهد. هر زبانه می‌تواند یک برگه یا بلوک هامیستا را که با المنتور طراحی شده نشان دهد."
 
-#: includes/settings/schema.php:666
+#: includes/settings/schema.php:671
 msgid "Menu beside the content"
 msgstr "منو کنار محتوا"
 
-#: includes/settings/schema.php:670
+#: includes/settings/schema.php:675
 msgid "Tabs above the content"
 msgstr "زبانه‌ها بالای محتوا"
 
-#: includes/settings/schema.php:678
+#: includes/settings/schema.php:683
 msgid "Add the items in the order you want them. Leave the list empty to keep the standard WooCommerce menu. \"Your own tab\" shows the chosen page or block at the address you give it; \"Link\" goes to any address."
 msgstr "آیتم‌ها را به ترتیب دلخواه اضافه کنید. اگر فهرست خالی بماند، منوی پیش‌فرض ووکامرس نمایش داده می‌شود. «زبانه‌ی دلخواه» برگه یا بلوک انتخاب‌شده را در نشانی تعیین‌شده نشان می‌دهد و «لینک» به هر نشانی دلخواه می‌رود."
 
-#: includes/settings/schema.php:679
+#: includes/settings/schema.php:684
 msgid "Add an item"
 msgstr "افزودن آیتم"
 
-#: includes/settings/schema.php:684
+#: includes/settings/schema.php:689
 msgid "Item"
 msgstr "آیتم"
 
-#: includes/settings/schema.php:688
+#: includes/settings/schema.php:693
 msgid "Your own tab"
 msgstr "زبانه‌ی دلخواه"
 
-#: includes/settings/schema.php:695
+#: includes/settings/schema.php:700
 msgid "Name in the menu"
 msgstr "نام در منو"
 
-#: includes/settings/schema.php:696
+#: includes/settings/schema.php:701
 msgid "Empty keeps the standard name"
 msgstr "اگر خالی بماند، نام پیش‌فرض نمایش داده می‌شود"
 
-#: includes/settings/schema.php:711
+#: includes/settings/schema.php:716
 msgid "Address in English letters"
 msgstr "نشانی با حروف انگلیسی"
 
-#: includes/settings/schema.php:717
+#: includes/settings/schema.php:722
 msgid "Link address"
 msgstr "نشانی لینک"
 
-#: includes/settings/schema.php:723
+#: includes/settings/schema.php:728
 msgid "Greeting"
 msgstr "خوشامد"
 
-#: includes/settings/schema.php:728
+#: includes/settings/schema.php:733
 msgid "Line under the greeting"
 msgstr "جمله‌ی زیر خوشامد"
 
-#: includes/settings/schema.php:729
+#: includes/settings/schema.php:734
 msgid "Your orders, appointments and account details, all in one place."
 msgstr "سفارش‌ها، نوبت‌ها و اطلاعات حسابتان، همه یک‌جا."
 
-#: includes/settings/schema.php:732
+#: includes/settings/schema.php:737
 msgid "Summary cards"
 msgstr "کارت‌های خلاصه"
 
-#: includes/settings/schema.php:733
+#: includes/settings/schema.php:738
 msgid "Latest orders"
 msgstr "آخرین سفارش‌ها"
 
-#: includes/settings/schema.php:736
+#: includes/settings/schema.php:741
 msgid "Your own content"
 msgstr "محتوای دلخواه"
 
-#: includes/settings/schema.php:737
+#: includes/settings/schema.php:742
 msgid "A page or a Hamista block (Hamista → Templates) designed with Elementor, e.g. offers, news or a support form."
 msgstr "یک برگه یا بلوک هامیستا (هامیستا ← تمپلیت‌ها) که با المنتور طراحی شده؛ مثلاً پیشنهادها، اخبار یا فرم پشتیبانی."
 
-#: includes/settings/schema.php:742
+#: includes/settings/schema.php:747
 msgid "Where it goes"
 msgstr "محل نمایش"
 
-#: includes/settings/schema.php:744
+#: includes/settings/schema.php:749
 msgid "Above the dashboard"
 msgstr "بالای پیشخوان"
 
-#: includes/settings/schema.php:745
+#: includes/settings/schema.php:750
 msgid "Below the dashboard"
 msgstr "پایین پیشخوان"
 
-#: includes/settings/schema.php:746
+#: includes/settings/schema.php:751
 msgid "Instead of the dashboard"
 msgstr "به‌جای پیشخوان"
 
-#: includes/settings/schema.php:752
+#: includes/settings/schema.php:757
 msgid "Booking & appointments"
 msgstr "نوبت‌دهی و رزرو"
 
-#: includes/settings/schema.php:754
+#: includes/settings/schema.php:759
 msgid "For anything booked by time: people (doctor, teacher, consultant) or places (table, court, studio), with weekly hours, capacity, online booking of free times and a \"My appointments\" tab for customers."
 msgstr "برای هر چیزی که با زمان رزرو می‌شود: افراد (پزشک، مدرس، مشاور) یا مکان‌ها (میز، زمین، استودیو)، با ساعت کاری هفتگی، ظرفیت، رزرو آنلاین زمان‌های خالی و بخش «نوبت‌های من» برای مشتریان."
 
-#: includes/settings/schema.php:757
+#: includes/settings/schema.php:762
 msgid "Enable online booking"
 msgstr "فعال‌سازی نوبت‌دهی آنلاین"
 
-#: includes/settings/schema.php:758
+#: includes/settings/schema.php:763
 msgid "Adds a \"Booking\" menu to the dashboard for what you take bookings for and the appointments, plus the \"Booking: list\" and \"Booking: form\" widgets."
 msgstr "منوی «نوبت‌دهی» برای مدیریت موارد قابل رزرو و نوبت‌ها به پیشخوان اضافه می‌شود؛ همراه با ابزارک‌های «نوبت‌دهی: فهرست» و «نوبت‌دهی: فرم رزرو»."
 
-#: includes/settings/schema.php:762
+#: includes/settings/schema.php:767
 msgid "Business type"
 msgstr "نوع کسب‌وکار"
 
-#: includes/settings/schema.php:763
+#: includes/settings/schema.php:768
 msgid "Sets the wording across the site and the dashboard, e.g. doctor and specialty, or lawyer and practice area."
 msgstr "عنوان‌ها را در سایت و پیشخوان تعیین می‌کند؛ مثلاً «پزشک» و «تخصص»، یا «وکیل» و «حوزه‌ی تخصصی»."
 
-#: includes/settings/schema.php:810
+#: includes/settings/schema.php:815
 msgid "Name for one person"
 msgstr "عنوان برای یک نفر"
 
-#: includes/settings/schema.php:811
+#: includes/settings/schema.php:816
 msgid "e.g. Instructor"
 msgstr "مثلاً: مربی"
 
-#: includes/settings/schema.php:812
+#: includes/settings/schema.php:817
 msgid "Your own wording (optional)"
 msgstr "عنوان‌های دلخواه (اختیاری)"
 
-#: includes/settings/schema.php:813
+#: includes/settings/schema.php:818
 msgid "Leave empty to use the wording of the business type."
 msgstr "اگر خالی بماند، عنوان‌های نوع کسب‌وکار استفاده می‌شود."
 
-#: includes/settings/schema.php:819
+#: includes/settings/schema.php:824
 msgid "Name for the team"
 msgstr "عنوان برای جمع"
 
-#: includes/settings/schema.php:820
+#: includes/settings/schema.php:825
 msgid "e.g. Instructors"
 msgstr "مثلاً: مربیان"
 
-#: includes/settings/schema.php:826
+#: includes/settings/schema.php:831
 msgid "Name for one service"
 msgstr "عنوان برای یک خدمت"
 
-#: includes/settings/schema.php:827
+#: includes/settings/schema.php:832
 msgid "e.g. Course"
 msgstr "مثلاً: دوره"
 
-#: includes/settings/schema.php:833
+#: includes/settings/schema.php:838
 msgid "Name for services"
 msgstr "عنوان برای خدمات"
 
-#: includes/settings/schema.php:834
+#: includes/settings/schema.php:839
 msgid "e.g. Courses"
 msgstr "مثلاً: دوره‌ها"
 
-#: includes/settings/schema.php:840
+#: includes/settings/schema.php:845
 msgid "What is booked"
 msgstr "چه چیزی رزرو می‌شود"
 
-#: includes/settings/schema.php:841
+#: includes/settings/schema.php:846
 msgid "People get title, experience and licence fields; places and things get a short description instead."
 msgstr "برای افراد، فیلدهای عنوان، سابقه و شماره‌ی پروانه نمایش داده می‌شود؛ برای مکان‌ها و وسایل، یک توضیح کوتاه."
 
-#: includes/settings/schema.php:843
+#: includes/settings/schema.php:848
 msgid "As the business type suggests"
 msgstr "بر اساس نوع کسب‌وکار"
 
-#: includes/settings/schema.php:844
+#: includes/settings/schema.php:849
 msgid "People (doctor, teacher, consultant…)"
 msgstr "افراد (پزشک، مدرس، مشاور…)"
 
-#: includes/settings/schema.php:845
+#: includes/settings/schema.php:850
 msgid "Places and things (table, court, room…)"
 msgstr "مکان‌ها و وسایل (میز، زمین، اتاق…)"
 
-#: includes/settings/schema.php:850
+#: includes/settings/schema.php:855
 msgid "Ask how many people"
 msgstr "پرسیدن تعداد نفرات"
 
-#: includes/settings/schema.php:851
+#: includes/settings/schema.php:856
 msgid "For tables, classes and tours. Each booking takes that many places from the slot's capacity."
 msgstr "برای میز، کلاس و تور. هر رزرو به همان تعداد از ظرفیت آن نوبت کم می‌کند."
 
-#: includes/settings/schema.php:852
+#: includes/settings/schema.php:857
 msgid "Booking form"
 msgstr "فرم رزرو"
 
-#: includes/settings/schema.php:857
+#: includes/settings/schema.php:862
 msgid "Label of the field"
 msgstr "عنوان فیلد"
 
-#: includes/settings/schema.php:867
+#: includes/settings/schema.php:872
 msgid "Most people in one booking"
 msgstr "بیشترین تعداد نفرات در یک رزرو"
 
-#: includes/settings/schema.php:878
+#: includes/settings/schema.php:883
 msgid "Extra questions"
 msgstr "پرسش‌های اضافه"
 
-#: includes/settings/schema.php:879
+#: includes/settings/schema.php:884
 msgid "Asked after name and mobile, e.g. car model, occasion or seating preference. Answers appear in the appointment and the email."
 msgstr "بعد از نام و موبایل پرسیده می‌شوند؛ مثلاً مدل خودرو، مناسبت یا محل نشستن. پاسخ‌ها در جزئیات نوبت و ایمیل دیده می‌شوند."
 
-#: includes/settings/schema.php:880
+#: includes/settings/schema.php:885
 msgid "Add a question"
 msgstr "افزودن پرسش"
 
-#: includes/settings/schema.php:888
+#: includes/settings/schema.php:893
 msgid "Answer type"
 msgstr "نوع پاسخ"
 
-#: includes/settings/schema.php:891
+#: includes/settings/schema.php:896
 msgid "Long text"
 msgstr "متن بلند"
 
-#: includes/settings/schema.php:893
+#: includes/settings/schema.php:898
 msgid "Choose from a list"
 msgstr "انتخاب از فهرست"
 
-#: includes/settings/schema.php:894
+#: includes/settings/schema.php:899
 msgid "Tick box"
 msgstr "تیک"
 
-#: includes/settings/schema.php:900
+#: includes/settings/schema.php:905
 msgid "Separate with commas"
 msgstr "با ویرگول جدا کنید"
 
-#: includes/settings/schema.php:912
+#: includes/settings/schema.php:917
 msgid "Booking page"
 msgstr "صفحه‌ی نوبت‌دهی"
 
-#: includes/settings/schema.php:913
+#: includes/settings/schema.php:918
 msgid "A page with the \"Booking: form\" widget or the [hamista_booking] shortcode. Booking buttons lead here; Automatic uses each profile page."
 msgstr "صفحه‌ای که ابزارک «نوبت‌دهی: فرم رزرو» یا کد کوتاه [hamista_booking] در آن است. دکمه‌های رزرو به این صفحه می‌روند؛ در حالت خودکار، صفحه‌ی هر پروفایل استفاده می‌شود."
 
-#: includes/settings/schema.php:915
+#: includes/settings/schema.php:920
 msgid "Booking rules"
 msgstr "قواعد رزرو"
 
-#: includes/settings/schema.php:920
+#: includes/settings/schema.php:925
 msgid "How far ahead people can book"
 msgstr "رزرو تا چند روز آینده"
 
-#: includes/settings/schema.php:923
+#: includes/settings/schema.php:928
 msgid "days"
 msgstr "روز"
 
-#: includes/settings/schema.php:929
+#: includes/settings/schema.php:934
 msgid "Minimum notice before an appointment"
 msgstr "حداقل فاصله تا زمان نوبت"
 
-#: includes/settings/schema.php:932
-#: includes/settings/schema.php:942
+#: includes/settings/schema.php:937
+#: includes/settings/schema.php:947
 msgid "hours"
 msgstr "ساعت"
 
-#: includes/settings/schema.php:938
+#: includes/settings/schema.php:943
 msgid "Online cancellation allowed until"
 msgstr "مهلت لغو آنلاین"
 
-#: includes/settings/schema.php:939
+#: includes/settings/schema.php:944
 msgid "Hours before the appointment. After that, people are asked to call."
 msgstr "چند ساعت پیش از نوبت. بعد از آن، از مراجعه‌کننده خواسته می‌شود تماس بگیرد."
 
-#: includes/settings/schema.php:947
+#: includes/settings/schema.php:952
 msgid "Only logged-in visitors can book"
 msgstr "رزرو فقط برای کاربران واردشده"
 
-#: includes/settings/schema.php:948
+#: includes/settings/schema.php:953
 msgid "Recommended with mobile login (OTP): the number is verified and people can see and cancel their appointments."
 msgstr "همراه با ورود با موبایل (رمز یک‌بار مصرف) پیشنهاد می‌شود: شماره تأیید شده است و هر کس می‌تواند نوبت‌هایش را ببیند و لغو کند."
 
-#: includes/settings/schema.php:952
+#: includes/settings/schema.php:957
 msgid "Confirm new appointments automatically"
 msgstr "تأیید خودکار نوبت‌های جدید"
 
-#: includes/settings/schema.php:953
+#: includes/settings/schema.php:958
 msgid "When off, new appointments wait for the reception to confirm them."
 msgstr "اگر خاموش باشد، نوبت‌های جدید منتظر تأیید پذیرش می‌مانند."
 
-#: includes/settings/schema.php:957
+#: includes/settings/schema.php:962
 msgid "Key facts (fee, experience, address)"
 msgstr "اطلاعات کلیدی (هزینه، سابقه، نشانی)"
 
-#: includes/settings/schema.php:958
+#: includes/settings/schema.php:963
 msgid "Profile pages"
 msgstr "صفحه‌های پروفایل"
 
-#: includes/settings/schema.php:959
+#: includes/settings/schema.php:964
 msgid "A profile built with Elementor shows its own design; these switches apply to the standard layout."
 msgstr "پروفایلی که با المنتور ساخته شود، طراحی خودش را نشان می‌دهد؛ این گزینه‌ها برای چیدمان پیش‌فرض است."
 
-#: includes/settings/schema.php:967
+#: includes/settings/schema.php:972
 msgid "Booking form on the profile"
 msgstr "فرم رزرو در پروفایل"
 
-#: includes/settings/schema.php:972
+#: includes/settings/schema.php:977
 msgid "Content under every profile"
 msgstr "محتوای زیر همه‌ی پروفایل‌ها"
 
-#: includes/settings/schema.php:973
+#: includes/settings/schema.php:978
 msgid "A page or a Hamista block template (built with Elementor), e.g. insurance partners or a call to action."
 msgstr "یک برگه یا بلوک هامیستا (ساخته‌شده با المنتور)؛ مثلاً بیمه‌های طرف قرارداد یا دعوت به اقدام."
 
-#: includes/settings/schema.php:979
+#: includes/settings/schema.php:984
 msgid "Send new appointments to"
 msgstr "ارسال نوبت‌های جدید به"
 
-#: includes/settings/schema.php:980
+#: includes/settings/schema.php:985
 msgid "Email of the reception. Empty uses the site admin email."
 msgstr "ایمیل پذیرش. اگر خالی بماند، ایمیل مدیر سایت استفاده می‌شود."
 
-#: includes/settings/schema.php:983
+#: includes/settings/schema.php:988
 msgid "Notifications"
 msgstr "اطلاع‌رسانی"
 
-#: includes/settings/schema.php:991
+#: includes/settings/schema.php:996
 msgid "Hamista's motion engine is dependency-free and always respects the visitor's \"reduce motion\" setting."
 msgstr "موتور انیمیشن هامیستا به هیچ کتابخانه‌ای وابسته نیست و همیشه به تنظیم «کاهش حرکت» در دستگاه بازدیدکننده احترام می‌گذارد."
 
-#: includes/settings/schema.php:994
+#: includes/settings/schema.php:999
 msgid "Smooth scrolling"
 msgstr "اسکرول نرم"
 
-#: includes/settings/schema.php:995
+#: includes/settings/schema.php:1000
 msgid "Inertia scrolling for mouse wheels. Off by default: the browser's own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively."
 msgstr "اسکرول روان و پیوسته برای چرخ ماوس. به‌طور پیش‌فرض خاموش است، چون اسکرول خود مرورگر روی برگه‌های بلند المنتوری سریع‌ترین حالت است. دستگاه‌های لمسی همیشه اسکرول معمول خودشان را دارند."
 
-#: includes/settings/schema.php:999
+#: includes/settings/schema.php:1004
 msgid "Scroll smoothness"
 msgstr "نرمی اسکرول"
 
-#: includes/settings/schema.php:1000
+#: includes/settings/schema.php:1005
 msgid "Lower is silkier, higher is snappier."
 msgstr "عدد کمتر نرم‌تر است و عدد بیشتر چابک‌تر."
 
-#: includes/settings/schema.php:1007
+#: includes/settings/schema.php:1012
 msgid "Entrance animations"
 msgstr "انیمیشن‌های ورود"
 
-#: includes/settings/schema.php:1008
+#: includes/settings/schema.php:1013
 msgid "Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion."
 msgstr "المان‌ها هنگام اسکرول با نرمی وارد صفحه می‌شوند. برای هر المان از المنتور ← پیشرفته ← انیمیشن هامیستا تنظیمش کنید."
 
-#: includes/settings/schema.php:1011
+#: includes/settings/schema.php:1016
 msgid "Animations on phones"
 msgstr "انیمیشن در موبایل"
 
-#: includes/settings/schema.php:1014
+#: includes/settings/schema.php:1019
 msgid "Magnetic buttons"
 msgstr "دکمه‌های مغناطیسی"
 
-#: includes/settings/schema.php:1015
+#: includes/settings/schema.php:1020
 msgid "Buttons lean slightly toward the cursor."
 msgstr "دکمه‌ها کمی به سمت نشانگر ماوس کشیده می‌شوند."
 
-#: includes/settings/schema.php:1019
+#: includes/settings/schema.php:1024
 msgid "Cursor style"
 msgstr "سبک نشانگر ماوس"
 
-#: includes/settings/schema.php:1020
+#: includes/settings/schema.php:1025
 msgid "Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor=\"…\"."
 msgstr "فقط در دسکتاپ. هر عنصری می‌تواند با ویژگی data-hm-cursor=\"…\" کلمه‌ای را داخل نشانگر نمایش دهد."
 
-#: includes/settings/schema.php:1023
+#: includes/settings/schema.php:1028
 msgid "System cursor"
 msgstr "نشانگر سیستم"
 
-#: includes/settings/schema.php:1027
+#: includes/settings/schema.php:1032
 msgid "Dot"
 msgstr "نقطه"
 
-#: includes/settings/schema.php:1031
+#: includes/settings/schema.php:1036
 msgid "Dot and ring"
 msgstr "نقطه و حلقه"
 
-#: includes/settings/schema.php:1035
+#: includes/settings/schema.php:1040
 msgid "Inverting lens"
 msgstr "لنز معکوس‌کننده"
 
-#: includes/settings/schema.php:1039
+#: includes/settings/schema.php:1044
 msgid "Soft glow"
 msgstr "هاله‌ی نور"
 
-#: includes/settings/schema.php:1043
+#: includes/settings/schema.php:1048
 msgid "Frame around links"
 msgstr "قاب دور پیوندها"
 
-#: includes/settings/schema.php:1047
+#: includes/settings/schema.php:1052
 msgid "Comet trail"
 msgstr "دنباله‌ی ستاره‌ای"
 
-#: includes/settings/schema.php:1051
+#: includes/settings/schema.php:1056
 msgid "Leaning arrow"
 msgstr "پیکان خم‌شونده"
 
-#: includes/settings/schema.php:1055
+#: includes/settings/schema.php:1060
 msgid "Spotlight (dark designs)"
 msgstr "نورافکن (برای طرح‌های تیره)"
 
-#: includes/settings/schema.php:1059
+#: includes/settings/schema.php:1064
 msgid "Your own image"
 msgstr "تصویر دلخواه"
 
-#: includes/settings/schema.php:1066
+#: includes/settings/schema.php:1071
 msgid "Cursor image"
 msgstr "تصویر نشانگر"
 
-#: includes/settings/schema.php:1067
+#: includes/settings/schema.php:1072
 msgid "PNG, WebP, GIF or SVG, up to 64 pixels, centred on the pointer."
 msgstr "‏PNG، WebP، GIF یا SVG تا ۶۴ پیکسل؛ وسط نشانگر قرار می‌گیرد."
 
-#: includes/settings/schema.php:1073
+#: includes/settings/schema.php:1078
 msgid "Image over links and buttons"
 msgstr "تصویر روی پیوندها و دکمه‌ها"
 
-#: includes/settings/schema.php:1074
+#: includes/settings/schema.php:1079
 msgid "Optional; without it the cursor image grows a little."
 msgstr "اختیاری است؛ اگر خالی بماند، همان تصویر کمی بزرگ‌تر می‌شود."
 
-#: includes/settings/schema.php:1080
-#: includes/settings/schema.php:1081
+#: includes/settings/schema.php:1085
+#: includes/settings/schema.php:1086
 msgid "Page loader"
 msgstr "بارگذار صفحه"
 
-#: includes/settings/schema.php:1082
+#: includes/settings/schema.php:1087
 msgid "Shown while the page loads, with your logo. It never waits longer than three seconds; for the best PageSpeed score keep it off or use the thin bar."
 msgstr "تا وقتی صفحه بارگذاری می‌شود، با لوگوی شما نمایش داده می‌شود و هیچ‌وقت بیش از سه ثانیه نمی‌ماند. برای بهترین امتیاز PageSpeed خاموشش بگذارید یا نوار باریک را انتخاب کنید."
 
-#: includes/settings/schema.php:1085
+#: includes/settings/schema.php:1090
 msgid "No loader"
 msgstr "بدون بارگذار"
 
-#: includes/settings/schema.php:1089
+#: includes/settings/schema.php:1094
 msgid "Logo and progress line"
 msgstr "لوگو و خط پیشرفت"
 
-#: includes/settings/schema.php:1093
+#: includes/settings/schema.php:1098
 msgid "Logo, then a rising curtain"
 msgstr "لوگو، سپس پرده‌ای که بالا می‌رود"
 
-#: includes/settings/schema.php:1097
+#: includes/settings/schema.php:1102
 msgid "Large counting percentage"
 msgstr "درصد بزرگ شمارنده"
 
-#: includes/settings/schema.php:1101
+#: includes/settings/schema.php:1106
 msgid "Thin bar at the top"
 msgstr "نوار باریک بالای صفحه"
 
-#: includes/settings/schema.php:1105
+#: includes/settings/schema.php:1110
 msgid "Your own animation"
 msgstr "انیمیشن دلخواه"
 
-#: includes/settings/schema.php:1112
+#: includes/settings/schema.php:1117
 msgid "Loader animation"
 msgstr "انیمیشن بارگذار"
 
-#: includes/settings/schema.php:1113
+#: includes/settings/schema.php:1118
 msgid "A GIF, animated SVG or WebP shown in the middle of the screen."
 msgstr "یک GIF، SVG متحرک یا WebP که وسط صفحه نمایش داده می‌شود."
 
-#: includes/settings/schema.php:1118
+#: includes/settings/schema.php:1123
 msgid "Loader background"
 msgstr "پس‌زمینه‌ی بارگذار"
 
-#: includes/settings/schema.php:1121
+#: includes/settings/schema.php:1126
 msgid "Same as the site (light or dark)"
 msgstr "هماهنگ با سایت (روشن یا تیره)"
 
-#: includes/settings/schema.php:1128
+#: includes/settings/schema.php:1133
 msgid "Only on the first page of a visit"
 msgstr "فقط در اولین صفحه‌ی هر بازدید"
 
-#: includes/settings/schema.php:1134
+#: includes/settings/schema.php:1139
 msgid "Sound"
 msgstr "صدا"
 
-#: includes/settings/schema.php:1135
+#: includes/settings/schema.php:1140
 msgid "Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off."
 msgstr "صدای کلیک و تیک آرام برای دکمه‌ها، لینک‌ها و کلیدها که در خود مرورگر ساخته می‌شود و به هیچ فایل صوتی نیاز ندارد. بازدیدکننده با دکمه‌ی بلندگو در سربرگ می‌تواند صدا را روشن یا خاموش کند."
 
-#: includes/settings/schema.php:1138
+#: includes/settings/schema.php:1143
 msgid "On for first-time visitors"
 msgstr "روشن برای بازدیدکنندگان تازه"
 
-#: includes/settings/schema.php:1139
+#: includes/settings/schema.php:1144
 msgid "Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts."
 msgstr "مرورگرها فقط پس از اولین کلیک یا فشردن کلید اجازه‌ی پخش صدا می‌دهند؛ پس پیش از تعامل بازدیدکننده صدایی پخش نمی‌شود."
 
-#: includes/settings/schema.php:1144
+#: includes/settings/schema.php:1149
 msgid "Sound character"
 msgstr "حال‌وهوای صدا"
 
-#: includes/settings/schema.php:1146
+#: includes/settings/schema.php:1151
 msgid "Soft — rounded and quiet"
 msgstr "نرم؛ گرد و آرام"
 
-#: includes/settings/schema.php:1147
+#: includes/settings/schema.php:1152
 msgid "Glass — bright and airy"
 msgstr "شیشه‌ای؛ روشن و سبک"
 
-#: includes/settings/schema.php:1148
+#: includes/settings/schema.php:1153
 msgid "Mechanical — crisp switch clicks"
 msgstr "مکانیکی؛ کلیک واضح کلید"
 
-#: includes/settings/schema.php:1149
+#: includes/settings/schema.php:1154
 msgid "Digital — short synth blips"
 msgstr "دیجیتال؛ بیپ کوتاه سینتی‌سایزر"
 
-#: includes/settings/schema.php:1155
+#: includes/settings/schema.php:1160
 msgid "Volume"
 msgstr "بلندی صدا"
 
-#: includes/settings/schema.php:1163
+#: includes/settings/schema.php:1168
 msgid "Tick on hover"
 msgstr "تیک هنگام رفتن ماوس"
 
-#: includes/settings/schema.php:1164
+#: includes/settings/schema.php:1169
 msgid "A very quiet tick when the pointer reaches a button or card."
 msgstr "وقتی نشانگر روی دکمه یا کارت می‌رود، یک تیک بسیار آرام پخش می‌شود."
 
-#: includes/settings/schema.php:1170
+#: includes/settings/schema.php:1175
 msgid "Login & SMS"
 msgstr "ورود و پیامک"
 
-#: includes/settings/schema.php:1172
+#: includes/settings/schema.php:1177
 msgid "Sign in and sign up with a one-time code sent by SMS. Works with WooCommerce accounts and WordPress users."
 msgstr "ورود و ثبت‌نام با کد یک‌بار مصرفی که پیامک می‌شود. با حساب‌های ووکامرس و کاربران وردپرس کار می‌کند."
 
-#: includes/settings/schema.php:1174
+#: includes/settings/schema.php:1179
 msgid "Enable mobile login (OTP)"
 msgstr "فعال‌سازی ورود با موبایل (کد یک‌بار مصرف)"
 
-#: includes/settings/schema.php:1177
-#: includes/settings/schema.php:1178
+#: includes/settings/schema.php:1182
+#: includes/settings/schema.php:1183
 msgid "SMS provider"
 msgstr "سامانه‌ی پیامک"
 
-#: includes/settings/schema.php:1180
+#: includes/settings/schema.php:1185
 msgid "Test mode (no SMS, code shown to admins)"
 msgstr "حالت آزمایشی (بدون ارسال پیامک)"
 
-#: includes/settings/schema.php:1184
+#: includes/settings/schema.php:1189
 msgid "IPPanel / Farazsms"
 msgstr "آی‌پی‌پنل / فراز اس‌ام‌اس"
 
-#: includes/settings/schema.php:1186
+#: includes/settings/schema.php:1191
 msgid "Custom HTTP API"
 msgstr "API سفارشی (HTTP)"
 
-#: includes/settings/schema.php:1192
-#: includes/settings/schema.php:1236
-#: includes/settings/schema.php:1262
-#: includes/settings/schema.php:1297
+#: includes/settings/schema.php:1197
+#: includes/settings/schema.php:1241
+#: includes/settings/schema.php:1267
+#: includes/settings/schema.php:1302
 msgid "API key"
 msgstr "کلید API"
 
-#: includes/settings/schema.php:1200
+#: includes/settings/schema.php:1205
 msgid "Verify template name"
 msgstr "نام پترن تأیید"
 
-#: includes/settings/schema.php:1201
+#: includes/settings/schema.php:1206
 msgid "Create a \"verify lookup\" template in Kavenegar with the token %token%."
 msgstr "در کاوه‌نگار یک پترن اعتبارسنجی (Verify Lookup) با توکن %token% بسازید."
 
-#: includes/settings/schema.php:1209
+#: includes/settings/schema.php:1214
 msgid "Username"
 msgstr "نام کاربری"
 
-#: includes/settings/schema.php:1218
+#: includes/settings/schema.php:1223
 msgid "Password / API key"
 msgstr "رمز عبور / کلید API"
 
-#: includes/settings/schema.php:1227
+#: includes/settings/schema.php:1232
 msgid "Pattern (bodyId)"
 msgstr "کد پترن (bodyId)"
 
-#: includes/settings/schema.php:1228
+#: includes/settings/schema.php:1233
 msgid "Shared-line pattern ID with one variable for the code."
 msgstr "کد پترن خط خدماتی اشتراکی، با یک متغیر برای کد تأیید."
 
-#: includes/settings/schema.php:1244
+#: includes/settings/schema.php:1249
 msgid "Template ID"
 msgstr "کد پترن"
 
-#: includes/settings/schema.php:1270
+#: includes/settings/schema.php:1275
 msgid "Pattern code"
 msgstr "کد پترن"
 
-#: includes/settings/schema.php:1279
+#: includes/settings/schema.php:1284
 msgid "Sender number"
 msgstr "شماره‌ی فرستنده"
 
-#: includes/settings/schema.php:1289
+#: includes/settings/schema.php:1294
 msgid "Variable name"
 msgstr "نام متغیر"
 
-#: includes/settings/schema.php:1305
+#: includes/settings/schema.php:1310
 msgid "Template name"
 msgstr "نام پترن"
 
-#: includes/settings/schema.php:1313
+#: includes/settings/schema.php:1318
 msgid "Endpoint URL"
 msgstr "نشانی وب‌سرویس (Endpoint)"
 
-#: includes/settings/schema.php:1314
+#: includes/settings/schema.php:1319
 msgid "Placeholders {mobile} and {code} work in the URL, headers and body."
 msgstr "متغیرهای {mobile} و {code} را می‌توانید در نشانی، هدرها و بدنه‌ی درخواست به کار ببرید."
 
-#: includes/settings/schema.php:1322
+#: includes/settings/schema.php:1327
 msgid "Method"
 msgstr "متد"
 
-#: includes/settings/schema.php:1334
+#: includes/settings/schema.php:1339
 msgid "Headers (one per line)"
 msgstr "هدرها (هر کدام در یک خط)"
 
-#: includes/settings/schema.php:1343
+#: includes/settings/schema.php:1348
 msgid "Request body"
 msgstr "بدنه‌ی درخواست"
 
-#: includes/settings/schema.php:1352
+#: includes/settings/schema.php:1357
 msgid "Send a test code"
 msgstr "ارسال کد آزمایشی"
 
-#: includes/settings/schema.php:1353
+#: includes/settings/schema.php:1358
 msgid "Save first, then send a code to your own number to check the provider settings."
 msgstr "اول تنظیمات را ذخیره کنید، بعد برای بررسی تنظیمات سامانه یک کد به شماره‌ی خودتان بفرستید."
 
-#: includes/settings/schema.php:1355
+#: includes/settings/schema.php:1360
 msgid "Send test SMS"
 msgstr "ارسال پیامک آزمایشی"
 
-#: includes/settings/schema.php:1361
+#: includes/settings/schema.php:1366
 msgid "Code length"
 msgstr "تعداد ارقام کد"
 
-#: includes/settings/schema.php:1362
+#: includes/settings/schema.php:1367
 msgid "Behaviour"
 msgstr "رفتار"
 
-#: includes/settings/schema.php:1373
+#: includes/settings/schema.php:1378
 msgid "Code lifetime"
 msgstr "مدت اعتبار کد"
 
-#: includes/settings/schema.php:1377
-#: includes/settings/schema.php:1387
+#: includes/settings/schema.php:1382
+#: includes/settings/schema.php:1392
 msgid "sec"
 msgstr "ثانیه"
 
-#: includes/settings/schema.php:1383
+#: includes/settings/schema.php:1388
 msgid "Wait before resending"
 msgstr "فاصله تا ارسال دوباره"
 
-#: includes/settings/schema.php:1391
+#: includes/settings/schema.php:1396
 msgid "Create accounts for new numbers"
 msgstr "ساخت حساب برای شماره‌های جدید"
 
-#: includes/settings/schema.php:1395
+#: includes/settings/schema.php:1400
 msgid "Ask new users for their name"
 msgstr "پرسیدن نام کاربران جدید"
 
-#: includes/settings/schema.php:1402
+#: includes/settings/schema.php:1407
 msgid "Also allow password login"
 msgstr "ورود با رمز عبور هم مجاز باشد"
 
-#: includes/settings/schema.php:1407
+#: includes/settings/schema.php:1412
 msgid "Login page"
 msgstr "برگه‌ی ورود"
 
-#: includes/settings/schema.php:1408
+#: includes/settings/schema.php:1413
 msgid "A page with the [hamista_login] shortcode or the Login widget. Automatic uses the WooCommerce account page when available."
 msgstr "برگه‌ای که کد کوتاه [hamista_login] یا ویجت فرم ورود در آن قرار دارد. در حالت خودکار، اگر ووکامرس فعال باشد از برگه‌ی حساب کاربری آن استفاده می‌شود."
 
-#: includes/settings/schema.php:1410
+#: includes/settings/schema.php:1415
 msgid "Pages & redirects"
 msgstr "برگه‌ها و تغییر مسیر"
 
-#: includes/settings/schema.php:1415
+#: includes/settings/schema.php:1420
 msgid "After login, go to"
 msgstr "مقصد پس از ورود"
 
-#: includes/settings/schema.php:1416
+#: includes/settings/schema.php:1421
 msgid "Leave empty to return to the previous page"
 msgstr "خالی بگذارید تا به برگه‌ی قبلی برگردد"
 
-#: includes/settings/schema.php:1420
+#: includes/settings/schema.php:1425
 msgid "Use mobile login on WooCommerce account & checkout"
 msgstr "ورود با موبایل در حساب کاربری و تسویه حساب ووکامرس"
 
-#: includes/settings/schema.php:1425
+#: includes/settings/schema.php:1430
 msgid "Add mobile login to wp-login.php"
 msgstr "افزودن ورود با موبایل به wp-login.php"
 
-#: includes/settings/schema.php:1433
+#: includes/settings/schema.php:1438
 msgid "Titles, descriptions, canonical links, structured data, robots.txt, the sitemap and llms.txt, built in and light. When Yoast, Rank Math or another SEO plugin is active, Hamista leaves these tags to it."
 msgstr "عنوان، توضیحات متا، کنونیکال، داده‌ی ساختاریافته، robots.txt، نقشه‌ی سایت و llms.txt؛ درون قالب و سبک. اگر یواست، رنک‌مث یا افزونه‌ی سئوی دیگری فعال باشد، هامیستا این تگ‌ها را به آن می‌سپارد."
 
-#: includes/settings/schema.php:1436
+#: includes/settings/schema.php:1441
 msgid "Hamista SEO"
 msgstr "سئوی هامیستا"
 
-#: includes/settings/schema.php:1437
+#: includes/settings/schema.php:1442
 msgid "Titles and descriptions"
 msgstr "عنوان و توضیحات"
 
-#: includes/settings/schema.php:1438
+#: includes/settings/schema.php:1443
 msgid "Another SEO plugin is active, so it handles these tags; favicon, alt text and llms.txt still work."
 msgstr "افزونه‌ی سئوی دیگری فعال است و این تگ‌ها را خودش می‌سازد؛ آیکون سایت، متن جایگزین تصاویر و llms.txt همچنان کار می‌کنند."
 
-#: includes/settings/schema.php:1438
+#: includes/settings/schema.php:1443
 msgid "Each page also gets a \"Search results\" box for its own title, description and indexing."
 msgstr "هر صفحه هم کادر «نتایج جست‌وجو» دارد تا عنوان، توضیحات و وضعیت ایندکس خودش را داشته باشد."
 
-#: includes/settings/schema.php:1442
+#: includes/settings/schema.php:1447
 msgid "Title separator"
 msgstr "جداکننده‌ی عنوان"
 
-#: includes/settings/schema.php:1456
+#: includes/settings/schema.php:1461
 msgid "Tagline in the home page title"
 msgstr "معرفی کوتاه در عنوان صفحه‌ی اصلی"
 
-#: includes/settings/schema.php:1462
+#: includes/settings/schema.php:1467
 msgid "Home page title"
 msgstr "عنوان صفحه‌ی اصلی"
 
-#: includes/settings/schema.php:1463
+#: includes/settings/schema.php:1468
 msgid "Optional. You can use %%sitename%%, %%tagline%% and %%sep%%."
 msgstr "اختیاری. می‌توانید از %%sitename%% و %%tagline%% و %%sep%% استفاده کنید."
 
-#: includes/settings/schema.php:1469
+#: includes/settings/schema.php:1474
 msgid "Home page description"
 msgstr "توضیحات صفحه‌ی اصلی"
 
-#: includes/settings/schema.php:1470
+#: includes/settings/schema.php:1475
 msgid "About 120–155 characters. Leave empty to use the site tagline."
 msgstr "حدود ۱۲۰ تا ۱۵۵ نویسه. اگر خالی بماند، معرفی کوتاه سایت به کار می‌رود."
 
-#: includes/settings/schema.php:1474
+#: includes/settings/schema.php:1479
 msgid "Link previews (Open Graph)"
 msgstr "پیش‌نمایش پیوند (Open Graph)"
 
-#: includes/settings/schema.php:1475
+#: includes/settings/schema.php:1480
 msgid "Sharing and indexing"
 msgstr "اشتراک‌گذاری و ایندکس"
 
-#: includes/settings/schema.php:1476
+#: includes/settings/schema.php:1481
 msgid "Title, description and picture when a page is shared in Telegram, WhatsApp, X or LinkedIn."
 msgstr "عنوان، توضیح و تصویر هنگام اشتراک صفحه در تلگرام، واتس‌اپ، ایکس یا لینکدین."
 
-#: includes/settings/schema.php:1481
+#: includes/settings/schema.php:1486
 msgid "Default share picture"
 msgstr "تصویر پیش‌فرض اشتراک"
 
-#: includes/settings/schema.php:1482
+#: includes/settings/schema.php:1487
 msgid "Used when a page has no featured image. 1200×630 pixels works everywhere."
 msgstr "برای صفحه‌هایی که تصویر شاخص ندارند. اندازه‌ی ۱۲۰۰ در ۶۳۰ پیکسل همه‌جا درست نمایش داده می‌شود."
 
-#: includes/settings/schema.php:1490
+#: includes/settings/schema.php:1495
 msgid "Keep tag archives out of search results"
 msgstr "برچسب‌ها در نتایج جست‌وجو نیایند"
 
-#: includes/settings/schema.php:1495
+#: includes/settings/schema.php:1500
 msgid "Keep author archives out of search results"
 msgstr "صفحه‌ی نویسندگان در نتایج جست‌وجو نیاید"
 
-#: includes/settings/schema.php:1496
+#: includes/settings/schema.php:1501
 msgid "Recommended for sites with a single author."
 msgstr "برای سایت‌هایی که یک نویسنده دارند پیشنهاد می‌شود."
 
-#: includes/settings/schema.php:1503
+#: includes/settings/schema.php:1508
 msgid "Extra robots.txt rules"
 msgstr "قانون‌های بیشتر برای robots.txt"
 
-#: includes/settings/schema.php:1504
+#: includes/settings/schema.php:1509
 msgid "robots.txt already keeps crawlers out of the admin, cart, account and search pages and lists the sitemap. Add lines here only if you need more."
 msgstr "robots.txt خودش خزنده‌ها را از پیشخوان، سبد خرید، حساب کاربری و صفحه‌ی جست‌وجو دور نگه می‌دارد و نقشه‌ی سایت را معرفی می‌کند. فقط اگر قانون دیگری لازم دارید اینجا بنویسید."
 
-#: includes/settings/schema.php:1509
+#: includes/settings/schema.php:1514
 msgid "Google Search Console code"
 msgstr "کد گوگل سرچ کنسول"
 
-#: includes/settings/schema.php:1510
+#: includes/settings/schema.php:1515
 msgid "Only the content value of the verification tag."
 msgstr "فقط مقدار content در تگ تأیید."
 
-#: includes/settings/schema.php:1517
+#: includes/settings/schema.php:1522
 msgid "Bing Webmaster code"
 msgstr "کد بینگ وبمستر"
 
-#: includes/settings/schema.php:1523
+#: includes/settings/schema.php:1528
 msgid "Structured data"
 msgstr "داده‌ی ساختاریافته"
 
-#: includes/settings/schema.php:1524
+#: includes/settings/schema.php:1529
 msgid "Business details (structured data)"
 msgstr "مشخصات کسب‌وکار (داده‌ی ساختاریافته)"
 
-#: includes/settings/schema.php:1525
+#: includes/settings/schema.php:1530
 msgid "Tells search engines who runs the site, with breadcrumbs and article details. A local business with an address and hours can show on maps and in local results."
 msgstr "به موتورهای جست‌وجو می‌گوید سایت متعلق به کیست و مسیر صفحه و مشخصات مقاله‌ها را هم می‌فرستد. کسب‌وکار محلی با نشانی و ساعت کاری می‌تواند در نقشه و نتایج محلی دیده شود."
 
-#: includes/settings/schema.php:1530
+#: includes/settings/schema.php:1535
 msgid "Type of business"
 msgstr "نوع کسب‌وکار"
 
-#: includes/settings/schema.php:1540
+#: includes/settings/schema.php:1545
 msgid "Business name"
 msgstr "نام کسب‌وکار"
 
-#: includes/settings/schema.php:1570
+#: includes/settings/schema.php:1575
 msgid "Street address"
 msgstr "نشانی"
 
-#: includes/settings/schema.php:1578
+#: includes/settings/schema.php:1583
 msgid "City"
 msgstr "شهر"
 
-#: includes/settings/schema.php:1587
+#: includes/settings/schema.php:1592
 msgid "Province"
 msgstr "استان"
 
-#: includes/settings/schema.php:1596
+#: includes/settings/schema.php:1601
 msgid "Postcode"
 msgstr "کد پستی"
 
-#: includes/settings/schema.php:1606
+#: includes/settings/schema.php:1611
 msgid "Price range"
 msgstr "بازه‌ی قیمت"
 
-#: includes/settings/schema.php:1616
+#: includes/settings/schema.php:1621
 msgid "Latitude"
 msgstr "عرض جغرافیایی"
 
-#: includes/settings/schema.php:1627
+#: includes/settings/schema.php:1632
 msgid "Longitude"
 msgstr "طول جغرافیایی"
 
-#: includes/settings/schema.php:1638
+#: includes/settings/schema.php:1643
 msgid "Opening hours"
 msgstr "ساعت کاری"
 
-#: includes/settings/schema.php:1639
+#: includes/settings/schema.php:1644
 msgid "Add a day"
 msgstr "افزودن روز"
 
-#: includes/settings/schema.php:1656
+#: includes/settings/schema.php:1661
 msgid "Opens"
 msgstr "شروع"
 
-#: includes/settings/schema.php:1661
+#: includes/settings/schema.php:1666
 msgid "Closes"
 msgstr "پایان"
 
-#: includes/settings/schema.php:1672
+#: includes/settings/schema.php:1677
 msgid "Site icon (favicon)"
 msgstr "آیکون سایت (فاوآیکون)"
 
-#: includes/settings/schema.php:1673
+#: includes/settings/schema.php:1678
 msgid "Site icon and files"
 msgstr "آیکون سایت و فایل‌ها"
 
-#: includes/settings/schema.php:1674
+#: includes/settings/schema.php:1679
 msgid "A square picture, at least 512×512 pixels. WordPress makes every size browsers and phones need."
 msgstr "تصویری مربعی، دست‌کم ۵۱۲ در ۵۱۲ پیکسل. وردپرس همه‌ی اندازه‌هایی را که مرورگر و موبایل لازم دارند می‌سازد."
 
-#: includes/settings/schema.php:1678
+#: includes/settings/schema.php:1683
 msgid "Lettered icon until one is chosen"
 msgstr "آیکون حرفی تا وقتی آیکونی انتخاب نشده"
 
-#: includes/settings/schema.php:1679
+#: includes/settings/schema.php:1684
 msgid "Shows the first letter of the site name in the accent colour."
 msgstr "حرف اول نام سایت را با رنگ اصلی نشان می‌دهد."
 
-#: includes/settings/schema.php:1683
+#: includes/settings/schema.php:1688
 msgid "llms.txt for AI assistants"
 msgstr "فایل llms.txt برای دستیارهای هوش مصنوعی"
 
-#: includes/settings/schema.php:1684
+#: includes/settings/schema.php:1689
 msgid "A short map of the site at /llms.txt, so AI search and assistants describe your business correctly. Updates itself when you publish."
 msgstr "نقشه‌ای کوتاه از سایت در نشانی ‎/llms.txt تا جست‌وجوی هوشمند و دستیارها کسب‌وکارتان را درست معرفی کنند. با هر انتشار خودش به‌روز می‌شود."
 
-#: includes/settings/schema.php:1688
+#: includes/settings/schema.php:1693
 msgid "Summary at the top of llms.txt"
 msgstr "معرفی بالای llms.txt"
 
-#: includes/settings/schema.php:1689
+#: includes/settings/schema.php:1694
 msgid "Who you are and what you offer, in one or two sentences."
 msgstr "در یکی دو جمله بگویید که هستید و چه ارائه می‌دهید."
 
-#: includes/settings/schema.php:1695
+#: includes/settings/schema.php:1700
 msgid "Performance"
 msgstr "سرعت و بهینه‌سازی"
 
-#: includes/settings/schema.php:1697
+#: includes/settings/schema.php:1702
 msgid "Safe switches that remove WordPress features most sites never use. Each one shaves requests or kilobytes."
 msgstr "کلیدهایی بی‌خطر برای حذف قابلیت‌هایی از وردپرس که بیشتر سایت‌ها هرگز به کارشان نمی‌برند. هر کدام چند درخواست یا چند کیلوبایت از بار صفحه کم می‌کند."
 
-#: includes/settings/schema.php:1700
+#: includes/settings/schema.php:1705
 msgid "Block Google Fonts"
 msgstr "مسدود کردن گوگل فونت"
 
-#: includes/settings/schema.php:1701
+#: includes/settings/schema.php:1706
 msgid "Stops Elementor and the theme from loading fonts from Google (often slow or blocked in Iran). Hamista fonts are self-hosted."
 msgstr "جلوی بارگذاری فونت از گوگل را در المنتور و قالب می‌گیرد (که در ایران اغلب کند یا مسدود است). فونت‌های هامیستا روی سایت خودتان میزبانی می‌شوند."
 
-#: includes/settings/schema.php:1703
+#: includes/settings/schema.php:1708
 msgid "Remove emoji script"
 msgstr "حذف اسکریپت ایموجی"
 
-#: includes/settings/schema.php:1704
+#: includes/settings/schema.php:1709
 msgid "Remove oEmbed discovery script"
 msgstr "حذف اسکریپت شناسایی oEmbed"
 
-#: includes/settings/schema.php:1705
+#: includes/settings/schema.php:1710
 msgid "Skip Dashicons for visitors"
 msgstr "عدم بارگذاری Dashicons برای بازدیدکنندگان"
 
-#: includes/settings/schema.php:1707
+#: includes/settings/schema.php:1712
 msgid "Skip block-editor CSS on Elementor pages"
 msgstr "عدم بارگذاری CSS ویرایشگر بلوک در برگه‌های المنتوری"
 
-#: includes/settings/schema.php:1710
+#: includes/settings/schema.php:1715
 msgid "Load WooCommerce cart scripts only where needed"
 msgstr "بارگذاری اسکریپت‌های سبد خرید ووکامرس فقط در جای لازم"
 
-#: includes/settings/schema.php:1714
+#: includes/settings/schema.php:1719
 msgid "Prioritise the hero image"
 msgstr "بارگذاری فوری تصویر هیرو"
 
-#: includes/settings/schema.php:1715
+#: includes/settings/schema.php:1720
 msgid "Loads the first large image of each page eagerly with high priority."
 msgstr "نخستین تصویر بزرگ هر برگه بدون تأخیر و با اولویت بالا بارگذاری می‌شود."
 
-#: includes/settings/schema.php:1718
+#: includes/settings/schema.php:1723
 msgid "Remove jQuery Migrate"
 msgstr "حذف jQuery Migrate"
 
-#: includes/settings/schema.php:1719
+#: includes/settings/schema.php:1724
 msgid "Only if your plugins are up to date."
 msgstr "فقط اگر افزونه‌هایتان به‌روز هستند."
 
-#: includes/settings/schema.php:1722
+#: includes/settings/schema.php:1727
 msgid "Slow down the Heartbeat API"
 msgstr "کاهش تناوب Heartbeat API"
 
-#: includes/settings/schema.php:1725
+#: includes/settings/schema.php:1730
 msgid "Disable XML-RPC"
 msgstr "غیرفعال کردن XML-RPC"
 
-#: includes/settings/schema.php:1726
+#: includes/settings/schema.php:1731
 msgid "Improves security. Keep off if you use Jetpack or the WordPress mobile app."
 msgstr "امنیت را بیشتر می‌کند. اگر از جت‌پک یا اپلیکیشن موبایل وردپرس استفاده می‌کنید، این گزینه را خاموش نگه دارید."
 
-#: includes/settings/schema.php:1731
+#: includes/settings/schema.php:1736
 msgid "Custom code"
 msgstr "کد سفارشی"
 
-#: includes/settings/schema.php:1737
+#: includes/settings/schema.php:1742
 msgid "Custom CSS"
 msgstr "CSS سفارشی"
 
-#: includes/settings/schema.php:1742
+#: includes/settings/schema.php:1747
 msgid "Code in <head>"
 msgstr "کد در <head>"
 
-#: includes/settings/schema.php:1743
+#: includes/settings/schema.php:1748
 msgid "Analytics, verification tags. Requires the unfiltered_html capability."
 msgstr "کدهای آمار و تگ‌های تأیید مالکیت. به مجوز unfiltered_html نیاز دارد."
 
-#: includes/settings/schema.php:1748
+#: includes/settings/schema.php:1753
 msgid "Code before </body>"
 msgstr "کد پیش از </body>"
 

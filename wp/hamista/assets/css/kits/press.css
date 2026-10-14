@@ -1,0 +1,126 @@
+/*!
+ * Hamista style kit — Press
+ * Newsprint and printer's ink with one red: square corners, hairline and
+ * double rules, letterpress buttons and photographs printed in black and
+ * white until you point at them. Dark mode is ink on ink, the red warmed up.
+ */
+.hm-kit-press {
+	--hm-bg: #f1ede4;
+	--hm-surface: #f8f5ee;
+	--hm-surface-2: #e9e3d6;
+	--hm-sunken: #e4ddcd;
+	--hm-fg: #171513;
+	--hm-fg-muted: #5c564d;
+	--hm-border: rgba(23, 21, 19, .14);
+	--hm-border-strong: rgba(23, 21, 19, .34);
+	--hm-accent: #9b1c1c;
+	--hm-accent-2: #171513;
+	--hm-accent-fg: #fbf8f1;
+	--hm-accent-ink: #8a1818;
+	--hm-accent-soft: rgba(155, 28, 28, .08);
+	--hm-inv-bg: #171513;
+	--hm-inv-fg: #f1ede4;
+	--hm-inv-muted: #b3ab9d;
+
+	--hm-radius-sm: 0px;
+	--hm-radius-md: 0px;
+	--hm-radius-lg: 2px;
+	--hm-radius-xl: 2px;
+	--hm-radius-btn: 0px;
+	--hm-fw-heading: 900;
+	--hm-fw-giant: 900;
+	--hm-lh-heading: 1.4;
+
+	--hm-shadow-sm: none;
+	--hm-shadow-md: none;
+	--hm-shadow-lg: 4px 4px 0 rgba(23, 21, 19, .9);
+	--hm-card-border: 1px solid var(--hm-border-strong);
+	--hm-card-shadow: none;
+	--hm-card-shadow-hover: 3px 3px 0 var(--hm-fg);
+	--hm-input-bg: var(--hm-surface);
+	--hm-ease: cubic-bezier(.2, .8, .2, 1);
+	--hm-focus: 0 0 0 2px var(--hm-bg), 0 0 0 4px var(--hm-accent);
+	--hm-print: grayscale(1) contrast(1.08) sepia(.12);
+	color-scheme: light;
+}
+
+[data-hm-theme="dark"] .hm-kit-press,
+[data-hm-theme="dark"].hm-kit-press {
+	--hm-bg: #12110f;
+	--hm-surface: #1a1916;
+	--hm-surface-2: #22201c;
+	--hm-sunken: #0c0b0a;
+	--hm-fg: #ece6da;
+	--hm-fg-muted: #a69f92;
+	--hm-border: rgba(236, 230, 218, .12);
+	--hm-border-strong: rgba(236, 230, 218, .3);
+	--hm-accent: #e2675e;
+	--hm-accent-2: #ece6da;
+	--hm-accent-fg: #12110f;
+	--hm-accent-ink: #ec7a71;
+	--hm-accent-soft: rgba(226, 103, 94, .12);
+	--hm-inv-bg: #ece6da;
+	--hm-inv-fg: #12110f;
+	--hm-inv-muted: #5c564d;
+	--hm-shadow-lg: 4px 4px 0 rgba(236, 230, 218, .7);
+	--hm-print: grayscale(1) contrast(1.05) brightness(.92);
+	color-scheme: dark;
+}
+
+/* Paper grain, kept faint so text stays crisp. */
+.hm-kit-press body, body.hm-kit-press { background-image: radial-gradient(color-mix(in srgb, var(--hm-fg) 5%, transparent) .6px, transparent .8px); background-size: 4px 4px; }
+.hm-kit-press ::selection { background: color-mix(in srgb, var(--hm-accent) 22%, transparent); color: inherit; }
+.hm-kit-press .hm-hl { color: var(--hm-accent); }
+
+/* Photographs print in black and white and come to colour under the pointer. */
+.hm-kit-press :is(.hm-news__pic, .hm-news__figure, .hm-post-card__media, .hm-single__media, .hm-reveal__media, .hm-hscroll__media) img { filter: var(--hm-print); }
+.hm-kit-press :is(.hm-news__item, .hm-news__lead, .hm-post-card, .hm-hscroll__card):hover img { filter: none; }
+
+/* Header and menus: a double rule under the bar. */
+.hm-kit-press .hm-header { border-bottom: 4px double var(--hm-fg); }
+.hm-kit-press .hm-menu > li > a { font-weight: 800; }
+.hm-kit-press .hm-menu > .current-menu-item > a::after, .hm-kit-press .hm-menu > .current-menu-ancestor > a::after { height: 2px; background: var(--hm-accent); }
+
+/* Letterpress buttons. */
+.hm-kit-press .hm-btn { border: 1.5px solid var(--hm-fg); border-radius: 0; background: var(--hm-fg); color: var(--hm-bg); font-weight: 800; box-shadow: 3px 3px 0 var(--hm-accent); transition: transform .2s var(--hm-ease), box-shadow .2s var(--hm-ease); }
+.hm-kit-press .hm-btn:hover { color: var(--hm-bg); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--hm-accent); }
+.hm-kit-press .hm-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--hm-accent); }
+.hm-kit-press .hm-btn--secondary, .hm-kit-press .hm-btn--ghost { background: transparent; color: var(--hm-fg); box-shadow: 3px 3px 0 var(--hm-fg); }
+.hm-kit-press .hm-btn--secondary:hover, .hm-kit-press .hm-btn--ghost:hover { color: var(--hm-fg); box-shadow: 4px 4px 0 var(--hm-fg); }
+.hm-kit-press .hm-scheme-inverse .hm-btn { background: var(--hm-inv-fg); color: var(--hm-inv-bg); border-color: var(--hm-inv-fg); }
+
+/* Section labels as rubrics: red, bold, ruled. */
+.hm-kit-press .hm-eyebrow { font-weight: 900; color: var(--hm-accent); letter-spacing: .02em; }
+.hm-kit-press .hm-eyebrow::before { background: var(--hm-accent); }
+
+/* Cards, chips, inputs: square and ruled. */
+.hm-kit-press .hm-card, .hm-kit-press .hm-feature--card, .hm-kit-press .hm-plan { border-radius: 0; }
+.hm-kit-press .hm-post-card { border: 0; border-top: 3px solid var(--hm-fg); background: none; }
+.hm-kit-press .hm-post-card__title { font-weight: 900; }
+.hm-kit-press .hm-chip { border-radius: 0; }
+.hm-kit-press a.hm-chip:hover, .hm-kit-press .hm-chip.is-active { background: var(--hm-fg); border-color: var(--hm-fg); color: var(--hm-bg); }
+.hm-kit-press .hm-acc__item { border-radius: 0; border-inline: 0; border-top: 0; }
+.hm-kit-press .hm-plan.is-featured { outline: 2px solid var(--hm-fg); outline-offset: 4px; }
+.hm-kit-press .hm-progress, .hm-kit-press .onsale { background: var(--hm-accent); }
+.hm-kit-press .onsale { border-radius: 0; color: var(--hm-accent-fg); }
+
+/* A box with a double frame, for weather, prices and old-style adverts (add class hm-press-box). */
+.hm-kit-press .hm-press-box { padding: 20px 22px; border: 1.5px solid var(--hm-fg); outline: 1px solid var(--hm-fg); outline-offset: 4px; background: var(--hm-surface); }
+.hm-kit-press .hm-press-box h3, .hm-kit-press .hm-press-box h4 { margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1.5px solid var(--hm-fg); font-weight: 900; text-align: center; }
+.hm-kit-press .hm-press-box table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.hm-kit-press .hm-press-box td { padding: 6px 0; border-bottom: 1px dotted var(--hm-border-strong); }
+.hm-kit-press .hm-press-box td:last-child { text-align: end; font-weight: 800; }
+.hm-kit-press .hm-press-box .up { color: #23784a; }
+.hm-kit-press .hm-press-box .down { color: var(--hm-accent); }
+[data-hm-theme="dark"] .hm-kit-press .hm-press-box .up { color: #6fcf97; }
+.hm-kit-press .hm-press-ad { text-align: center; border-width: 3px; border-style: double; }
+.hm-kit-press .hm-press-ad p { margin: 6px 0; }
+
+/* Vertical rule between the main column and the side column (add class hm-press-rule to the side column). */
+@media (min-width: 1025px) {
+	.hm-kit-press .hm-press-rule { border-inline-start: 1px solid var(--hm-border-strong); padding-inline-start: clamp(20px, 2vw, 32px); }
+}
+
+/* Footer in ink. */
+.hm-kit-press .hm-footer { border-top: 4px double var(--hm-fg); }
+.hm-kit-press .hm-footer__wordmark { opacity: .07; }
