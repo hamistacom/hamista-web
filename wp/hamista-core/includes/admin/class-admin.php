@@ -676,6 +676,7 @@ class Admin {
 			'demoTone'         => __( 'Colour mode', 'hamista-core' ),
 			'demoLight'        => __( 'Light', 'hamista-core' ),
 			'demoDark'         => __( 'Dark', 'hamista-core' ),
+			'darkMode'         => __( 'Dark mode', 'hamista-core' ),
 			'demoLive'         => __( 'Open the live demo', 'hamista-core' ),
 			'demoImport'       => __( 'Import', 'hamista-core' ),
 			/* translators: %s: demo name. */

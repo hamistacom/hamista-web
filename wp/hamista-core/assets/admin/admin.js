@@ -14,6 +14,12 @@
 
 	const data = window.hamistaAdmin;
 	const root = document.getElementById( 'hamista-admin' );
+	const TONE_KEY = 'hm-admin-tone';
+	if ( root ) {
+		try {
+			root.dataset.tone = window.localStorage.getItem( TONE_KEY ) || ( window.matchMedia( '(prefers-color-scheme: dark)' ).matches ? 'dark' : 'light' );
+		} catch ( e ) {}
+	}
 	if ( ! data || ! root ) {
 		return;
 	}
@@ -67,7 +73,10 @@
 		let i = 1;
 		return String( str ).replace( /%(\d+\$)?[sd]/g, function ( m, pos ) {
 			const v = pos ? args[ parseInt( pos, 10 ) ] : args[ i++ ];
-			return undefined === v ? '' : String( v );
+			if ( undefined === v ) {
+				return '';
+			}
+			return 'number' === typeof v ? DIGITS.format( v ) : String( v );
 		} );
 	}
 
@@ -775,7 +784,7 @@
 	 * ------------------------------------------------------------------ */
 
 	const LIBRARY = data.fontLibrary || {};
-	const DIGITS = new Intl.NumberFormat( 0 === ( document.documentElement.lang || '' ).indexOf( 'fa' ) ? 'fa-IR' : undefined );
+	const DIGITS = new Intl.NumberFormat( data.rtl || 0 === ( document.documentElement.lang || '' ).indexOf( 'fa' ) ? 'fa-IR' : undefined, { useGrouping: false } );
 
 	/** Saved switches over the defaults: every family and weight on. */
 	function libraryState() {
@@ -2835,6 +2844,7 @@
 				clearBtn,
 			] ),
 			h( 'div', { class: 'hm-top__links' }, [
+				h( 'button', { type: 'button', class: 'hm-icon-btn hm-tone-toggle', 'data-act': 'tone', 'aria-label': t( 'darkMode' ), 'aria-pressed': 'dark' === root.dataset.tone ? 'true' : 'false', title: t( 'darkMode' ) }, [ icon( 'moon', 16 ), icon( 'sun', 16 ) ] ),
 				links.docs ? externalLink( links.docs, t( 'docs' ), 'hm-top__link' ) : null,
 				links.site ? externalLink( links.site, t( 'viewSite' ), 'hm-btn hm-btn--sm' ) : null,
 			] ),
@@ -3072,6 +3082,14 @@
 		'search-clear'() {
 			clearSearch();
 			ui.dom.search.focus();
+		},
+		tone( btn ) {
+			const next = 'dark' === root.dataset.tone ? 'light' : 'dark';
+			root.dataset.tone = next;
+			btn.setAttribute( 'aria-pressed', 'dark' === next ? 'true' : 'false' );
+			try {
+				window.localStorage.setItem( TONE_KEY, next );
+			} catch ( e ) {}
 		},
 		'toast-close'( btn ) {
 			dismiss( btn.closest( '.hm-toast' ) );

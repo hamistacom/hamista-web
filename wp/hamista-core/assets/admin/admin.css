@@ -66,6 +66,40 @@ html.hm-modal-open { overflow: hidden; }
 	text-rendering: optimizeLegibility;
 }
 
+/* Dark mode: the same tokens on a deep neutral, chosen from the top bar (or the system setting). */
+.hm-admin[data-tone="dark"] {
+	--hm-a-bg: #0f1013;
+	--hm-a-surface: #17181c;
+	--hm-a-raised: #1c1d22;
+	--hm-a-sunken: #121316;
+	--hm-a-ink: #ececef;
+	--hm-a-ink-2: #c9cad0;
+	--hm-a-muted: #9a9ca5;
+	--hm-a-faint: #6e7079;
+	--hm-a-line: rgba(255, 255, 255, .08);
+	--hm-a-line-2: rgba(255, 255, 255, .13);
+	--hm-a-line-3: rgba(255, 255, 255, .22);
+	--hm-a-accent: #6e95ff;
+	--hm-a-accent-hover: #86a7ff;
+	--hm-a-accent-soft: rgba(110, 149, 255, .12);
+	--hm-a-accent-line: rgba(110, 149, 255, .4);
+	--hm-a-ok: #4cc38a;
+	--hm-a-ok-soft: rgba(76, 195, 138, .12);
+	--hm-a-warn: #f0b54a;
+	--hm-a-warn-soft: rgba(240, 181, 74, .12);
+	--hm-a-danger: #ff6b66;
+	--hm-a-danger-soft: rgba(255, 107, 102, .1);
+	--hm-a-shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+	--hm-a-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -8px rgba(0, 0, 0, .5);
+	--hm-a-shadow-lg: 0 2px 6px rgba(0, 0, 0, .4), 0 24px 60px -16px rgba(0, 0, 0, .7);
+	--hm-a-ring: 0 0 0 3px rgba(110, 149, 255, .3);
+	color-scheme: dark;
+	background: var(--hm-a-bg);
+}
+.hm-admin .hm-tone-toggle .hm-ico + .hm-ico, .hm-admin[data-tone="dark"] .hm-tone-toggle .hm-ico:first-child { display: none; }
+.hm-admin[data-tone="dark"] .hm-tone-toggle .hm-ico + .hm-ico { display: inline-block; }
+.hm-admin, .hm-admin :is(.hm-card, .hm-nav__link, .hm-top, .hm-field) { transition: background-color .3s var(--hm-a-ease), border-color .3s var(--hm-a-ease), color .2s; }
+
 .hm-admin *,
 .hm-admin *::before,
 .hm-admin *::after { box-sizing: border-box; }
@@ -973,12 +1007,12 @@ html.hm-modal-open { overflow: hidden; }
 .hm-admin .hm-range__input::-webkit-slider-runnable-track {
 	height: 4px;
 	border-radius: 4px;
-	background: linear-gradient(var(--hm-fill-dir), var(--hm-a-accent) var(--hm-fill), #e2e2dc var(--hm-fill));
+	background: linear-gradient(var(--hm-fill-dir), var(--hm-a-accent) var(--hm-fill), var(--hm-range-track, #e2e2dc) var(--hm-fill));
 }
 .hm-admin .hm-range__input::-moz-range-track {
 	height: 4px;
 	border-radius: 4px;
-	background: linear-gradient(var(--hm-fill-dir), var(--hm-a-accent) var(--hm-fill), #e2e2dc var(--hm-fill));
+	background: linear-gradient(var(--hm-fill-dir), var(--hm-a-accent) var(--hm-fill), var(--hm-range-track, #e2e2dc) var(--hm-fill));
 }
 .hm-admin .hm-range__input::-webkit-slider-thumb {
 	width: 18px;
@@ -1824,7 +1858,7 @@ html.hm-modal-open { overflow: hidden; }
 		padding: 10px var(--hm-a-gutter);
 		overflow-x: auto;
 		overflow-y: hidden;
-		background: rgba(246, 246, 243, .92);
+		background: color-mix(in srgb, var(--hm-a-bg) 92%, transparent);
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
 		border-bottom: 1px solid var(--hm-a-line);
@@ -1869,3 +1903,18 @@ html.hm-modal-open { overflow: hidden; }
 @media (max-width: 600px) {
 	.hm-admin { --hm-a-top: 0px; }
 }
+
+/* Dark mode: surfaces drawn with fixed light colours. */
+.hm-admin[data-tone="dark"] .hm-top { background: rgba(15, 16, 19, .86); }
+.hm-admin[data-tone="dark"] .hm-search__input:hover { background: #1f2026; }
+.hm-admin[data-tone="dark"] :is(.hm-search__clear, .hm-nav__link, .hm-btn--quiet, .hm-icon-btn):hover:not(:disabled) { background: rgba(255, 255, 255, .06); }
+.hm-admin[data-tone="dark"] .hm-btn--primary { color: #0f1013; box-shadow: none; }
+.hm-admin[data-tone="dark"] .hm-btn--primary:hover { color: #0f1013; background: #fff; border-color: #fff; }
+.hm-admin[data-tone="dark"] .hm-badge--strong { color: #0f1013; }
+.hm-admin[data-tone="dark"] .hm-switch__track { background: #34363e; box-shadow: none; }
+.hm-admin[data-tone="dark"] .hm-switch__input:hover + .hm-switch__track { background: #3d3f48; }
+.hm-admin[data-tone="dark"] .hm-meter { background: #26272d; }
+.hm-admin[data-tone="dark"] { --hm-range-track: #2c2d33; }
+
+body.hm-admin-screen:has(.hm-admin[data-tone="dark"]) { background: #0f1013; color-scheme: dark; }
+body.hm-admin-screen:has(.hm-admin[data-tone="dark"]) #wpfooter { color: #6e7079; }

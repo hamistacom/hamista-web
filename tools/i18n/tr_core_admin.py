@@ -365,4 +365,5 @@ T = {
     "— Choose a block template —": "— یک قالب «بلوک» انتخاب کنید —",
     "Build it under Hamista → Templates as a \"Block\".": "آن را در هامیستا ← قالب~ها از نوع «بلوک» بسازید.",
     "Width": "عرض",
+    "Dark mode": "حالت تاریک",
 }
