@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-14T04:16:32+00:00\n"
+"POT-Creation-Date: 2026-10-14T04:22:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: includes/admin/class-admin.php:57
 #: includes/admin/class-admin.php:58
 #: includes/admin/class-admin.php:476
-#: includes/elementor/class-elementor.php:113
+#: includes/elementor/class-elementor.php:114
 msgid "Hamista"
 msgstr ""
 
@@ -162,6 +162,7 @@ msgstr ""
 #: includes/elementor/widgets/class-news.php:201
 #: includes/elementor/widgets/class-process.php:104
 #: includes/elementor/widgets/class-project-show.php:121
+#: includes/elementor/widgets/class-rows.php:94
 #: includes/elementor/widgets/class-service-list.php:122
 #: includes/elementor/widgets/class-showcase.php:232
 #: includes/elementor/widgets/class-slider.php:102
@@ -3884,6 +3885,8 @@ msgstr ""
 #: includes/elementor/widgets/class-posts.php:92
 #: includes/elementor/widgets/class-process.php:81
 #: includes/elementor/widgets/class-project-show.php:97
+#: includes/elementor/widgets/class-rows.php:61
+#: includes/elementor/widgets/class-rows.php:78
 #: includes/elementor/widgets/class-scroll-path.php:80
 #: includes/elementor/widgets/class-scroll-zoom.php:137
 #: includes/elementor/widgets/class-showcase.php:148
@@ -4789,6 +4792,7 @@ msgstr ""
 #: includes/elementor/widgets/class-button.php:52
 #: includes/elementor/widgets/class-giant-text.php:110
 #: includes/elementor/widgets/class-marquee.php:99
+#: includes/elementor/widgets/class-rows.php:121
 #: includes/elementor/widgets/class-stories.php:119
 #: includes/elementor/widgets/class-text-scrub.php:66
 #: includes/settings/schema.php:262
@@ -5409,6 +5413,7 @@ msgid "Background image"
 msgstr ""
 
 #: includes/elementor/widgets/class-cta.php:123
+#: includes/elementor/widgets/class-rows.php:86
 #: includes/elementor/widgets/class-service-list.php:115
 msgid "Detail"
 msgstr ""
@@ -7473,6 +7478,45 @@ msgstr ""
 
 #: includes/elementor/widgets/class-proof.php:196
 msgid "See more"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:30
+#: includes/elementor/widgets/class-rows.php:57
+msgid "Rows"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:63
+msgid "Awards"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:70
+msgid "Date or number"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:80
+#: includes/elementor/widgets/class-rows.php:107
+msgid "Site of the month"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:88
+#: includes/elementor/widgets/class-rows.php:108
+msgid "Honourable mention"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:112
+msgid "Design award"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:113
+msgid "Special mention"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:125
+msgid "Regular"
+msgstr ""
+
+#: includes/elementor/widgets/class-rows.php:126
+msgid "Large titles"
 msgstr ""
 
 #: includes/elementor/widgets/class-scroll-path.php:29

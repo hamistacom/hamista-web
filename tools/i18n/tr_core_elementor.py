@@ -1109,4 +1109,13 @@ T = {
     "No posts yet. Publish a few and they will appear here.": "هنوز نوشته~ای نیست. چند نوشته منتشر کنید تا اینجا نمایش داده شوند.",
     "%s min read": "%s دقیقه مطالعه",
     "Newspaper, magazine or news site": "روزنامه، مجله یا سایت خبری",
+    "Rows": "ردیف~ها",
+    "Awards": "جایزه~ها",
+    "Date or number": "تاریخ یا شماره",
+    "Site of the month": "سایت ماه",
+    "Honourable mention": "تقدیرنامه",
+    "Design award": "جایزه~ی طراحی",
+    "Special mention": "تقدیر ویژه",
+    "Regular": "معمولی",
+    "Large titles": "عنوان~های بزرگ",
 }

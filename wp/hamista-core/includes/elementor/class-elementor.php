@@ -47,6 +47,7 @@ class Elementor {
 			'Testimonial_Wall',
 			'News',
 			'Masthead',
+			'Rows',
 			'Marquee',
 			'Image_Reveal',
 			'Counters',

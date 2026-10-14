@@ -199,7 +199,28 @@ for key, name in [
 ]:
     PRESS[key] = ('gazette/' + name, 900, 'photo')
 
-DEMOS = {'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
+# Resume: Noryx pictures reused for a designer's portfolio.
+CV = {
+    'portrait': ('04/tm13.webp', 700, 'photo'),
+    'portrait-2': ('04/tm6.webp', 640, 'photo'),
+    'work-1': ('04/pro10.webp', 1280, 'photo'),
+    'work-2': ('04/pro11.webp', 850, 'photo'),
+    'work-3': ('04/pro13.webp', 850, 'photo'),
+    'work-4': ('04/pro8.webp', 850, 'photo'),
+    'work-5': ('04/pro9.webp', 440, 'photo'),
+    'work-6': ('04/pro12.webp', 440, 'photo'),
+    'work-7': ('03/pro7.webp', 700, 'photo'),
+    'studio': ('04/o3-img-4.webp', 1600, 'photo'),
+    'blog-1': ('04/in1.webp', 1200, 'photo'),
+    'blog-2': ('04/in3.webp', 1200, 'photo'),
+    'blog-3': ('04/hw2.webp', 900, 'photo'),
+    'av-1': ('04/tst_1.webp', 120, 'photo'),
+    'av-2': ('04/tst_2.webp', 120, 'photo'),
+    'av-3': ('04/tst_3.webp', 120, 'photo'),
+    'av-4': ('04/tst_4.webp', 120, 'photo'),
+}
+
+DEMOS = {'cv': CV, 'press': PRESS, 'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):
