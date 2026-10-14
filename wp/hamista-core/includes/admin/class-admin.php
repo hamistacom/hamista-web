@@ -665,6 +665,18 @@ class Admin {
 			'demosEmpty'       => __( 'No demos available yet', 'hamista-core' ),
 			'demosEmptyDesc'   => __( 'Demo sites ship with Hamista Core updates. Check back after updating the plugin.', 'hamista-core' ),
 			'demoPreview'      => __( 'Preview', 'hamista-core' ),
+			/* translators: %s: demo name */
+			'demoPreviewOf'    => __( 'Preview of %s', 'hamista-core' ),
+			'demoInstalled'    => __( 'Installed', 'hamista-core' ),
+			'demoReimport'     => __( 'Import again', 'hamista-core' ),
+			'demoRemove'       => __( 'Remove', 'hamista-core' ),
+			/* translators: %s: demo name */
+			'demoRemoveQ'      => __( 'Remove the %s demo?', 'hamista-core' ),
+			'demoRemoveMsg'    => __( 'Pages, posts, products, menus and pictures this demo added will be deleted. Your own content and settings stay as they are.', 'hamista-core' ),
+			'demoTone'         => __( 'Colour mode', 'hamista-core' ),
+			'demoLight'        => __( 'Light', 'hamista-core' ),
+			'demoDark'         => __( 'Dark', 'hamista-core' ),
+			'demoLive'         => __( 'Open the live demo', 'hamista-core' ),
 			'demoImport'       => __( 'Import', 'hamista-core' ),
 			/* translators: %s: demo name. */
 			'demoImportTitle'  => __( 'Import “%s”', 'hamista-core' ),

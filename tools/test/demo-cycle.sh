@@ -8,3 +8,4 @@ node "$DIR/../demos/build.js" "$ID"
 cd /opt/wpdev/wordpress
 WP_CLI_ALLOW_ROOT=1 wp eval-file "$DIR/import-demo.php" "$ID" 2>&1 | grep -E "^(ERROR|links|total)" || true
 cd "$DIR" && NODE_PATH=/opt/node-tools/node_modules node thumb.js "$ID" 2>&1 | grep -v "agent-proxy\|gravatar\|For details\|connections through"
+cd "$DIR" && NODE_PATH=/opt/node-tools/node_modules node preview.js "$ID" 2>&1 | grep -v "agent-proxy\|gravatar\|For details\|connections through"

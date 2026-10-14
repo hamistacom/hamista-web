@@ -292,7 +292,7 @@ class Agency_Hero extends Widget_Base {
 			array(
 				'label'       => __( 'Giant text', 'hamista-core' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'Akh*g*ar', 'hamista-core' ),
+				'default'     => __( 'Ha*mi*', 'hamista-core' ),
 				'description' => __( 'The brand name, or a short line for the running text. Wrap a part in *asterisks* for the accent colour.', 'hamista-core' ),
 				'label_block' => true,
 				'condition'   => array( 'style!' => 'panel' ),

@@ -280,7 +280,7 @@ T = {
     "Analytics, verification tags. Requires the unfiltered_html capability.": "کدهای آمار و تگ~های تأیید مالکیت. به مجوز unfiltered_html نیاز دارد.",
     "Code before </body>": "کد پیش از </body>",
     "Flux": "سیال",
-    "Graphite, ivory and one ember accent": "زغالی و عاجی، با تنها یک رنگ تأکیدی اخگری",
+    "Graphite, ivory and one ember accent": "زغالی و عاجی، با تنها یک رنگ تأکیدی آتشین",
     # Layout v2, cursor, sound, language.
     "Maximum width of page content. 1150px keeps every section comfortable on a 15\" laptop; Elementor's container width is kept in sync.": "بیشترین عرض محتوای برگه~ها. عرض ۱۱۵۰ پیکسل همه~ی بخش~ها را روی لپ~تاپ ۱۵ اینچی جمع~وجور و خوانا نگه می~دارد. عرض کانتینرهای المنتور هم هم~زمان با همین مقدار تنظیم می~شود.",
     "Density": "تراکم",
@@ -416,7 +416,7 @@ T = {
     "A short map of the site at /llms.txt, so AI search and assistants describe your business correctly. Updates itself when you publish.": "نقشه~ای کوتاه از سایت در نشانی ‎/llms.txt تا جست~وجوی هوشمند و دستیارها کسب~وکارتان را درست معرفی کنند. با هر انتشار خودش به~روز می~شود.",
     "Summary at the top of llms.txt": "معرفی بالای llms.txt",
     "Who you are and what you offer, in one or two sentences.": "در یکی دو جمله بگویید که هستید و چه ارائه می~دهید.",
-    "Ember": "اخگر",
+    "Ember": "شعله",
     "Fog grey, deep black and burning orange; large rounded panels": "خاکستری مه~آلود، مشکی عمیق و نارنجی آتشین؛ پنل~های بزرگ با گوشه~های گرد",
     "Frame around links": "قاب دور پیوندها",
     "Comet trail": "دنباله~ی ستاره~ای",

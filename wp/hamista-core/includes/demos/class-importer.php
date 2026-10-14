@@ -98,8 +98,9 @@ class Importer {
 	 * @return array
 	 */
 	public static function admin_data( $data ) {
-		$data['demos']        = Demos::for_admin();
-		$data['demoImported'] = (bool) get_option( self::IMPORTED );
+		$data['demos']         = Demos::for_admin();
+		$data['demoImported']  = (bool) get_option( self::IMPORTED );
+		$data['demoInstalled'] = (object) array_map( 'intval', (array) get_option( self::IMPORTED, array() ) );
 		return $data;
 	}
 
@@ -1106,11 +1107,14 @@ class Importer {
 	/* ------------------------------------------------------------------ */
 
 	/**
-	 * Remove everything a demo import created.
+	 * Remove everything a demo import created; with a `demo` parameter, only that demo's content.
 	 *
+	 * @param \WP_REST_Request|null $request Request.
 	 * @return \WP_REST_Response
 	 */
-	public static function uninstall() {
+	public static function uninstall( $request = null ) {
+		$only  = $request instanceof \WP_REST_Request ? sanitize_key( (string) $request->get_param( 'demo' ) ) : '';
+		$value = $only ? array( 'meta_value' => $only ) : array(); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_value -- admin action, runs once.
 		$ids   = get_posts(
 			array(
 				'post_type'      => 'any',
@@ -1119,7 +1123,7 @@ class Importer {
 				'fields'         => 'ids',
 				'meta_key'       => self::META, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key -- admin action, runs once.
 				'no_found_rows'  => true,
-			)
+			) + $value
 		);
 		$ids   = array_merge(
 			$ids,
@@ -1131,7 +1135,7 @@ class Importer {
 					'fields'         => 'ids',
 					'meta_key'       => self::META, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key -- admin action, runs once.
 					'no_found_rows'  => true,
-				)
+				) + $value
 			)
 		);
 		$front = (int) get_option( 'page_on_front' );
@@ -1154,7 +1158,7 @@ class Importer {
 				'hide_empty' => false,
 				'meta_key'   => self::META, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key -- admin action, runs once.
 				'fields'     => 'all',
-			)
+			) + $value
 		);
 		foreach ( is_array( $terms ) ? $terms : array() as $term ) {
 			if ( 'nav_menu' === $term->taxonomy ) {
@@ -1164,7 +1168,12 @@ class Importer {
 			}
 		}
 
-		delete_option( self::IMPORTED );
+		$left = $only ? array_diff_key( (array) get_option( self::IMPORTED, array() ), array( $only => 0 ) ) : array();
+		if ( $left ) {
+			update_option( self::IMPORTED, $left, false );
+		} else {
+			delete_option( self::IMPORTED );
+		}
 		delete_option( self::STATE );
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			\Elementor\Plugin::$instance->files_manager->clear_cache();

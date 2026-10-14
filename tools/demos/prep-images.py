@@ -19,15 +19,12 @@ AKHGAR = {
     # Hero
     'hero': ('03/hr1.webp', 900, 'photo'),
     'hero-film': ('03/hr2.webp', 500, 'photo'),
-    'laurel': ('svg/shape3.png', 120, 'alpha'),
     # About
     'about': ('04/ab2.jpg', 900, 'photo'),
     'star': ('03/shape6.png', 240, 'alpha'),
     # Why us
     'why-bg': ('03/wh-bg.webp', 1920, 'photo'),
     'cloud': ('03/wc1.webp', 700, 'photo'),
-    'hand': ('03/wc1.png', 460, 'alpha'),
-    'robot': ('03/wc2.png', 520, 'alpha'),
     'shield': ('03/wc3.png', 420, 'alpha'),
     'runner': ('03/wc2.webp', 600, 'photo'),
     'faces': ('03/wc5.png', 700, 'alpha'),
@@ -46,10 +43,7 @@ AKHGAR = {
     'pro-6': ('03/pro6.webp', 1200, 'photo'),
     'pro-7': ('03/pro7.webp', 1200, 'photo'),
     # Pricing
-    'plan-1': ('03/pr-bg3.png', 600, 'photo'),
-    'plan-2': ('03/pr-bg4.png', 600, 'photo'),
     'bolt': ('03/shape7.png', 320, 'alpha'),
-    'plan-wave': ('03/pr-bg2.png', 800, 'alpha'),
     # Team
     'tm-1': ('03/tm1.jpg', 640, 'photo'),
     'tm-2': ('03/tm2.jpg', 640, 'photo'),
@@ -57,9 +51,6 @@ AKHGAR = {
     'tm-4': ('03/tm4.jpg', 640, 'photo'),
     'tm-5': ('03/tm5.jpg', 640, 'photo'),
     # Process icons
-    'step-1': ('svg/ic6.png', 120, 'alpha'),
-    'step-2': ('svg/ic7.png', 120, 'alpha'),
-    'step-3': ('svg/ic8.png', 120, 'alpha'),
     # Testimonials
     'crowd': ('03/tst-bg.webp', 1920, 'photo'),
     'tst-1': ('03/tst1.jpg', 120, 'photo'),
@@ -72,17 +63,13 @@ AKHGAR = {
     'av-3': ('03/cl3.jpg', 120, 'photo'),
     'av-4': ('03/cl4.jpg', 120, 'photo'),
     'av-5': ('03/cl5.jpg', 120, 'photo'),
-    'av-6': ('03/cl6.jpg', 120, 'photo'),
     # Contact and blog
-    'touch': ('04/get-in-bg.webp', 1600, 'photo'),
-    'faq-face': ('03/ab3.jpg', 160, 'photo'),
     'blog-1': ('03/blg1.webp', 900, 'photo'),
     'blog-2': ('03/blg2.webp', 900, 'photo'),
     'blog-3': ('03/blg3.webp', 900, 'photo'),
     'blog-4': ('03/blg4.webp', 1200, 'photo'),
     'blog-5': ('03/blg5.webp', 1200, 'photo'),
     'blog-6': ('04/in1.webp', 1200, 'photo'),
-    'footer-bg': ('04/ft-bg3.webp', 1920, 'photo'),
     # Inner pages
     'office-1': ('04/o3-img-2.webp', 1600, 'photo'),
     'office-2': ('04/o3-img-4.webp', 1600, 'photo'),
@@ -202,7 +189,7 @@ for i, name in enumerate(['sp23', 'sp24', 'sp25', 'sp26', 'sp27', 'sp28', 'sp29'
         ARGHAVAN['logo-w-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'alpha')
     ARGHAVAN['logo-k-%d' % (i + 1)] = ('svg/%s.png' % name, 360, 'ink')
 
-DEMOS = {'akhgar': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
+DEMOS = {'hami': AKHGAR, 'sepehr': SEPEHR, 'arghavan': ARGHAVAN}
 
 
 def convert(src, dest, width, mode):

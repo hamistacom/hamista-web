@@ -1,6 +1,6 @@
 # Demo images — where each one appears
 
-Pictures in the Akhgar, Sepehr and Arghavan demos come from the Noryx package you supplied, converted to WebP. They live in `wp/hamista-core/demos/<demo>/images/` under the names below. Replace a file with your own picture of the same name and roughly the same shape, then re-import the demo; nothing else needs to change.
+Pictures in the Hami, Sepehr and Arghavan demos come from the Noryx package you supplied, converted to WebP. They live in `wp/hamista-core/demos/<demo>/images/` under the names below. Replace a file with your own picture of the same name and roughly the same shape, then re-import the demo; nothing else needs to change.
 
 Pictures marked ✱ carry English text inside the picture (device mock-ups, a ring of English words); those are the first to replace for a fully Persian site.
 
@@ -42,7 +42,7 @@ Pictures marked ✱ carry English text inside the picture (device mock-ups, a ri
 | office-1, office-2 | About page | landscape |
 | logo-w-1 … logo-w-6, logo-k-1 … logo-k-7 | Client logos, white and dark | transparent |
 
-## Akhgar (اخگر)
+## Hami (حامی)
 
 | File | Where | Shape |
 |---|---|---|

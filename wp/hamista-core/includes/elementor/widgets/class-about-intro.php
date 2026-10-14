@@ -87,7 +87,7 @@ class About_Intro extends Widget_Base {
 				'label'       => __( 'Statement', 'hamista-core' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'rows'        => 4,
-				'default'     => __( 'Akhgar is a creative studio that turns ideas into brands, websites and campaigns people remember.', 'hamista-core' ),
+				'default'     => __( 'Hami is a creative studio that turns ideas into brands, websites and campaigns people remember.', 'hamista-core' ),
 				'description' => __( 'Lights up word by word as it scrolls past. *Asterisks* colour words with the accent.', 'hamista-core' ),
 			)
 		);

@@ -125,7 +125,7 @@ T = {
     "Quick actions": "دسترسی سریع",
     "Call us": "تماس با ما",
     "Chat on WhatsApp": "گفت~وگو در واتس~اپ",
-    "Flux — graphite, ivory and ember": "سیال — زغالی و عاجی با رگه~ی اخگری",
+    "Flux — graphite, ivory and ember": "سیال — زغالی و عاجی با رگه~ی آتشین",
     "Interface sounds": "صداهای رابط کاربری",
     "Selected work": "نمونه~کارهای منتخب",
     "Project categories": "دسته~بندی پروژه~ها",
@@ -188,5 +188,5 @@ T = {
     "social network\x04GitHub": "گیت~هاب",
     "social network\x04Dribbble": "دریبل",
     "social network\x04Behance": "بیهنس",
-    "Ember — fog grey, black and burning orange": "اخگر — خاکستری مه~آلود، مشکی و نارنجی آتشین",
+    "Ember — fog grey, black and burning orange": "شعله — خاکستری مه~آلود، مشکی و نارنجی آتشین",
 }

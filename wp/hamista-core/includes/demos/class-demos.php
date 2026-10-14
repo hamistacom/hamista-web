@@ -124,6 +124,12 @@ class Demos {
 				'kit'         => $demo['kit'] ?? '',
 				'thumb'       => ! empty( $demo['thumb'] ) ? $demo['url'] . $demo['thumb'] : '',
 				'preview'     => $demo['preview'] ?? '',
+				'shots'       => array_filter(
+					array(
+						'light' => is_file( $demo['path'] . 'preview.webp' ) ? $demo['url'] . 'preview.webp' : '',
+						'dark'  => is_file( $demo['path'] . 'preview-dark.webp' ) ? $demo['url'] . 'preview-dark.webp' : '',
+					)
+				),
 				'pages'       => array_values( (array) ( $demo['pages'] ?? array() ) ),
 				'required'    => array_values( (array) ( $demo['required'] ?? array( 'elementor' ) ) ),
 				'recommended' => array_values( (array) ( $demo['recommended'] ?? array() ) ),

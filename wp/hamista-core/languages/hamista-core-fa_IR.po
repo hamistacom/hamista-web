@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hamista-core\n"
-"POT-Creation-Date: 2026-10-14T03:50:36+00:00\n"
-"PO-Revision-Date: 2026-10-14 03:50+0000\n"
+"POT-Creation-Date: 2026-10-14T04:01:36+00:00\n"
+"PO-Revision-Date: 2026-10-14 04:01+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -487,6 +487,7 @@ msgstr "جایگزینی"
 
 #: includes/admin/class-admin.php:533
 #: includes/admin/class-admin.php:542
+#: includes/admin/class-admin.php:672
 msgid "Remove"
 msgstr "حذف"
 
@@ -854,7 +855,7 @@ msgid "Open"
 msgstr "باز کردن"
 
 #: includes/admin/class-admin.php:637
-#: includes/admin/class-admin.php:675
+#: includes/admin/class-admin.php:687
 msgid "Plugins"
 msgstr "افزونه‌ها"
 
@@ -936,7 +937,7 @@ msgid "Header & footer templates"
 msgstr "تمپلیت‌های سربرگ و پابرگ"
 
 #: includes/admin/class-admin.php:658
-#: includes/admin/class-admin.php:680
+#: includes/admin/class-admin.php:692
 msgid "Menus"
 msgstr "فهرست‌ها"
 
@@ -964,236 +965,285 @@ msgstr "دموها همراه به‌روزرسانی‌های هسته‌ی ه�
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: includes/admin/class-admin.php:668
+#. translators: %s: demo name
+#: includes/admin/class-admin.php:669
+#, php-format
+msgid "Preview of %s"
+msgstr "پیش‌نمایش %s"
+
+#: includes/admin/class-admin.php:670
+msgid "Installed"
+msgstr "نصب‌شده"
+
+#: includes/admin/class-admin.php:671
+msgid "Import again"
+msgstr "نصب دوباره"
+
+#. translators: %s: demo name
+#: includes/admin/class-admin.php:674
+#, php-format
+msgid "Remove the %s demo?"
+msgstr "دموی %s حذف شود؟"
+
+#: includes/admin/class-admin.php:675
+msgid "Pages, posts, products, menus and pictures this demo added will be deleted. Your own content and settings stay as they are."
+msgstr "برگه‌ها، نوشته‌ها، محصولات، فهرست‌ها و تصویرهایی که این دمو اضافه کرده حذف می‌شوند. محتوا و تنظیمات خودتان دست‌نخورده می‌ماند."
+
+#: includes/admin/class-admin.php:676
+msgid "Colour mode"
+msgstr "حالت رنگ"
+
+#: includes/admin/class-admin.php:677
+#: includes/elementor/widgets/class-bento.php:149
+#: includes/elementor/widgets/class-testimonial-wall.php:110
+#: includes/settings/schema.php:283
+msgid "Light"
+msgstr "روشن"
+
+#: includes/admin/class-admin.php:678
+#: includes/elementor/class-motion.php:291
+#: includes/elementor/widgets/class-bento.php:150
+#: includes/elementor/widgets/class-features.php:122
+#: includes/elementor/widgets/class-stack.php:110
+#: includes/elementor/widgets/class-testimonial-wall.php:111
+#: includes/settings/schema.php:287
+msgid "Dark"
+msgstr "تاریک"
+
+#: includes/admin/class-admin.php:679
+msgid "Open the live demo"
+msgstr "باز کردن دموی زنده"
+
+#: includes/admin/class-admin.php:680
 msgid "Import"
 msgstr "نصب"
 
 #. translators: %s: demo name.
-#: includes/admin/class-admin.php:670
+#: includes/admin/class-admin.php:682
 #, php-format
 msgid "Import “%s”"
 msgstr "نصب «%s»"
 
 #. translators: %d: number of pages.
-#: includes/admin/class-admin.php:672
+#: includes/admin/class-admin.php:684
 #, php-format
 msgid "%d pages"
 msgstr "%d برگه"
 
 #. translators: %s: style kit name.
-#: includes/admin/class-admin.php:674
+#: includes/admin/class-admin.php:686
 #, php-format
 msgid "Style kit: %s"
 msgstr "سبک طراحی: %s"
 
-#: includes/admin/class-admin.php:676
+#: includes/admin/class-admin.php:688
 msgid "Activate the required plugins to continue."
 msgstr "برای ادامه، افزونه‌های الزامی را فعال کنید."
 
-#: includes/admin/class-admin.php:677
+#: includes/admin/class-admin.php:689
 msgid "What to import"
 msgstr "چه چیزهایی نصب شود؟"
 
-#: includes/admin/class-admin.php:678
+#: includes/admin/class-admin.php:690
 #: includes/elementor/widgets/class-cta.php:44
 #: includes/elementor/widgets/class-hero.php:46
 #: includes/settings/schema.php:705
 msgid "Content"
 msgstr "محتوا"
 
-#: includes/admin/class-admin.php:679
+#: includes/admin/class-admin.php:691
 msgid "Pages, posts and products with their images."
 msgstr "برگه‌ها، نوشته‌ها و محصولات به همراه تصاویرشان."
 
-#: includes/admin/class-admin.php:681
+#: includes/admin/class-admin.php:693
 msgid "Header and footer navigation."
 msgstr "منوهای سربرگ و پابرگ."
 
-#: includes/admin/class-admin.php:682
+#: includes/admin/class-admin.php:694
 msgid "Settings & style kit"
 msgstr "تنظیمات و سبک طراحی"
 
-#: includes/admin/class-admin.php:683
+#: includes/admin/class-admin.php:695
 msgid "Hamista settings, colors and Elementor kit."
 msgstr "تنظیمات هامیستا، رنگ‌ها و کیت المنتور."
 
-#: includes/admin/class-admin.php:684
+#: includes/admin/class-admin.php:696
 msgid "Set as front page"
 msgstr "تنظیم به‌عنوان صفحه‌ی اصلی"
 
-#: includes/admin/class-admin.php:685
+#: includes/admin/class-admin.php:697
 msgid "Use the demo home page as your site's front page."
 msgstr "برگه‌ی خانه‌ی دمو، صفحه‌ی اصلی سایتتان شود."
 
-#: includes/admin/class-admin.php:686
+#: includes/admin/class-admin.php:698
 msgid "Your existing pages, posts and products are kept. Imported items are tagged, so you can remove them later with “Uninstall demo content”."
 msgstr "برگه‌ها، نوشته‌ها و محصولات فعلی‌تان حفظ می‌شوند. موارد نصب‌شده علامت‌گذاری می‌شوند تا بعداً بتوانید با «حذف محتوای دمو» پاکشان کنید."
 
-#: includes/admin/class-admin.php:687
+#: includes/admin/class-admin.php:699
 msgid "Start import"
 msgstr "شروع نصب"
 
-#: includes/admin/class-admin.php:688
+#: includes/admin/class-admin.php:700
 msgid "Preparing…"
 msgstr "در حال آماده‌سازی…"
 
-#: includes/admin/class-admin.php:689
+#: includes/admin/class-admin.php:701
 msgid "Importing — keep this window open."
 msgstr "در حال نصب؛ این پنجره را نبندید."
 
-#: includes/admin/class-admin.php:690
+#: includes/admin/class-admin.php:702
 msgid "Your demo is ready"
 msgstr "دموی شما آماده است"
 
-#: includes/admin/class-admin.php:691
+#: includes/admin/class-admin.php:703
 msgid "Everything was imported. Take a look, then make it yours."
 msgstr "همه‌چیز نصب شد. نگاهی بیندازید و آن را مال خودتان کنید."
 
-#: includes/admin/class-admin.php:692
+#: includes/admin/class-admin.php:704
 msgid "Edit home page with Elementor"
 msgstr "ویرایش صفحه‌ی اصلی با المنتور"
 
-#: includes/admin/class-admin.php:693
+#: includes/admin/class-admin.php:705
 msgid "The import stopped"
 msgstr "نصب متوقف شد"
 
-#: includes/admin/class-admin.php:694
+#: includes/admin/class-admin.php:706
 msgid "Retry"
 msgstr "تلاش دوباره"
 
-#: includes/admin/class-admin.php:695
+#: includes/admin/class-admin.php:707
 msgid "Uninstall demo content"
 msgstr "حذف محتوای دمو"
 
-#: includes/admin/class-admin.php:696
+#: includes/admin/class-admin.php:708
 msgid "Remove imported demo content?"
 msgstr "محتوای دمو حذف شود؟"
 
-#: includes/admin/class-admin.php:697
+#: includes/admin/class-admin.php:709
 msgid "Pages, posts, products, menus and images that came from a demo are deleted. Content you created yourself is not touched."
 msgstr "برگه‌ها، نوشته‌ها، محصولات، فهرست‌ها و تصاویری که از دمو آمده‌اند حذف می‌شوند. به محتوایی که خودتان ساخته‌اید دست زده نمی‌شود."
 
-#: includes/admin/class-admin.php:698
+#: includes/admin/class-admin.php:710
 msgid "Remove demo content"
 msgstr "حذف محتوای دمو"
 
-#: includes/admin/class-admin.php:701
+#: includes/admin/class-admin.php:713
 #: includes/settings/schema.php:1753
 msgid "Tools"
 msgstr "ابزارها"
 
-#: includes/admin/class-admin.php:702
+#: includes/admin/class-admin.php:714
 msgid "Back up, move and reset your settings, and clear generated files."
 msgstr "پشتیبان‌گیری، انتقال و بازنشانی تنظیمات، و پاک‌سازی فایل‌های ساخته‌شده."
 
-#: includes/admin/class-admin.php:703
+#: includes/admin/class-admin.php:715
 msgid "Export settings"
 msgstr "برون‌بری تنظیمات"
 
-#: includes/admin/class-admin.php:704
+#: includes/admin/class-admin.php:716
 msgid "Download every Hamista setting as a JSON file — for backups or to copy them to another site."
 msgstr "همه‌ی تنظیمات هامیستا را به‌صورت یک فایل JSON دانلود کنید؛ برای پشتیبان‌گیری یا انتقال به سایتی دیگر."
 
-#: includes/admin/class-admin.php:705
+#: includes/admin/class-admin.php:717
 msgid "Download .json"
 msgstr "دانلود فایل JSON"
 
-#: includes/admin/class-admin.php:706
+#: includes/admin/class-admin.php:718
 msgid "Settings file downloaded."
 msgstr "فایل تنظیمات دانلود شد."
 
-#: includes/admin/class-admin.php:707
-#: includes/admin/class-admin.php:713
+#: includes/admin/class-admin.php:719
+#: includes/admin/class-admin.php:725
 msgid "Import settings"
 msgstr "درون‌ریزی تنظیمات"
 
-#: includes/admin/class-admin.php:708
+#: includes/admin/class-admin.php:720
 msgid "Load a file exported from Hamista. Settings in the file replace the current ones."
 msgstr "فایلی را که از هامیستا برون‌بری شده انتخاب کنید. تنظیمات فایل جایگزین تنظیمات فعلی می‌شوند."
 
-#: includes/admin/class-admin.php:709
+#: includes/admin/class-admin.php:721
 msgid "Choose file…"
 msgstr "انتخاب فایل…"
 
 #. translators: %s: file name.
-#: includes/admin/class-admin.php:711
+#: includes/admin/class-admin.php:723
 #, php-format
 msgid "Import “%s”?"
 msgstr "فایل «%s» درون‌ریزی شود؟"
 
-#: includes/admin/class-admin.php:712
+#: includes/admin/class-admin.php:724
 msgid "Settings in this file replace your current ones. Consider exporting a backup first."
 msgstr "تنظیمات این فایل جایگزین تنظیمات فعلی‌تان می‌شوند. بهتر است اول یک نسخه‌ی پشتیبان برون‌بری کنید."
 
-#: includes/admin/class-admin.php:714
+#: includes/admin/class-admin.php:726
 msgid "This file could not be read as JSON."
 msgstr "محتوای این فایل JSON معتبر نیست."
 
-#: includes/admin/class-admin.php:715
+#: includes/admin/class-admin.php:727
 msgid "Regenerate Elementor CSS"
 msgstr "بازسازی CSS المنتور"
 
-#: includes/admin/class-admin.php:716
+#: includes/admin/class-admin.php:728
 msgid "Clears Elementor's generated CSS files. Use it after changing colors, fonts or the content width if a page still looks old."
 msgstr "فایل‌های CSS ساخته‌شده‌ی المنتور را پاک می‌کند. اگر بعد از تغییر رنگ‌ها، فونت‌ها یا عرض محتوا هنوز ظاهر قبلی را می‌بینید، از این گزینه استفاده کنید."
 
-#: includes/admin/class-admin.php:717
+#: includes/admin/class-admin.php:729
 msgid "Regenerate"
 msgstr "بازسازی"
 
-#: includes/admin/class-admin.php:718
+#: includes/admin/class-admin.php:730
 #: includes/admin/class-tools.php:67
 msgid "Elementor is not active."
 msgstr "المنتور فعال نیست."
 
-#: includes/admin/class-admin.php:719
+#: includes/admin/class-admin.php:731
 msgid "Clear font cache"
 msgstr "پاک‌سازی کش فونت"
 
-#: includes/admin/class-admin.php:720
+#: includes/admin/class-admin.php:732
 msgid "Re-scans the font folders. Use it after adding or replacing font files in the theme."
 msgstr "پوشه‌های فونت را دوباره بررسی می‌کند. بعد از افزودن یا جایگزین کردن فایل‌های فونت در قالب از آن استفاده کنید."
 
-#: includes/admin/class-admin.php:721
+#: includes/admin/class-admin.php:733
 msgid "Clear cache"
 msgstr "پاک‌سازی کش"
 
-#: includes/admin/class-admin.php:722
+#: includes/admin/class-admin.php:734
 msgid "Danger zone"
 msgstr "منطقه‌ی خطر"
 
-#: includes/admin/class-admin.php:723
+#: includes/admin/class-admin.php:735
 msgid "Reset all settings"
 msgstr "بازنشانی همه‌ی تنظیمات"
 
-#: includes/admin/class-admin.php:724
+#: includes/admin/class-admin.php:736
 msgid "Every Hamista setting goes back to its default. Your content, menus and templates are not touched."
 msgstr "همه‌ی تنظیمات هامیستا به حالت پیش‌فرض برمی‌گردند. به محتوا، فهرست‌ها و تمپلیت‌هایتان دست زده نمی‌شود."
 
-#: includes/admin/class-admin.php:725
+#: includes/admin/class-admin.php:737
 msgid "Reset everything"
 msgstr "بازنشانی همه‌چیز"
 
-#: includes/admin/class-admin.php:726
+#: includes/admin/class-admin.php:738
 msgid "Reset all Hamista settings?"
 msgstr "همه‌ی تنظیمات هامیستا بازنشانی شود؟"
 
-#: includes/admin/class-admin.php:727
+#: includes/admin/class-admin.php:739
 msgid "This cannot be undone. Export your settings first if you might need them again."
 msgstr "این کار برگشت‌پذیر نیست. اگر ممکن است دوباره به تنظیمات فعلی نیاز پیدا کنید، اول از آن‌ها برون‌بری بگیرید."
 
 #. translators: %s: the word the user must type.
-#: includes/admin/class-admin.php:729
+#: includes/admin/class-admin.php:741
 #, php-format
 msgid "Type %s to confirm"
 msgstr "برای تأیید، %s را تایپ کنید"
 
-#: includes/admin/class-admin.php:730
+#: includes/admin/class-admin.php:742
 msgctxt "word typed to confirm resetting all settings"
 msgid "reset"
 msgstr "بازنشانی"
 
-#: includes/admin/class-admin.php:731
+#: includes/admin/class-admin.php:743
 msgid "All settings were reset."
 msgstr "همه‌ی تنظیمات بازنشانی شد."
 
@@ -3171,105 +3221,105 @@ msgctxt "icon"
 msgid "Tree"
 msgstr "درخت"
 
-#: includes/demos/class-importer.php:161
+#: includes/demos/class-importer.php:162
 msgid "Unknown plugin."
 msgstr "افزونه‌ی ناشناخته."
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:181
+#: includes/demos/class-importer.php:182
 #, php-format
 msgid "Could not reach WordPress.org to download %s. Install it from Plugins → Add New, then try again."
 msgstr "دسترسی به WordPress.org برای دریافت %s ممکن نشد. آن را از افزونه‌ها ← افزودن نصب کنید و دوباره امتحان کنید."
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:187
+#: includes/demos/class-importer.php:188
 #, php-format
 msgid "%s could not be installed. Check that the plugins folder is writable."
 msgstr "%s نصب نشد. بررسی کنید پوشه‌ی افزونه‌ها قابل نوشتن باشد."
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:199
+#: includes/demos/class-importer.php:200
 #, php-format
 msgid "%s is installed and active."
 msgstr "%s نصب و فعال شد."
 
-#: includes/demos/class-importer.php:218
+#: includes/demos/class-importer.php:219
 msgid "This demo could not be found."
 msgstr "این دمو پیدا نشد."
 
-#: includes/demos/class-importer.php:222
+#: includes/demos/class-importer.php:223
 msgid "Activate the required plugins first."
 msgstr "اول افزونه‌های لازم را فعال کنید."
 
-#: includes/demos/class-importer.php:241
+#: includes/demos/class-importer.php:242
 msgid "The demo files are damaged. Reinstall Hamista Core and try again."
 msgstr "فایل‌های دمو آسیب دیده‌اند. هسته‌ی هامیستا را دوباره نصب کنید و باز امتحان کنید."
 
-#: includes/demos/class-importer.php:258
+#: includes/demos/class-importer.php:259
 msgid "The import was interrupted. Please start again."
 msgstr "نصب دمو نیمه‌کاره ماند. لطفاً از اول شروع کنید."
 
-#: includes/demos/class-importer.php:329
+#: includes/demos/class-importer.php:330
 msgid "Done."
 msgstr "تمام شد."
 
-#: includes/demos/class-importer.php:358
+#: includes/demos/class-importer.php:359
 msgid "Getting ready…"
 msgstr "در حال آماده‌سازی…"
 
-#: includes/demos/class-importer.php:359
+#: includes/demos/class-importer.php:360
 msgid "Copying images…"
 msgstr "کپی تصاویر…"
 
-#: includes/demos/class-importer.php:360
+#: includes/demos/class-importer.php:361
 msgid "Creating categories…"
 msgstr "ساخت دسته‌بندی‌ها…"
 
-#: includes/demos/class-importer.php:361
+#: includes/demos/class-importer.php:362
 msgid "Adding blog posts…"
 msgstr "افزودن نوشته‌های وبلاگ…"
 
-#: includes/demos/class-importer.php:362
+#: includes/demos/class-importer.php:363
 msgid "Adding portfolio projects…"
 msgstr "افزودن نمونه‌کارها…"
 
-#: includes/demos/class-importer.php:363
+#: includes/demos/class-importer.php:364
 msgid "Adding profiles and booking hours…"
 msgstr "افزودن پروفایل‌ها و ساعت‌های رزرو…"
 
-#: includes/demos/class-importer.php:364
+#: includes/demos/class-importer.php:365
 msgid "Adding products…"
 msgstr "افزودن محصولات…"
 
-#: includes/demos/class-importer.php:365
+#: includes/demos/class-importer.php:366
 msgid "Creating pages…"
 msgstr "ساخت برگه‌ها…"
 
-#: includes/demos/class-importer.php:366
+#: includes/demos/class-importer.php:367
 msgid "Building pages with Elementor…"
 msgstr "چیدن برگه‌ها با المنتور…"
 
-#: includes/demos/class-importer.php:367
+#: includes/demos/class-importer.php:368
 msgid "Saving templates to the Elementor library…"
 msgstr "ذخیره‌ی تمپلیت‌ها در کتابخانه‌ی المنتور…"
 
-#: includes/demos/class-importer.php:368
+#: includes/demos/class-importer.php:369
 msgid "Setting up menus…"
 msgstr "تنظیم فهرست‌ها…"
 
-#: includes/demos/class-importer.php:369
+#: includes/demos/class-importer.php:370
 msgid "Applying the style kit and settings…"
 msgstr "اعمال کیت ظاهری و تنظیمات…"
 
-#: includes/demos/class-importer.php:370
+#: includes/demos/class-importer.php:371
 msgid "Setting the home page…"
 msgstr "تنظیم صفحه‌ی اصلی…"
 
-#: includes/demos/class-importer.php:371
+#: includes/demos/class-importer.php:372
 msgid "Finishing up…"
 msgstr "در حال جمع‌بندی…"
 
-#: includes/demos/class-importer.php:1175
+#: includes/demos/class-importer.php:1184
 msgid "Demo content removed. Your own content was not touched."
 msgstr "محتوای دمو حذف شد. به محتوای خودتان دست نخورد."
 
@@ -3642,15 +3692,6 @@ msgstr "خنثی ملایم"
 #: includes/elementor/class-motion.php:290
 msgid "Accent tint"
 msgstr "ته‌رنگ رنگ اصلی"
-
-#: includes/elementor/class-motion.php:291
-#: includes/elementor/widgets/class-bento.php:150
-#: includes/elementor/widgets/class-features.php:122
-#: includes/elementor/widgets/class-stack.php:110
-#: includes/elementor/widgets/class-testimonial-wall.php:111
-#: includes/settings/schema.php:287
-msgid "Dark"
-msgstr "تاریک"
 
 #: includes/elementor/class-motion.php:292
 #: includes/elementor/widgets/class-giant-text.php:100
@@ -4114,8 +4155,8 @@ msgid "Statement"
 msgstr "جمله‌ی اصلی"
 
 #: includes/elementor/widgets/class-about-intro.php:90
-msgid "Akhgar is a creative studio that turns ideas into brands, websites and campaigns people remember."
-msgstr "اخگر استودیویی خلاق است که ایده‌ها را به برند، سایت و کمپین‌هایی ماندگار تبدیل می‌کند."
+msgid "Hami is a creative studio that turns ideas into brands, websites and campaigns people remember."
+msgstr "حامی استودیویی خلاق است که ایده‌ها را به برند، سایت و کمپین‌هایی ماندگار در ذهن مردم تبدیل می‌کند."
 
 #: includes/elementor/widgets/class-about-intro.php:91
 msgid "Lights up word by word as it scrolls past. *Asterisks* colour words with the accent."
@@ -4559,8 +4600,8 @@ msgid "Giant text"
 msgstr "متن بسیار بزرگ"
 
 #: includes/elementor/widgets/class-agency-hero.php:295
-msgid "Akh*g*ar"
-msgstr "اخ*گ*ر"
+msgid "Ha*mi*"
+msgstr "حا*می*"
 
 #: includes/elementor/widgets/class-agency-hero.php:296
 msgid "The brand name, or a short line for the running text. Wrap a part in *asterisks* for the accent colour."
@@ -4916,12 +4957,6 @@ msgstr "متن دکمه"
 #: includes/elementor/widgets/class-testimonial-wall.php:106
 msgid "Tone"
 msgstr "رنگ‌مایه"
-
-#: includes/elementor/widgets/class-bento.php:149
-#: includes/elementor/widgets/class-testimonial-wall.php:110
-#: includes/settings/schema.php:283
-msgid "Light"
-msgstr "روشن"
 
 #: includes/elementor/widgets/class-bento.php:153
 msgid "Transparent with a line"
@@ -8764,7 +8799,7 @@ msgstr "سیال"
 
 #: includes/settings/schema.php:102
 msgid "Graphite, ivory and one ember accent"
-msgstr "زغالی و عاجی، با تنها یک رنگ تأکیدی اخگری"
+msgstr "زغالی و عاجی، با تنها یک رنگ تأکیدی آتشین"
 
 #: includes/settings/schema.php:106
 msgid "Honey"
@@ -8880,7 +8915,7 @@ msgstr "سبز سیاه، لیمویی درخشان و کارت‌های شیش�
 
 #: includes/settings/schema.php:176
 msgid "Ember"
-msgstr "اخگر"
+msgstr "شعله"
 
 #: includes/settings/schema.php:177
 msgid "Fog grey, deep black and burning orange; large rounded panels"

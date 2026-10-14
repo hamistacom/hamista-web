@@ -2169,8 +2169,12 @@
 		view.appendChild( h( 'div', { class: 'hm-demos' }, demos.map( function ( d ) {
 			const pages = Array.isArray( d.pages ) ? d.pages : [];
 			const titleId = 'hm-demo-' + String( d.id ).replace( /[^a-z0-9_-]/gi, '' );
-			return h( 'article', { class: 'hm-demo', 'aria-labelledby': titleId }, [
-				h( 'div', { class: 'hm-demo__thumb' }, d.thumb ? h( 'img', { src: d.thumb, alt: '', loading: 'lazy', decoding: 'async' } ) : h( 'span', { class: 'hm-demo__ph' }, icon( 'layers', 28 ) ) ),
+			const installed = isInstalled( d.id );
+			const canPreview = d.shots && ( d.shots.light || d.shots.dark );
+			const thumb = d.thumb ? h( 'img', { src: d.thumb, alt: '', loading: 'lazy', decoding: 'async' } ) : h( 'span', { class: 'hm-demo__ph' }, icon( 'layers', 28 ) );
+			return h( 'article', { class: 'hm-demo' + ( installed ? ' is-installed' : '' ), 'aria-labelledby': titleId }, [
+				canPreview ? h( 'button', { type: 'button', class: 'hm-demo__thumb hm-demo__thumb--btn', 'data-act': 'demo-preview', 'data-demo': d.id, 'aria-label': fmt( t( 'demoPreviewOf' ), d.title ) }, [ thumb, h( 'span', { class: 'hm-demo__peek', 'aria-hidden': 'true' }, [ icon( 'eye', 16 ), t( 'demoPreview' ) ] ) ] ) : h( 'div', { class: 'hm-demo__thumb' }, thumb ),
+				installed ? h( 'span', { class: 'hm-demo__flag' }, [ icon( 'check', 14 ), t( 'demoInstalled' ) ] ) : null,
 				h( 'div', { class: 'hm-demo__body' }, [
 					h( 'h2', { class: 'hm-demo__title', id: titleId, text: d.title } ),
 					d.desc ? h( 'p', { class: 'hm-demo__desc', text: d.desc } ) : null,
@@ -2180,11 +2184,134 @@
 					] ),
 				] ),
 				h( 'div', { class: 'hm-demo__foot' }, [
-					d.preview ? externalLink( d.preview, t( 'demoPreview' ), 'hm-btn hm-btn--quiet hm-btn--sm' ) : null,
-					h( 'button', { type: 'button', class: 'hm-btn hm-btn--primary hm-btn--sm', 'data-act': 'demo-open', 'data-demo': d.id, 'aria-describedby': titleId }, t( 'demoImport' ) ),
+					installed ? h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet hm-btn--sm hm-demo__remove', 'data-act': 'demo-remove', 'data-demo': d.id, 'aria-describedby': titleId }, [ icon( 'trash', 15 ), t( 'demoRemove' ) ] ) : null,
+					canPreview ? h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet hm-btn--sm', 'data-act': 'demo-preview', 'data-demo': d.id, 'aria-describedby': titleId }, t( 'demoPreview' ) ) : ( d.preview ? externalLink( d.preview, t( 'demoPreview' ), 'hm-btn hm-btn--quiet hm-btn--sm' ) : null ),
+					h( 'button', { type: 'button', class: 'hm-btn hm-btn--primary hm-btn--sm', 'data-act': 'demo-open', 'data-demo': d.id, 'aria-describedby': titleId }, installed ? t( 'demoReimport' ) : t( 'demoImport' ) ),
 				] ),
 			] );
 		} ) ) );
+	}
+
+	function isInstalled( id ) {
+		return !! ( data.demoInstalled && data.demoInstalled[ id ] );
+	}
+
+	function findDemo( id ) {
+		return demoList().filter( function ( d ) {
+			return String( d.id ) === String( id );
+		} )[ 0 ];
+	}
+
+	/**
+	 * Preview window: the whole home page in light and dark, scrolling on its own until touched.
+	 */
+	function openPreview( demo ) {
+		const shots = demo.shots || {};
+		let tone = shots.light ? 'light' : 'dark';
+		let raf = 0;
+		const img = h( 'img', { class: 'hm-peek__img', alt: fmt( t( 'demoPreviewOf' ), demo.title ), decoding: 'async' } );
+		const frame = h( 'div', { class: 'hm-peek__frame', tabindex: '0' }, img );
+		const m = openModal( {
+			title: demo.title,
+			size: 'lg',
+			onClose() {
+				cancelAnimationFrame( raf );
+			},
+		} );
+		function stop() {
+			cancelAnimationFrame( raf );
+			raf = 0;
+		}
+		function glide() {
+			stop();
+			frame.scrollTop = 0;
+			const reduce = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+			if ( reduce ) {
+				return;
+			}
+			let wait = 50;
+			( function step() {
+				if ( wait-- > 0 ) {
+					raf = requestAnimationFrame( step );
+					return;
+				}
+				if ( frame.scrollTop + frame.clientHeight >= frame.scrollHeight - 1 ) {
+					return;
+				}
+				frame.scrollTop += 1.6;
+				raf = requestAnimationFrame( step );
+			} )();
+		}
+		[ 'wheel', 'pointerdown', 'keydown', 'touchstart' ].forEach( function ( ev ) {
+			frame.addEventListener( ev, stop, { passive: true } );
+		} );
+		function show() {
+			img.src = shots[ tone ];
+			img.addEventListener( 'load', glide, { once: true } );
+		}
+		const tabs = shots.light && shots.dark ? h( 'div', { class: 'hm-seg', role: 'group', 'aria-label': t( 'demoTone' ) }, [ [ 'light', 'sun', t( 'demoLight' ) ], [ 'dark', 'moon', t( 'demoDark' ) ] ].map( function ( o ) {
+			const b = h( 'button', { type: 'button', class: 'hm-seg__btn', 'aria-pressed': String( tone === o[ 0 ] ) }, [ icon( o[ 1 ], 15 ), o[ 2 ] ] );
+			b.addEventListener( 'click', function () {
+				tone = o[ 0 ];
+				tabs.querySelectorAll( 'button' ).forEach( function ( x ) {
+					x.setAttribute( 'aria-pressed', String( x === b ) );
+				} );
+				show();
+			} );
+			return b;
+		} ) ) : null;
+		const pages = Array.isArray( demo.pages ) ? demo.pages : [];
+		m.body.replaceChildren(
+			h( 'div', { class: 'hm-peek' }, [
+				h( 'div', { class: 'hm-peek__bar' }, [
+					h( 'span', { class: 'hm-peek__dots', 'aria-hidden': 'true' }, [ h( 'i' ), h( 'i' ), h( 'i' ) ] ),
+					tabs,
+					demo.preview ? externalLink( demo.preview, t( 'demoLive' ), 'hm-link hm-peek__live' ) : null,
+				] ),
+				frame,
+				pages.length ? h( 'p', { class: 'hm-peek__pages' }, [ h( 'strong', { text: fmt( t( 'demoPages' ), pages.length ) } ), ' ' + pages.join( t( 'listSep' ) ) ] ) : null,
+			] )
+		);
+		const go = h( 'button', { type: 'button', class: 'hm-btn hm-btn--primary' }, isInstalled( demo.id ) ? t( 'demoReimport' ) : t( 'demoImport' ) );
+		go.addEventListener( 'click', function () {
+			m.close();
+			openDemo( demo );
+		} );
+		const close = h( 'button', { type: 'button', class: 'hm-btn hm-btn--quiet' }, t( 'close' ) );
+		close.addEventListener( 'click', function () {
+			m.close();
+		} );
+		m.foot.replaceChildren( close, go );
+		show();
+	}
+
+	async function removeDemo( btn ) {
+		const demo = findDemo( btn.dataset.demo );
+		if ( ! demo ) {
+			return;
+		}
+		const ok = await confirmDialog( {
+			title: fmt( t( 'demoRemoveQ' ), demo.title ),
+			message: t( 'demoRemoveMsg' ),
+			confirm: t( 'demoRemove' ),
+			danger: true,
+		} );
+		if ( ! ok ) {
+			return;
+		}
+		busy( btn, true );
+		try {
+			const res = await api( 'demos/uninstall', { demo: demo.id } );
+			toast( res.message || t( 'done' ), false === res.ok ? 'error' : 'success' );
+			if ( false !== res.ok && data.demoInstalled ) {
+				delete data.demoInstalled[ demo.id ];
+				data.demoImported = Object.keys( data.demoInstalled ).length > 0;
+			}
+		} catch ( err ) {
+			toast( err.message, 'error' );
+		}
+		busy( btn, false );
+		renderView();
 	}
 
 	const DEMO_OPTIONS = [
@@ -2216,6 +2343,9 @@
 			},
 			onClose() {
 				root.removeEventListener( 'hm:plugins', onPlugins );
+				if ( 'done' === phase ) {
+					renderView();
+				}
 			},
 		} );
 
@@ -2347,6 +2477,8 @@
 			phase = 'done';
 			progress = 100;
 			data.demoImported = true;
+			data.demoInstalled = Object.assign( {}, data.demoInstalled || {} );
+			data.demoInstalled[ demo.id ] = Date.now();
 			m.setLocked();
 			const home = doneLinks.home || links.site;
 			m.body.replaceChildren( h( 'div', { class: 'hm-success' }, [
@@ -2391,6 +2523,8 @@
 			toast( res.message || t( 'done' ), false === res.ok ? 'error' : 'success' );
 			if ( false !== res.ok ) {
 				data.demoImported = false;
+				data.demoInstalled = {};
+				renderView();
 			}
 		} catch ( err ) {
 			toast( err.message, 'error' );
@@ -2959,6 +3093,13 @@
 		'demo-uninstall'( btn ) {
 			uninstallDemos( btn );
 		},
+		'demo-preview'( btn ) {
+			const demo = findDemo( btn.dataset.demo );
+			if ( demo ) {
+				openPreview( demo );
+			}
+		},
+		'demo-remove': removeDemo,
 		'tool-export': exportSettings,
 		'tool-import'( btn ) {
 			const input = btn.parentNode.querySelector( '[data-part="import-file"]' );

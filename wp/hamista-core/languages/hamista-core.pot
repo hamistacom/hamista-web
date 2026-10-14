@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-14T03:50:36+00:00\n"
+"POT-Creation-Date: 2026-10-14T04:01:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista-core\n"
@@ -486,6 +486,7 @@ msgstr ""
 
 #: includes/admin/class-admin.php:533
 #: includes/admin/class-admin.php:542
+#: includes/admin/class-admin.php:672
 msgid "Remove"
 msgstr ""
 
@@ -853,7 +854,7 @@ msgid "Open"
 msgstr ""
 
 #: includes/admin/class-admin.php:637
-#: includes/admin/class-admin.php:675
+#: includes/admin/class-admin.php:687
 msgid "Plugins"
 msgstr ""
 
@@ -935,7 +936,7 @@ msgid "Header & footer templates"
 msgstr ""
 
 #: includes/admin/class-admin.php:658
-#: includes/admin/class-admin.php:680
+#: includes/admin/class-admin.php:692
 msgid "Menus"
 msgstr ""
 
@@ -963,236 +964,285 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: includes/admin/class-admin.php:668
+#. translators: %s: demo name
+#: includes/admin/class-admin.php:669
+#, php-format
+msgid "Preview of %s"
+msgstr ""
+
+#: includes/admin/class-admin.php:670
+msgid "Installed"
+msgstr ""
+
+#: includes/admin/class-admin.php:671
+msgid "Import again"
+msgstr ""
+
+#. translators: %s: demo name
+#: includes/admin/class-admin.php:674
+#, php-format
+msgid "Remove the %s demo?"
+msgstr ""
+
+#: includes/admin/class-admin.php:675
+msgid "Pages, posts, products, menus and pictures this demo added will be deleted. Your own content and settings stay as they are."
+msgstr ""
+
+#: includes/admin/class-admin.php:676
+msgid "Colour mode"
+msgstr ""
+
+#: includes/admin/class-admin.php:677
+#: includes/elementor/widgets/class-bento.php:149
+#: includes/elementor/widgets/class-testimonial-wall.php:110
+#: includes/settings/schema.php:283
+msgid "Light"
+msgstr ""
+
+#: includes/admin/class-admin.php:678
+#: includes/elementor/class-motion.php:291
+#: includes/elementor/widgets/class-bento.php:150
+#: includes/elementor/widgets/class-features.php:122
+#: includes/elementor/widgets/class-stack.php:110
+#: includes/elementor/widgets/class-testimonial-wall.php:111
+#: includes/settings/schema.php:287
+msgid "Dark"
+msgstr ""
+
+#: includes/admin/class-admin.php:679
+msgid "Open the live demo"
+msgstr ""
+
+#: includes/admin/class-admin.php:680
 msgid "Import"
 msgstr ""
 
 #. translators: %s: demo name.
-#: includes/admin/class-admin.php:670
+#: includes/admin/class-admin.php:682
 #, php-format
 msgid "Import “%s”"
 msgstr ""
 
 #. translators: %d: number of pages.
-#: includes/admin/class-admin.php:672
+#: includes/admin/class-admin.php:684
 #, php-format
 msgid "%d pages"
 msgstr ""
 
 #. translators: %s: style kit name.
-#: includes/admin/class-admin.php:674
+#: includes/admin/class-admin.php:686
 #, php-format
 msgid "Style kit: %s"
 msgstr ""
 
-#: includes/admin/class-admin.php:676
+#: includes/admin/class-admin.php:688
 msgid "Activate the required plugins to continue."
 msgstr ""
 
-#: includes/admin/class-admin.php:677
+#: includes/admin/class-admin.php:689
 msgid "What to import"
 msgstr ""
 
-#: includes/admin/class-admin.php:678
+#: includes/admin/class-admin.php:690
 #: includes/elementor/widgets/class-cta.php:44
 #: includes/elementor/widgets/class-hero.php:46
 #: includes/settings/schema.php:705
 msgid "Content"
 msgstr ""
 
-#: includes/admin/class-admin.php:679
+#: includes/admin/class-admin.php:691
 msgid "Pages, posts and products with their images."
 msgstr ""
 
-#: includes/admin/class-admin.php:681
+#: includes/admin/class-admin.php:693
 msgid "Header and footer navigation."
 msgstr ""
 
-#: includes/admin/class-admin.php:682
+#: includes/admin/class-admin.php:694
 msgid "Settings & style kit"
 msgstr ""
 
-#: includes/admin/class-admin.php:683
+#: includes/admin/class-admin.php:695
 msgid "Hamista settings, colors and Elementor kit."
 msgstr ""
 
-#: includes/admin/class-admin.php:684
+#: includes/admin/class-admin.php:696
 msgid "Set as front page"
 msgstr ""
 
-#: includes/admin/class-admin.php:685
+#: includes/admin/class-admin.php:697
 msgid "Use the demo home page as your site's front page."
 msgstr ""
 
-#: includes/admin/class-admin.php:686
+#: includes/admin/class-admin.php:698
 msgid "Your existing pages, posts and products are kept. Imported items are tagged, so you can remove them later with “Uninstall demo content”."
 msgstr ""
 
-#: includes/admin/class-admin.php:687
+#: includes/admin/class-admin.php:699
 msgid "Start import"
 msgstr ""
 
-#: includes/admin/class-admin.php:688
+#: includes/admin/class-admin.php:700
 msgid "Preparing…"
 msgstr ""
 
-#: includes/admin/class-admin.php:689
+#: includes/admin/class-admin.php:701
 msgid "Importing — keep this window open."
 msgstr ""
 
-#: includes/admin/class-admin.php:690
+#: includes/admin/class-admin.php:702
 msgid "Your demo is ready"
 msgstr ""
 
-#: includes/admin/class-admin.php:691
+#: includes/admin/class-admin.php:703
 msgid "Everything was imported. Take a look, then make it yours."
 msgstr ""
 
-#: includes/admin/class-admin.php:692
+#: includes/admin/class-admin.php:704
 msgid "Edit home page with Elementor"
 msgstr ""
 
-#: includes/admin/class-admin.php:693
+#: includes/admin/class-admin.php:705
 msgid "The import stopped"
 msgstr ""
 
-#: includes/admin/class-admin.php:694
+#: includes/admin/class-admin.php:706
 msgid "Retry"
 msgstr ""
 
-#: includes/admin/class-admin.php:695
+#: includes/admin/class-admin.php:707
 msgid "Uninstall demo content"
 msgstr ""
 
-#: includes/admin/class-admin.php:696
+#: includes/admin/class-admin.php:708
 msgid "Remove imported demo content?"
 msgstr ""
 
-#: includes/admin/class-admin.php:697
+#: includes/admin/class-admin.php:709
 msgid "Pages, posts, products, menus and images that came from a demo are deleted. Content you created yourself is not touched."
 msgstr ""
 
-#: includes/admin/class-admin.php:698
+#: includes/admin/class-admin.php:710
 msgid "Remove demo content"
 msgstr ""
 
-#: includes/admin/class-admin.php:701
+#: includes/admin/class-admin.php:713
 #: includes/settings/schema.php:1753
 msgid "Tools"
 msgstr ""
 
-#: includes/admin/class-admin.php:702
+#: includes/admin/class-admin.php:714
 msgid "Back up, move and reset your settings, and clear generated files."
 msgstr ""
 
-#: includes/admin/class-admin.php:703
+#: includes/admin/class-admin.php:715
 msgid "Export settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:704
+#: includes/admin/class-admin.php:716
 msgid "Download every Hamista setting as a JSON file — for backups or to copy them to another site."
 msgstr ""
 
-#: includes/admin/class-admin.php:705
+#: includes/admin/class-admin.php:717
 msgid "Download .json"
 msgstr ""
 
-#: includes/admin/class-admin.php:706
+#: includes/admin/class-admin.php:718
 msgid "Settings file downloaded."
 msgstr ""
 
-#: includes/admin/class-admin.php:707
-#: includes/admin/class-admin.php:713
+#: includes/admin/class-admin.php:719
+#: includes/admin/class-admin.php:725
 msgid "Import settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:708
+#: includes/admin/class-admin.php:720
 msgid "Load a file exported from Hamista. Settings in the file replace the current ones."
 msgstr ""
 
-#: includes/admin/class-admin.php:709
+#: includes/admin/class-admin.php:721
 msgid "Choose file…"
 msgstr ""
 
 #. translators: %s: file name.
-#: includes/admin/class-admin.php:711
+#: includes/admin/class-admin.php:723
 #, php-format
 msgid "Import “%s”?"
 msgstr ""
 
-#: includes/admin/class-admin.php:712
+#: includes/admin/class-admin.php:724
 msgid "Settings in this file replace your current ones. Consider exporting a backup first."
 msgstr ""
 
-#: includes/admin/class-admin.php:714
+#: includes/admin/class-admin.php:726
 msgid "This file could not be read as JSON."
 msgstr ""
 
-#: includes/admin/class-admin.php:715
+#: includes/admin/class-admin.php:727
 msgid "Regenerate Elementor CSS"
 msgstr ""
 
-#: includes/admin/class-admin.php:716
+#: includes/admin/class-admin.php:728
 msgid "Clears Elementor's generated CSS files. Use it after changing colors, fonts or the content width if a page still looks old."
 msgstr ""
 
-#: includes/admin/class-admin.php:717
+#: includes/admin/class-admin.php:729
 msgid "Regenerate"
 msgstr ""
 
-#: includes/admin/class-admin.php:718
+#: includes/admin/class-admin.php:730
 #: includes/admin/class-tools.php:67
 msgid "Elementor is not active."
 msgstr ""
 
-#: includes/admin/class-admin.php:719
+#: includes/admin/class-admin.php:731
 msgid "Clear font cache"
 msgstr ""
 
-#: includes/admin/class-admin.php:720
+#: includes/admin/class-admin.php:732
 msgid "Re-scans the font folders. Use it after adding or replacing font files in the theme."
 msgstr ""
 
-#: includes/admin/class-admin.php:721
+#: includes/admin/class-admin.php:733
 msgid "Clear cache"
 msgstr ""
 
-#: includes/admin/class-admin.php:722
+#: includes/admin/class-admin.php:734
 msgid "Danger zone"
 msgstr ""
 
-#: includes/admin/class-admin.php:723
+#: includes/admin/class-admin.php:735
 msgid "Reset all settings"
 msgstr ""
 
-#: includes/admin/class-admin.php:724
+#: includes/admin/class-admin.php:736
 msgid "Every Hamista setting goes back to its default. Your content, menus and templates are not touched."
 msgstr ""
 
-#: includes/admin/class-admin.php:725
+#: includes/admin/class-admin.php:737
 msgid "Reset everything"
 msgstr ""
 
-#: includes/admin/class-admin.php:726
+#: includes/admin/class-admin.php:738
 msgid "Reset all Hamista settings?"
 msgstr ""
 
-#: includes/admin/class-admin.php:727
+#: includes/admin/class-admin.php:739
 msgid "This cannot be undone. Export your settings first if you might need them again."
 msgstr ""
 
 #. translators: %s: the word the user must type.
-#: includes/admin/class-admin.php:729
+#: includes/admin/class-admin.php:741
 #, php-format
 msgid "Type %s to confirm"
 msgstr ""
 
-#: includes/admin/class-admin.php:730
+#: includes/admin/class-admin.php:742
 msgctxt "word typed to confirm resetting all settings"
 msgid "reset"
 msgstr ""
 
-#: includes/admin/class-admin.php:731
+#: includes/admin/class-admin.php:743
 msgid "All settings were reset."
 msgstr ""
 
@@ -3170,105 +3220,105 @@ msgctxt "icon"
 msgid "Tree"
 msgstr ""
 
-#: includes/demos/class-importer.php:161
+#: includes/demos/class-importer.php:162
 msgid "Unknown plugin."
 msgstr ""
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:181
+#: includes/demos/class-importer.php:182
 #, php-format
 msgid "Could not reach WordPress.org to download %s. Install it from Plugins → Add New, then try again."
 msgstr ""
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:187
+#: includes/demos/class-importer.php:188
 #, php-format
 msgid "%s could not be installed. Check that the plugins folder is writable."
 msgstr ""
 
 #. translators: %s: plugin name
-#: includes/demos/class-importer.php:199
+#: includes/demos/class-importer.php:200
 #, php-format
 msgid "%s is installed and active."
 msgstr ""
 
-#: includes/demos/class-importer.php:218
+#: includes/demos/class-importer.php:219
 msgid "This demo could not be found."
 msgstr ""
 
-#: includes/demos/class-importer.php:222
+#: includes/demos/class-importer.php:223
 msgid "Activate the required plugins first."
 msgstr ""
 
-#: includes/demos/class-importer.php:241
+#: includes/demos/class-importer.php:242
 msgid "The demo files are damaged. Reinstall Hamista Core and try again."
 msgstr ""
 
-#: includes/demos/class-importer.php:258
+#: includes/demos/class-importer.php:259
 msgid "The import was interrupted. Please start again."
 msgstr ""
 
-#: includes/demos/class-importer.php:329
+#: includes/demos/class-importer.php:330
 msgid "Done."
 msgstr ""
 
-#: includes/demos/class-importer.php:358
+#: includes/demos/class-importer.php:359
 msgid "Getting ready…"
 msgstr ""
 
-#: includes/demos/class-importer.php:359
+#: includes/demos/class-importer.php:360
 msgid "Copying images…"
 msgstr ""
 
-#: includes/demos/class-importer.php:360
+#: includes/demos/class-importer.php:361
 msgid "Creating categories…"
 msgstr ""
 
-#: includes/demos/class-importer.php:361
+#: includes/demos/class-importer.php:362
 msgid "Adding blog posts…"
 msgstr ""
 
-#: includes/demos/class-importer.php:362
+#: includes/demos/class-importer.php:363
 msgid "Adding portfolio projects…"
 msgstr ""
 
-#: includes/demos/class-importer.php:363
+#: includes/demos/class-importer.php:364
 msgid "Adding profiles and booking hours…"
 msgstr ""
 
-#: includes/demos/class-importer.php:364
+#: includes/demos/class-importer.php:365
 msgid "Adding products…"
 msgstr ""
 
-#: includes/demos/class-importer.php:365
+#: includes/demos/class-importer.php:366
 msgid "Creating pages…"
 msgstr ""
 
-#: includes/demos/class-importer.php:366
+#: includes/demos/class-importer.php:367
 msgid "Building pages with Elementor…"
 msgstr ""
 
-#: includes/demos/class-importer.php:367
+#: includes/demos/class-importer.php:368
 msgid "Saving templates to the Elementor library…"
 msgstr ""
 
-#: includes/demos/class-importer.php:368
+#: includes/demos/class-importer.php:369
 msgid "Setting up menus…"
 msgstr ""
 
-#: includes/demos/class-importer.php:369
+#: includes/demos/class-importer.php:370
 msgid "Applying the style kit and settings…"
 msgstr ""
 
-#: includes/demos/class-importer.php:370
+#: includes/demos/class-importer.php:371
 msgid "Setting the home page…"
 msgstr ""
 
-#: includes/demos/class-importer.php:371
+#: includes/demos/class-importer.php:372
 msgid "Finishing up…"
 msgstr ""
 
-#: includes/demos/class-importer.php:1175
+#: includes/demos/class-importer.php:1184
 msgid "Demo content removed. Your own content was not touched."
 msgstr ""
 
@@ -3640,15 +3690,6 @@ msgstr ""
 
 #: includes/elementor/class-motion.php:290
 msgid "Accent tint"
-msgstr ""
-
-#: includes/elementor/class-motion.php:291
-#: includes/elementor/widgets/class-bento.php:150
-#: includes/elementor/widgets/class-features.php:122
-#: includes/elementor/widgets/class-stack.php:110
-#: includes/elementor/widgets/class-testimonial-wall.php:111
-#: includes/settings/schema.php:287
-msgid "Dark"
 msgstr ""
 
 #: includes/elementor/class-motion.php:292
@@ -4113,7 +4154,7 @@ msgid "Statement"
 msgstr ""
 
 #: includes/elementor/widgets/class-about-intro.php:90
-msgid "Akhgar is a creative studio that turns ideas into brands, websites and campaigns people remember."
+msgid "Hami is a creative studio that turns ideas into brands, websites and campaigns people remember."
 msgstr ""
 
 #: includes/elementor/widgets/class-about-intro.php:91
@@ -4552,7 +4593,7 @@ msgid "Giant text"
 msgstr ""
 
 #: includes/elementor/widgets/class-agency-hero.php:295
-msgid "Akh*g*ar"
+msgid "Ha*mi*"
 msgstr ""
 
 #: includes/elementor/widgets/class-agency-hero.php:296
@@ -4908,12 +4949,6 @@ msgstr ""
 #: includes/elementor/widgets/class-bento.php:145
 #: includes/elementor/widgets/class-testimonial-wall.php:106
 msgid "Tone"
-msgstr ""
-
-#: includes/elementor/widgets/class-bento.php:149
-#: includes/elementor/widgets/class-testimonial-wall.php:110
-#: includes/settings/schema.php:283
-msgid "Light"
 msgstr ""
 
 #: includes/elementor/widgets/class-bento.php:153

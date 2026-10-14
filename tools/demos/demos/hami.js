@@ -1,5 +1,5 @@
 /**
- * Demo: Akhgar — a creative studio for brand, web and growth (Ember kit),
+ * Demo: Hami — a creative studio for brand, web and growth (Ember kit),
  * after the first home page of the Noryx reference: a dark panel hero with a
  * running strip and social ring, a statement that lights up word by word,
  * a bento of reasons, large stepping service names, stacking project cards,
@@ -15,11 +15,11 @@ const { img, gallery, link, px, pct, gap, pad, w, con, bleed, section, cols, hea
 
 const images = { logo: 'images/logo.webp', 'logo-dark': 'images/logo-dark.webp' };
 [
-	'hero', 'hero-film', 'laurel', 'about', 'star', 'why-bg', 'cloud', 'hand', 'robot', 'shield', 'runner', 'faces',
+	'hero', 'hero-film', 'about', 'star', 'why-bg', 'cloud', 'shield', 'runner', 'faces',
 	'ser-1', 'ser-2', 'ser-3', 'ser-4', 'ser-5', 'pro-1', 'pro-2', 'pro-3', 'pro-4', 'pro-5', 'pro-6', 'pro-7',
-	'plan-1', 'plan-2', 'bolt', 'plan-wave', 'tm-1', 'tm-2', 'tm-3', 'tm-4', 'tm-5', 'step-1', 'step-2', 'step-3',
-	'crowd', 'tst-1', 'tst-2', 'tst-3', 'tst-4', 'tst-5', 'av-1', 'av-2', 'av-3', 'av-4', 'av-5', 'av-6',
-	'touch', 'faq-face', 'blog-1', 'blog-2', 'blog-3', 'blog-4', 'blog-5', 'blog-6', 'footer-bg',
+	'bolt', 'tm-1', 'tm-2', 'tm-3', 'tm-4', 'tm-5',
+	'crowd', 'tst-1', 'tst-2', 'tst-3', 'tst-4', 'tst-5', 'av-1', 'av-2', 'av-3', 'av-4', 'av-5',
+	'blog-1', 'blog-2', 'blog-3', 'blog-4', 'blog-5', 'blog-6',
 	'office-1', 'office-2', 'work-1', 'work-2', 'work-3', 'work-4', 'work-5', 'work-6',
 ].forEach((k) => { images[k] = 'images/' + k + '.webp'; });
 for (let i = 1; i <= 7; i++) {
@@ -32,7 +32,7 @@ const alts = {
 	about: 'چهره‌ای زیر کلاه، پشت پرده‌ای از نوارهای عمودی نور',
 	runner: 'دونده‌ای در حال گام برداشتن روی شن',
 	crowd: 'جمعیتی در تاریکی سالن، رو به نور صحنه',
-	'office-1': 'تیم اخگر دور میز کار، کنار مانیتورها',
+	'office-1': 'تیم حامی دور میز کار، کنار مانیتورها',
 	'office-2': 'دو همکار در حال بررسی نمونه‌ی طراحی',
 };
 
@@ -115,7 +115,7 @@ const member = (key, title, slug, order, image, meta, pattern, excerpt, paragrap
 const experts = [
 	member('m-sara', 'سارا احمدی', 'sara-ahmadi', 1, 'tm-3', { role: 'بنیان‌گذار و مدیر خلاقیت', experience: '۱۴', fee: 'جلسه‌ی اول رایگان', location: 'حضوری یا آنلاین' }, 'ttmtmoo',
 		'برندها را از نام و داستان تا هویت بصری می‌سازد؛ چهارده سال کار با استارتاپ‌ها و برندهای ملی.',
-		['سارا پیش از اخگر مدیر هنری دو آژانس تبلیغاتی بود. حالا بیشتر وقتش را روی جلسه‌های کشف با مشتری‌ها و هدایت تیم طراحی می‌گذارد.', ['ul', ['استراتژی و جایگاه‌یابی برند', 'نام‌گذاری و داستان برند', 'هدایت هویت بصری']]]),
+		['سارا پیش از حامی مدیر هنری دو آژانس تبلیغاتی بود. حالا بیشتر وقتش را روی جلسه‌های کشف با مشتری‌ها و هدایت تیم طراحی می‌گذارد.', ['ul', ['استراتژی و جایگاه‌یابی برند', 'نام‌گذاری و داستان برند', 'هدایت هویت بصری']]]),
 	member('m-arman', 'آرمان رضوی', 'arman-razavi', 2, 'tm-1', { role: 'مدیر رشد و تبلیغات', experience: '۱۰', fee: 'جلسه‌ی اول رایگان', location: 'آنلاین' }, 'tmttmoo',
 		'کمپین‌هایی می‌سازد که هر تومانش قابل ردیابی است؛ از تبلیغات کلیکی تا سئو.',
 		['آرمان ده سال است که کمپین‌های دیجیتال برندهای فروشگاهی و آموزشی را مدیریت می‌کند و به عددها بیشتر از سلیقه اعتماد دارد.', ['ul', ['تبلیغات کلیکی و شبکه‌های اجتماعی', 'سئو و محتوا', 'گزارش و تحلیل داده']]]),
@@ -124,10 +124,10 @@ const experts = [
 		['نیلوفر تحقیق کاربر و طراحی رابط را برای بیش از چهل محصول دیجیتال انجام داده است.', ['ul', ['تحقیق و آزمون کاربرپذیری', 'طراحی رابط وب و موبایل', 'سیستم‌های طراحی']]]),
 	member('m-kian', 'کیان مرادی', 'kian-moradi', 4, 'tm-5', { role: 'سرپرست توسعه', experience: '۹', fee: '۹۵۰ هزار تومان', location: 'آنلاین' }, 'ttmmtoo',
 		'سایت‌هایی می‌سازد که زیر یک ثانیه بالا می‌آیند و سال‌ها بی‌دردسر کار می‌کنند.',
-		['کیان سرپرست تیم توسعه‌ی اخگر است و روی سرعت، امنیت و نگهداری بلندمدت سایت‌ها تمرکز دارد.', ['ul', ['وردپرس و فروشگاه‌های ووکامرس', 'بهینه‌سازی سرعت', 'اتصال به سامانه‌های داخلی']]]),
+		['کیان سرپرست تیم توسعه‌ی حامی است و روی سرعت، امنیت و نگهداری بلندمدت سایت‌ها تمرکز دارد.', ['ul', ['وردپرس و فروشگاه‌های ووکامرس', 'بهینه‌سازی سرعت', 'اتصال به سامانه‌های داخلی']]]),
 	member('m-mina', 'مینا صالحی', 'mina-salehi', 5, 'tm-2', { role: 'طراح موشن و سه‌بعدی', experience: '۷', fee: '۷۵۰ هزار تومان', location: 'آنلاین' }, 'momomoo',
 		'به برندها حرکت می‌دهد؛ ویدیوی محصول، انیمیشن لوگو و مدل‌های سه‌بعدی.',
-		['مینا طراح موشن و سه‌بعدی است و پیش از اخگر برای استودیوهای تبلیغاتی ویدیوی محصول می‌ساخت.']),
+		['مینا طراح موشن و سه‌بعدی است و پیش از حامی برای استودیوهای تبلیغاتی ویدیوی محصول می‌ساخت.']),
 ];
 
 const product = (key, title, slug, price, sku, image, cats, excerpt, paragraphs, specs, extra = {}) => Object.assign({
@@ -191,7 +191,7 @@ const posts = [
 			'کاربر موبایل صبور نیست. اگر صفحه در سه ثانیه بالا نیاید، بیشتر بازدیدکننده‌ها برمی‌گردند و دیگر نمی‌آیند.',
 			['h', 'سه کار با بیشترین اثر'],
 			['ul', ['تصاویر را در قالب WebP و به اندازه‌ی واقعی نمایش بدهید', 'فونت‌ها را روی سایت خودتان میزبانی کنید', 'اسکریپت‌هایی را که لازم نیستند حذف کنید']],
-			'در پروژه‌های اخگر، سرعت را از روز اول در طراحی لحاظ می‌کنیم، نه در هفته‌ی آخر.',
+			'در پروژه‌های حامی، سرعت را از روز اول در طراحی لحاظ می‌کنیم، نه در هفته‌ی آخر.',
 		]),
 	},
 	{
@@ -291,9 +291,9 @@ const home = [
 	section({ space: 'lg', gap: 0 }, [
 		w('hm-about-intro', {
 			style: 'mission', eyebrow: eyebrow('۰۱', 'درباره‌ی ما'),
-			statement: 'اخگر استودیویی خلاق است که ایده‌ها را به برند، سایت و کمپین‌هایی تبدیل می‌کند که *دیده می‌شوند* و فروش می‌آورند.',
+			statement: 'حامی استودیویی خلاق است که ایده‌ها را به برند، سایت و کمپین‌هایی تبدیل می‌کند که *دیده می‌شوند* و فروش می‌آورند.',
 			image: img('about'), shape: img('star'),
-			btn_text: 'درباره‌ی اخگر', btn_link: link('{{page:about}}'), btn_style: 'primary',
+			btn_text: 'درباره‌ی حامی', btn_link: link('{{page:about}}'), btn_style: 'primary',
 			figures: [
 				{ label: 'رضایت مشتری', value: '4.8', text: 'میانگین امتیاز بیش از دویست پروژه‌ی تحویل‌شده.' },
 				{ label: 'پروژه‌ی منتشرشده', value: '+۱K', text: 'سایت، محصول و کمپینی که به دست مردم رسیده است.' },
@@ -365,7 +365,7 @@ const home = [
 		cols({ widths: [36, 28, 36], gap: 40, align: 'end' }, [
 			[L.textScrub('قدرت گرفته از *استعداد* و ذهن‌های خلاق و پرشور', { eyebrow: eyebrow('۰۷', 'تیم ما'), size: 'md' })],
 			[L.imageReveal('tm-3', { ratio: '3-4', reveal: 'clip-up', parallax: px(0.2) })],
-			[L.textEditor('<p>در اخگر باور داریم کار خوب با آدم‌های خوب شروع می‌شود. تیم ما از طراح، استراتژیست و برنامه‌نویس تشکیل شده که کنار هم کار می‌کنند.</p>'),
+			[L.textEditor('<p>در حامی باور داریم کار خوب با آدم‌های خوب شروع می‌شود. تیم ما از طراح، استراتژیست و برنامه‌نویس تشکیل شده که کنار هم کار می‌کنند.</p>'),
 				w('hm-proof', { avatars: gallery(['tm-1', 'tm-2', 'tm-4']), plus: 'yes', plus_link: link('{{page:team}}'), score: '+۲٫۵K', stars: 5, note: 'همکاری موفق تیمی', layout: 'stack', align: 'start' }),
 				button('دیدن همه‌ی تیم', '{{page:team}}', 'secondary')],
 		]),
@@ -393,7 +393,7 @@ const home = [
 		w('hm-testimonial-wall', {
 			look: 'scatter', word: 'نظر مشتری‌ها', rating_label: 'امتیاز',
 			items: [
-				{ quote: 'تیم اخگر خیلی زود فهمید چه می‌خواهیم و راهبردهایی اجرا کرد که تعامل و فروش ما را به‌وضوح بالا برد.', name: 'کامران ویلیامی', role: 'مدیر محصول', avatar: img('tst-1'), rating: '4.9', tone: 'light' },
+				{ quote: 'تیم حامی خیلی زود فهمید چه می‌خواهیم و راهبردهایی اجرا کرد که تعامل و فروش ما را به‌وضوح بالا برد.', name: 'کامران ویلیامی', role: 'مدیر محصول', avatar: img('tst-1'), rating: '4.9', tone: 'light' },
 				{ quote: 'خدمات عالی و راهنمایی دقیق. کمپین‌ها را هوشمندانه پیش بردند و هویت برندمان قوی‌تر از همیشه شد.', name: 'دانیال لطفی', role: 'مدیر بازاریابی', avatar: img('tst-2'), rating: '4.9', tone: 'accent' },
 				{ quote: 'کار با این تیم را به همه پیشنهاد می‌کنم؛ روایت خلاق را با راهبرد هوشمند ترکیب می‌کنند و نتیجه می‌گیرند.', name: 'رونیا رحیمی', role: 'بنیان‌گذار استارتاپ', avatar: img('tst-3'), rating: '4.9', tone: 'dark' },
 				{ quote: 'در هر مرحله ما را همراهی کردند و راه‌حل‌هایی دادند که نتیجه‌اش در عددها پیدا بود.', name: 'کورش حنیفی', role: 'مدیر فروش', avatar: img('tst-4'), rating: '4.9', tone: 'light' },
@@ -446,7 +446,7 @@ const about = [
 		w('hm-project-show', { source: 'portfolio', count: 3, look: 'stack', btn_text: 'جزئیات پروژه', year_label: 'سال:', cat_label: 'دسته:' }),
 	]),
 	section({ space: 'lg', gap: 40 }, [
-		heading({ eyebrow: eyebrow('۰۵', 'تیم'), title: 'آدم‌های اخگر', title_size: 'lg' }),
+		heading({ eyebrow: eyebrow('۰۵', 'تیم'), title: 'آدم‌های حامی', title_size: 'lg' }),
 		w('hm-experts', { eyebrow: '', title: '', desc: '', header_align: 'start', title_tag: 'h2', title_size: 'lg', title_reveal: 'words', count: 4, groups: [], filters: '', card_style: 'card', ratio: '3/4', button: 'yes', layout: 'grid', columns: '4' }),
 	]),
 	faqBlock(),
@@ -458,7 +458,7 @@ const servicesPage = [
 	L.pageHead(eyebrow('۰۱', 'خدمات'), 'همه‌ی آنچه برای\n*رشد آنلاین* لازم دارید', 'استراتژی، طراحی و رشد در یک تیم؛ می‌توانید یک خدمت یا همه را با هم بگیرید.'),
 	section({ space: 'md', gap: 0 }, [w('hm-service-list', { look: 'numbered', items: services.map((s, i) => Object.assign({}, s, { image: img(['work-1', 'work-2', 'work-3', 'work-4', 'work-5'][i]), meta_label: 'زمان‌بندی', meta_value: ['۴ تا ۸ هفته', 'ماهانه', '۳ تا ۶ هفته', '۲ تا ۴ هفته', '۳ تا ۵ هفته'][i] })), btn_text: 'جزئیات خدمت' })]),
 	band({ space: 'lg', gap: 40 }, [
-		heading({ eyebrow: eyebrow('۰۲', 'چرا اخگر'), title: 'دلیل‌هایی برای انتخاب ما', header_align: 'center', title_size: 'lg' }),
+		heading({ eyebrow: eyebrow('۰۲', 'چرا حامی'), title: 'دلیل‌هایی برای انتخاب ما', header_align: 'center', title_size: 'lg' }),
 		w('hm-bento', {
 			columns: '9', columns_tablet: '2', columns_mobile: '1', row_height: px(260),
 			cards: [
@@ -496,7 +496,7 @@ const servicePage = (slug, title, lead, image, bullets, body) => [
 
 const webDesign = servicePage('web-design', 'طراحی وب‌سایت', 'سایتی سریع، زیبا و فروشنده؛ از تحقیق کاربر تا انتشار و نگهداری.', 'work-1',
 	[['تحقیق و معماری', 'شناخت کاربر، نقشه‌ی صفحه‌ها و مسیر خرید.', 'compass'], ['طراحی رابط', 'طراحی دقیق برای موبایل و دسکتاپ.', 'grid'], ['توسعه و سرعت', 'وردپرس و المنتور، زیر یک ثانیه.', 'bolt'], ['سئوی فنی', 'ساختار درست برای دیده شدن در گوگل.', 'search']],
-	'<p>سایت شما اولین فروشنده‌ی شماست. در اخگر سایت را از نگاه مشتری می‌سازیم: چه می‌خواهد، کجا مردد می‌شود و چه چیزی او را به خرید یا تماس می‌رساند.</p><p>هر سایت با تحقیق کوتاه کاربر شروع می‌شود، با طراحی دقیق ادامه پیدا می‌کند و با آزمون سرعت و سئوی فنی به انتشار می‌رسد.</p>');
+	'<p>سایت شما اولین فروشنده‌ی شماست. در حامی سایت را از نگاه مشتری می‌سازیم: چه می‌خواهد، کجا مردد می‌شود و چه چیزی او را به خرید یا تماس می‌رساند.</p><p>هر سایت با تحقیق کوتاه کاربر شروع می‌شود، با طراحی دقیق ادامه پیدا می‌کند و با آزمون سرعت و سئوی فنی به انتشار می‌رسد.</p>');
 const marketing = servicePage('marketing', 'بازاریابی دیجیتال', 'کمپین‌هایی که هر تومانش قابل ردیابی است؛ از سئو تا تبلیغات و شبکه‌های اجتماعی.', 'work-2',
 	[['سئو و محتوا', 'رتبه‌ی پایدار با محتوایی که خوانده می‌شود.', 'search'], ['تبلیغات کلیکی', 'گوگل و شبکه‌های تبلیغاتی ایرانی.', 'target'], ['شبکه‌های اجتماعی', 'تقویم محتوا، ویدیوی کوتاه و تبلیغات.', 'megaphone'], ['گزارش و تحلیل', 'گزارش ماهانه‌ی ساده و دقیق.', 'chart']],
 	'<p>بازاریابی خوب از عدد شروع می‌شود، نه از حدس. پیش از هر تبلیغ، ردیابی کامل را راه می‌اندازیم تا بدانیم هر کانال چه می‌آورد.</p><p>بعد با یک پیام روشن و آزمون‌های کوچک، بودجه را به سمت کانال‌هایی می‌بریم که واقعاً فروش می‌آورند.</p>');
@@ -520,7 +520,7 @@ const teamPage = [
 	]),
 	band({ space: 'lg', gap: 40 }, [
 		cols({ widths: [50, 50], gap: 48, align: 'center' }, [
-			[L.textScrub('به *تیم اخگر* بپیوندید؛ همیشه دنبال آدم‌های کنجکاو هستیم.', { eyebrow: eyebrow('۰۲', 'همکاری'), size: 'md' }), button('ارسال رزومه', contactUrl, 'secondary')],
+			[L.textScrub('به *تیم حامی* بپیوندید؛ همیشه دنبال آدم‌های کنجکاو هستیم.', { eyebrow: eyebrow('۰۲', 'همکاری'), size: 'md' }), button('ارسال رزومه', contactUrl, 'secondary')],
 			[L.imageReveal('office-2', { ratio: '4-3' })],
 		]),
 	]),
@@ -555,7 +555,7 @@ const contact = [
 		cols({ widths: [40, 60], gap: 48, align: 'start' }, [
 			[L.contactInfo([
 				{ icon: 'phone', label: 'تلفن', value: '۰۲۱ ۸۸۷۷ ۶۶۵۵', link: link('tel:02188776655') },
-				{ icon: 'mail', label: 'ایمیل', value: 'hello@akhgar.studio', link: link('mailto:hello@akhgar.studio') },
+				{ icon: 'mail', label: 'ایمیل', value: 'hello@hami.studio', link: link('mailto:hello@hami.studio') },
 				{ icon: 'pin', label: 'دفتر', value: 'تهران، خیابان شریعتی، کوچه‌ی گلستان، پلاک ۱۸', link: link('') },
 				{ icon: 'clock', label: 'ساعت کاری', value: 'شنبه تا چهارشنبه، ۱۰ تا ۱۸', link: link('') },
 			], { map: '', map_image: '' })],
@@ -594,9 +594,9 @@ const pages = [
 
 module.exports = {
 	manifest: {
-		id: 'akhgar',
+		id: 'hami',
 		order: 1,
-		title: 'اخگر',
+		title: 'حامی',
 		desc: 'استودیوی خلاق برند، وب و رشد؛ پنل تیره با نوار متحرک و حلقه‌ی شبکه‌های اجتماعی، کارت‌های بنتو، خدمات پله‌ای، نمونه‌کارهای پشته‌ای، روند کار، دیوار نظرها، رزرو آنلاین مشاوره با اعضای تیم و فروشگاه محصولات دیجیتال. خاکستری مه‌آلود، مشکی و نارنجی آتشین؛ روشن و تیره.',
 		kit: 'ember',
 		thumb: 'thumb.webp',
@@ -606,21 +606,21 @@ module.exports = {
 		pages: pages.filter((p) => p.elementor).map((p) => p.title).concat(['فروشگاه', 'مجله']),
 	},
 	content: {
-		site: { title: 'اخگر', tagline: 'استودیوی خلاق برند، وب و رشد' },
+		site: { title: 'حامی', tagline: 'استودیوی خلاق برند، وب و رشد' },
 		images, alts, terms, posts, projects, experts, products, pages,
 		templates: [
-			{ key: 'tpl-home', type: 'page', page: 'home', title: 'اخگر — صفحه‌ی اصلی' },
-			{ key: 'tpl-about', type: 'page', page: 'about', title: 'اخگر — درباره‌ی ما' },
-			{ key: 'tpl-services', type: 'page', page: 'services', title: 'اخگر — خدمات' },
-			{ key: 'tpl-service', type: 'page', page: 'web-design', title: 'اخگر — صفحه‌ی یک خدمت' },
-			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'اخگر — قهرمان پنل تیره' },
-			{ key: 'tpl-bento', type: 'section', page: 'home', index: 2, title: 'اخگر — کارت‌های بنتو' },
-			{ key: 'tpl-works', type: 'section', page: 'home', index: 5, title: 'اخگر — نمونه‌کارهای پشته‌ای' },
-			{ key: 'tpl-wall', type: 'section', page: 'home', index: 9, title: 'اخگر — دیوار نظرها' },
+			{ key: 'tpl-home', type: 'page', page: 'home', title: 'حامی — صفحه‌ی اصلی' },
+			{ key: 'tpl-about', type: 'page', page: 'about', title: 'حامی — درباره‌ی ما' },
+			{ key: 'tpl-services', type: 'page', page: 'services', title: 'حامی — خدمات' },
+			{ key: 'tpl-service', type: 'page', page: 'web-design', title: 'حامی — صفحه‌ی یک خدمت' },
+			{ key: 'tpl-hero', type: 'section', page: 'home', index: 0, title: 'حامی — قهرمان پنل تیره' },
+			{ key: 'tpl-bento', type: 'section', page: 'home', index: 2, title: 'حامی — کارت‌های بنتو' },
+			{ key: 'tpl-works', type: 'section', page: 'home', index: 5, title: 'حامی — نمونه‌کارهای پشته‌ای' },
+			{ key: 'tpl-wall', type: 'section', page: 'home', index: 9, title: 'حامی — دیوار نظرها' },
 		],
 		menus: [
 			{
-				name: 'اخگر — منوی اصلی', location: 'primary', items: [
+				name: 'حامی — منوی اصلی', location: 'primary', items: [
 					{ title: 'خانه', page: 'home' },
 					{ title: 'خدمات', page: 'services', children: [
 						{ title: 'طراحی وب‌سایت', page: 'web-design' },
@@ -639,7 +639,7 @@ module.exports = {
 				],
 			},
 			{
-				name: 'اخگر — پابرگ', location: 'footer', items: [
+				name: 'حامی — پابرگ', location: 'footer', items: [
 					{ title: 'درباره‌ی ما', page: 'about' },
 					{ title: 'خدمات', page: 'services' },
 					{ title: 'نمونه‌کارها', page: 'projects' },
@@ -664,8 +664,8 @@ module.exports = {
 			booking_type: 'consulting',
 			booking_page: '{{pageid:consult}}',
 			booking_days: 21,
-			footer_about: 'اخگر استودیوی خلاق برند، وب و رشد است؛ از ۱۳۹۸ کنار برندهای ایرانی، از استارتاپ‌های تازه تا نام‌های آشنا.',
-			footer_copyright: 'تمام حقوق برای استودیو اخگر محفوظ است.',
+			footer_about: 'حامی استودیوی خلاق برند، وب و رشد است؛ از ۱۳۹۸ کنار برندهای ایرانی، از استارتاپ‌های تازه تا نام‌های آشنا.',
+			footer_copyright: 'تمام حقوق برای استودیو حامی محفوظ است.',
 			footer_social: [{ network: 'instagram', url: 'https://instagram.com/' }, { network: 'telegram', url: 'https://t.me/' }, { network: 'linkedin', url: 'https://linkedin.com/' }, { network: 'x', url: 'https://x.com/' }],
 			mobile_bar: true,
 			mobile_bar_text: 'شروع پروژه',
@@ -681,7 +681,7 @@ module.exports = {
 			seo_business_phone: '02188776655',
 			seo_business_city: 'تهران',
 			seo_business_street: 'خیابان شریعتی، کوچه‌ی گلستان، پلاک ۱۸',
-			seo_llms_intro: 'اخگر استودیوی خلاق برند، طراحی وب و بازاریابی دیجیتال در تهران است.',
+			seo_llms_intro: 'حامی استودیوی خلاق برند، طراحی وب و بازاریابی دیجیتال در تهران است.',
 		},
 		woocommerce: { currency: 'IRT', decimals: 0, thousand_sep: '٬', currency_pos: 'right_space', catalog_rows: 3, pages: { shop: 'فروشگاه', cart: 'سبد خرید', checkout: 'تسویه حساب', myaccount: 'حساب کاربری' } },
 		front_page: 'home',
