@@ -25,6 +25,44 @@ class Fonts {
 		add_filter( 'elementor/fonts/additional_fonts', array( __CLASS__, 'elementor_fonts' ) );
 		add_action( 'wp_head', array( __CLASS__, 'print_without_theme' ), 3 );
 		add_action( 'hamista_core/settings_saved', array( __CLASS__, 'flush_cache' ) );
+		add_filter( 'upload_mimes', array( __CLASS__, 'font_mimes' ) );
+		add_filter( 'wp_check_filetype_and_ext', array( __CLASS__, 'font_filetype' ), 10, 3 );
+	}
+
+	/** Font types an administrator may upload: extension => mime. */
+	const FONT_TYPES = array(
+		'woff2' => 'font/woff2',
+		'woff'  => 'font/woff',
+		'ttf'   => 'font/ttf',
+	);
+
+	/**
+	 * Allow font uploads in the media library (administrators only), for the
+	 * custom font fields in the settings.
+	 *
+	 * @param array $mimes Allowed mime types.
+	 * @return array
+	 */
+	public static function font_mimes( $mimes ) {
+		return current_user_can( 'manage_options' ) ? array_merge( $mimes, self::FONT_TYPES ) : $mimes;
+	}
+
+	/**
+	 * WordPress checks the real file type and fonts often report a generic
+	 * one, so accept them by extension.
+	 *
+	 * @param array  $data     File data.
+	 * @param string $file     Full path.
+	 * @param string $filename File name.
+	 * @return array
+	 */
+	public static function font_filetype( $data, $file, $filename ) {
+		$ext = strtolower( pathinfo( (string) $filename, PATHINFO_EXTENSION ) );
+		if ( isset( self::FONT_TYPES[ $ext ] ) && current_user_can( 'manage_options' ) ) {
+			$data['ext']  = $ext;
+			$data['type'] = self::FONT_TYPES[ $ext ];
+		}
+		return $data;
 	}
 
 	/**

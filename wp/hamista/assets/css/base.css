@@ -198,7 +198,7 @@
 }
 .hm-prose :where(blockquote cite) { display: block; margin-top: .6em; font-size: .85em; color: var(--hm-fg-muted); font-style: normal; }
 .hm-prose :where(img, video, iframe) { border-radius: var(--hm-radius-md); }
-.hm-prose :where(figcaption, .wp-caption-text) { margin-top: .6em; font-size: .875rem; color: var(--hm-fg-muted); text-align: center; }
+.hm-prose :where(figcaption, .wp-caption-text, .gallery-caption) { margin-top: .6em; font-size: .875rem; color: var(--hm-fg-muted); text-align: center; }
 .hm-prose :where(table) { font-size: .95rem; }
 .hm-prose :where(.alignwide) { margin-inline: calc((min(var(--hm-container), 100vw - var(--hm-gutter) * 2) - 100%) / -2 * .55); }
 .hm-prose :where(.alignfull) { margin-inline: calc(50% - 50vw); max-width: 100vw; width: 100vw; }
