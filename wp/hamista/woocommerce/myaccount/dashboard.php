@@ -46,16 +46,25 @@ $hamista_last  = empty( $hamista_dash['orders'] ) ? array() : wc_get_orders(
 	<?php else : ?>
 
 		<?php if ( ! empty( $hamista_dash['greeting'] ) ) : ?>
-		<header class="hm-account-dash__head">
-			<h2>
-				<?php
-				/* translators: %s: first name */
-				echo esc_html( sprintf( __( 'Hello, %s', 'hamista' ), $hamista_name ) );
-				?>
-			</h2>
-			<?php if ( ! empty( $hamista_dash['text'] ) ) : ?>
-				<p><?php echo esc_html( $hamista_dash['text'] ); ?></p>
-			<?php endif; ?>
+		<header class="hm-account-hero">
+			<span class="hm-account-hero__avatar" aria-hidden="true"><?php echo esc_html( mb_substr( $hamista_name, 0, 1 ) ); ?></span>
+			<div class="hm-account-hero__text">
+				<p class="hm-account-hero__date"><?php echo esc_html( hamista_digits( wp_date( 'l j F Y' ) ) ); ?></p>
+				<h2>
+					<?php
+					/* translators: %s: first name */
+					echo esc_html( sprintf( __( 'Hello, %s', 'hamista' ), $hamista_name ) );
+					?>
+				</h2>
+				<?php if ( ! empty( $hamista_dash['text'] ) ) : ?>
+					<p><?php echo esc_html( $hamista_dash['text'] ); ?></p>
+				<?php endif; ?>
+			</div>
+			<nav class="hm-account-hero__actions" aria-label="<?php esc_attr_e( 'Shortcuts', 'hamista' ); ?>">
+				<a class="hm-chip" href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>"><?php echo hamista_get_icon( 'receipt', array( 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php esc_html_e( 'My orders', 'hamista' ); ?></a>
+				<a class="hm-chip" href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>"><?php echo hamista_get_icon( 'user', array( 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php esc_html_e( 'Edit profile', 'hamista' ); ?></a>
+				<a class="hm-chip hm-chip--filled" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>"><?php echo hamista_get_icon( 'bag', array( 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php esc_html_e( 'Shop', 'hamista' ); ?></a>
+			</nav>
 		</header>
 	<?php endif; ?>
 
@@ -91,7 +100,7 @@ $hamista_last  = empty( $hamista_dash['orders'] ) ? array() : wc_get_orders(
 								?>
 							</span>
 							<span class="hm-account-orders__date"><?php echo esc_html( $hamista_order->get_date_created() ? wc_format_datetime( $hamista_order->get_date_created() ) : '' ); ?></span>
-							<span class="hm-account-orders__status hm-account-orders__status--<?php echo esc_attr( $hamista_order->get_status() ); ?>"><?php echo esc_html( wc_get_order_status_name( $hamista_order->get_status() ) ); ?></span>
+							<span class="hm-account-orders__status hm-status hm-status--<?php echo esc_attr( $hamista_order->get_status() ); ?>"><?php echo esc_html( wc_get_order_status_name( $hamista_order->get_status() ) ); ?></span>
 							<span class="hm-account-orders__total"><?php echo wp_kses_post( $hamista_order->get_formatted_order_total() ); ?></span>
 						</a>
 					</li>

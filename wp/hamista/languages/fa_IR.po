@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hamista 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hamista\n"
-"POT-Creation-Date: 2026-10-14T04:33:55+00:00\n"
-"PO-Revision-Date: 2026-10-14 04:41+0000\n"
+"POT-Creation-Date: 2026-10-14T04:46:08+00:00\n"
+"PO-Revision-Date: 2026-10-14 04:46+0000\n"
 "Last-Translator: Hamista\n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -661,30 +661,46 @@ msgid "Your orders, appointments and account details, all in one place."
 msgstr "سفارش‌ها، نوبت‌ها و اطلاعات حسابتان، همه یک‌جا."
 
 #. translators: %s: first name
-#: woocommerce/myaccount/dashboard.php:53
+#: woocommerce/myaccount/dashboard.php:56
 #, php-format
 msgid "Hello, %s"
 msgstr "سلام، %s"
 
-#: woocommerce/myaccount/dashboard.php:77
+#: woocommerce/myaccount/dashboard.php:63
+msgid "Shortcuts"
+msgstr "میان‌برها"
+
+#: woocommerce/myaccount/dashboard.php:64
+msgid "My orders"
+msgstr "سفارش‌های من"
+
+#: woocommerce/myaccount/dashboard.php:65
+msgid "Edit profile"
+msgstr "ویرایش مشخصات"
+
+#: woocommerce/myaccount/dashboard.php:66
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: woocommerce/myaccount/dashboard.php:86
 msgid "Latest orders"
 msgstr "آخرین سفارش‌ها"
 
-#: woocommerce/myaccount/dashboard.php:79
+#: woocommerce/myaccount/dashboard.php:88
 msgid "All orders"
 msgstr "همه‌ی سفارش‌ها"
 
 #. translators: %s: order number
-#: woocommerce/myaccount/dashboard.php:90
+#: woocommerce/myaccount/dashboard.php:99
 #, php-format
 msgid "Order %s"
 msgstr "سفارش %s"
 
-#: woocommerce/myaccount/dashboard.php:102
+#: woocommerce/myaccount/dashboard.php:111
 msgid "No orders yet."
 msgstr "هنوز سفارشی ثبت نکرده‌اید."
 
-#: woocommerce/myaccount/dashboard.php:103
+#: woocommerce/myaccount/dashboard.php:112
 msgid "Visit the shop"
 msgstr "رفتن به فروشگاه"
 

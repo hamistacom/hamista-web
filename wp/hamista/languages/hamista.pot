@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-14T04:33:55+00:00\n"
+"POT-Creation-Date: 2026-10-14T04:46:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: hamista\n"
@@ -660,30 +660,46 @@ msgid "Your orders, appointments and account details, all in one place."
 msgstr ""
 
 #. translators: %s: first name
-#: woocommerce/myaccount/dashboard.php:53
+#: woocommerce/myaccount/dashboard.php:56
 #, php-format
 msgid "Hello, %s"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:77
+#: woocommerce/myaccount/dashboard.php:63
+msgid "Shortcuts"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:64
+msgid "My orders"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:65
+msgid "Edit profile"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:66
+msgid "Shop"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:86
 msgid "Latest orders"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:79
+#: woocommerce/myaccount/dashboard.php:88
 msgid "All orders"
 msgstr ""
 
 #. translators: %s: order number
-#: woocommerce/myaccount/dashboard.php:90
+#: woocommerce/myaccount/dashboard.php:99
 #, php-format
 msgid "Order %s"
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:102
+#: woocommerce/myaccount/dashboard.php:111
 msgid "No orders yet."
 msgstr ""
 
-#: woocommerce/myaccount/dashboard.php:103
+#: woocommerce/myaccount/dashboard.php:112
 msgid "Visit the shop"
 msgstr ""
 

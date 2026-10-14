@@ -96,6 +96,12 @@
 	color-scheme: light;
 }
 
+/* Tonal surfaces after Material 3 (accent mixed into the surface), re-resolved on body so kits and dark mode carry through. */
+:root, body {
+	--hm-tone-1: color-mix(in srgb, var(--hm-accent) 7%, var(--hm-surface));
+	--hm-tone-2: color-mix(in srgb, var(--hm-accent) 15%, var(--hm-surface));
+}
+
 [data-hm-theme="dark"] {
 	--hm-bg: #0a0b0e;
 	--hm-surface: #111318;
