@@ -44,6 +44,7 @@ final class Plugin {
 			'Fonts\\Fonts',
 			'Fonts\\Library',
 			'Frontend\\Frontend',
+			'Frontend\\Preloader',
 			'Layouts\\Layouts',
 			'Forms\\Forms',
 			'Portfolio\\Portfolio',

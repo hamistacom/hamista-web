@@ -990,11 +990,11 @@ return ( static function () {
 			'icon'   => 'wave',
 			'desc'   => __( 'Hamista\'s motion engine is dependency-free and always respects the visitor\'s "reduce motion" setting.', 'hamista-core' ),
 			'fields' => array(
-				'smooth_scroll'    => $on_off + array(
+				'smooth_scroll'      => $on_off + array(
 					'label' => __( 'Smooth scrolling', 'hamista-core' ),
 					'desc'  => __( 'Inertia scrolling for mouse wheels. Off by default: the browser\'s own scrolling is the fastest on long Elementor pages. Touch devices always scroll natively.', 'hamista-core' ),
 				),
-				'smooth_intensity' => array(
+				'smooth_intensity'   => array(
 					'type'    => 'range',
 					'label'   => __( 'Scroll smoothness', 'hamista-core' ),
 					'desc'    => __( 'Lower is silkier, higher is snappier.', 'hamista-core' ),
@@ -1003,55 +1003,143 @@ return ( static function () {
 					'step'    => 1,
 					'show_if' => array( 'smooth_scroll' => true ),
 				),
-				'motion_reveal'    => $on_off + array(
+				'motion_reveal'      => $on_off + array(
 					'label' => __( 'Entrance animations', 'hamista-core' ),
 					'desc'  => __( 'Elements ease into view as they scroll in. Set per element in Elementor → Advanced → Hamista Motion.', 'hamista-core' ),
 				),
-				'motion_mobile'    => $on_off + array(
+				'motion_mobile'      => $on_off + array(
 					'label' => __( 'Animations on phones', 'hamista-core' ),
 				),
-				'magnetic'         => $on_off + array(
+				'magnetic'           => $on_off + array(
 					'label' => __( 'Magnetic buttons', 'hamista-core' ),
 					'desc'  => __( 'Buttons lean slightly toward the cursor.', 'hamista-core' ),
 				),
-				'cursor'           => array(
+				'cursor'             => array(
 					'type'    => 'cards',
 					'label'   => __( 'Cursor style', 'hamista-core' ),
 					'desc'    => __( 'Desktop only. Any element can show a word inside the cursor with the attribute data-hm-cursor="…".', 'hamista-core' ),
 					'choices' => array(
-						'none'  => array(
+						'none'      => array(
 							'label' => __( 'System cursor', 'hamista-core' ),
 							'icon'  => 'mouse',
 						),
-						'dot'   => array(
+						'dot'       => array(
 							'label' => __( 'Dot', 'hamista-core' ),
 							'icon'  => 'dot',
 						),
-						'ring'  => array(
+						'ring'      => array(
 							'label' => __( 'Dot and ring', 'hamista-core' ),
 							'icon'  => 'ring',
 						),
-						'blend' => array(
+						'blend'     => array(
 							'label' => __( 'Inverting lens', 'hamista-core' ),
 							'icon'  => 'contrast',
 						),
-						'glow'  => array(
+						'glow'      => array(
 							'label' => __( 'Soft glow', 'hamista-core' ),
 							'icon'  => 'sun',
 						),
+						'frame'     => array(
+							'label' => __( 'Frame around links', 'hamista-core' ),
+							'icon'  => 'frame',
+						),
+						'trail'     => array(
+							'label' => __( 'Comet trail', 'hamista-core' ),
+							'icon'  => 'trail',
+						),
+						'arrow'     => array(
+							'label' => __( 'Leaning arrow', 'hamista-core' ),
+							'icon'  => 'pointer',
+						),
+						'spotlight' => array(
+							'label' => __( 'Spotlight (dark designs)', 'hamista-core' ),
+							'icon'  => 'spot',
+						),
+						'custom'    => array(
+							'label' => __( 'Your own image', 'hamista-core' ),
+							'icon'  => 'image',
+						),
 					),
 				),
-				'sound_enabled'    => $on_off + array(
+				'cursor_image'       => array(
+					'type'    => 'media',
+					'label'   => __( 'Cursor image', 'hamista-core' ),
+					'desc'    => __( 'PNG, WebP, GIF or SVG, up to 64 pixels, centred on the pointer.', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'cursor' => 'custom' ),
+				),
+				'cursor_image_hover' => array(
+					'type'    => 'media',
+					'label'   => __( 'Image over links and buttons', 'hamista-core' ),
+					'desc'    => __( 'Optional; without it the cursor image grows a little.', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'cursor' => 'custom' ),
+				),
+				'preloader'          => array(
+					'type'    => 'cards',
+					'label'   => __( 'Page loader', 'hamista-core' ),
+					'group'   => __( 'Page loader', 'hamista-core' ),
+					'desc'    => __( 'Shown while the page loads, with your logo. It never waits longer than three seconds; for the best PageSpeed score keep it off or use the thin bar.', 'hamista-core' ),
+					'choices' => array(
+						'none'    => array(
+							'label' => __( 'No loader', 'hamista-core' ),
+							'icon'  => 'close',
+						),
+						'logo'    => array(
+							'label' => __( 'Logo and progress line', 'hamista-core' ),
+							'icon'  => 'logo',
+						),
+						'curtain' => array(
+							'label' => __( 'Logo, then a rising curtain', 'hamista-core' ),
+							'icon'  => 'curtain',
+						),
+						'counter' => array(
+							'label' => __( 'Large counting percentage', 'hamista-core' ),
+							'icon'  => 'percent',
+						),
+						'bar'     => array(
+							'label' => __( 'Thin bar at the top', 'hamista-core' ),
+							'icon'  => 'bar',
+						),
+						'custom'  => array(
+							'label' => __( 'Your own animation', 'hamista-core' ),
+							'icon'  => 'image',
+						),
+					),
+				),
+				'preloader_image'    => array(
+					'type'    => 'media',
+					'label'   => __( 'Loader animation', 'hamista-core' ),
+					'desc'    => __( 'A GIF, animated SVG or WebP shown in the middle of the screen.', 'hamista-core' ),
+					'show_if' => array( 'preloader' => 'custom' ),
+				),
+				'preloader_tone'     => array(
+					'type'    => 'select',
+					'label'   => __( 'Loader background', 'hamista-core' ),
+					'width'   => 'half',
+					'choices' => array(
+						'auto'   => __( 'Same as the site (light or dark)', 'hamista-core' ),
+						'dark'   => __( 'Always dark', 'hamista-core' ),
+						'accent' => __( 'Accent colour', 'hamista-core' ),
+					),
+					'show_if' => array( 'preloader' => array( 'logo', 'curtain', 'counter', 'custom' ) ),
+				),
+				'preloader_once'     => $on_off + array(
+					'label'   => __( 'Only on the first page of a visit', 'hamista-core' ),
+					'width'   => 'half',
+					'show_if' => array( 'preloader' => array( 'logo', 'curtain', 'counter', 'custom' ) ),
+				),
+				'sound_enabled'      => $on_off + array(
 					'label' => __( 'Interface sounds', 'hamista-core' ),
 					'group' => __( 'Sound', 'hamista-core' ),
 					'desc'  => __( 'Subtle clicks and ticks for buttons, links and toggles, synthesized in the browser (no audio files). Visitors get a speaker button in the header to turn them on or off.', 'hamista-core' ),
 				),
-				'sound_default'    => $on_off + array(
+				'sound_default'      => $on_off + array(
 					'label'   => __( 'On for first-time visitors', 'hamista-core' ),
 					'desc'    => __( 'Browsers only allow sound after the first click or key press, so nothing plays before the visitor interacts.', 'hamista-core' ),
 					'show_if' => array( 'sound_enabled' => true ),
 				),
-				'sound_theme'      => array(
+				'sound_theme'        => array(
 					'type'    => 'select',
 					'label'   => __( 'Sound character', 'hamista-core' ),
 					'choices' => array(
@@ -1062,7 +1150,7 @@ return ( static function () {
 					),
 					'show_if' => array( 'sound_enabled' => true ),
 				),
-				'sound_volume'     => array(
+				'sound_volume'       => array(
 					'type'    => 'range',
 					'label'   => __( 'Volume', 'hamista-core' ),
 					'min'     => 5,
@@ -1071,7 +1159,7 @@ return ( static function () {
 					'unit'    => '%',
 					'show_if' => array( 'sound_enabled' => true ),
 				),
-				'sound_hover'      => $on_off + array(
+				'sound_hover'        => $on_off + array(
 					'label'   => __( 'Tick on hover', 'hamista-core' ),
 					'desc'    => __( 'A very quiet tick when the pointer reaches a button or card.', 'hamista-core' ),
 					'show_if' => array( 'sound_enabled' => true ),

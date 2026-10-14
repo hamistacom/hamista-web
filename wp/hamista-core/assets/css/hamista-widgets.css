@@ -95,7 +95,42 @@
 .hm-cursor--glow::before { width: 420px; height: 420px; margin: -210px; background: radial-gradient(closest-side, color-mix(in srgb, var(--hm-accent) 22%, transparent), transparent); filter: none; mix-blend-mode: normal; }
 .hm-cursor--glow.is-hover::before, .hm-cursor--glow.has-label::before { transform: scale(.75); background: radial-gradient(closest-side, color-mix(in srgb, var(--hm-accent) 30%, transparent), transparent); opacity: 1; }
 .hm-cursor--glow .hm-cursor__label { display: none; }
-@media (hover: none), (pointer: coarse) { .hm-cursor, .hm-cursor-ring { display: none; } }
+/* Frame: a soft outline that wraps the link or button under the pointer */
+.hm-cursor--frame::before { width: 6px; height: 6px; margin: -3px; background: var(--hm-fg); mix-blend-mode: normal; filter: none; }
+.hm-cursor--frame.is-snapped::before, .hm-cursor--frame.is-hover::before { transform: scale(0); }
+.hm-cursor--frame.has-label::before { transform: scale(13); background: var(--hm-accent); opacity: 1; }
+.hm-cursor--frame .hm-cursor__label { color: var(--hm-accent-fg); }
+.hm-cursor-ring--frame { margin: 0; transition: opacity .3s, border-color .3s, background-color .3s, border-radius .3s; }
+.hm-cursor-ring--frame.is-hover, .hm-cursor-ring--frame.is-down { margin: 0; }
+.hm-cursor-ring--frame.is-snapped { border-color: color-mix(in srgb, var(--hm-accent) 70%, transparent); background: color-mix(in srgb, var(--hm-accent) 8%, transparent); }
+/* Trail: a dot followed by fading beads */
+.hm-cursor--trail::before { width: 9px; height: 9px; margin: -4.5px; background: var(--hm-accent); mix-blend-mode: normal; filter: none; }
+.hm-cursor--trail.is-hover::before { transform: scale(2.6); opacity: .9; background: var(--hm-accent); }
+.hm-cursor--trail.has-label::before { transform: scale(10); }
+.hm-cursor--trail .hm-cursor__label { color: var(--hm-accent-fg); }
+.hm-cursor-bead { position: fixed; top: 0; left: 0; z-index: 9999; width: 0; height: 0; pointer-events: none; opacity: 0; transition: opacity .3s; }
+.hm-cursor-bead.is-visible { opacity: calc(.55 - var(--i) * .06); }
+.hm-cursor-bead::before { content: ""; position: absolute; width: calc(8px - var(--i) * .7px); height: calc(8px - var(--i) * .7px); transform: translate(-50%, -50%); border-radius: 50%; background: var(--hm-accent); }
+/* Arrow: a pointer that leans into the movement */
+.hm-cursor--arrow::before { display: none; }
+.hm-cursor__arrow { position: absolute; top: -3px; left: -4px; width: 26px; max-width: none; height: 26px; fill: var(--hm-fg); stroke: var(--hm-bg); stroke-width: 1.6; stroke-linejoin: round; transform-origin: 4px 3px; transition: transform .3s var(--hm-ease); filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .25)); }
+.hm-cursor--arrow.is-hover .hm-cursor__arrow { transform: scale(1.25); }
+.hm-cursor--arrow.is-down .hm-cursor__arrow { transform: scale(.85); }
+.hm-cursor--arrow .hm-cursor__label { top: 30px; left: 22px; transform: none; padding: 5px 10px; border-radius: 99px; background: var(--hm-accent); color: var(--hm-accent-fg); }
+/* Spotlight: the page dims around a circle of light that follows the pointer */
+.hm-cursor--spotlight { display: none; }
+html.hm-spot-on body::after { content: ""; position: fixed; inset: 0; z-index: 9998; pointer-events: none; background: radial-gradient(circle 220px at var(--hm-spot-x, 50%) var(--hm-spot-y, 50%), transparent 0, transparent 55%, rgba(0, 0, 0, .42) 100%); animation: hm-fade-in .5s ease; }
+@keyframes hm-fade-in { from { opacity: 0; } }
+/* Custom: your own images (GIF, SVG, PNG or WebP), centred on the pointer */
+.hm-cursor--custom::before { display: none; }
+.hm-cursor__img { position: absolute; max-width: 64px; max-height: 64px; transform: translate(-50%, -50%); transition: opacity .2s, transform .3s var(--hm-ease); }
+.hm-cursor__img--hover { opacity: 0; }
+.hm-cursor--custom.is-hover .hm-cursor__img:not(.hm-cursor__img--hover) { opacity: 0; }
+.hm-cursor--custom.is-hover .hm-cursor__img--hover { opacity: 1; }
+.hm-cursor--custom.is-hover:not(:has(.hm-cursor__img--hover)) .hm-cursor__img { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+.hm-cursor--custom.is-down .hm-cursor__img { transform: translate(-50%, -50%) scale(.9); }
+.hm-cursor--custom .hm-cursor__label { top: 36px; padding: 5px 10px; border-radius: 99px; background: var(--hm-fg); color: var(--hm-bg); }
+@media (hover: none), (pointer: coarse) { .hm-cursor, .hm-cursor-ring, .hm-cursor-bead { display: none; } html.hm-spot-on body::after { content: none; } }
 
 /* ==========================================================================
    Shared: sections, schemes, heads, buttons

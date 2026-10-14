@@ -495,51 +495,115 @@
 		}, { passive: true });
 	}
 
-	// Cursor styles: dot, ring (dot + trailing ring), blend (inverting lens), glow (soft light).
+	// Cursor styles: dot, ring (dot + trailing ring), blend (inverting lens), glow (soft light),
+	// frame (wraps links and buttons), trail (comet), arrow (tilting pointer),
+	// spotlight (dims everything but a circle) and custom (your own images).
 	function setupCursor() {
 		var mode = cfg.cursor === true ? 'dot' : cfg.cursor;
 		if (!mode || mode === 'none' || !finePointer || !animate || isEditor || doc.querySelector('.hm-cursor')) { return; }
 		var dot = doc.createElement('div');
 		dot.className = 'hm-cursor hm-cursor--' + mode;
 		dot.innerHTML = '<span class="hm-cursor__label"></span>';
+		if (mode === 'arrow') {
+			dot.insertAdjacentHTML('afterbegin', '<svg class="hm-cursor__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 3.5 19 11l-6.4 1.7L9.6 19 4.5 3.5Z"/></svg>');
+		}
+		var img = cfg.cursorImg || {};
+		if (mode === 'custom') {
+			if (!img.normal) { return; }
+			dot.insertAdjacentHTML('afterbegin', '<img class="hm-cursor__img" alt="" src="' + img.normal + '">' + (img.hover ? '<img class="hm-cursor__img hm-cursor__img--hover" alt="" src="' + img.hover + '">' : ''));
+		}
 		doc.body.appendChild(dot);
 		var ring = null;
-		if (mode === 'ring') {
+		if (mode === 'ring' || mode === 'frame') {
 			ring = doc.createElement('div');
-			ring.className = 'hm-cursor-ring';
+			ring.className = 'hm-cursor-ring' + (mode === 'frame' ? ' hm-cursor-ring--frame' : '');
 			doc.body.appendChild(ring);
 		}
-		if (mode !== 'glow') { root.classList.add('hm-has-cursor'); }
-		var label = dot.firstChild;
-		var follow = mode === 'glow' ? 0.12 : (mode === 'blend' ? 0.2 : 0.3);
-		var x = vw / 2, y = vh / 2, tx = x, ty = y, rx = x, ry = y, visible = false;
+		var tail = [];
+		if (mode === 'trail') {
+			for (var i = 0; i < 8; i++) {
+				var bead = doc.createElement('div');
+				bead.className = 'hm-cursor-bead';
+				bead.style.setProperty('--i', i);
+				doc.body.appendChild(bead);
+				tail.push({ el: bead, x: vw / 2, y: vh / 2 });
+			}
+		}
+		if (mode !== 'glow' && mode !== 'spotlight') { root.classList.add('hm-has-cursor'); }
+		var label = dot.querySelector('.hm-cursor__label');
+		var follow = { glow: 0.12, spotlight: 0.16, blend: 0.2, arrow: 0.5, custom: 0.5, frame: 0.5 }[mode] || 0.3;
+		var x = vw / 2, y = vh / 2, tx = x, ty = y, rx = x, ry = y, rw = 36, rh = 36, visible = false, snap = null, tilt = 0;
 		var t = H.ticker(function () {
+			var px = x, py = y;
 			x = mix(x, tx, follow);
 			y = mix(y, ty, follow);
-			dot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
 			var moving = Math.abs(tx - x) + Math.abs(ty - y) > 0.3;
+			if (mode === 'spotlight') {
+				root.style.setProperty('--hm-spot-x', x.toFixed(1) + 'px');
+				root.style.setProperty('--hm-spot-y', y.toFixed(1) + 'px');
+			} else if (mode === 'arrow') {
+				tilt = mix(tilt, Math.max(-28, Math.min(28, (x - px) * 2.2)), 0.2);
+				dot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + tilt.toFixed(1) + 'deg)';
+				moving = moving || Math.abs(tilt) > 0.2;
+			} else {
+				dot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+			}
 			if (ring) {
-				rx = mix(rx, tx, 0.14);
-				ry = mix(ry, ty, 0.14);
-				ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
-				moving = moving || Math.abs(tx - rx) + Math.abs(ty - ry) > 0.3;
+				var gx = tx, gy = ty, gw = 36, gh = 36;
+				if (snap) {
+					var r = snap.getBoundingClientRect();
+					gx = r.left + r.width / 2; gy = r.top + r.height / 2; gw = r.width + 14; gh = r.height + 12;
+				}
+				var k = mode === 'frame' ? 0.22 : 0.14;
+				rx = mix(rx, gx, k); ry = mix(ry, gy, k); rw = mix(rw, gw, k); rh = mix(rh, gh, k);
+				ring.style.transform = 'translate3d(' + (rx - rw / 2).toFixed(1) + 'px,' + (ry - rh / 2).toFixed(1) + 'px,0)';
+				ring.style.width = rw.toFixed(1) + 'px';
+				ring.style.height = rh.toFixed(1) + 'px';
+				moving = moving || Math.abs(gx - rx) + Math.abs(gy - ry) + Math.abs(gw - rw) > 0.4 || !!snap;
+			}
+			var lx = x, ly = y;
+			for (var j = 0; j < tail.length; j++) {
+				var b2 = tail[j];
+				b2.x = mix(b2.x, lx, 0.42); b2.y = mix(b2.y, ly, 0.42);
+				b2.el.style.transform = 'translate3d(' + b2.x.toFixed(1) + 'px,' + b2.y.toFixed(1) + 'px,0)';
+				moving = moving || Math.abs(b2.x - lx) + Math.abs(b2.y - ly) > 0.3;
+				lx = b2.x; ly = b2.y;
 			}
 			t.active = moving;
 			return moving;
 		});
+		function show(on) {
+			visible = on;
+			dot.classList.toggle('is-visible', on);
+			if (ring) { ring.classList.toggle('is-visible', on); }
+			tail.forEach(function (b3) { b3.el.classList.toggle('is-visible', on); });
+			root.classList.toggle('hm-spot-on', on && mode === 'spotlight');
+		}
 		doc.addEventListener('pointermove', function (e) {
 			tx = e.clientX; ty = e.clientY;
-			if (!visible) { visible = true; dot.classList.add('is-visible'); x = rx = tx; y = ry = ty; if (ring) { ring.classList.add('is-visible'); } }
+			if (!visible) {
+				x = rx = tx; y = ry = ty;
+				tail.forEach(function (b4) { b4.x = tx; b4.y = ty; });
+				show(true);
+			}
 			var hit = e.target.closest && e.target.closest('a, button, [data-hm-cursor], input, textarea, select, label');
 			var text = hit && hit.getAttribute('data-hm-cursor');
+			var field = hit && /^(INPUT|TEXTAREA|SELECT)$/.test(hit.tagName);
+			snap = mode === 'frame' && hit && !text && !field && hit.offsetWidth < vw * 0.6 ? hit : null;
 			dot.classList.toggle('is-hover', !!hit);
 			dot.classList.toggle('has-label', !!text);
-			if (ring) { ring.classList.toggle('is-hover', !!hit); ring.classList.toggle('has-label', !!text); }
+			dot.classList.toggle('is-snapped', !!snap);
+			if (ring) {
+				ring.classList.toggle('is-hover', !!hit);
+				ring.classList.toggle('has-label', !!text);
+				ring.classList.toggle('is-snapped', !!snap);
+				if (snap) { ring.style.borderRadius = Math.max(8, parseFloat(getComputedStyle(snap).borderRadius) || 0) + 6 + 'px'; } else { ring.style.borderRadius = ''; }
+			}
 			label.textContent = text || '';
 			t.active = true;
 			requestFrame();
 		}, { passive: true });
-		doc.addEventListener('pointerleave', function () { visible = false; dot.classList.remove('is-visible'); if (ring) { ring.classList.remove('is-visible'); } });
+		doc.addEventListener('pointerleave', function () { show(false); });
 		doc.addEventListener('pointerdown', function () { dot.classList.add('is-down'); if (ring) { ring.classList.add('is-down'); } });
 		doc.addEventListener('pointerup', function () { dot.classList.remove('is-down'); if (ring) { ring.classList.remove('is-down'); } });
 	}

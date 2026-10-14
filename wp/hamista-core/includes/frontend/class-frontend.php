@@ -140,22 +140,26 @@ class Frontend {
 	public static function motion_config() {
 		$editor = class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->preview ) && \Elementor\Plugin::$instance->preview->is_preview_mode();
 		return array(
-			'smooth'   => (bool) hamista_core_option( 'smooth_scroll' ),
-			'lerp'     => (int) hamista_core_option( 'smooth_intensity', 10 ),
-			'reveal'   => (bool) hamista_core_option( 'motion_reveal' ),
-			'mobile'   => (bool) hamista_core_option( 'motion_mobile' ),
-			'magnetic' => (bool) hamista_core_option( 'magnetic' ),
-			'cursor'   => self::cursor_mode(),
-			'sound'    => array(
+			'smooth'    => (bool) hamista_core_option( 'smooth_scroll' ),
+			'lerp'      => (int) hamista_core_option( 'smooth_intensity', 10 ),
+			'reveal'    => (bool) hamista_core_option( 'motion_reveal' ),
+			'mobile'    => (bool) hamista_core_option( 'motion_mobile' ),
+			'magnetic'  => (bool) hamista_core_option( 'magnetic' ),
+			'cursor'    => self::cursor_mode(),
+			'cursorImg' => 'custom' === self::cursor_mode() ? array(
+				'normal' => (string) wp_get_attachment_image_url( (int) hamista_core_option( 'cursor_image' ), 'full' ),
+				'hover'  => (string) wp_get_attachment_image_url( (int) hamista_core_option( 'cursor_image_hover' ), 'full' ),
+			) : null,
+			'sound'     => array(
 				'enabled' => (bool) hamista_core_option( 'sound_enabled' ),
 				'def'     => (bool) hamista_core_option( 'sound_default' ),
 				'theme'   => (string) hamista_core_option( 'sound_theme', 'soft' ),
 				'volume'  => (int) hamista_core_option( 'sound_volume', 40 ),
 				'hover'   => (bool) hamista_core_option( 'sound_hover', true ),
 			),
-			'editor'   => $editor,
-			'rest'     => esc_url_raw( rest_url( 'hamista/v1/' ) ),
-			'i18n'     => array(
+			'editor'    => $editor,
+			'rest'      => esc_url_raw( rest_url( 'hamista/v1/' ) ),
+			'i18n'      => array(
 				'network' => __( 'Could not connect. Please try again.', 'hamista-core' ),
 			),
 		);
@@ -171,7 +175,7 @@ class Frontend {
 		if ( true === $mode || '1' === $mode ) {
 			return 'dot';
 		}
-		return in_array( $mode, array( 'dot', 'ring', 'blend', 'glow' ), true ) ? $mode : 'none';
+		return in_array( $mode, array( 'dot', 'ring', 'blend', 'glow', 'frame', 'trail', 'arrow', 'spotlight', 'custom' ), true ) ? $mode : 'none';
 	}
 
 	/**
